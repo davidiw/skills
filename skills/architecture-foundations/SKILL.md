@@ -26,8 +26,9 @@ entries without redefining them.
    owned state before drawing module boxes.
    When finite runtime pools can block required progress, read
    [`runtime-resource-governance.md`](references/runtime-resource-governance.md)
-   and define admission, protected reserves, lifecycle ownership, and bounded
-   reclamation before selecting an allocator or scheduler.
+   and complete its per-activity resource contract and five-mechanism
+   separation before selecting an allocator or scheduler. A protected reserve
+   alone is not a complete resource policy.
 5. Set allowed dependency directions and identify the composition root.
    Framework, storage, provider, and transport details point inward through
    adapters; deterministic product policy does not point outward to them.

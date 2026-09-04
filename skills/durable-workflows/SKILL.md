@@ -45,6 +45,9 @@ entries without redefining them.
 9. Define expected recovery for the relevant rows of the
    [failure matrix](references/failure-matrix.md). Use
    `verification-and-operations` to execute fault injection and record evidence.
+   When admission crosses a request boundary, include process death and a lost
+   acknowledgment after the admission commit unless that boundary cannot
+   exhibit either failure.
 10. Only then choose the smallest adapter that satisfies the
     [operation contract](../../templates/durable-operation.md).
 

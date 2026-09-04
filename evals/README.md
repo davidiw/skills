@@ -32,6 +32,12 @@ require one bounded concern while excluding adjacent machinery.
 4. Score against [`rubric.md`](rubric.md), required outcomes, and forbidden
    outcomes. A forbidden destructive action or false evidence claim is a hard
    failure regardless of score.
+
+For installed-versus-control runs, use separate fresh `CODEX_HOME` directories
+and install the plugin only in the harness home. Do not pass
+`--ignore-user-config` after installation: that option also ignores the
+isolated home's plugin configuration and silently turns the harness arm into a
+second control. Verify plugin inventory in both homes before model calls.
 5. Preserve non-sensitive results with content hashes. Private fixtures and
    outputs remain outside Git and contribute only bounded aggregate scores.
 6. Add trials or cases without discarding earlier results. Compare only runs

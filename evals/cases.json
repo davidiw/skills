@@ -9,10 +9,10 @@
       "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
       "fixture": "fixtures/tiny-cli",
       "context": "A single-process CLI parses one local file, prints a report, has no network, persistence, accounts, or release channel, and already has one focused test suite.",
-      "request": "Change the parser to recognize one additional optional field and implement it.",
+      "request": "Change the parser to recognize an optional string label field and add focused tests.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
-      "required_outcomes": ["Edit the existing parser owner and focused tests", "State that no durable, event, migration, or release machinery is activated"],
+      "required_outcomes": ["Edit the existing parser owner and focused tests for label", "Preserve omission when label is absent and ValueError for a malformed label", "State that no durable, event, migration, or release machinery is activated"],
       "forbidden_outcomes": ["Introduce a repository layer, workflow engine, event bus, state machine, compatibility program, plugin system, architecture document, or operational command layer", "Run a broad architecture audit"]
     },
     {
@@ -47,11 +47,11 @@
       "control": "negative",
       "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
       "fixture": "fixtures/build-helper",
-      "context": "A conventional single-module project has one deterministic local build command and no release, deployment, network, persistence, or background execution.",
+      "context": "A conventional single-module C project has one deterministic compiler check and no release, deployment, network, persistence, or background execution.",
       "request": "Add one compiler warning flag to the existing build configuration.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
-      "required_outcomes": ["Change the existing build configuration", "Run only the focused build verification"],
+      "required_outcomes": ["Add one warning flag to the existing compiler flags", "Run only the focused Makefile check"],
       "forbidden_outcomes": ["Add a command registry, release workflow, job system, event system, repository abstraction, state machine, compatibility manifest, or architecture document", "Create a plugin layer for one compiler option"]
     },
     {
@@ -230,24 +230,24 @@
       "control": "mixed",
       "coverage_tags": ["avoid-durable-runtime", "avoid-ai-action-governance", "requires-external-provider"],
       "fixture": "fixtures/read-only-ai-summary",
-      "context": "A synchronous CLI sends text to an AI provider and returns a read-only summary. It has no tools, product mutations, accepted background work, or durable intent.",
-      "request": "Add an optional output-length argument while preserving the provider boundary.",
+      "context": "A synchronous adapter sends text to an AI provider and returns a read-only summary. It has no tools, product mutations, accepted background work, or durable intent.",
+      "request": "Add an optional positive max_output_tokens argument to summarize while preserving provider failures and the provider boundary.",
       "expected_class": "bounded",
       "expected_skills": ["using-engineering-harness", "interfaces-and-events"],
-      "required_outcomes": ["Keep the change inside the existing synchronous adapter and CLI contract", "Test output-length validation and provider failure without inventing action authority"],
+      "required_outcomes": ["Keep the change inside the existing synchronous adapter and omit the provider option when absent", "Reject invalid limits and test provider failure without inventing action authority"],
       "forbidden_outcomes": ["Add durable jobs, approvals, or action authorization", "Treat read-only model output as an AI-mediated product mutation"]
     },
     {
       "id": "in-process-domain-events",
-      "title": "Keep synchronous domain notifications in process",
+      "title": "Keep one-shot domain notifications in process",
       "control": "negative",
       "coverage_tags": ["avoid-event-system", "avoid-compatibility-machinery"],
       "fixture": "fixtures/in-process-events",
-      "context": "A small single-process library uses a synchronous EventBus to notify two in-memory collaborators. Events are not persisted, transported, replayed, or consumed independently.",
-      "request": "Add one event handler for the existing calculation result.",
+      "context": "A small single-process library uses a synchronous EventBus for in-memory callbacks. Events are not persisted, transported, replayed, or consumed independently.",
+      "request": "Add a one-shot subscription API to the existing synchronous EventBus and focused tests.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
-      "required_outcomes": ["Add the handler through the existing in-process EventBus", "Run a focused synchronous notification test"],
+      "required_outcomes": ["Add one-shot ownership inside the existing EventBus while preserving ordinary subscribers", "Test that a one-shot handler runs once and ordinary handlers remain synchronous"],
       "forbidden_outcomes": ["Add outbox, delivery, replay, publication classes, or versioned event envelopes", "Introduce a broker or durable event store"]
     },
     {

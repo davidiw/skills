@@ -1,4 +1,4 @@
 .PHONY: check
 
 check:
-	@echo "build configuration valid"
+	$(CC) $(CFLAGS) -fsyntax-only main.c
