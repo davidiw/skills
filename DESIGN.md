@@ -34,6 +34,7 @@ generated views, examples, or tests.
 | Discovery detectors and confidence | `scripts/profile_repository.py` | Proposed profile discovery section |
 | Skill name and discovery description | Each `SKILL.md` frontmatter | Plugin discovery |
 | Skill UI presentation and invocation policy | That skill's `agents/openai.yaml` when present | Codex UI and invocation behavior |
+| Marketplace identity, root plugin source, and install policy | `.agents/plugins/marketplace.json` | Codex marketplace discovery |
 | Eval scenario and expected routing | `evals/cases.json` | Corpus validator and runs |
 | Eval scoring | `evals/rubric.md` | Evaluation runs |
 | Generated invariant rendering | `scripts/render_invariants.py` | `references/engineering-invariants.md` |

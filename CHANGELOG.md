@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.1 - 2026-09-04
+
+- Add a repository-local Codex marketplace that exposes the root
+  `engineering-harness` plugin.
+- Validate marketplace metadata against the plugin manifest and public package
+  contract.
+
+No profile migration is required because invariant, activation, routing, and
+evidence semantics are unchanged.
+
 ## 0.3.0 - 2026-09-04
 
 - Correct the public package URLs for the `davidiw/skills` repository.

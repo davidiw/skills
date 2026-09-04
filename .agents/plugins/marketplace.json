@@ -1,0 +1,20 @@
+{
+  "name": "davidiw-skills",
+  "interface": {
+    "displayName": "David's Skills"
+  },
+  "plugins": [
+    {
+      "name": "engineering-harness",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

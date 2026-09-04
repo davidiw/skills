@@ -9,6 +9,10 @@ It is not a framework, architecture replacement, issue tracker, deployment
 system, mandatory document set, or durable-runtime vendor. Repository-specific
 instructions and accepted product decisions remain authoritative.
 
+The repository includes a Codex marketplace at
+`.agents/plugins/marketplace.json`. Adding this repository as a marketplace
+exposes the root `engineering-harness` plugin for installation.
+
 ## Four workflows
 
 Use `$using-engineering-harness` and state one of four intents. The router loads

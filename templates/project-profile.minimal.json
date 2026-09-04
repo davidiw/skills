@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.3.0",
+  "harness_policy_version": "0.3.1",
   "status": "accepted",
   "project": {
     "name": "small-example",

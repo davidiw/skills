@@ -272,6 +272,31 @@ class GeneratedInvariantTest(unittest.TestCase):
                 self.assertTrue(set(item["consumed_by"]) <= skill_names)
 
 
+class MarketplaceMetadataTest(unittest.TestCase):
+    def test_marketplace_exposes_the_root_plugin(self) -> None:
+        manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+        marketplace = json.loads(
+            (ROOT / ".agents" / "plugins" / "marketplace.json").read_text()
+        )
+
+        self.assertEqual(marketplace["name"], "davidiw-skills")
+        self.assertEqual(marketplace["interface"], {"displayName": "David's Skills"})
+        self.assertEqual(
+            marketplace["plugins"],
+            [
+                {
+                    "name": manifest["name"],
+                    "source": {"source": "local", "path": "."},
+                    "policy": {
+                        "installation": "AVAILABLE",
+                        "authentication": "ON_INSTALL",
+                    },
+                    "category": "Developer Tools",
+                }
+            ],
+        )
+
+
 class EvaluationCorpusTest(unittest.TestCase):
     def test_negative_controls_cover_all_overengineering_failures(self) -> None:
         document = json.loads((ROOT / "evals" / "cases.json").read_text())

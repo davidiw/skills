@@ -16,6 +16,7 @@ from validate_profile import MECHANICAL_RUNGS, VERSION_PATTERN, validate_profile
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REPOSITORY = "https://github.com/davidiw/skills"
+MARKETPLACE_PATH = ROOT / ".agents" / "plugins" / "marketplace.json"
 ROUTER_SKILL = "using-engineering-harness"
 SKILL_NAMES = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
 SPECIALIST_SKILLS = SKILL_NAMES - {ROUTER_SKILL}
@@ -290,6 +291,28 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     sources = (ROOT / "SOURCES.md").read_text(encoding="utf-8")
     require(len(SHA_PATTERN.findall(sources)) >= 14, "SOURCES.md must pin reviewed repositories", errors)
     require("independent synthesis" in sources.lower(), "SOURCES.md must state provenance model", errors)
+
+    marketplace = json.loads(MARKETPLACE_PATH.read_text(encoding="utf-8"))
+    expected_marketplace = {
+        "name": "davidiw-skills",
+        "interface": {"displayName": "David's Skills"},
+        "plugins": [
+            {
+                "name": manifest.get("name"),
+                "source": {"source": "local", "path": "."},
+                "policy": {
+                    "installation": "AVAILABLE",
+                    "authentication": "ON_INSTALL",
+                },
+                "category": "Developer Tools",
+            }
+        ],
+    }
+    require(
+        marketplace == expected_marketplace,
+        "marketplace metadata differs from the root engineering-harness plugin",
+        errors,
+    )
 
 
 def validate_public_hygiene(errors: list[str]) -> None:

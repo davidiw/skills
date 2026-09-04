@@ -1,6 +1,6 @@
 {
   "name": "engineering-harness",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Risk-proportional architecture, durability, compatibility, hardening, and release workflows for coding agents.",
   "author": {
     "name": "davidiw",
