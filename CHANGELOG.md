@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 - 2026-09-04
+
+- Correct the public package URLs for the `davidiw/skills` repository.
+- Restrict multiple-client discovery to consumer surfaces rather than backend
+  `server` and `api` roots.
+- Require a generated marker or combined generator/output evidence instead of
+  treating ordinary rendering code as a generated artifact.
+- Ignore standard CMake build and fetched-dependency trees during discovery.
+- Reserve physical-device discovery for hardware, firmware, and physical design
+  evidence rather than Android or iOS scaffolding alone.
+- Add false-positive regression tests for all three detector corrections.
+
+Migration from 0.2.x:
+
+1. rerun profile drift or generate a fresh proposal with scanner version 2;
+2. review changed detector evidence against repository facts;
+3. do not automatically disable an accepted capability merely because a
+   heuristic no longer detects it.
+
 ## 0.2.0 - 2026-09-04
 
 - Consolidate every invariant under one normative owner skill and distinguish

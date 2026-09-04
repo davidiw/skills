@@ -15,6 +15,7 @@ from validate_profile import MECHANICAL_RUNGS, VERSION_PATTERN, validate_profile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_REPOSITORY = "https://github.com/davidiw/skills"
 ROUTER_SKILL = "using-engineering-harness"
 SKILL_NAMES = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
 SPECIALIST_SKILLS = SKILL_NAMES - {ROUTER_SKILL}
@@ -272,6 +273,8 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
     require(manifest.get("name") == "engineering-harness", "unexpected plugin name", errors)
     require(manifest.get("skills") == "./skills/", "manifest must expose ./skills/", errors)
+    require(manifest.get("homepage") == PUBLIC_REPOSITORY, "manifest homepage is incorrect", errors)
+    require(manifest.get("repository") == PUBLIC_REPOSITORY, "manifest repository is incorrect", errors)
     require(
         manifest.get("license") == "BSD-3-Clause",
         "manifest and LICENSE policy differ",

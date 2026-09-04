@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.2.0",
+  "harness_policy_version": "0.3.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",
@@ -54,7 +54,7 @@
   },
   "exceptions": [],
   "discovery": {
-    "scanner_version": 1,
+    "scanner_version": 2,
     "repository_revision": "f27acde528066473eb076eb3ce30fc2975fe2ba7",
     "project_fields": {
       "sensitive_data": {
@@ -99,7 +99,7 @@
         "confidence": "high",
         "evidence": [
           {
-            "rule": "generator-path",
+            "rule": "generated-marker",
             "path": "scripts/render_invariants.py"
           }
         ]

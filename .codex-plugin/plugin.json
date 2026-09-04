@@ -1,13 +1,13 @@
 {
   "name": "engineering-harness",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Risk-proportional architecture, durability, compatibility, hardening, and release workflows for coding agents.",
   "author": {
     "name": "davidiw",
     "url": "https://github.com/davidiw"
   },
-  "homepage": "https://github.com/davidiw/engineering-harness",
-  "repository": "https://github.com/davidiw/engineering-harness",
+  "homepage": "https://github.com/davidiw/skills",
+  "repository": "https://github.com/davidiw/skills",
   "license": "BSD-3-Clause",
   "keywords": [
     "architecture",
