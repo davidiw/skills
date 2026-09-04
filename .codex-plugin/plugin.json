@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/davidiw/engineering-harness",
   "repository": "https://github.com/davidiw/engineering-harness",
-  "license": "UNLICENSED",
+  "license": "BSD-3-Clause",
   "keywords": [
     "architecture",
     "durable-workflows",

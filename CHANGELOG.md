@@ -11,6 +11,7 @@
 - Move adversarial review, fault injection, and exact proof from architecture
   hardening to verification and operations.
 - Expand deterministic proportionality and public-package validation.
+- License the package under the permissive BSD 3-Clause license.
 
 Migration from 0.1.x:
 

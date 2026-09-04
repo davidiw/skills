@@ -134,5 +134,5 @@ Release behavior and migration requirements are defined in
 [`references/versioning.md`](references/versioning.md) and recorded in
 [`CHANGELOG.md`](CHANGELOG.md).
 
-The package remains unlicensed (`UNLICENSED`) until public distribution terms
-are selected.
+Engineering Harness is available under the
+[`BSD-3-Clause`](LICENSE) license.

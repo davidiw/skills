@@ -272,7 +272,11 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
     require(manifest.get("name") == "engineering-harness", "unexpected plugin name", errors)
     require(manifest.get("skills") == "./skills/", "manifest must expose ./skills/", errors)
-    require(manifest.get("license") == "UNLICENSED", "manifest and LICENSE policy differ", errors)
+    require(
+        manifest.get("license") == "BSD-3-Clause",
+        "manifest and LICENSE policy differ",
+        errors,
+    )
     version = manifest.get("version", "")
     require(isinstance(version, str) and bool(VERSION_PATTERN.fullmatch(version)), "manifest version is not semantic", errors)
     prompts = manifest.get("interface", {}).get("defaultPrompt", [])
