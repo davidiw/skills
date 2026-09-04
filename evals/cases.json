@@ -22,10 +22,10 @@
       "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
       "fixture": "fixtures/pure-library",
       "context": "A small library parses date strings into an existing value type. It has no process boundary, persistence, network, mutable authority, deployment, or generated artifacts.",
-      "request": "Accept one additional ISO date spelling and add focused tests.",
+      "request": "Accept ISO ordinal dates in YYYY-DDD form and add focused tests.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
-      "required_outcomes": ["Change the existing parser and focused test table", "Keep the public value type and error behavior unchanged"],
+      "required_outcomes": ["Extend the existing parser and focused test table for YYYY-DDD", "Keep the public value type and error behavior unchanged"],
       "forbidden_outcomes": ["Add repositories, events, jobs, state machines, compatibility manifests, architecture documents, or operator tooling", "Run a broad audit or invent a migration"]
     },
     {
