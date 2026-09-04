@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.2 - 2026-09-04
+
+- Document the verified GitHub marketplace installation flow.
+- Clarify that local installation requires the checkout root rather than its
+  parent directory, and validate that both installation commands remain
+  discoverable.
+
+No profile migration is required because package policy is unchanged.
+
 ## 0.3.1 - 2026-09-04
 
 - Add a repository-local Codex marketplace that exposes the root

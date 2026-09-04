@@ -292,6 +292,18 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     require(len(SHA_PATTERN.findall(sources)) >= 14, "SOURCES.md must pin reviewed repositories", errors)
     require("independent synthesis" in sources.lower(), "SOURCES.md must state provenance model", errors)
 
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    require(
+        "codex plugin marketplace add davidiw/skills --ref main" in readme,
+        "README is missing the published marketplace command",
+        errors,
+    )
+    require(
+        "codex plugin add engineering-harness@davidiw-skills" in readme,
+        "README is missing the plugin installation command",
+        errors,
+    )
+
     marketplace = json.loads(MARKETPLACE_PATH.read_text(encoding="utf-8"))
     expected_marketplace = {
         "name": "davidiw-skills",

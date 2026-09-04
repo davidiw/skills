@@ -13,6 +13,24 @@ The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
 exposes the root `engineering-harness` plugin for installation.
 
+## Install
+
+Add the published marketplace and install the plugin:
+
+```bash
+codex plugin marketplace add davidiw/skills --ref main
+codex plugin add engineering-harness@davidiw-skills
+```
+
+For local development, pass the checkout root containing both
+`.agents/plugins/marketplace.json` and `.codex-plugin/plugin.json`, not its
+parent directory:
+
+```bash
+codex plugin marketplace add /path/to/skills-checkout
+codex plugin add engineering-harness@davidiw-skills
+```
+
 ## Four workflows
 
 Use `$using-engineering-harness` and state one of four intents. The router loads
