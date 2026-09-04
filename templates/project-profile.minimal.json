@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "small-example",
+    "kind": "single-process-application",
+    "sensitive_data": false
+  },
+  "sources": {
+    "agent_rules": "AGENTS.md",
+    "architecture": "README.md",
+    "operator_interface": "package.json"
+  },
+  "capabilities": {
+    "durable_work": false,
+    "offline_operation": false,
+    "replicated_state": false,
+    "multiple_clients": false,
+    "external_providers": false,
+    "ai_mediated_actions": false,
+    "generated_artifacts": false,
+    "physical_devices": false,
+    "shared_production_state": false,
+    "artifact_publication": false
+  },
+  "enforcement": {
+    "canonical-authority": {
+      "rung": "owner",
+      "owner": "src/application.ts",
+      "artifacts": ["test/application.test.ts"]
+    },
+    "bounded-contracts": {
+      "rung": "local_check",
+      "owner": "package.json#scripts.test",
+      "artifacts": ["test/application.test.ts"]
+    }
+  }
+}

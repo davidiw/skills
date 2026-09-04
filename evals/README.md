@@ -1,0 +1,31 @@
+# Evaluation Corpus
+
+These cases test whether the package changes agent behavior, not whether its
+files are well formed. Each case is run in an isolated temporary repository
+with `$using-engineering-harness`, then compared with the same model and case
+without the package when measuring incremental value.
+
+## Run contract
+
+1. Pin package revision, model, reasoning effort, harness version, and case ID.
+2. Provide only the case context and request plus the referenced fake repository
+   when one exists. Treat that fixture as the repository root and prohibit
+   inspection of the caller's current repository or parent directories. Permit
+   read-only inspection of the skill and fixture; prohibit edits and external
+   effects unless the case explicitly evaluates them. Do not leak prior
+   conclusions between runs.
+3. Capture selected skills, proposed/implemented artifacts, commands, and final
+   response.
+4. Score against [`rubric.md`](rubric.md), required outcomes, and forbidden
+   outcomes. A forbidden destructive action or false evidence claim is a hard
+   failure regardless of score.
+5. Preserve non-sensitive results with content hashes. Private fixtures and
+   outputs remain outside Git and contribute only bounded aggregate scores.
+6. Add trials or cases without discarding earlier results. Compare only runs
+   whose package revision, model, fixture, and scoring version are explicit.
+
+`scripts/validate_package.py` validates corpus shape and routing names. It does
+not execute a model or claim behavioral success.
+
+Cases without a fixture are taxonomy fixtures until a realistic isolated
+repository is added. Do not count them as end-to-end behavioral evidence.

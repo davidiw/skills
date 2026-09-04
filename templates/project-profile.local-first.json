@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "local-first-example",
+    "kind": "local-first-multi-client-application",
+    "sensitive_data": true
+  },
+  "sources": {
+    "agent_rules": "AGENTS.md",
+    "architecture": "DESIGN.md",
+    "work_tracker": "TODO.md",
+    "compatibility": "compatibility_manifest.json",
+    "acceptance_contracts": "docs/acceptance_contracts.json",
+    "operator_interface": "./tool"
+  },
+  "capabilities": {
+    "durable_work": true,
+    "offline_operation": true,
+    "replicated_state": true,
+    "multiple_clients": true,
+    "external_providers": true,
+    "ai_mediated_actions": true,
+    "generated_artifacts": true,
+    "physical_devices": true,
+    "shared_production_state": true,
+    "artifact_publication": true
+  },
+  "enforcement": {
+    "canonical-authority": {
+      "rung": "local_check",
+      "owner": "DESIGN.md#ownership",
+      "artifacts": ["test/semantic_parity_test.dart"]
+    },
+    "durable-admission": {
+      "rung": "fault_test",
+      "owner": "lib/durable_operation_repository.dart",
+      "artifacts": ["test/durable_operation_replay_test.dart"]
+    },
+    "authority-context-fencing": {
+      "rung": "fault_test",
+      "owner": "lib/account_context.dart",
+      "artifacts": ["test/account_switch_storm_test.dart"]
+    },
+    "versioned-compatibility": {
+      "rung": "ci_check",
+      "owner": "compatibility_manifest.json",
+      "artifacts": ["test/mixed_version_compatibility_test.dart"]
+    },
+    "typed-exact-evidence": {
+      "rung": "ci_check",
+      "owner": "docs/acceptance_contracts.json",
+      "artifacts": ["scripts/acceptance_contracts.dart"]
+    }
+  }
+}

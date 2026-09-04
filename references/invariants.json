@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "invariants": [
+    {
+      "id": "canonical-authority",
+      "statement": "Every fact has one authoritative owner, and every semantic behavior has one canonical implementation path.",
+      "activates_when": "always",
+      "default_rung": "owner",
+      "skills": ["architecture-foundations", "application-composition"]
+    },
+    {
+      "id": "bounded-contracts",
+      "statement": "Modules expose small intentional contracts; storage, provider, and framework internals remain behind their owners.",
+      "activates_when": "a module or process boundary exists",
+      "default_rung": "local_check",
+      "skills": ["architecture-foundations", "interfaces-and-events"]
+    },
+    {
+      "id": "shared-semantics",
+      "statement": "Shared product semantics live below every UI, API, worker, assistant, and backend; differences live in adapters.",
+      "activates_when": "two surfaces implement the same product behavior",
+      "default_rung": "fault_test",
+      "skills": ["application-composition"]
+    },
+    {
+      "id": "explicit-composition",
+      "statement": "Assembly occurs in an explicit composition root rather than ambient globals or route construction.",
+      "activates_when": "a system has replaceable dependencies or multiple adapters",
+      "default_rung": "local_check",
+      "skills": ["architecture-foundations", "application-composition"]
+    },
+    {
+      "id": "durable-admission",
+      "statement": "When accepted user intent must survive the caller, successful admission means that intent is already durable.",
+      "activates_when": "work may outlive a request, route, process, or device opportunity",
+      "default_rung": "fault_test",
+      "skills": ["durable-workflows"]
+    },
+    {
+      "id": "normal-failure-semantics",
+      "statement": "Retries, duplicates, timeouts, cancellation, interruption, and process death are defined execution paths.",
+      "activates_when": "work crosses a temporal or process boundary",
+      "default_rung": "fault_test",
+      "skills": ["durable-workflows", "interfaces-and-events"]
+    },
+    {
+      "id": "committed-event-truth",
+      "statement": "Events come from committed facts; durable consumers use persisted delivery or recovery state, while ephemeral events only wake them.",
+      "activates_when": "events or notifications can affect correctness",
+      "default_rung": "fault_test",
+      "skills": ["interfaces-and-events", "durable-workflows"]
+    },
+    {
+      "id": "publication-classes",
+      "statement": "Material data, operation progress, operation terminal state, and connectivity or authentication are distinct publication classes.",
+      "activates_when": "events invalidate reads or update user-visible operation state",
+      "default_rung": "local_check",
+      "skills": ["interfaces-and-events", "application-composition"]
+    },
+    {
+      "id": "coalesced-bounded-work",
+      "statement": "Equivalent intent coalesces, and concurrency, memory, network, provider, and queue use are explicitly bounded.",
+      "activates_when": "work can repeat, fan out, or consume shared resources",
+      "default_rung": "fault_test",
+      "skills": ["durable-workflows", "interfaces-and-events"]
+    },
+    {
+      "id": "transient-presentation",
+      "statement": "Presentation owns rendering and transient interaction, not retries, synchronization, imports, provider polling, or durable workflow state.",
+      "activates_when": "an interactive client exists",
+      "default_rung": "local_check",
+      "skills": ["application-composition"]
+    },
+    {
+      "id": "useful-paint-graph",
+      "statement": "Every important surface has an explicit useful-paint graph; optional enrichment loads and fails independently.",
+      "activates_when": "a user-visible surface performs asynchronous reads",
+      "default_rung": "fault_test",
+      "skills": ["application-composition"]
+    },
+    {
+      "id": "persistence-qos",
+      "statement": "Interactive persistence receives priority, while noninteractive work is bounded, observable, and yields between committed units.",
+      "activates_when": "interactive and background work share a non-preemptible resource",
+      "default_rung": "fault_test",
+      "skills": ["durable-workflows", "application-composition"]
+    },
+    {
+      "id": "authority-context-fencing",
+      "statement": "Durable operations capture stable account or tenant authority at admission and fence every commit, acknowledgment, and publication.",
+      "activates_when": "active authority can change while work is in flight",
+      "default_rung": "fault_test",
+      "skills": ["durable-workflows", "data-and-compatibility"]
+    },
+    {
+      "id": "representation-separation",
+      "statement": "Source observations, canonical state, projections, caches, transport objects, and persisted records remain distinct representations with explicit owners.",
+      "activates_when": "one fact has more than one representation",
+      "default_rung": "owner",
+      "skills": ["data-and-compatibility", "architecture-foundations"]
+    },
+    {
+      "id": "explicit-deletion",
+      "statement": "Absence is not deletion; destruction requires an explicit lifecycle event such as a tombstone, erasure, or verified lossless migration.",
+      "activates_when": "state is synchronized, imported, repaired, or migrated",
+      "default_rung": "fault_test",
+      "skills": ["data-and-compatibility"]
+    },
+    {
+      "id": "versioned-compatibility",
+      "statement": "Persistent, wire, event, storage, and worker contracts are versioned; temporary compatibility names consumers, proof, telemetry, and a removal gate.",
+      "activates_when": "independently deployed readers and writers coexist",
+      "default_rung": "ci_check",
+      "skills": ["data-and-compatibility", "verification-and-operations"]
+    },
+    {
+      "id": "typed-boundaries",
+      "statement": "Identity, time, units, provenance, capability, and privacy are validated boundary types rather than conventions hidden in strings.",
+      "activates_when": "ambiguous primitives cross a trust or representation boundary",
+      "default_rung": "local_check",
+      "skills": ["interfaces-and-events", "data-and-compatibility", "application-composition"]
+    },
+    {
+      "id": "discoverable-operations",
+      "statement": "Humans and agents use one discoverable operational interface; machine configuration is local and secrets remain in credential systems.",
+      "activates_when": "the repository has repeated build, test, migration, repair, or release actions",
+      "default_rung": "ci_check",
+      "skills": ["verification-and-operations"]
+    },
+    {
+      "id": "separate-action-authority",
+      "statement": "Implementation, integration, metadata change, deployment, installation, migration, repair, and publication are separately authorized actions.",
+      "activates_when": "work can mutate shared or external state",
+      "default_rung": "runtime_guard",
+      "skills": ["verification-and-operations"]
+    },
+    {
+      "id": "typed-exact-evidence",
+      "statement": "Claims bind to exact revisions and evidence classes; generated, simulated, automated, physical, and production observations never substitute for one another.",
+      "activates_when": "a result gates integration, release, compatibility, safety, or physical behavior",
+      "default_rung": "ci_check",
+      "skills": ["verification-and-operations", "architecture-hardening"]
+    }
+  ]
+}

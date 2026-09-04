@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/davidiw/engineering-harness/project-profile.schema.json",
+  "title": "Engineering Harness Project Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "sources", "capabilities", "enforcement"],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "kind", "sensitive_data"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "sensitive_data": {"type": "boolean"}
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "minLength": 1},
+      "properties": {
+        "agent_rules": {"type": "string"},
+        "architecture": {"type": "string"},
+        "work_tracker": {"type": "string"},
+        "compatibility": {"type": "string"},
+        "acceptance_contracts": {"type": "string"},
+        "operator_interface": {"type": "string"}
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "properties": {
+        "durable_work": {"type": "boolean"},
+        "offline_operation": {"type": "boolean"},
+        "replicated_state": {"type": "boolean"},
+        "multiple_clients": {"type": "boolean"},
+        "external_providers": {"type": "boolean"},
+        "ai_mediated_actions": {"type": "boolean"},
+        "generated_artifacts": {"type": "boolean"},
+        "physical_devices": {"type": "boolean"},
+        "shared_production_state": {"type": "boolean"},
+        "artifact_publication": {"type": "boolean"}
+      }
+    },
+    "enforcement": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rung", "owner"],
+        "properties": {
+          "rung": {
+            "enum": ["principle", "owner", "audit", "local_check", "ci_check", "runtime_guard", "fault_test"]
+          },
+          "owner": {"type": "string", "minLength": 1},
+          "artifacts": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

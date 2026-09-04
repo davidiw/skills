@@ -1,18 +1,36 @@
 {
   "name": "engineering-harness",
   "version": "0.1.0",
-  "description": "Engineering Harness plugin",
+  "description": "Risk-proportional architecture, durability, compatibility, hardening, and release workflows for coding agents.",
   "author": {
-    "name": "Local developer"
+    "name": "davidiw",
+    "url": "https://github.com/davidiw"
   },
+  "homepage": "https://github.com/davidiw/engineering-harness",
+  "repository": "https://github.com/davidiw/engineering-harness",
+  "license": "UNLICENSED",
+  "keywords": [
+    "architecture",
+    "durable-workflows",
+    "compatibility",
+    "verification"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Engineering Harness",
-    "shortDescription": "Use Engineering Harness in Codex.",
-    "longDescription": "Engineering Harness adds a local Codex plugin scaffold.",
-    "developerName": "Local developer",
-    "category": "Productivity",
-    "capabilities": [],
-    "defaultPrompt": "Help me use Engineering Harness."
+    "shortDescription": "Make consequential changes safer without burdening simple work.",
+    "longDescription": "Classify engineering risk, establish authority and durable boundaries, evolve interfaces and data safely, and bind verification to real evidence.",
+    "developerName": "davidiw",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Architecture",
+      "Verification",
+      "Operations"
+    ],
+    "defaultPrompt": [
+      "Classify this change before implementation.",
+      "Design the durable workflow for this feature.",
+      "Harden this recurring failure without broad refactoring."
+    ]
   }
 }
