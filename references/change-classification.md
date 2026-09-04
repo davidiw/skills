@@ -59,13 +59,13 @@ turn the effort into repository-wide cleanup.
 
 | Signal | Skill |
 | --- | --- |
-| New subsystem, ownership ambiguity, dependency direction, composition | `architecture-foundations` |
-| Work must survive its initiator | `durable-workflows` |
-| Public API, message, event, provider, trust, or independently evolving contract | `interfaces-and-events` |
-| UI/domain/assistant/platform parity or useful-paint ownership | `application-composition` |
-| Persistent identity, sync, migration, deletion, or mixed versions | `data-and-compatibility` |
-| Repeated architecture failure or explicit adversarial audit | `architecture-hardening` |
-| Exact evidence, operator tooling, release, repair, generated artifact, or physical proof | `verification-and-operations` |
+| New subsystem, ownership ambiguity, dependency direction, or composition | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
+| Work must survive its initiator | [`durable-workflows`](../skills/durable-workflows/SKILL.md) |
+| Public API, message, event, provider, trust, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
+| UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
+| Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
+| User explicitly requests hardening, simplification, grilling, or an adversarial audit of a concrete hotspot | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
+| Exact evidence, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that
 owns the path. Do not run independent architecture exercises for each signal.

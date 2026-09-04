@@ -20,7 +20,13 @@
     "generated_artifacts": false,
     "physical_devices": false,
     "shared_production_state": false,
-    "artifact_publication": false
+    "artifact_publication": false,
+    "mutable_authority_context": false,
+    "event_delivery": false,
+    "interactive_clients": false,
+    "asynchronous_interactive_loading": false,
+    "shared_nonpreemptible_storage": false,
+    "multiple_adapters": false
   },
   "enforcement": {
     "canonical-authority": {

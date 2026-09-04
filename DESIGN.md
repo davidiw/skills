@@ -31,10 +31,11 @@ the specialists have independent trigger branches:
 - hardening is an explicit intervention, not routine review;
 - evidence and external operations have their own authority boundary.
 
-The router and hardening skill disable implicit invocation in
-`agents/openai.yaml`. This prevents every ordinary change from paying for a
-preflight or adversarial audit. Six precise specialist descriptions remain
-discoverable.
+The router disables implicit invocation in `agents/openai.yaml` so preflight is
+intentional. Hardening remains model-discoverable only when the user explicitly
+asks to harden, simplify, grill, or audit a concrete hotspot; its body excludes
+ordinary review. This lets the router reach every specialist without bypassing
+invocation policy while keeping normal work out of adversarial audit.
 
 ### Twenty conditional invariants
 
@@ -50,6 +51,11 @@ VitalThread. Two evidence-backed gaps were added:
 The count is not a target. `references/invariants.json` is authoritative and a
 project activates only relevant entries. The minimal profile demonstrates that
 most of the catalog can remain inactive.
+
+`references/capability-activation.json` defines the minimum invariants implied
+by declared capabilities and sensitive-data handling. Profile validation fails
+when a required capability is unassessed or an activated invariant has no
+enforcement owner. Repositories may activate additional invariants.
 
 ### Proportionality before completeness
 

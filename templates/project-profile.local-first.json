@@ -23,7 +23,13 @@
     "generated_artifacts": true,
     "physical_devices": true,
     "shared_production_state": true,
-    "artifact_publication": true
+    "artifact_publication": true,
+    "mutable_authority_context": true,
+    "event_delivery": true,
+    "interactive_clients": true,
+    "asynchronous_interactive_loading": true,
+    "shared_nonpreemptible_storage": true,
+    "multiple_adapters": true
   },
   "enforcement": {
     "canonical-authority": {
@@ -31,20 +37,95 @@
       "owner": "DESIGN.md#ownership",
       "artifacts": ["test/semantic_parity_test.dart"]
     },
+    "bounded-contracts": {
+      "rung": "local_check",
+      "owner": "docs/module_boundaries.json",
+      "artifacts": ["test/module_boundaries_test.dart"]
+    },
+    "shared-semantics": {
+      "rung": "fault_test",
+      "owner": "lib/domain",
+      "artifacts": ["test/semantic_parity_test.dart"]
+    },
+    "explicit-composition": {
+      "rung": "local_check",
+      "owner": "lib/composition_root.dart",
+      "artifacts": ["test/composition_test.dart"]
+    },
     "durable-admission": {
       "rung": "fault_test",
       "owner": "lib/durable_operation_repository.dart",
       "artifacts": ["test/durable_operation_replay_test.dart"]
+    },
+    "normal-failure-semantics": {
+      "rung": "fault_test",
+      "owner": "lib/durable_operation_policy.dart",
+      "artifacts": ["test/durable_operation_replay_test.dart"]
+    },
+    "committed-event-truth": {
+      "rung": "fault_test",
+      "owner": "lib/material_event_outbox.dart",
+      "artifacts": ["test/lost_notification_test.dart"]
+    },
+    "publication-classes": {
+      "rung": "local_check",
+      "owner": "lib/publication_event.dart",
+      "artifacts": ["test/publication_class_test.dart"]
+    },
+    "coalesced-bounded-work": {
+      "rung": "fault_test",
+      "owner": "lib/durable_operation_scheduler.dart",
+      "artifacts": ["test/coalescing_test.dart"]
+    },
+    "transient-presentation": {
+      "rung": "local_check",
+      "owner": "lib/screens",
+      "artifacts": ["test/ui_dependency_test.dart"]
+    },
+    "useful-paint-graph": {
+      "rung": "fault_test",
+      "owner": "docs/useful_paint.json",
+      "artifacts": ["test/useful_paint_test.dart"]
+    },
+    "persistence-qos": {
+      "rung": "fault_test",
+      "owner": "lib/database_scheduler.dart",
+      "artifacts": ["test/database_contention_test.dart"]
     },
     "authority-context-fencing": {
       "rung": "fault_test",
       "owner": "lib/account_context.dart",
       "artifacts": ["test/account_switch_storm_test.dart"]
     },
+    "representation-separation": {
+      "rung": "owner",
+      "owner": "DESIGN.md#representations",
+      "artifacts": ["test/projection_rebuild_test.dart"]
+    },
+    "explicit-deletion": {
+      "rung": "fault_test",
+      "owner": "lib/tombstone_policy.dart",
+      "artifacts": ["test/deletion_reconciliation_test.dart"]
+    },
     "versioned-compatibility": {
       "rung": "ci_check",
       "owner": "compatibility_manifest.json",
       "artifacts": ["test/mixed_version_compatibility_test.dart"]
+    },
+    "typed-boundaries": {
+      "rung": "local_check",
+      "owner": "lib/domain_types.dart",
+      "artifacts": ["test/boundary_validation_test.dart"]
+    },
+    "discoverable-operations": {
+      "rung": "ci_check",
+      "owner": "./tool",
+      "artifacts": ["test/operator_registry_test.dart"]
+    },
+    "separate-action-authority": {
+      "rung": "runtime_guard",
+      "owner": "./tool",
+      "artifacts": ["test/operator_authorization_test.dart"]
     },
     "typed-exact-evidence": {
       "rung": "ci_check",

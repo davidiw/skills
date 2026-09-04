@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "always": [
+    "canonical-authority"
+  ],
+  "project_fields": {
+    "sensitive_data": [
+      "typed-boundaries"
+    ]
+  },
+  "capabilities": {
+    "durable_work": [
+      "durable-admission",
+      "normal-failure-semantics",
+      "coalesced-bounded-work"
+    ],
+    "offline_operation": [
+      "representation-separation"
+    ],
+    "replicated_state": [
+      "representation-separation",
+      "explicit-deletion",
+      "versioned-compatibility"
+    ],
+    "multiple_clients": [
+      "bounded-contracts",
+      "shared-semantics",
+      "versioned-compatibility"
+    ],
+    "external_providers": [
+      "bounded-contracts",
+      "normal-failure-semantics",
+      "typed-boundaries"
+    ],
+    "ai_mediated_actions": [
+      "shared-semantics",
+      "separate-action-authority"
+    ],
+    "generated_artifacts": [
+      "typed-exact-evidence"
+    ],
+    "physical_devices": [
+      "typed-boundaries",
+      "typed-exact-evidence"
+    ],
+    "shared_production_state": [
+      "versioned-compatibility",
+      "discoverable-operations",
+      "separate-action-authority",
+      "typed-exact-evidence"
+    ],
+    "artifact_publication": [
+      "discoverable-operations",
+      "separate-action-authority",
+      "typed-exact-evidence"
+    ],
+    "mutable_authority_context": [
+      "authority-context-fencing"
+    ],
+    "event_delivery": [
+      "bounded-contracts",
+      "committed-event-truth",
+      "publication-classes"
+    ],
+    "interactive_clients": [
+      "transient-presentation"
+    ],
+    "asynchronous_interactive_loading": [
+      "useful-paint-graph"
+    ],
+    "shared_nonpreemptible_storage": [
+      "persistence-qos"
+    ],
+    "multiple_adapters": [
+      "bounded-contracts",
+      "explicit-composition"
+    ]
+  }
+}

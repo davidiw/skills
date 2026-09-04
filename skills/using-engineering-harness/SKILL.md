@@ -18,25 +18,12 @@ consequential initiative needs a preflight.
    explicit non-goals, and the external actions actually authorized.
 4. Classify the work as exactly one of `minimal`, `bounded`, `consequential`,
    or `stabilization`. Use those labels verbatim.
-5. Select from the exact specialist names below and read each linked
-   `SKILL.md`. Report those exact names; never invent generic skill labels. A
-   `minimal` change normally selects no specialist.
-
-   | Trigger | Specialist |
-   | --- | --- |
-   | New subsystem, authority, ownership, dependency, or composition | [`architecture-foundations`](../architecture-foundations/SKILL.md) |
-   | Accepted work can outlive its initiator | [`durable-workflows`](../durable-workflows/SKILL.md) |
-   | Public API, process, client, provider, trust, message, or event contract | [`interfaces-and-events`](../interfaces-and-events/SKILL.md) |
-   | UI/domain/assistant/platform parity, useful paint, or capability composition | [`application-composition`](../application-composition/SKILL.md) |
-   | Persistence, identity, replication, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../data-and-compatibility/SKILL.md) |
-   | Explicit recurring-hotspot work or high-risk adversarial audit | [`architecture-hardening`](../architecture-hardening/SKILL.md) |
-   | Acceptance evidence, operator tooling, generated/physical proof, or external release action | [`verification-and-operations`](../verification-and-operations/SKILL.md) |
-
-   Several triggers on one execution path form one integrated analysis, not
-   parallel architecture exercises.
-   Apply the dominance rules in `change-classification.md`: ordinary tests,
-   owner naming, private durable storage, UI observation, and internal adapter
-   contracts do not each justify another specialist.
+5. Use the single linked routing table and dominance rules in
+   `change-classification.md`. Read each selected specialist from the table's
+   direct `SKILL.md` link. Report exact names and never invent generic skill
+   labels. A `minimal` change normally selects no specialist. Several triggers
+   on one execution path form one integrated analysis, not parallel
+   architecture exercises.
 6. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
    enforcement rungs. Reuse existing documents and commands.

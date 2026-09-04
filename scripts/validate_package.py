@@ -23,7 +23,7 @@ EXPECTED_SKILLS = {
     "architecture-hardening",
     "verification-and-operations",
 }
-EXPLICIT_ONLY = {"using-engineering-harness", "architecture-hardening"}
+EXPLICIT_ONLY = {"using-engineering-harness"}
 RUNGS = {
     "principle",
     "owner",
@@ -115,6 +115,32 @@ def validate_invariants(errors: list[str]) -> None:
         skills = item.get("skills", [])
         require(bool(skills) and set(skills) <= EXPECTED_SKILLS, f"{invariant_id}: invalid skill owner", errors)
     require(OUTPUT.exists() and OUTPUT.read_text(encoding="utf-8") == render(), "generated invariant documentation is stale", errors)
+
+    activation = json.loads(
+        (ROOT / "references" / "capability-activation.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    require(activation.get("schema_version") == 1, "activation schema_version must be 1", errors)
+    activated_ids = set(activation.get("always", []))
+    for values in activation.get("project_fields", {}).values():
+        activated_ids.update(values)
+    for values in activation.get("capabilities", {}).values():
+        activated_ids.update(values)
+    require(activated_ids <= ids, "capability activation references unknown invariants", errors)
+    profile_schema = json.loads(
+        (ROOT / "references" / "project-profile.schema.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    schema_capabilities = set(
+        profile_schema["properties"]["capabilities"]["properties"]
+    )
+    require(
+        set(activation.get("capabilities", {})) == schema_capabilities,
+        "capability activation and profile schema differ",
+        errors,
+    )
 
 
 def validate_profiles(errors: list[str]) -> None:

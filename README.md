@@ -15,9 +15,10 @@ omissions so later iterations do not mistake restraint for unfinished work.
 ## Entry points
 
 Use `$using-engineering-harness` when a change needs an explicit risk and skill
-preflight. The router and `$architecture-hardening` are manual so ordinary
-changes do not trigger an audit. The remaining specialists are independently
-discoverable when their narrow conditions apply:
+preflight. The router is manual. `$architecture-hardening` is discoverable only
+from an explicit request to harden, simplify, grill, or audit a demonstrated
+hotspot; its own workflow excludes ordinary review. The remaining specialists
+are independently discoverable when their narrow conditions apply:
 
 | Skill | Owns |
 | --- | --- |
@@ -39,8 +40,11 @@ parallel systems.
 machine-readable invariant catalog. Its generated rendering is
 [`references/engineering-invariants.md`](references/engineering-invariants.md).
 A repository activates only the relevant rules and records their current
-enforcement rung in an `engineering-harness.json` profile. The schema and an
-example live under [`references/`](references/) and [`templates/`](templates/).
+enforcement rung in an `engineering-harness.json` profile.
+[`capability-activation.json`](references/capability-activation.json) makes the
+minimum capability-to-invariant mapping executable rather than optional prose.
+The schema and examples live under [`references/`](references/) and
+[`templates/`](templates/).
 
 ## Development
 

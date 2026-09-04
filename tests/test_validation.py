@@ -62,6 +62,52 @@ class ProfileValidationTest(unittest.TestCase):
 
         self.assertIn("capabilities.durable_work must be boolean", errors)
 
+    def test_active_capability_requires_its_invariants(self) -> None:
+        profile = self.load_example("project-profile.local-first.json")
+        enforcement = profile["enforcement"]
+        assert isinstance(enforcement, dict)
+        del enforcement["durable-admission"]
+
+        errors = validate_profile(profile)
+
+        self.assertIn(
+            "missing enforcement for active invariant: durable-admission",
+            errors,
+        )
+
+    def test_unknown_capability_is_rejected(self) -> None:
+        profile = self.load_example("project-profile.minimal.json")
+        capabilities = profile["capabilities"]
+        assert isinstance(capabilities, dict)
+        capabilities["telepathy"] = True
+
+        errors = validate_profile(profile)
+
+        self.assertIn("unknown capability: telepathy", errors)
+
+    def test_unknown_top_level_field_is_rejected(self) -> None:
+        profile = self.load_example("project-profile.minimal.json")
+        profile["parallel_architecture"] = "shadow tracker"
+
+        errors = validate_profile(profile)
+
+        self.assertIn("unknown top-level field: parallel_architecture", errors)
+
+    def test_duplicate_evidence_artifact_is_rejected(self) -> None:
+        profile = self.load_example("project-profile.minimal.json")
+        enforcement = profile["enforcement"]
+        assert isinstance(enforcement, dict)
+        entry = enforcement["canonical-authority"]
+        assert isinstance(entry, dict)
+        entry["artifacts"] = ["test/application.test.ts", "test/application.test.ts"]
+
+        errors = validate_profile(profile)
+
+        self.assertIn(
+            "enforcement.canonical-authority.artifacts must be unique",
+            errors,
+        )
+
     def test_validation_does_not_mutate_profile(self) -> None:
         profile = self.load_example("project-profile.local-first.json")
         before = copy.deepcopy(profile)

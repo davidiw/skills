@@ -33,7 +33,25 @@
     },
     "capabilities": {
       "type": "object",
-      "additionalProperties": {"type": "boolean"},
+      "additionalProperties": false,
+      "required": [
+        "durable_work",
+        "offline_operation",
+        "replicated_state",
+        "multiple_clients",
+        "external_providers",
+        "ai_mediated_actions",
+        "generated_artifacts",
+        "physical_devices",
+        "shared_production_state",
+        "artifact_publication",
+        "mutable_authority_context",
+        "event_delivery",
+        "interactive_clients",
+        "asynchronous_interactive_loading",
+        "shared_nonpreemptible_storage",
+        "multiple_adapters"
+      ],
       "properties": {
         "durable_work": {"type": "boolean"},
         "offline_operation": {"type": "boolean"},
@@ -44,7 +62,13 @@
         "generated_artifacts": {"type": "boolean"},
         "physical_devices": {"type": "boolean"},
         "shared_production_state": {"type": "boolean"},
-        "artifact_publication": {"type": "boolean"}
+        "artifact_publication": {"type": "boolean"},
+        "mutable_authority_context": {"type": "boolean"},
+        "event_delivery": {"type": "boolean"},
+        "interactive_clients": {"type": "boolean"},
+        "asynchronous_interactive_loading": {"type": "boolean"},
+        "shared_nonpreemptible_storage": {"type": "boolean"},
+        "multiple_adapters": {"type": "boolean"}
       }
     },
     "enforcement": {

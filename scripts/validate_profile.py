@@ -10,6 +10,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ACTIVATION_PATH = ROOT / "references" / "capability-activation.json"
 RUNGS = {
     "principle",
     "owner",
@@ -32,10 +33,25 @@ def validate_profile(document: Any) -> list[str]:
     if not isinstance(document, dict):
         return errors
 
+    expected_root_keys = {
+        "schema_version",
+        "project",
+        "sources",
+        "capabilities",
+        "enforcement",
+    }
+    for key in sorted(set(document) - expected_root_keys):
+        errors.append(f"unknown top-level field: {key}")
+    for key in sorted(expected_root_keys - set(document)):
+        errors.append(f"missing top-level field: {key}")
+
     _require(document.get("schema_version") == 1, "schema_version must be 1", errors)
     project = document.get("project")
     _require(isinstance(project, dict), "project must be an object", errors)
     if isinstance(project, dict):
+        expected_project_keys = {"name", "kind", "sensitive_data"}
+        for key in sorted(set(project) - expected_project_keys):
+            errors.append(f"unknown project field: {key}")
         _require(isinstance(project.get("name"), str) and bool(project["name"]), "project.name is required", errors)
         _require(isinstance(project.get("kind"), str) and bool(project["kind"]), "project.kind is required", errors)
         _require(isinstance(project.get("sensitive_data"), bool), "project.sensitive_data must be boolean", errors)
@@ -48,7 +64,15 @@ def validate_profile(document: Any) -> list[str]:
 
     capabilities = document.get("capabilities")
     _require(isinstance(capabilities, dict), "capabilities must be an object", errors)
+    activation = json.loads(ACTIVATION_PATH.read_text(encoding="utf-8"))
+    known_capabilities = set(activation["capabilities"])
     if isinstance(capabilities, dict):
+        missing_capabilities = known_capabilities - set(capabilities)
+        unknown_capabilities = set(capabilities) - known_capabilities
+        for key in sorted(missing_capabilities):
+            errors.append(f"capabilities.{key} is required")
+        for key in sorted(unknown_capabilities):
+            errors.append(f"unknown capability: {key}")
         for key, value in capabilities.items():
             _require(isinstance(value, bool), f"capabilities.{key} must be boolean", errors)
 
@@ -62,10 +86,25 @@ def validate_profile(document: Any) -> list[str]:
             _require(isinstance(entry, dict), f"enforcement.{invariant_id} must be an object", errors)
             if not isinstance(entry, dict):
                 continue
+            for key in sorted(set(entry) - {"rung", "owner", "artifacts"}):
+                errors.append(f"enforcement.{invariant_id}: unknown field {key}")
             _require(entry.get("rung") in RUNGS, f"enforcement.{invariant_id}.rung is invalid", errors)
             _require(isinstance(entry.get("owner"), str) and bool(entry["owner"]), f"enforcement.{invariant_id}.owner is required", errors)
             artifacts = entry.get("artifacts", [])
             _require(isinstance(artifacts, list) and all(isinstance(value, str) and value for value in artifacts), f"enforcement.{invariant_id}.artifacts must be strings", errors)
+            if isinstance(artifacts, list):
+                _require(len(artifacts) == len(set(artifacts)), f"enforcement.{invariant_id}.artifacts must be unique", errors)
+        required_invariants = set(activation["always"])
+        if isinstance(project, dict):
+            for field, invariant_ids in activation.get("project_fields", {}).items():
+                if project.get(field) is True:
+                    required_invariants.update(invariant_ids)
+        if isinstance(capabilities, dict):
+            for capability, invariant_ids in activation["capabilities"].items():
+                if capabilities.get(capability) is True:
+                    required_invariants.update(invariant_ids)
+        for invariant_id in sorted(required_invariants - set(enforcement)):
+            errors.append(f"missing enforcement for active invariant: {invariant_id}")
     return errors
 
 

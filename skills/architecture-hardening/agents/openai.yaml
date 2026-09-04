@@ -2,5 +2,3 @@ interface:
   display_name: "Architecture Hardening"
   short_description: "Simplify a proven hotspot or run one bounded audit"
   default_prompt: "Use $architecture-hardening on the demonstrated hotspot or reviewed high-risk diff without expanding scope."
-policy:
-  allow_implicit_invocation: false
