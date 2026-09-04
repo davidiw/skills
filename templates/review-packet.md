@@ -1,6 +1,7 @@
 # Review Packet
 
 - Exact revision: `{full SHA}`
+- Harness policy version: `{semantic version or not applicable}`
 - Comparison base: `{full SHA}`
 - Objective: {bounded outcome}
 - Non-goals: {explicit exclusions}

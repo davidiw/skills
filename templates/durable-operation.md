@@ -13,9 +13,13 @@
 | Successor policy | {Supersession and fence points} |
 | Retry/backoff | {Operation-owned policy} |
 | Cancellation | {Cancelable boundary and retained facts} |
+| Terminal record | {Success, failure, cancellation, or supersession evidence} |
 | Observability | {Allowlisted fields and user-visible state} |
 | Retention | {Cleanup trigger} |
 
 ## Fault matrix
 
 - {Named deterministic fault boundary and expected recovered state.}
+
+An adapter is acceptable only when it implements this contract without a
+second hidden lifecycle.

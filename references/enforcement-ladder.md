@@ -1,8 +1,7 @@
 # Enforcement Ladder
 
 Documentation is not enforcement. For each active invariant, record its current
-rung and the concrete owner or artifact. Move upward only when recurrence or
-consequence justifies the cost.
+rung and concrete owner or artifact.
 
 | Rung | Meaning | Completion evidence |
 | --- | --- | --- |
@@ -14,9 +13,20 @@ consequence justifies the cost.
 | `runtime_guard` | The running system fails safely at the boundary | Typed failure, metric, and recovery path |
 | `fault_test` | Failure, replay, race, or interruption is exercised | Deterministic adversarial fixture at the owning seam |
 
+Timing depends on the invariant catalog:
+
+- `ownership_declaration` names the owner when the behavior or representation
+  is introduced;
+- `boundary_introduction` normally installs a cheap deterministic check with a
+  declared foundational boundary, before recurrence;
+- `risk_proportional` adds behavioral, performance, fault, physical, and
+  operational evidence only when capability and consequence justify it.
+
 Higher is not automatically better. Runtime guards can harm availability and
-fault tests can be expensive. Choose the lowest rung that makes the risk
-defensible, then prove mechanical checks reject one intentional violation.
+fault tests can be expensive. Use the cheapest rung that makes the active risk
+defensible. A foundational boundary below mechanical enforcement requires a
+scoped repository-authorized exception, not an assumption that recurrence must
+come first.
 
 An acceptance report keeps four states separate:
 

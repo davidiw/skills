@@ -23,22 +23,25 @@ def render() -> str:
         "A project activates only the invariants its real capabilities require and",
         "records each current rung using the enforcement ladder.",
         "",
-        "| # | Invariant | Activates when | Default rung | Owning skills |",
-        "| -: | --- | --- | --- | --- |",
+        "| # | Invariant | Activates when | Timing | Default rung | Normative owner | Consumers |",
+        "| -: | --- | --- | --- | --- | --- | --- |",
     ]
     for index, item in enumerate(document["invariants"], start=1):
         statement = item["statement"].replace("|", "\\|")
         activation = item["activates_when"].replace("|", "\\|")
-        skills = ", ".join(f"`{name}`" for name in item["skills"])
+        consumers = ", ".join(f"`{name}`" for name in item["consumed_by"]) or "-"
         lines.append(
             f"| {index} | **`{item['id']}`**: {statement} | "
-            f"{activation} | `{item['default_rung']}` | {skills} |"
+            f"{activation} | `{item['enforcement_timing']}` | "
+            f"`{item['default_rung']}` | `{item['owner_skill']}` | {consumers} |"
         )
     lines.extend(
         [
             "",
-            "The default rung is a starting recommendation, not a claim about a",
-            "repository's current enforcement. The project profile records reality.",
+            "`owner_skill` is the only normative interpreter of an invariant.",
+            "Consumers apply it without redefining it. Timing and default rung are",
+            "starting recommendations; the reviewed project profile records reality",
+            "and any authorized exception.",
             "",
         ]
     )

@@ -1,5 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "harness_policy_version": "0.2.0",
+  "status": "accepted",
   "project": {
     "name": "local-first-example",
     "kind": "local-first-multi-client-application",
@@ -132,5 +134,6 @@
       "owner": "docs/acceptance_contracts.json",
       "artifacts": ["scripts/acceptance_contracts.dart"]
     }
-  }
+  },
+  "exceptions": []
 }

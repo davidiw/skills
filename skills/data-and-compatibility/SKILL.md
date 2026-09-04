@@ -8,6 +8,10 @@ description: Evolve persistent or replicated data safely. Use for schema, storag
 Compatibility is a consumer behavior claim, not a version comparison or an
 unchanged field name.
 
+Use the [invariant catalog](../../references/invariants.json) as normative.
+Interpret only entries whose `owner_skill` names this skill; consume other
+entries without redefining them.
+
 ## Workflow
 
 1. Identify authoritative source, canonical state, observations, projections,
@@ -33,8 +37,9 @@ unchanged field name.
 8. For online repair, use bounded selection, stable identity, idempotency,
    compare-and-set preconditions, checkpointing, rate limits, and live-writer
    conflict handling. Service shutdown is a risk decision, not a default.
-9. Prove upgrade, interruption, retry, coexistence, stale authority, downgrade
-   or supported rollback, and deletion behavior with representative fixtures.
+9. Define representative upgrade, interruption, retry, coexistence, stale
+   authority, downgrade or supported rollback, and deletion scenarios.
+   `verification-and-operations` owns adversarial execution and evidence.
 10. Record adapter removal conditions, telemetry, and the exact release that
     makes cleanup safe.
 
@@ -43,6 +48,10 @@ for replicated data. Read
 [`compatibility-and-migrations.md`](references/compatibility-and-migrations.md)
 for version changes. Read [`live-repair.md`](references/live-repair.md) for
 online correction of existing records.
+
+Before stopping work or changing the requested workflow, apply
+[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+and name the exact rule.
 
 The change is complete when every deployed consumer has a tested interpretation,
 interruption cannot create ambiguous authority or blank state, destructive

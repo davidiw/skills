@@ -16,7 +16,7 @@ Track four independent fields:
 An executed result binds:
 
 - full source revision and dirty-state policy;
-- contract and harness identity;
+- contract identity and Engineering Harness policy version;
 - exact command and pinned toolchain;
 - timestamp and environment;
 - device, provider, model, corpus, or hardware identity when material;

@@ -7,6 +7,10 @@ description: Define or evolve public or independently consumed contracts across 
 
 Treat an interface as a durable consumer agreement, not a serialization detail.
 
+Use the [invariant catalog](../../references/invariants.json) as normative.
+Interpret only entries whose `owner_skill` names this skill; consume other
+entries without redefining them.
+
 ## Workflow
 
 1. Inventory producers, consumers, authoritative data, trust boundary, and
@@ -25,14 +29,19 @@ Treat an interface as a durable consumer agreement, not a serialization detail.
 6. Centralize repeated boundary guarantees such as authentication,
    authorization, validation, response envelopes, provider error mapping, and
    privacy-safe activity logging.
-7. Define additive and breaking evolution from each consumer's perspective.
-   Run mixed-version and duplicate/gap/reorder tests where applicable.
+7. Define additive and breaking evolution from each consumer's perspective and
+   the required mixed-version, duplicate, gap, reorder, and replay scenarios.
+   `verification-and-operations` owns adversarial execution and evidence.
 8. Publish the smallest contract that supports the required behavior; keep
    storage and provider representations private.
 
 Use [`consumer-contract.md`](references/consumer-contract.md) for the review
 shape. Use [`event-delivery.md`](references/event-delivery.md) whenever a
 notification, stream, webhook, or message is involved.
+
+Before stopping work or changing the requested workflow, apply
+[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+and name the exact rule.
 
 The contract is complete when every consumer can interpret identity, order,
 absence, failure, and retry consistently; committed truth is recoverable after

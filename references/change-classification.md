@@ -1,7 +1,7 @@
 # Change Classification
 
-Classify the requested outcome, not its apparent line count. Existing
-repository policy may raise the class.
+This is internal routing, not a menu for users. Classify the requested outcome,
+not its apparent line count. Existing repository policy may raise the class.
 
 ## Risk card
 
@@ -52,8 +52,9 @@ evidence requirements before production edits.
 
 Recurring failures, repeated cross-layer guards, several representations of
 one fact, or a broad high-risk correction. Freeze acceptance criteria and use
-one stable evidence packet. Invoke architecture hardening explicitly; do not
-turn the effort into repository-wide cleanup.
+one stable evidence packet. Use architecture hardening for demonstrated
+divergence; use verification and operations for a repository-mandated
+adversarial review. Do not turn either into repository-wide cleanup.
 
 ## Skill routing
 
@@ -64,8 +65,8 @@ turn the effort into repository-wide cleanup.
 | Public API, message, event, provider, trust, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
-| User explicitly requests hardening, simplification, or grilling of a concrete hotspot, or repository policy mandates a high-risk adversarial audit | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
-| Exact evidence, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
+| Demonstrated recurring architecture divergence, consolidation, or hotspot root-cause repair | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
+| Exact evidence, adversarial review, fault injection, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that
 owns the path. Do not run independent architecture exercises for each signal.

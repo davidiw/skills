@@ -1,5 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "harness_policy_version": "0.2.0",
+  "status": "accepted",
   "project": {
     "name": "small-example",
     "kind": "single-process-application",
@@ -39,5 +41,6 @@
       "owner": "package.json#scripts.test",
       "artifacts": ["test/application.test.ts"]
     }
-  }
+  },
+  "exceptions": []
 }

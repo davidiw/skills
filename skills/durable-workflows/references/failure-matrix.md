@@ -1,7 +1,8 @@
 # Durable Failure Matrix
 
-Select rows that the real execution path can encounter. Inject faults at named
-boundaries rather than sleeping and hoping for a race.
+Select rows that the real execution path can encounter and define the expected
+recovered state. `verification-and-operations` owns fault injection and evidence;
+it uses named boundaries rather than timing-dependent sleeps.
 
 | Boundary | Required question |
 | --- | --- |

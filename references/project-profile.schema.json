@@ -4,11 +4,23 @@
   "title": "Engineering Harness Project Profile",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "project", "sources", "capabilities", "enforcement"],
+  "required": [
+    "schema_version",
+    "harness_policy_version",
+    "status",
+    "project",
+    "sources",
+    "capabilities",
+    "enforcement",
+    "exceptions"
+  ],
   "properties": {
-    "schema_version": {
-      "const": 1
+    "schema_version": {"const": 2},
+    "harness_policy_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
     },
+    "status": {"enum": ["proposed", "accepted"]},
     "project": {
       "type": "object",
       "additionalProperties": false,
@@ -21,55 +33,20 @@
     },
     "sources": {
       "type": "object",
-      "additionalProperties": {"type": "string", "minLength": 1},
+      "additionalProperties": {"$ref": "#/$defs/repository_path"},
       "properties": {
-        "agent_rules": {"type": "string"},
-        "architecture": {"type": "string"},
-        "work_tracker": {"type": "string"},
-        "compatibility": {"type": "string"},
-        "acceptance_contracts": {"type": "string"},
-        "operator_interface": {"type": "string"}
+        "agent_rules": {"$ref": "#/$defs/repository_path"},
+        "architecture": {"$ref": "#/$defs/repository_path"},
+        "work_tracker": {"$ref": "#/$defs/repository_path"},
+        "compatibility": {"$ref": "#/$defs/repository_path"},
+        "acceptance_contracts": {"$ref": "#/$defs/repository_path"},
+        "operator_interface": {"$ref": "#/$defs/repository_path"}
       }
     },
     "capabilities": {
       "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "durable_work",
-        "offline_operation",
-        "replicated_state",
-        "multiple_clients",
-        "external_providers",
-        "ai_mediated_actions",
-        "generated_artifacts",
-        "physical_devices",
-        "shared_production_state",
-        "artifact_publication",
-        "mutable_authority_context",
-        "event_delivery",
-        "interactive_clients",
-        "asynchronous_interactive_loading",
-        "shared_nonpreemptible_storage",
-        "multiple_adapters"
-      ],
-      "properties": {
-        "durable_work": {"type": "boolean"},
-        "offline_operation": {"type": "boolean"},
-        "replicated_state": {"type": "boolean"},
-        "multiple_clients": {"type": "boolean"},
-        "external_providers": {"type": "boolean"},
-        "ai_mediated_actions": {"type": "boolean"},
-        "generated_artifacts": {"type": "boolean"},
-        "physical_devices": {"type": "boolean"},
-        "shared_production_state": {"type": "boolean"},
-        "artifact_publication": {"type": "boolean"},
-        "mutable_authority_context": {"type": "boolean"},
-        "event_delivery": {"type": "boolean"},
-        "interactive_clients": {"type": "boolean"},
-        "asynchronous_interactive_loading": {"type": "boolean"},
-        "shared_nonpreemptible_storage": {"type": "boolean"},
-        "multiple_adapters": {"type": "boolean"}
-      }
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
+      "additionalProperties": {"type": "boolean"}
     },
     "enforcement": {
       "type": "object",
@@ -87,6 +64,72 @@
             "type": "array",
             "items": {"type": "string", "minLength": 1},
             "uniqueItems": true
+          }
+        }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["invariant", "scope", "rationale", "authority"],
+        "properties": {
+          "invariant": {"type": "string", "minLength": 1},
+          "scope": {"type": "string", "minLength": 1},
+          "rationale": {"type": "string", "minLength": 1},
+          "authority": {"type": "string", "minLength": 1},
+          "removal_condition": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scanner_version", "repository_revision", "project_fields", "capabilities"],
+      "properties": {
+        "scanner_version": {"const": 1},
+        "repository_revision": {
+          "type": "string",
+          "pattern": "^(unversioned|[0-9a-f]{40})$"
+        },
+        "project_fields": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sensitive_data"],
+          "properties": {
+            "sensitive_data": {"$ref": "#/$defs/discovery_finding"}
+          }
+        },
+        "capabilities": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/discovery_finding"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "repository_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "discovery_finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suggested", "confidence", "evidence"],
+      "properties": {
+        "suggested": {"type": "boolean"},
+        "confidence": {"enum": ["none", "low", "medium", "high"]},
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["rule", "path"],
+            "properties": {
+              "rule": {"type": "string", "minLength": 1},
+              "path": {"type": "string", "minLength": 1}
+            }
           }
         }
       }

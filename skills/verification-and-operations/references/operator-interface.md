@@ -7,7 +7,7 @@ Prefer one discoverable command registry with:
 - machine-capability doctor/preflight;
 - dry-run or plan output for writes;
 - exact target, source revision, and risk class;
-- explicit confirmation at the effect boundary;
+- the action scopes authorized by the current instruction;
 - bounded concurrency, locks, leases, or compare-and-set protection;
 - structured result and recovery location;
 - secret references rather than secret values.
@@ -20,5 +20,6 @@ Adding a command requires an owner, help text, preflight, safe retry semantics,
 test or dry-run fixture, and a reason it belongs in the existing interface. A
 one-off script that mutates shared state still needs the same controls.
 
-External action authority is a ledger, not a mood. Record which actions the
-current request authorizes and stop before the next unauthorized boundary.
+Apply external-action authorization from
+[`precedence-and-exceptions.md`](../../../references/precedence-and-exceptions.md).
+The command plan records the resulting scopes; it does not redefine them.

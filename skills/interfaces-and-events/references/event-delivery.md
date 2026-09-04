@@ -26,5 +26,6 @@ Specify:
 7. reconnect and catch-up behavior;
 8. bounded fan-out and coalescing.
 
-The essential fault test drops the live notification and proves the consumer
-still converges from persisted truth.
+The essential acceptance scenario drops the live notification and requires the
+consumer to converge from persisted truth. `verification-and-operations` owns
+executing and recording that fault evidence.

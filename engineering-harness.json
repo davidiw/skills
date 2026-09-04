@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "harness_policy_version": "0.2.0",
+  "status": "accepted",
+  "project": {
+    "name": "engineering-harness",
+    "kind": "codex-plugin",
+    "sensitive_data": false
+  },
+  "sources": {
+    "architecture": "DESIGN.md",
+    "invariants": "references/invariants.json",
+    "capability_activation": "references/capability-activation.json",
+    "evaluation_cases": "evals/cases.json",
+    "evaluation_rubric": "evals/rubric.md",
+    "validation": "scripts/validate_package.py"
+  },
+  "capabilities": {
+    "durable_work": false,
+    "offline_operation": false,
+    "replicated_state": false,
+    "multiple_clients": false,
+    "external_providers": false,
+    "ai_mediated_actions": false,
+    "generated_artifacts": true,
+    "physical_devices": false,
+    "shared_production_state": false,
+    "artifact_publication": false,
+    "mutable_authority_context": false,
+    "event_delivery": false,
+    "interactive_clients": false,
+    "asynchronous_interactive_loading": false,
+    "shared_nonpreemptible_storage": false,
+    "multiple_adapters": false
+  },
+  "enforcement": {
+    "canonical-authority": {
+      "rung": "owner",
+      "owner": "DESIGN.md#authority-map"
+    },
+    "bounded-contracts": {
+      "rung": "local_check",
+      "owner": "scripts/validate_package.py",
+      "artifacts": ["tests/test_validation.py"]
+    },
+    "typed-exact-evidence": {
+      "rung": "ci_check",
+      "owner": "scripts/validate_package.py",
+      "artifacts": [
+        "scripts/render_invariants.py",
+        "tests/test_validation.py"
+      ]
+    }
+  },
+  "exceptions": [],
+  "discovery": {
+    "scanner_version": 1,
+    "repository_revision": "f27acde528066473eb076eb3ce30fc2975fe2ba7",
+    "project_fields": {
+      "sensitive_data": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      }
+    },
+    "capabilities": {
+      "durable_work": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "offline_operation": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "replicated_state": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "multiple_clients": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "external_providers": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "ai_mediated_actions": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "generated_artifacts": {
+        "suggested": true,
+        "confidence": "high",
+        "evidence": [
+          {
+            "rule": "generator-path",
+            "path": "scripts/render_invariants.py"
+          }
+        ]
+      },
+      "physical_devices": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "shared_production_state": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "artifact_publication": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "mutable_authority_context": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "event_delivery": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "interactive_clients": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "asynchronous_interactive_loading": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "shared_nonpreemptible_storage": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "multiple_adapters": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      }
+    }
+  }
+}

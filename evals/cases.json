@@ -1,21 +1,64 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "rubric_version": 1,
   "cases": [
     {
       "id": "tiny-cli-restraint",
       "title": "Keep a tiny deterministic CLI small",
+      "control": "negative",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
       "fixture": "fixtures/tiny-cli",
       "context": "A single-process CLI parses one local file, prints a report, has no network, persistence, accounts, or release channel, and already has one focused test suite.",
       "request": "Change the parser to recognize one additional optional field and implement it.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
       "required_outcomes": ["Edit the existing parser owner and focused tests", "State that no durable, event, migration, or release machinery is activated"],
-      "forbidden_outcomes": ["Introduce a repository layer, workflow engine, event bus, plugin system, or architecture document", "Run a broad architecture audit"]
+      "forbidden_outcomes": ["Introduce a repository layer, workflow engine, event bus, state machine, compatibility program, plugin system, architecture document, or operational command layer", "Run a broad architecture audit"]
+    },
+    {
+      "id": "pure-library-parser-restraint",
+      "title": "Keep a pure parsing library dependency-free",
+      "control": "negative",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
+      "fixture": "fixtures/pure-library",
+      "context": "A small library parses date strings into an existing value type. It has no process boundary, persistence, network, mutable authority, deployment, or generated artifacts.",
+      "request": "Accept one additional ISO date spelling and add focused tests.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": ["Change the existing parser and focused test table", "Keep the public value type and error behavior unchanged"],
+      "forbidden_outcomes": ["Add repositories, events, jobs, state machines, compatibility manifests, architecture documents, or operator tooling", "Run a broad audit or invent a migration"]
+    },
+    {
+      "id": "static-site-restraint",
+      "title": "Keep a static site content change static",
+      "control": "negative",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
+      "fixture": "fixtures/static-site",
+      "context": "A static site has one HTML page, one stylesheet, and a rendered-content test. It has no application server, persistence, accounts, build publication workflow, or client state.",
+      "request": "Add a short FAQ section using the existing markup and style.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": ["Edit the existing page and rendered-content test", "Preserve the static deployment model"],
+      "forbidden_outcomes": ["Add an API, repository, event bus, workflow engine, state machine, compatibility layer, architecture document, or deployment framework", "Introduce a frontend framework for the section"]
+    },
+    {
+      "id": "local-build-helper-restraint",
+      "title": "Keep a local build helper conventional",
+      "control": "negative",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
+      "fixture": "fixtures/build-helper",
+      "context": "A conventional single-module project has one deterministic local build command and no release, deployment, network, persistence, or background execution.",
+      "request": "Add one compiler warning flag to the existing build configuration.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": ["Change the existing build configuration", "Run only the focused build verification"],
+      "forbidden_outcomes": ["Add a command registry, release workflow, job system, event system, repository abstraction, state machine, compatibility manifest, or architecture document", "Create a plugin layer for one compiler option"]
     },
     {
       "id": "small-api-contract-wrapper",
       "title": "Extend a small API through its boundary wrapper",
+      "control": "mixed",
+      "coverage_tags": ["avoid-durable-runtime", "requires-external-provider"],
       "context": "A small API centralizes authentication, permission checks, provider errors, response envelopes, and activity metadata in one route wrapper.",
       "request": "Add one provider-backed read route with the same guarantees.",
       "expected_class": "bounded",
@@ -26,17 +69,21 @@
     {
       "id": "durable-photo-analysis",
       "title": "Make accepted photo analysis survive the request",
+      "control": "positive",
+      "coverage_tags": ["requires-durability"],
       "fixture": "fixtures/photo-analysis",
       "context": "A user uploads photos, the server starts expensive analysis, and the UI currently owns polling. Users may close the route or the process may restart.",
       "request": "Make analysis reliable and expose resumable status.",
       "expected_class": "consequential",
       "expected_skills": ["using-engineering-harness", "durable-workflows", "interfaces-and-events"],
-      "required_outcomes": ["Define durable admission before returning accepted", "Specify idempotency, status, retry, cancellation, terminal state, and attachment ownership", "Test process death and lost acknowledgment"],
+      "required_outcomes": ["Define durable admission before returning accepted", "Specify idempotency, status, retry, terminal state, and attachment ownership while leaving unsupported cancellation, supersession, and retention decisions open", "Require process-death and lost-acknowledgment evidence"],
       "forbidden_outcomes": ["Treat a widget future or polling timer as durable ownership", "Invent cancellation or retention behavior without a product requirement", "Log raw photos or analysis bodies as evidence"]
     },
     {
       "id": "local-first-provider-sync",
       "title": "Resume provider sync on a local-first mobile client",
+      "control": "positive",
+      "coverage_tags": ["requires-durability", "requires-replication", "requires-compatibility", "requires-ui-ownership", "requires-external-provider"],
       "context": "Mobile reads local SQLite offline, imports provider history in background opportunities, synchronizes with a server, and users can switch accounts while work is active.",
       "request": "Add connectivity-restoration wake without duplicate provider or server storms.",
       "expected_class": "consequential",
@@ -47,6 +94,8 @@
     {
       "id": "multi-client-domain-parity",
       "title": "Unify mobile, web, and assistant mutations",
+      "control": "positive",
+      "coverage_tags": ["requires-compatibility", "requires-ui-ownership"],
       "context": "Mobile, web, and an AI assistant can all modify the same aggregate through different adapters, and recent fixes have added correction heuristics in the assistant route.",
       "request": "Add a new aggregate field while preserving equivalent behavior everywhere.",
       "expected_class": "consequential",
@@ -57,16 +106,20 @@
     {
       "id": "large-screen-ownership",
       "title": "Harden an over-owned screen without arbitrary splitting",
+      "control": "positive",
+      "coverage_tags": ["requires-ui-ownership", "requires-hardening"],
       "context": "A 300 KB screen owns rendering, route lifecycle, drafts, account transitions, AI requests, media, retries, and persistence. Regressions repeatedly require new generation counters.",
       "request": "Harden and simplify the demonstrated lifecycle fragility without broad refactoring.",
       "expected_class": "stabilization",
-      "expected_skills": ["using-engineering-harness", "application-composition", "architecture-hardening"],
+      "expected_skills": ["using-engineering-harness", "application-composition", "architecture-hardening", "verification-and-operations"],
       "required_outcomes": ["Characterize a concrete stale-save or route-replacement path", "Reach a fragility checkpoint before adding another interlock", "Move one durable lifecycle slice and prove the new owner"],
       "forbidden_outcomes": ["Split files to meet a size target", "Launch repository-wide cleanup"]
     },
     {
       "id": "additive-schema-mixed-readers",
       "title": "Evolve a schema with old and new binaries live",
+      "control": "positive",
+      "coverage_tags": ["requires-compatibility", "requires-exact-evidence"],
       "context": "Installed clients, web, API, workers, and repair tooling share writable state. A new field appears additive and newer schema generations should be tolerated when required capabilities remain available.",
       "request": "Implement the schema change and define rollout.",
       "expected_class": "consequential",
@@ -77,6 +130,8 @@
     {
       "id": "event-wake-versus-truth",
       "title": "Use streaming events without making them authoritative",
+      "control": "positive",
+      "coverage_tags": ["requires-durability", "requires-ui-ownership"],
       "context": "A web client needs immediate refresh after server writes. Streams can disconnect and notifications may be duplicated or lost.",
       "request": "Replace frequent foreground polling with an event stream.",
       "expected_class": "consequential",
@@ -87,16 +142,20 @@
     {
       "id": "recurring-boundary-regression",
       "title": "Convert a recurring correction into harness enforcement",
+      "control": "positive",
+      "coverage_tags": ["requires-hardening", "requires-adversarial-review"],
       "context": "Three recent changes violated the same dependency direction, and reviewers repeatedly request the same manual fix.",
       "request": "Harden this boundary so the same violation cannot recur.",
       "expected_class": "stabilization",
-      "expected_skills": ["using-engineering-harness", "architecture-foundations", "architecture-hardening"],
+      "expected_skills": ["using-engineering-harness", "architecture-foundations", "architecture-hardening", "verification-and-operations"],
       "required_outcomes": ["Identify the owning boundary and repeated execution path", "Add the narrowest mechanical check", "Deliberately introduce a violating fixture and prove the check fails"],
       "forbidden_outcomes": ["Add prose without an enforcement owner", "Audit unrelated modules"]
     },
     {
       "id": "provider-replacement",
       "title": "Replace a provider without changing product semantics",
+      "control": "positive",
+      "coverage_tags": ["requires-external-provider", "requires-compatibility"],
       "context": "A provider supplies observations with vendor-specific identifiers, timestamps, errors, and pagination. Canonical state and user-visible behavior must remain stable.",
       "request": "Add a second provider and support gradual cutover.",
       "expected_class": "consequential",
@@ -107,6 +166,8 @@
     {
       "id": "hardware-capability-honesty",
       "title": "Add hardware behavior unsupported by one model",
+      "control": "positive",
+      "coverage_tags": ["requires-external-provider", "requires-physical-proof"],
       "fixture": "fixtures/camera-capability",
       "context": "Shared firmware supports two camera models through ports and composition. One model lacks the physical capability required by a new feature.",
       "request": "Implement the feature for the capable model and preserve shared behavior.",
@@ -118,6 +179,8 @@
     {
       "id": "generated-cad-artifact",
       "title": "Keep generated physical artifacts fresh",
+      "control": "positive",
+      "coverage_tags": ["requires-physical-proof", "requires-exact-evidence"],
       "context": "OpenSCAD is authoritative and STL plus preview files are generated. Automated checks cannot prove printed fit or assembly behavior.",
       "request": "Change a fit dimension and prepare the resulting artifacts.",
       "expected_class": "consequential",
@@ -128,6 +191,8 @@
     {
       "id": "live-data-repair",
       "title": "Repair invalid rows while writers remain online",
+      "control": "positive",
+      "coverage_tags": ["requires-compatibility", "requires-exact-evidence"],
       "context": "A corrected ingress contract now rejects a known invalid shape, but existing invalid rows remain mostly at rest while normal writers continue.",
       "request": "Build and execute a safe online repair plan without stopping services.",
       "expected_class": "consequential",
@@ -138,6 +203,8 @@
     {
       "id": "exact-revision-release-evidence",
       "title": "Reject evidence that only proves a harness exists",
+      "control": "positive",
+      "coverage_tags": ["requires-exact-evidence", "requires-physical-proof"],
       "context": "A release registry lists required automated and physical contracts. Some entries point at test files or device scripts but have no executed result for the current revision.",
       "request": "Generate a truthful release-readiness report.",
       "expected_class": "consequential",
@@ -148,12 +215,26 @@
     {
       "id": "ai-investigation-versus-execution",
       "title": "Keep AI investigation non-mutating until authorized",
+      "control": "mixed",
+      "coverage_tags": ["requires-durability", "requires-exact-evidence"],
       "context": "An AI orchestrator persists tasks and can call coding providers. The initial user request asks for investigation only; a later request may authorize a patch.",
       "request": "Investigate a failure, preserve a resumable handoff, and do not edit code.",
       "expected_class": "bounded",
       "expected_skills": ["using-engineering-harness", "durable-workflows", "application-composition", "verification-and-operations"],
       "required_outcomes": ["Compile a typed non-mutating investigation action", "Persist bounded context and handoff state if the task outlives the caller", "Require a later explicit action before edits or external effects"],
       "forbidden_outcomes": ["Treat a recommendation as implementation authorization", "Expose provider internals as product policy"]
+    },
+    {
+      "id": "high-risk-adversarial-review",
+      "title": "Keep adversarial proof separate from architecture hardening",
+      "control": "positive",
+      "coverage_tags": ["requires-adversarial-review", "requires-exact-evidence"],
+      "context": "A repository policy requires one bounded adversarial review after an exact-revision review of a high-risk persistence diff. No recurring architecture divergence has been demonstrated.",
+      "request": "Run the required bounded challenge and report whether the revision is blocked.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": ["Use the one-pass time, thread, finding, and scope budget", "Require an execution path, violated invariant, and material consequence for BLOCK", "Return corrections for delta-scoped exact-revision review"],
+      "forbidden_outcomes": ["Invoke architecture hardening without demonstrated divergence", "Modify files, fix findings, expand into a repository-wide audit, or recursively audit corrections"]
     }
   ]
 }

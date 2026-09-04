@@ -1,9 +1,9 @@
-# Sources and Provenance
+# Design Provenance
 
-This package is an independent synthesis. No upstream skill text, template, or
-code is copied into the package. Repository pins make the reviewed evidence
-repeatable; they are not runtime dependencies and do not silently update local
-behavior.
+This file records design provenance, not one-to-one skill derivation. The
+package is an independent synthesis: no upstream skill text, template, or code
+is copied. Repository pins make reviewed influence repeatable; they are not
+runtime dependencies and do not silently update local behavior.
 
 ## Source layers
 

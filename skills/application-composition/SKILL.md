@@ -8,6 +8,10 @@ description: Align product behavior across UI, API, workers, assistants, provide
 Compose one product from different runtimes without duplicating semantics or
 making presentation the durable owner.
 
+Use the [invariant catalog](../../references/invariants.json) as normative.
+Interpret only entries whose `owner_skill` names this skill; consume other
+entries without redefining them.
+
 ## Workflow
 
 1. Name the canonical product behavior and deterministic policy owner. Map how
@@ -29,14 +33,20 @@ making presentation the durable owner.
    service as direct product UI. Preserve manual input and provenance; the
    assistant may explain or propose but not maintain a private implementation
    of product policy.
-7. Test semantic parity at the domain result, stale publication during route or
-   account changes, optional-enrichment failure, and overlapping reload/mutation.
+7. Define acceptance scenarios for semantic parity, stale publication during
+   route or account changes, optional-enrichment failure, and overlapping
+   reload/mutation. Use `verification-and-operations` when adversarial evidence
+   is required.
 8. Extract only where ownership is currently preventing correctness, testing,
    bounded execution, or independent failure.
 
 Read [`interactive-surfaces.md`](references/interactive-surfaces.md) for UI and
 loading work. Read [`adapters-and-ai.md`](references/adapters-and-ai.md) when
 providers, hardware, or assistants participate.
+
+Before stopping work or changing the requested workflow, apply
+[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+and name the exact rule.
 
 The composition is complete when all surfaces reach one semantic owner,
 platform differences are isolated, useful content does not depend on optional

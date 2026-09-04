@@ -8,6 +8,10 @@ description: Design or correct work that must survive its initiating request, ro
 Define the lifecycle before selecting a queue, scheduler, workflow engine, or
 database representation.
 
+Use the [invariant catalog](../../references/invariants.json) as normative.
+Interpret only entries whose `owner_skill` names this skill; consume other
+entries without redefining them.
+
 ## Workflow
 
 1. State the admission promise. If the caller may be told "accepted," identify
@@ -35,10 +39,11 @@ database representation.
    supported cancellation, and terminal state without turning ephemeral UI
    state into the workflow owner. Never synthesize byte or percentage progress
    when the executor cannot measure it.
-9. Exercise the relevant rows of the
-   [failure matrix](references/failure-matrix.md) with deterministic faults.
+9. Define expected recovery for the relevant rows of the
+   [failure matrix](references/failure-matrix.md). Use
+   `verification-and-operations` to execute fault injection and record evidence.
 10. Only then choose the smallest adapter that satisfies the
-    [operation contract](references/operation-contract.md).
+    [operation contract](../../templates/durable-operation.md).
 
 ## Guardrails
 
@@ -53,6 +58,10 @@ database representation.
   wall-clock recency alone is not a correctness rule.
 - Do not add a general job framework for a one-time migration when a small
   atomic journal has the required states.
+
+Before stopping work or changing the requested workflow, apply
+[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+and name the exact rule.
 
 The workflow is complete when accepted intent survives termination, every
 state is idempotent, stale authority and superseded work cannot commit or

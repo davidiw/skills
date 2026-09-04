@@ -1,17 +1,19 @@
 ---
 name: architecture-hardening
-description: Harden a demonstrated recurring architecture hotspot or run a high-risk post-review adversarial audit. Use when the user explicitly asks to harden, simplify, grill, or audit a concrete hotspot, or repository policy mandates an audit for the current high-risk diff; ordinary implementation and review skip it.
+description: Find and repair demonstrated architecture divergence or recurring-friction hotspots through consolidation and recurrence prevention. Use when the user asks to harden, simplify, or grill a concrete hotspot; ordinary implementation, routine review, and adversarial proof use other workflows.
 ---
 
 # Architecture Hardening
 
-Invoke this skill explicitly for recurring architectural friction or the
-high-risk audit named by a repository workflow. Ordinary reviewed changes skip
-it.
+Invoke this skill for demonstrated architecture divergence or recurring
+friction. Ordinary reviewed changes skip it. Verification and operations owns
+adversarial review, fault injection, physical proof, and exact-revision evidence.
 
-Choose one mode.
+Use the [invariant catalog](../../references/invariants.json) as normative.
+This skill consumes named invariants to find divergence; it does not redefine
+their meaning.
 
-## Hotspot mode
+## Workflow
 
 1. Name the repeated failure, violated invariant, confirmed execution path,
    and current owner. Use incidents, churn, duplicated semantics, or repeated
@@ -27,21 +29,19 @@ Choose one mode.
 5. Move one vertical slice to one clear owner. Keep production writers
    serialized where they share state; parallelize independent evidence and
    disjoint modules.
-6. Add one mechanical boundary or fault test and deliberately violate it to
-   prove that it catches the regression.
+6. Define the narrowest recurrence prevention at the repaired boundary. Install
+   cheap deterministic enforcement when the boundary is introduced; request
+   risk-proportional adversarial or fault evidence through
+   `verification-and-operations`.
 7. Reassess the original failure. Defer cosmetic decomposition and unrelated
    hotspots.
 
 Read [`hotspot-method.md`](references/hotspot-method.md) before changing a
 brownfield boundary.
 
-## Post-review audit mode
+Before stopping work or changing the requested workflow, apply
+[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+and name the exact rule.
 
-Read [`post-review-audit.md`](references/post-review-audit.md) and follow its
-budget exactly. The auditor is read-only, performs no correction, and does not
-start a recursive audit. Corrections receive exact-revision, delta-scoped
-review.
-
-Hotspot mode is complete when the demonstrated coordination cost is lower and
-the owning rule rejects a regression. Audit mode is complete when its bounded
-report is returned, including an explicit `PASS` or evidence-backed `BLOCK`.
+Hardening is complete when demonstrated coordination cost is lower, one owner
+governs the repaired path, and proportional recurrence prevention exists.

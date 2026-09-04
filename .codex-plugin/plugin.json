@@ -1,6 +1,6 @@
 {
   "name": "engineering-harness",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Risk-proportional architecture, durability, compatibility, hardening, and release workflows for coding agents.",
   "author": {
     "name": "davidiw",
@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "Engineering Harness",
     "shortDescription": "Make consequential changes safer without burdening simple work.",
-    "longDescription": "Classify engineering risk, establish authority and durable boundaries, evolve interfaces and data safely, and bind verification to real evidence.",
+    "longDescription": "Bootstrap or adopt repositories, route ordinary changes proportionally, and harden demonstrated architecture divergence with exact evidence.",
     "developerName": "davidiw",
     "category": "Developer Tools",
     "capabilities": [
@@ -28,9 +28,9 @@
       "Operations"
     ],
     "defaultPrompt": [
-      "Classify this change before implementation.",
-      "Design the durable workflow for this feature.",
-      "Harden this recurring failure without broad refactoring."
+      "Bootstrap this repository with the smallest useful engineering harness.",
+      "Adopt this existing repository and propose an evidence-backed capability profile.",
+      "Route this change proportionally, or harden it only if recurring architecture friction is demonstrated."
     ]
   }
 }

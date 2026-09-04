@@ -5,9 +5,16 @@ files are well formed. Each case is run in an isolated temporary repository
 with `$using-engineering-harness`, then compared with the same model and case
 without the package when measuring incremental value.
 
+`negative` controls make over-engineering a first-class failure. The correct
+result leaves small parser, library, static-site, CLI, and build work on existing
+paths without adding durability, events, state machines, repositories,
+compatibility programs, architecture documents, or operator infrastructure.
+`positive` controls require the relevant capability machinery. `mixed` controls
+require one bounded concern while excluding adjacent machinery.
+
 ## Run contract
 
-1. Pin package revision, model, reasoning effort, harness version, and case ID.
+1. Pin package revision, model, reasoning effort, harness policy version, and case ID.
    Supply those as evaluator metadata and instruct the agent not to use them for
    skill selection.
 2. Provide only the case context and request plus the referenced fake repository
@@ -25,7 +32,8 @@ without the package when measuring incremental value.
 5. Preserve non-sensitive results with content hashes. Private fixtures and
    outputs remain outside Git and contribute only bounded aggregate scores.
 6. Add trials or cases without discarding earlier results. Compare only runs
-   whose package revision, model, fixture, and scoring version are explicit.
+   whose package revision, policy version, model, fixture, and scoring version
+   are explicit.
 
 `scripts/validate_package.py` validates corpus shape and routing names. It does
 not execute a model or claim behavioral success.

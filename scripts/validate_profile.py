@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Validate an engineering-harness profile without third-party packages."""
+"""Validate an Engineering Harness profile without third-party packages."""
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -11,15 +12,13 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVATION_PATH = ROOT / "references" / "capability-activation.json"
-RUNGS = {
-    "principle",
-    "owner",
-    "audit",
-    "local_check",
-    "ci_check",
-    "runtime_guard",
-    "fault_test",
-}
+CATALOG_PATH = ROOT / "references" / "invariants.json"
+SCHEMA_PATH = ROOT / "references" / "project-profile.schema.json"
+PROFILE_SCHEMA = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+VERSION_PATTERN = re.compile(
+    PROFILE_SCHEMA["properties"]["harness_policy_version"]["pattern"]
+)
+MECHANICAL_RUNGS = {"local_check", "ci_check", "runtime_guard", "fault_test"}
 
 
 def _require(condition: bool, message: str, errors: list[str]) -> None:
@@ -27,73 +26,147 @@ def _require(condition: bool, message: str, errors: list[str]) -> None:
         errors.append(message)
 
 
+def _is_type(value: Any, expected: str) -> bool:
+    return {
+        "array": lambda: isinstance(value, list),
+        "boolean": lambda: isinstance(value, bool),
+        "integer": lambda: isinstance(value, int) and not isinstance(value, bool),
+        "number": lambda: isinstance(value, (int, float)) and not isinstance(value, bool),
+        "object": lambda: isinstance(value, dict),
+        "string": lambda: isinstance(value, str),
+    }[expected]()
+
+
+def _resolve_ref(root_schema: dict[str, Any], reference: str) -> dict[str, Any]:
+    if not reference.startswith("#/"):
+        raise ValueError(f"unsupported schema reference: {reference}")
+    value: Any = root_schema
+    for part in reference[2:].split("/"):
+        value = value[part.replace("~1", "/").replace("~0", "~")]
+    if not isinstance(value, dict):
+        raise ValueError(f"schema reference is not an object: {reference}")
+    return value
+
+
+def _validate_schema(
+    value: Any,
+    schema: dict[str, Any],
+    root_schema: dict[str, Any],
+    path: str,
+    errors: list[str],
+) -> None:
+    if "$ref" in schema:
+        _validate_schema(value, _resolve_ref(root_schema, schema["$ref"]), root_schema, path, errors)
+        return
+    label = path or "profile"
+    if "const" in schema:
+        _require(value == schema["const"], f"{label} must equal {schema['const']}", errors)
+    if "enum" in schema:
+        _require(value in schema["enum"], f"{label} is invalid", errors)
+    expected_type = schema.get("type")
+    if expected_type:
+        valid_type = _is_type(value, expected_type)
+        _require(valid_type, f"{label} must be {expected_type}", errors)
+        if not valid_type:
+            return
+    if isinstance(value, str):
+        if "minLength" in schema:
+            _require(len(value) >= schema["minLength"], f"{label} is too short", errors)
+        if "pattern" in schema:
+            _require(bool(re.fullmatch(schema["pattern"], value)), f"{label} has invalid format", errors)
+    if isinstance(value, list):
+        if schema.get("uniqueItems"):
+            encoded = [json.dumps(item, sort_keys=True) for item in value]
+            _require(len(encoded) == len(set(encoded)), f"{label} must contain unique items", errors)
+        item_schema = schema.get("items")
+        if isinstance(item_schema, dict):
+            for index, item in enumerate(value):
+                _validate_schema(item, item_schema, root_schema, f"{path}[{index}]", errors)
+    if not isinstance(value, dict):
+        return
+
+    properties = schema.get("properties", {})
+    required = schema.get("required", [])
+    for key in required:
+        _require(key in value, f"{label}: missing field {key}", errors)
+    additional = schema.get("additionalProperties", True)
+    for key, item in value.items():
+        child_path = f"{path}.{key}" if path else key
+        if "propertyNames" in schema and "pattern" in schema["propertyNames"]:
+            _require(
+                bool(re.fullmatch(schema["propertyNames"]["pattern"], key)),
+                f"{child_path}: invalid field name",
+                errors,
+            )
+        if key in properties:
+            _validate_schema(item, properties[key], root_schema, child_path, errors)
+        elif additional is False:
+            errors.append(f"{label}: unknown field {key}")
+        elif isinstance(additional, dict):
+            _validate_schema(item, additional, root_schema, child_path, errors)
+
+
+def _relative_path(value: str) -> bool:
+    without_fragment = value.split("#", 1)[0]
+    path = Path(without_fragment[2:] if without_fragment.startswith("./") else without_fragment)
+    return not path.is_absolute() and ".." not in path.parts
+
+
 def validate_profile(document: Any) -> list[str]:
     errors: list[str] = []
-    _require(isinstance(document, dict), "profile must be a JSON object", errors)
+    _validate_schema(document, PROFILE_SCHEMA, PROFILE_SCHEMA, "", errors)
     if not isinstance(document, dict):
         return errors
 
-    expected_root_keys = {
-        "schema_version",
-        "project",
-        "sources",
-        "capabilities",
-        "enforcement",
-    }
-    for key in sorted(set(document) - expected_root_keys):
-        errors.append(f"unknown top-level field: {key}")
-    for key in sorted(expected_root_keys - set(document)):
-        errors.append(f"missing top-level field: {key}")
-
-    _require(document.get("schema_version") == 1, "schema_version must be 1", errors)
+    activation = json.loads(ACTIVATION_PATH.read_text(encoding="utf-8"))
+    catalog_document = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+    catalog = {item["id"]: item for item in catalog_document["invariants"]}
+    known_ids = set(catalog)
+    known_capabilities = set(activation["capabilities"])
+    status = document.get("status")
     project = document.get("project")
-    _require(isinstance(project, dict), "project must be an object", errors)
-    if isinstance(project, dict):
-        expected_project_keys = {"name", "kind", "sensitive_data"}
-        for key in sorted(set(project) - expected_project_keys):
-            errors.append(f"unknown project field: {key}")
-        _require(isinstance(project.get("name"), str) and bool(project["name"]), "project.name is required", errors)
-        _require(isinstance(project.get("kind"), str) and bool(project["kind"]), "project.kind is required", errors)
-        _require(isinstance(project.get("sensitive_data"), bool), "project.sensitive_data must be boolean", errors)
-
     sources = document.get("sources")
-    _require(isinstance(sources, dict), "sources must be an object", errors)
+    capabilities = document.get("capabilities")
+    enforcement = document.get("enforcement")
+    exceptions = document.get("exceptions")
+
     if isinstance(sources, dict):
         for key, value in sources.items():
-            _require(isinstance(key, str) and isinstance(value, str) and bool(value), f"sources.{key} must be a nonempty string", errors)
+            if isinstance(value, str) and value:
+                _require(_relative_path(value), f"sources.{key} must be repository-relative", errors)
 
-    capabilities = document.get("capabilities")
-    _require(isinstance(capabilities, dict), "capabilities must be an object", errors)
-    activation = json.loads(ACTIVATION_PATH.read_text(encoding="utf-8"))
-    known_capabilities = set(activation["capabilities"])
     if isinstance(capabilities, dict):
-        missing_capabilities = known_capabilities - set(capabilities)
-        unknown_capabilities = set(capabilities) - known_capabilities
-        for key in sorted(missing_capabilities):
-            errors.append(f"capabilities.{key} is required")
-        for key in sorted(unknown_capabilities):
-            errors.append(f"unknown capability: {key}")
-        for key, value in capabilities.items():
-            _require(isinstance(value, bool), f"capabilities.{key} must be boolean", errors)
+        _require(
+            set(capabilities) == known_capabilities,
+            "capabilities must exactly match capability-activation.json",
+            errors,
+        )
 
-    catalog = json.loads((ROOT / "references" / "invariants.json").read_text(encoding="utf-8"))
-    known_ids = {item["id"] for item in catalog["invariants"]}
-    enforcement = document.get("enforcement")
-    _require(isinstance(enforcement, dict), "enforcement must be an object", errors)
+    exception_ids: set[str] = set()
+    exception_keys: set[tuple[str, str]] = set()
+    if isinstance(exceptions, list):
+        for index, entry in enumerate(exceptions):
+            if not isinstance(entry, dict):
+                continue
+            invariant_id = entry.get("invariant")
+            scope = entry.get("scope")
+            _require(invariant_id in known_ids, f"exceptions[{index}].invariant is unknown", errors)
+            if isinstance(invariant_id, str):
+                exception_ids.add(invariant_id)
+            if isinstance(invariant_id, str) and isinstance(scope, str):
+                key = (invariant_id, scope)
+                _require(key not in exception_keys, f"duplicate exception: {invariant_id} {scope}", errors)
+                exception_keys.add(key)
+
     if isinstance(enforcement, dict):
         for invariant_id, entry in enforcement.items():
             _require(invariant_id in known_ids, f"unknown invariant: {invariant_id}", errors)
-            _require(isinstance(entry, dict), f"enforcement.{invariant_id} must be an object", errors)
             if not isinstance(entry, dict):
                 continue
-            for key in sorted(set(entry) - {"rung", "owner", "artifacts"}):
-                errors.append(f"enforcement.{invariant_id}: unknown field {key}")
-            _require(entry.get("rung") in RUNGS, f"enforcement.{invariant_id}.rung is invalid", errors)
-            _require(isinstance(entry.get("owner"), str) and bool(entry["owner"]), f"enforcement.{invariant_id}.owner is required", errors)
-            artifacts = entry.get("artifacts", [])
-            _require(isinstance(artifacts, list) and all(isinstance(value, str) and value for value in artifacts), f"enforcement.{invariant_id}.artifacts must be strings", errors)
-            if isinstance(artifacts, list):
-                _require(len(artifacts) == len(set(artifacts)), f"enforcement.{invariant_id}.artifacts must be unique", errors)
+            owner = entry.get("owner")
+            if status == "accepted":
+                _require(owner != "review-required", f"enforcement.{invariant_id}.owner requires review", errors)
+
         required_invariants = set(activation["always"])
         if isinstance(project, dict):
             for field, invariant_ids in activation.get("project_fields", {}).items():
@@ -105,6 +178,48 @@ def validate_profile(document: Any) -> list[str]:
                     required_invariants.update(invariant_ids)
         for invariant_id in sorted(required_invariants - set(enforcement)):
             errors.append(f"missing enforcement for active invariant: {invariant_id}")
+        if status == "accepted":
+            for invariant_id in sorted(known_ids & set(enforcement)):
+                item = catalog[invariant_id]
+                rung = enforcement[invariant_id].get("rung")
+                if (
+                    item["enforcement_timing"] == "boundary_introduction"
+                    and rung not in MECHANICAL_RUNGS
+                    and invariant_id not in exception_ids
+                ):
+                    errors.append(
+                        f"active foundational boundary lacks mechanical enforcement or exception: {invariant_id}"
+                    )
+            for invariant_id in sorted(exception_ids - set(enforcement)):
+                errors.append(f"exception requires active enforcement entry: {invariant_id}")
+
+    discovery = document.get("discovery")
+    if isinstance(discovery, dict):
+        found_capabilities = discovery.get("capabilities")
+        _require(
+            isinstance(found_capabilities, dict) and set(found_capabilities) == known_capabilities,
+            "discovery.capabilities must exactly match capability-activation.json",
+            errors,
+        )
+        findings: list[tuple[str, Any]] = []
+        fields = discovery.get("project_fields")
+        if isinstance(fields, dict):
+            findings.extend((f"discovery.project_fields.{name}", item) for name, item in fields.items())
+        if isinstance(found_capabilities, dict):
+            findings.extend((f"discovery.capabilities.{name}", item) for name, item in found_capabilities.items())
+        for prefix, finding in findings:
+            if not isinstance(finding, dict):
+                continue
+            evidence = finding.get("evidence")
+            if not isinstance(evidence, list):
+                continue
+            for index, item in enumerate(evidence):
+                if isinstance(item, dict) and isinstance(item.get("path"), str):
+                    _require(
+                        _relative_path(item["path"]),
+                        f"{prefix}.evidence[{index}].path must be relative",
+                        errors,
+                    )
     return errors
 
 

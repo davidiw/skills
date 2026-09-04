@@ -5,110 +5,116 @@
 Provide one coherent, framework-neutral package that helps coding agents make
 consequential application changes safely while leaving simple work simple.
 
-The ordering is:
+The internal reasoning order is:
 
 ```text
 authority -> lifetime -> contracts -> composition -> data evolution
           -> enforcement -> exact evidence -> authorized operation
 ```
 
-Repository instructions and product decisions remain authoritative. The
-package supplies workflows and schemas, not a replacement architecture or work
-tracker.
+The public workflow is only `bootstrap`, `adopt`, `change`, or `harden`.
+Specialist selection and `minimal`, `bounded`, `consequential`, or
+`stabilization` classification are internal routing details.
 
-## Package decisions
+## Authority map
 
-### One plugin, eight entries
+Each kind of package fact has one normative source. Other files are consumers,
+generated views, examples, or tests.
 
-The initial proposal's router plus seven specialists survived review because
-the specialists have independent trigger branches:
+| Concern | Normative source | Consumers or derived artifacts |
+| --- | --- | --- |
+| Package architecture and this authority map | `DESIGN.md` | `README.md` overview |
+| Public workflow | `skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
+| Internal classes and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
+| Invariant statement, activation condition, timing, default rung, and single owner skill | `references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
+| Enforcement timing and rung semantics | `references/enforcement-ladder.md` | Invariant assignments, profiles, and validators |
+| Capability vocabulary and capability-to-invariant activation | `references/capability-activation.json` | Profiles, schema, discovery, and validators |
+| Profile shape | `references/project-profile.schema.json` | Profile validator and templates |
+| A project's accepted capability and enforcement decisions | That project's `engineering-harness.json` | Drift checks and change routing |
+| Discovery detectors and confidence | `scripts/profile_repository.py` | Proposed profile discovery section |
+| Skill name and discovery description | Each `SKILL.md` frontmatter | Plugin discovery |
+| Skill UI presentation and invocation policy | That skill's `agents/openai.yaml` when present | Codex UI and invocation behavior |
+| Eval scenario and expected routing | `evals/cases.json` | Corpus validator and runs |
+| Eval scoring | `evals/rubric.md` | Evaluation runs |
+| Generated invariant rendering | `scripts/render_invariants.py` | `references/engineering-invariants.md` |
+| Package structural validation entrypoint | `scripts/validate_package.py` | Delegated validators and unit tests |
+| Profile cross-source semantic validation | `scripts/validate_profile.py` | Profile discovery, package validation, and unit tests |
+| Package version | `.codex-plugin/plugin.json` | Profiles, receipts, and changelog checks |
+| Release history and migration notes | `CHANGELOG.md` | Adopters and reviewers |
+| Design provenance | `SOURCES.md` | README summary |
+| Instruction precedence, exceptions, and authorization reuse | `references/precedence-and-exceptions.md` | Router and specialist pointers |
 
-- architecture ownership can change without durable work;
-- durable work can exist behind a private interface;
-- public contracts can evolve without persistence;
-- application parity and useful-paint ownership are composition concerns;
-- data compatibility spans representations and deployed consumers;
-- hardening is an explicit intervention, not routine review;
-- evidence and external operations have their own authority boundary.
+Templates are non-normative starting points. Fixtures are isolated repository
+facts for their eval case. Neither can override the authorities above.
 
-The router disables implicit invocation in `agents/openai.yaml` so preflight is
-intentional. Hardening remains model-discoverable when the user explicitly asks
-to harden, simplify, grill, or audit a concrete hotspot, or repository policy
-mandates an audit for the current high-risk diff; its body excludes ordinary
-review. This lets the router reach every specialist without bypassing invocation
-policy while keeping normal work out of adversarial audit.
+## Skill boundaries
 
-### Twenty conditional invariants
+The router plus seven specialists remain separate because they answer different
+questions:
 
-The proposed 18 invariants remain, with wording generalized beyond
-VitalThread. Two evidence-backed gaps were added:
+| Skill | Question it owns |
+| --- | --- |
+| `architecture-foundations` | Who owns the fact and what is the system shape? |
+| `durable-workflows` | What must remain true when work outlives its caller? |
+| `interfaces-and-events` | What can an independently evolving consumer rely on? |
+| `application-composition` | How do runtimes and presentation reach canonical behavior? |
+| `data-and-compatibility` | How do representations and deployed consumers evolve safely? |
+| `architecture-hardening` | Where has ownership diverged, and how is the root cause consolidated? |
+| `verification-and-operations` | What evidence proves the claim, and which external action is authorized? |
 
-1. implementation, integration, metadata, deployment, installation, migration,
-   repair, and publication are separately authorized actions;
-2. claims bind to exact artifacts and truthful evidence classes, so generated,
-   simulated, host, device, physical, and production observations cannot stand
-   in for one another.
+Every invariant names exactly one normative owner skill. A consuming skill may
+apply that invariant at its seam but does not reinterpret it. Architecture
+hardening owns discovery and repair of divergence; verification and operations
+owns adversarial review, fault injection, physical proof, and exact evidence.
 
-The count is not a target. `references/invariants.json` is authoritative and a
-project activates only relevant entries. The minimal profile demonstrates that
-most of the catalog can remain inactive.
+## Proportional activation
 
-`references/capability-activation.json` defines the minimum invariants implied
-by declared capabilities and sensitive-data handling. Profile validation fails
-when a required capability is unassessed or an activated invariant has no
-enforcement owner. Repositories may activate additional invariants.
+Profiles activate invariants implied by actual capabilities plus additional
+repository choices. Discovery proposes a profile from bounded evidence; a human
+or repository-authorized agent reviews it before acceptance. The normative
+discovery and drift rules are in
+[`profile-discovery.md`](references/profile-discovery.md). Enforcement timing
+and exception requirements are defined by
+[`enforcement-ladder.md`](references/enforcement-ladder.md) and
+[`precedence-and-exceptions.md`](references/precedence-and-exceptions.md).
 
-### Proportionality before completeness
+## Precedence and authorization
 
-Cross-repository review showed that VitalThread's full durability and release
-model would be wasteful for a static website, deterministic CLI, in-memory
-tutoring prototype, or conventional single-module build. Change classification
-therefore happens before specialist loading. The harness must receive a failing
-evaluation when it invents persistence, jobs, events, abstraction, or release
-machinery for a simple case.
+[`precedence-and-exceptions.md`](references/precedence-and-exceptions.md) is the
+normative policy for safety precedence, repository decisions, scoped invariant
+exceptions, workflow-changing disclosures, and reuse of multi-stage authority.
 
-### General contracts before adapters
+## General contracts before adapters
 
-DBOS, cloud queues, mobile schedulers, PostgreSQL outboxes, SQLite journals,
-provider APIs, Flutter controllers, and hardware ports are possible adapters.
-None defines the package's generic contract. A skill first specifies authority,
-lifetime, failure, and evidence, then selects the smallest repository-supported
-adapter.
-
-### Evidence is a product of execution
-
-The package separates implementation, automated evidence, physical/external
-evidence, and release eligibility. A file path or harness definition is not a
-pass. Receipts bind exact revision, environment, result counts, and immutable
-artifacts. This comes from repeated false confidence caused by stale reviews,
-zero-test runs, generated device scripts, and simulated hardware checks.
-
-## Deliberate omissions in 0.1
-
-- No marketplace entry or installation side effect. The repository is staged
-  first; installation and distribution are separate decisions.
-- No automatic upstream updater. `SOURCES.md` pins reviews, but an update tool
-  needs defined comparison and approval semantics before it can modify skills.
-- No generic language-tooling directory. Dart, TypeScript, C++, Android, CAD,
-  and static-site repositories share principles but not enough commands to
-  justify placeholder adapters.
-- No vendor runtime dependency and no generated repository framework.
-- No broad code-review replacement. Existing repository review, test, and
-  operator paths remain canonical.
+Workflow engines, queues, mobile schedulers, transactional outboxes, SQLite
+journals, provider APIs, UI controllers, and hardware ports are possible
+adapters. None defines the generic contract. A skill first establishes
+authority, lifetime, failure, and evidence, then selects the smallest
+repository-supported implementation.
 
 ## Evaluation strategy
 
-Structural validation checks manifests, frontmatter, invocation policy, links,
-profiles, generated invariant documentation, source pins, and corpus shape.
-Behavioral evaluation tests routing, required outcomes, and forbidden
-overreach against the same model with and without the package.
+Structural validation checks manifests, frontmatter, invocation policy, all
+relative links, profiles, generated documentation, source pins, version
+alignment, public-path hygiene, and corpus shape. Behavioral evaluation tests
+routing, required outcomes, and prohibited overreach against isolated fixtures.
 
-Initial forward tests prioritize three discriminating cases:
+Over-engineering is a first-class failure. Negative controls cover a parser,
+library, static site, and CLI where the correct result omits durable runtimes,
+events, state machines, repositories, compatibility programs, architecture
+documents, and extra operational infrastructure. Positive controls retain
+durability, replication, compatibility, UI ownership, providers, and physical
+proof.
 
-1. a tiny CLI that should activate no specialist;
-2. durable photo analysis that must survive its caller;
-3. a hardware capability unavailable on one model, where host proof must not be
-   reported as physical proof.
+Runs remain comparable only when model, case, fixture, rubric, package revision,
+and harness policy version are explicit. Structural validation never claims a
+behavioral run occurred.
 
-Expand cases and trials without discarding earlier results. Compare only runs
-whose package revision, model, case, and rubric version are explicit.
+## Deliberate omissions in 0.2
+
+- No marketplace entry, installation side effect, or publication action.
+- No automatic upstream updater.
+- No generic language-tooling layer.
+- No vendor runtime dependency or generated repository framework.
+- No replacement for repository-specific review, test, issue, or operator paths.
+- No claim that heuristic profile discovery proves capability absence.

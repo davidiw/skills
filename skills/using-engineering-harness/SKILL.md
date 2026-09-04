@@ -1,33 +1,51 @@
 ---
 name: using-engineering-harness
-description: Classify a proposed engineering change and select only the Engineering Harness skills its risks require.
+description: Bootstrap or adopt a repository, route ordinary change work, or harden demonstrated architecture friction while loading only the internal Engineering Harness skills required.
 ---
 
 # Using Engineering Harness
 
-Use this explicit router when the right engineering workflow is unclear or a
-consequential initiative needs a preflight.
+This is the public entry point. Users choose a workflow, not specialist skills.
+
+## Workflows
+
+- **Bootstrap:** establish authority, constraints, capability profile, and the
+  cheapest useful boundaries for a new repository or major subsystem.
+- **Adopt:** inspect a brownfield repository, propose a capability profile with
+  evidence and confidence, reconcile it with repository decisions, and add
+  only justified enforcement.
+- **Change:** implement an ordinary feature, fix, migration, or refactor. Route
+  internally by risk and keep the public workflow proportional.
+- **Harden:** investigate demonstrated architecture divergence or recurring
+  friction, consolidate ownership, repair the root cause, and prevent recurrence.
+
+Read [`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
+before a harness recommendation could stop work, request authority, or alter
+the repository's chosen workflow.
 
 ## Route
 
-1. Read the repository's `AGENTS.md` or equivalent, design authority, work
-   tracker, and operator-command index. Local policy wins.
-2. Read [`change-classification.md`](../../references/change-classification.md)
-   and build the smallest applicable risk card.
-3. Name the authoritative fact or behavior, its owner, the requested outcome,
-   explicit non-goals, and the external actions actually authorized.
-4. Classify the work as exactly one of `minimal`, `bounded`, `consequential`,
-   or `stabilization`. Use those labels verbatim.
-5. Use the single linked routing table and dominance rules in
+1. Identify the workflow from the user's request; do not ask the user to pick
+   an internal skill.
+2. Read the repository's `AGENTS.md` or equivalent, design authority, work
+   tracker, and operator-command index. Report conflicts rather than replacing
+   repository decisions.
+3. For **Adopt**, run `scripts/profile_repository.py` to create an evidence-backed
+   proposal, review uncertain detections, assign repository enforcement owners,
+   record approved exceptions, and mark the profile accepted.
+4. For **Change** or **Harden**, read
+   [`change-classification.md`](../../references/change-classification.md) and
+   build the smallest applicable internal risk card.
+5. Name the authoritative fact or behavior, its owner, requested outcome,
+   non-goals, and authorized action scopes.
+6. Use the single linked routing table and dominance rules in
    `change-classification.md`. Read each selected specialist from the table's
-   direct `SKILL.md` link. Report exact names and never invent generic skill
-   labels. A `minimal` change normally selects no specialist. Several triggers
-   on one execution path form one integrated analysis, not parallel
-   architecture exercises.
-6. For consequential work, identify active invariants in
+   direct `SKILL.md` link. A minimal change normally selects no specialist.
+   Several triggers on one path form one integrated analysis.
+7. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
-   enforcement rungs. Reuse existing documents and commands.
-7. Execute the user's task. A preflight is not a substitute for implementation
+   enforcement rungs and exceptions. Reuse existing documents and commands.
+8. Execute the user's task. Internal classification is not a substitute for work
    unless the user requested analysis only.
 
 ## Proportionality
@@ -41,6 +59,6 @@ consequential initiative needs a preflight.
 - A vendor runtime is selected after the required durability and failure
   contract is explicit.
 
-The route is complete when the response states one exact class, exact selected
-specialist names or `none`, every material risk has one owner, and irrelevant
-specialists and artifacts are explicitly omitted.
+The route is complete when the selected public workflow is clear, internal
+routing is proportional, every material risk has one owner, and irrelevant
+specialists and artifacts remain unloaded.
