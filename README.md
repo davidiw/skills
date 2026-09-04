@@ -15,10 +15,11 @@ omissions so later iterations do not mistake restraint for unfinished work.
 ## Entry points
 
 Use `$using-engineering-harness` when a change needs an explicit risk and skill
-preflight. The router is manual. `$architecture-hardening` is discoverable only
-from an explicit request to harden, simplify, grill, or audit a demonstrated
-hotspot; its own workflow excludes ordinary review. The remaining specialists
-are independently discoverable when their narrow conditions apply:
+preflight. The router is manual. `$architecture-hardening` is discoverable from
+an explicit request to harden, simplify, grill, or audit a demonstrated hotspot,
+or a repository-mandated audit of the current high-risk diff; its own workflow
+excludes ordinary review. The remaining specialists are independently
+discoverable when their narrow conditions apply:
 
 | Skill | Owns |
 | --- | --- |

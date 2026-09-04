@@ -32,10 +32,11 @@ the specialists have independent trigger branches:
 - evidence and external operations have their own authority boundary.
 
 The router disables implicit invocation in `agents/openai.yaml` so preflight is
-intentional. Hardening remains model-discoverable only when the user explicitly
-asks to harden, simplify, grill, or audit a concrete hotspot; its body excludes
-ordinary review. This lets the router reach every specialist without bypassing
-invocation policy while keeping normal work out of adversarial audit.
+intentional. Hardening remains model-discoverable when the user explicitly asks
+to harden, simplify, grill, or audit a concrete hotspot, or repository policy
+mandates an audit for the current high-risk diff; its body excludes ordinary
+review. This lets the router reach every specialist without bypassing invocation
+policy while keeping normal work out of adversarial audit.
 
 ### Twenty conditional invariants
 

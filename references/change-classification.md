@@ -64,7 +64,7 @@ turn the effort into repository-wide cleanup.
 | Public API, message, event, provider, trust, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
-| User explicitly requests hardening, simplification, grilling, or an adversarial audit of a concrete hotspot | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
+| User explicitly requests hardening, simplification, or grilling of a concrete hotspot, or repository policy mandates a high-risk adversarial audit | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
 | Exact evidence, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that

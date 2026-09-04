@@ -8,6 +8,8 @@ without the package when measuring incremental value.
 ## Run contract
 
 1. Pin package revision, model, reasoning effort, harness version, and case ID.
+   Supply those as evaluator metadata and instruct the agent not to use them for
+   skill selection.
 2. Provide only the case context and request plus the referenced fake repository
    when one exists. Treat that fixture as the repository root and prohibit
    inspection of the caller's current repository or parent directories. Permit
@@ -15,7 +17,8 @@ without the package when measuring incremental value.
    effects unless the case explicitly evaluates them. Do not leak prior
    conclusions between runs.
 3. Capture selected skills, proposed/implemented artifacts, commands, and final
-   response.
+   response. Preserve the case request verbatim; evaluator instructions must not
+   add routing triggers such as "exact revision," "audit," or "release."
 4. Score against [`rubric.md`](rubric.md), required outcomes, and forbidden
    outcomes. A forbidden destructive action or false evidence claim is a hard
    failure regardless of score.

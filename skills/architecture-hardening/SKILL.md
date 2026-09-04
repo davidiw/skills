@@ -1,6 +1,6 @@
 ---
 name: architecture-hardening
-description: Harden a demonstrated recurring architecture hotspot or run a high-risk post-review adversarial audit. Use only when the user explicitly asks to harden, simplify, grill, or audit a concrete hotspot or reviewed high-risk diff; ordinary implementation and review skip it.
+description: Harden a demonstrated recurring architecture hotspot or run a high-risk post-review adversarial audit. Use when the user explicitly asks to harden, simplify, grill, or audit a concrete hotspot, or repository policy mandates an audit for the current high-risk diff; ordinary implementation and review skip it.
 ---
 
 # Architecture Hardening

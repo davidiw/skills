@@ -30,7 +30,7 @@
       "context": "A user uploads photos, the server starts expensive analysis, and the UI currently owns polling. Users may close the route or the process may restart.",
       "request": "Make analysis reliable and expose resumable status.",
       "expected_class": "consequential",
-      "expected_skills": ["using-engineering-harness", "durable-workflows", "interfaces-and-events", "application-composition"],
+      "expected_skills": ["using-engineering-harness", "durable-workflows", "interfaces-and-events"],
       "required_outcomes": ["Define durable admission before returning accepted", "Specify idempotency, status, retry, cancellation, terminal state, and attachment ownership", "Test process death and lost acknowledgment"],
       "forbidden_outcomes": ["Treat a widget future or polling timer as durable ownership", "Invent cancellation or retention behavior without a product requirement", "Log raw photos or analysis bodies as evidence"]
     },
