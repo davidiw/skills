@@ -1,0 +1,6 @@
+interface:
+  display_name: "Durable Workflows"
+  short_description: "Define durable admission, replay, and recovery"
+  default_prompt: "Use $durable-workflows to define admission, replay, recovery, and bounded execution for this work."
+policy:
+  allow_implicit_invocation: false

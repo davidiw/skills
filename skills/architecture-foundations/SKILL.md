@@ -24,6 +24,10 @@ entries without redefining them.
 4. Build an ownership map: authoritative facts, canonical behaviors,
    representations, resources, and their writers. Resolve unowned or multiply
    owned state before drawing module boxes.
+   When finite runtime pools can block required progress, read
+   [`runtime-resource-governance.md`](references/runtime-resource-governance.md)
+   and define admission, protected reserves, lifecycle ownership, and bounded
+   reclamation before selecting an allocator or scheduler.
 5. Set allowed dependency directions and identify the composition root.
    Framework, storage, provider, and transport details point inward through
    adapters; deterministic product policy does not point outward to them.

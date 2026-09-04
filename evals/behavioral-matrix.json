@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "prompt_mode": "natural",
+  "trials": 1,
+  "conditions": ["control", "harness"],
+  "case_ids": [
+    "tiny-cli-restraint",
+    "pure-library-parser-restraint",
+    "static-site-restraint",
+    "local-build-helper-restraint",
+    "read-only-ai-summary",
+    "in-process-domain-events",
+    "durable-photo-analysis",
+    "constrained-runtime-resource-contention"
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Data and Compatibility"
+  short_description: "Evolve data representations and live consumers"
+  default_prompt: "Use $data-and-compatibility to evolve data representations, migrations, and live consumers safely."
+policy:
+  allow_implicit_invocation: false

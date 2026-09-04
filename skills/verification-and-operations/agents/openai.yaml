@@ -1,0 +1,6 @@
+interface:
+  display_name: "Verification and Operations"
+  short_description: "Prove exact behavior and govern operations"
+  default_prompt: "Use $verification-and-operations to collect exact evidence and govern the requested operation."
+policy:
+  allow_implicit_invocation: false

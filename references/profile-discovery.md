@@ -28,6 +28,14 @@ version-controlled repository policy.
 Discovery is conservative and cannot prove a capability absent. Repository
 decisions remain authoritative.
 
+A provider SDK import is low-confidence evidence of AI use, not proof that the
+model can mutate product state. AI-mediated action discovery requires action
+execution evidence. Likewise, a generic in-process event name is not an
+independently consumed delivery contract; stream transport, outbox/inbox, or
+another delivery owner supplies the high-confidence signal. Explicit runtime
+resource budget, pool, or governor owners identify constrained resource
+governance, while ordinary allocation calls remain review evidence at most.
+
 ## Drift
 
 ```bash

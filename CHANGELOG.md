@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.4.0 - 2026-09-04
+
+- Make `using-engineering-harness` the implicit public entry point and mark all
+  seven specialist skills explicit-only.
+- Add `constrained_runtime_resources` and the
+  `resource-admission-and-reclamation` invariant, owned by architecture
+  foundations and consumed by durable workflow, composition, and verification.
+- Narrow AI-action discovery so a provider SDK alone is insufficient, and
+  narrow event discovery so an in-process event name does not imply delivery.
+- Stop activating publication classes for every event-delivery capability.
+- Add natural-prompt proportionality cases, correct MERA Hardware provenance,
+  add repository agent guidance, and pin stable installation to an immutable
+  release tag.
+
+Migration from 0.3.x:
+
+1. add `constrained_runtime_resources` to project profiles and enable it only
+   when finite runtime pools can block required progress;
+2. when enabled, assign an owner and enforcement for
+   `resource-admission-and-reclamation` or record an authorized exception;
+3. rerun discovery with scanner version 3 and review changed AI and event
+   evidence without treating lost heuristic evidence as capability removal;
+4. retain earlier evidence under its recorded policy version and use the
+   `v0.4.0` tag for new stable evidence after publication.
+
 ## 0.3.2 - 2026-09-04
 
 - Document the verified GitHub marketplace installation flow.

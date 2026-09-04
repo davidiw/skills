@@ -24,6 +24,7 @@ generated views, examples, or tests.
 | Concern | Normative source | Consumers or derived artifacts |
 | --- | --- | --- |
 | Package architecture and this authority map | `DESIGN.md` | `README.md` overview |
+| Repository-local execution and publication rules | `AGENTS.md` | Agent sessions in this repository |
 | Public workflow | `skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
 | Internal classes and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
 | Invariant statement, activation condition, timing, default rung, and single owner skill | `references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
@@ -36,6 +37,7 @@ generated views, examples, or tests.
 | Skill UI presentation and invocation policy | That skill's `agents/openai.yaml` when present | Codex UI and invocation behavior |
 | Marketplace identity, root plugin source, and install policy | `.agents/plugins/marketplace.json` | Codex marketplace discovery |
 | Eval scenario and expected routing | `evals/cases.json` | Corpus validator and runs |
+| Directional natural-prompt selection | `evals/behavioral-matrix.json` | Behavioral runs and receipts |
 | Eval scoring | `evals/rubric.md` | Evaluation runs |
 | Generated invariant rendering | `scripts/render_invariants.py` | `references/engineering-invariants.md` |
 | Package structural validation entrypoint | `scripts/validate_package.py` | Delegated validators and unit tests |
@@ -104,16 +106,15 @@ Over-engineering is a first-class failure. Negative controls cover a parser,
 library, static site, and CLI where the correct result omits durable runtimes,
 events, state machines, repositories, compatibility programs, architecture
 documents, and extra operational infrastructure. Positive controls retain
-durability, replication, compatibility, UI ownership, providers, and physical
-proof.
+durability, replication, compatibility, UI ownership, providers, constrained
+runtime resources, and physical proof.
 
 Runs remain comparable only when model, case, fixture, rubric, package revision,
 and harness policy version are explicit. Structural validation never claims a
 behavioral run occurred.
 
-## Deliberate omissions in 0.2
+## Deliberate omissions
 
-- No marketplace entry, installation side effect, or publication action.
 - No automatic upstream updater.
 - No generic language-tooling layer.
 - No vendor runtime dependency or generated repository framework.

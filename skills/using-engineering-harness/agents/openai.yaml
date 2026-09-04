@@ -3,4 +3,4 @@ interface:
   short_description: "Bootstrap, adopt, change, or harden a repository"
   default_prompt: "Use $using-engineering-harness and select the bootstrap, adopt, change, or harden workflow; route specialist guidance internally."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

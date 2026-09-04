@@ -2,3 +2,5 @@ interface:
   display_name: "Architecture Hardening"
   short_description: "Consolidate and repair a proven architecture hotspot"
   default_prompt: "Use $architecture-hardening to repair the demonstrated hotspot without expanding scope or running a routine review."
+policy:
+  allow_implicit_invocation: false

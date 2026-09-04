@@ -1,0 +1,6 @@
+interface:
+  display_name: "Architecture Foundations"
+  short_description: "Establish authority, boundaries, and composition"
+  default_prompt: "Use $architecture-foundations to establish ownership, boundaries, and composition for this change."
+policy:
+  allow_implicit_invocation: false

@@ -21,5 +21,11 @@ bounded migration. Profile drift accepts patch differences. It requires review
 and migration when the policy release line changes: major after 1.0, or minor
 while the package remains 0.x.
 
+Public releases use immutable `v<version>` Git tags matching the plugin
+manifest. Stable installation instructions pin that tag. `main` remains the
+explicit development/nightly channel and is never cited as immutable evidence.
+Creating or pushing a tag and publishing a release remain separately authorized
+actions.
+
 Historical evidence remains valid for the exact policy version it names; it is
 not silently upgraded to satisfy a newer policy.

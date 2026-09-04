@@ -23,6 +23,10 @@ entries without redefining them.
 3. Own proof selection by risk and owning seam: deterministic policy tests, boundary
    fixtures, fault/replay tests, mixed-version tests, performance campaigns,
    generated-artifact checks, and physical observations only where needed.
+   For constrained runtime resources, test the declared admission reserve,
+   cooperative stop deadline, cleanup evidence, retry bound, and restart
+   fallback from the authoritative
+   [`runtime resource contract`](../architecture-foundations/references/runtime-resource-governance.md).
 4. Bind executed evidence to clean exact revision, command/harness, timestamp,
    environment and device where relevant, discovered/completed/skipped counts,
    result, and immutable artifact or transcript digest. Zero discovered tests

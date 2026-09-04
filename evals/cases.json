@@ -225,6 +225,45 @@
       "forbidden_outcomes": ["Treat a recommendation as implementation authorization", "Expose provider internals as product policy"]
     },
     {
+      "id": "read-only-ai-summary",
+      "title": "Keep read-only AI integration out of action governance",
+      "control": "mixed",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-ai-action-governance", "requires-external-provider"],
+      "fixture": "fixtures/read-only-ai-summary",
+      "context": "A synchronous CLI sends text to an AI provider and returns a read-only summary. It has no tools, product mutations, accepted background work, or durable intent.",
+      "request": "Add an optional output-length argument while preserving the provider boundary.",
+      "expected_class": "bounded",
+      "expected_skills": ["using-engineering-harness", "interfaces-and-events"],
+      "required_outcomes": ["Keep the change inside the existing synchronous adapter and CLI contract", "Test output-length validation and provider failure without inventing action authority"],
+      "forbidden_outcomes": ["Add durable jobs, approvals, or action authorization", "Treat read-only model output as an AI-mediated product mutation"]
+    },
+    {
+      "id": "in-process-domain-events",
+      "title": "Keep synchronous domain notifications in process",
+      "control": "negative",
+      "coverage_tags": ["avoid-event-system", "avoid-compatibility-machinery"],
+      "fixture": "fixtures/in-process-events",
+      "context": "A small single-process library uses a synchronous EventBus to notify two in-memory collaborators. Events are not persisted, transported, replayed, or consumed independently.",
+      "request": "Add one event handler for the existing calculation result.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": ["Add the handler through the existing in-process EventBus", "Run a focused synchronous notification test"],
+      "forbidden_outcomes": ["Add outbox, delivery, replay, publication classes, or versioned event envelopes", "Introduce a broker or durable event store"]
+    },
+    {
+      "id": "constrained-runtime-resource-contention",
+      "title": "Preserve control-plane progress under runtime pressure",
+      "control": "positive",
+      "coverage_tags": ["requires-resource-governance", "requires-physical-proof"],
+      "fixture": "fixtures/constrained-runtime-resources",
+      "context": "Embedded firmware intermittently fails Google authorization allocation while wake recognition and optional preview hold audio and DMA-capable buffers. The allocation callback currently restarts the device.",
+      "request": "Make authorization progress reliably without allowing optional work to exhaust the control plane.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "architecture-foundations", "durable-workflows", "application-composition", "verification-and-operations"],
+      "required_outcomes": ["Define resource pools, a protected control-plane reserve, lifecycle ownership, priority, non-reclaimable phases, cooperative stop deadlines, cleanup evidence, and resume policy", "Separate admission accounting, pressure monitoring, failed-allocation emergency handling, cooperative shedding, and restart recovery", "Prove Google authorization versus wake recognition with allocation-failure fakes and leave physical evidence pending"],
+      "forbidden_outcomes": ["Use restart or failed-allocation callbacks as normal admission control", "Reclaim required control-plane progress for optional preview work", "Create a new generic durable-runtime vendor dependency"]
+    },
+    {
       "id": "high-risk-adversarial-review",
       "title": "Keep adversarial proof separate from architecture hardening",
       "control": "positive",

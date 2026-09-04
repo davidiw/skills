@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/davidiw/engineering-harness/project-profile.schema.json",
+  "$id": "https://github.com/davidiw/skills/project-profile.schema.json",
   "title": "Engineering Harness Project Profile",
   "type": "object",
   "additionalProperties": false,
@@ -88,7 +88,7 @@
       "additionalProperties": false,
       "required": ["scanner_version", "repository_revision", "project_fields", "capabilities"],
       "properties": {
-        "scanner_version": {"const": 2},
+        "scanner_version": {"const": 3},
         "repository_revision": {
           "type": "string",
           "pattern": "^(unversioned|[0-9a-f]{40})$"

@@ -35,6 +35,9 @@ entries without redefining them.
    before execution and every persistent or externally visible effect.
 7. Bound each noninteractive unit by rows, pages, bytes, calls, or time. Yield
    between committed units so interactive work can run after the current unit.
+   If the operation holds a constrained runtime pool, consume the
+   [`resource admission contract`](../architecture-foundations/references/runtime-resource-governance.md)
+   without redefining its admission or reclamation policy.
 8. Expose start, truthful coarse phase or measured units, retryability,
    supported cancellation, and terminal state without turning ephemeral UI
    state into the workflow owner. Never synthesize byte or percentage progress

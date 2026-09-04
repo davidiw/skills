@@ -240,6 +240,69 @@ class ProfileDiscoveryTest(unittest.TestCase):
         self.assertFalse(scan["capabilities"]["physical_devices"]["suggested"])
         self.assertFalse(scan["capabilities"]["multiple_clients"]["suggested"])
 
+    def test_read_only_ai_dependency_is_not_an_ai_action_capability(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            (repository / "src").mkdir()
+            (repository / "src" / "summarizer.py").write_text(
+                "from openai import OpenAI\n\ndef summarize(text):\n    return text[:80]\n"
+            )
+
+            scan = scan_repository(repository)
+
+        self.assertFalse(scan["capabilities"]["ai_mediated_actions"]["suggested"])
+
+    def test_ai_action_owner_and_provider_identify_ai_mediated_actions(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            action = repository / "src" / "assistant" / "actions.py"
+            action.parent.mkdir(parents=True)
+            action.write_text(
+                "from openai import OpenAI\n\ndef execute_action(tool_call):\n    return tool_call\n"
+            )
+
+            scan = scan_repository(repository)
+
+        self.assertTrue(scan["capabilities"]["ai_mediated_actions"]["suggested"])
+
+    def test_in_process_event_names_do_not_imply_delivery(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            (repository / "src").mkdir()
+            (repository / "src" / "events.py").write_text(
+                "class EventBus:\n    def publish(self, event):\n        return event\n"
+            )
+
+            scan = scan_repository(repository)
+
+        self.assertFalse(scan["capabilities"]["event_delivery"]["suggested"])
+
+    def test_stream_transport_identifies_event_delivery(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            (repository / "src").mkdir()
+            (repository / "src" / "stream.py").write_text(
+                "CONTENT_TYPE = 'text/event-stream'\n"
+            )
+
+            profile = propose_profile(repository)
+
+        self.assertTrue(profile["capabilities"]["event_delivery"])
+        self.assertIn("committed-event-truth", profile["enforcement"])
+        self.assertNotIn("publication-classes", profile["enforcement"])
+
+    def test_explicit_runtime_resource_owner_identifies_constrained_resources(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            owner = repository / "firmware" / "runtime_resource_manager.cpp"
+            owner.parent.mkdir(parents=True)
+            owner.write_text("bool reserve_control_plane_memory();\n")
+
+            profile = propose_profile(repository)
+
+        self.assertTrue(profile["capabilities"]["constrained_runtime_resources"])
+        self.assertIn("resource-admission-and-reclamation", profile["enforcement"])
+
     def test_new_high_confidence_capability_is_meaningful_drift(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             repository = Path(directory)
@@ -272,7 +335,34 @@ class GeneratedInvariantTest(unittest.TestCase):
                 self.assertTrue(set(item["consumed_by"]) <= skill_names)
 
 
+class SkillInvocationPolicyTest(unittest.TestCase):
+    def test_router_is_implicit_and_specialists_are_explicit_only(self) -> None:
+        skill_names = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+        router = "using-engineering-harness"
+
+        for name in skill_names:
+            metadata = ROOT / "skills" / name / "agents" / "openai.yaml"
+            with self.subTest(skill=name):
+                self.assertTrue(metadata.is_file())
+                text = metadata.read_text()
+                expected = "true" if name == router else "false"
+                self.assertIn(f"allow_implicit_invocation: {expected}", text)
+
+
 class MarketplaceMetadataTest(unittest.TestCase):
+    def test_public_repository_identifiers_match(self) -> None:
+        manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+        schema = json.loads(
+            (ROOT / "references" / "project-profile.schema.json").read_text()
+        )
+
+        self.assertEqual(manifest["homepage"], "https://github.com/davidiw/skills")
+        self.assertEqual(manifest["repository"], "https://github.com/davidiw/skills")
+        self.assertEqual(
+            schema["$id"],
+            "https://github.com/davidiw/skills/project-profile.schema.json",
+        )
+
     def test_marketplace_exposes_the_root_plugin(self) -> None:
         manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
         marketplace = json.loads(

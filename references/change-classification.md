@@ -61,6 +61,7 @@ adversarial review. Do not turn either into repository-wide cleanup.
 | Signal | Skill |
 | --- | --- |
 | New subsystem, ownership ambiguity, dependency direction, or composition | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
+| Scarce runtime pools, protected progress, admission, or cooperative reclamation | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
 | Work must survive its initiator | [`durable-workflows`](../skills/durable-workflows/SKILL.md) |
 | Public API, message, event, provider, trust, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |

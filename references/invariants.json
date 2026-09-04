@@ -83,6 +83,15 @@
       "consumed_by": ["interfaces-and-events"]
     },
     {
+      "id": "resource-admission-and-reclamation",
+      "statement": "Activities holding scarce runtime resources are admitted against protected reserves, have one owning lifecycle, and complete or cooperatively yield within a bounded deadline; required control-plane progress is never reclaimed for optional work.",
+      "activates_when": "runtime activities contend for scarce memory, buffers, peripherals, sockets, task capacity, or another resource whose exhaustion can block required progress",
+      "default_rung": "runtime_guard",
+      "enforcement_timing": "boundary_introduction",
+      "owner_skill": "architecture-foundations",
+      "consumed_by": ["durable-workflows", "application-composition", "verification-and-operations"]
+    },
+    {
       "id": "transient-presentation",
       "statement": "Presentation owns rendering and transient interaction, not retries, synchronization, imports, provider polling, or durable workflow state.",
       "activates_when": "an interactive client exists",

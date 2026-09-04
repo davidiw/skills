@@ -38,7 +38,7 @@ are not relied upon because no text or implementation is reused.
 | Repository | Reviewed revision | Evidence incorporated |
 | --- | --- | --- |
 | VitalThread (`workout.codex`) | `c67719688b34ec6509d26e579df4a3d51bfa1ef9` | Local-first storage contention, durable work, event classes, account fencing, compatibility profiles, exact-revision evidence, and guarded operations |
-| `camera-hardware` | `a0cf1be5502c17c3afd4cce742078e9f762fa9fb` | Capability honesty, ports and fakes, single-writer media ownership, immutable artifacts, and physical-proof separation |
+| MERA Hardware (`davidiw/mera-hardware`) | `a0cf1be5502c17c3afd4cce742078e9f762fa9fb` | Capability honesty, SDK consumer boundaries, ports and fakes, single-writer media ownership, immutable artifacts, and physical-proof separation |
 | `aichestrator` | `dbd724df26e52b78339ba711e25bb4b02b55b581` | Typed AI actions, discussion-versus-execution authority, provider adapters, approvals, and durable task recovery |
 | `protectai` | `5434a15b40159c134e6f303eb801b8e937ec582a` | Central boundary wrappers for authentication, permissions, errors, envelopes, and privacy-safe activity logging |
 | `smartypants` | `36baf6165f615567a13ca9ff6cd3d1c560a785af` | Small-project restraint, deterministic policy ownership, and explicit deferral of unnecessary infrastructure |

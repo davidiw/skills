@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.3.2",
+  "harness_policy_version": "0.4.0",
   "status": "accepted",
   "project": {
     "name": "local-first-example",
@@ -31,6 +31,7 @@
     "interactive_clients": true,
     "asynchronous_interactive_loading": true,
     "shared_nonpreemptible_storage": true,
+    "constrained_runtime_resources": true,
     "multiple_adapters": true
   },
   "enforcement": {
@@ -93,6 +94,11 @@
       "rung": "fault_test",
       "owner": "lib/database_scheduler.dart",
       "artifacts": ["test/database_contention_test.dart"]
+    },
+    "resource-admission-and-reclamation": {
+      "rung": "runtime_guard",
+      "owner": "lib/runtime_resource_governor.dart",
+      "artifacts": ["test/runtime_resource_pressure_test.dart"]
     },
     "authority-context-fencing": {
       "rung": "fault_test",

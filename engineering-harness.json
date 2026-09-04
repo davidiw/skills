@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.3.2",
+  "harness_policy_version": "0.4.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",
@@ -8,6 +8,7 @@
     "sensitive_data": false
   },
   "sources": {
+    "agent_rules": "AGENTS.md",
     "architecture": "DESIGN.md",
     "invariants": "references/invariants.json",
     "capability_activation": "references/capability-activation.json",
@@ -31,6 +32,7 @@
     "interactive_clients": false,
     "asynchronous_interactive_loading": false,
     "shared_nonpreemptible_storage": false,
+    "constrained_runtime_resources": false,
     "multiple_adapters": false
   },
   "enforcement": {
@@ -54,7 +56,7 @@
   },
   "exceptions": [],
   "discovery": {
-    "scanner_version": 2,
+    "scanner_version": 3,
     "repository_revision": "f27acde528066473eb076eb3ce30fc2975fe2ba7",
     "project_fields": {
       "sensitive_data": {
@@ -140,6 +142,11 @@
         "evidence": []
       },
       "shared_nonpreemptible_storage": {
+        "suggested": false,
+        "confidence": "none",
+        "evidence": []
+      },
+      "constrained_runtime_resources": {
         "suggested": false,
         "confidence": "none",
         "evidence": []

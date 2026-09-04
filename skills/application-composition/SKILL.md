@@ -21,7 +21,10 @@ entries without redefining them.
    reinterpret policy.
 3. Put assembly in an explicit composition root. Platform and provider
    capabilities enter through narrow interfaces and report unsupported behavior
-   honestly.
+   honestly. When adapters share scarce runtime pools, apply the owning
+   [`runtime resource contract`](../architecture-foundations/references/runtime-resource-governance.md)
+   and expose busy, suspended, reclaiming, retryable, or unsupported states
+   without moving lifecycle ownership into presentation.
 4. For interactive surfaces, draw the useful-paint graph: data required for a
    correct first interaction, independent enrichment, and work that can defer.
    Render authoritative local or server state without waiting for unrelated

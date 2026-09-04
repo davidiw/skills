@@ -20,7 +20,7 @@ MARKETPLACE_PATH = ROOT / ".agents" / "plugins" / "marketplace.json"
 ROUTER_SKILL = "using-engineering-harness"
 SKILL_NAMES = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
 SPECIALIST_SKILLS = SKILL_NAMES - {ROUTER_SKILL}
-EXPLICIT_ONLY = {ROUTER_SKILL}
+IMPLICIT_SKILLS = {ROUTER_SKILL}
 RUNGS = {
     "principle",
     "owner",
@@ -50,6 +50,7 @@ POSITIVE_COVERAGE = {
     "requires-ui-ownership",
     "requires-external-provider",
     "requires-physical-proof",
+    "requires-resource-governance",
 }
 
 
@@ -103,13 +104,16 @@ def validate_skills(errors: list[str]) -> None:
         require(description not in descriptions, f"{path}: duplicate description", errors)
         descriptions.add(description)
         metadata_path = path.parent / "agents" / "openai.yaml"
-        explicitly_disabled = (
-            metadata_path.exists()
-            and "allow_implicit_invocation: false"
-            in metadata_path.read_text(encoding="utf-8")
+        require(metadata_path.exists(), f"{path}: missing agents/openai.yaml", errors)
+        metadata = metadata_path.read_text(encoding="utf-8") if metadata_path.exists() else ""
+        policy_match = re.search(
+            r"(?m)^\s+allow_implicit_invocation:\s*(true|false)\s*$",
+            metadata,
         )
+        require(policy_match is not None, f"{path}: invocation policy is not explicit", errors)
+        implicit = policy_match is not None and policy_match.group(1) == "true"
         require(
-            explicitly_disabled == (name in EXPLICIT_ONLY),
+            implicit == (name in IMPLICIT_SKILLS),
             f"{path}: invocation policy mismatch",
             errors,
         )
@@ -263,6 +267,21 @@ def validate_evals(errors: list[str]) -> None:
     routed_skills = {skill for case in cases for skill in case.get("expected_skills", [])}
     require(SKILL_NAMES <= routed_skills, "one or more discovered skills have no evaluation route", errors)
 
+    matrix = json.loads((ROOT / "evals" / "behavioral-matrix.json").read_text(encoding="utf-8"))
+    matrix_ids = matrix.get("case_ids", [])
+    require(matrix.get("schema_version") == 1, "behavioral matrix schema_version must be 1", errors)
+    require(matrix.get("prompt_mode") == "natural", "behavioral matrix must use natural prompts", errors)
+    require(matrix.get("trials") == 1, "directional behavioral matrix must use one trial", errors)
+    require(matrix.get("conditions") == ["control", "harness"], "behavioral matrix conditions differ", errors)
+    require(isinstance(matrix_ids, list) and len(matrix_ids) == 8, "behavioral matrix must select eight cases", errors)
+    require(len(matrix_ids) == len(set(matrix_ids)), "behavioral matrix contains duplicate cases", errors)
+    case_by_id = {case["id"]: case for case in cases}
+    require(set(matrix_ids) <= set(case_by_id), "behavioral matrix references an unknown case", errors)
+    for case_id in matrix_ids:
+        case = case_by_id.get(case_id, {})
+        require(bool(case.get("fixture")), f"behavioral case lacks a fixture: {case_id}", errors)
+        require("$" not in case.get("request", ""), f"behavioral case names a skill: {case_id}", errors)
+
     audit_case = next((case for case in cases if case.get("id") == "high-risk-adversarial-review"), None)
     require(audit_case is not None, "adversarial review boundary case is missing", errors)
     if audit_case:
@@ -281,6 +300,17 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
         "manifest and LICENSE policy differ",
         errors,
     )
+    profile_schema = json.loads(
+        (ROOT / "references" / "project-profile.schema.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    require(
+        profile_schema.get("$id")
+        == f"{PUBLIC_REPOSITORY}/project-profile.schema.json",
+        "project profile schema identifier is incorrect",
+        errors,
+    )
     version = manifest.get("version", "")
     require(isinstance(version, str) and bool(VERSION_PATTERN.fullmatch(version)), "manifest version is not semantic", errors)
     prompts = manifest.get("interface", {}).get("defaultPrompt", [])
@@ -293,9 +323,10 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     require("independent synthesis" in sources.lower(), "SOURCES.md must state provenance model", errors)
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    stable_command = f"codex plugin marketplace add davidiw/skills --ref v{version}"
     require(
-        "codex plugin marketplace add davidiw/skills --ref main" in readme,
-        "README is missing the published marketplace command",
+        stable_command in readme,
+        "README is missing the immutable marketplace command",
         errors,
     )
     require(
@@ -303,6 +334,11 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
         "README is missing the plugin installation command",
         errors,
     )
+    require("--ref main" in readme and "development/nightly" in readme, "README must distinguish the mutable development channel", errors)
+
+    agent_rules = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    for authority in ("DESIGN.md", "references/invariants.json", "references/capability-activation.json", "references/versioning.md"):
+        require(authority in agent_rules, f"AGENTS.md is missing authority pointer: {authority}", errors)
 
     marketplace = json.loads(MARKETPLACE_PATH.read_text(encoding="utf-8"))
     expected_marketplace = {

@@ -15,12 +15,16 @@ exposes the root `engineering-harness` plugin for installation.
 
 ## Install
 
-Add the published marketplace and install the plugin:
+Add the immutable stable marketplace release and install the plugin:
 
 ```bash
-codex plugin marketplace add davidiw/skills --ref main
+codex plugin marketplace add davidiw/skills --ref v0.4.0
 codex plugin add engineering-harness@davidiw-skills
 ```
+
+Use `--ref main` only for deliberate development/nightly testing. Evidence and
+repository profiles name the harness policy version they used; stable tags are
+immutable.
 
 For local development, pass the checkout root containing both
 `.agents/plugins/marketplace.json` and `.codex-plugin/plugin.json`, not its
@@ -33,8 +37,10 @@ codex plugin add engineering-harness@davidiw-skills
 
 ## Four workflows
 
-Use `$using-engineering-harness` and state one of four intents. The router loads
-specialist guidance internally; users do not select specialist skills.
+Ordinary natural requests enter `change` through the public router
+automatically. Invoke `$using-engineering-harness` when explicitly asking to
+bootstrap, adopt, harden, or diagnose routing. The router loads specialist
+guidance internally; users do not select specialist skills.
 
 ### Bootstrap
 

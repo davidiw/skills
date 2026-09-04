@@ -1,9 +1,10 @@
 # Evaluation Corpus
 
 These cases test whether the package changes agent behavior, not whether its
-files are well formed. Each case is run in an isolated temporary repository
-with `$using-engineering-harness`, then compared with the same model and case
-without the package when measuring incremental value.
+files are well formed. Explicit-router runs diagnose specialist content. The
+directional [`behavioral-matrix.json`](behavioral-matrix.json) uses natural
+prompts with no skill name, runs each case in an isolated temporary repository,
+and compares the same model and case with and without the installed package.
 
 `negative` controls make over-engineering a first-class failure. The correct
 result leaves small parser, library, static-site, CLI, and build work on existing
@@ -24,8 +25,10 @@ require one bounded concern while excluding adjacent machinery.
    effects unless the case explicitly evaluates them. Do not leak prior
    conclusions between runs.
 3. Capture selected skills, proposed/implemented artifacts, commands, and final
-   response. Preserve the case request verbatim; evaluator instructions must not
-   add routing triggers such as "exact revision," "audit," or "release."
+   response. Preserve the case request verbatim; natural-prompt runs must not add
+   a skill name or routing triggers such as "exact revision," "audit," or
+   "release." If the runtime cannot expose selected-skill order, record routing
+   as unobservable rather than inferring it from polished final prose.
 4. Score against [`rubric.md`](rubric.md), required outcomes, and forbidden
    outcomes. A forbidden destructive action or false evidence claim is a hard
    failure regardless of score.

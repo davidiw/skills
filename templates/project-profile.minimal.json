@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.3.2",
+  "harness_policy_version": "0.4.0",
   "status": "accepted",
   "project": {
     "name": "small-example",
@@ -28,6 +28,7 @@
     "interactive_clients": false,
     "asynchronous_interactive_loading": false,
     "shared_nonpreemptible_storage": false,
+    "constrained_runtime_resources": false,
     "multiple_adapters": false
   },
   "enforcement": {
