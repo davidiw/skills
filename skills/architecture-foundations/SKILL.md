@@ -28,7 +28,9 @@ entries without redefining them.
    [`runtime-resource-governance.md`](references/runtime-resource-governance.md)
    and complete its per-activity resource contract and five-mechanism
    separation before selecting an allocator or scheduler. A protected reserve
-   alone is not a complete resource policy.
+   alone is not a complete resource policy. Preserve those two explicit
+   sections in the resulting design, plan, or review; mark unknown fields rather
+   than summarizing them away.
 5. Set allowed dependency directions and identify the composition root.
    Framework, storage, provider, and transport details point inward through
    adapters; deterministic product policy does not point outward to them.

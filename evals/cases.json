@@ -259,8 +259,8 @@
       "context": "Embedded firmware intermittently fails Google authorization allocation while wake recognition and optional preview hold audio and DMA-capable buffers. The allocation callback currently restarts the device.",
       "request": "Make authorization progress reliably without allowing optional work to exhaust the control plane.",
       "expected_class": "consequential",
-      "expected_skills": ["using-engineering-harness", "architecture-foundations"],
-      "required_outcomes": ["Define resource pools, a protected control-plane reserve, lifecycle ownership, priority, non-reclaimable phases, cooperative stop deadlines, cleanup evidence, and resume policy", "Separate admission accounting, pressure monitoring, failed-allocation emergency handling, cooperative shedding, and restart recovery", "Prove Google authorization versus wake recognition with allocation-failure fakes and leave physical evidence pending"],
+      "expected_skills": ["using-engineering-harness", "architecture-foundations", "verification-and-operations"],
+      "required_outcomes": ["Define resource pools, a protected control-plane reserve, lifecycle ownership, priority, non-reclaimable phases, cooperative stop deadlines, cleanup evidence, and resume policy", "Separate admission accounting, pressure monitoring, failed-allocation emergency handling, cooperative shedding, and restart recovery", "Prove Google authorization versus wake recognition with allocation-failure fakes and distinguish host evidence from physical release proof"],
       "forbidden_outcomes": ["Use restart or failed-allocation callbacks as normal admission control", "Reclaim required control-plane progress for optional preview work", "Create a new generic durable-runtime vendor dependency"]
     },
     {
