@@ -30,7 +30,9 @@ entries without redefining them.
    separation before selecting an allocator or scheduler. A protected reserve
    alone is not a complete resource policy. Preserve those two explicit
    sections in the resulting design, plan, or review; mark unknown fields rather
-   than summarizing them away.
+   than summarizing them away. Finish with an **Evidence classes** section that
+   distinguishes host or fake proof from physical release proof and marks each
+   unexecuted class pending or not required for the requested claim.
 5. Set allowed dependency directions and identify the composition root.
    Framework, storage, provider, and transport details point inward through
    adapters; deterministic product policy does not point outward to them.
