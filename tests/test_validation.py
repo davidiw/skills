@@ -266,6 +266,21 @@ class ProfileDiscoveryTest(unittest.TestCase):
 
         self.assertTrue(scan["capabilities"]["ai_mediated_actions"]["suggested"])
 
+    def test_unrelated_ai_import_and_local_action_do_not_combine(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            (repository / "src").mkdir()
+            (repository / "src" / "summary.py").write_text(
+                "from openai import OpenAI\n\ndef summarize(text):\n    return text[:80]\n"
+            )
+            (repository / "src" / "local_command.py").write_text(
+                "def execute_action(command):\n    return command\n"
+            )
+
+            scan = scan_repository(repository)
+
+        self.assertFalse(scan["capabilities"]["ai_mediated_actions"]["suggested"])
+
     def test_in_process_event_names_do_not_imply_delivery(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             repository = Path(directory)
@@ -479,6 +494,62 @@ class EvaluationCorpusTest(unittest.TestCase):
 
         self.assertIn(
             "malformed receipt: tiny-cli-restraint: harness_wall_time_ms must be a nonnegative integer",
+            errors,
+        )
+
+        incomplete_control = copy.deepcopy(receipt)
+        durable = next(
+            result
+            for result in incomplete_control["results"]
+            if result["case_id"] == "durable-photo-analysis"
+        )
+        durable["control_score"] = 10
+        durable["control_pass"] = True
+        incomplete_control["aggregate"]["control_score"] += 2
+        incomplete_control["aggregate"]["control_passes"] += 1
+        errors = []
+        validate_eval_receipt(
+            incomplete_control,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="incomplete control",
+        )
+
+        self.assertIn(
+            "incomplete control: durable-photo-analysis: control pass does not follow the rubric",
+            errors,
+        )
+
+        honest_failure = copy.deepcopy(receipt)
+        honest_failure["status"] = "failed"
+        honest_failure["results"][0]["harness_required_outcomes_met"] = 2
+        honest_failure["results"][0]["harness_pass"] = False
+        honest_failure["aggregate"]["harness_passes"] -= 1
+        errors = []
+        validate_eval_receipt(
+            honest_failure,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="honest failure",
+        )
+
+        self.assertEqual(errors, [])
+
+        missing_revision = copy.deepcopy(receipt)
+        missing_revision["scored_source_revision"] = "0" * 40
+        errors = []
+        validate_eval_receipt(
+            missing_revision,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="missing revision",
+        )
+
+        self.assertIn(
+            "missing revision: scored_source_revision is not retained in this repository",
             errors,
         )
 

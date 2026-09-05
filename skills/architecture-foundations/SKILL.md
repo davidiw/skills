@@ -43,9 +43,10 @@ entries without redefining them.
    the slice exposes a repeated shape.
 8. Move each important rule to the appropriate rung in the
    [enforcement ladder](../../references/enforcement-ladder.md). Install cheap,
-   deterministic enforcement when declaring a foundational boundary. Use
-   `verification-and-operations` for adversarial, fault, physical, or
-   exact-revision proof.
+   deterministic enforcement when declaring a foundational boundary. Keep
+   owner-focused success and failure fixtures with this workflow. Use
+   `verification-and-operations` when an independent adversarial or fault
+   campaign, physical proof, or exact-revision gate is required.
 
 For scenario and ownership formats, read
 [`quality-and-ownership.md`](references/quality-and-ownership.md). In an

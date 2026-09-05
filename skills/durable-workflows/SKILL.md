@@ -43,8 +43,10 @@ entries without redefining them.
    state into the workflow owner. Never synthesize byte or percentage progress
    when the executor cannot measure it.
 9. Define expected recovery for the relevant rows of the
-   [failure matrix](references/failure-matrix.md). Use
-   `verification-and-operations` to execute fault injection and record evidence.
+   [failure matrix](references/failure-matrix.md). Keep owner-focused crash,
+   retry, and ambiguity fixtures in this workflow.
+   Use `verification-and-operations` for an independent fault campaign or
+   exact-revision evidence gate.
    When admission crosses a request boundary, include process death and a lost
    acknowledgment after the admission commit unless that boundary cannot
    exhibit either failure.

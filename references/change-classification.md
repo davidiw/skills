@@ -67,7 +67,7 @@ adversarial review. Do not turn either into repository-wide cleanup.
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
 | Demonstrated recurring architecture divergence, consolidation, or hotspot root-cause repair | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
-| Exact evidence, adversarial review, fault injection, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
+| Exact evidence, independent adversarial or fault campaign, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that
 owns the path. Do not run independent architecture exercises for each signal.
@@ -88,5 +88,6 @@ owns the path. Do not run independent architecture exercises for each signal.
   inside one established owner. Add it when delivery, transport, independent
   consumers, or a public event contract is changing.
 - Do not add `verification-and-operations` because another skill requires
-  focused tests. Add it for exact-revision gates, generated or physical proof,
+  focused success or failure tests. Add it for independent adversarial or fault
+  campaigns, exact-revision gates, generated or physical proof,
   machine/operator tooling, repair, release, deployment, or publication.

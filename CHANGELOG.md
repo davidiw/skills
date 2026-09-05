@@ -8,8 +8,13 @@
   `resource-admission-and-reclamation` invariant, owned by architecture
   foundations and consumed by durable workflow, composition, and verification.
 - Narrow AI-action discovery so a provider SDK alone is insufficient, and
-  narrow event discovery so an in-process event name does not imply delivery.
+  require action evidence in the same owner instead of combining unrelated
+  files. Narrow event discovery so an in-process event name does not imply
+  delivery.
 - Stop activating publication classes for every event-delivery capability.
+- Distinguish owner-focused failure fixtures from independent fault campaigns,
+  and make directional receipts enforce arm-specific outcomes and retained Git
+  revisions.
 - Add natural-prompt proportionality cases, correct MERA Hardware provenance,
   add repository agent guidance, and pin stable installation to an immutable
   release tag.
@@ -20,7 +25,7 @@ Migration from 0.3.x:
    when finite runtime pools can block required progress;
 2. when enabled, assign an owner and enforcement for
    `resource-admission-and-reclamation` or record an authorized exception;
-3. rerun discovery with scanner version 3 and review changed AI and event
+3. rerun discovery with scanner version 4 and review changed AI and event
    evidence without treating lost heuristic evidence as capability removal;
 4. retain earlier evidence under its recorded policy version and use the
    `v0.4.0` tag for new stable evidence after publication.

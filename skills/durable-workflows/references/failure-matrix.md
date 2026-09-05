@@ -1,8 +1,9 @@
 # Durable Failure Matrix
 
 Select rows that the real execution path can encounter and define the expected
-recovered state. `verification-and-operations` owns fault injection and evidence;
-it uses named boundaries rather than timing-dependent sleeps.
+recovered state. This workflow owns its focused failure fixtures.
+`verification-and-operations` owns independent fault campaigns and exact
+evidence; it uses named boundaries rather than timing-dependent sleeps.
 
 | Boundary | Required question |
 | --- | --- |

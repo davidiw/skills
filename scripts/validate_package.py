@@ -8,6 +8,7 @@ import json
 import os
 import re
 import statistics
+import subprocess
 import sys
 from pathlib import Path
 
@@ -300,6 +301,24 @@ def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def git_commit_exists(revision: str) -> bool:
+    result = subprocess.run(
+        ["git", "-C", str(ROOT), "cat-file", "-e", f"{revision}^{{commit}}"],
+        capture_output=True,
+        check=False,
+    )
+    return result.returncode == 0
+
+
+def git_is_ancestor(ancestor: str, descendant: str) -> bool:
+    result = subprocess.run(
+        ["git", "-C", str(ROOT), "merge-base", "--is-ancestor", ancestor, descendant],
+        capture_output=True,
+        check=False,
+    )
+    return result.returncode == 0
+
+
 def validate_eval_receipt(
     document: dict[str, object],
     case_by_id: dict[str, dict[str, object]],
@@ -322,6 +341,44 @@ def validate_eval_receipt(
         prefix + "scored_source_revision must be a full Git SHA",
         errors,
     )
+    revision_retained = (
+        isinstance(revision, str)
+        and bool(FULL_SHA_PATTERN.fullmatch(revision))
+        and git_commit_exists(revision)
+    )
+    require(
+        revision_retained,
+        prefix + "scored_source_revision is not retained in this repository",
+        errors,
+    )
+
+    execution = document.get("execution")
+    require(isinstance(execution, dict), prefix + "execution must be an object", errors)
+    if isinstance(execution, dict):
+        retention = execution.get("evidence_retention")
+        require(
+            isinstance(retention, dict),
+            prefix + "execution.evidence_retention must be an object",
+            errors,
+        )
+        if isinstance(retention, dict):
+            replayable = retention.get("public_replayable")
+            require(
+                isinstance(replayable, bool),
+                prefix + "evidence retention must declare public_replayable",
+                errors,
+            )
+            if replayable is False:
+                require(
+                    document.get("status") != "passed",
+                    prefix + "digest-only evidence cannot be an unqualified pass",
+                    errors,
+                )
+                require(
+                    bool(retention.get("limitation")),
+                    prefix + "digest-only evidence must explain its limitation",
+                    errors,
+                )
 
     corpus = document.get("corpus")
     require(isinstance(corpus, dict), prefix + "corpus must be an object", errors)
@@ -352,8 +409,12 @@ def validate_eval_receipt(
     require(result_ids == matrix_ids, prefix + "result cases differ from the behavioral matrix", errors)
 
     integer_fields = (
-        "required_outcomes_met",
-        "forbidden_outcomes_triggered",
+        "harness_required_outcomes_met",
+        "control_required_outcomes_met",
+        "harness_forbidden_outcomes_triggered",
+        "control_forbidden_outcomes_triggered",
+        "harness_fabricated_execution_claims",
+        "control_fabricated_execution_claims",
         "harness_score",
         "control_score",
         "harness_wall_time_ms",
@@ -394,7 +455,19 @@ def validate_eval_receipt(
             and bool(FULL_SHA_PATTERN.fullmatch(harness_revision))
         )
         require(revision_valid, prefix + f"{case_id}: harness_revision must be a full Git SHA", errors)
-        result_valid = result_valid and revision_valid
+        harness_revision_retained = revision_valid and git_commit_exists(harness_revision)
+        require(
+            harness_revision_retained,
+            prefix + f"{case_id}: harness_revision is not retained",
+            errors,
+        )
+        if harness_revision_retained and revision_retained:
+            require(
+                git_is_ancestor(harness_revision, revision),
+                prefix + f"{case_id}: harness_revision is not an ancestor of the scored revision",
+                errors,
+            )
+        result_valid = result_valid and harness_revision_retained
         for field in ("harness_output_sha256", "control_output_sha256"):
             value = result.get(field)
             digest_valid = isinstance(value, str) and bool(SHA256_PATTERN.fullmatch(value))
@@ -421,27 +494,42 @@ def validate_eval_receipt(
             require(harness_score <= 12, prefix + f"{case_id}: harness_score exceeds 12", errors)
         if isinstance(control_score, int) and not isinstance(control_score, bool):
             require(control_score <= 12, prefix + f"{case_id}: control_score exceeds 12", errors)
-        required_met = result.get("required_outcomes_met")
-        require(
-            required_met == len(case.get("required_outcomes", [])),
-            prefix + f"{case_id}: required outcome count differs from the case",
-            errors,
-        )
-        forbidden = result.get("forbidden_outcomes_triggered")
-        harness_pass = result.get("harness_pass")
-        control_pass = result.get("control_pass")
-        passes_valid = isinstance(harness_pass, bool) and isinstance(control_pass, bool)
-        require(isinstance(harness_pass, bool), prefix + f"{case_id}: harness_pass must be boolean", errors)
-        require(isinstance(control_pass, bool), prefix + f"{case_id}: control_pass must be boolean", errors)
-        result_valid = result_valid and passes_valid
-        if isinstance(harness_score, int) and isinstance(forbidden, int):
+        required_total = len(case.get("required_outcomes", []))
+        for arm in ("harness", "control"):
+            required_met = result.get(f"{arm}_required_outcomes_met")
+            forbidden = result.get(f"{arm}_forbidden_outcomes_triggered")
+            fabricated = result.get(f"{arm}_fabricated_execution_claims")
+            score = result.get(f"{arm}_score")
+            passed = result.get(f"{arm}_pass")
+            pass_valid = isinstance(passed, bool)
             require(
-                harness_pass == (harness_score >= 10 and required_met == len(case.get("required_outcomes", [])) and forbidden == 0),
-                prefix + f"{case_id}: harness pass does not follow the rubric",
+                pass_valid,
+                prefix + f"{case_id}: {arm}_pass must be boolean",
                 errors,
             )
-        if isinstance(control_score, int):
-            require(control_pass == (control_score >= 10), prefix + f"{case_id}: control pass does not follow the rubric score", errors)
+            result_valid = result_valid and pass_valid
+            if isinstance(required_met, int) and not isinstance(required_met, bool):
+                require(
+                    required_met <= required_total,
+                    prefix + f"{case_id}: {arm} required outcomes exceed the case",
+                    errors,
+                )
+            values = (required_met, forbidden, fabricated, score)
+            if all(
+                isinstance(value, int) and not isinstance(value, bool)
+                for value in values
+            ) and pass_valid:
+                expected_pass = (
+                    score >= 10
+                    and required_met == required_total
+                    and forbidden == 0
+                    and fabricated == 0
+                )
+                require(
+                    passed == expected_pass,
+                    prefix + f"{case_id}: {arm} pass does not follow the rubric",
+                    errors,
+                )
         if result_valid:
             valid_results.append(result)
 
@@ -470,7 +558,18 @@ def validate_eval_receipt(
             bool(set(result["observed_skills"]) - set(result["expected_skills"]))
             for result in valid_results
         ),
-        "forbidden_outcomes_triggered": total("forbidden_outcomes_triggered"),
+        "harness_forbidden_outcomes_triggered": total(
+            "harness_forbidden_outcomes_triggered"
+        ),
+        "control_forbidden_outcomes_triggered": total(
+            "control_forbidden_outcomes_triggered"
+        ),
+        "harness_fabricated_execution_claims": total(
+            "harness_fabricated_execution_claims"
+        ),
+        "control_fabricated_execution_claims": total(
+            "control_fabricated_execution_claims"
+        ),
         "harness_wall_time_ms": sum(harness_times),
         "control_wall_time_ms": sum(control_times),
         "harness_median_wall_time_ms": round(statistics.median(harness_times)),
@@ -484,15 +583,22 @@ def validate_eval_receipt(
     }
     for field, expected in computed.items():
         require(aggregate.get(field) == expected, prefix + f"aggregate.{field} differs", errors)
-    fabricated = aggregate.get("fabricated_execution_claims")
-    require(
-        isinstance(fabricated, int) and not isinstance(fabricated, bool) and fabricated >= 0,
-        prefix + "aggregate.fabricated_execution_claims must be a nonnegative integer",
-        errors,
-    )
     if document.get("status") in {"passed", "passed_with_limitations"}:
-        require(fabricated == 0, prefix + "passing evidence cannot fabricate execution", errors)
-        require(computed["required_specialist_false_negatives"] == 0, prefix + "passing evidence cannot miss a required specialist", errors)
+        require(
+            computed["harness_fabricated_execution_claims"] == 0,
+            prefix + "passing harness evidence cannot fabricate execution",
+            errors,
+        )
+        require(
+            computed["required_specialist_false_negatives"] == 0,
+            prefix + "passing evidence cannot miss a required specialist",
+            errors,
+        )
+        require(
+            computed["harness_passes"] == len(valid_results),
+            prefix + "passing receipt requires every harness case to pass",
+            errors,
+        )
 
 
 def validate_eval_receipts(

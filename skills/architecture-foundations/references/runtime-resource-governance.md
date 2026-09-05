@@ -48,10 +48,12 @@ starting work that admission already predicts cannot finish.
 
 Start with one demonstrated contention pair before generalizing. Inject
 allocation denial at admission and during reclaimable and non-reclaimable
-phases. Verify protected progress, stop latency, cleanup completion, one retry,
-and restart recovery. Measure sustained pressure and fragmentation separately
-from failed allocation. Host fakes prove policy; device, firmware, or physical
-claims remain separate evidence owned by `verification-and-operations`.
+phases. These are owner-focused failure fixtures, not by themselves an
+independent fault campaign. Verify protected progress, stop latency, cleanup
+completion, one retry, and restart recovery. Measure sustained pressure and
+fragmentation separately from failed allocation. Host fakes prove policy;
+executing or assessing device, firmware, or physical proof belongs to
+`verification-and-operations` when the requested claim requires it.
 
 ## Completion check
 
