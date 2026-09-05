@@ -42,6 +42,8 @@ the repository's chosen workflow.
    `change-classification.md`. Read each selected specialist from the table's
    direct `SKILL.md` link. A minimal change normally selects no specialist.
    Several triggers on one path form one integrated analysis.
+   Do not answer a non-minimal request from the router alone: finish specialist
+   selection and read each selected skill before proposing work or evidence.
 7. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
    enforcement rungs and exceptions. Reuse existing documents and commands.
