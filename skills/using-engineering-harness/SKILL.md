@@ -7,6 +7,11 @@ description: Bootstrap or adopt a repository, route ordinary change work, or har
 
 This is the public entry point. Users choose a workflow, not specialist skills.
 
+For **Change** and **Harden**, read `change-classification.md` before applying
+another installed workflow or inspecting solution code. If the resulting route
+is non-minimal, read every selected owner skill before continuing. Another skill
+may supplement this route, but does not replace it.
+
 ## Workflows
 
 - **Bootstrap:** establish authority, constraints, capability profile, and the
@@ -33,8 +38,8 @@ the repository's chosen workflow.
 3. For **Adopt**, run `scripts/profile_repository.py` to create an evidence-backed
    proposal, review uncertain detections, assign repository enforcement owners,
    record approved exceptions, and mark the profile accepted.
-4. For **Change** or **Harden**, read
-   [`change-classification.md`](../../references/change-classification.md) and
+4. For **Change** or **Harden**, use
+   [`change-classification.md`](../../references/change-classification.md) to
    build the smallest applicable internal risk card.
 5. Name the authoritative fact or behavior, its owner, requested outcome,
    non-goals, and authorized action scopes.
