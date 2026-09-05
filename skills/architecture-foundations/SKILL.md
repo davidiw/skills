@@ -1,6 +1,6 @@
 ---
 name: architecture-foundations
-description: Establish or repair system authority, quality scenarios, ownership boundaries, dependency direction, and composition. Use for new subsystems, architecture decisions, boundary changes, or brownfield ownership ambiguity; not for routine local edits within an established owner.
+description: Establish or repair system authority, quality scenarios, ownership boundaries, dependency direction, composition, and scarce runtime-resource admission. Use for new subsystems, architecture decisions, boundary changes, constrained resource pools, or brownfield ownership ambiguity; not for routine local edits within an established owner.
 ---
 
 # Architecture Foundations

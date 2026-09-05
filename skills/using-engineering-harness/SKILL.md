@@ -39,11 +39,13 @@ the repository's chosen workflow.
 5. Name the authoritative fact or behavior, its owner, requested outcome,
    non-goals, and authorized action scopes.
 6. Use the single linked routing table and dominance rules in
-   `change-classification.md`. Read each selected specialist from the table's
-   direct `SKILL.md` link. A minimal change normally selects no specialist.
-   Several triggers on one path form one integrated analysis.
-   Do not answer a non-minimal request from the router alone: finish specialist
-   selection and read each selected skill before proposing work or evidence.
+   `change-classification.md`. For every material risk-card signal, either name
+   the selected owner skill or the exact dominance rule that excludes it. Read
+   every selected specialist from the table's direct `SKILL.md` link before
+   proposing work or evidence. A minimal change normally selects no specialist;
+   several triggers on one path form one integrated analysis. Do not infer an
+   owner skill's policy from the invariant catalog or answer a non-minimal
+   request from the router alone.
 7. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
    enforcement rungs and exceptions. Reuse existing documents and commands.

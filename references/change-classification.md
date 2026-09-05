@@ -63,7 +63,7 @@ adversarial review. Do not turn either into repository-wide cleanup.
 | New subsystem, ownership ambiguity, dependency direction, or composition | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
 | Scarce runtime pools, protected progress, admission, or cooperative reclamation | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
 | Work must survive its initiator | [`durable-workflows`](../skills/durable-workflows/SKILL.md) |
-| Public API, message, event, provider, trust, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
+| Public API, cross-process message or event, external provider, trust boundary, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
 | Demonstrated recurring architecture divergence, consolidation, or hotspot root-cause repair | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
@@ -84,6 +84,9 @@ owns the path. Do not run independent architecture exercises for each signal.
 - Do not add `interfaces-and-events` for an internal adapter interface already
   owned by `application-composition`; add it for public, trust-boundary, or
   independently evolving contracts.
+- Do not add `interfaces-and-events` for a synchronous in-process notification
+  inside one established owner. Add it when delivery, transport, independent
+  consumers, or a public event contract is changing.
 - Do not add `verification-and-operations` because another skill requires
   focused tests. Add it for exact-revision gates, generated or physical proof,
   machine/operator tooling, repair, release, deployment, or publication.

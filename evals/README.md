@@ -37,7 +37,10 @@ For installed-versus-control runs, use separate fresh `CODEX_HOME` directories
 and install the plugin only in the harness home. Do not pass
 `--ignore-user-config` after installation: that option also ignores the
 isolated home's plugin configuration and silently turns the harness arm into a
-second control. Verify plugin inventory in both homes before model calls.
+second control. Install independently into each fresh harness home, or reuse one
+verified installed home sequentially; copying an installed `CODEX_HOME` does not
+re-register its skill aliases. Verify plugin inventory in both homes before
+model calls.
 5. Preserve non-sensitive results with content hashes. Private fixtures and
    outputs remain outside Git and contribute only bounded aggregate scores.
 6. Add trials or cases without discarding earlier results. Compare only runs
