@@ -52,3 +52,12 @@ phases. Verify protected progress, stop latency, cleanup completion, one retry,
 and restart recovery. Measure sustained pressure and fragmentation separately
 from failed allocation. Host fakes prove policy; device, firmware, or physical
 claims remain separate evidence owned by `verification-and-operations`.
+
+## Completion check
+
+Do not compress this workflow to generic reserve-and-reclaim advice. A design,
+plan, or review is incomplete until it reports every resource-contract field
+for each contending activity and names all five mechanisms separately. Mark a
+field `unknown` or `undecided` when repository evidence does not establish it;
+do not silently omit it. State which evidence is automated and which physical
+evidence remains pending.

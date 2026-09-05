@@ -12,7 +12,7 @@
       "request": "Change the parser to recognize an optional string label field and add focused tests.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
-      "required_outcomes": ["Edit the existing parser owner and focused tests for label", "Preserve omission when label is absent and ValueError for a malformed label", "State that no durable, event, migration, or release machinery is activated"],
+      "required_outcomes": ["Edit the existing parser owner and focused tests for label", "Preserve omission when label is absent and ValueError for a malformed label", "Leave durable, event, migration, and release machinery unactivated"],
       "forbidden_outcomes": ["Introduce a repository layer, workflow engine, event bus, state machine, compatibility program, plugin system, architecture document, or operational command layer", "Run a broad architecture audit"]
     },
     {
@@ -35,7 +35,7 @@
       "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
       "fixture": "fixtures/static-site",
       "context": "A static site has one HTML page, one stylesheet, and a rendered-content test. It has no application server, persistence, accounts, build publication workflow, or client state.",
-      "request": "Add a short FAQ section using the existing markup and style.",
+      "request": "Add a short FAQ section using the existing markup and style, and update the existing rendered-content test.",
       "expected_class": "minimal",
       "expected_skills": ["using-engineering-harness"],
       "required_outcomes": ["Edit the existing page and rendered-content test", "Preserve the static deployment model"],
