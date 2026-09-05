@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from profile_repository import check_drift, propose_profile, scan_repository  # noqa: E402
 from render_invariants import OUTPUT, render  # noqa: E402
+from validate_package import validate_eval_receipt  # noqa: E402
 from validate_profile import validate_profile  # noqa: E402
 
 
@@ -429,6 +430,56 @@ class EvaluationCorpusTest(unittest.TestCase):
                 "requires-physical-proof",
             }
             <= tags
+        )
+
+    def test_directional_receipt_is_bound_to_current_cases_and_aggregates(self) -> None:
+        cases = json.loads((ROOT / "evals" / "cases.json").read_text())["cases"]
+        matrix_ids = json.loads(
+            (ROOT / "evals" / "behavioral-matrix.json").read_text()
+        )["case_ids"]
+        receipt = json.loads(
+            (ROOT / "evals" / "results" / "0.4.0-directional.json").read_text()
+        )
+        case_by_id = {case["id"]: case for case in cases}
+        errors: list[str] = []
+
+        validate_eval_receipt(
+            receipt,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="test receipt",
+        )
+
+        self.assertEqual(errors, [])
+
+        stale = copy.deepcopy(receipt)
+        stale["aggregate"]["harness_score"] += 1
+        errors = []
+        validate_eval_receipt(
+            stale,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="stale receipt",
+        )
+
+        self.assertIn("stale receipt: aggregate.harness_score differs", errors)
+
+        malformed = copy.deepcopy(receipt)
+        malformed["results"][0]["harness_wall_time_ms"] = "slow"
+        errors = []
+        validate_eval_receipt(
+            malformed,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label="malformed receipt",
+        )
+
+        self.assertIn(
+            "malformed receipt: tiny-cli-restraint: harness_wall_time_ms must be a nonnegative integer",
+            errors,
         )
 
 

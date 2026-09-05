@@ -50,5 +50,10 @@ model calls.
 `scripts/validate_package.py` validates corpus shape and routing names. It does
 not execute a model or claim behavioral success.
 
+The current non-statistical execution receipt is
+[`results/0.4.0-directional.json`](results/0.4.0-directional.json). It records
+selected run revisions, routing, scores, latency, token use, output digests, and
+known model variance without treating structural validation as execution.
+
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.

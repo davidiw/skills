@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
+import statistics
 import sys
 from pathlib import Path
 
@@ -33,7 +35,10 @@ RUNGS = {
 TIMINGS = {"ownership_declaration", "boundary_introduction", "risk_proportional"}
 LINK_PATTERN = re.compile(r"\[[^]]+\]\(([^)]+)\)")
 SHA_PATTERN = re.compile(r"`[0-9a-f]{40}`")
+FULL_SHA_PATTERN = re.compile(r"^[0-9a-f]{40}$")
+SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 KEBAB_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+EVIDENCE_STATUSES = {"passed", "passed_with_limitations", "failed"}
 NEGATIVE_COVERAGE = {
     "avoid-durable-runtime",
     "avoid-event-system",
@@ -287,6 +292,229 @@ def validate_evals(errors: list[str]) -> None:
     if audit_case:
         require("verification-and-operations" in audit_case["expected_skills"], "adversarial review does not route to verification", errors)
         require("architecture-hardening" not in audit_case["expected_skills"], "adversarial review routes to hardening", errors)
+
+    validate_eval_receipts(case_by_id, matrix_ids, errors)
+
+
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def validate_eval_receipt(
+    document: dict[str, object],
+    case_by_id: dict[str, dict[str, object]],
+    matrix_ids: list[str],
+    errors: list[str],
+    *,
+    label: str,
+) -> None:
+    prefix = f"{label}: "
+    require(document.get("schema_version") == 1, prefix + "schema_version must be 1", errors)
+    require(document.get("status") in EVIDENCE_STATUSES, prefix + "invalid status", errors)
+    require(
+        document.get("harness_policy_version") == package_version(),
+        prefix + "stale harness policy version",
+        errors,
+    )
+    revision = document.get("scored_source_revision")
+    require(
+        isinstance(revision, str) and bool(FULL_SHA_PATTERN.fullmatch(revision)),
+        prefix + "scored_source_revision must be a full Git SHA",
+        errors,
+    )
+
+    corpus = document.get("corpus")
+    require(isinstance(corpus, dict), prefix + "corpus must be an object", errors)
+    if isinstance(corpus, dict):
+        expected_hashes = {
+            "behavioral_matrix_sha256": file_sha256(ROOT / "evals" / "behavioral-matrix.json"),
+            "cases_sha256": file_sha256(ROOT / "evals" / "cases.json"),
+            "rubric_sha256": file_sha256(ROOT / "evals" / "rubric.md"),
+        }
+        for field, expected in expected_hashes.items():
+            value = corpus.get(field)
+            require(
+                isinstance(value, str) and bool(SHA256_PATTERN.fullmatch(value)),
+                prefix + f"corpus.{field} must be a SHA-256 digest",
+                errors,
+            )
+            require(value == expected, prefix + f"corpus.{field} is stale", errors)
+        require(corpus.get("prompt_mode") == "natural", prefix + "prompt mode must be natural", errors)
+        require(corpus.get("trials_per_selected_pair") == 1, prefix + "directional receipt must use one trial", errors)
+        require(corpus.get("case_count") == len(matrix_ids), prefix + "corpus case_count differs", errors)
+
+    results = document.get("results")
+    require(isinstance(results, list), prefix + "results must be an array", errors)
+    if not isinstance(results, list):
+        return
+    result_ids = [result.get("case_id") for result in results if isinstance(result, dict)]
+    require(len(result_ids) == len(results), prefix + "each result must be an object", errors)
+    require(result_ids == matrix_ids, prefix + "result cases differ from the behavioral matrix", errors)
+
+    integer_fields = (
+        "required_outcomes_met",
+        "forbidden_outcomes_triggered",
+        "harness_score",
+        "control_score",
+        "harness_wall_time_ms",
+        "control_wall_time_ms",
+        "harness_input_tokens",
+        "harness_cached_input_tokens",
+        "harness_output_tokens",
+        "control_input_tokens",
+        "control_cached_input_tokens",
+        "control_output_tokens",
+    )
+    valid_results: list[dict[str, object]] = []
+    for result in results:
+        if not isinstance(result, dict):
+            continue
+        result_valid = True
+        case_id = result.get("case_id")
+        case = case_by_id.get(case_id) if isinstance(case_id, str) else None
+        require(case is not None, prefix + f"unknown result case: {case_id}", errors)
+        if case is None:
+            continue
+        expected_skills = result.get("expected_skills")
+        observed_skills = result.get("observed_skills")
+        expected_route_valid = expected_skills == case.get("expected_skills")
+        require(expected_route_valid, prefix + f"{case_id}: expected route is stale", errors)
+        observed_route_valid = (
+            isinstance(observed_skills, list)
+            and bool(observed_skills)
+            and observed_skills[0] == ROUTER_SKILL
+            and len(observed_skills) == len(set(observed_skills))
+            and set(observed_skills) <= SKILL_NAMES
+        )
+        require(observed_route_valid, prefix + f"{case_id}: observed route is invalid", errors)
+        result_valid = result_valid and expected_route_valid and observed_route_valid
+        harness_revision = result.get("harness_revision")
+        revision_valid = (
+            isinstance(harness_revision, str)
+            and bool(FULL_SHA_PATTERN.fullmatch(harness_revision))
+        )
+        require(revision_valid, prefix + f"{case_id}: harness_revision must be a full Git SHA", errors)
+        result_valid = result_valid and revision_valid
+        for field in ("harness_output_sha256", "control_output_sha256"):
+            value = result.get(field)
+            digest_valid = isinstance(value, str) and bool(SHA256_PATTERN.fullmatch(value))
+            require(
+                digest_valid,
+                prefix + f"{case_id}: {field} must be a SHA-256 digest",
+                errors,
+            )
+            result_valid = result_valid and digest_valid
+        for field in integer_fields:
+            value = result.get(field)
+            integer_valid = (
+                isinstance(value, int) and not isinstance(value, bool) and value >= 0
+            )
+            require(
+                integer_valid,
+                prefix + f"{case_id}: {field} must be a nonnegative integer",
+                errors,
+            )
+            result_valid = result_valid and integer_valid
+        harness_score = result.get("harness_score")
+        control_score = result.get("control_score")
+        if isinstance(harness_score, int) and not isinstance(harness_score, bool):
+            require(harness_score <= 12, prefix + f"{case_id}: harness_score exceeds 12", errors)
+        if isinstance(control_score, int) and not isinstance(control_score, bool):
+            require(control_score <= 12, prefix + f"{case_id}: control_score exceeds 12", errors)
+        required_met = result.get("required_outcomes_met")
+        require(
+            required_met == len(case.get("required_outcomes", [])),
+            prefix + f"{case_id}: required outcome count differs from the case",
+            errors,
+        )
+        forbidden = result.get("forbidden_outcomes_triggered")
+        harness_pass = result.get("harness_pass")
+        control_pass = result.get("control_pass")
+        passes_valid = isinstance(harness_pass, bool) and isinstance(control_pass, bool)
+        require(isinstance(harness_pass, bool), prefix + f"{case_id}: harness_pass must be boolean", errors)
+        require(isinstance(control_pass, bool), prefix + f"{case_id}: control_pass must be boolean", errors)
+        result_valid = result_valid and passes_valid
+        if isinstance(harness_score, int) and isinstance(forbidden, int):
+            require(
+                harness_pass == (harness_score >= 10 and required_met == len(case.get("required_outcomes", [])) and forbidden == 0),
+                prefix + f"{case_id}: harness pass does not follow the rubric",
+                errors,
+            )
+        if isinstance(control_score, int):
+            require(control_pass == (control_score >= 10), prefix + f"{case_id}: control pass does not follow the rubric score", errors)
+        if result_valid:
+            valid_results.append(result)
+
+    aggregate = document.get("aggregate")
+    require(isinstance(aggregate, dict), prefix + "aggregate must be an object", errors)
+    if not isinstance(aggregate, dict) or len(valid_results) != len(matrix_ids):
+        return
+
+    def total(field: str) -> int:
+        return sum(int(result[field]) for result in valid_results)
+
+    harness_times = [int(result["harness_wall_time_ms"]) for result in valid_results]
+    control_times = [int(result["control_wall_time_ms"]) for result in valid_results]
+    computed = {
+        "harness_score": total("harness_score"),
+        "control_score": total("control_score"),
+        "maximum_score": 12 * len(valid_results),
+        "harness_passes": sum(result.get("harness_pass") is True for result in valid_results),
+        "control_passes": sum(result.get("control_pass") is True for result in valid_results),
+        "case_count": len(valid_results),
+        "required_specialist_false_negatives": sum(
+            not (set(result["expected_skills"]) - {ROUTER_SKILL}) <= set(result["observed_skills"])
+            for result in valid_results
+        ),
+        "specialist_overactivations": sum(
+            bool(set(result["observed_skills"]) - set(result["expected_skills"]))
+            for result in valid_results
+        ),
+        "forbidden_outcomes_triggered": total("forbidden_outcomes_triggered"),
+        "harness_wall_time_ms": sum(harness_times),
+        "control_wall_time_ms": sum(control_times),
+        "harness_median_wall_time_ms": round(statistics.median(harness_times)),
+        "control_median_wall_time_ms": round(statistics.median(control_times)),
+        "harness_input_tokens": total("harness_input_tokens"),
+        "harness_cached_input_tokens": total("harness_cached_input_tokens"),
+        "harness_output_tokens": total("harness_output_tokens"),
+        "control_input_tokens": total("control_input_tokens"),
+        "control_cached_input_tokens": total("control_cached_input_tokens"),
+        "control_output_tokens": total("control_output_tokens"),
+    }
+    for field, expected in computed.items():
+        require(aggregate.get(field) == expected, prefix + f"aggregate.{field} differs", errors)
+    fabricated = aggregate.get("fabricated_execution_claims")
+    require(
+        isinstance(fabricated, int) and not isinstance(fabricated, bool) and fabricated >= 0,
+        prefix + "aggregate.fabricated_execution_claims must be a nonnegative integer",
+        errors,
+    )
+    if document.get("status") in {"passed", "passed_with_limitations"}:
+        require(fabricated == 0, prefix + "passing evidence cannot fabricate execution", errors)
+        require(computed["required_specialist_false_negatives"] == 0, prefix + "passing evidence cannot miss a required specialist", errors)
+
+
+def validate_eval_receipts(
+    case_by_id: dict[str, dict[str, object]],
+    matrix_ids: list[str],
+    errors: list[str],
+) -> None:
+    results_dir = ROOT / "evals" / "results"
+    receipt_paths = sorted(results_dir.glob("*.json")) if results_dir.is_dir() else []
+    require(bool(receipt_paths), "at least one behavioral evidence receipt is required", errors)
+    for path in receipt_paths:
+        document = json.loads(path.read_text(encoding="utf-8"))
+        require(isinstance(document, dict), f"{path.relative_to(ROOT)}: receipt must be an object", errors)
+        if not isinstance(document, dict):
+            continue
+        validate_eval_receipt(
+            document,
+            case_by_id,
+            matrix_ids,
+            errors,
+            label=str(path.relative_to(ROOT)),
+        )
 
 
 def validate_manifest_sources_and_version(errors: list[str]) -> None:
