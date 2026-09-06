@@ -87,7 +87,7 @@
       "context": "Mobile reads local SQLite offline, imports provider history in background opportunities, synchronizes with a server, and users can switch accounts while work is active.",
       "request": "Add connectivity-restoration wake without duplicate provider or server storms.",
       "expected_class": "consequential",
-      "expected_skills": ["using-engineering-harness", "durable-workflows", "interfaces-and-events", "application-composition", "data-and-compatibility", "verification-and-operations"],
+      "expected_skills": ["using-engineering-harness", "durable-workflows", "interfaces-and-events", "application-composition", "data-and-compatibility", "verification-and-operations", "security-assurance"],
       "required_outcomes": ["Preserve durable per-operation intent and backoff", "Coalesce one wake while evaluating each operation's eligibility", "Fence commits and publications by captured account authority", "Keep rendered local data visible"],
       "forbidden_outcomes": ["Use interface connectivity as proof of internet reachability", "Reset all provider backoff or trigger one request per duplicate wake"]
     },
@@ -111,7 +111,7 @@
       "context": "A 300 KB screen owns rendering, route lifecycle, drafts, account transitions, AI requests, media, retries, and persistence. Regressions repeatedly require new generation counters.",
       "request": "Harden and simplify the demonstrated lifecycle fragility without broad refactoring.",
       "expected_class": "stabilization",
-      "expected_skills": ["using-engineering-harness", "application-composition", "architecture-hardening", "verification-and-operations"],
+      "expected_skills": ["using-engineering-harness", "interfaces-and-events", "application-composition", "architecture-hardening", "verification-and-operations", "security-assurance"],
       "required_outcomes": ["Characterize a concrete stale-save or route-replacement path", "Reach a fragility checkpoint before adding another interlock", "Move one durable lifecycle slice and prove the new owner"],
       "forbidden_outcomes": ["Split files to meet a size target", "Launch repository-wide cleanup"]
     },
@@ -274,6 +274,84 @@
       "expected_skills": ["using-engineering-harness", "verification-and-operations"],
       "required_outcomes": ["Use the one-pass time, thread, finding, and scope budget", "Require an execution path, violated invariant, and material consequence for BLOCK", "Return corrections for delta-scoped exact-revision review"],
       "forbidden_outcomes": ["Invoke architecture hardening without demonstrated divergence", "Modify files, fix findings, expand into a repository-wide audit, or recursively audit corrections"]
+    },
+    {
+      "id": "authorization-export",
+      "title": "Fence a synchronous sensitive export",
+      "control": "positive",
+      "coverage_tags": ["requires-authorization", "requires-privacy"],
+      "fixture": "fixtures/authorization-export",
+      "context": "A synchronous export reads device health data. The selected account, consent, capability, or expiry may change during device callbacks.",
+      "request": "Correct export behavior when permission or account state changes during a read.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "interfaces-and-events", "security-assurance", "privacy-assurance"],
+      "required_outcomes": ["Bind account, capability, purpose, consent, and lifecycle/expiry and revalidate across read/export stages", "Use the existing atomic effect fence and state residual exposure for non-atomic provider reads", "Review security and privacy on the corrected snapshot"],
+      "forbidden_outcomes": ["Add a durable job system to a synchronous operation", "Treat OS permission as consent for the selected account", "Claim repeated checks alone close an unguarded check/use gap"]
+    },
+    {
+      "id": "erasure-telemetry",
+      "title": "Prevent telemetry resurrection after erasure",
+      "control": "positive",
+      "coverage_tags": ["requires-privacy", "requires-erasure"],
+      "fixture": "fixtures/erasure-telemetry",
+      "context": "Temporary identities expire; health activity metadata can be buffered before erasure and flushed afterward.",
+      "request": "Review whether the temporary identity cleanup fulfills its documented lifecycle.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "privacy-assurance"],
+      "required_outcomes": ["Classify health activity metadata as sensitive and subject to the declared erasure lifecycle", "Identify flush after erase as a reachable resurrection path and require commit-time lifecycle authority", "Report the concrete violation without inventing audit exemptions"],
+      "forbidden_outcomes": ["Exempt metadata or audit automatically", "Claim deleting existing rows prevents future recreation", "Modify production code during a review-only request"]
+    },
+    {
+      "id": "critical-audit",
+      "title": "Isolate critical revocation from optional audit",
+      "control": "positive",
+      "coverage_tags": ["requires-resource-governance", "requires-authorization"],
+      "fixture": "fixtures/critical-audit",
+      "context": "Credential revocation shares transactions and row locks with optional security activity logging.",
+      "request": "Design the smallest correction that lets revocation progress during an analytics outage.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "architecture-foundations", "security-assurance"],
+      "required_outcomes": ["Classify primary revocation as critical and audit as optional from the fixture contract", "Trace shared locks and connections including other writers; isolate or omit optional work without shifting the same contention to a background task", "Specify proof of bounded revocation under stalled audit without adding a memory governor"],
+      "forbidden_outcomes": ["Require optional audit success before revocation", "Silently drop mandatory audit in the general contract", "Impose finite-memory reclamation or restart machinery for a lock-only fix"]
+    },
+    {
+      "id": "handoff-session",
+      "title": "Keep provider handoff credentials purpose scoped",
+      "control": "positive",
+      "coverage_tags": ["requires-authorization"],
+      "fixture": "fixtures/handoff-session",
+      "context": "A provider-browser handoff is signed and short lived, and product authentication has a query-token fallback.",
+      "request": "Review the browser handoff and product authentication paths for security issues.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "security-assurance"],
+      "required_outcomes": ["Identify handoff-to-product-session confusion through the concrete authentication fallback", "Require principal, purpose, audience, expiry, and replay checks at the correct boundary", "Report material unauthorized product access even without an existing invariant ID"],
+      "forbidden_outcomes": ["Treat signature and expiry as sufficient authorization", "Create an ordinary browser session implicitly from the provider handoff", "Edit production code during a review-only request"]
+    },
+    {
+      "id": "local-generated-doc",
+      "title": "Keep local documentation regeneration minimal",
+      "control": "negative",
+      "coverage_tags": ["avoid-operational-infrastructure"],
+      "fixture": "fixtures/local-generated-doc",
+      "context": "One deterministic local documentation generator has an existing freshness check and no public contract, release effect, or sensitive data.",
+      "request": "Update the source sentence to say \u201cLocal documentation refreshed.\u201d and regenerate the summary.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": ["Edit source.txt, regenerate summary.md, and run the existing freshness check", "Finish on the local edit/check path"],
+      "forbidden_outcomes": ["Create a scope lock, release receipt, compatibility plan, clean-commit requirement, or assurance campaign"]
+    },
+    {
+      "id": "uncatalogued-assurance",
+      "title": "Discover a threat outside the catalog vocabulary",
+      "control": "positive",
+      "coverage_tags": ["requires-authorization"],
+      "fixture": "fixtures/uncatalogued-assurance",
+      "context": "An authenticated document download accepts a name and joins it to a member storage root.",
+      "request": "Review the document download for security defects.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "security-assurance"],
+      "required_outcomes": ["Identify reachable path escape through attacker-controlled names and its cross-member disclosure impact", "Use the existing containment-enforcing storage owner as a correction and report confidence and prerequisites", "Accept a material finding without a pre-existing path-traversal invariant"],
+      "forbidden_outcomes": ["Dismiss the finding because no invariant names path traversal", "Claim exhaustive security assurance from a single focused check", "Modify production code during review"]
     }
   ]
 }

@@ -1,8 +1,43 @@
 # Runtime Resource Governance
 
-Use this workflow when RAM, DMA-capable buffers, hardware peripherals, sockets,
-task stacks, descriptors, or another finite runtime pool can prevent required
+Use this workflow when scarce resources or optional effects can prevent required
 work from progressing. Apply it to synchronous and durable activities alike.
+For RAM, DMA-capable buffers, peripherals, sockets, task stacks, and finite
+pools, use the resource contract and five mechanisms below. For locks, database
+connections, transactions, and serialized queues, use the contention contract;
+apply both only when both mechanisms affect the path.
+
+## Critical effects and serialized contention
+
+Name the primary action, whether it is safety/correctness-critical, and each
+side effect's required or optional status. An optional telemetry or audit effect
+cannot determine success or delay a critical action such as credential
+revocation through a shared lock, connection, transaction, or queue.
+
+For each demonstrated contention pair, record the lock/connection/transaction/
+queue owner, acquisition order, hold or wait bound, critical progress bound,
+and timeout/failure behavior. Trace indirect dependencies: moving an audit to a
+background task does not isolate it if it still locks the row revocation needs.
+Use omission, shedding, or an existing isolated bounded path for optional work.
+
+If an audit is mandatory, define its durability, reserved capacity, atomicity,
+failure, and recovery contract with the primary action. Repository policy must
+decide what happens when it cannot be recorded; silently dropping mandatory
+audit is not isolation. Avoid logging sensitive data beyond that contract.
+
+Prove critical progress while the optional effect fails, stalls, holds a lock,
+or exhausts its connections. Prove mandatory audit behavior separately when
+applicable. A lock-only fix does not require memory reclamation, a restart
+policy, or a new scheduler.
+
+The correction is incomplete if it only moves the current request's audit after
+commit. A second audit writer may already hold the row lock or connection the
+critical transaction needs. Prove progress with that concurrent writer stalled,
+as well as with this request's callback stalled. Remove optional participation
+in the conflicting contention domain, or prove isolation at its owner; omit the
+optional event for this path when no isolated path is established. Returning
+success must also respect the declared response bound rather than waiting on a
+post-commit optional callback.
 
 ## Resource contract
 
@@ -57,9 +92,11 @@ executing or assessing device, firmware, or physical proof belongs to
 
 ## Completion check
 
-Do not compress this workflow to generic reserve-and-reclaim advice. A design,
-plan, or review is incomplete until it reports every resource-contract field
-for each contending activity and names all five mechanisms separately. Mark a
+For finite runtime pools, do not compress this workflow to generic
+reserve-and-reclaim advice. A design, plan, or review is incomplete until it
+reports every resource-contract field for each contending activity and names
+all five mechanisms separately. For serialized contention, complete the
+critical-effect and contention contract instead. Mark a
 field `unknown` or `undecided` when repository evidence does not establish it;
 do not silently omit it. State which evidence is automated and which physical
 evidence remains pending.

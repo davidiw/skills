@@ -24,11 +24,12 @@ entries without redefining them.
 4. Build an ownership map: authoritative facts, canonical behaviors,
    representations, resources, and their writers. Resolve unowned or multiply
    owned state before drawing module boxes.
-   When finite runtime pools can block required progress, read
+   When scarce resources or optional effects can block required progress, read
    [`runtime-resource-governance.md`](references/runtime-resource-governance.md)
-   and complete its per-activity resource contract and five-mechanism
-   separation before selecting an allocator or scheduler. A protected reserve
-   alone is not a complete resource policy. Preserve those two explicit
+   and complete the applicable pool or serialized-contention contract before
+   selecting an allocator or scheduler. For finite runtime pools, retain the
+   per-activity contract and five-mechanism separation. A protected reserve
+   alone is not a complete resource policy. Preserve the applicable explicit
    sections in the resulting design, plan, or review; mark unknown fields rather
    than summarizing them away. Finish with an **Evidence classes** section that
    distinguishes host or fake proof from physical release proof and marks each

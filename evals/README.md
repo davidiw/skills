@@ -50,10 +50,25 @@ model calls.
 `scripts/validate_package.py` validates corpus shape and routing names. It does
 not execute a model or claim behavioral success.
 
-The current non-statistical execution receipt is
+The retained historical non-statistical execution receipt is
 [`results/0.4.0-directional.json`](results/0.4.0-directional.json). It records
 selected run revisions, routing, scores, latency, token use, output digests, and
 known model variance without treating structural validation as execution.
+Its inputs are validated against the recorded Git revision and policy, not the
+current corpus. It does not prove 0.5.0 behavior. The expanded matrix includes
+synchronous authorization changes, telemetry after erasure, optional-audit
+contention, purpose-scoped browser handoff, an uncatalogued threat, and local
+documentation regeneration.
+
+For a reliability claim, run repeated trials against one frozen package snapshot
+with separate control and harness environments. Include an installed competing
+diagnosis skill and real edits in isolated fixture copies; keep evaluator
+metadata from influencing routing. Report all trials, routing misses and excess
+loads, latency, cached and uncached tokens, and required/forbidden outcomes.
+Explicit-router forward tests diagnose content and routing instructions; they
+do not establish natural-prompt discovery or installed-versus-control benefit.
+The bounded [0.5.0 development notes](results/0.5.0-forward-notes.md) retain
+observed findings, routing misses, retests, and missing evidence from that work.
 
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.

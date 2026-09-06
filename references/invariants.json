@@ -84,12 +84,12 @@
     },
     {
       "id": "resource-admission-and-reclamation",
-      "statement": "Activities holding scarce runtime resources are admitted against protected reserves, have one owning lifecycle, and complete or cooperatively yield within a bounded deadline; required control-plane progress is never reclaimed for optional work.",
-      "activates_when": "runtime activities contend for scarce memory, buffers, peripherals, sockets, task capacity, or another resource whose exhaustion can block required progress",
+      "statement": "Activities holding scarce runtime resources are admitted against protected reserves, have one owning lifecycle, and complete or cooperatively yield within a bounded deadline; required control-plane progress is never reclaimed for optional work. A safety/correctness-critical action cannot depend on an optional telemetry or audit effect, including contention that effect introduces. A mandatory audit has an explicit durability, capacity, and failure contract.",
+      "activates_when": "runtime activities contend for memory, buffers, peripherals, sockets, task capacity, locks, database connections, transactions, serialized queues, or another contention domain that can block required progress",
       "default_rung": "runtime_guard",
       "enforcement_timing": "boundary_introduction",
       "owner_skill": "architecture-foundations",
-      "consumed_by": ["durable-workflows", "application-composition", "verification-and-operations"]
+      "consumed_by": ["durable-workflows", "application-composition", "verification-and-operations", "security-assurance"]
     },
     {
       "id": "transient-presentation",
@@ -120,12 +120,12 @@
     },
     {
       "id": "authority-context-fencing",
-      "statement": "Durable operations capture stable account or tenant authority at admission and fence every commit, acknowledgment, and publication.",
-      "activates_when": "active authority can change while work is in flight",
+      "statement": "Sensitive or authority-dependent operations bind principal/account, capability, purpose, consent, and lifecycle/expiry to one authorization context and fence reads, exports, commits, acknowledgments, and publication against its revocation or change. Possessing a credential, OS permission, or provider grant alone does not authorize its use for another principal, purpose, operation, or account.",
+      "activates_when": "authorization can change during synchronous or durable work, or sensitive data is accessed",
       "default_rung": "fault_test",
       "enforcement_timing": "risk_proportional",
-      "owner_skill": "durable-workflows",
-      "consumed_by": ["data-and-compatibility"]
+      "owner_skill": "interfaces-and-events",
+      "consumed_by": ["durable-workflows", "data-and-compatibility", "application-composition", "security-assurance", "privacy-assurance"]
     },
     {
       "id": "representation-separation",
@@ -139,7 +139,7 @@
     {
       "id": "explicit-deletion",
       "statement": "Absence is not deletion; destruction requires an explicit lifecycle event such as a tombstone, erasure, or verified lossless migration.",
-      "activates_when": "state is synchronized, imported, repaired, or migrated",
+      "activates_when": "state is synchronized, imported, repaired, migrated, expired, or erased",
       "default_rung": "fault_test",
       "enforcement_timing": "risk_proportional",
       "owner_skill": "data-and-compatibility",
@@ -188,7 +188,25 @@
       "default_rung": "ci_check",
       "enforcement_timing": "risk_proportional",
       "owner_skill": "verification-and-operations",
-      "consumed_by": ["architecture-hardening"]
+      "consumed_by": ["architecture-hardening", "security-assurance", "privacy-assurance"]
+    },
+    {
+      "id": "privacy-lifecycle",
+      "statement": "Derived data, telemetry, logs, audits, caches, and artifacts inherit source sensitivity, purpose, retention, and erasure obligations unless a repository-authorized, evidence-backed exception proves otherwise. Erasure or expiry revokes future write authority as well as removing existing data; delayed work cannot recreate erased state.",
+      "activates_when": "sensitive data or its derivatives are collected, read, retained, exported, expired, or erased",
+      "default_rung": "fault_test",
+      "enforcement_timing": "risk_proportional",
+      "owner_skill": "data-and-compatibility",
+      "consumed_by": ["interfaces-and-events", "durable-workflows", "application-composition", "privacy-assurance"]
+    },
+    {
+      "id": "open-world-assurance",
+      "statement": "Consequential changes to sensitive flows or authorization boundaries receive scoped security/privacy assurance at the relevant seams. An evidenced material defect can block acceptance without a pre-existing catalog invariant; review records the violated obligation, execution path, consequence, confidence, and coverage limits.",
+      "activates_when": "a consequential change affects sensitive data, authorization, privacy lifecycle, or a security/privacy assurance review is requested",
+      "default_rung": "audit",
+      "enforcement_timing": "risk_proportional",
+      "owner_skill": "verification-and-operations",
+      "consumed_by": ["security-assurance", "privacy-assurance"]
     }
   ]
 }

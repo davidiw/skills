@@ -213,6 +213,18 @@ def validate_profile(document: Any) -> list[str]:
             evidence = finding.get("evidence")
             if not isinstance(evidence, list):
                 continue
+            if "review" in finding:
+                _require(bool(evidence), f"{prefix}.review requires evidence", errors)
+                _require(
+                    all(isinstance(item, dict) and bool(item.get("sha256")) for item in evidence),
+                    f"{prefix}.review requires content hashes", errors,
+                )
+                _require(finding.get("suggested") is True,
+                         f"{prefix}.review requires a positive detection", errors)
+                name = prefix.rsplit(".", 1)[1]
+                decision_owner = project if prefix.startswith("discovery.project_fields.") else capabilities
+                recorded = decision_owner.get(name) if isinstance(decision_owner, dict) else None
+                _require(recorded is False, f"{prefix}.review conflicts with enabled decision", errors)
             for index, item in enumerate(evidence):
                 if isinstance(item, dict) and isinstance(item.get("path"), str):
                     _require(

@@ -279,7 +279,7 @@ def validate_evals(errors: list[str]) -> None:
     require(matrix.get("prompt_mode") == "natural", "behavioral matrix must use natural prompts", errors)
     require(matrix.get("trials") == 1, "directional behavioral matrix must use one trial", errors)
     require(matrix.get("conditions") == ["control", "harness"], "behavioral matrix conditions differ", errors)
-    require(isinstance(matrix_ids, list) and len(matrix_ids) == 8, "behavioral matrix must select eight cases", errors)
+    require(isinstance(matrix_ids, list) and len(matrix_ids) >= 8, "behavioral matrix must select at least eight cases", errors)
     require(len(matrix_ids) == len(set(matrix_ids)), "behavioral matrix contains duplicate cases", errors)
     case_by_id = {case["id"]: case for case in cases}
     require(set(matrix_ids) <= set(case_by_id), "behavioral matrix references an unknown case", errors)
@@ -330,11 +330,6 @@ def validate_eval_receipt(
     prefix = f"{label}: "
     require(document.get("schema_version") == 1, prefix + "schema_version must be 1", errors)
     require(document.get("status") in EVIDENCE_STATUSES, prefix + "invalid status", errors)
-    require(
-        document.get("harness_policy_version") == package_version(),
-        prefix + "stale harness policy version",
-        errors,
-    )
     revision = document.get("scored_source_revision")
     require(
         isinstance(revision, str) and bool(FULL_SHA_PATTERN.fullmatch(revision)),
@@ -351,6 +346,33 @@ def validate_eval_receipt(
         prefix + "scored_source_revision is not retained in this repository",
         errors,
     )
+
+    # Historical receipts prove their recorded corpus and policy, never the
+    # current checkout. Resolve immutable inputs before validating scores.
+    snapshots: dict[str, bytes] = {}
+    if revision_retained:
+        for relative in (".codex-plugin/plugin.json", "evals/cases.json",
+                         "evals/behavioral-matrix.json", "evals/rubric.md"):
+            result = subprocess.run(
+                ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
+                capture_output=True, check=False,
+            )
+            require(result.returncode == 0, prefix + f"recorded input is missing: {relative}", errors)
+            if result.returncode == 0:
+                snapshots[relative] = result.stdout
+        if len(snapshots) != 4:
+            return
+        try:
+            recorded_manifest = json.loads(snapshots[".codex-plugin/plugin.json"])
+            recorded_cases = json.loads(snapshots["evals/cases.json"])
+            recorded_matrix = json.loads(snapshots["evals/behavioral-matrix.json"])
+            case_by_id = {case["id"]: case for case in recorded_cases["cases"]}
+            matrix_ids = recorded_matrix["case_ids"]
+        except (ValueError, KeyError, TypeError):
+            errors.append(prefix + "recorded corpus is malformed")
+            return
+        require(document.get("harness_policy_version") == recorded_manifest.get("version"),
+                prefix + "policy differs from scored revision", errors)
 
     execution = document.get("execution")
     require(isinstance(execution, dict), prefix + "execution must be an object", errors)
@@ -384,9 +406,13 @@ def validate_eval_receipt(
     require(isinstance(corpus, dict), prefix + "corpus must be an object", errors)
     if isinstance(corpus, dict):
         expected_hashes = {
-            "behavioral_matrix_sha256": file_sha256(ROOT / "evals" / "behavioral-matrix.json"),
-            "cases_sha256": file_sha256(ROOT / "evals" / "cases.json"),
-            "rubric_sha256": file_sha256(ROOT / "evals" / "rubric.md"),
+            field: hashlib.sha256(snapshots[relative]).hexdigest()
+            if relative in snapshots else file_sha256(ROOT / relative)
+            for field, relative in (
+                ("behavioral_matrix_sha256", "evals/behavioral-matrix.json"),
+                ("cases_sha256", "evals/cases.json"),
+                ("rubric_sha256", "evals/rubric.md"),
+            )
         }
         for field, expected in expected_hashes.items():
             value = corpus.get(field)
@@ -657,7 +683,10 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     require("independent synthesis" in sources.lower(), "SOURCES.md must state provenance model", errors)
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    stable_command = f"codex plugin marketplace add davidiw/skills --ref v{version}"
+    # An unreleased checkout must not advertise its not-yet-published tag.
+    stable_release = re.search(r"^## ([0-9]+\.[0-9]+\.[0-9]+) - [0-9]{4}-[0-9]{2}-[0-9]{2}$", changelog, re.MULTILINE)
+    stable_version = stable_release.group(1) if stable_release else version
+    stable_command = f"codex plugin marketplace add davidiw/skills --ref v{stable_version}"
     require(
         stable_command in readme,
         "README is missing the immutable marketplace command",

@@ -27,10 +27,13 @@ entries without redefining them.
    cooperative stop deadline, cleanup evidence, retry bound, and restart
    fallback from the authoritative
    [`runtime resource contract`](../architecture-foundations/references/runtime-resource-governance.md).
-4. Bind executed evidence to clean exact revision, command/harness, timestamp,
+4. Bind executed evidence to an identifiable source snapshot, command/harness, timestamp,
    environment and device where relevant, discovered/completed/skipped counts,
-   result, and immutable artifact or transcript digest. Zero discovered tests
-   and skipped required tests are failures.
+   result, and artifact or transcript digest when a gate requires one. Local
+   checks may name a commit plus worktree patch/content digests; a clean exact
+   revision is required when repository integration or release policy says so.
+   Zero discovered tests and skipped required tests are failures when the
+   command is a test suite, not for a generator freshness check.
 5. Keep secrets and private content out of commands, logs, prompts, receipts,
    screenshots, and artifacts. Record bounded allowlisted metadata.
 6. Record action scopes and apply the authorization and reuse semantics in
@@ -38,9 +41,17 @@ entries without redefining them.
 7. For shared or irreversible writes, preflight current state, show the exact
    target and revision, use compare-and-set or lease protection, bound the
    action, and preserve a recovery artifact.
-8. After any commit, rebase, generated output change, or corrected blocker,
-   invalidate stale evidence and review the new exact revision at the smallest
-   sufficient scope.
+8. After source, dependency, or generated output changes, refresh evidence for
+   affected claims at the smallest sufficient scope. A metadata-only commit
+   does not invalidate unchanged content evidence; bind release gates to their
+   required revision.
+
+For consequential changes to sensitive flows or authorization boundaries, use
+the relevant `security-assurance` and/or `privacy-assurance` reviewer under
+[`assurance-review.md`](../../references/assurance-review.md). These reviewers
+may discover material defects outside the invariant catalog. They own threat
+review; this skill owns evidence and release-gate semantics. Do not load this
+skill solely to invoke a focused assurance reviewer.
 
 Read [`evidence-contract.md`](references/evidence-contract.md) when building a
 gate, [`operator-interface.md`](references/operator-interface.md) for commands

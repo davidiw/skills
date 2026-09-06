@@ -7,6 +7,22 @@ description: Bootstrap or adopt a repository, route ordinary change work, or har
 
 This is the public entry point. Users choose a workflow, not specialist skills.
 
+Review and assessment requests use **Change in review mode**: classify the
+behavior being reviewed, even though the requested action is read-only. A
+sensitive lifecycle review is consequential; read-only scope does not make its
+subject minimal. For security/privacy assurance, load the applicable reviewer(s)
+from the routing table directly and let their references supply implementation
+contracts. An assurance-only request does not require every implementation
+specialist or authorize fixes. Explicit assurance requests bypass the minimal
+edit shortcut below.
+
+**Assurance-only shortcut:** a request to assess security, authorization, or a
+sensitive data lifecycle is an assurance review even if it never uses the word
+“assurance.” Read the routing table, select `security-assurance` and/or
+`privacy-assurance`, complete that review, and finish. Skip the implementation
+owner inventory and specialist-loading steps below. If the user also requests
+fixes, use the full Change route and then review the corrected snapshot.
+
 For **Change** and **Harden**, read `change-classification.md` before applying
 another installed workflow or inspecting solution code. If the resulting route
 is non-minimal, read every selected owner skill before continuing. Another skill
@@ -32,9 +48,13 @@ the repository's chosen workflow.
 
 1. Identify the workflow from the user's request; do not ask the user to pick
    an internal skill.
-2. Read the repository's `AGENTS.md` or equivalent, design authority, work
-   tracker, and operator-command index. Report conflicts rather than replacing
-   repository decisions.
+2. Read the repository's `AGENTS.md` or equivalent and locate the changed owner.
+   For Change, apply the minimal test in
+   [`change-classification.md`](../../references/change-classification.md)
+   first. If it passes, use the existing edit/check path and finish; the
+   inventory and risk-accounting steps below do not apply. Otherwise read the
+   relevant design authority, work tracker, and operator-command index when
+   present. Report conflicts rather than replacing repository decisions.
 3. For **Adopt**, run `scripts/profile_repository.py` to create an evidence-backed
    proposal, review uncertain detections, assign repository enforcement owners,
    record approved exceptions, and mark the profile accepted.
@@ -54,6 +74,9 @@ the repository's chosen workflow.
 7. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
    enforcement rungs and exceptions. Reuse existing documents and commands.
+   When the changed path affects sensitive data or authorization, select the
+   applicable security/privacy assurance reviewers from the routing table.
+   The invariant catalog does not limit the defects they may discover.
 8. Execute the user's task. Internal classification is not a substitute for work
    unless the user requested analysis only.
 

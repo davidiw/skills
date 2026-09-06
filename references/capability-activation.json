@@ -5,7 +5,10 @@
   ],
   "project_fields": {
     "sensitive_data": [
-      "typed-boundaries"
+      "typed-boundaries",
+      "authority-context-fencing",
+      "privacy-lifecycle",
+      "open-world-assurance"
     ]
   },
   "capabilities": {
@@ -55,7 +58,8 @@
       "typed-exact-evidence"
     ],
     "mutable_authority_context": [
-      "authority-context-fencing"
+      "authority-context-fencing",
+      "open-world-assurance"
     ],
     "event_delivery": [
       "bounded-contracts",

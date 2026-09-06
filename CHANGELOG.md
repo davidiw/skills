@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.5.0 - Unreleased
+
+- Broaden `authority-context-fencing` to principal/account, capability, purpose,
+  consent, and lifecycle/expiry for synchronous and durable operations. Move
+  normative ownership to interfaces and events; retain the invariant ID and
+  `mutable_authority_context` capability for migration continuity.
+- Add `privacy-lifecycle`: derivatives and telemetry inherit privacy obligations,
+  and erasure/expiry revokes delayed writers as well as removing rows.
+- Extend `resource-admission-and-reclamation` to locks, database connections,
+  transactions, and serialized queues. Isolate optional effects from critical
+  progress; give mandatory audit an explicit durability/capacity/failure contract.
+  Retain the finite-pool resource workflow and its five distinct mechanisms.
+- Add internal security and privacy assurance reviewers and `open-world-assurance`.
+  Consequential sensitive changes require relevant review; evidenced defects do
+  not need an existing invariant ID. `sensitive_data` now activates lifecycle,
+  authorization, and assurance obligations as well as typed boundaries.
+- Give minimal changes an early exit, keep local documentation regeneration on
+  its freshness check, and distinguish local snapshot evidence from release gates.
+- Preserve explicitly reviewed discovery false positives only while their
+  evidence and scanner version are unchanged. Scanner 5 includes content hashes
+  and consent/authorization-context signals.
+- Preserve historical evaluation receipts against their recorded source and
+  policy. Add realistic assurance fixtures; new policy behavior is not claimed
+  from the 0.4.0 receipt.
+
+Migration from 0.4.x:
+
+1. Review authorization beyond account identity, including purpose-scoped
+   credentials, OS/provider grants, consent, expiry, reads, and exports. Reassign
+   the `authority-context-fencing` repository owner if needed; its normative
+   skill is now `interfaces-and-events`.
+2. For `sensitive_data: true`, assign real owners/enforcement for
+   `authority-context-fencing`, `privacy-lifecycle`, and `open-world-assurance`
+   alongside `typed-boundaries`. For `mutable_authority_context: true`, add
+   `open-world-assurance`. Select reviews from the changed path, not the project
+   flag alone. Record approved retention exceptions at their exact scope.
+3. Inspect critical actions for optional effects sharing locks, transactions,
+   connections, or queues. Define mandatory audit separately. Keep existing
+   finite-pool resource contracts and evidence.
+4. Regenerate discovery using scanner 5; review changed signals. A rejected
+   detection needs rationale, repository authority, and unchanged hashed
+   evidence. Old rejections must be reviewed again after detector changes.
+5. Update profiles to policy 0.5.0 after review. Profile schema remains 2 with
+   an additive optional discovery review field. Retain historical evidence under
+   its original policy; run new assurance cases before claiming 0.5.0 behavioral
+   reliability. The stable installation remains v0.4.0 until publication.
+
 ## 0.4.0 - 2026-09-04
 
 - Make `using-engineering-harness` the implicit public entry point and mark all

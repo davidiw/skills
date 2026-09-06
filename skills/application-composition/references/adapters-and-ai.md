@@ -6,6 +6,10 @@
 - Composition selects the adapter; callers do not branch throughout the domain.
 - Capabilities are explicit and runtime-validated where hardware or permission
   state can vary.
+- Platform permission and provider capability do not authorize use by the
+  selected product account. Consume the interface owner's
+  [`authorization context`](../../interfaces-and-events/references/authorization-context.md)
+  for principal, purpose, consent, and expiry, including reads and exports.
 - Unsupported behavior returns a typed result and remains unclaimed in docs and
   evidence.
 - A fake proves contract behavior; it does not prove provider, device, power,

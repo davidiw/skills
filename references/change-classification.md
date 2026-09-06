@@ -2,19 +2,25 @@
 
 This is internal routing, not a menu for users. Classify the requested outcome,
 not its apparent line count. Existing repository policy may raise the class.
+For review/assessment requests, classify the subject's impact and retain
+read-only action scope. Requested security/privacy assurance selects its
+reviewer directly, even when no implementation change is requested.
 
 ## Risk card
 
 Record only fields that are relevant:
 
-- **Authority:** which component owns the fact or behavior?
+- **Authority:** which component owns the fact or behavior, and which principal,
+  capability, purpose, consent, or lifecycle/expiry can authorize or revoke use?
 - **Lifetime:** can accepted intent outlive the request, route, process, or
   device opportunity?
 - **Boundaries:** does it cross a module, process, client, account, provider, or
   physical-device boundary?
 - **Representation:** does it change persistent, wire, event, storage, cache,
   generated, or derived form?
-- **Contention:** can it delay useful paint or monopolize a shared resource?
+- **Contention:** can it delay useful paint or monopolize a shared resource,
+  including locks, connections, transactions, and serialized queues? Can an
+  optional side effect delay a safety/correctness-critical action?
 - **Sensitivity:** does it touch credentials, personal data, safety, money, or
   irreversible effects?
 - **Evidence:** does correctness require a real provider, device, deployment,
@@ -32,6 +38,11 @@ test seam. Adding an optional parser field, changing copy, or correcting a pure
 calculation is minimal unless repository policy raises it. Follow the ordinary
 path; no specialist skill is required.
 
+A deterministic regeneration of local documentation inside an unchanged
+generator contract can also be minimal. Use its existing freshness check.
+Stop classification here when these conditions hold: no scope-lock document,
+full authority inventory, or explicit dominance-rule accounting is needed.
+
 ### Bounded
 
 A product-rule or public-contract change that stays within one established
@@ -43,10 +54,16 @@ its trigger actually applies.
 ### Consequential
 
 Any persistent representation, cross-process contract, accepted durable work,
-identity boundary, data destruction, sensitive-data path, shared-resource
-contention, generated/physical artifact, or external release action. Record a
+identity boundary, data destruction, changed sensitive-data path, shared-resource
+contention, generated contract or safety-relevant artifact, physical behavior,
+or external release action. Record a
 scope lock, consumers and failure modes, compatibility or recovery plan, and
 evidence requirements before production edits.
+
+Keep this in the existing task or plan; separate documents are needed only by
+repository policy or material coordination risk. Scope compatibility/recovery
+to the changed lifetime. A repository's `sensitive_data: true` activates privacy
+obligations, but does not make unrelated copy or styling consequential.
 
 ### Stabilization
 
@@ -61,16 +78,25 @@ adversarial review. Do not turn either into repository-wide cleanup.
 | Signal | Skill |
 | --- | --- |
 | New subsystem, ownership ambiguity, dependency direction, or composition | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
-| Scarce runtime pools, protected progress, admission, or cooperative reclamation | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
+| Scarce runtime pools, serialized contention, critical action blocked by optional effects, admission, or cooperative reclamation | [`architecture-foundations`](../skills/architecture-foundations/SKILL.md) |
 | Work must survive its initiator | [`durable-workflows`](../skills/durable-workflows/SKILL.md) |
-| Public API, cross-process message or event, external provider, trust boundary, or independently evolving contract | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
+| Public API, cross-process message or event, external provider, trust boundary, independently evolving contract, mutable authorization, or purpose-scoped credential | [`interfaces-and-events`](../skills/interfaces-and-events/SKILL.md) |
 | UI/domain/assistant/platform parity or useful-paint ownership | [`application-composition`](../skills/application-composition/SKILL.md) |
-| Persistent identity, sync, migration, deletion, repair, or mixed versions | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
+| Persistent identity, sync, migration, deletion, repair, mixed versions, or sensitive data derivation/retention/erasure | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
 | Demonstrated recurring architecture divergence, consolidation, or hotspot root-cause repair | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
-| Exact evidence, independent adversarial or fault campaign, operator tooling, release, generated artifact, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
+| Exact-revision gate, independent adversarial or fault campaign, operator tooling, release, generated contract/safety proof, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
+| Consequential change to principal, credential, grant, trust, or effect authority; or requested security assurance | [`security-assurance`](../skills/security-assurance/SKILL.md) |
+| Consequential change to sensitive data use, disclosure, derivation, retention, expiry, or erasure; or requested privacy assurance | [`privacy-assurance`](../skills/privacy-assurance/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that
 owns the path. Do not run independent architecture exercises for each signal.
+During implementation, assurance follows the implementation owners and reviews
+the resulting snapshot. For an assurance-only request, load the relevant
+reviewer directly; it reads owning contracts through its references. This does
+not imply permission to implement fixes. For a
+changed sensitive path, select the relevant security/privacy reviewer(s) and
+record any uncovered review scope under
+[`assurance-review.md`](assurance-review.md).
 
 ## Dominance rules
 
@@ -80,7 +106,7 @@ owns the path. Do not run independent architecture exercises for each signal.
   operation; add it when cross-surface semantics or useful-paint ownership is
   itself changing.
 - Do not add `data-and-compatibility` for a private operation record with no
-  migration, replication, identity, deletion, or mixed-version consequence.
+  migration, replication, identity, privacy lifecycle, deletion, or mixed-version consequence.
 - Do not add `interfaces-and-events` for an internal adapter interface already
   owned by `application-composition`; add it for public, trust-boundary, or
   independently evolving contracts.
@@ -89,5 +115,13 @@ owns the path. Do not run independent architecture exercises for each signal.
   consumers, or a public event contract is changing.
 - Do not add `verification-and-operations` because another skill requires
   focused success or failure tests. Add it for independent adversarial or fault
-  campaigns, exact-revision gates, generated or physical proof,
+  campaigns, exact-revision gates, generated contract/safety or physical proof,
   machine/operator tooling, repair, release, deployment, or publication.
+- Do not add verification for a local documentation regeneration or merely to
+  invoke a security/privacy reviewer. Assurance reviewers own their scoped
+  findings and consume shared evidence rules directly.
+- Do not add `durable-workflows` merely because consent or authorization can
+  change during a synchronous operation; the interface owner handles that fence.
+- Do not add assurance for unrelated minimal edits in a sensitive repository.
+  When consequential work changes both authorization and privacy lifecycle,
+  neither reviewer dominates the other; review the shared path from both sides.

@@ -33,6 +33,7 @@ generated views, examples, or tests.
 | Profile shape | `references/project-profile.schema.json` | Profile validator and templates |
 | A project's accepted capability and enforcement decisions | That project's `engineering-harness.json` | Drift checks and change routing |
 | Discovery detectors and confidence | `scripts/profile_repository.py` | Proposed profile discovery section |
+| Security/privacy review evidence, open-world findings, and coverage | `references/assurance-review.md` | Security and privacy assurance skills |
 | Skill name and discovery description | Each `SKILL.md` frontmatter | Plugin discovery |
 | Skill UI presentation and invocation policy | That skill's `agents/openai.yaml` when present | Codex UI and invocation behavior |
 | Marketplace identity, root plugin source, and install policy | `.agents/plugins/marketplace.json` | Codex marketplace discovery |
@@ -52,7 +53,7 @@ facts for their eval case. Neither can override the authorities above.
 
 ## Skill boundaries
 
-The router plus seven specialists remain separate because they answer different
+The router plus nine specialists remain separate because they answer different
 questions:
 
 | Skill | Question it owns |
@@ -64,11 +65,16 @@ questions:
 | `data-and-compatibility` | How do representations and deployed consumers evolve safely? |
 | `architecture-hardening` | Where has ownership diverged, and how is the root cause consolidated? |
 | `verification-and-operations` | What evidence proves the claim, and which external action is authorized? |
+| `security-assurance` | Can the changed path violate trust or authorization, including threats absent from the catalog? |
+| `privacy-assurance` | Does sensitive data retain its purpose, lifecycle, and erasure obligations through every changed representation? |
 
 Every invariant names exactly one normative owner skill. A consuming skill may
 apply that invariant at its seam but does not reinterpret it. Architecture
 hardening owns discovery and repair of divergence; verification and operations
-owns adversarial review, fault injection, physical proof, and exact evidence.
+owns evidence semantics, bounded architecture audits, fault campaigns, and
+release gates. Security and privacy assurance own threat review, including
+evidenced defects outside the catalog; implementation owners retain authority
+over product behavior.
 
 ## Proportional activation
 

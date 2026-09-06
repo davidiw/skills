@@ -1,7 +1,9 @@
 # Post-Review Adversarial Review
 
 This is one bounded independent challenge after normal exact-revision review,
-only for high-risk work named by repository policy.
+only for high-risk work named by repository policy. Security/privacy assurance
+uses [`assurance-review.md`](../../../references/assurance-review.md); its
+coverage is not capped by this architecture-audit budget.
 
 ## Budget
 
@@ -21,11 +23,14 @@ gathering is not a separate allowance.
 Mark `BLOCK` only when all are present:
 
 1. a plausible execution path introduced or changed by the reviewed diff;
-2. evidence that the path violates a named invariant;
+2. evidence that the path violates a named invariant, repository requirement,
+   or explicitly described security/privacy obligation, including a newly
+   identified threat absent from the catalog;
 3. a material consequence such as corruption, data loss, security or privacy
    breach, incorrect product behavior, or compatibility failure.
 
 Speculative fragility and architecture preference are non-blocking follow-ups.
+Absence of an invariant ID does not downgrade an evidenced material defect.
 Report severity and confidence. Compress uninvestigated observations into one
 line or omit them.
 

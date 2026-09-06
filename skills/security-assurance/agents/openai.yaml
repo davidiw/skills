@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security Assurance"
+  short_description: "Review authorization and trust-boundary defects"
+  default_prompt: "Use $security-assurance to review the changed security boundaries."
+policy:
+  allow_implicit_invocation: false

@@ -88,7 +88,7 @@
       "additionalProperties": false,
       "required": ["scanner_version", "repository_revision", "project_fields", "capabilities"],
       "properties": {
-        "scanner_version": {"const": 4},
+        "scanner_version": {"const": 5},
         "repository_revision": {
           "type": "string",
           "pattern": "^(unversioned|[0-9a-f]{40})$"
@@ -120,6 +120,16 @@
       "properties": {
         "suggested": {"type": "boolean"},
         "confidence": {"enum": ["none", "low", "medium", "high"]},
+        "review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision", "rationale", "authority"],
+          "properties": {
+            "decision": {"const": "rejected"},
+            "rationale": {"type": "string", "minLength": 1},
+            "authority": {"type": "string", "minLength": 1}
+          }
+        },
         "evidence": {
           "type": "array",
           "items": {
@@ -128,7 +138,8 @@
             "required": ["rule", "path"],
             "properties": {
               "rule": {"type": "string", "minLength": 1},
-              "path": {"type": "string", "minLength": 1}
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
             }
           }
         }

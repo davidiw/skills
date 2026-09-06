@@ -28,6 +28,25 @@ version-controlled repository policy.
 Discovery is conservative and cannot prove a capability absent. Repository
 decisions remain authoritative.
 
+When a reviewer rejects a positive detector finding, retain its original
+`suggested`, confidence, and evidence fields, set the accepted project/capability
+value to false, and add this to that discovery finding:
+
+```json
+"review": {
+  "decision": "rejected",
+  "rationale": "This provider supplies local labels; it calls no external service.",
+  "authority": "Repository adoption review"
+}
+```
+
+Use the actual repository authority and reason. Scanner 5 evidence includes
+source-content SHA-256 digests. A rejection applies only to that scanner version
+and unchanged evidence, confidence, and content. New or changed evidence needs
+review; never refresh its hashes while carrying forward an unreviewed rejection.
+This is a detector decision, not an exception to an active invariant. Keep
+profiles containing hashes of private source under that repository's data policy.
+
 A provider SDK import is low-confidence evidence of AI use, not proof that the
 model can mutate product state. AI-mediated action discovery requires action
 execution evidence in the same action owner; unrelated repository files do not
@@ -46,7 +65,8 @@ python3 scripts/profile_repository.py /path/to/repository \
 
 The check fails for meaningful drift:
 
-- a newly detected high-confidence capability is recorded as disabled;
+- a high-confidence capability or sensitive-data signal is recorded as disabled
+  without a matching reviewed rejection;
 - a recorded source-of-truth path disappeared;
 - the profile remains proposed;
 - the profile and package use incompatible policy release lines.

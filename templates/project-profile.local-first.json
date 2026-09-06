@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.4.0",
+  "harness_policy_version": "0.5.0",
   "status": "accepted",
   "project": {
     "name": "local-first-example",
@@ -102,8 +102,8 @@
     },
     "authority-context-fencing": {
       "rung": "fault_test",
-      "owner": "lib/account_context.dart",
-      "artifacts": ["test/account_switch_storm_test.dart"]
+      "owner": "lib/authorization_context.dart",
+      "artifacts": ["test/authorization_context_test.dart"]
     },
     "representation-separation": {
       "rung": "owner",
@@ -139,6 +139,15 @@
       "rung": "ci_check",
       "owner": "docs/acceptance_contracts.json",
       "artifacts": ["scripts/acceptance_contracts.dart"]
+    },
+    "privacy-lifecycle": {
+      "rung": "fault_test",
+      "owner": "lib/privacy_lifecycle.dart",
+      "artifacts": ["test/privacy_lifecycle_test.dart"]
+    },
+    "open-world-assurance": {
+      "rung": "audit",
+      "owner": "docs/security_privacy_review.md"
     }
   },
   "exceptions": []

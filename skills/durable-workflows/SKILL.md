@@ -31,8 +31,13 @@ entries without redefining them.
 5. Define coalescing and successor policy by logical target. A newer intent may
    supersede an older one, but the older executor must fence every commit,
    acknowledgment, and publication after supersession.
-6. Capture account, tenant, user, or device authority at admission. Validate it
-   before execution and every persistent or externally visible effect.
+6. Bind the operation to the interface owner's
+   [`authorization context`](../interfaces-and-events/references/authorization-context.md)
+   at admission and fence execution, reads, and effects against current
+   principal/account, capability, purpose, consent, and lifecycle/expiry.
+   Consume the data owner's
+   [`privacy lifecycle`](../data-and-compatibility/references/privacy-lifecycle.md)
+   so retries and delayed telemetry cannot recreate erased data.
 7. Bound each noninteractive unit by rows, pages, bytes, calls, or time. Yield
    between committed units so interactive work can run after the current unit.
    If the operation holds a constrained runtime pool, consume the

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -76,7 +77,7 @@ TEXT_SUFFIXES = {
     ".yml",
 }
 MAX_FILE_BYTES = 512 * 1024
-SCANNER_VERSION = 4
+SCANNER_VERSION = 5
 CLIENT_SURFACE_FAMILIES = {
     "desktop": ("desktop",),
     "mobile": ("android", "ios", "mobile"),
@@ -127,6 +128,7 @@ RULES = (
     SignalRule("physical_devices", "physical-design-source", 4, r"\.(scad|kicad_sch|kicad_pcb)$"),
     SignalRule("artifact_publication", "publish-workflow", 4, r"(^|/)(\.github/workflows/[^/]*publish|publish|publishing|app[_-]?store|play[_-]?store)(/|[._-])"),
     SignalRule("mutable_authority_context", "account-or-tenant-context", 4, r"(^|[/_.-])(account|tenant)[_-]?(context|epoch|scope)([/_.-]|$)"),
+    SignalRule("mutable_authority_context", "authorization-or-consent-context", 4, r"(^|[/_.-])(authorization|consent|grant)[_-]?(context|epoch|scope)([/_.-]|$)"),
     SignalRule("event_delivery", "event-model-path", 1, r"(^|[/_.-])events?([/_.-]|$)"),
     SignalRule("event_delivery", "event-delivery-path", 4, r"(^|[/_.-])(sse|websocket|outbox|inbox)([/_.-]|$)"),
     SignalRule("event_delivery", "stream-transport-code", 4, content_terms=("text/event-stream", "websocketchannel")),
@@ -168,7 +170,7 @@ def _iter_files(repository: Path) -> Iterable[tuple[str, str]]:
         try:
             if path.stat().st_size > MAX_FILE_BYTES:
                 continue
-            yield relative.as_posix(), path.read_text(encoding="utf-8").lower()
+            yield relative.as_posix(), path.read_bytes().decode("utf-8")
         except (OSError, UnicodeDecodeError):
             continue
 
@@ -198,7 +200,12 @@ def _confidence(score: int) -> str:
 
 
 def scan_repository(repository: Path) -> dict[str, object]:
-    files = sorted(_iter_files(repository), key=lambda item: _evidence_rank(item[0]))
+    source_files = sorted(_iter_files(repository), key=lambda item: _evidence_rank(item[0]))
+    content_hashes = {
+        relative: hashlib.sha256(content.encode("utf-8")).hexdigest()
+        for relative, content in source_files
+    }
+    files = [(relative, content.lower()) for relative, content in source_files]
     activation = json.loads(ACTIVATION.read_text(encoding="utf-8"))
     findings: dict[str, dict[str, object]] = {
         name: {"suggested": False, "confidence": "none", "evidence": []}
@@ -207,13 +214,15 @@ def scan_repository(repository: Path) -> dict[str, object]:
     scores = {name: 0 for name in findings}
 
     for rule in RULES:
+        matched = False
         for relative, content in files:
             if _rule_match(rule, relative, content):
-                scores[rule.capability] += rule.weight
+                if not matched:
+                    scores[rule.capability] += rule.weight
+                    matched = True
                 evidence = findings[rule.capability]["evidence"]
                 assert isinstance(evidence, list)
                 evidence.append({"rule": rule.name, "path": relative})
-                break
 
     # Action authority is one execution path, not a repository-wide sum of an
     # unrelated provider import and an unrelated command named "execute_action".
@@ -223,24 +232,24 @@ def scan_repository(repository: Path) -> dict[str, object]:
         has_action_owner = bool(AI_ACTION_PATH.search(relative.lower()))
         if (has_provider and has_action) or (has_action_owner and has_action):
             scores["ai_mediated_actions"] = 4
-            findings["ai_mediated_actions"]["evidence"] = [
+            findings["ai_mediated_actions"]["evidence"].append(
                 {"rule": "ai-action-owner-code", "path": relative}
-            ]
-            break
+            )
 
-    client_paths: dict[str, str] = {}
+    client_paths: dict[str, list[str]] = {}
     for relative, _ in files:
         for family, markers in CLIENT_SURFACE_FAMILIES.items():
             if any(
                 re.search(rf"(^|/){marker}(/|$)", relative.lower())
                 for marker in markers
             ):
-                client_paths.setdefault(family, relative)
+                client_paths.setdefault(family, []).append(relative)
     if len(client_paths) >= 2:
         scores["multiple_clients"] = 4
         findings["multiple_clients"]["evidence"] = [
             {"rule": f"client-surface-{family}", "path": relative}
-            for family, relative in sorted(client_paths.items())
+            for family, paths in sorted(client_paths.items())
+            for relative in paths
         ]
 
     adapter_paths = sorted(
@@ -254,7 +263,7 @@ def scan_repository(repository: Path) -> dict[str, object]:
         scores["multiple_adapters"] = 4
         findings["multiple_adapters"]["evidence"] = [
             {"rule": "multiple-adapter-files", "path": path}
-            for path in adapter_paths[:4]
+            for path in adapter_paths
         ]
 
     if scores["interactive_clients"] >= 4 and scores["asynchronous_interactive_loading"] >= 2:
@@ -268,13 +277,18 @@ def scan_repository(repository: Path) -> dict[str, object]:
     for relative, content in files:
         if any(term in content for term in ("health data", "medical", "payment", "patient", "protected data")):
             sensitive_evidence.append({"rule": "sensitive-domain-code", "path": relative})
-            break
     sensitive_confidence = "high" if sensitive_evidence else "none"
 
     for name, score in scores.items():
         confidence = _confidence(score)
         findings[name]["confidence"] = confidence
         findings[name]["suggested"] = confidence == "high"
+
+    # Bind reviewed rejections to actual source content, not just a detector's
+    # path. A changed file at the same path must receive a fresh review.
+    for evidence in [sensitive_evidence, *(item["evidence"] for item in findings.values())]:
+        for item in evidence:
+            item["sha256"] = content_hashes[item["path"]]
 
     return {
         "scanner_version": SCANNER_VERSION,
@@ -406,16 +420,31 @@ def check_drift(repository: Path, profile: dict[str, object]) -> tuple[list[str]
     current = scan_repository(repository)
     current_capabilities = current["capabilities"]
     recorded_capabilities = profile["capabilities"]
+    recorded_discovery = profile.get("discovery", {})
+
+    def reviewed_rejection(group: str, name: str, finding: dict[str, object]) -> bool:
+        previous = recorded_discovery.get(group, {}).get(name, {})
+        return (
+            profile["status"] == "accepted"
+            and recorded_discovery.get("scanner_version") == current["scanner_version"]
+            and previous.get("review", {}).get("decision") == "rejected"
+            and previous.get("evidence") == finding["evidence"]
+            and bool(finding["evidence"])
+            and previous.get("confidence") == finding["confidence"]
+        )
+
     for name, finding in current_capabilities.items():
         if finding["suggested"] and not recorded_capabilities[name]:
-            paths = ", ".join(item["path"] for item in finding["evidence"][:3])
-            errors.append(f"new high-confidence capability: {name} ({paths})")
+            if not reviewed_rejection("capabilities", name, finding):
+                paths = ", ".join(item["path"] for item in finding["evidence"][:3])
+                errors.append(f"new high-confidence capability: {name} ({paths})")
         elif recorded_capabilities[name] and finding["confidence"] == "none":
             warnings.append(f"recorded capability has no current detector evidence: {name}")
 
     current_sensitive = current["project_fields"]["sensitive_data"]
     if current_sensitive["suggested"] and not profile["project"]["sensitive_data"]:
-        errors.append("new high-confidence sensitive-data signal")
+        if not reviewed_rejection("project_fields", "sensitive_data", current_sensitive):
+            errors.append("new high-confidence sensitive-data signal")
     return errors, warnings
 
 

@@ -15,7 +15,8 @@ exposes the root `engineering-harness` plugin for installation.
 
 ## Install
 
-Add the immutable stable marketplace release and install the plugin:
+The checkout develops policy **0.5.0**; its release is pending. Install the
+last published immutable stable release:
 
 ```bash
 codex plugin marketplace add davidiw/skills --ref v0.4.0
@@ -114,7 +115,7 @@ rewritten. See
 
 ## Internal skills
 
-The router progressively loads seven internal specialists:
+The router progressively loads nine internal specialists:
 
 | Skill | Normative responsibility |
 | --- | --- |
@@ -124,10 +125,12 @@ The router progressively loads seven internal specialists:
 | `application-composition` | Shared semantics across runtimes, adapters, UI ownership, and useful paint |
 | `data-and-compatibility` | Representations, identity, deletion, migration, repair, and mixed versions |
 | `architecture-hardening` | Divergence discovery, consolidation, root-cause repair, and recurrence prevention |
-| `verification-and-operations` | Adversarial evidence, fault injection, physical proof, exact revisions, and operations |
+| `verification-and-operations` | Evidence semantics, fault injection, physical proof, exact revisions, and operations |
+| `security-assurance` | Authorization and trust threats, including defects outside the invariant catalog |
+| `privacy-assurance` | Sensitive data use, derivation, retention, expiry, erasure, and delayed writers |
 
-These skills meet at execution-path seams but do not share normative ownership
-of an invariant. The package authority map is in [`DESIGN.md`](DESIGN.md).
+Implementation specialists own product invariants. Assurance reviewers consume
+them and may identify additional evidenced security/privacy obligations. The package authority map is in [`DESIGN.md`](DESIGN.md).
 
 ## Design provenance
 

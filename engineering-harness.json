@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.4.0",
+  "harness_policy_version": "0.5.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",
@@ -43,10 +43,12 @@
     "bounded-contracts": {
       "rung": "local_check",
       "owner": "scripts/validate_package.py",
-      "artifacts": ["tests/test_validation.py"]
+      "artifacts": [
+        "tests/test_validation.py"
+      ]
     },
     "typed-exact-evidence": {
-      "rung": "ci_check",
+      "rung": "local_check",
       "owner": "scripts/validate_package.py",
       "artifacts": [
         "scripts/render_invariants.py",
@@ -56,8 +58,8 @@
   },
   "exceptions": [],
   "discovery": {
-    "scanner_version": 4,
-    "repository_revision": "f27acde528066473eb076eb3ce30fc2975fe2ba7",
+    "scanner_version": 5,
+    "repository_revision": "03ff93395444557e1a9b4ace3fcd432339b446c4",
     "project_fields": {
       "sensitive_data": {
         "suggested": false,
@@ -102,7 +104,8 @@
         "evidence": [
           {
             "rule": "generated-marker",
-            "path": "scripts/render_invariants.py"
+            "path": "scripts/render_invariants.py",
+            "sha256": "483332701d15b4c79739e80c773d00742b71bd92eee0b004a6606bd7b83a1db6"
           }
         ]
       },

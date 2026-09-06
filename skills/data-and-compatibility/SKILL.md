@@ -1,6 +1,6 @@
 ---
 name: data-and-compatibility
-description: Evolve persistent or replicated data safely. Use for schema, storage layout, sync, identity, account or tenant fencing, tombstones, projections, caches, migrations, live repairs, mixed client/server versions, and rollback; not for transient in-memory structures.
+description: Evolve persistent or replicated data and sensitive data lifecycles safely. Use for sync, identity, migration, repair, mixed versions, or privacy inheritance, retention, expiry, erasure, and delayed writers across data and telemetry.
 ---
 
 # Data and Compatibility
@@ -19,6 +19,12 @@ entries without redefining them.
    non-authoritative representation rebuilds or invalidates.
 2. Specify stable identity, collision domain, account or tenant authority,
    time and timezone semantics, units, provenance, and deletion lifecycle.
+   For sensitive data, read [`privacy-lifecycle.md`](references/privacy-lifecycle.md)
+   and trace inherited purpose, sensitivity, retention, and erasure through all
+   derivatives, including metadata and telemetry. Erasure revokes future write
+   authority. Consume the interface owner's
+   [`authorization context`](../interfaces-and-events/references/authorization-context.md)
+   rather than defining a separate account-only fence.
 3. Inventory deployed readers and writers by persisted, wire, event, storage,
    worker, and operational capability. Include rollback binaries and tools.
 4. State the supported predecessor profiles and coexistence window from
@@ -42,6 +48,10 @@ entries without redefining them.
    `verification-and-operations` owns adversarial execution and evidence.
 10. Record adapter removal conditions, telemetry, and the exact release that
     makes cleanup safe.
+
+Apply migration and coexistence steps only where those lifetimes exist. A
+sensitive synchronous export still needs privacy ownership and erasure analysis
+for its temporary outputs, without an invented migration or job framework.
 
 Read [`representations-and-reconciliation.md`](references/representations-and-reconciliation.md)
 for replicated data. Read
