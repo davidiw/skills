@@ -21,5 +21,6 @@
     "experience-accessible-name",
     "experience-component-reuse",
     "experience-fetch-restraint"
-  ]
+  ],
+  "sandbox_network_access": true
 }

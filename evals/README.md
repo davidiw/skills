@@ -183,3 +183,11 @@ attempts, exact candidate SHA, cache/fixture hashes, native context traces and
 per-context cost. Assess read-only source preservation, scope limits, actual image
 reads, material source-only claims, and restraint. No full-matrix effectiveness
 or efficiency score follows from this small cohort.
+
+The experience pilot sets `sandbox_network_access: true` equally in both arms:
+Linux's network-disabled sandbox also blocks Chromium local IPC. Workspace write
+restrictions remain enabled. Trial instructions prohibit external access, and the
+fixture renderer disables proxy use and DNS resolution. This is **not** an
+OS-enforced network-isolation claim. Other matrices default to network disabled.
+Record the browser binary/version/hash with retained pilot evidence. Preflight it
+inside the same Codex sandbox before starting model trials.

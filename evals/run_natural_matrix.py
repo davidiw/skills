@@ -321,13 +321,14 @@ def context_records(home: Path) -> list[dict]:
     return contexts
 
 
-def trial(spec, package, source_root, output, number, arm, auth, catalog, model, effort, timeout, frozen=None):
+def trial(spec, package, source_root, output, number, arm, auth, catalog, model, effort, timeout, frozen=None, sandbox_network_access=False):
     lane = f"{spec['id']}-{arm}-trial{number}"
     private = output / "private" / lane
     private.mkdir(parents=True)
     home, fixture = private / "codex-home", private / "fixture"
     record = {"case_id": spec["id"], "arm": arm, "trial": number, "model": model,
-              "reasoning_effort": effort, "timeout_seconds": timeout, "setup_commands": []}
+              "reasoning_effort": effort, "timeout_seconds": timeout,
+              "sandbox_network_access": sandbox_network_access, "setup_commands": []}
     def checkpoint():
         (private / "record.json").write_text(json.dumps(record, indent=2, ensure_ascii=False))
     try:
@@ -354,6 +355,7 @@ def trial(spec, package, source_root, output, number, arm, auth, catalog, model,
             environment_rules += " New agent contexts and nested model invocations are disabled and not permitted in this environment."
         cmd = ["codex", "-a", "never", "exec", "--json", "--skip-git-repo-check",
                "--sandbox", "workspace-write", "--model", model,
+               "-c", "sandbox_workspace_write.network_access=" + str(sandbox_network_access).lower(),
                "-c", f"model_reasoning_effort={effort}", "--enable", "skip_host_skill_discovery",
                ("--enable" if spec.get("delegation_available", True) else "--disable"), "multi_agent", "-c", "agents.enabled=" + str(spec.get("delegation_available", True)).lower(),
                "-c", "agents.max_concurrent_threads_per_session=2",
@@ -470,7 +472,7 @@ def main():
         with ThreadPoolExecutor(max_workers=args.max_workers) as pool:
             futures = {pool.submit(trial, case, args.package, args.matrix.parent, args.output,
                                    n, arm, args.auth, pinned, matrix["model"], matrix["reasoning_effort"],
-                                   matrix["timeout_seconds"], frozen): (case["id"], arm, n) for case, arm, n in jobs}
+                                   matrix["timeout_seconds"], frozen, matrix.get("sandbox_network_access", False)): (case["id"], arm, n) for case, arm, n in jobs}
             for future in as_completed(futures):
                 key = futures[future]
                 record = future.result()
@@ -491,7 +493,8 @@ def main():
         (public / name).write_text(json.dumps(redact(public_evidence(value), replacements, secrets), indent=2, ensure_ascii=False))
     failed = interrupted or len(records) != len(jobs) or any(r.get("setup_or_trial_failed") or r.get("measurement_incomplete")
                  or r.get("result", {}).get("return_code") != 0 or r.get("result", {}).get("timed_out") for r in records)
-    print(f"completed {len(records)}/{len(jobs)}; output={args.output}", flush=True)
+    executed = sum("result" in r for r in records)
+    print(f"recorded {len(records)}/{len(jobs)}; executions with result={executed}; output={args.output}", flush=True)
     return 2 if failed else 0
 
 
