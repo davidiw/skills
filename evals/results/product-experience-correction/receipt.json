@@ -1,0 +1,529 @@
+{
+  "candidate_sha": "45af888e65fce5cef7f969c4979352e60e364b91",
+  "completed_executions": 6,
+  "cases": [
+    "experience-today",
+    "experience-brand",
+    "experience-typo"
+  ],
+  "trials_per_case_per_arm": 1,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "cli_version": "codex-cli 0.153.4",
+  "command_boundary": "offline-browser",
+  "runtime_file_hashes": {
+    ".codex-plugin/plugin.json": "d7ba0f090bb1b8753d0385dc884ffc1aed9ee666ead344594960783d42b1a7f9",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "0c11e901e8627f06f9e1d250301a370d73d96f6f88298d4a58d43afc4c5220fd",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+    "references/change-classification.md": "f7e530635d691090e6a8ff40201f05f423f5ef1fbe8c4bc682bbb8172091a579",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "b740720bf280576d65d802f70c0723a5890ea6e08b35d040dd79514c3001c33e",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "1d4226b109d7f3c4724a7d8f7c5855ad9ee9a3e0c4dc2358e98a21d5cf8ebf80",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "6b807e4f4b390df0a7f1a3e84b36b986fd88529b3985eeaad81b56b91a2977ca",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "cf43ee26a12671095712ad1a9c7c5373b43e6c695fc5d5c5959880c8d7b596c6",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "d1933f29552d645a62c5e19654b7d5c46a7e1629c3ae2d4b94b47d8393a318ff",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "ee819b59dc533dc0ffe81b671da8edcfe494c1659358982a4d63faaf6eafe343",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "ad2df8f5fb75a4db9e9db9704903efbbd9273d4a95c4173cfcffe88fd70956eb",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/evidence-contract.md": "e4e2ca10743506999bf961c9f8d35d1ac2e37455e7d09aa08f1d1795d2675435",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "0c25a09a0ed97eef8b35a7d888cd8deea2aa26bd5b3e033b2b2b3573536affee",
+    "templates/project-profile.minimal.json": "b80dbd13ee05ed27bc9ec219386134c9a42d7d92725dc8cfb0ba0f3e569b88df",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "input_hashes": {
+    "evals/experience-matrix.json": "cd1bff084eb4194621296589be4039bda9e4fdb1b70b25964ac528618b649b35",
+    "evals/cases.json": "5def87990274f43b04c842c1aeb544f0be30276b1bda9df31e24b2e10f077e80",
+    "evals/run_natural_matrix.py": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d"
+  },
+  "retained_integrity_sha256": "d9d51c96c5697120924b7d52b147f72a0e33b71d973efbd1de294286d54e0df6",
+  "public_run_sha256": "989ff5406faf1a622e7cd7a6ffe076f901aace033df35c88584416e37a9f0bb1",
+  "public_manifest_sha256": "28744c9add977b24bbfa51b61d63e24a482c9baed85d924aeaac49d0426d9cd2",
+  "trials": [
+    {
+      "case_id": "experience-brand",
+      "arm": "control",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Both inspect actual rendering and propose identity/visual intent/voice with implementation awaiting approval. Production and accepted design remain unchanged. Harness selects brand-and-language without UI-body fanout.",
+      "wall_seconds": 84.6374523639679,
+      "usage": {
+        "input_tokens": 98807,
+        "cached_input_tokens": 88192,
+        "output_tokens": 1613,
+        "reasoning_output_tokens": 31,
+        "uncached_input_tokens": 10615
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [],
+          "reference_paths_in_read_commands": [],
+          "image_open_tool_calls": 1
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "8ebfce7f61c4f35c8625245a0a200840dd8531e36ee64a8ed40b32e0a9d0f1e3",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "71c21d571549c4c1c77fc468701c5b4035aaf6310ccb2ed870fd7860072b3664",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "6aa8f64d1c4e4265e2eed9bcd1c25d6e87194510199dd15010b13491922880e4",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/brand-direction.md": "d89c123c7baaf4f7fea0a5f05f651f1319d61c0ae76a8fa00a62be7df5ea98df",
+        "renders/narrow.png": "e0eb2e8997fccb0415e6e268dd8e73d28554d354aaf83a1d49a3e5f28edc4abd",
+        "renders/wide.png": "5adceeb9bc032134920c10b90f31976598426fdbfc866afe596d7253f52041ea",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+      },
+      "source_test_diff": ""
+    },
+    {
+      "case_id": "experience-brand",
+      "arm": "harness",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Both inspect actual rendering and propose identity/visual intent/voice with implementation awaiting approval. Production and accepted design remain unchanged. Harness selects brand-and-language without UI-body fanout.",
+      "wall_seconds": 91.06314063072205,
+      "usage": {
+        "input_tokens": 106466,
+        "cached_input_tokens": 94208,
+        "output_tokens": 1972,
+        "reasoning_output_tokens": 32,
+        "uncached_input_tokens": 12258
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [
+            "brand-and-language",
+            "using-engineering-harness"
+          ],
+          "reference_paths_in_read_commands": [
+            "references/experience-routing.md",
+            "references/language-and-trust.md",
+            "references/rendered-evidence.md"
+          ],
+          "image_open_tool_calls": 1
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "afe925dfb48506bb1306ac2a6c5dcc72c934807c1349929d3025d2097344babc",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "3d594c1a4674fbdc66b467db9840b0bd2aeec046e7df74ebfff87274fd69e9d9",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "fa6392dd0780fc3d44534aabbe95d9ad00c21f0b7899f49733d55b3c312a53b3",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/brand-proposal.md": "40f3e27cd8e2df7c21e5eb1da112e0a70cf3716e58a23bde56dbb8ea03f46409",
+        "renders/narrow.png": "e0eb2e8997fccb0415e6e268dd8e73d28554d354aaf83a1d49a3e5f28edc4abd",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+      },
+      "source_test_diff": ""
+    },
+    {
+      "case_id": "experience-today",
+      "arm": "control",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Placement is unspecified by accepted contract. Both choose the existing summary to avoid another card/pushing scheduled actions down; average is derived from local history; actual renders opened. Harness reads router only, so UX-specialist activation remains unproven.",
+      "wall_seconds": 47.66932225227356,
+      "usage": {
+        "input_tokens": 99449,
+        "cached_input_tokens": 79872,
+        "output_tokens": 1024,
+        "reasoning_output_tokens": 39,
+        "uncached_input_tokens": 19577
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [],
+          "reference_paths_in_read_commands": [],
+          "image_open_tool_calls": 2
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "4c6a7b72c2567db666bf3195d4639764ea8e169e49b51c29546ae11dfc0edfc4",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "ac371bef84237f135ed7b54dcf7c2f8957340cd942d9dc0b31be7f2e90acd4b2",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "172bd8eece2f920ff2c32b00b1f7edee1f7b9bf3d9d93a35ff3fb0ab6f4702e4",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "d6431ff397ad3a8e9a8d5ce24b3b550410557e52763fc31b7bb7eb440dc9dad6",
+        "app.js": "7f258a88d7274b2b01f8b339bf0b3fe234f5c392815d6a4f52b167311386f448",
+        "index.html": "25713b9deb0448c0efadff27dbbd73b633cea79b2e0321a37b600b7e3a9de2bb",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0aff451d0a9d0663e2660d3348bd6b4f218d6f095a2528823957fbe143f747fc"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "d6431ff397ad3a8e9a8d5ce24b3b550410557e52763fc31b7bb7eb440dc9dad6",
+        "app.js": "82e814b1e9ed6fe074c8cadf91590995e44cf75417ab3288c33693034f4e8d9b",
+        "index.html": "88cafdb466a65caf71b946eb70dea0f6ad7defb9b1b5e508ca47ed3d22c5d901",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/narrow-full.png": "17dffbca4d264f28a3b6c810bd6cb7e6f38d52d3731b157500a2dc398c43d2df",
+        "renders/narrow.png": "7638b88e9a0cad6ac54cbda3230d485625187916f01bde31954088aabb1a7494",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "35319efa5b170554dff529ee7236bb12976a67ef473d93d6ecfc69b75ea4c3d8"
+      },
+      "source_test_diff": "diff --git a/app.js b/app.js\nindex bc40dcf..3463f85 100644\n--- a/app.js\n+++ b/app.js\n@@ -3,4 +3,11 @@ const stepHistory = [5400, 6100, 5800, 6900, 4700, 5500, 6200];\n function averageSteps(days) {\n   return days.length ? Math.round(days.reduce((sum, value) => sum + value, 0) / days.length) : null;\n }\n+if (typeof document !== 'undefined') {\n+  const summary = document.getElementById('steps-average');\n+  const average = averageSteps(stepHistory);\n+  if (summary) summary.textContent = average === null\n+    ? '7-day average unavailable'\n+    : `7-day average: ${average.toLocaleString('en-US')} steps`;\n+}\n if (typeof module !== 'undefined') module.exports = {stepHistory, averageSteps};\ndiff --git a/index.html b/index.html\nindex 9f1b90e..7f79029 100644\n--- a/index.html\n+++ b/index.html\n@@ -29,7 +29,7 @@\n <section class=\"card\">\n <h2>Steps</h2>\n <p class=\"metric\">6,200</p>\n-<p>Recent recorded summary</p>\n+<p id=\"steps-average\" class=\"muted\"></p>\n </section>\n <section class=\"card\">\n <h2>Recovery</h2>\ndiff --git a/test.js b/test.js\nindex a693d52..eb94c7e 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,5 +1,12 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n assert(html.includes('id=\"schedule\"'));assert.equal((html.match(/class=\"card\"/g)||[]).length,8);\n-console.log(\"checks passed\");\n const {stepHistory,averageSteps}=require('./app');\n assert.equal(stepHistory.length,7);assert.equal(averageSteps(stepHistory),5800);assert.equal(averageSteps([]),null);\n+const vm = require('node:vm');\n+const summary = {textContent: ''};\n+assert.match(html, /<h2>Steps<\\/h2>\\s*<p class=\"metric\">6,200<\\/p>\\s*<p id=\"steps-average\" class=\"muted\"><\\/p>/);\n+vm.runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: {getElementById(id) {assert.equal(id, 'steps-average'); return summary;}}\n+});\n+assert.equal(summary.textContent, '7-day average: 5,800 steps');\n+console.log(\"checks passed\");\n"
+    },
+    {
+      "case_id": "experience-today",
+      "arm": "harness",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Placement is unspecified by accepted contract. Both choose the existing summary to avoid another card/pushing scheduled actions down; average is derived from local history; actual renders opened. Harness reads router only, so UX-specialist activation remains unproven.",
+      "wall_seconds": 52.45684289932251,
+      "usage": {
+        "input_tokens": 103982,
+        "cached_input_tokens": 92928,
+        "output_tokens": 1046,
+        "reasoning_output_tokens": 44,
+        "uncached_input_tokens": 11054
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [
+            "using-engineering-harness"
+          ],
+          "reference_paths_in_read_commands": [],
+          "image_open_tool_calls": 2
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "e2120af25045a1b4b58500733cc8e1a3f07567b6b96af7ccbd0cff2aeb7c5410",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "c94a835d33e01f2ba6c9b5bf3f6285d40cc3553b4a131a7dc38ed20c4c25f626",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "5cf1df41cda367e29f789428e10c050035192ba965682ce027e1c5e4f4c51974",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "d6431ff397ad3a8e9a8d5ce24b3b550410557e52763fc31b7bb7eb440dc9dad6",
+        "app.js": "7f258a88d7274b2b01f8b339bf0b3fe234f5c392815d6a4f52b167311386f448",
+        "index.html": "25713b9deb0448c0efadff27dbbd73b633cea79b2e0321a37b600b7e3a9de2bb",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "0aff451d0a9d0663e2660d3348bd6b4f218d6f095a2528823957fbe143f747fc"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "d6431ff397ad3a8e9a8d5ce24b3b550410557e52763fc31b7bb7eb440dc9dad6",
+        "app.js": "527f816f88df3309e22d2f1dea36e85206cb53f13a5fc847d55bc9a31ff3ef51",
+        "index.html": "9e140f09b82b636631d04d6918e27a4c3c63d1a9fbe9fe9592cde1fa5bf3ab4d",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/narrow-full.png": "c780b0948c5b427f277b8147cf0f7c375bd1e42d37814eefdc7fa8a242576997",
+        "renders/narrow.png": "7638b88e9a0cad6ac54cbda3230d485625187916f01bde31954088aabb1a7494",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "bf1a11f70114df2a53fee583bed3439b9d14a381702f93a9ab047a4546b9b358"
+      },
+      "source_test_diff": "diff --git a/app.js b/app.js\nindex bc40dcf..8184c90 100644\n--- a/app.js\n+++ b/app.js\n@@ -3,4 +3,13 @@ const stepHistory = [5400, 6100, 5800, 6900, 4700, 5500, 6200];\n function averageSteps(days) {\n   return days.length ? Math.round(days.reduce((sum, value) => sum + value, 0) / days.length) : null;\n }\n+if (typeof document !== 'undefined') {\n+  const summary = document.getElementById('steps-average');\n+  if (summary) {\n+    const average = averageSteps(stepHistory);\n+    summary.textContent = average === null\n+      ? '7-day average: no steps recorded'\n+      : `7-day average: ${average.toLocaleString('en-US')} steps`;\n+  }\n+}\n if (typeof module !== 'undefined') module.exports = {stepHistory, averageSteps};\ndiff --git a/index.html b/index.html\nindex 9f1b90e..f3d24c8 100644\n--- a/index.html\n+++ b/index.html\n@@ -29,7 +29,7 @@\n <section class=\"card\">\n <h2>Steps</h2>\n <p class=\"metric\">6,200</p>\n-<p>Recent recorded summary</p>\n+<p id=\"steps-average\"></p>\n </section>\n <section class=\"card\">\n <h2>Recovery</h2>\ndiff --git a/test.js b/test.js\nindex a693d52..d5d6e37 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,5 +1,11 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n assert(html.includes('id=\"schedule\"'));assert.equal((html.match(/class=\"card\"/g)||[]).length,8);\n-console.log(\"checks passed\");\n const {stepHistory,averageSteps}=require('./app');\n assert.equal(stepHistory.length,7);assert.equal(averageSteps(stepHistory),5800);assert.equal(averageSteps([]),null);\n+assert.match(html, /<h2>Steps<\\/h2>\\s*<p class=\"metric\">6,200<\\/p>\\s*<p id=\"steps-average\"><\\/p>/);\n+const summary = {textContent: ''};\n+require('node:vm').runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: {getElementById(id) {assert.equal(id, 'steps-average'); return summary;}}\n+});\n+assert.equal(summary.textContent, '7-day average: 5,800 steps');\n+console.log(\"checks passed\");\n"
+    },
+    {
+      "case_id": "experience-typo",
+      "arm": "control",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Both change only the typo and open a bounded render per fixture instructions. Neither loads a specialist or creates scope/evidence receipts.",
+      "wall_seconds": 27.58966565132141,
+      "usage": {
+        "input_tokens": 76718,
+        "cached_input_tokens": 63488,
+        "output_tokens": 404,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 13230
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [],
+          "reference_paths_in_read_commands": [],
+          "image_open_tool_calls": 1
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "53d8a3b2837036da35b0c8a1fda1679cdd0dd4384ba326bd68ae18b4a27110e5",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "6b9abb35e34fe8712f07592dddfa5a2fdba9851510bb37ac0b228e964271092a",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "e436b52b6e38b840b25a38bd168fb8bb01adf96f77bbe1aea42f4ea36ee25c61",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "3e54581720941983f8114f0127a6f02aa69fabc03995947768e835e439794f47",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "995da6373fe3dfba4b4a3c5a40a60adc090f3454c032f4d5f612f9b1ecb5c1e1",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/narrow.png": "cbb7e77b4c1a26439eb7aa7bd232401b8557cceac1107938bd6598154ceaa30a",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+      },
+      "source_test_diff": "diff --git a/index.html b/index.html\nindex 6c02a1a..301bf4e 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Settings</h1>\n-<button id=\"save\">Save prefernces</button>\n+<button id=\"save\">Save preferences</button>\n </main>\n <script src=\"app.js\">\n </script>\n"
+    },
+    {
+      "case_id": "experience-typo",
+      "arm": "harness",
+      "trial": 1,
+      "assessment": "pass",
+      "forbidden_outcomes_observed": [],
+      "notes": "Both change only the typo and open a bounded render per fixture instructions. Neither loads a specialist or creates scope/evidence receipts.",
+      "wall_seconds": 29.569175004959106,
+      "usage": {
+        "input_tokens": 76627,
+        "cached_input_tokens": 65280,
+        "output_tokens": 386,
+        "reasoning_output_tokens": 10,
+        "uncached_input_tokens": 11347
+      },
+      "contexts": [
+        {
+          "kind": "primary",
+          "model": "gpt-6-astra",
+          "reasoning_effort": "medium",
+          "completed": true,
+          "skill_bodies_observed": [],
+          "reference_paths_in_read_commands": [],
+          "image_open_tool_calls": 1
+        }
+      ],
+      "boundary": {
+        "profile": "experience-offline",
+        "config_sha256": "a1096e9134bf1b09fd3291c3b25e1fa78dfb81721766686b621926d1a808e557",
+        "preflight": {
+          "auth": "denied",
+          "auth_alias": "denied",
+          "outside": "denied",
+          "direct_http": "blocked",
+          "proxy_http": "403",
+          "direct_socket": "blocked",
+          "local_ipc": "ok"
+        },
+        "local_server_connections": 0,
+        "browser_sha256": "e11fc9ce65c96313476f7ee9844b6fb6a9220fb048693cfe9eee00acf4170a9f",
+        "render_probe_sha256": "7aacaffc2b1ea942c2af0c8794bad4d1cd1c3f9f3b75e13d1292ebbc0950d955",
+        "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."
+      },
+      "final_config_sha256": "22a0273cfad1f6d2b7ec243d9edb9f80ca36fd43f7837eb4b8d5cd83a1b84b78",
+      "protected_config_sections_unchanged": true,
+      "auth_copy_cleaned_up": true,
+      "record_sha256": "65cd4dec67f26b8e67ca92b67db76a78b72e36b93010d67fe60a1e8f56c4e229",
+      "fixture_before_hashes": {
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "3e54581720941983f8114f0127a6f02aa69fabc03995947768e835e439794f47",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+      },
+      "fixture_after_hashes": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+        "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+        "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "index.html": "995da6373fe3dfba4b4a3c5a40a60adc090f3454c032f4d5f612f9b1ecb5c1e1",
+        "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+        "renders/narrow.png": "cbb7e77b4c1a26439eb7aa7bd232401b8557cceac1107938bd6598154ceaa30a",
+        "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+        "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+      },
+      "source_test_diff": "diff --git a/index.html b/index.html\nindex 6c02a1a..301bf4e 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Settings</h1>\n-<button id=\"save\">Save prefernces</button>\n+<button id=\"save\">Save preferences</button>\n </main>\n <script src=\"app.js\">\n </script>\n"
+    }
+  ]
+}
