@@ -1,0 +1,1021 @@
+{
+  "candidate_shas": [
+    "e8efc6b70ac4a235981f2481e471917ede28139a"
+  ],
+  "arms": {
+    "control": {
+      "trials": 42,
+      "contexts": 56,
+      "usage": {
+        "input_tokens": 5296115,
+        "cached_input_tokens": 4691072,
+        "output_tokens": 63621,
+        "reasoning_output_tokens": 4762,
+        "uncached_input_tokens": 605043
+      },
+      "wall_seconds_median": 52.02921962738037,
+      "model_invocations": 282,
+      "by_action": {
+        "commentary+reads_or_other_tools": {
+          "input_tokens": 848377,
+          "cached_input_tokens": 638848,
+          "output_tokens": 5943,
+          "reasoning_output_tokens": 446,
+          "uncached_input_tokens": 209529
+        },
+        "reads_or_other_tools": {
+          "input_tokens": 1508254,
+          "cached_input_tokens": 1331328,
+          "output_tokens": 5175,
+          "reasoning_output_tokens": 817,
+          "uncached_input_tokens": 176926
+        },
+        "commentary+write_artifacts_or_code": {
+          "input_tokens": 267286,
+          "cached_input_tokens": 235008,
+          "output_tokens": 18607,
+          "reasoning_output_tokens": 655,
+          "uncached_input_tokens": 32278
+        },
+        "checks": {
+          "input_tokens": 516544,
+          "cached_input_tokens": 484096,
+          "output_tokens": 6882,
+          "reasoning_output_tokens": 668,
+          "uncached_input_tokens": 32448
+        },
+        "final": {
+          "input_tokens": 1107115,
+          "cached_input_tokens": 1032192,
+          "output_tokens": 10982,
+          "reasoning_output_tokens": 496,
+          "uncached_input_tokens": 74923
+        },
+        "checks+commentary": {
+          "input_tokens": 113374,
+          "cached_input_tokens": 97408,
+          "output_tokens": 2853,
+          "reasoning_output_tokens": 531,
+          "uncached_input_tokens": 15966
+        },
+        "write_artifacts_or_code": {
+          "input_tokens": 307882,
+          "cached_input_tokens": 284544,
+          "output_tokens": 9258,
+          "reasoning_output_tokens": 815,
+          "uncached_input_tokens": 23338
+        },
+        "commentary+launch": {
+          "input_tokens": 57398,
+          "cached_input_tokens": 55168,
+          "output_tokens": 637,
+          "reasoning_output_tokens": 87,
+          "uncached_input_tokens": 2230
+        },
+        "launch": {
+          "input_tokens": 215307,
+          "cached_input_tokens": 195584,
+          "output_tokens": 1999,
+          "reasoning_output_tokens": 11,
+          "uncached_input_tokens": 19723
+        },
+        "coordination": {
+          "input_tokens": 311954,
+          "cached_input_tokens": 294912,
+          "output_tokens": 976,
+          "reasoning_output_tokens": 116,
+          "uncached_input_tokens": 17042
+        },
+        "commentary+coordination": {
+          "input_tokens": 42624,
+          "cached_input_tokens": 41984,
+          "output_tokens": 309,
+          "reasoning_output_tokens": 120,
+          "uncached_input_tokens": 640
+        }
+      },
+      "by_stage": {
+        "discovery_or_competing_skill": {
+          "input_tokens": 4102020,
+          "cached_input_tokens": 3632896,
+          "output_tokens": 54607,
+          "reasoning_output_tokens": 4225,
+          "uncached_input_tokens": 469124
+        },
+        "reviewer": {
+          "input_tokens": 1194095,
+          "cached_input_tokens": 1058176,
+          "output_tokens": 9014,
+          "reasoning_output_tokens": 537,
+          "uncached_input_tokens": 135919
+        }
+      },
+      "skill_bodies_read": 26,
+      "runtime_read_requests": 0,
+      "duplicate_read_requests": 0,
+      "final_message_bytes": 52888,
+      "commentary_bytes": 16714
+    },
+    "harness": {
+      "trials": 42,
+      "contexts": 55,
+      "usage": {
+        "input_tokens": 8095695,
+        "cached_input_tokens": 7214080,
+        "output_tokens": 111785,
+        "reasoning_output_tokens": 3744,
+        "uncached_input_tokens": 881615
+      },
+      "wall_seconds_median": 62.54398465156555,
+      "model_invocations": 379,
+      "by_action": {
+        "commentary+reads_or_other_tools": {
+          "input_tokens": 990588,
+          "cached_input_tokens": 742528,
+          "output_tokens": 9523,
+          "reasoning_output_tokens": 300,
+          "uncached_input_tokens": 248060
+        },
+        "reads_or_other_tools": {
+          "input_tokens": 2325207,
+          "cached_input_tokens": 2014976,
+          "output_tokens": 14068,
+          "reasoning_output_tokens": 377,
+          "uncached_input_tokens": 310231
+        },
+        "checks": {
+          "input_tokens": 610118,
+          "cached_input_tokens": 558848,
+          "output_tokens": 7111,
+          "reasoning_output_tokens": 587,
+          "uncached_input_tokens": 51270
+        },
+        "commentary+write_artifacts_or_code": {
+          "input_tokens": 580487,
+          "cached_input_tokens": 551680,
+          "output_tokens": 31898,
+          "reasoning_output_tokens": 1033,
+          "uncached_input_tokens": 28807
+        },
+        "final": {
+          "input_tokens": 1291951,
+          "cached_input_tokens": 1189504,
+          "output_tokens": 12836,
+          "reasoning_output_tokens": 152,
+          "uncached_input_tokens": 102447
+        },
+        "write_artifacts_or_code": {
+          "input_tokens": 773665,
+          "cached_input_tokens": 733056,
+          "output_tokens": 27286,
+          "reasoning_output_tokens": 406,
+          "uncached_input_tokens": 40609
+        },
+        "checks+commentary": {
+          "input_tokens": 158122,
+          "cached_input_tokens": 137984,
+          "output_tokens": 4295,
+          "reasoning_output_tokens": 433,
+          "uncached_input_tokens": 20138
+        },
+        "launch": {
+          "input_tokens": 302675,
+          "cached_input_tokens": 282496,
+          "output_tokens": 1860,
+          "reasoning_output_tokens": 34,
+          "uncached_input_tokens": 20179
+        },
+        "coordination": {
+          "input_tokens": 862248,
+          "cached_input_tokens": 804992,
+          "output_tokens": 2090,
+          "reasoning_output_tokens": 330,
+          "uncached_input_tokens": 57256
+        },
+        "commentary+coordination": {
+          "input_tokens": 200634,
+          "cached_input_tokens": 198016,
+          "output_tokens": 818,
+          "reasoning_output_tokens": 92,
+          "uncached_input_tokens": 2618
+        }
+      },
+      "by_stage": {
+        "discovery_or_competing_skill": {
+          "input_tokens": 787752,
+          "cached_input_tokens": 569728,
+          "output_tokens": 7589,
+          "reasoning_output_tokens": 15,
+          "uncached_input_tokens": 218024
+        },
+        "router": {
+          "input_tokens": 3211501,
+          "cached_input_tokens": 2932864,
+          "output_tokens": 28392,
+          "reasoning_output_tokens": 1219,
+          "uncached_input_tokens": 278637
+        },
+        "implementation_owner": {
+          "input_tokens": 1439239,
+          "cached_input_tokens": 1332096,
+          "output_tokens": 34770,
+          "reasoning_output_tokens": 1114,
+          "uncached_input_tokens": 107143
+        },
+        "reviewer": {
+          "input_tokens": 2657203,
+          "cached_input_tokens": 2379392,
+          "output_tokens": 41034,
+          "reasoning_output_tokens": 1396,
+          "uncached_input_tokens": 277811
+        }
+      },
+      "skill_bodies_read": 90,
+      "runtime_read_requests": 180,
+      "duplicate_read_requests": 0,
+      "final_message_bytes": 60531,
+      "commentary_bytes": 30587
+    }
+  },
+  "runtime_markdown_file_bytes": {
+    "references/scope-approval.md": 1225,
+    "references/assurance-review.md": 5390,
+    "references/enforcement-ladder.md": 1936,
+    "references/assurance-handoff.md": 6068,
+    "references/profile-discovery.md": 3546,
+    "references/precedence-and-exceptions.md": 1744,
+    "references/change-classification.md": 5967,
+    "references/engineering-invariants.md": 9633,
+    "references/versioning.md": 2014,
+    "templates/compatibility-plan.md": 740,
+    "templates/durable-operation.md": 994,
+    "templates/scope-lock.md": 1864,
+    "templates/review-packet.md": 2411,
+    "skills/durable-workflows/SKILL.md": 2657,
+    "skills/application-composition/SKILL.md": 2011,
+    "skills/verification-and-operations/SKILL.md": 2545,
+    "skills/architecture-hardening/SKILL.md": 1734,
+    "skills/architecture-foundations/SKILL.md": 2519,
+    "skills/data-and-compatibility/SKILL.md": 2379,
+    "skills/using-engineering-harness/SKILL.md": 5835,
+    "skills/security-assurance/SKILL.md": 3305,
+    "skills/interfaces-and-events/SKILL.md": 2391,
+    "skills/privacy-assurance/SKILL.md": 3393,
+    "skills/privacy-assurance/references/release-data-lifecycle.md": 3177,
+    "skills/interfaces-and-events/references/consumer-contract.md": 929,
+    "skills/interfaces-and-events/references/event-delivery.md": 1287,
+    "skills/interfaces-and-events/references/authorization-context.md": 2278,
+    "skills/security-assurance/references/release-surface.md": 4673,
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": 1760,
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": 1143,
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": 1169,
+    "skills/data-and-compatibility/references/live-repair.md": 1071,
+    "skills/architecture-foundations/references/quality-and-ownership.md": 1121,
+    "skills/architecture-foundations/references/brownfield-deepening.md": 1154,
+    "skills/architecture-foundations/references/runtime-resource-governance.md": 7696,
+    "skills/architecture-hardening/references/hotspot-method.md": 1324,
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": 1357,
+    "skills/verification-and-operations/references/evidence-contract.md": 1286,
+    "skills/verification-and-operations/references/reviewable-commits.md": 1473,
+    "skills/verification-and-operations/references/operator-interface.md": 1115,
+    "skills/verification-and-operations/references/adversarial-review.md": 2185,
+    "skills/application-composition/references/adapters-and-ai.md": 1415,
+    "skills/application-composition/references/interactive-surfaces.md": 1177,
+    "skills/durable-workflows/references/failure-matrix.md": 1406
+  },
+  "limitations": [
+    "Token counters are measured per invocation/context and reconciled; stage/action labels are observational proxies, not causal attribution to individual instructions.",
+    "Stages include all retained context and tool/schema overhead. File sizes and message/artifact sizes are bytes, not tokenizer counts.",
+    "Read requests recognize literal cat/sed/head/tail/nl commands. Dynamic, partial, failed or mixed commands limit exact read attribution; file-byte totals are full-file upper bounds for recognized requests.",
+    "Duplicate reads across independent contexts may be necessary and are not automatically waste.",
+    "Writing invocations include production code and necessary tests as well as documentation. Their tokens are not all removable verbosity.",
+    "Context wall includes waits and overlapping children. Actual review rounds, late blockers and initial-review misses require the retained behavioral assessments; spawn counts alone do not establish convergence.",
+    "Private reasoning and message contents are not emitted. No behavioral scoring is performed."
+  ],
+  "full_attribution_sha256": "897620db777a5ab0a9b13fd08cf676bbe004023ed7fa1225127ef40dc0e34613",
+  "baseline_manifest_sha256": "5032205bda3f66af51221520b55f8fd73f64d9ccda7c955bb1d05db8977dc588",
+  "cases": [
+    {
+      "case_id": "release-security-surface",
+      "delta": {
+        "input_tokens": 622496,
+        "cached_input_tokens": 592640,
+        "output_tokens": 9837,
+        "reasoning_output_tokens": 100,
+        "uncached_input_tokens": 29856
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 485790,
+            "cached_input_tokens": 443520,
+            "output_tokens": 4525,
+            "reasoning_output_tokens": 174,
+            "uncached_input_tokens": 42270
+          },
+          "wall_seconds_median": 84.16326558589935,
+          "model_invocations": 25
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 1108286,
+            "cached_input_tokens": 1036160,
+            "output_tokens": 14362,
+            "reasoning_output_tokens": 274,
+            "uncached_input_tokens": 72126
+          },
+          "wall_seconds_median": 256.19665002822876,
+          "model_invocations": 49
+        }
+      }
+    },
+    {
+      "case_id": "authorization-export",
+      "delta": {
+        "input_tokens": 551732,
+        "cached_input_tokens": 510336,
+        "output_tokens": 7056,
+        "reasoning_output_tokens": 125,
+        "uncached_input_tokens": 41396
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 301916,
+            "cached_input_tokens": 257280,
+            "output_tokens": 4647,
+            "reasoning_output_tokens": 551,
+            "uncached_input_tokens": 44636
+          },
+          "wall_seconds_median": 105.75047016143799,
+          "model_invocations": 15
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 853648,
+            "cached_input_tokens": 767616,
+            "output_tokens": 11703,
+            "reasoning_output_tokens": 676,
+            "uncached_input_tokens": 86032
+          },
+          "wall_seconds_median": 256.2850606441498,
+          "model_invocations": 37
+        }
+      }
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "delta": {
+        "input_tokens": 481966,
+        "cached_input_tokens": 468352,
+        "output_tokens": 6806,
+        "reasoning_output_tokens": -7,
+        "uncached_input_tokens": 13614
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 6,
+          "usage": {
+            "input_tokens": 740911,
+            "cached_input_tokens": 657664,
+            "output_tokens": 6733,
+            "reasoning_output_tokens": 346,
+            "uncached_input_tokens": 83247
+          },
+          "wall_seconds_median": 99.29260277748108,
+          "model_invocations": 37
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 1222877,
+            "cached_input_tokens": 1126016,
+            "output_tokens": 13539,
+            "reasoning_output_tokens": 339,
+            "uncached_input_tokens": 96861
+          },
+          "wall_seconds_median": 248.54296135902405,
+          "model_invocations": 55
+        }
+      }
+    },
+    {
+      "case_id": "independent-correction-review",
+      "delta": {
+        "input_tokens": 280310,
+        "cached_input_tokens": 226432,
+        "output_tokens": 6663,
+        "reasoning_output_tokens": 259,
+        "uncached_input_tokens": 53878
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 6,
+          "usage": {
+            "input_tokens": 693282,
+            "cached_input_tokens": 625152,
+            "output_tokens": 6645,
+            "reasoning_output_tokens": 533,
+            "uncached_input_tokens": 68130
+          },
+          "wall_seconds_median": 89.76008892059326,
+          "model_invocations": 35
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 6,
+          "usage": {
+            "input_tokens": 973592,
+            "cached_input_tokens": 851584,
+            "output_tokens": 13308,
+            "reasoning_output_tokens": 792,
+            "uncached_input_tokens": 122008
+          },
+          "wall_seconds_median": 206.89214062690735,
+          "model_invocations": 43
+        }
+      }
+    },
+    {
+      "case_id": "temporary-account-oauth-scope",
+      "delta": {
+        "input_tokens": 340092,
+        "cached_input_tokens": 292480,
+        "output_tokens": 6577,
+        "reasoning_output_tokens": -1036,
+        "uncached_input_tokens": 47612
+      },
+      "arms": {
+        "control": {
+          "trials": 4,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 392746,
+            "cached_input_tokens": 350208,
+            "output_tokens": 5177,
+            "reasoning_output_tokens": 1493,
+            "uncached_input_tokens": 42538
+          },
+          "wall_seconds_median": 67.56623828411102,
+          "model_invocations": 22
+        },
+        "harness": {
+          "trials": 4,
+          "contexts": 5,
+          "usage": {
+            "input_tokens": 732838,
+            "cached_input_tokens": 642688,
+            "output_tokens": 11754,
+            "reasoning_output_tokens": 457,
+            "uncached_input_tokens": 90150
+          },
+          "wall_seconds_median": 90.89609324932098,
+          "model_invocations": 33
+        }
+      }
+    },
+    {
+      "case_id": "approved-provider-broker-design",
+      "delta": {
+        "input_tokens": 271223,
+        "cached_input_tokens": 266496,
+        "output_tokens": 3425,
+        "reasoning_output_tokens": 26,
+        "uncached_input_tokens": 4727
+      },
+      "arms": {
+        "control": {
+          "trials": 4,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 446803,
+            "cached_input_tokens": 377472,
+            "output_tokens": 15031,
+            "reasoning_output_tokens": 124,
+            "uncached_input_tokens": 69331
+          },
+          "wall_seconds_median": 144.66860210895538,
+          "model_invocations": 22
+        },
+        "harness": {
+          "trials": 4,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 718026,
+            "cached_input_tokens": 643968,
+            "output_tokens": 18456,
+            "reasoning_output_tokens": 150,
+            "uncached_input_tokens": 74058
+          },
+          "wall_seconds_median": 186.65584230422974,
+          "model_invocations": 32
+        }
+      }
+    },
+    {
+      "case_id": "critical-audit",
+      "delta": {
+        "input_tokens": 63169,
+        "cached_input_tokens": 52736,
+        "output_tokens": 1478,
+        "reasoning_output_tokens": -202,
+        "uncached_input_tokens": 10433
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 135846,
+            "cached_input_tokens": 119040,
+            "output_tokens": 1884,
+            "reasoning_output_tokens": 426,
+            "uncached_input_tokens": 16806
+          },
+          "wall_seconds_median": 52.01978015899658,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 199015,
+            "cached_input_tokens": 171776,
+            "output_tokens": 3362,
+            "reasoning_output_tokens": 224,
+            "uncached_input_tokens": 27239
+          },
+          "wall_seconds_median": 77.17609810829163,
+          "model_invocations": 10
+        }
+      }
+    },
+    {
+      "case_id": "natural-security-review",
+      "delta": {
+        "input_tokens": 58402,
+        "cached_input_tokens": 46592,
+        "output_tokens": 1397,
+        "reasoning_output_tokens": -26,
+        "uncached_input_tokens": 11810
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 135425,
+            "cached_input_tokens": 119424,
+            "output_tokens": 1349,
+            "reasoning_output_tokens": 73,
+            "uncached_input_tokens": 16001
+          },
+          "wall_seconds_median": 39.402591943740845,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 193827,
+            "cached_input_tokens": 166016,
+            "output_tokens": 2746,
+            "reasoning_output_tokens": 47,
+            "uncached_input_tokens": 27811
+          },
+          "wall_seconds_median": 62.39930021762848,
+          "model_invocations": 10
+        }
+      }
+    },
+    {
+      "case_id": "handoff-session",
+      "delta": {
+        "input_tokens": 48174,
+        "cached_input_tokens": 38144,
+        "output_tokens": 1121,
+        "reasoning_output_tokens": -118,
+        "uncached_input_tokens": 10030
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 145717,
+            "cached_input_tokens": 130560,
+            "output_tokens": 1551,
+            "reasoning_output_tokens": 155,
+            "uncached_input_tokens": 15157
+          },
+          "wall_seconds_median": 44.536579728126526,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 193891,
+            "cached_input_tokens": 168704,
+            "output_tokens": 2672,
+            "reasoning_output_tokens": 37,
+            "uncached_input_tokens": 25187
+          },
+          "wall_seconds_median": 62.317739725112915,
+          "model_invocations": 10
+        }
+      }
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "delta": {
+        "input_tokens": 53322,
+        "cached_input_tokens": 55424,
+        "output_tokens": 1045,
+        "reasoning_output_tokens": -59,
+        "uncached_input_tokens": -2102
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 140830,
+            "cached_input_tokens": 118400,
+            "output_tokens": 1016,
+            "reasoning_output_tokens": 59,
+            "uncached_input_tokens": 22430
+          },
+          "wall_seconds_median": 35.530619740486145,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 194152,
+            "cached_input_tokens": 173824,
+            "output_tokens": 2061,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 20328
+          },
+          "wall_seconds_median": 53.13104331493378,
+          "model_invocations": 10
+        }
+      }
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "delta": {
+        "input_tokens": 55469,
+        "cached_input_tokens": 45312,
+        "output_tokens": 802,
+        "reasoning_output_tokens": -26,
+        "uncached_input_tokens": 10157
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 157500,
+            "cached_input_tokens": 139904,
+            "output_tokens": 1214,
+            "reasoning_output_tokens": 44,
+            "uncached_input_tokens": 17596
+          },
+          "wall_seconds_median": 38.04325604438782,
+          "model_invocations": 9
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 212969,
+            "cached_input_tokens": 185216,
+            "output_tokens": 2016,
+            "reasoning_output_tokens": 18,
+            "uncached_input_tokens": 27753
+          },
+          "wall_seconds_median": 55.17210876941681,
+          "model_invocations": 11
+        }
+      }
+    },
+    {
+      "case_id": "independent-review-unavailable",
+      "delta": {
+        "input_tokens": 5781,
+        "cached_input_tokens": 2688,
+        "output_tokens": 726,
+        "reasoning_output_tokens": -33,
+        "uncached_input_tokens": 3093
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 133084,
+            "cached_input_tokens": 119040,
+            "output_tokens": 1497,
+            "reasoning_output_tokens": 64,
+            "uncached_input_tokens": 14044
+          },
+          "wall_seconds_median": 39.081881165504456,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 138865,
+            "cached_input_tokens": 121728,
+            "output_tokens": 2223,
+            "reasoning_output_tokens": 31,
+            "uncached_input_tokens": 17137
+          },
+          "wall_seconds_median": 50.31426286697388,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "delta": {
+        "input_tokens": -31108,
+        "cached_input_tokens": -45440,
+        "output_tokens": 477,
+        "reasoning_output_tokens": 60,
+        "uncached_input_tokens": 14332
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 6,
+          "usage": {
+            "input_tokens": 512012,
+            "cached_input_tokens": 468736,
+            "output_tokens": 2869,
+            "reasoning_output_tokens": 95,
+            "uncached_input_tokens": 43276
+          },
+          "wall_seconds_median": 66.76606357097626,
+          "model_invocations": 27
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 4,
+          "usage": {
+            "input_tokens": 480904,
+            "cached_input_tokens": 423296,
+            "output_tokens": 3346,
+            "reasoning_output_tokens": 155,
+            "uncached_input_tokens": 57608
+          },
+          "wall_seconds_median": 81.35142779350281,
+          "model_invocations": 23
+        }
+      }
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "delta": {
+        "input_tokens": 9422,
+        "cached_input_tokens": 3840,
+        "output_tokens": 308,
+        "reasoning_output_tokens": 20,
+        "uncached_input_tokens": 5582
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 136394,
+            "cached_input_tokens": 120192,
+            "output_tokens": 1259,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 16202
+          },
+          "wall_seconds_median": 36.99208211898804,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 145816,
+            "cached_input_tokens": 124032,
+            "output_tokens": 1567,
+            "reasoning_output_tokens": 20,
+            "uncached_input_tokens": 21784
+          },
+          "wall_seconds_median": 42.71663820743561,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "delta": {
+        "input_tokens": 11550,
+        "cached_input_tokens": 2688,
+        "output_tokens": 177,
+        "reasoning_output_tokens": -51,
+        "uncached_input_tokens": 8862
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 137764,
+            "cached_input_tokens": 115072,
+            "output_tokens": 2247,
+            "reasoning_output_tokens": 172,
+            "uncached_input_tokens": 22692
+          },
+          "wall_seconds_median": 52.25245130062103,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 149314,
+            "cached_input_tokens": 117760,
+            "output_tokens": 2424,
+            "reasoning_output_tokens": 121,
+            "uncached_input_tokens": 31554
+          },
+          "wall_seconds_median": 56.68311870098114,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "static-site-restraint",
+      "delta": {
+        "input_tokens": 9137,
+        "cached_input_tokens": 2048,
+        "output_tokens": 167,
+        "reasoning_output_tokens": 3,
+        "uncached_input_tokens": 7089
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 136324,
+            "cached_input_tokens": 123904,
+            "output_tokens": 1378,
+            "reasoning_output_tokens": 28,
+            "uncached_input_tokens": 12420
+          },
+          "wall_seconds_median": 37.11337149143219,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 145461,
+            "cached_input_tokens": 125952,
+            "output_tokens": 1545,
+            "reasoning_output_tokens": 31,
+            "uncached_input_tokens": 19509
+          },
+          "wall_seconds_median": 38.80654561519623,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "delta": {
+        "input_tokens": 9086,
+        "cached_input_tokens": 15232,
+        "output_tokens": 90,
+        "reasoning_output_tokens": -106,
+        "uncached_input_tokens": -6146
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 137169,
+            "cached_input_tokens": 114944,
+            "output_tokens": 2441,
+            "reasoning_output_tokens": 331,
+            "uncached_input_tokens": 22225
+          },
+          "wall_seconds_median": 57.39741909503937,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 146255,
+            "cached_input_tokens": 130176,
+            "output_tokens": 2531,
+            "reasoning_output_tokens": 225,
+            "uncached_input_tokens": 16079
+          },
+          "wall_seconds_median": 57.4260448217392,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "delta": {
+        "input_tokens": 5114,
+        "cached_input_tokens": -1408,
+        "output_tokens": 89,
+        "reasoning_output_tokens": 10,
+        "uncached_input_tokens": 6522
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 134650,
+            "cached_input_tokens": 123648,
+            "output_tokens": 519,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 11002
+          },
+          "wall_seconds_median": 25.84313189983368,
+          "model_invocations": 8
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 139764,
+            "cached_input_tokens": 122240,
+            "output_tokens": 608,
+            "reasoning_output_tokens": 10,
+            "uncached_input_tokens": 17524
+          },
+          "wall_seconds_median": 25.91901421546936,
+          "model_invocations": 8
+        }
+      }
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "delta": {
+        "input_tokens": -45757,
+        "cached_input_tokens": -51584,
+        "output_tokens": -77,
+        "reasoning_output_tokens": 43,
+        "uncached_input_tokens": 5827
+      },
+      "arms": {
+        "control": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 191952,
+            "cached_input_tokens": 166912,
+            "output_tokens": 1639,
+            "reasoning_output_tokens": 94,
+            "uncached_input_tokens": 25040
+          },
+          "wall_seconds_median": 47.36717462539673,
+          "model_invocations": 10
+        },
+        "harness": {
+          "trials": 2,
+          "contexts": 2,
+          "usage": {
+            "input_tokens": 146195,
+            "cached_input_tokens": 115328,
+            "output_tokens": 1562,
+            "reasoning_output_tokens": 137,
+            "uncached_input_tokens": 30867
+          },
+          "wall_seconds_median": 42.10877084732056,
+          "model_invocations": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,91 +1,87 @@
 # Independent Review Handoff
 
-Use for recorded independent gates: consequential trust/security or sensitive-data
-lifecycle changes; repository-required persistence, migration, deletion, durable
-state, public/provider contract or high-risk architecture review; release gates;
-and explicit independent-review requests. Ordinary bounded work needs focused
-builder checks, not a reviewer by default.
+Use for consequential security/trust or sensitive-data lifecycle changes;
+repository-required persistence, migration, deletion, durability, public/provider
+contract or high-risk architecture review; release gates; explicit independent
+review. Ordinary bounded work uses focused builder checks.
 
-## Fresh context after focused builder checks
+## Prepare and launch
 
-Prefer a configured general read-only reviewer role when available; otherwise
-use a fresh generic agent. Do not require a user's role inventory or create one
-agent role per skill domain. Roles own model/reasoning, sandbox and a narrow
-mandate; skills own policy and review methods. Keep role instructions short and
-free of copied invariant, scope, testing, assurance and release checklists.
-Astra suits difficult root work and consequential reviews; select reasoning
-proportionally rather than giving scouts/mechanical workers maximum reasoning.
+1. For implementation handoffs, finish focused builder checks. For review-only
+   requests, prepare the packet from existing evidence; the fresh reviewer owns
+   the assigned investigation and proofs. Inspect the launcher's available roles and
+   prefer a configured general read-only reviewer; use a fresh generic fallback
+   when none fits or is available. Search deferred **agent/spawn/delegate** tools
+   when needed. Record an actual unavailable/error result before declaring
+   delegation unavailable. Respect disabled delegation and permissions: report
+   **self-review**, leaving required independent gates pending. Loading reviewer
+   skills in the builder cannot satisfy independence.
+2. **Before launch**, save and hash a neutral packet containing:
+   - outcome, acceptance criteria, scope/non-goals, permitted review actions;
+   - commit plus worktree diff/file hashes and relevant source locations;
+   - authoritative contracts and already-executed commands/results;
+   - reviewer identity, actual no-history setting, assigned reviewer `SKILL.md` paths.
+   Use concise fields and links, with shared limits once. Exclude builder reasoning,
+   design justifications, expected findings and persuasive conclusions.
+3. Launch with the selected configured role in the native role argument, or
+   record why the generic fallback applies. Set **no builder-history fork**
+   (`fork_context: false` or equivalent). Send only the packet or its location
+   plus instruction to read it; keep every launch field neutral. Record child
+   identity, no-history setting, packet path/hash and complete receipt.
+4. The child reads assigned skills and relevant contracts, batches independent
+   reads, and inspects source independently. No router rediscovery or delegation
+   of the same gate; no production edits or live probes. Use permitted synthetic
+   checks. Keep private reviewer reasoning outside the builder.
+   Name a primary lens; compose required overlapping coverage in one fresh context.
+   Add contexts for distinct unresolved obligations or explicit separate-review
+   requirements. Broad campaigns retain scoped ownership and complete coverage.
 
-Discover the runtime's agent tools before claiming delegation unavailable. If tools
-are deferred, search their names/descriptions for **agent**, **spawn**, or
-**delegate** (for example the runtime's `ALL_TOOLS` catalog); absence from the
-initial visible tool list is not evidence of absence. Use the supported spawn
-operation with **no builder-history fork** (`fork_context: false` or the runtime's
-equivalent). Record an actual unavailable/error result when fallback is necessary.
+Roles own context/sandbox, model/reasoning and narrow execution permissions;
+skills own policy/methods. Never require personal roles or one role per domain,
+or copy architecture, invariant, scope, testing, assurance or release policy into
+roles. Astra suits difficult root work and consequential review, with proportional
+reasoning; scouts/mechanical work need not use the highest setting.
 
-Save a compact, readable review packet and its content hash before launching.
-Identify the recipient as the **fresh reviewer**, the actual no-history
-spawn setting, and exact assigned reviewer `SKILL.md` paths. The reviewer reads
-those entry points directly; it need not rediscover the router or spawn another
-reviewer for this same gate. Batch independent source/contract/skill reads.
-Include requested outcome, acceptance criteria, scope/non-goals, exact commit plus
-worktree diff/file hashes, relevant authoritative contracts, already-executed
-commands/results and permitted review actions. Give source locations so the
-reviewer can inspect independently. Exclude private builder reasoning, design
-justifications, expected findings and persuasive safety conclusions.
+## Receipt and corrections
 
-Use the existing native fresh-agent launch when available. Send only the neutral
-packet, or its location with a neutral instruction to read it. Do not append builder
-reasoning, design persuasion or expected findings to any launch-message field.
-Record the actual child identity, no-history setting, packet path/hash and reviewer
-receipt. Keep raw reviewer reasoning outside the builder; consume the compact handback.
+Request the **complete currently known blocker set in one pass**: severity,
+confidence, concrete paths and evidence; nonblocking follow-ups; unreviewed or
+unavailable areas; exact snapshot, evidence and actual context/time/coverage limits.
+Relevant reviewers include [security](../skills/security-assurance/SKILL.md),
+[privacy](../skills/privacy-assurance/SKILL.md), and repository-required reviewers.
 
-Distinguish context separation from transport visibility. A no-history launch proves
-there was no automatic builder-history fork; it does not prove what was manually
-sent. A saved packet and an observed child read establish their respective facts.
-If the runtime retains an opaque assignment, record **assignment payload unavailable**;
-do not claim its full contents were inspected, or infer either contamination or
-neutrality from encryption. Opacity alone is not self-review or a failed gate, and
-does not require a different launcher. Assess the actual handoff, context, source
-inspection and review evidence. A concrete unresolved concern about forwarded
-reasoning must remain pending until resolved; never invent evidence to close it.
-Do not bypass disabled delegation or execution permissions.
+The complete child response is the receipt. Cite retained evidence rather than
+transcribing it through another model call. For requested/required report files,
+prefer runtime export or a single child write **only if already permitted**;
+otherwise the coordinator retains the complete response and records that fallback.
+Never expand reviewer permissions. Record identity, snapshot/context and disposition
+in the existing task record or final handback, retaining every blocker and limit.
+Reuse retained launch evidence and the complete child receipt; a separate provenance
+file is unnecessary unless requested or repository-required. Challenge gaps or
+contradictions in the handback rather than repeating completed investigation.
 
-One fresh reviewer may cover security and privacy on the same bounded execution
-path. Separate additional contexts only for distinct coverage obligations; do not
-create one agent per label. Broad release campaigns retain scoped lens ownership.
+Wait for the complete handback before editing its snapshot or acting on partial
+findings. Continue independent work elsewhere; prefer 60-second bounded
+waits, avoiding short polling/progress-only messages. Correct the full blocker set
+within authorized scope. Reuse the reviewer for **delta review** of corrections,
+affected seams and regressions, retaining prior receipts/coverage. Reopen unchanged
+scope only when corrections expand scope, invalidate assumptions or expose a newly
+reachable surface. A later blocker materially present and reasonably discoverable
+initially is an **initial-review miss**, unless explicitly unreviewed/unavailable;
+record it against the earlier receipt.
 
-The reviewer loads only the required review skill(s) and supporting contracts in
-that fresh context: [security](../skills/security-assurance/SKILL.md),
-[privacy](../skills/privacy-assurance/SKILL.md), or the repository's required
-reviewer. It may run permitted synthetic checks; it makes no production edits or
-live probes. Loading a reviewer skill inside the builder never satisfies an
-independent gate. If fresh contexts are unavailable, label **self-review** and
-leave the required independent gate pending.
+Completion records snapshots, context separation, disposition, misses, pending
+gates, custom/generic role, actual child model/reasoning, skills read and freshness.
+Measure builder/reviewer tokens and time separately when observable. Use existing
+tools; this contract guarantees neither runtime delegation nor production-scale
+coverage.
 
-## Complete handback, then bounded correction review
+## Transport limits
 
-Ask for the **complete currently known blocking set in one pass**, each with
-severity, confidence, concrete execution path and evidence; non-blocking follow-ups;
-explicitly unreviewed/unavailable areas; exact reviewed snapshot and evidence used;
-and actual reviewer-context status. A time/coverage limit must remain visible.
-
-Finish focused checks before handoff, then wait for the complete handback.
-Use bounded waits of roughly 30–60 seconds where supported, not repeated short
-polls or progress-only messages. Do not alter the reviewed snapshot or react to
-partial findings before the complete blocker set arrives; continue only independent
-work outside that snapshot. Correct the blocker set within authorized scope. Request
-a **delta-scoped independent review**, reusing the independent reviewer context
-when available, of corrections, directly affected seams and
-introduced regressions, preserving the earlier receipt and coverage limits.
-Do not restart unchanged scope unless a correction expands scope, invalidates an
-assumption or exposes a newly reachable surface. A late blocker materially present
-and reasonably discoverable in the initial snapshot is an **initial-review miss**,
-unless its area was explicitly unreviewed/unavailable. Record that classification
-against the earlier receipt to measure convergence; never hide it as a new defect.
-
-Completion records the reviewed snapshot(s), context separation, findings and
-disposition, misses and remaining gates. Record custom/generic role, actual child model/reasoning, skills loaded and
-freshness evidence. Measure builder and reviewer tokens/time separately when observable. This uses available tools, not a new orchestration
-runtime; context separation plus evidence satisfies independence, skill selection
-alone does not.
+No-history launch proves no automatic fork, not what was manually sent. A saved
+packet and observed child read establish separate facts. Record opaque assignments
+as **assignment payload unavailable**: neither claim inspected contents nor infer
+neutrality/contamination from encryption. Opacity alone neither fails independence
+nor requires another launcher. Assess handoff, context, source inspection and review
+evidence; concrete unresolved concern about forwarded reasoning leaves the gate
+pending. Independence requires **context separation plus evidence**.

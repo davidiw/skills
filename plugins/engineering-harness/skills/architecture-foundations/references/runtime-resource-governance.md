@@ -130,6 +130,18 @@ a fake: preserve resource identity and model the actual proposed owner mechanism
 If audit is mandatory, its durability, reserved capacity and failure behavior
 must be explicit before selecting the implementation.
 
+Challenge the corrected owner's dependency graph too: trace admission,
+registration and rollback through every lock and blocking acquisition. Optional
+resource waits must leave admission closure and incumbent cleanup able to
+progress. When the proposed mechanism coordinates those operations, test a
+stalled incumbent **plus another optional writer waiting for its resource**
+before starting cleanup and the critical action. The cleanup path and critical
+action must both meet their bounds without the test harness releasing the
+incumbent resource. Preserve race-safe
+registration/admission closure; passing the single-incumbent case alone does not
+prove this mechanism. Leave a failed model's progress claim pending even when
+the production owner's capabilities are also unavailable.
+
 For design-only requests, exercise the proposed isolation in a synthetic model
 and label it design proof; do not modify production code or claim its deployed
 behavior is verified. The proof still needs synchronization, a bounded deadline,
