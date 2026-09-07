@@ -1,0 +1,368 @@
+{
+  "run_root": "<RUN>",
+  "audited_records": [
+    "authorization-export-control-trial1",
+    "authorization-export-control-trial2",
+    "authorization-export-harness-trial1",
+    "authorization-export-harness-trial2",
+    "critical-audit-control-trial1",
+    "critical-audit-control-trial2",
+    "critical-audit-harness-trial1",
+    "critical-audit-harness-trial2",
+    "erasure-telemetry-control-trial1",
+    "erasure-telemetry-control-trial2",
+    "erasure-telemetry-harness-trial1",
+    "erasure-telemetry-harness-trial2",
+    "handoff-session-control-trial1",
+    "handoff-session-control-trial2",
+    "handoff-session-harness-trial1",
+    "handoff-session-harness-trial2",
+    "natural-privacy-review-control-trial1",
+    "natural-privacy-review-control-trial2",
+    "natural-privacy-review-harness-trial1",
+    "natural-privacy-review-harness-trial2",
+    "natural-security-review-control-trial1",
+    "natural-security-review-control-trial2",
+    "natural-security-review-harness-trial1",
+    "natural-security-review-harness-trial2",
+    "provider-wake-restraint-control-trial1",
+    "provider-wake-restraint-control-trial2",
+    "provider-wake-restraint-harness-trial1",
+    "provider-wake-restraint-harness-trial2",
+    "pure-library-parser-restraint-control-trial1",
+    "pure-library-parser-restraint-control-trial2",
+    "pure-library-parser-restraint-harness-trial1",
+    "pure-library-parser-restraint-harness-trial2",
+    "release-privacy-lifecycle-control-trial1",
+    "release-privacy-lifecycle-control-trial2",
+    "release-privacy-lifecycle-harness-trial1",
+    "release-privacy-lifecycle-harness-trial2",
+    "release-security-surface-control-trial1",
+    "release-security-surface-control-trial2",
+    "release-security-surface-harness-trial1",
+    "release-security-surface-harness-trial2",
+    "sensitive-copy-restraint-control-trial1",
+    "sensitive-copy-restraint-control-trial2",
+    "sensitive-copy-restraint-harness-trial1",
+    "sensitive-copy-restraint-harness-trial2",
+    "tiny-cli-restraint-control-trial1",
+    "tiny-cli-restraint-control-trial2",
+    "tiny-cli-restraint-harness-trial1",
+    "tiny-cli-restraint-harness-trial2",
+    "ui-fence-restraint-control-trial1",
+    "ui-fence-restraint-control-trial2",
+    "ui-fence-restraint-harness-trial1",
+    "ui-fence-restraint-harness-trial2",
+    "uncatalogued-assurance-control-trial1",
+    "uncatalogued-assurance-control-trial2",
+    "uncatalogued-assurance-harness-trial1",
+    "uncatalogued-assurance-harness-trial2"
+  ],
+  "record_count": 56,
+  "anomalies": [],
+  "policy_reads": [
+    {
+      "record": "authorization-export-control-trial2",
+      "path_suffix": "diagnosing-bugs/SKILL.md",
+      "competing": true
+    },
+    {
+      "record": "authorization-export-harness-trial1",
+      "path_suffix": "diagnosing-bugs/SKILL.md",
+      "competing": true
+    },
+    {
+      "record": "authorization-export-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "critical-audit-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "critical-audit-harness-trial1",
+      "path_suffix": "skills/architecture-foundations/SKILL.md",
+      "frozen_hash": "be7bd1c20ad8161c6890a988a82a8118cf04b0aece3f8454071d588547dfde64",
+      "exists_frozen": true
+    },
+    {
+      "record": "critical-audit-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "critical-audit-harness-trial2",
+      "path_suffix": "skills/architecture-foundations/SKILL.md",
+      "frozen_hash": "be7bd1c20ad8161c6890a988a82a8118cf04b0aece3f8454071d588547dfde64",
+      "exists_frozen": true
+    },
+    {
+      "record": "erasure-telemetry-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "erasure-telemetry-harness-trial1",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "erasure-telemetry-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "erasure-telemetry-harness-trial2",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "handoff-session-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "handoff-session-harness-trial1",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "handoff-session-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "handoff-session-harness-trial2",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-privacy-review-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-privacy-review-harness-trial1",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-privacy-review-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-privacy-review-harness-trial2",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-security-review-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-security-review-harness-trial1",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-security-review-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "natural-security-review-harness-trial2",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "provider-wake-restraint-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "provider-wake-restraint-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "pure-library-parser-restraint-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "pure-library-parser-restraint-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-privacy-lifecycle-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-privacy-lifecycle-harness-trial1",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-privacy-lifecycle-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-privacy-lifecycle-harness-trial2",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial1",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial1",
+      "path_suffix": "skills/privacy-assurance/SKILL.md",
+      "frozen_hash": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial2",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "release-security-surface-harness-trial2",
+      "path_suffix": "skills/verification-and-operations/SKILL.md",
+      "frozen_hash": "bb353b65f40ff285e6046bbdf7c728f83ef8db6c769f42ddab3ba53323b06d3f",
+      "exists_frozen": true
+    },
+    {
+      "record": "sensitive-copy-restraint-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "sensitive-copy-restraint-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "tiny-cli-restraint-harness-trial1",
+      "path_suffix": "<OUTPUT>/private/tiny-cli-restraint-harness-trial1/codex-home/plugins/cache/davidiw-skills/engineering-harness/using-engineering-harness/SKILL.md",
+      "frozen_hash": null,
+      "exists_frozen": false
+    },
+    {
+      "record": "tiny-cli-restraint-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "tiny-cli-restraint-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "ui-fence-restraint-control-trial1",
+      "path_suffix": "diagnosing-bugs/SKILL.md",
+      "competing": true
+    },
+    {
+      "record": "ui-fence-restraint-control-trial2",
+      "path_suffix": "diagnosing-bugs/SKILL.md",
+      "competing": true
+    },
+    {
+      "record": "ui-fence-restraint-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "ui-fence-restraint-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "uncatalogued-assurance-harness-trial1",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "uncatalogued-assurance-harness-trial1",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    },
+    {
+      "record": "uncatalogued-assurance-harness-trial2",
+      "path_suffix": "skills/using-engineering-harness/SKILL.md",
+      "frozen_hash": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+      "exists_frozen": true
+    },
+    {
+      "record": "uncatalogued-assurance-harness-trial2",
+      "path_suffix": "skills/security-assurance/SKILL.md",
+      "frozen_hash": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+      "exists_frozen": true
+    }
+  ],
+  "successful_evaluation_material_reads": [],
+  "limits": [
+    {
+      "kind": "audit-scope",
+      "detail": "Read record metadata and JSONL command events only; did not inspect auth, fixtures, or runner artifacts."
+    }
+  ]
+}

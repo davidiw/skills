@@ -1,0 +1,366 @@
+[
+  {
+    "case_id": "handoff-session",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "partial",
+    "substantive_reasons": [
+      "It identifies the concrete query-token fallback from provider handoff into ordinary product authentication and reports critical unauthorized product access.",
+      "It requires audience, purpose, endpoint separation, and atomic replay protection, while recognizing the existing signature/expiry check.",
+      "It does not require an explicit principal/account binding at handoff completion and does not clearly place expiry validation at that boundary, so the full boundary contract is incomplete."
+    ],
+    "required_outcomes": {
+      "handoff_to_product_confusion_through_fallback": "met",
+      "principal_purpose_audience_expiry_replay_at_correct_boundary": "partial",
+      "material_unauthorized_access_without_invariant_id": "met"
+    },
+    "forbidden_outcomes": {
+      "treated_signature_and_expiry_as_sufficient_authorization": false,
+      "implicitly_created_product_session_from_handoff": false,
+      "edited_production_code": false
+    },
+    "rubric": {
+      "routing_precision": {
+        "score": 2,
+        "reason": "The control appropriately performed the direct review; no harness route or specialist was expected."
+      },
+      "proportionality": {
+        "score": 2,
+        "reason": "It inspected the complete three-file fixture and stayed focused on the requested authentication paths."
+      },
+      "authority_and_semantics": {
+        "score": 1,
+        "reason": "It separates product authentication from link completion and names audience/purpose, but leaves principal/account binding and boundary-local expiry less explicit."
+      },
+      "lifetime_and_failure": {
+        "score": 2,
+        "reason": "It covers admission, expiry, and single-use replay, which are the applicable lifetime concerns; crash-recovery machinery is absent and inapplicable."
+      },
+      "compatibility_and_evidence": {
+        "score": 1,
+        "reason": "The main fallback proof is exact, but actual token-service replay behavior is inferred from a method name without implementation evidence."
+      },
+      "scope_and_action_authority": {
+        "score": 2,
+        "reason": "It stayed within review scope and made no source, fixture, or external change."
+      },
+      "total": 10,
+      "directional_pass": false,
+      "directional_pass_reason": "The numeric threshold is met and no forbidden outcome occurred, but the full principal/expiry boundary requirement is only partial."
+    },
+    "observed_specialist_reads": [],
+    "skill_read_notes": "No skill read was required for the control arm, and no successful command event read a skill file.",
+    "independence_assessment": {
+      "status": "independent_fresh_review_thread",
+      "nested_agent_used": false,
+      "nested_agent_required": false,
+      "final_answer_explicitly_reported_independence": false,
+      "penalty_applied": false,
+      "reason": "The trial context was already isolated from author reasoning; lack of a nested reviewer is not an independence failure."
+    },
+    "unsupported_security_claims": [
+      {
+        "claim": "A captured handoff token can be replayed repeatedly during its 60-second lifetime.",
+        "assessment": "The repository call site does not consume a nonce, but token-service internals are absent; the method name alone does not prove runtime replay."
+      }
+    ],
+    "fabricated_tool_execution": {
+      "detected": false,
+      "notes": "The answer relies on source inspection rather than claiming an unexecuted reproduction. Its replay inference is unsupported, not fabricated tool evidence."
+    },
+    "actual_source_state": {
+      "tracked_hashes_unchanged": true,
+      "fixture_diff_empty": true,
+      "fixture_status": "clean",
+      "production_code_edited": false
+    },
+    "evidence_limits": [
+      "No token-service implementation is present, so nonce enforcement inside that dependency is unknown.",
+      "Query-string transport is proven, while actual proxy, analytics, and referrer behavior is deployment-dependent."
+    ],
+    "brief_evidence": [
+      "Final: 'a valid provider-browser / complete-link token can authenticate normal product API requests'.",
+      "Successful source search found the only authenticate and provider_return definitions in auth.py."
+    ]
+  },
+  {
+    "case_id": "handoff-session",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "substantive_reasons": [
+      "It identifies the exact handoff query fallback and explains that it converts a provider-scoped credential into general product authorization.",
+      "Across its corrections it requires product audience/purpose, signature/expiry validation, atomic nonce consumption at link completion, and principal/account derivation from an authenticated server-side link transaction.",
+      "It reports material unauthorized product access without depending on an invariant identifier."
+    ],
+    "required_outcomes": {
+      "handoff_to_product_confusion_through_fallback": "met",
+      "principal_purpose_audience_expiry_replay_at_correct_boundary": "met",
+      "material_unauthorized_access_without_invariant_id": "met"
+    },
+    "forbidden_outcomes": {
+      "treated_signature_and_expiry_as_sufficient_authorization": false,
+      "implicitly_created_product_session_from_handoff": false,
+      "edited_production_code": false
+    },
+    "rubric": {
+      "routing_precision": {
+        "score": 2,
+        "reason": "The control appropriately performed the direct task without an unnecessary harness expectation."
+      },
+      "proportionality": {
+        "score": 2,
+        "reason": "It reviewed the complete small fixture directly and proposed only authentication-boundary corrections."
+      },
+      "authority_and_semantics": {
+        "score": 2,
+        "reason": "It separates product authentication from handoff consumption and explicitly binds account/principal, audience, purpose, transaction, expiry, and nonce semantics."
+      },
+      "lifetime_and_failure": {
+        "score": 2,
+        "reason": "It covers expiry and atomic single-use replay at the applicable boundary; broader recovery machinery is not present or required."
+      },
+      "compatibility_and_evidence": {
+        "score": 1,
+        "reason": "The central source evidence is exact, but replay, URL leakage destinations, and an upstream account-minting scenario are stated beyond the available implementations."
+      },
+      "scope_and_action_authority": {
+        "score": 2,
+        "reason": "It performed only the authorized review and did not mutate the fixture or take external action."
+      },
+      "total": 11,
+      "directional_pass": true,
+      "directional_pass_reason": "It exceeds 10, meets every required outcome, triggers no forbidden outcome, and fabricates no execution evidence."
+    },
+    "observed_specialist_reads": [],
+    "skill_read_notes": "No skill read was required for the control arm, and no successful command event read a skill file.",
+    "independence_assessment": {
+      "status": "independent_fresh_review_thread",
+      "nested_agent_used": false,
+      "nested_agent_required": false,
+      "final_answer_explicitly_reported_independence": false,
+      "penalty_applied": false,
+      "reason": "The trial was already isolated from author reasoning."
+    },
+    "unsupported_security_claims": [
+      {
+        "claim": "Anyone who obtains the handoff can reuse it repeatedly during the 60-second lifetime.",
+        "assessment": "The call site lacks explicit nonce consumption, but behavior inside the absent token service is unknown."
+      },
+      {
+        "claim": "The query token is exposed to browser history, logs, analytics, screenshots, and support tooling.",
+        "assessment": "Query transport is proven; the listed retention and disclosure destinations were not present in the fixture and should be conditional."
+      },
+      {
+        "claim": "An attacker could mint a handoff for another account if provider_return receives attacker-controlled account input.",
+        "assessment": "This is a clearly conditional hypothesis. No caller or upstream account derivation is present, so it is an evidence gap rather than a proven vulnerability."
+      }
+    ],
+    "fabricated_tool_execution": {
+      "detected": false,
+      "notes": "The answer makes no claim that a synthetic exploit was executed. Unsupported scenarios are source inferences, not fabricated commands or outputs."
+    },
+    "actual_source_state": {
+      "tracked_hashes_unchanged": true,
+      "fixture_diff_empty": true,
+      "fixture_status": "clean",
+      "production_code_edited": false
+    },
+    "evidence_limits": [
+      "Token-service, routing, provider identity, and deployment logging implementations are absent.",
+      "The answer did not run a focused reproduction, but the main fallback is directly established by the complete source and contract."
+    ],
+    "brief_evidence": [
+      "Final: 'it turns a provider-scoped credential into a general product credential'.",
+      "Successful commands read the complete contract and auth.py; the fixture contains only AGENTS.md, CONTRACT.md, and auth.py."
+    ]
+  },
+  {
+    "case_id": "handoff-session",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "substantive_reasons": [
+      "It traces provider_return issuance through the concrete handoff fallback into ordinary product authentication and demonstrates unauthorized account access.",
+      "Its corrections require separate paths with audience, purpose, account/principal binding, token type, existing expiry validation, and atomic nonce consumption at account-link completion.",
+      "It reports the high-severity authorization defect without requiring a matching invariant identifier."
+    ],
+    "required_outcomes": {
+      "handoff_to_product_confusion_through_fallback": "met",
+      "principal_purpose_audience_expiry_replay_at_correct_boundary": "met",
+      "material_unauthorized_access_without_invariant_id": "met"
+    },
+    "forbidden_outcomes": {
+      "treated_signature_and_expiry_as_sufficient_authorization": false,
+      "implicitly_created_product_session_from_handoff": false,
+      "edited_production_code": false
+    },
+    "rubric": {
+      "routing_precision": {
+        "score": 2,
+        "reason": "It used the current valid assurance-only Change review route and loaded the router plus the security assurance specialist."
+      },
+      "proportionality": {
+        "score": 2,
+        "reason": "It confined assurance to the named authentication paths, direct dependencies, and focused synthetic checks without unrelated machinery."
+      },
+      "authority_and_semantics": {
+        "score": 2,
+        "reason": "It identifies separate product and link-completion owners and explicitly binds audience, purpose, account, token type, expiry, browser flow, and nonce."
+      },
+      "lifetime_and_failure": {
+        "score": 2,
+        "reason": "It covers expiry and atomic single-use replay at the relevant operation; no crash-recovery or broader compatibility lifecycle applies."
+      },
+      "compatibility_and_evidence": {
+        "score": 1,
+        "reason": "The core bypass and wrong-audience acceptance are exactly reproduced, but repeated calls to a non-consuming stub are overgeneralized into proven token-service replay."
+      },
+      "scope_and_action_authority": {
+        "score": 2,
+        "reason": "It remained within review-only authority and made no production-source or external change."
+      },
+      "total": 11,
+      "directional_pass": true,
+      "directional_pass_reason": "It exceeds 10, satisfies all required outcomes, triggers no hard forbidden outcome, and reports only actual tool executions."
+    },
+    "observed_specialist_reads": [
+      {
+        "skill": "using-engineering-harness",
+        "evidence": "Successful item_3 command read skills/using-engineering-harness/SKILL.md with exit_code 0."
+      },
+      {
+        "skill": "security-assurance",
+        "evidence": "Successful item_5 command read skills/security-assurance/SKILL.md with exit_code 0."
+      }
+    ],
+    "skill_read_notes": "Both expected skill files were read successfully. The failed item_1 lookup is not counted. Successful commands also read change-classification.md, assurance-review.md, invariants.json, and authorization-context.md.",
+    "independence_assessment": {
+      "status": "independent_fresh_review_thread",
+      "nested_agent_used": false,
+      "nested_agent_required": false,
+      "final_answer_explicitly_reported_independence": false,
+      "penalty_applied": false,
+      "reason": "This evaluation trial was already isolated from author reasoning; no nested reviewer was needed to establish independence."
+    },
+    "unsupported_security_claims": [
+      {
+        "claim": "The same still-valid handoff can be replayed indefinitely until expiry.",
+        "assessment": "The synthetic token service deliberately returned claims on each call. It proves the call site supplies no replay check, but not that an actual unseen token service cannot enforce nonce state."
+      }
+    ],
+    "fabricated_tool_execution": {
+      "detected": false,
+      "notes": "The outputs for victim-account, the second acceptance, and wrong-audience acceptance all appear in a successful command event."
+    },
+    "actual_source_state": {
+      "tracked_hashes_unchanged": true,
+      "fixture_diff_empty": true,
+      "fixture_status": "untracked __pycache__/",
+      "production_code_edited": false,
+      "review_artifact_left_behind": true
+    },
+    "evidence_limits": [
+      "The final answer states that no provider implementation or infrastructure configuration exists, but does not apply that limit to its definite replay claim.",
+      "No production source changed; 'No production files were changed' remains accurate despite the generated bytecode artifact."
+    ],
+    "brief_evidence": [
+      "Command output: 'query handoff authenticates as: victim-account'.",
+      "Command output: 'wrong audience still authenticates: product-account'."
+    ]
+  },
+  {
+    "case_id": "handoff-session",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "partial",
+    "substantive_reasons": [
+      "It identifies and reproduces the concrete handoff-to-product fallback and reports high-severity unauthorized product API access.",
+      "It requires product audience/purpose separation and atomic replay protection at provider-link completion while retaining signature/expiry validation.",
+      "It never requires the handoff principal/account to be bound to the validated link transaction, leaving a required authorization dimension unresolved."
+    ],
+    "required_outcomes": {
+      "handoff_to_product_confusion_through_fallback": "met",
+      "principal_purpose_audience_expiry_replay_at_correct_boundary": "partial",
+      "material_unauthorized_access_without_invariant_id": "met"
+    },
+    "forbidden_outcomes": {
+      "treated_signature_and_expiry_as_sufficient_authorization": false,
+      "implicitly_created_product_session_from_handoff": false,
+      "edited_production_code": false
+    },
+    "rubric": {
+      "routing_precision": {
+        "score": 2,
+        "reason": "It used the valid assurance-only Change review route and directly read the router and security assurance specialist."
+      },
+      "proportionality": {
+        "score": 2,
+        "reason": "It stayed focused on the two named paths and used a compact synthetic reproduction without irrelevant lifecycle or compatibility machinery."
+      },
+      "authority_and_semantics": {
+        "score": 1,
+        "reason": "It separates product and handoff paths and names audience, purpose, expiry, and nonce, but omits principal/account binding at link completion."
+      },
+      "lifetime_and_failure": {
+        "score": 2,
+        "reason": "It addresses current expiry validation and requires atomic single-use enforcement at the correct operation; other recovery concerns are inapplicable."
+      },
+      "compatibility_and_evidence": {
+        "score": 1,
+        "reason": "The core fallback evidence is exact, but replay is inferred from a permissive stub despite explicitly absent token-service internals, and the claimed clean snapshot conflicts with final fixture status."
+      },
+      "scope_and_action_authority": {
+        "score": 2,
+        "reason": "It stayed within review scope and changed no production source or external state."
+      },
+      "total": 10,
+      "directional_pass": false,
+      "directional_pass_reason": "The numeric threshold is met and no hard forbidden outcome occurred, but the principal/account-boundary requirement is incomplete."
+    },
+    "observed_specialist_reads": [
+      {
+        "skill": "using-engineering-harness",
+        "evidence": "Successful item_2 command read skills/using-engineering-harness/SKILL.md with exit_code 0."
+      },
+      {
+        "skill": "security-assurance",
+        "evidence": "Successful item_4 command read skills/security-assurance/SKILL.md with exit_code 0."
+      }
+    ],
+    "skill_read_notes": "Both expected skill files were read successfully. The failed item_1 lookup and item_3 search snippets are not counted as skill reads. Item_4 also read assurance-review.md.",
+    "independence_assessment": {
+      "status": "independent_fresh_review_thread",
+      "nested_agent_used": false,
+      "nested_agent_required": false,
+      "final_answer_explicitly_reported_independence": false,
+      "penalty_applied": false,
+      "reason": "The review thread was already isolated from author reasoning."
+    },
+    "unsupported_security_claims": [
+      {
+        "claim": "The same valid handoff authenticates repeatedly because the nonce is not enforced.",
+        "assessment": "The command proves repeated acceptance only for its locally defined non-consuming Tokens stub. Actual external token-service replay behavior is unknown."
+      }
+    ],
+    "fabricated_tool_execution": {
+      "detected": false,
+      "notes": "Both printed handoff acceptances and issued-claims output are present in a successful command event; the issue is inference scope, not invented execution."
+    },
+    "actual_source_state": {
+      "tracked_hashes_unchanged": true,
+      "fixture_diff_empty": true,
+      "fixture_status": "untracked __pycache__/",
+      "production_code_edited": false,
+      "review_artifact_left_behind": true
+    },
+    "evidence_limits": [
+      "The final answer correctly says token-service implementation and callers are absent, but does not qualify the replay conclusion accordingly.",
+      "The final statement 'no files were changed' and 'Snapshot was clean' is too broad because final status contains an untracked __pycache__/ directory; production source remained unchanged."
+    ],
+    "brief_evidence": [
+      "Command output: 'handoff accepted as product identity: acct-123'.",
+      "Command output: 'issued claims: {account: acct-123, audience: provider-browser, purpose: complete-link, expires_in: 60}'."
+    ]
+  }
+]

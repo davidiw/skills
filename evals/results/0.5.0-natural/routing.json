@@ -1,0 +1,754 @@
+{
+  "method": "Exact complete skill text in recorded successful read-command output, with event IDs; failed aliases and final self-report do not count. Partial reference loads are retained in the receipt and narrative assessments.",
+  "skill_content_sha256": {
+    "durable-workflows": "5765312b441c339c2fb387633e69d0a8d8b860dfdd4880d28a3cb558b2264da0",
+    "application-composition": "7c18810d17e605b59cb6a720e033d2a74bef560ff4e0a11f20f897c256cd6970",
+    "verification-and-operations": "bb353b65f40ff285e6046bbdf7c728f83ef8db6c769f42ddab3ba53323b06d3f",
+    "architecture-hardening": "802e66ab4f47cba204c0c5242ebb4df90210a721a208a85e1da7ba6d3fb37152",
+    "architecture-foundations": "be7bd1c20ad8161c6890a988a82a8118cf04b0aece3f8454071d588547dfde64",
+    "data-and-compatibility": "3756832965b8166c31b06ae13915a46ca3589738a3caa2f474d7dd887e620171",
+    "using-engineering-harness": "3107bfbdef15ffa925845b7ff0a9c3b138bbb7150795cc2ec16c50ed2f642d6b",
+    "security-assurance": "7912c3f72ba59890255f58950671824bedb32d65a7777b86d5135ee646817ca5",
+    "interfaces-and-events": "685b912b43bb1919cb41452e541c6471d844afe34749cfb070047bc362711f31",
+    "privacy-assurance": "0ace8b841e2eb16bb53db774bea5322de02234ad2489c779105e3d01f30d988f",
+    "diagnosing-bugs": "b9339b09ee3980808d8c5a35c7251b891b8b1e0036ec4ca37812b976ebddf6b6",
+    "code-review": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442"
+  },
+  "trials": [
+    {
+      "case_id": "authorization-export",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "diagnosing-bugs": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "diagnosing-bugs": [
+          "item_2"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "interfaces-and-events",
+        "security-assurance",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": [
+        "using-engineering-harness",
+        "interfaces-and-events",
+        "security-assurance",
+        "privacy-assurance"
+      ]
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "interfaces-and-events",
+        "security-assurance",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": [
+        "interfaces-and-events",
+        "security-assurance",
+        "privacy-assurance"
+      ]
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_1"
+        ],
+        "architecture-foundations": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "architecture-foundations",
+        "security-assurance"
+      ],
+      "missing_expected_reads": [
+        "security-assurance"
+      ]
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "architecture-foundations": [
+          "item_7"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "architecture-foundations",
+        "security-assurance"
+      ],
+      "missing_expected_reads": [
+        "security-assurance"
+      ]
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_1"
+        ],
+        "privacy-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "privacy-assurance": [
+          "item_8"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "security-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ],
+        "security-assurance": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_4"
+        ],
+        "privacy-assurance": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "privacy-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "security-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "security-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "durable-workflows"
+      ],
+      "missing_expected_reads": [
+        "durable-workflows"
+      ]
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "durable-workflows"
+      ],
+      "missing_expected_reads": [
+        "durable-workflows"
+      ]
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "code-review": [
+          "item_1"
+        ]
+      },
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_1"
+        ],
+        "privacy-assurance": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_1"
+        ],
+        "privacy-assurance": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "privacy-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "security-assurance": [
+          "item_6"
+        ],
+        "privacy-assurance": [
+          "item_7"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "verification-and-operations": [
+          "item_5"
+        ],
+        "security-assurance": [
+          "item_5"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "diagnosing-bugs": [
+          "item_1"
+        ]
+      },
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "diagnosing-bugs": [
+          "item_1"
+        ]
+      },
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "application-composition"
+      ],
+      "missing_expected_reads": [
+        "application-composition"
+      ]
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "application-composition"
+      ],
+      "missing_expected_reads": [
+        "application-composition"
+      ]
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 1,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 2,
+      "observed_complete_skill_reads": {},
+      "expected_harness_skills": [],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 1,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_3"
+        ],
+        "security-assurance": [
+          "item_3"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 2,
+      "observed_complete_skill_reads": {
+        "using-engineering-harness": [
+          "item_2"
+        ],
+        "security-assurance": [
+          "item_4"
+        ]
+      },
+      "expected_harness_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "missing_expected_reads": []
+    }
+  ]
+}

@@ -1,0 +1,671 @@
+[
+  {
+    "case_id": "provider-wake-restraint",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_unique_admission_and_backoff_preserved": "met",
+      "repeated_wakes_coalesce": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Direct control implementation appropriate.",
+    "evidence": [
+      "Diff routes connectivity_restored through the same existing provider/server admission owner. Queue and account/grant/retry behavior unchanged.",
+      "Recorded unittest command succeeds and tests repeated/interleaved wakes: 2 tests."
+    ],
+    "evidence_limits": [
+      "Synthetic Queue models unique admission; no real provider, durable database, concurrency, or outage was exercised.",
+      "Focused regression also asserts retry_after unchanged."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "provider-wake-restraint",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_unique_admission_and_backoff_preserved": "met",
+      "repeated_wakes_coalesce": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Direct control implementation appropriate.",
+    "evidence": [
+      "Diff routes connectivity_restored through the same existing provider/server admission owner. Queue and account/grant/retry behavior unchanged.",
+      "Recorded unittest command succeeds and tests repeated/interleaved wakes: 2 tests."
+    ],
+    "evidence_limits": [
+      "Synthetic Queue models unique admission; no real provider, durable database, concurrency, or outage was exercised.",
+      "Focused regression also asserts retry_after unchanged."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "provider-wake-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 1,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 11
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_unique_admission_and_backoff_preserved": "met",
+      "repeated_wakes_coalesce": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy skill read. Both harness trials omitted the frozen expected durable-workflows specialist; count as a routing omission, separately from correct bounded code.",
+    "evidence": [
+      "Diff routes connectivity_restored through the same existing provider/server admission owner. Queue and account/grant/retry behavior unchanged.",
+      "Recorded unittest command succeeds and tests repeated/interleaved wakes: 2 tests."
+    ],
+    "evidence_limits": [
+      "Synthetic Queue models unique admission; no real provider, durable database, concurrency, or outage was exercised.",
+      "Harness trials preserve backoff structurally but do not add a retry-state assertion."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "provider-wake-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 1,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 11
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_unique_admission_and_backoff_preserved": "met",
+      "repeated_wakes_coalesce": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy skill read. Both harness trials omitted the frozen expected durable-workflows specialist; count as a routing omission, separately from correct bounded code.",
+    "evidence": [
+      "Diff routes connectivity_restored through the same existing provider/server admission owner. Queue and account/grant/retry behavior unchanged.",
+      "Recorded unittest command succeeds and tests repeated/interleaved wakes: 3 tests."
+    ],
+    "evidence_limits": [
+      "Synthetic Queue models unique admission; no real provider, durable database, concurrency, or outage was exercised.",
+      "Harness trials preserve backoff structurally but do not add a retry-state assertion."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "ui-fence-restraint",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_publish_guard": "met",
+      "stale_suppression_and_current_publication_verified": "met"
+    },
+    "observed_specialist_reads": [
+      "diagnosing-bugs"
+    ],
+    "routing_notes": "Competing diagnosis skill appropriately drives direct bug correction.",
+    "evidence": [
+      "One-line screen.py diff restores publish_if_current(epoch, result) after await, preserving canonical AccountFence policy.",
+      "Recorded suite passes two tests, including deterministic event-controlled account switch during suspended read and existing current-publication test."
+    ],
+    "evidence_limits": [
+      "Synthetic single-event-loop account fence; real account authorization, service isolation, and lifecycle store are intentionally outside change.",
+      "Focused race test establishes represented switch timing only."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "ui-fence-restraint",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_publish_guard": "met",
+      "stale_suppression_and_current_publication_verified": "met"
+    },
+    "observed_specialist_reads": [
+      "diagnosing-bugs"
+    ],
+    "routing_notes": "Competing diagnosis skill appropriately drives direct bug correction.",
+    "evidence": [
+      "One-line screen.py diff restores publish_if_current(epoch, result) after await, preserving canonical AccountFence policy.",
+      "Recorded suite passes two tests, including deterministic event-controlled account switch during suspended read and existing current-publication test."
+    ],
+    "evidence_limits": [
+      "Synthetic single-event-loop account fence; real account authorization, service isolation, and lifecycle store are intentionally outside change.",
+      "Focused race test establishes represented switch timing only."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "ui-fence-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 1,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 11
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "canonical_publish_guard": "met",
+      "stale_suppression_and_current_publication_verified": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy skill read. Both harness trials omit frozen expected application-composition specialist; count routing omission separately from correct one-line implementation.",
+    "evidence": [
+      "One-line screen.py diff restores publish_if_current(epoch, result) after await, preserving canonical AccountFence policy.",
+      "Recorded suite passes two tests, including deterministic event-controlled account switch during suspended read and existing current-publication test."
+    ],
+    "evidence_limits": [
+      "Synthetic single-event-loop account fence; real account authorization, service isolation, and lifecycle store are intentionally outside change.",
+      "Focused race test establishes represented switch timing only."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "ui-fence-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "partial",
+    "rubric_scores": {
+      "routing_precision": 1,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 1,
+      "compatibility_and_evidence": 1,
+      "scope_and_action_authority": 2,
+      "total": 9
+    },
+    "directional_pass": false,
+    "required_outcomes": {
+      "canonical_publish_guard": "met",
+      "stale_suppression_and_current_publication_verified": "partial"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy skill read. Both harness trials omit frozen expected application-composition specialist; count routing omission separately from correct one-line implementation.",
+    "evidence": [
+      "One-line screen.py diff restores publish_if_current(epoch, result) after await, preserving canonical AccountFence policy.",
+      "Only existing current-publication test runs successfully (one test); no recorded stale-switch probe or regression test."
+    ],
+    "evidence_limits": [
+      "Synthetic single-event-loop account fence; real account authorization, service isolation, and lifecycle store are intentionally outside change.",
+      "Static inspection supports the fix, but the stale timing path was not exercised."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "sensitive-copy-restraint",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "requested_copy_only": "met",
+      "existing_focused_check": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "No security/privacy specialist, data/auth policy, coverage matrix, or release campaign.",
+    "evidence": [
+      "Only messages.py constant changes to exact requested No readings yet.",
+      "Recorded existing unittest suite succeeds (one test); final diff verifies exact text."
+    ],
+    "evidence_limits": [
+      "Existing copy test checks nonempty presence rather than exact text; exact requested value is independently visible in the retained diff.",
+      "No data behavior is in scope."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "sensitive-copy-restraint",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "requested_copy_only": "met",
+      "existing_focused_check": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "No security/privacy specialist, data/auth policy, coverage matrix, or release campaign.",
+    "evidence": [
+      "Only messages.py constant changes to exact requested No readings yet.",
+      "Recorded existing unittest suite succeeds (one test); final diff verifies exact text."
+    ],
+    "evidence_limits": [
+      "Existing copy test checks nonempty presence rather than exact text; exact requested value is independently visible in the retained diff.",
+      "No data behavior is in scope."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "sensitive-copy-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "requested_copy_only": "met",
+      "existing_focused_check": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy specialist, data/auth policy, coverage matrix, or release campaign.",
+    "evidence": [
+      "Only messages.py constant changes to exact requested No readings yet.",
+      "Recorded existing unittest suite succeeds (one test); final diff verifies exact text."
+    ],
+    "evidence_limits": [
+      "Existing copy test checks nonempty presence rather than exact text; exact requested value is independently visible in the retained diff.",
+      "No data behavior is in scope."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "sensitive-copy-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "requested_copy_only": "met",
+      "existing_focused_check": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "No security/privacy specialist, data/auth policy, coverage matrix, or release campaign.",
+    "evidence": [
+      "Only messages.py constant changes to exact requested No readings yet.",
+      "Recorded existing unittest suite succeeds (one test); final diff verifies exact text."
+    ],
+    "evidence_limits": [
+      "Existing copy test checks nonempty presence rather than exact text; exact requested value is independently visible in the retained diff.",
+      "No data behavior is in scope."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "tiny-cli-restraint",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_focused_tests": "met",
+      "label_omission_and_validation": "met",
+      "unrelated_machinery_absent": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "All four implementations preserve missing label omission and reject supplied non-string labels with ValueError.",
+      "Recorded focused suite passes 5 tests. Existing required-name test also proves absent label omitted."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "tiny-cli-restraint",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_focused_tests": "met",
+      "label_omission_and_validation": "met",
+      "unrelated_machinery_absent": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "All four implementations preserve missing label omission and reject supplied non-string labels with ValueError.",
+      "Recorded focused suite passes 5 tests. Existing required-name test also proves absent label omitted."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "tiny-cli-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_focused_tests": "met",
+      "label_omission_and_validation": "met",
+      "unrelated_machinery_absent": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "All four implementations preserve missing label omission and reject supplied non-string labels with ValueError.",
+      "Recorded focused suite passes 4 tests. Existing required-name test also proves absent label omitted."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "tiny-cli-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_focused_tests": "met",
+      "label_omission_and_validation": "met",
+      "unrelated_machinery_absent": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "All four implementations preserve missing label omission and reject supplied non-string labels with ValueError.",
+      "Recorded focused suite passes 5 tests. Existing required-name test also proves absent label omitted."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_test_table": "met",
+      "public_type_and_error_behavior": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "Ordinal parsing and table-driven tests retain datetime.date return type and ordinary ISO fallback.",
+      "Recorded focused tests pass. Independent boundary probes preserved separately in ordinal-review-probes.json."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 2,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_test_table": "met",
+      "public_type_and_error_behavior": "met"
+    },
+    "observed_specialist_reads": [],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "Ordinal parsing and table-driven tests retain datetime.date return type and ordinary ISO fallback.",
+      "Recorded focused tests pass. Independent boundary probes preserved separately in ordinal-review-probes.json."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "substantive_grade": "pass",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 2,
+      "compatibility_and_evidence": 2,
+      "scope_and_action_authority": 2,
+      "total": 12
+    },
+    "directional_pass": true,
+    "required_outcomes": {
+      "existing_parser_and_test_table": "met",
+      "public_type_and_error_behavior": "met"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "Ordinal parsing and table-driven tests retain datetime.date return type and ordinary ISO fallback.",
+      "Recorded focused tests pass. Independent boundary probes preserved separately in ordinal-review-probes.json."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "substantive_grade": "partial",
+    "rubric_scores": {
+      "routing_precision": 2,
+      "proportionality": 2,
+      "authority_and_semantics": 2,
+      "lifetime_and_failure": 1,
+      "compatibility_and_evidence": 1,
+      "scope_and_action_authority": 2,
+      "total": 10
+    },
+    "directional_pass": false,
+    "required_outcomes": {
+      "existing_parser_and_test_table": "met",
+      "public_type_and_error_behavior": "partial"
+    },
+    "observed_specialist_reads": [
+      "using-engineering-harness"
+    ],
+    "routing_notes": "Correct minimal route; no assurance or other internal specialist read.",
+    "evidence": [
+      "Existing parser owner and focused tests only; no new architecture, dependency, event, repository, job, migration, or operator system.",
+      "Ordinal parsing and table-driven tests retain datetime.date return type and ordinary ISO fallback.",
+      "Recorded focused tests pass. Independent boundary probes preserved separately in ordinal-review-probes.json.",
+      "Reviewer reproduction: 0001-000 and 9999-366 raise OverflowError because date arithmetic precedes range validation, violating preserved ValueError behavior."
+    ],
+    "evidence_limits": [
+      "Small standard-library fixture, not production package compatibility or release evidence."
+    ],
+    "forbidden_outcomes_present": false,
+    "fabricated_execution_evidence": false
+  }
+]

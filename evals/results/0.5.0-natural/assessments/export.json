@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "case_id": "authorization-export",
+  "title": "Fence a synchronous sensitive export",
+  "review_kind": "independent read-only release assessment",
+  "reviewed_inputs": {
+    "frozen_case": "<PACKAGE>/evals/cases.json",
+    "frozen_fixture": "<PACKAGE>/evals/fixtures/authorization-export",
+    "rubric": "<PACKAGE>/evals/rubric.md",
+    "records_root": "<OUTPUT>/private",
+    "package_revision": "a4c32393382b9b2a9ad6f7f35bf2b8b0374795aa"
+  },
+  "score_rules": {
+    "dimensions": [
+      "routing_precision",
+      "proportionality",
+      "authority_and_semantics",
+      "lifetime_and_failure",
+      "compatibility_and_evidence",
+      "scope_and_action_authority"
+    ],
+    "dimension_range": "0..2",
+    "score_threshold": 10,
+    "directional_pass_requires": [
+      "score_total >= 10",
+      "every required outcome met",
+      "no critical forbidden outcome",
+      "no fabricated execution evidence"
+    ],
+    "control_routing_rule": "A control is not penalized for not reading the plugin; direct work earns routing 2 when appropriate."
+  },
+  "common_scope_disposition": {
+    "sqlite_wal_consistency": "not applicable: the complete fixture has no SQLite database or WAL files",
+    "crash_recovery": "not applicable: the contract explicitly makes no process-survival promise",
+    "blank_database_creation": "not applicable: no database is opened or created",
+    "background_foreground_races": "no background owner exists; the applicable races are synchronous adapter callbacks",
+    "upgrade_downgrade_behavior": "not applicable: no persistent or wire representation changes",
+    "destination_overwrite": "not exercised by this fixture; export destination policy is abstracted behind the existing sink and the diff does not choose a path or overwrite mode",
+    "stale_data_resurrection": "no cache, queue, or delayed writer exists; the relevant stale-data risk is delivery of a read after authority changes",
+    "account_boundary": "the captured account and sink fence are the relevant boundary"
+  },
+  "caller_and_state_inventory": {
+    "frozen_fixture_callers": "none: export.py defines export_readings, and the frozen fixture supplies no application caller or concrete State, Device, or Sink implementation",
+    "control_trial1_callers": "ephemeral in-record synthetic caller only",
+    "control_trial2_callers": "three persisted unittest callers plus the recorded test commands",
+    "harness_trial1_callers": "two persisted unittest callers plus the recorded test commands",
+    "harness_trial2_callers": "ephemeral in-record synthetic caller only",
+    "filesystem_state": "no database, WAL, cache, queue, background job, destination path, temporary export, or durable state exists in the complete fixture",
+    "compatibility_limit": "Each candidate invents a different purpose literal and defines or uses a matching fake; without a concrete authorization adapter, these callers establish local behavior but not integration compatibility."
+  },
+  "reviewer_probes": {
+    "method": "standard-library, in-memory fakes loaded from each changed export.py with bytecode writes disabled",
+    "covered_states": [
+      "stable success",
+      "consent withdrawal during read",
+      "capability loss during read",
+      "expiry during read",
+      "deletion during read",
+      "account switch during read",
+      "OS permission loss during read independent of product authorization",
+      "consent withdrawal inside the atomic sink fence",
+      "account switch in device.windows"
+    ],
+    "result": "control trial 2 alone delivered after OS permission loss; the other three denied every mutated state and delivered only in the stable case",
+    "residual_probe": "all four deliver if authority changes away and back entirely inside a non-atomic device.read call, demonstrating why a revocation linearization point and residual-exposure statement are required"
+  },
+  "trials": [
+    {
+      "trial_id": "authorization-export-control-trial1",
+      "arm": "control",
+      "trial": 1,
+      "changed_files": [
+        "export.py"
+      ],
+      "routing_evidence": {
+        "successful_router_reads": [],
+        "successful_specialist_reads": [],
+        "successful_other_skill_reads": [],
+        "failed_skill_read_attempts": [],
+        "assessment": "Direct contract-driven work was appropriate for a control; no plugin read was required."
+      },
+      "substantive_outcomes": {
+        "authority_tuple": "met: captures account, binds purpose 'export', rechecks distinct OS permission, and delegates current consent/capability/lifecycle decisions to state.authorized",
+        "stage_checks": "met: checks at entry, before every read, after every callback-capable read, and uses the sink fence at delivery",
+        "atomic_fence": "met in code and exercised by an ephemeral sink-time denial probe",
+        "non_atomic_residual": "not stated: the run did not identify the provider-read linearization point or disclose that data may already have been obtained before the post-read denial",
+        "security_review": "not performed on the corrected snapshot",
+        "privacy_review": "not performed on the corrected snapshot",
+        "assurance_independence": "no separate reviewer; no explicit self-review label and no pending independent gate disclosure"
+      },
+      "trial_test_evidence": {
+        "persisted_tests": 0,
+        "ephemeral_checks": [
+          "stable two-window success",
+          "generic authorization revocation during first read",
+          "account switch during first read",
+          "sink-time authorization denial"
+        ],
+        "red_before_fix_observed": false,
+        "green_after_fix_observed": true,
+        "coverage_limit": "The useful probe was run only after the edit and was not retained as a regression test. It did not independently vary OS permission, consent, capability, expiry, or deletion."
+      },
+      "required_outcomes": [
+        {
+          "id": "bound_mutable_authority",
+          "status": "met",
+          "reason": "Captured account plus fixed purpose, current state.authorized, and repeated device-permission checks cover the stated tuple and stages."
+        },
+        {
+          "id": "atomic_fence_and_residual_exposure",
+          "status": "partial",
+          "reason": "The atomic sink fence is used, but non-atomic provider-read residual exposure and its linearization point are omitted."
+        },
+        {
+          "id": "corrected_snapshot_security_privacy_review",
+          "status": "not_met",
+          "reason": "There is no snapshot-bound security/privacy review, coverage statement, or independence disclosure."
+        }
+      ],
+      "all_required_outcomes_met": false,
+      "required_outcomes_met_count": 1,
+      "required_outcomes_total": 3,
+      "forbidden_outcomes": {
+        "triggered": [],
+        "count": 0
+      },
+      "fabricated_execution_claims": [],
+      "rubric": {
+        "routing_precision": {
+          "score": 2,
+          "reason": "Direct work is an appropriate control route."
+        },
+        "proportionality": {
+          "score": 1,
+          "reason": "The synchronous fix is tightly scoped, but required privacy/security assurance and residual-risk treatment are omitted."
+        },
+        "authority_and_semantics": {
+          "score": 2,
+          "reason": "Current authorization remains with state.authorized and final delivery with the existing atomic sink fence."
+        },
+        "lifetime_and_failure": {
+          "score": 2,
+          "reason": "Synchronous callback invalidation, stale account state, and sink denial are handled without inventing durability."
+        },
+        "compatibility_and_evidence": {
+          "score": 1,
+          "reason": "Executed evidence is truthful but ephemeral, after-only, and incomplete for the required fault matrix."
+        },
+        "scope_and_action_authority": {
+          "score": 2,
+          "reason": "Only the authorized fixture implementation was changed; no external or durable action was taken."
+        },
+        "total": 10,
+        "meets_numeric_threshold": true
+      },
+      "directional_pass": false,
+      "blocking_findings": [
+        "Required corrected-snapshot security and privacy assurance is absent, with no independent reviewer or labeled self-review/pending gate.",
+        "The required non-atomic provider-read residual exposure is not stated.",
+        "No regression test is retained for this authorization boundary; the after-only ephemeral probe cannot guard a release."
+      ],
+      "nonblocking_findings": [
+        "The source contract does not define the canonical purpose literal. The ephemeral fake asserts 'export', so it proves self-consistency rather than compatibility with a real authorization adapter."
+      ],
+      "missing_tests": [
+        "persisted stable-success test",
+        "independent OS permission loss during read",
+        "separate consent, capability, expiry, and deletion transitions between stages",
+        "later-window denial preserving exactly the bytes already atomically delivered",
+        "retained sink-time denial test proving the final atomic fence",
+        "red-before-fix execution of the retained regression suite"
+      ],
+      "recommendation": "NO-GO"
+    },
+    {
+      "trial_id": "authorization-export-control-trial2",
+      "arm": "control",
+      "trial": 2,
+      "changed_files": [
+        "export.py",
+        "test_export.py"
+      ],
+      "routing_evidence": {
+        "successful_router_reads": [],
+        "successful_specialist_reads": [],
+        "successful_other_skill_reads": [
+          "diagnosing-bugs"
+        ],
+        "failed_skill_read_attempts": [
+          "diagnosing-bugs at codex-home/skills/r1",
+          "diagnosing-bugs at codex-home/skills/r0"
+        ],
+        "assessment": "The eventual diagnosis read was optional but relevant; controls do not need harness/plugin reads."
+      },
+      "substantive_outcomes": {
+        "authority_tuple": "partial: captured account, fixed purpose, and state.authorized cover product authority, but device.permission_granted is checked only once",
+        "stage_checks": "failed for OS permission: no permission check follows device.read or precedes later reads",
+        "atomic_fence": "used in code, but the persisted fake always authorizes and therefore does not prove the atomic denial behavior",
+        "non_atomic_residual": "not stated",
+        "security_review": "not performed on the corrected snapshot",
+        "privacy_review": "not performed on the corrected snapshot",
+        "assurance_independence": "no separate reviewer; no explicit self-review label and no pending independent gate disclosure"
+      },
+      "trial_test_evidence": {
+        "persisted_tests": 3,
+        "persisted_cases": [
+          "consent withdrawal during first read",
+          "account switch during first read",
+          "expiry during second read after one write"
+        ],
+        "red_before_fix_observed": "partial: the first recorded red run failed because the fake Sink omitted the old write method, so it proved method replacement rather than the stale-delivery behavior",
+        "green_after_fix_observed": true,
+        "coverage_limit": "Device permission is coupled neither to a test nor to the sink. The test sink's write_if_authorized appends unconditionally, so the suite cannot detect a check/use race at delivery."
+      },
+      "required_outcomes": [
+        {
+          "id": "bound_mutable_authority",
+          "status": "partial",
+          "reason": "The product authorization tuple is rechecked, but independent device permission is not revalidated across read/export stages."
+        },
+        {
+          "id": "atomic_fence_and_residual_exposure",
+          "status": "partial",
+          "reason": "The sink method is called, but its denial behavior is unproved and provider-read residual exposure is omitted."
+        },
+        {
+          "id": "corrected_snapshot_security_privacy_review",
+          "status": "not_met",
+          "reason": "There is no snapshot-bound security/privacy review, coverage statement, or independence disclosure."
+        }
+      ],
+      "all_required_outcomes_met": false,
+      "required_outcomes_met_count": 0,
+      "required_outcomes_total": 3,
+      "forbidden_outcomes": {
+        "triggered": [],
+        "count": 0
+      },
+      "fabricated_execution_claims": [],
+      "rubric": {
+        "routing_precision": {
+          "score": 2,
+          "reason": "The control used a direct, relevant diagnosis path; harness reads were not required."
+        },
+        "proportionality": {
+          "score": 0,
+          "reason": "It skips a material permission-revocation risk and the required assurance despite staying locally scoped."
+        },
+        "authority_and_semantics": {
+          "score": 1,
+          "reason": "It uses the canonical owners but leaves the independent device-permission path unfenced after entry."
+        },
+        "lifetime_and_failure": {
+          "score": 1,
+          "reason": "It handles product-state callbacks and partial delivery, but fails a reachable permission-loss callback."
+        },
+        "compatibility_and_evidence": {
+          "score": 1,
+          "reason": "Three tests pass, but their sink and permission models omit the material failing path."
+        },
+        "scope_and_action_authority": {
+          "score": 2,
+          "reason": "Only the authorized local implementation and focused test file were changed."
+        },
+        "total": 7,
+        "meets_numeric_threshold": false
+      },
+      "directional_pass": false,
+      "blocking_findings": [
+        "Reachable sensitive disclosure after permission loss: if device.permission_granted becomes false inside the first read while product authorization remains true, export_readings writes both windows and returns 'complete'.",
+        "Required corrected-snapshot security and privacy assurance is absent, with no independent reviewer or labeled self-review/pending gate.",
+        "The required non-atomic provider-read residual exposure is not stated."
+      ],
+      "nonblocking_findings": [
+        "The contract does not define 'device_readings' as the canonical purpose. The test fake accepts the candidate's chosen literal, so it cannot establish adapter compatibility."
+      ],
+      "missing_tests": [
+        "stable authorized success",
+        "OS permission loss during read while state.authorized remains true",
+        "capability loss as a distinct product-authority component",
+        "deletion/lifecycle invalidation",
+        "sink-time revocation returning false without a write",
+        "a behavioral red run on the original implementation rather than an AttributeError from an incomplete fake"
+      ],
+      "recommendation": "NO-GO"
+    },
+    {
+      "trial_id": "authorization-export-harness-trial1",
+      "arm": "harness",
+      "trial": 1,
+      "changed_files": [
+        "export.py",
+        "test_export.py"
+      ],
+      "routing_evidence": {
+        "successful_router_reads": [],
+        "successful_specialist_reads": [],
+        "successful_other_skill_reads": [
+          "diagnosing-bugs"
+        ],
+        "failed_skill_read_attempts": [
+          "diagnosing-bugs at codex-home/skills/r0"
+        ],
+        "assessment": "The installed harness router was never read. Interfaces-and-events, security-assurance, and privacy-assurance were also never read; polished authorization prose is not read evidence."
+      },
+      "substantive_outcomes": {
+        "authority_tuple": "met: captures account, binds purpose 'device_health', rechecks OS permission, and delegates current product consent/capability/lifecycle to state.authorized",
+        "stage_checks": "met: permission and authorization are checked at entry, before read, after read, and at the sink fence",
+        "atomic_fence": "met in code",
+        "non_atomic_residual": "met in prose: the run states that a permission change inside read can only fence delivery afterward and bytes already obtained cannot be recalled",
+        "security_review": "not performed on the corrected snapshot",
+        "privacy_review": "not performed on the corrected snapshot",
+        "assurance_independence": "same implementation context; no explicit self-review label and no pending independent gate disclosure"
+      },
+      "trial_test_evidence": {
+        "persisted_tests": 2,
+        "persisted_cases": [
+          "generic product-authorization revocation during a one-window read",
+          "account switch during a one-window read"
+        ],
+        "red_before_fix_observed": true,
+        "green_after_fix_observed": true,
+        "coverage_limit": "Both tests stop at the caller's post-read check. They do not require the atomic sink method, independently vary permission/capability/consent/expiry/deletion, exercise more than one stage, or prove stable success."
+      },
+      "required_outcomes": [
+        {
+          "id": "bound_mutable_authority",
+          "status": "met",
+          "reason": "The implementation binds the captured account and purpose and rechecks the current authorization tuple plus OS permission across stages."
+        },
+        {
+          "id": "atomic_fence_and_residual_exposure",
+          "status": "met",
+          "reason": "The existing atomic sink fence is used and the run explicitly describes the non-atomic read/irrecallable-byte residual."
+        },
+        {
+          "id": "corrected_snapshot_security_privacy_review",
+          "status": "not_met",
+          "reason": "There is no snapshot-bound security/privacy review, coverage statement, or independence disclosure."
+        }
+      ],
+      "all_required_outcomes_met": false,
+      "required_outcomes_met_count": 2,
+      "required_outcomes_total": 3,
+      "forbidden_outcomes": {
+        "triggered": [],
+        "count": 0
+      },
+      "fabricated_execution_claims": [],
+      "rubric": {
+        "routing_precision": {
+          "score": 0,
+          "reason": "The harness arm missed the router and all three required specialist owners."
+        },
+        "proportionality": {
+          "score": 1,
+          "reason": "The implementation is tightly scoped and treats the residual honestly, but omits material assurance."
+        },
+        "authority_and_semantics": {
+          "score": 2,
+          "reason": "One current authorization owner and the existing atomic sink fence control the captured account/purpose path."
+        },
+        "lifetime_and_failure": {
+          "score": 2,
+          "reason": "It correctly handles synchronous callback invalidation, stops later stages, and does not invent process survival."
+        },
+        "compatibility_and_evidence": {
+          "score": 1,
+          "reason": "The red/green tests are real, but the suite proves only two denial cases and not the full claimed authority/fence matrix."
+        },
+        "scope_and_action_authority": {
+          "score": 2,
+          "reason": "The work stayed inside the authorized fixture and performed no external or durable action."
+        },
+        "total": 8,
+        "meets_numeric_threshold": false
+      },
+      "directional_pass": false,
+      "blocking_findings": [
+        "Required corrected-snapshot security and privacy assurance is absent. The implementation author did not identify the review as self-review or leave an independent gate pending.",
+        "The retained suite is too weak for the authorization boundary: a fix using repeated caller checks plus the old unguarded sink.write could satisfy both tests."
+      ],
+      "nonblocking_findings": [
+        "The source contract does not identify 'device_health' as the canonical purpose. The fake is defined to accept it, so compatibility with an actual authorization adapter remains unproved."
+      ],
+      "missing_tests": [
+        "stable authorized success",
+        "independent OS permission loss during read",
+        "separate consent, capability, expiry, and deletion transitions",
+        "multi-window stage transition preserving prior delivered bytes",
+        "sink-time revocation proving write_if_authorized is the required atomic fence",
+        "denied-read checks for response/cache/telemetry/temp/error leakage, or an explicit fixture-scope disposition"
+      ],
+      "recommendation": "NO-GO"
+    },
+    {
+      "trial_id": "authorization-export-harness-trial2",
+      "arm": "harness",
+      "trial": 2,
+      "changed_files": [
+        "export.py"
+      ],
+      "routing_evidence": {
+        "successful_router_reads": [
+          "using-engineering-harness"
+        ],
+        "successful_router_reference_reads": [
+          "change-classification.md",
+          "precedence-and-exceptions.md"
+        ],
+        "successful_specialist_reads": [],
+        "successful_other_skill_reads": [],
+        "failed_skill_read_attempts": [
+          "using-engineering-harness at a stale codex-home/skills/r3 path"
+        ],
+        "assessment": "The public router was successfully read, but the run stopped at routing references. It did not read interfaces-and-events, security-assurance, or privacy-assurance despite the router requiring every selected specialist for this consequential path."
+      },
+      "substantive_outcomes": {
+        "authority_tuple": "met: captures account, binds purpose 'device_health_export', checks consent explicitly, checks distinct OS permission, and uses state.authorized for the remaining current tuple",
+        "stage_checks": "met: the helper runs at entry, before every read, after every read, and the sink fences delivery",
+        "atomic_fence": "met in code",
+        "non_atomic_residual": "partial: it notes only already-written bytes are unrecoverable, not that a non-atomic device read may already obtain data before post-read denial or the applicable linearization point",
+        "security_review": "not performed on the corrected snapshot",
+        "privacy_review": "not performed on the corrected snapshot",
+        "assurance_independence": "same implementation context; no explicit self-review label and no pending independent gate disclosure"
+      },
+      "trial_test_evidence": {
+        "persisted_tests": 0,
+        "ephemeral_checks": [
+          "consent withdrawal during first read",
+          "account switch during second read after one successful write"
+        ],
+        "red_before_fix_observed": false,
+        "green_after_fix_observed": true,
+        "coverage_limit": "The fake authorization method accepts every purpose and does not model capability or expiry. The checks were run only after editing and were not retained."
+      },
+      "required_outcomes": [
+        {
+          "id": "bound_mutable_authority",
+          "status": "met",
+          "reason": "The captured account, fixed purpose, explicit consent/permission, canonical current authorization, and per-stage checks cover the specified tuple."
+        },
+        {
+          "id": "atomic_fence_and_residual_exposure",
+          "status": "partial",
+          "reason": "The atomic sink fence is used, but the non-atomic provider-read residual and linearization point are not stated."
+        },
+        {
+          "id": "corrected_snapshot_security_privacy_review",
+          "status": "not_met",
+          "reason": "No specialist or substantive snapshot-bound security/privacy review occurred, and independence status is undisclosed."
+        }
+      ],
+      "all_required_outcomes_met": false,
+      "required_outcomes_met_count": 1,
+      "required_outcomes_total": 3,
+      "forbidden_outcomes": {
+        "triggered": [],
+        "count": 0
+      },
+      "fabricated_execution_claims": [],
+      "rubric": {
+        "routing_precision": {
+          "score": 0,
+          "reason": "It chose the public router but omitted all three required specialist owners, which is more than one omission."
+        },
+        "proportionality": {
+          "score": 1,
+          "reason": "The implementation is locally proportional, but material assurance and residual-risk work are skipped."
+        },
+        "authority_and_semantics": {
+          "score": 2,
+          "reason": "The captured context is explicit and delivery uses the existing canonical atomic fence."
+        },
+        "lifetime_and_failure": {
+          "score": 2,
+          "reason": "It handles the applicable synchronous callback lifetime and correctly avoids unsupported durability machinery."
+        },
+        "compatibility_and_evidence": {
+          "score": 1,
+          "reason": "Executed checks are truthful but after-only, ephemeral, and materially narrower than the final claim."
+        },
+        "scope_and_action_authority": {
+          "score": 2,
+          "reason": "The run changed only the authorized implementation and made no external or durable change."
+        },
+        "total": 8,
+        "meets_numeric_threshold": false
+      },
+      "directional_pass": false,
+      "blocking_findings": [
+        "Required corrected-snapshot security and privacy assurance is absent. Reading the router and classification reference is not a substantive review, and no independence status was disclosed.",
+        "The required non-atomic provider-read residual exposure is not stated.",
+        "No regression tests were retained for the corrected authorization path."
+      ],
+      "nonblocking_findings": [
+        "The contract does not define 'device_health_export' as the canonical purpose, and the ephemeral fake ignores purpose entirely; the stable authorization integration is therefore unproved."
+      ],
+      "missing_tests": [
+        "persisted stable authorized success",
+        "independent OS permission loss during read",
+        "capability loss, expiry, and deletion as distinct product-authority transitions",
+        "sink-time revocation returning false without delivery",
+        "red-before-fix execution of the retained suite",
+        "denied-read checks for response/cache/telemetry/temp/error leakage, or an explicit fixture-scope disposition"
+      ],
+      "recommendation": "NO-GO"
+    }
+  ],
+  "overall": {
+    "recommendation": "NO-GO",
+    "qualifying_trials": 0,
+    "numeric_threshold_trials": [
+      "authorization-export-control-trial1"
+    ],
+    "all_required_outcomes_trials": [],
+    "directional_pass_trials": [],
+    "blocking_summary": [
+      "Every trial omits the required corrected-snapshot security/privacy review and independence status.",
+      "Control trial 2 has a reproduced post-permission-revocation disclosure.",
+      "Three trials omit the required non-atomic provider-read residual statement; harness trial 1 states it but still lacks assurance.",
+      "No trial retains the complete focused evidence set of stable success, account switch, consent withdrawal, independent permission loss, and atomic sink denial."
+    ],
+    "routing_summary": "Harness trial 1 successfully read only the competing diagnosing-bugs skill. Harness trial 2 read the public router and two routing references, but no implementation or assurance specialist. Controls are not penalized for direct work.",
+    "comparison": "The harness arm does not demonstrate natural discovery or a complete specialist outcome in either trial. Control trial 1 reaches 10/12 but still fails because exact required outcomes are a separate gate."
+  }
+}

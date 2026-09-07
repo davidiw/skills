@@ -1,0 +1,114 @@
+[
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 1,
+    "input": "0001-000",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 1,
+    "input": "9999-366",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 1,
+    "input": "0001-001",
+    "value": "0001-01-01"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 1,
+    "input": "9999-365",
+    "value": "9999-12-31"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 2,
+    "input": "0001-000",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 2,
+    "input": "9999-366",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 2,
+    "input": "0001-001",
+    "value": "0001-01-01"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "control",
+    "trial": 2,
+    "input": "9999-365",
+    "value": "9999-12-31"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "input": "0001-000",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "input": "9999-366",
+    "error": "ValueError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "input": "0001-001",
+    "value": "0001-01-01"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "input": "9999-365",
+    "value": "9999-12-31"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "input": "0001-000",
+    "error": "OverflowError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "input": "9999-366",
+    "error": "OverflowError"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "input": "0001-001",
+    "value": "0001-01-01"
+  },
+  {
+    "case_id": "pure-library-parser-restraint",
+    "arm": "harness",
+    "trial": 2,
+    "input": "9999-365",
+    "value": "9999-12-31"
+  }
+]

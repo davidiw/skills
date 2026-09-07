@@ -1,0 +1,270 @@
+{
+  "case_id": "critical-audit",
+  "rubric_version": 1,
+  "fixture_trace": {
+    "baseline": "revoke.py calls optional audit.append first and revoke_credentials second inside one database.transaction(). CONTRACT.md says audit may wait on an account-row lock or exhausted pool and that another audit-adapter instance may already hold the row revocation needs.",
+    "callers_and_implementations": "The complete fixture contains no callers, audit-adapter implementation, database implementation, or SQLite/WAL layer. Signature preservation is observable, but real lock, pool, transaction, rollout, and caller compatibility are not executable from this fixture.",
+    "grading_rule": "A passing design must address the other audit writer, avoid waiting for an optional post-commit callback, and define a measurable revocation completion bound. A fake that merely never invokes audit.append does not model an already-held account-row lock or exhausted shared pool."
+  },
+  "trials": [
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 0,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 1,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 0,
+        "total": 6
+      },
+      "directional_pass": false,
+      "directional_pass_reason": "The score is below 10, the other-writer and bounded-progress outcomes are incomplete, and the run implemented a source change although the request asked for a design.",
+      "required_outcomes": {
+        "critical_revocation_optional_audit": "met: it grounds omission in the contract's optional metadata and required revocation progress.",
+        "other_writers_and_shared_contention": "partial: it identifies the in-call shared transaction, row lock, and pool hazard and omits this callback, but never traces or isolates another audit writer already holding the account row or consuming the shared pool.",
+        "bounded_progress_proof": "not met: the fake audit would raise if called, but there is no stalled writer, exhausted pool, response deadline, or timed completion assertion."
+      },
+      "actual_action": {
+        "requested": "design only",
+        "production_file_changed": true,
+        "change": "Removed audit.append from revoke.py in the trial fixture.",
+        "filesystem_state": "revoke.py was modified and Python execution left an untracked __pycache__/ directory.",
+        "assessment": "scope violation"
+      },
+      "routing": {
+        "assessment": "pass for control",
+        "observed_specialist_reads": [],
+        "note": "No plugin or specialist read is expected in the control arm."
+      },
+      "proof_and_claims": {
+        "executed": "py_compile and a synthetic transaction check succeeded; the audit object was never invoked.",
+        "overclaim": "Calling this an unavailable or blocking-audit validation proves only callback omission. It does not prove progress while another adapter instance holds the row or exhausts the real pool.",
+        "fabricated_tool_execution": false
+      },
+      "missing_tests": [
+        "A coordinated concurrent-writer fixture that confirms an audit writer has acquired the conflicting account-row lock before revocation begins.",
+        "A distinct shared-pool exhaustion case.",
+        "A monotonic deadline or thread/process join bound proving revocation and response completion, with cleanup after releasing the injected stall.",
+        "A database-owner integration test, once a real database/audit implementation exists; the current fake cannot prove lock or pool isolation."
+      ],
+      "forbidden_outcomes": {
+        "requires_optional_audit_success": false,
+        "silently_drops_mandatory_audit_general_contract": false,
+        "adds_memory_reclamation_or_restart_machinery": false,
+        "hard_forbidden_or_fabricated_execution": false
+      }
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "fail",
+      "required_outcomes_grade": "fail",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 0,
+        "authority_and_semantics": 1,
+        "lifetime_and_failure": 1,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 0,
+        "total": 5
+      },
+      "directional_pass": false,
+      "directional_pass_reason": "The score is below 10 and the proposed correction fails the central stalled-audit requirement: revoke() still waits synchronously for optional audit work after commit and still uses database.transaction() for that work.",
+      "required_outcomes": {
+        "critical_revocation_optional_audit": "met: it correctly treats credential revocation as required and analytics as optional.",
+        "other_writers_and_shared_contention": "not met: a second transaction for the current callback neither isolates the shared connection pool nor prevents another adapter writer from holding the account row. The response also waits for the callback.",
+        "bounded_progress_proof": "not met: the check covers immediate success and an immediate TimeoutError only; it has no blocking callback, concurrent holder, pool exhaustion, or elapsed-time bound."
+      },
+      "actual_action": {
+        "requested": "design only",
+        "production_file_changed": true,
+        "change": "Committed revocation first, then called audit.append synchronously in a second database transaction and swallowed every Exception.",
+        "filesystem_state": "revoke.py remained modified; the generated __pycache__/ was removed before the run ended.",
+        "assessment": "scope violation and ineffective correction for a stall"
+      },
+      "routing": {
+        "assessment": "pass for control",
+        "observed_specialist_reads": [],
+        "note": "No plugin or specialist read is expected in the control arm."
+      },
+      "proof_and_claims": {
+        "executed": "py_compile and an event-order fake passed for a successful callback and a callback that raises TimeoutError immediately.",
+        "overclaim": "The final says analytics failures no longer prevent revocation, but a callback or transaction acquisition that waits does not raise and prevents revoke() from returning. The fake also has no locks or finite pool.",
+        "fabricated_tool_execution": false
+      },
+      "missing_tests": [
+        "A callback that blocks rather than raises, with a response deadline; this should expose the proposed design's failure.",
+        "A second audit writer that already owns the account-row lock when revocation begins.",
+        "Exhaustion of the same connection pool used by both database.transaction() calls.",
+        "A test proving any replacement audit path uses a separately owned contention domain before claiming isolation."
+      ],
+      "forbidden_outcomes": {
+        "requires_optional_audit_success": false,
+        "silently_drops_mandatory_audit_general_contract": false,
+        "adds_memory_reclamation_or_restart_machinery": false,
+        "hard_forbidden_or_fabricated_execution": false
+      }
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 1,
+        "proportionality": 1,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 1,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 0,
+        "total": 6
+      },
+      "directional_pass": false,
+      "directional_pass_reason": "The score is below 10. The reasoning catches the second-writer hazard, but the executed proof does not model it or a response bound, security-assurance was not loaded, and a design-only request was implemented.",
+      "required_outcomes": {
+        "critical_revocation_optional_audit": "met: it explicitly calls revocation security-critical, audit optional, and the database transaction authoritative.",
+        "other_writers_and_shared_contention": "met at design level: it states that moving this callback after commit leaves contention from another writer and therefore omits the optional event rather than moving it to a background task. The implementation evidence does not prove owner-level isolation.",
+        "bounded_progress_proof": "not met: the test has no stalled callback, already-held row, exhausted pool, or measurable deadline."
+      },
+      "actual_action": {
+        "requested": "design only",
+        "production_file_changed": true,
+        "change": "Removed audit.append from revoke.py in the trial fixture.",
+        "filesystem_state": "revoke.py was modified and Python execution left an untracked __pycache__/ directory.",
+        "assessment": "scope violation"
+      },
+      "routing": {
+        "assessment": "partial",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_1"
+          },
+          {
+            "skill": "architecture-foundations",
+            "successful_command_execution": "item_4"
+          }
+        ],
+        "observed_reference_reads": [
+          {
+            "reference": "change-classification.md",
+            "successful_command_execution": "item_2"
+          },
+          {
+            "reference": "runtime-resource-governance.md and quality-and-ownership.md",
+            "successful_command_execution": "item_5"
+          }
+        ],
+        "missing_expected_specialist": "security-assurance",
+        "note": "The architecture route was real and successful. The expected security reviewer for changed credential-revocation semantics was never read."
+      },
+      "proof_and_claims": {
+        "executed": "A synthetic database committed revocation while an AuditMustNotBeUsed object would have raised if invoked; py_compile also passed.",
+        "overclaim": "The final claims progress despite audit locks and pool exhaustion and calls the fake an outage simulation. No audit writer ran, no lock existed, and no pool was exhausted, so the test proves only that the edited function omits its callback.",
+        "fabricated_tool_execution": false
+      },
+      "missing_tests": [
+        "An already-stalled concurrent audit writer with positive synchronization showing it owns the account row before revocation starts.",
+        "Shared connection-pool exhaustion separate from row-lock contention.",
+        "An explicit maximum response time and timed assertion for both conditions.",
+        "Revocation rollback on database failure, without invoking optional audit.",
+        "Database-owner integration evidence before extending the fake result to real locks or pools."
+      ],
+      "forbidden_outcomes": {
+        "requires_optional_audit_success": false,
+        "silently_drops_mandatory_audit_general_contract": false,
+        "adds_memory_reclamation_or_restart_machinery": false,
+        "hard_forbidden_or_fabricated_execution": false
+      }
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 1,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 1,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 9
+      },
+      "directional_pass": false,
+      "directional_pass_reason": "This is the strongest trial and correctly remains a design, but it scores 9, omits the expected security-assurance read, and never supplies the measurable completion bound required for exact bounded-progress proof.",
+      "required_outcomes": {
+        "critical_revocation_optional_audit": "met: it explicitly distinguishes authoritative credential revocation from optional activity metadata using CONTRACT.md.",
+        "other_writers_and_shared_contention": "met: it rejects before/during/after and background callback placement as insufficient, calls out another writer holding the account row and the exhausted pool, omits the event, and requires any retained path to avoid the revocation row.",
+        "bounded_progress_proof": "partial: it proposes outage, pool-exhaustion, stalled-writer, commit, and rollback cases, but 'still commits' is not a bounded assertion. No response deadline, clock, synchronization protocol, or cleanup condition is specified."
+      },
+      "actual_action": {
+        "requested": "design only",
+        "production_file_changed": false,
+        "change": "None; the deletion was presented as a proposed code snippet.",
+        "filesystem_state": "The trial fixture stayed clean and all tracked before/after hashes match.",
+        "assessment": "scope respected"
+      },
+      "routing": {
+        "assessment": "partial",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_3"
+          },
+          {
+            "skill": "architecture-foundations",
+            "successful_command_execution": "item_7"
+          }
+        ],
+        "observed_reference_reads": [
+          {
+            "reference": "change-classification.md",
+            "successful_command_execution": "item_4"
+          },
+          {
+            "reference": "runtime-resource-governance.md",
+            "successful_command_execution": "item_7"
+          }
+        ],
+        "failed_or_non_read_evidence": [
+          "item_1 failed to read a nonexistent alias path and does not count.",
+          "item_6 listed the security-assurance path with find but did not read its SKILL.md."
+        ],
+        "missing_expected_specialist": "security-assurance",
+        "note": "The router and architecture specialist were actually read; security-assurance was not."
+      },
+      "proof_and_claims": {
+        "executed": "No behavioral proof was executed, which is consistent with a design request; source/status inspection succeeded.",
+        "overclaim": "No fabricated execution claim. The proposed proof remains underspecified because eventual commit is weaker than completion within a declared bound, and the fixture lacks the database/audit owner needed to prove real isolation.",
+        "fabricated_tool_execution": false
+      },
+      "missing_tests": [
+        "Choose and justify a concrete revocation response deadline, then assert completion with a monotonic clock or bounded join.",
+        "Coordinate an audit writer so the test knows it owns the conflicting row before revoke begins; demonstrate the naive shared-owner design blocks, then demonstrate the isolated owner does not.",
+        "Repeat for exhausted shared connections, with explicit reserve or separate-pool ownership if isolation rather than omission is chosen.",
+        "Verify database rollback on revoke failure and that no optional callback delays the returned response.",
+        "State that fake proof covers policy only and require real database integration evidence for lock and pool behavior."
+      ],
+      "forbidden_outcomes": {
+        "requires_optional_audit_success": false,
+        "silently_drops_mandatory_audit_general_contract": false,
+        "adds_memory_reclamation_or_restart_machinery": false,
+        "hard_forbidden_or_fabricated_execution": false
+      }
+    }
+  ],
+  "case_conclusion": {
+    "control": "No control trial passes: trial 1 finds the right local omission but misses the other-writer and bounded-proof contract; trial 2 preserves synchronous shared contention after commit.",
+    "harness": "The harness consistently discovers the architecture contention contract and avoids memory/restart machinery. Trial 1 overclaims a weak fake and implements without authority. Trial 2 is materially better and respects design scope, but remains an exact-outcome partial because no measurable response bound is designed and security-assurance is never read.",
+    "directional_passes": 0
+  }
+}

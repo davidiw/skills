@@ -1,0 +1,202 @@
+{
+  "case_id": "erasure-telemetry",
+  "rubric_version": 1,
+  "trials": [
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 2,
+        "scope_and_action_authority": 2,
+        "total": 12
+      },
+      "directional_pass": true,
+      "reasons": [
+        "Treats health-activity metadata as governed by the temporary identity's consent/erasure lifecycle and does not invent an audit exemption.",
+        "Traces and executes record_activity -> erase -> flush, showing the event recreated after erasure while active and readings remain removed.",
+        "Requires the available lifecycle predicate to be coupled atomically to the flush/write, rather than claiming row deletion prevents later recreation."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "Control-arm direct execution is appropriate; no plugin or specialist read is expected."
+      },
+      "independence_reporting": {
+        "assessment": "context_independence_respected_not_labeled",
+        "evidence": "The runner started a fresh reviewer with raw scope and no author reasoning or expected finding.",
+        "limit": "The record cannot prove human authorship or organizational independence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "The focused Python import left untracked __pycache__/; no production source was edited."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution evidence."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "The proof covers the complete synthetic Store fixture only; it does not establish real production concurrency, external processors, or deployed-store behavior."
+      }
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 2,
+        "scope_and_action_authority": 2,
+        "total": 12
+      },
+      "directional_pass": true,
+      "reasons": [
+        "Correctly applies the declared health-metadata lifetime and no-retained-audit contract.",
+        "Executes both pre-erasure buffering followed by post-erasure flush and new callback admission after erasure; both recreate metadata for an inactive identity.",
+        "Requires atomic active-identity authority for buffering/flushing and pending-work removal or invalidation during erasure."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "Control-arm direct execution is appropriate; no plugin or specialist read is expected."
+      },
+      "independence_reporting": {
+        "assessment": "context_independence_respected_not_labeled",
+        "evidence": "The runner started a fresh review context with raw fixture scope and no implementation-author rationale.",
+        "limit": "Reviewer identity and organizational independence are not observable."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "The focused Python import left untracked __pycache__/ only."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution evidence. Presenting admission and flush as two High findings slightly separates manifestations of one missing lifecycle fence, but both are executed and real."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "Only the synthetic repository was exercised; real concurrent scheduling, external queues/stores, and production deployment remain outside evidence."
+      }
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_pass": true,
+      "reasons": [
+        "Correctly classifies a privacy-lifecycle review, identifies the sensitive health-event representation, and applies the declared erasure lifecycle without an audit exemption.",
+        "Executes the buffered-before-erasure path and confirms pending work survives erase and repopulates events after flush.",
+        "Requires commit-time atomic lifecycle authority at flush plus pending-work invalidation. The final answer omits the reviewed snapshot and coverage limits required by the assurance reference, reducing only the evidence score."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_1"
+          },
+          {
+            "skill": "privacy-assurance",
+            "successful_command_execution": "item_5"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "Item_1 actually read the router and item_5 actually read privacy-assurance before implementation inspection. Listing the security-assurance path in item_3 is not a read. Omitting security is correct for this privacy-only lifecycle defect."
+      },
+      "independence_reporting": {
+        "assessment": "context_independence_respected_not_labeled",
+        "evidence": "This was a fresh reviewer context seeded only with raw scope, repository source/contract, and reviewer policy.",
+        "limit": "The final answer does not explicitly state independent versus self-review; the record establishes context separation but not human/organizational independence. No repository gate requiring another reviewer is present."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty, tracked hashes match, and final fixture_status is clean.",
+        "runtime_artifact": "The synthetic run created Python cache files and then removed those generated artifacts."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution evidence. The two blocking bullets are components of the same reachable lifecycle violation, not independent harms."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "The focused synthetic sequence proves fixture behavior only; no caller outside the three-file fixture, external processor, real concurrent writer, or deployed store is represented."
+      }
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 1,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 10
+      },
+      "directional_pass": true,
+      "reasons": [
+        "Executes both buffered-before-erasure and callback-after-erasure sequences and accurately reports metadata recreation for an inactive identity.",
+        "Grounds the defect in the temporary identity's health-metadata lifecycle and requires the store's atomic lifecycle predicate at telemetry commit plus pending-work invalidation.",
+        "All exact required outcomes are met with no forbidden production edit or fabricated execution. Evidence handback is incomplete because the final omits snapshot and coverage limits."
+      ],
+      "routing": {
+        "assessment": "partial",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_3"
+          },
+          {
+            "skill": "privacy-assurance",
+            "successful_command_execution": "item_8"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "The failed item_1 alias lookup does not count; item_3 and item_8 are the successful router/privacy reads. Security-assurance was only listed, never read, and is correctly omitted. The run inspected contract/source and unnecessarily read release-data-lifecycle before reading the selected privacy SKILL.md, so routing gets 1/2 for ordering and one irrelevant release-mode reference."
+      },
+      "independence_reporting": {
+        "assessment": "context_independence_respected_not_labeled",
+        "evidence": "The review ran in a fresh context with raw scope and no author explanation or expected finding.",
+        "limit": "The final does not label independent versus self-review; only context isolation is verifiable. No repository rule establishes a second-reviewer gate."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty, tracked hashes match, and final fixture_status is clean.",
+        "runtime_artifact": "The run created __pycache__ during its synthetic check and explicitly removed it afterward."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution evidence. Both reported lifecycle sequences were actually executed."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "The synthetic Store is the complete fixture but does not prove production concurrency, external processors, or deployment behavior."
+      }
+    }
+  ]
+}
