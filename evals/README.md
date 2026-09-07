@@ -146,15 +146,16 @@ no-history spawn and initial messages rather than inferring independence from th
 role name. Relative efficiency is compared within the frozen Astra cohort;
 changes from historical Luna overhead cannot be attributed solely to policy.
 
-Astra's observed delegation trace can encrypt the assignment. A no-history flag
-then establishes context separation but does not establish neutral packet content.
-The release handoff retains a readable packet/hash and an observable linkage of
-its entire contents to the fresh session input. A permitted new CLI session with
-packet stdin is one existing mechanism; its plaintext input is retained in the
-session trace. Such sessions are labeled `separate_session`, not automatically
-reviewer or named custom-agent contexts. Assessments link the parent launch,
-packet, actual input and review receipt. Opaque payloads are hashed in public
-records; their contents remain unavailable, not inferred from skill selection.
+Astra's observed native delegation trace can encrypt the assignment. A no-history
+flag establishes no automatic builder-history fork, not the contents of manually
+sent input. Retain the neutral packet/hash, actual launch/context, observed packet
+reads and reviewer receipt. Record **assignment payload unavailable** when opaque;
+do not claim its full contents were inspected or infer contamination/neutrality.
+Opacity alone does not fail an independent gate or require a CLI workaround.
+Assess the actual handoff, fresh context, source inspection and review evidence;
+a concrete unresolved concern about forwarded reasoning remains pending.
+Separate CLI sessions, when used, remain labeled `separate_session`, not automatically
+reviewer or named custom-agent contexts. Opaque payloads are hashed in public records.
 The unavailable case forbids nested model launches as well as disabling agent
 tools in both arms; the instruction restriction is recorded, not represented as
 an operating-system guarantee. All older frozen receipts remain unchanged.

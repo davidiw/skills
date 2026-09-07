@@ -2,6 +2,13 @@
 
 ## 0.5.0 - Unreleased
 
+Separate actual review independence from transport visibility. Keep fresh native
+reviewer contexts, neutral packets, no-history settings and snapshot-bound receipts;
+record opaque assignments as unavailable rather than requiring a CLI transport.
+No claim of inspected full input follows from an opaque receipt. Concrete unresolved
+handoff concerns remain pending. This removes an additional audit requirement and
+the associated evaluation sandbox workarounds; historical receipts stay unchanged.
+
 Execution-role refinement: prefer a configured general reviewer with a fresh
 generic fallback, keeping Engineering Harness policy in skills rather than role
 instructions. Optional Astra-aware examples remain outside runtime. The final

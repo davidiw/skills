@@ -1,9 +1,9 @@
 # Review Packet
 
 Keep the launch receipt separate from the packet: record its final path/hash,
-the observable linkage of the entire assignment to that file, fresh-session/no-history
-evidence, and the actual role/launcher, model, effort and sandbox. Do not put a
-self-referential checksum inside the packet.
+actual child identity, fresh-context/no-history evidence, role/launcher, model,
+effort and sandbox. Record assignment visibility limitations; do not describe an
+opaque payload as inspected. Do not put a self-referential checksum inside the packet.
 
 ## Neutral handoff from builder
 

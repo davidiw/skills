@@ -34,18 +34,22 @@ commands/results and permitted review actions. Give source locations so the
 reviewer can inspect independently. Exclude private builder reasoning, design
 justifications, expected findings and persuasive safety conclusions.
 
-The observable launch must derive its **entire assignment** from that packet.
-A no-history flag proves history separation, not the contents of an opaque message.
-If delegation encrypts/hides the assignment, use an existing permitted fresh-session
-API with observable packet-file/stdin input instead; do not add a launcher framework.
-For example, a new `codex exec` session can receive only the saved packet on stdin,
-with the selected model/effort, read-only sandbox and final receipt file. Record
-that actual generic launch and any configured role settings applied; do not call it
-a named custom-agent invocation unless the runtime did so. Never use resume/fork
-for the first review, or bypass disabled delegation or execution permissions.
-If no auditable fresh launch is available, report **freshness verified / handoff
-content unavailable** where applicable and leave full independence evidence pending.
-Keep raw reviewer traces outside the builder context; read the compact final receipt.
+Use the existing native fresh-agent launch when available. Send only the neutral
+packet, or its location with a neutral instruction to read it. Do not append builder
+reasoning, design persuasion or expected findings to any launch-message field.
+Record the actual child identity, no-history setting, packet path/hash and reviewer
+receipt. Keep raw reviewer reasoning outside the builder; consume the compact handback.
+
+Distinguish context separation from transport visibility. A no-history launch proves
+there was no automatic builder-history fork; it does not prove what was manually
+sent. A saved packet and an observed child read establish their respective facts.
+If the runtime retains an opaque assignment, record **assignment payload unavailable**;
+do not claim its full contents were inspected, or infer either contamination or
+neutrality from encryption. Opacity alone is not self-review or a failed gate, and
+does not require a different launcher. Assess the actual handoff, context, source
+inspection and review evidence. A concrete unresolved concern about forwarded
+reasoning must remain pending until resolved; never invent evidence to close it.
+Do not bypass disabled delegation or execution permissions.
 
 One fresh reviewer may cover security and privacy on the same bounded execution
 path. Separate additional contexts only for distinct coverage obligations; do not
