@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.6.0 - Unreleased
+
+Adds three explicit-only experience owners: Product Experience for jobs, flow/IA
+and recovery; Interface Design for hierarchy, composition and accessible rendered
+presentation; Brand and Language for proposed/accepted identity and visual intent,
+naming and voice. Routing selects one unresolved owner and preserves the minimal
+path for settled local corrections.
+
+Rendered claims require proportionate experience evidence. Ordinary bounded UI
+work does not require hashes or formal receipts; existing retained/gated evidence
+contracts still apply. Accessibility/platform facts use authoritative platform
+sources; external agent skills inform judgment patterns rather than standards.
+
+Migration: review adoption of the new minor policy line before updating project
+profiles. No invariant, capability-activation or schema changes are introduced.
+Existing product/design authority, material scope approval and fresh-review gates
+remain authoritative. Existing DESIGN.md files retain their role; documentation
+adoption and product redesign are not automatic migrations. Stable installation
+continues to pin 0.5.1 until a separately authorized release. Focused evaluation
+results will identify their exact source revision; no effectiveness claim is made
+from structural validation alone.
+
 ## 0.5.1 - 2026-09-07
 
 This bounded point release reduces always-read instruction/context cost, improves

@@ -1,7 +1,7 @@
 {
   "name": "engineering-harness",
-  "version": "0.5.1",
-  "description": "Risk-proportional engineering workflows and scoped or release-wide security/privacy assurance for coding agents.",
+  "version": "0.6.0",
+  "description": "Proportional engineering, product experience, interface design, brand and language, and security/privacy assurance for coding agents.",
   "author": {
     "name": "davidiw",
     "url": "https://github.com/davidiw"
@@ -15,13 +15,16 @@
     "compatibility",
     "verification",
     "security-assurance",
-    "privacy-assurance"
+    "privacy-assurance",
+    "product-experience",
+    "interface-design",
+    "brand-and-language"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Engineering Harness",
-    "shortDescription": "Proportional engineering and security/privacy assurance.",
-    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status.",
+    "shortDescription": "Engineering, product experience, and assurance.",
+    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status. Resolve meaningful UX, interface, and brand decisions with repository design authority, bounded scope, and proportional rendered evidence.",
     "developerName": "davidiw",
     "category": "Developer Tools",
     "capabilities": [
@@ -29,13 +32,17 @@
       "Verification",
       "Operations",
       "Security assurance",
-      "Privacy assurance"
+      "Privacy assurance",
+      "Product experience",
+      "Interface design",
+      "Brand and language"
     ],
     "defaultPrompt": [
       "Bootstrap this repository with the smallest useful engineering harness.",
       "Adopt this existing repository and propose an evidence-backed capability profile.",
       "Make this change or harden this hotspot using the smallest justified scope and focused verification.",
-      "Review this system for security and privacy readiness before launch, reporting coverage and reviewer independence."
+      "Review this system for security and privacy readiness before launch, reporting coverage and reviewer independence.",
+      "Review this experience and propose the smallest useful correction within its accepted product and brand direction."
     ]
   }
 }

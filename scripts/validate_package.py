@@ -300,6 +300,33 @@ def validate_evals(errors: list[str]) -> None:
     validate_eval_receipts(case_by_id, matrix_ids, errors)
     assurance_matrix = json.loads((ROOT / "evals" / "assurance-matrix.json").read_text())
     validate_assurance_matrix(assurance_matrix, case_by_id, errors)
+    experience_matrix = json.loads((ROOT / "evals" / "experience-matrix.json").read_text())
+    validate_experience_matrix(experience_matrix, case_by_id, errors)
+
+
+def validate_experience_matrix(matrix: dict, case_by_id: dict, errors: list[str]) -> None:
+    """Protect the approved bounded pilot and genuine identity/restraint coverage."""
+    prefix = "experience matrix: "
+    require(matrix.get("schema_version") == 1, prefix + "invalid schema", errors)
+    require(matrix.get("prompt_mode") == "natural", prefix + "must use natural prompts", errors)
+    require(matrix.get("conditions") == ["control", "harness"], prefix + "requires both arms", errors)
+    require(matrix.get("trials") == 1, prefix + "pilot requires one trial per arm", errors)
+    ids = matrix.get("case_ids")
+    if not isinstance(ids, list) or not all(isinstance(x, str) for x in ids):
+        errors.append(prefix + "case_ids must be strings")
+        return
+    require(len(ids) == 10 and len(set(ids)) == 10, prefix + "requires ten distinct cases", errors)
+    require("experience-brand" in ids, prefix + "identity/visual-intent pilot is required", errors)
+    require("experience-no-render" in ids, prefix + "unavailable-rendering case is required", errors)
+    selected = [case_by_id[x] for x in ids if x in case_by_id]
+    require(len(selected) == len(ids), prefix + "unknown case", errors)
+    require(sum(c.get("control") == "negative" for c in selected) == 4,
+            prefix + "requires four restraint controls", errors)
+    for case in selected:
+        require("$" not in case.get("request", ""), prefix + "prompt names a skill", errors)
+    brand = case_by_id.get("experience-brand", {})
+    require("brand-and-language" in brand.get("expected_skills", []),
+            prefix + "identity pilot must exercise brand-and-language", errors)
 
 
 def validate_assurance_matrix(

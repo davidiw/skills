@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brand and Language"
+  short_description: "Own identity intent and product language"
+  default_prompt: "Use $brand-and-language to review identity, visual intent, and product language."
+policy:
+  allow_implicit_invocation: false

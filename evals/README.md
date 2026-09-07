@@ -159,3 +159,27 @@ reviewer or named custom-agent contexts. Opaque payloads are hashed in public re
 The unavailable case forbids nested model launches as well as disabling agent
 tools in both arms; the instruction restriction is recorded, not represented as
 an operating-system guarantee. All older frozen receipts remain unchanged.
+
+## Product-experience pilot (0.6 development)
+
+[`experience-matrix.json`](experience-matrix.json) selects ten paired natural
+cases: six meaningful decisions (including identity/visual intent and unavailable
+rendering) and four minimal controls. The existing runner and rubric remain in use.
+Expected skill lists describe route coverage; scoring uses required/forbidden
+behavior and evidence, not maximal skill fanout. The original assurance/scope
+matrices retain their cases and are not replaced by this cohort.
+
+Fixtures are synthetic static pages with Node checks and, where available, a
+local Chromium renderer. Supply the same `EXPERIENCE_CHROMIUM` executable to both
+arms and record its version/hash outside the runtime with the campaign evidence.
+`render.py` uses file URLs with external name resolution blocked; no live data,
+server or provider is needed. The unavailable-rendering case intentionally has no
+renderer and forbids installing one. Rendering setup is preflighted separately
+from model trials. Screenshots support visual observations; interaction behavior
+still needs sequence or focused behavioral checks.
+
+Use the runner's isolated homes and pinned competing-skill catalog. Retain failed
+attempts, exact candidate SHA, cache/fixture hashes, native context traces and
+per-context cost. Assess read-only source preservation, scope limits, actual image
+reads, material source-only claims, and restraint. No full-matrix effectiveness
+or efficiency score follows from this small cohort.

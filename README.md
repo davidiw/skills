@@ -13,6 +13,11 @@ The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
 exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
+The development branch includes **unreleased 0.6.0** product-experience capabilities:
+[scope and research](docs/proposals/product-experience/README.md). Stable 0.5.1
+installations do not include these owners. Meaningful UX/UI/brand work selects one
+unresolved owner; settled small UI corrections remain minimal.
+
 ## Install
 
 Install the immutable **0.5.1** stable release:
@@ -119,7 +124,7 @@ rewritten. See
 
 ## Internal skills
 
-The router progressively loads nine internal specialists:
+The router progressively loads twelve internal specialists:
 
 | Skill | Normative responsibility |
 | --- | --- |
@@ -132,8 +137,12 @@ The router progressively loads nine internal specialists:
 | `verification-and-operations` | Evidence semantics, fault injection, physical proof, exact revisions, and operations |
 | `security-assurance` | Authorization and trust threats, including defects outside the invariant catalog |
 | `privacy-assurance` | Sensitive data use, derivation, retention, expiry, erasure, and delayed writers |
+| `product-experience` | User jobs, task flows, information priority, navigation and recovery |
+| `interface-design` | Hierarchy, composition, responsiveness and accessible rendered presentation |
+| `brand-and-language` | Proposed/accepted identity and visual intent, naming, voice and product language |
 
-Implementation specialists own product invariants. Assurance reviewers consume
+Engineering implementation specialists own engineering invariants. Experience owners
+consume those contracts and repository design authority without adding taste invariants. Assurance reviewers consume
 them and may identify additional evidenced security/privacy obligations. The package authority map is in [`DESIGN.md`](DESIGN.md).
 
 ## Design provenance

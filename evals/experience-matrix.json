@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "prompt_mode": "natural",
+  "trials": 1,
+  "conditions": [
+    "control",
+    "harness"
+  ],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "concurrency": 2,
+  "timeout_seconds": 420,
+  "case_ids": [
+    "experience-today",
+    "experience-photo",
+    "experience-meal",
+    "experience-workout",
+    "experience-brand",
+    "experience-no-render",
+    "experience-typo",
+    "experience-accessible-name",
+    "experience-component-reuse",
+    "experience-fetch-restraint"
+  ]
+}

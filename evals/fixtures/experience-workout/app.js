@@ -1,0 +1,1 @@
+if(typeof document!=='undefined'){document.getElementById('log').onclick=()=>document.getElementById('log').textContent='Set logged';document.getElementById('finish').onclick=()=>{if(confirm('Finish and save this workout?'))document.getElementById('finish').textContent='Workout saved';};}

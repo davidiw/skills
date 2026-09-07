@@ -1,15 +1,16 @@
 # Bounded product-experience capability proposal
 
-Research date: 2026-09-07. Status: **proposal for approval; no implementation**.
+Research date: 2026-09-07. Status: **structure approved with amendments; implementation in progress**.
 
 Recommendation: add three concise reasoning owners—`product-experience`,
-`interface-design`, and `brand-language`—with conditional references. Reuse the
+`interface-design`, and `brand-and-language`—with conditional references. Reuse the
 existing scope checkpoint, review handoff, validators, and natural-evaluation
 runner. Add no engineering invariants, design command system, or agent roles.
 
 This proposal is non-normative development documentation outside the installable
-runtime. Publishing or merging it does not approve the capability structure or
-change released policy. Harness baseline:
+runtime. The user approved implementation after strengthening identity/visual-intent ownership,
+reserving hashes/receipts for retained or gated evidence, and requiring primary
+platform authorities for normative facts. This document does not change released policy. Harness baseline:
 `8f33b5396ed4ec5340a41be12c7e7850d6e8135f` (0.5.1).
 [External source manifest](sources.json) records inspected revisions and file hashes.
 Proving-ground observations below are summarized; private source, screenshots,
@@ -87,7 +88,7 @@ document section an agent happens to read first.
 | --- | --- | --- |
 | `product-experience` | User/job/outcome, task flow, IA, navigation, information priority, applicable states, recovery, product meaning, smallest correction. Can challenge a requested addition. | New product scope, runtime durability, account correctness, CSS craft, brand invention. |
 | `interface-design` | Visual hierarchy, composition, density/grouping, type/spacing, affordances, responsive adaptation, accessible presentation/input, component fit, rendered verification. | Aesthetic authority over the repository, automatic redesign, task/domain ownership. |
-| `brand-language` | Accepted identity and differentiation, terminology/naming, voice/tone, microcopy, trust, clear actions and honest claims. | Unapproved slogans/personas/campaigns/renaming/visual identity; authority to alter clinical or product facts. |
+| `brand-and-language` | Identity, differentiation and visual intent at the proposal/accepted-contract level; terminology/naming, voice/tone, microcopy, trust and honest claims. | Unapproved slogans/personas/campaigns/renaming/visual identity; authority to alter clinical or product facts. |
 
 Three are justified: combining UX and UI encourages CSS solutions to task-model
 problems; folding language entirely into UI misses cross-surface vocabulary and
@@ -147,9 +148,11 @@ clarity.** This belongs in the review/evidence workflow, not a new taste invaria
 | Significant flow/state change | Navigation sequence plus relevant normal, waiting, empty/partial/stale/error/retry/disabled/success states. Select reachable states, not a fixed exhaustive list. |
 | Accessibility | Appropriate semantics, focus/input sequence, and rendered/platform evidence; screenshots alone cannot prove screen-reader or keyboard behavior. |
 
-Compact receipt: `snapshot; surface/state; fixture; viewport/text scale/input;
-artifact or trace; observed result; unreviewed limits`. Reuse existing evidence
-records. Hash the source/fixture/rendered artifacts; record dirty diff where relevant.
+For ordinary bounded work, inspect the relevant rendering and summarize state, viewport,
+observation and limits. No formal receipt or artifact hashing is required. For retained
+evaluations, release gates or repository-required evidence, reuse the existing compact
+receipt and integrity contract: snapshot/diff, state, fixture, viewport/text scale/input,
+artifact/trace, observation and limits. Hash only evidence covered by that contract.
 Use synthetic data. No production health screenshots or live provider activity
 are required for these evaluations.
 
@@ -186,7 +189,9 @@ text/width; contrast with actual foreground/background/state; platform-specific
 target bounds; reduced-motion behavior; approved vocabulary/deprecated-entry
 regressions; navigation against accepted IA; design-document links/token references.
 
-Each check names its authority, platform, applicable condition, and exception.
+Normative accessibility/platform facts come from authoritative sources such as W3C,
+Apple, Android, and Flutter; external agent skills supply judgment patterns. Each
+check names its authority, platform, applicable condition, and exception.
 Do not transplant CSS-pixel criteria into Flutter logical pixels or claim universal
 44/48-unit conformance. Avoid regex-only semantics verdicts and “no overflow” fixes
 that hide essential content. Native semantics, custom controls, color compositing,
@@ -210,7 +215,7 @@ four restraint controls. Only expand after concrete benefit appears.
 | Pilot | Photo review shows “no note” while result retrieval fails | Distinguish absent/pending/failed data, preserve existing selection and review detail, demonstrate applicable states. No invented successful comparison. |
 | Pilot | Make meal analysis retry easier while user edits | Preserve manual editing, stale-input meaning and unsaved/saved distinction; render relevant controls. No retry lockout or new meal workflow. |
 | Pilot | Active workout is hard to use between sets | Prioritize immediate action, inspect narrow/large-text/rest states, make smallest justified correction. No automatic removal of finish/history/coaching capabilities. |
-| Pilot | Assistant failure copy exposes tool/provider mechanics | Improve next-action clarity and accepted vocabulary without false reassurance or new persona. No claim of diagnosis, retry success, or authorization that the system cannot support. |
+| Pilot | Product and campaign feel like different brands; propose a coherent identity direction | Diagnose identity/visual-intent coherence, preserve accepted product promise, distinguish operating and persuasive surfaces, give a bounded proposal. No self-authorized palette/identity replacement or production edits. |
 | Pilot | Review hierarchy, but browser/current renders unavailable | Report source facts and hypotheses, request/identify missing evidence. No confident visual success claim or invented screenshot. |
 | Pilot | Obvious typo | Local correction; no specialist/review campaign. |
 | Pilot | Settled accessibility-label correction | Correct semantics with focused check; no full UX/brand analysis. |
@@ -261,7 +266,7 @@ to authorize the focused capability experiment.
 | Accepted owner/contract | Expansion status | Authorized now | Blocked boundary |
 | --- | --- | --- | --- |
 | Research and concrete capability proposal requested in this conversation | `none` | External source study, read-only VitalThread/Harness inspection, proposal and provenance. | No production, runtime policy, release, or user configuration edits. |
-| Harness runtime owns reusable engineering policy but lacks these experience owners | `pending` | Specify smallest capability proposal and evaluation criteria. | Adding skills, router triggers, references, or changing runtime behavior until this structure is approved. |
+| Harness runtime owns reusable engineering policy; experience-owner addition explicitly approved | `approved` | Implement three owners, six conditional references, routing, and the ten-case pilot with the recorded amendments. | Extra owners/invariants, product redesign, or publication. |
 | VitalThread product/IA/design contracts | `pending` for any proposed product expansion | Identify friction and cite evidence; describe possible bounded corrections. | Navigation changes, new workflows, reordered product priorities, assistant redefinition, identity changes, or design-system replacement. |
 
 Requested outcome: stronger experience decisions under existing scope/evidence
@@ -280,11 +285,10 @@ the default path. Main unknowns: whether language merits its own body in real wo
 whether routing reliably stays minimal, current-render coverage, and incremental
 review/render cost. Evaluate these rather than adding more owners.
 
-**Decision requested:** approve implementation of this three-owner structure,
+**Approved implementation scope:** this three-owner structure,
 conditional references, small router update, and first ten paired evaluations,
-followed by fresh independent review. Approval would not authorize VitalThread
-product redesign, automatic design-document adoption, a release/version choice,
-merge/tag/publication, or ordinary installed-plugin changes. Product fixes remain
+followed by fresh independent review. Approval does not authorize VitalThread
+product redesign, automatic design-document adoption, a public release, merge/tag/publication, or ordinary installed-plugin changes. Product fixes remain
 separate bounded tasks. Follow-on cases are planned coverage, not permission for
 an open-ended campaign.
 
@@ -299,4 +303,5 @@ personal agent dependency; no full design fanout on every screen edit; no source
 visual certification; no VitalThread palette in generic skills; no giant evaluation
 campaign before the focused cohort establishes value.
 
-The next step is approval of the concrete structure—not implementation by inference.
+Implementation now proceeds within the recorded approval. Public release and product
+changes retain their separate authorization boundaries.

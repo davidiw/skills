@@ -61,6 +61,7 @@ Choose and **read** one implementation skill for the unresolved decision in
 | Ownership/dependencies, shared scarce pools or serialized contention | [architecture foundations](../skills/architecture-foundations/SKILL.md) |
 | Admission/replay/recovery; work outlives its initiator | [durable workflows](../skills/durable-workflows/SKILL.md) |
 | Public/provider contracts, mutable authorization, credential purpose, events | [interfaces and events](../skills/interfaces-and-events/SKILL.md) |
+| Meaningful UX/UI/brand decision | [experience routing](experience-routing.md), then its one primary owner |
 | UI/domain/platform composition, useful-paint ownership | [application composition](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync/migration, sensitive derivation/retention/erasure | [data and compatibility](../skills/data-and-compatibility/SKILL.md) |
 | Recurring divergence/root-cause consolidation | [architecture hardening](../skills/architecture-hardening/SKILL.md) |

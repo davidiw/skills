@@ -1,0 +1,4 @@
+function controls(state){return {canEdit:state!=='retrying',canSave:true,message:state==='retrying'?'Estimating nutrition…':state==='failed'?'Estimate unavailable. You can edit and save manually.':'Estimate ready. Meal not saved.'};}
+function render(state){const c=controls(state);document.getElementById('meal').disabled=!c.canEdit;document.getElementById('amount').disabled=!c.canEdit;document.getElementById('status').textContent=c.message;document.getElementById('save').disabled=!c.canSave;}
+if(typeof document!=='undefined'){render(new URLSearchParams(location.search).get('state')||'normal');document.getElementById('retry').onclick=()=>render('retrying');document.getElementById('save').onclick=()=>document.getElementById('status').textContent='Meal saved.';}
+if(typeof module!=='undefined')module.exports={controls};
