@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.6.0 - Unreleased
+## 0.6.0 - 2026-09-07
 
 Adds three explicit-only experience owners: Product Experience for jobs, flow/IA
 and recovery; Interface Design for hierarchy, composition and accessible rendered
@@ -18,9 +18,11 @@ profiles. No invariant, capability-activation or schema changes are introduced.
 Existing product/design authority, material scope approval and fresh-review gates
 remain authoritative. Existing DESIGN.md files retain their role; documentation
 adoption and product redesign are not automatic migrations. Stable installation
-continues to pin 0.5.1 until a separately authorized release. Focused evaluation
-results will identify their exact source revision; no effectiveness claim is made
-from structural validation alone.
+pins `v0.6.0`. The focused pilot remains nine pass / one partial per arm; the
+accessible-name verification gap is retained and non-gating for this bounded
+release. One fresh Harness-only smoke proves natural Product Experience activation
+and bounded recovery reasoning. Evidence retains its original source revisions;
+no comparative superiority, full-cohort equivalence, or broad efficiency is claimed.
 
 ## 0.5.1 - 2026-09-07
 
