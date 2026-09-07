@@ -358,6 +358,19 @@ def git_is_ancestor(ancestor: str, descendant: str) -> bool:
     return result.returncode == 0
 
 
+def manifest_at_revision(revision: str) -> bytes | None:
+    """Read immutable runtime metadata across the repository layout migration."""
+    for relative in ("plugins/engineering-harness/.codex-plugin/plugin.json",
+                     ".codex-plugin/plugin.json"):
+        result = subprocess.run(
+            ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
+            capture_output=True, check=False,
+        )
+        if result.returncode == 0:
+            return result.stdout
+    return None
+
+
 def validate_eval_receipt(
     document: dict[str, object],
     case_by_id: dict[str, dict[str, object]],
@@ -392,13 +405,17 @@ def validate_eval_receipt(
     if revision_retained:
         for relative in (".codex-plugin/plugin.json", "evals/cases.json",
                          "evals/behavioral-matrix.json", "evals/rubric.md"):
-            result = subprocess.run(
-                ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
-                capture_output=True, check=False,
-            )
-            require(result.returncode == 0, prefix + f"recorded input is missing: {relative}", errors)
-            if result.returncode == 0:
-                snapshots[relative] = result.stdout
+            if relative == ".codex-plugin/plugin.json":
+                content = manifest_at_revision(revision)
+            else:
+                result = subprocess.run(
+                    ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
+                    capture_output=True, check=False,
+                )
+                content = result.stdout if result.returncode == 0 else None
+            require(content is not None, prefix + f"recorded input is missing: {relative}", errors)
+            if content is not None:
+                snapshots[relative] = content
         if len(snapshots) != 4:
             return
         try:

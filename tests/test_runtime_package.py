@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from validate_package import PLUGIN_ROOT, validate_runtime_boundary
+from validate_package import PLUGIN_ROOT, manifest_at_revision, validate_runtime_boundary
 
 
 class RuntimePackageTest(unittest.TestCase):
@@ -35,6 +35,14 @@ class RuntimePackageTest(unittest.TestCase):
         checked = subprocess.run([sys.executable, "-B", str(self.plugin / "scripts/validate_profile.py"), str(profile)],
                                  cwd=self.root, text=True, capture_output=True)
         self.assertEqual(checked.returncode, 0, checked.stderr)
+
+    def test_historical_and_relocated_manifests_remain_readable(self):
+        for revision in ("3eb0314e26a47397e03169c4d07facf7d19d12ee",
+                         "4cbed8215ac195b892845efd146b15d57a36d7e2"):
+            with self.subTest(revision=revision):
+                manifest = json.loads(manifest_at_revision(revision))
+                self.assertEqual(manifest["name"], "engineering-harness")
+                self.assertEqual(manifest["version"], "0.5.0")
 
     def test_corpus_is_rejected_even_nested_in_runtime_references(self):
         leak = self.plugin / "references/evals/cases.json"
