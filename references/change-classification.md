@@ -85,18 +85,24 @@ adversarial review. Do not turn either into repository-wide cleanup.
 | Persistent identity, sync, migration, deletion, repair, mixed versions, or sensitive data derivation/retention/erasure | [`data-and-compatibility`](../skills/data-and-compatibility/SKILL.md) |
 | Demonstrated recurring architecture divergence, consolidation, or hotspot root-cause repair | [`architecture-hardening`](../skills/architecture-hardening/SKILL.md) |
 | Exact-revision gate, independent adversarial or fault campaign, operator tooling, release, generated contract/safety proof, or physical proof | [`verification-and-operations`](../skills/verification-and-operations/SKILL.md) |
-| Consequential change to principal, credential, grant, trust, or effect authority; or requested security assurance | [`security-assurance`](../skills/security-assurance/SKILL.md) |
-| Consequential change to sensitive data use, disclosure, derivation, retention, expiry, or erasure; or requested privacy assurance | [`privacy-assurance`](../skills/privacy-assurance/SKILL.md) |
+| Consequential modification or new exposure of a trust/authorization boundary; or requested changed-path or release-surface security assurance | [`security-assurance`](../skills/security-assurance/SKILL.md) |
+| Consequential change to sensitive data collection, use, disclosure, derivation, retention, expiry, or erasure; or requested changed-path or release data-lifecycle assurance | [`privacy-assurance`](../skills/privacy-assurance/SKILL.md) |
 
 When several signals describe one execution path, load the smallest set that
 owns the path. Do not run independent architecture exercises for each signal.
 During implementation, assurance follows the implementation owners and reviews
 the resulting snapshot. For an assurance-only request, load the relevant
 reviewer directly; it reads owning contracts through its references. This does
-not imply permission to implement fixes. For a
-changed sensitive path, select the relevant security/privacy reviewer(s) and
-record any uncovered review scope under
+not imply permission to implement fixes. For altered trust/authorization or
+privacy-lifecycle semantics, select the relevant reviewer(s) and record any
+uncovered review scope under
 [`assurance-review.md`](assurance-review.md).
+
+Release-wide assurance starts from the externally reachable/trust-boundary and
+sensitive-data inventories, including unchanged and legacy paths. It is selected
+by the requested campaign scope, not inferred from an ordinary deployment or
+version bump. Use the existing security/privacy specialists in their release
+modes; an exact release gate may additionally select verification.
 
 ## Dominance rules
 
@@ -125,3 +131,15 @@ record any uncovered review scope under
 - Do not add assurance for unrelated minimal edits in a sensitive repository.
   When consequential work changes both authorization and privacy lifecycle,
   neither reviewer dominates the other; review the shared path from both sides.
+- Do not add `security-assurance` merely because a path carries credentials,
+  account context, or existing authorization fences. Add it when the requested
+  change modifies or newly exposes a trust/authorization boundary, or assurance
+  is explicitly requested. A connectivity wake or caller-side account-race fix
+  using the unchanged canonical fence stays with its implementation owners.
+  Changing the fence's decisions or credential/session semantics crosses this
+  boundary; preserving its existing contract does not.
+- Do not add `privacy-assurance` merely because the repository contains sensitive
+  data. Add it when the changed path alters collection, use, disclosure,
+  derivation, retention, expiry, or erasure, or assurance is explicitly requested.
+  Routine scheduling or presentation changes that preserve those contracts use
+  their existing implementation checks.

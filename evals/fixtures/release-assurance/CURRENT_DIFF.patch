@@ -1,0 +1,6 @@
+diff --git a/ui.py b/ui.py
+--- a/ui.py
++++ b/ui.py
+@@ -1 +1 @@
+-TITLE = "Welcome"
++TITLE = "Welcome back"

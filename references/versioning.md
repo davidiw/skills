@@ -21,6 +21,12 @@ bounded migration. Profile drift accepts patch differences. It requires review
 and migration when the policy release line changes: major after 1.0, or minor
 while the package remains 0.x.
 
+An explicitly unreleased candidate may retain its intended release number while
+being refined before publication. Extend its migration notes and identify each
+evaluation by frozen source revision and content hashes; the shared unreleased
+version is not a unique evidence identity. Published versions and stable tags
+remain immutable.
+
 Public releases use immutable `v<version>` Git tags matching the plugin
 manifest. Stable installation instructions pin that tag. `main` remains the
 explicit development/nightly channel and is never cited as immutable evidence.

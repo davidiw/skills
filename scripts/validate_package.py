@@ -295,6 +295,41 @@ def validate_evals(errors: list[str]) -> None:
         require("architecture-hardening" not in audit_case["expected_skills"], "adversarial review routes to hardening", errors)
 
     validate_eval_receipts(case_by_id, matrix_ids, errors)
+    assurance_matrix = json.loads((ROOT / "evals" / "assurance-matrix.json").read_text())
+    validate_assurance_matrix(assurance_matrix, case_by_id, errors)
+
+
+def validate_assurance_matrix(
+    matrix: dict[str, object], case_by_id: dict[str, dict[str, object]], errors: list[str]
+) -> None:
+    prefix = "assurance matrix: "
+    require(matrix.get("schema_version") == 1, prefix + "invalid schema", errors)
+    require(matrix.get("prompt_mode") == "natural", prefix + "must use natural prompts", errors)
+    trials = matrix.get("trials")
+    require(type(trials) is int and trials >= 2, prefix + "requires repeated trials", errors)
+    require(matrix.get("conditions") == ["control", "harness"], prefix + "requires both arms", errors)
+    concurrency = matrix.get("concurrency")
+    require(type(concurrency) is int and 1 <= concurrency <= 2, prefix + "concurrency must be bounded to two", errors)
+    ids = matrix.get("case_ids")
+    if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):
+        errors.append(prefix + "case_ids must be strings")
+        return
+    require(len(ids) == len(set(ids)), prefix + "duplicate case", errors)
+    required = {
+        "natural-security-review", "natural-privacy-review", "authorization-export",
+        "erasure-telemetry", "critical-audit", "handoff-session", "uncatalogued-assurance",
+        "provider-wake-restraint", "ui-fence-restraint", "sensitive-copy-restraint",
+        "tiny-cli-restraint", "pure-library-parser-restraint",
+        "release-security-surface", "release-privacy-lifecycle",
+    }
+    require(required <= set(ids), prefix + "missing discovery, restraint, or release coverage", errors)
+    for case_id in ids:
+        case = case_by_id.get(case_id)
+        if case is None:
+            errors.append(prefix + f"unknown case: {case_id}")
+            continue
+        require(bool(case.get("fixture")), prefix + f"fixture required: {case_id}", errors)
+        require("$" not in case.get("request", ""), prefix + f"explicit skill in prompt: {case_id}", errors)
 
 
 def file_sha256(path: Path) -> str:

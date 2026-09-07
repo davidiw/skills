@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "prompt_mode": "natural",
+  "trials": 2,
+  "conditions": [
+    "control",
+    "harness"
+  ],
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "concurrency": 2,
+  "timeout_seconds": 240,
+  "case_ids": [
+    "natural-security-review",
+    "natural-privacy-review",
+    "authorization-export",
+    "erasure-telemetry",
+    "critical-audit",
+    "handoff-session",
+    "uncatalogued-assurance",
+    "provider-wake-restraint",
+    "ui-fence-restraint",
+    "sensitive-copy-restraint",
+    "tiny-cli-restraint",
+    "pure-library-parser-restraint",
+    "release-security-surface",
+    "release-privacy-lifecycle"
+  ]
+}

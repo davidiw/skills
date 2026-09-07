@@ -2,6 +2,15 @@
 
 ## 0.5.0 - Unreleased
 
+Candidate refinement after `d3ca0a0` (still unpublished): expose assurance in
+router/plugin discovery metadata; distinguish preservation of existing fences
+from altered trust/privacy semantics; add release-surface security and release
+data-lifecycle privacy modes to the existing reviewers. Release modes inventory
+unchanged and legacy paths before investigation. `open-world-assurance` remains
+a machine-readable review-policy obligation, not an exhaustive system threat
+catalog. The earlier development evidence remains unchanged; candidate snapshots
+must identify their content independently of the shared unreleased version.
+
 - Broaden `authority-context-fencing` to principal/account, capability, purpose,
   consent, and lifecycle/expiry for synchronous and durable operations. Move
   normative ownership to interfaces and events; retain the invariant ID and

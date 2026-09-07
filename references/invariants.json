@@ -201,8 +201,8 @@
     },
     {
       "id": "open-world-assurance",
-      "statement": "Consequential changes to sensitive flows or authorization boundaries receive scoped security/privacy assurance at the relevant seams. An evidenced material defect can block acceptance without a pre-existing catalog invariant; review records the violated obligation, execution path, consequence, confidence, and coverage limits.",
-      "activates_when": "a consequential change affects sensitive data, authorization, privacy lifecycle, or a security/privacy assurance review is requested",
+      "statement": "Consequential modifications or new exposure of trust/authorization boundaries and changes to sensitive data collection, use, disclosure, derivation, retention, expiry, or erasure receive scoped assurance; preserving existing contracts alone does not require an independent reviewer. Explicit release assurance covers the candidate inventory beyond changed paths. An evidenced material defect can block acceptance without a pre-existing catalog invariant; review records the violated obligation, execution path, consequence, confidence, and coverage limits.",
+      "activates_when": "a consequential change alters trust/authorization or sensitive data lifecycle semantics, or changed-path/release-wide security/privacy assurance is requested",
       "default_rung": "audit",
       "enforcement_timing": "risk_proportional",
       "owner_skill": "verification-and-operations",

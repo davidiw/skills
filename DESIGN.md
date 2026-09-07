@@ -74,7 +74,12 @@ hardening owns discovery and repair of divergence; verification and operations
 owns evidence semantics, bounded architecture audits, fault campaigns, and
 release gates. Security and privacy assurance own threat review, including
 evidenced defects outside the catalog; implementation owners retain authority
-over product behavior.
+over product behavior. Each assurance reviewer has changed-path and release-wide
+modes. Release modes begin with attack-surface or data-lifecycle inventories,
+then reconcile evidence and uncovered rows beyond the latest diff. The
+`open-world-assurance` entry records a review-policy obligation; additional
+workflow instructions remain in their owning references rather than becoming
+catalog entries.
 
 ## Proportional activation
 

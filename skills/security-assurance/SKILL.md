@@ -1,15 +1,27 @@
 ---
 name: security-assurance
-description: Review changed authorization and trust boundaries for exploitable behavior, including session confusion, purpose-scoped credentials, mutable grants, and blocked critical actions. Use for consequential security-sensitive changes or an explicitly requested security assurance review.
+description: Review altered or newly exposed trust/authorization boundaries, or inventory the complete release attack surface for launch and external security review. Use changed-path assurance for a named flow or diff and release-surface assurance for a system-wide campaign.
 ---
 
 # Security Assurance
 
-Find material security defects in the changed execution paths, including threats
+Find material security defects in the requested scope, including threats
 the harness has not named yet. Read the shared
 [`assurance review contract`](../../references/assurance-review.md) before review.
 Consume the [invariant catalog](../../references/invariants.json); implementation
 owners retain normative ownership of their behavior.
+
+## Select mode
+
+- **Changed-path assurance:** review the named flow or diff and the dependencies
+  needed to assess it. Preserve existing fences through implementation checks;
+  mere presence of credentials or account state does not trigger this review.
+- **Release-surface assurance:** for a pre-launch or external security-readiness
+  campaign, read [`release-surface.md`](references/release-surface.md). Build the
+  externally reachable/trust-boundary inventory and coverage matrix first,
+  including unchanged and legacy surfaces, then investigate its hypotheses.
+
+## Investigate scoped paths
 
 1. Identify assets, principals, entry points, trust assumptions, and the
    attacker-controlled inputs or timing on the requested path.

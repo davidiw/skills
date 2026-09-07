@@ -1,15 +1,28 @@
 ---
 name: privacy-assurance
-description: Review sensitive data use, derivation, disclosure, retention, expiry, and erasure, including telemetry and delayed writers. Use for consequential privacy-sensitive changes or an explicitly requested privacy assurance review.
+description: Review changed sensitive data collection, use, disclosure, derivation, retention, expiry, and erasure, or inventory the complete release data lifecycle for launch and external privacy review. Sensitive data presence alone does not trigger a campaign.
 ---
 
 # Privacy Assurance
 
-Find material privacy defects across the changed data lifecycle, including
+Find material privacy defects across the requested data lifecycle, including
 obligations absent from the current harness vocabulary. Read the shared
 [`assurance review contract`](../../references/assurance-review.md) before review.
 Consume the [invariant catalog](../../references/invariants.json); the data owner
 retains normative ownership of privacy lifecycle semantics.
+
+## Select mode
+
+- **Changed-path privacy review:** review the named flow or diff when it changes
+  collection, use, disclosure, derivation, retention, expiry, or erasure, or when
+  review is requested. Preserving those contracts in routine scheduling or
+  presentation work stays with its implementation owners.
+- **Release data-lifecycle review:** for a pre-launch or external privacy-readiness
+  campaign, read [`release-data-lifecycle.md`](references/release-data-lifecycle.md).
+  Inventory sensitive data and every destination/processor first, including
+  unchanged paths, then build the coverage matrix and investigate each lifecycle.
+
+## Investigate scoped lifecycles
 
 1. Follow sensitive source data into each derived representation and recipient.
    Include activity metadata, AI telemetry, logs, audits, caches, and artifacts;
