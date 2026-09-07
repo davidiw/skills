@@ -8,6 +8,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
+sys.path.insert(0, str(PLUGIN_ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from profile_repository import check_drift, propose_profile, scan_repository
@@ -17,7 +19,7 @@ from validate_profile import validate_profile
 
 class SensitiveProfileTest(unittest.TestCase):
     def test_sensitive_profile_requires_lifecycle_and_assurance_owners(self):
-        profile = json.loads((ROOT / "templates/project-profile.minimal.json").read_text())
+        profile = json.loads((PLUGIN_ROOT / "templates/project-profile.minimal.json").read_text())
         profile["project"]["sensitive_data"] = True
         for invariant in ("typed-boundaries", "authority-context-fencing",
                           "privacy-lifecycle", "open-world-assurance"):

@@ -25,31 +25,42 @@ generated views, examples, or tests.
 | --- | --- | --- |
 | Package architecture and this authority map | `DESIGN.md` | `README.md` overview |
 | Repository-local execution and publication rules | `AGENTS.md` | Agent sessions in this repository |
-| Public workflow | `skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
-| Internal classes, scope-expansion approval, and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
-| Invariant statement, activation condition, timing, default rung, and single owner skill | `references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
-| Enforcement timing and rung semantics | `references/enforcement-ladder.md` | Invariant assignments, profiles, and validators |
-| Capability vocabulary and capability-to-invariant activation | `references/capability-activation.json` | Profiles, schema, discovery, and validators |
-| Profile shape | `references/project-profile.schema.json` | Profile validator and templates |
+| Public workflow | `plugins/engineering-harness/skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
+| Internal classes, scope-expansion approval, and specialist routing | `plugins/engineering-harness/references/change-classification.md` | Router skill and eval expectations |
+| Invariant statement, activation condition, timing, default rung, and single owner skill | `plugins/engineering-harness/references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
+| Enforcement timing and rung semantics | `plugins/engineering-harness/references/enforcement-ladder.md` | Invariant assignments, profiles, and validators |
+| Capability vocabulary and capability-to-invariant activation | `plugins/engineering-harness/references/capability-activation.json` | Profiles, schema, discovery, and validators |
+| Profile shape | `plugins/engineering-harness/references/project-profile.schema.json` | Profile validator and templates |
 | A project's accepted capability and enforcement decisions | That project's `engineering-harness.json` | Drift checks and change routing |
-| Discovery detectors and confidence | `scripts/profile_repository.py` | Proposed profile discovery section |
-| Security/privacy review evidence, open-world findings, and coverage | `references/assurance-review.md` | Security and privacy assurance skills |
+| Discovery detectors and confidence | `plugins/engineering-harness/scripts/profile_repository.py` | Proposed profile discovery section |
+| Security/privacy review evidence, open-world findings, and coverage | `plugins/engineering-harness/references/assurance-review.md` | Security and privacy assurance skills |
 | Skill name and discovery description | Each `SKILL.md` frontmatter | Plugin discovery |
 | Skill UI presentation and invocation policy | That skill's `agents/openai.yaml` when present | Codex UI and invocation behavior |
-| Marketplace identity, root plugin source, and install policy | `.agents/plugins/marketplace.json` | Codex marketplace discovery |
+| Marketplace identity, runtime plugin source, and install policy | `.agents/plugins/marketplace.json` | Codex marketplace discovery |
 | Eval scenario and expected routing | `evals/cases.json` | Corpus validator and runs |
 | Directional natural-prompt selection | `evals/behavioral-matrix.json` | Behavioral runs and receipts |
 | Eval scoring | `evals/rubric.md` | Evaluation runs |
-| Generated invariant rendering | `scripts/render_invariants.py` | `references/engineering-invariants.md` |
+| Generated invariant rendering | `scripts/render_invariants.py` | `plugins/engineering-harness/references/engineering-invariants.md` |
 | Package structural validation entrypoint | `scripts/validate_package.py` | Delegated validators and unit tests |
-| Profile cross-source semantic validation | `scripts/validate_profile.py` | Profile discovery, package validation, and unit tests |
-| Package version | `.codex-plugin/plugin.json` | Profiles, receipts, and changelog checks |
+| Profile cross-source semantic validation | `plugins/engineering-harness/scripts/validate_profile.py` | Profile discovery, package validation, and unit tests |
+| Package version | `plugins/engineering-harness/.codex-plugin/plugin.json` | Profiles, receipts, and changelog checks |
 | Release history and migration notes | `CHANGELOG.md` | Adopters and reviewers |
 | Design provenance | `SOURCES.md` | README summary |
-| Instruction precedence, exceptions, and authorization reuse | `references/precedence-and-exceptions.md` | Router and specialist pointers |
+| Instruction precedence, exceptions, and authorization reuse | `plugins/engineering-harness/references/precedence-and-exceptions.md` | Router and specialist pointers |
 
 Templates are non-normative starting points. Fixtures are isolated repository
 facts for their eval case. Neither can override the authorities above.
+
+## Install boundary
+
+The marketplace installs only `plugins/engineering-harness/`. That directory owns
+runtime skills, references, templates, the manifest, license, and the profile
+scanner/validator consumed by adoption. Runtime file links stay within it.
+Repository rules, architecture/provenance, generators, package validators, tests,
+evaluation fixtures, expected outcomes, and evidence stay outside the install
+source. The package validator checks this boundary, including nested corpus
+folders and symlinks; installation checks compare the unmodified cache with the
+runtime source. Historical receipts retain their original layouts and hashes.
 
 ## Skill boundaries
 
@@ -87,14 +98,14 @@ Profiles activate invariants implied by actual capabilities plus additional
 repository choices. Discovery proposes a profile from bounded evidence; a human
 or repository-authorized agent reviews it before acceptance. The normative
 discovery and drift rules are in
-[`profile-discovery.md`](references/profile-discovery.md). Enforcement timing
+[`profile-discovery.md`](plugins/engineering-harness/references/profile-discovery.md). Enforcement timing
 and exception requirements are defined by
-[`enforcement-ladder.md`](references/enforcement-ladder.md) and
-[`precedence-and-exceptions.md`](references/precedence-and-exceptions.md).
+[`enforcement-ladder.md`](plugins/engineering-harness/references/enforcement-ladder.md) and
+[`precedence-and-exceptions.md`](plugins/engineering-harness/references/precedence-and-exceptions.md).
 
 ## Precedence and authorization
 
-[`precedence-and-exceptions.md`](references/precedence-and-exceptions.md) is the
+[`precedence-and-exceptions.md`](plugins/engineering-harness/references/precedence-and-exceptions.md) is the
 normative policy for safety precedence, repository decisions, scoped invariant
 exceptions, workflow-changing disclosures, and reuse of multi-stage authority.
 

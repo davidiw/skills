@@ -71,7 +71,7 @@ the repository's chosen workflow.
    inventory and risk-accounting steps below do not apply. Otherwise read the
    relevant design authority, work tracker, and operator-command index when
    present. Report conflicts rather than replacing repository decisions.
-3. For **Adopt**, run `scripts/profile_repository.py` to create an evidence-backed
+3. For **Adopt**, run the plugin’s [`profile_repository.py`](../../scripts/profile_repository.py) to create an evidence-backed
    proposal, review uncertain detections, assign repository enforcement owners,
    record approved exceptions, and mark the profile accepted.
 4. For **Change** or **Harden**, use

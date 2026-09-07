@@ -10,8 +10,8 @@
   "sources": {
     "agent_rules": "AGENTS.md",
     "architecture": "DESIGN.md",
-    "invariants": "references/invariants.json",
-    "capability_activation": "references/capability-activation.json",
+    "invariants": "plugins/engineering-harness/references/invariants.json",
+    "capability_activation": "plugins/engineering-harness/references/capability-activation.json",
     "evaluation_cases": "evals/cases.json",
     "evaluation_rubric": "evals/rubric.md",
     "validation": "scripts/validate_package.py"

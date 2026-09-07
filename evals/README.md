@@ -90,3 +90,12 @@ Both cases join the current matrix for future frozen runs; the historical
 with explicit router invocation. Observe actual edits and
 approval requests: mentioning scope in a final answer does not excuse an earlier
 unapproved protocol or credential implementation.
+
+
+The install source is `plugins/engineering-harness/`; this corpus and all receipts
+remain outside it. `run_natural_matrix.py` installs through the repository
+marketplace and rejects a cache that differs from the runtime source. It never
+removes eval/test/Git files from the cache to make an experiment clean.
+`scope-matrix.json` selects both scope cases with two repeats per arm for the
+focused frozen campaign. Run it against an immutable checkout, with private raw
+output outside the repository, and review the sanitized receipt before committing.

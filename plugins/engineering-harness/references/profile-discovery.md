@@ -2,6 +2,8 @@
 
 Brownfield adoption starts with inspection, not a blank capability checklist.
 
+Run these commands from the installed plugin root (the parent of `references/`).
+
 ```bash
 python3 scripts/profile_repository.py /path/to/repository \
   --output /path/to/repository/engineering-harness.json

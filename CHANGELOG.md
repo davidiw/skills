@@ -2,6 +2,17 @@
 
 ## 0.5.0 - Unreleased
 
+Runtime packaging refinement: install only `plugins/engineering-harness/` from
+the marketplace, keeping evaluation answers, fixtures, tests, and development
+evidence outside the runtime source. Migrate direct checkout script paths for
+profile discovery/validation to that directory; generators and package checks
+remain repository-level. The package validator protects the isolation boundary
+and both Polar scope cases. Narrow the scope gate opening to material shared
+responsibilities or accepted owner-contract expansion; ordinary local feature
+options remain within existing implementation authority. Existing scope approval
+and profile schemas are unchanged. A frozen natural scope run will identify its
+exact source revision; older receipts remain evidence for their original trees.
+
 PR #1 revision after `08d0622` (still unpublished): make explicit scope-expansion
 approval a prerequisite before introducing shared surfaces or widening another
 owner's contract. Architecture design and hardening consume the same gate;

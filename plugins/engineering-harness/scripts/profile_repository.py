@@ -155,7 +155,7 @@ def _iter_files(repository: Path) -> Iterable[tuple[str, str]]:
         relative = path.relative_to(repository)
         if any(part in EXCLUDED_PARTS for part in relative.parts):
             continue
-        if relative.as_posix() == "scripts/profile_repository.py":
+        if path.resolve() == Path(__file__).resolve() or relative.as_posix() == "scripts/profile_repository.py":
             continue
         if path.name == "GeneratedPluginRegistrant.java":
             continue

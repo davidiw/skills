@@ -11,7 +11,7 @@ instructions and accepted product decisions remain authoritative.
 
 The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
-exposes the root `engineering-harness` plugin for installation.
+exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
 ## Install
 
@@ -27,9 +27,8 @@ Use `--ref main` only for deliberate development/nightly testing. Evidence and
 repository profiles name the harness policy version they used; stable tags are
 immutable.
 
-For local development, pass the checkout root containing both
-`.agents/plugins/marketplace.json` and `.codex-plugin/plugin.json`, not its
-parent directory:
+For local development, pass the checkout root containing
+`.agents/plugins/marketplace.json`; the marketplace selects the runtime subdirectory:
 
 ```bash
 codex plugin marketplace add /path/to/skills-checkout
@@ -55,7 +54,7 @@ Use for an existing repository. From the Engineering Harness checkout, generate
 an evidence-backed proposal:
 
 ```bash
-python3 scripts/profile_repository.py TARGET_REPOSITORY \
+python3 plugins/engineering-harness/scripts/profile_repository.py TARGET_REPOSITORY \
   --output TARGET_REPOSITORY/engineering-harness.json
 ```
 
@@ -64,13 +63,13 @@ signals, assign real repository enforcement owners, record any approved scoped
 exceptions, and change its status to `accepted`. Check later drift with:
 
 ```bash
-python3 scripts/profile_repository.py TARGET_REPOSITORY \
+python3 plugins/engineering-harness/scripts/profile_repository.py TARGET_REPOSITORY \
   --check TARGET_REPOSITORY/engineering-harness.json
 ```
 
 Discovery proposes; it does not overrule repository decisions or prove a
 capability absent. See
-[`references/profile-discovery.md`](references/profile-discovery.md).
+[`plugins/engineering-harness/references/profile-discovery.md`](plugins/engineering-harness/references/profile-discovery.md).
 
 ### Change
 
@@ -94,18 +93,18 @@ surfaces. Merely preserving an existing authorization fence or working in a
 sensitive repository does not activate an independent assurance review.
 
 The normative workflow is in
-[`skills/using-engineering-harness/SKILL.md`](skills/using-engineering-harness/SKILL.md).
+[`plugins/engineering-harness/skills/using-engineering-harness/SKILL.md`](plugins/engineering-harness/skills/using-engineering-harness/SKILL.md).
 
 ## Capabilities and invariants
 
-[`references/invariants.json`](references/invariants.json) defines the invariant
+[`plugins/engineering-harness/references/invariants.json`](plugins/engineering-harness/references/invariants.json) defines the invariant
 catalog, each invariant's single normative owner skill, its consumers, and its
 enforcement timing. The generated readable view is
-[`references/engineering-invariants.md`](references/engineering-invariants.md).
+[`plugins/engineering-harness/references/engineering-invariants.md`](plugins/engineering-harness/references/engineering-invariants.md).
 
 A version-controlled `engineering-harness.json` records project capabilities,
 active enforcement, exceptions, discovery evidence, and the harness policy
-version. [`references/capability-activation.json`](references/capability-activation.json)
+version. [`plugins/engineering-harness/references/capability-activation.json`](plugins/engineering-harness/references/capability-activation.json)
 maps capabilities to minimum active invariants.
 
 Cheap deterministic checks normally accompany a declared foundational
@@ -117,7 +116,7 @@ Explicit user intent and repository-authoritative decisions take precedence
 over generic recommendations unless an applicable safety constraint prohibits
 the action. Conflicts and exceptions are reported rather than silently
 rewritten. See
-[`references/precedence-and-exceptions.md`](references/precedence-and-exceptions.md).
+[`plugins/engineering-harness/references/precedence-and-exceptions.md`](plugins/engineering-harness/references/precedence-and-exceptions.md).
 
 ## Internal skills
 
@@ -158,17 +157,17 @@ The package uses Python 3 standard-library tooling:
 python3 -m unittest discover -s tests
 python3 scripts/validate_package.py
 python3 scripts/render_invariants.py --check
-python3 scripts/validate_profile.py engineering-harness.json
-python3 scripts/profile_repository.py . --check engineering-harness.json
+python3 plugins/engineering-harness/scripts/validate_profile.py engineering-harness.json
+python3 plugins/engineering-harness/scripts/profile_repository.py . --check engineering-harness.json
 ```
 
 Structural validation does not claim that model evaluations ran. The behavioral
 corpus in [`evals/cases.json`](evals/cases.json) contains both positive controls
 and explicit over-engineering failures.
 
-The current policy version lives in [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json).
+The current policy version lives in [`plugins/engineering-harness/.codex-plugin/plugin.json`](plugins/engineering-harness/.codex-plugin/plugin.json).
 Release behavior and migration requirements are defined in
-[`references/versioning.md`](references/versioning.md) and recorded in
+[`plugins/engineering-harness/references/versioning.md`](plugins/engineering-harness/references/versioning.md) and recorded in
 [`CHANGELOG.md`](CHANGELOG.md).
 
 Engineering Harness is available under the

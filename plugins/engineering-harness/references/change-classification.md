@@ -9,12 +9,14 @@ reviewer directly, even when no implementation change is requested.
 ## Scope expansion gate
 
 Check the proposed solution against the user's authorized outcome before any
-implementation, including the minimal shortcut. Introducing a new shared
-protocol, subsystem, credential/session type, framework, compatibility path,
-configuration axis, new shared ownership contract, or materially broadening
-another owner's contract requires
-**explicit user approval of that expansion before implementing it**. Permission
-to implement a feature or fix does not by itself grant this broader scope.
+implementation, including the minimal shortcut. Material expansion into a new
+shared/cross-cutting responsibility or widening an accepted owner contract requires
+**explicit user approval of that expansion before implementing it**. This includes
+new shared protocols, subsystems, credential/session types, frameworks,
+compatibility paths, or configuration axes when they introduce that expansion.
+A local option or implementation detail plainly within the requested feature and
+accepted owner contract does not require a second architecture approval.
+Permission to implement a feature or fix does not by itself grant broader scope.
 A feature flag, disabled default, private prototype in production code, or agent-
 authored design note is not approval.
 
