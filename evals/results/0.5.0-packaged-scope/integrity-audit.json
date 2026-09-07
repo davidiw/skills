@@ -1,0 +1,6 @@
+{
+  "cache_matches_frozen_runtime_before_and_after": true,
+  "cache_cleanup_performed": false,
+  "command_scan_corpus_read_candidates": [],
+  "limitation": "Command scan plus isolated install-tree inspection; not an operating-system proof that no other file could be read."
+}

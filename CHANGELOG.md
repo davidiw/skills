@@ -10,8 +10,9 @@ remain repository-level. The package validator protects the isolation boundary
 and both Polar scope cases. Narrow the scope gate opening to material shared
 responsibilities or accepted owner-contract expansion; ordinary local feature
 options remain within existing implementation authority. Existing scope approval
-and profile schemas are unchanged. A frozen natural scope run will identify its
-exact source revision; older receipts remain evidence for their original trees.
+and profile schemas are unchanged. The frozen natural scope run at `4cbed82` preserved the unapproved boundary in
+only one of two harness trials; approved design remained bounded in both. Keep
+0.5.0 unpublished. Older receipts remain evidence for their original trees.
 
 PR #1 revision after `08d0622` (still unpublished): make explicit scope-expansion
 approval a prerequisite before introducing shared surfaces or widening another

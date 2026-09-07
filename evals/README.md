@@ -99,3 +99,8 @@ removes eval/test/Git files from the cache to make an experiment clean.
 `scope-matrix.json` selects both scope cases with two repeats per arm for the
 focused frozen campaign. Run it against an immutable checkout, with private raw
 output outside the repository, and review the sanitized receipt before committing.
+
+The [packaged scope run](results/0.5.0-packaged-scope/README.md) records eight
+natural-prompt trials on the frozen runtime. The installation boundary passed;
+unapproved scope enforcement held only once in two harness trials. Approved
+design stayed bounded in both. These results do not justify publishing 0.5.0.

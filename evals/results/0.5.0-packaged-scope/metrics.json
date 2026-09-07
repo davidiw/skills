@@ -1,0 +1,12 @@
+{
+  "control": {
+    "directional_passes": 2,
+    "trials": 4,
+    "median_seconds": 100.90676784515381
+  },
+  "harness": {
+    "directional_passes": 2,
+    "trials": 4,
+    "median_seconds": 107.891144156456
+  }
+}
