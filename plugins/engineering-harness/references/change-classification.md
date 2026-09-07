@@ -1,91 +1,108 @@
-# Change Classification
+# Builder Checkpoints
 
-## Minimal and bounded work
+Complete each checkpoint before advancing. Minimal changes and review-only work
+have already exited through the router.
 
-Minimal means a local reversible edit inside one accepted owner/contract, without
-changed sensitive semantics, shared contention, durable/external effects, or
-migration. Use existing focused checks; no specialist or scope artifact required.
-Bounded product-rule work inside an established owner normally needs at most one
-specialist. A sensitive repository does not make unrelated copy consequential.
+## 1. Inspect and classify before choosing a fix
 
-## Consequential checkpoint
-
-Persistent/wire evolution, cross-process lifetime, identity/authorization,
-sensitive collection/use/disclosure/erasure, shared contention, physical proof,
-or external release actions require the router's pre-edit scope decision.
-Record only relevant authority, lifetime, consumers, failure/proof, and action
-limits. An accepted profile and owner contract suffice; consult specific catalog
-entries only when their interpretation is unresolved.
+Establish the accepted owner/source and semantics: supported principals, purposes,
+lifetimes, writers and compatibility obligations. Do this before selecting a fix
+or state store. Persistent/wire evolution, cross-process lifetime, identity/
+authorization, sensitive collection/use/disclosure/erasure, shared contention,
+physical proof and external release actions are consequential. Record relevant
+authority, lifetime, consumers, failure/proof and action limits; reuse accepted
+profile/owner evidence and read exact catalog entries only for unresolved meanings.
 
 ## Scope expansion gate
 
-Material expansion into a new shared/cross-cutting responsibility or widening an
-accepted owner contract requires explicit user approval before implementation.
-Measure scope against accepted semantics **before choosing a solution**: supported
-principals, purposes, lifetimes, writers, and compatibility obligations. If the
-accepted boundary does not support the requested behavior, mark it `pending`
-unless an explicit approved proposal covers that change. A flag, disabled default,
-private/in-memory implementation, preserved old callers, necessity, design note,
-or feature request cannot supply that approval. A local implementation choice
-plainly within the requested feature and existing contract requires no second
-architecture approval.
+**2. Decide every requested behavior/owner before production edits.** Record in
+an existing task record or user-visible checkpoint; reuse settled rows and update
+them when new evidence changes scope:
 
-Use the router's per-boundary decision table before any production-edit call.
-`none` needs evidence of supported behavior and unchanged accepted semantics.
-`approved` cites the concrete expansion proposal plus explicit user approval and
-limits. A feature request that predates that proposal cannot be its approval.
-Otherwise mark `pending`, preserve that boundary and continue independently
-supported work. Reuse a clear affirmative response to a concrete proposal.
+| Behavior and accepted owner/source | Already supported? Evidence | Scope expansion | Approval source/exact limits | Allowed work / blocked boundary |
+| --- | --- | --- | --- | --- |
 
-Example: a callback contract resolves only durable principals; the feature asks
-for short-lived principals. Expiry in an account owner may be supported, but a new
-callback subject resolver or grant store is a pending expansion even when private,
-provider-specific or in memory. Preserving old callers does not preserve the
-accepted set of principals/lifetimes. An unaccepted draft and a smaller invented
-alternative both need approval if they cross that boundary. Use the conditional
-[approval handback](scope-approval.md); do not rewrite the accepted contract to
-make an unapproved implementation appear authorized.
+Material expansion into a shared/cross-cutting responsibility or widening an
+accepted contract needs explicit user approval before implementation:
 
-## Primary-owner routing
+- `none`: positive evidence that the behavior is supported and accepted semantics
+  remain unchanged. A local choice plainly within the feature and contract needs
+  no separate architecture approval.
+- `approved`: the concrete boundary-expansion proposal, explicit user approval
+  and exact limits. Reuse a clear affirmative response within those limits.
+- `pending`: the contract excludes the behavior and no approved proposal covers
+  it. Leave this boundary untouched; implement independent authorized rows.
 
-Choose the owner of the **unresolved decision**, not every matching vocabulary.
-For a critical action blocked by optional work, the obligation is progress despite
-an independently stalled writer already holding shared contention. Read the
-[resource proof](../skills/architecture-foundations/references/runtime-resource-governance.md#critical-progress-against-an-incumbent-optional-writer)
-before proposing a fix; callback reordering alone does not resolve that obligation.
+Finish this checkpoint in an earlier assistant message or a completed
+record-only write, **before reading the primary-owner skill or issuing a
+production-edit call**. Creating the record inside the production-edit call does
+not complete this checkpoint.
 
-| Unresolved decision | Primary implementation skill |
+**No production-edit tool call for a missing, invalid or pending row.** A flag,
+disabled default, private/in-memory path/store, preserved old callers, necessity,
+design note or feature request is not scope approval. Repeating the outcome or
+citing a feature request that predates the proposal cannot approve its new means.
+Do not rewrite the accepted contract to authorize your own implementation.
+
+For example, a durable-principal callback contract does not support short-lived
+principals merely because a new resolver/grant store is private or provider-specific.
+Expiry in the account owner may remain authorized; expanding callback subjects/
+lifetimes is pending. An unaccepted draft and a smaller invented alternative both
+need approval if they cross that boundary. Before returning pending work, complete
+the [approval handback](scope-approval.md).
+
+## 3. Read the primary owner before designing
+
+Choose and **read** one implementation skill for the unresolved decision in
+**authorized work**; naming it alone does not complete this checkpoint:
+
+| Decision | Primary implementation skill |
 | --- | --- |
-| New ownership/dependency boundary, shared scarce pool or serialized contention | [architecture foundations](../skills/architecture-foundations/SKILL.md) |
-| Work must survive its initiator; admission/replay/recovery | [durable workflows](../skills/durable-workflows/SKILL.md) |
-| External/public contract, mutable authorization, purpose-scoped credential, event delivery | [interfaces and events](../skills/interfaces-and-events/SKILL.md) |
-| UI/domain/platform composition or useful-paint ownership | [application composition](../skills/application-composition/SKILL.md) |
+| Ownership/dependencies, shared scarce pools or serialized contention | [architecture foundations](../skills/architecture-foundations/SKILL.md) |
+| Admission/replay/recovery; work outlives its initiator | [durable workflows](../skills/durable-workflows/SKILL.md) |
+| Public/provider contracts, mutable authorization, credential purpose, events | [interfaces and events](../skills/interfaces-and-events/SKILL.md) |
+| UI/domain/platform composition, useful-paint ownership | [application composition](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync/migration, sensitive derivation/retention/erasure | [data and compatibility](../skills/data-and-compatibility/SKILL.md) |
-| Demonstrated recurring divergence or root-cause consolidation | [architecture hardening](../skills/architecture-hardening/SKILL.md) |
-| Exact release/evidence campaign, operator tooling, physical proof | [verification and operations](../skills/verification-and-operations/SKILL.md) |
+| Recurring divergence/root-cause consolidation | [architecture hardening](../skills/architecture-hardening/SKILL.md) |
+| Exact evidence/release campaigns, operator tools, physical proof | [verification and operations](../skills/verification-and-operations/SKILL.md) |
 
-Add a second owner only when a distinct unresolved obligation needs it. An owner
-can consume another owner's contract reference without loading that whole skill.
-A synchronous authority fence does not need durable workflows. UI observing a job
-does not alone need composition; an internal adapter does not alone need interface
-review; focused tests do not alone require verification. Existing ownership does
-not need an architecture exercise. Repeated symptoms justify hardening, not cleanup.
+Bounded work normally needs one specialist; consequential work generally at most
+two before evidence justifies more. Another owner needs a distinct unresolved
+obligation; consuming its contract reference alone needs no skill-body load.
+Synchronous fencing need not load durable workflows; observing a job need not load
+composition; internal adapters need not load interfaces; focused tests need not
+load verification. Existing ownership needs no architecture exercise; hardening
+needs recurring evidence.
 
-## Record assurance gates; review after building
+For critical progress blocked by optional work, read the
+[incumbent-writer proof](../skills/architecture-foundations/references/runtime-resource-governance.md#critical-progress-against-an-incumbent-optional-writer)
+before proposing a fix. Prove progress while another writer already holds shared
+contention; moving the current callback is insufficient.
 
-- **Security:** consequential change to/new exposure of trust or authorization
-  decisions, credentials, principal/purpose binding, or revocation semantics.
-- **Privacy:** consequential change to sensitive collection, use, disclosure,
-  derivation, retention, expiry, or erasure.
+Record required assurance gates now; reviewer bodies belong in fresh reviewers,
+never builders/designers:
 
-A correction of those semantics still selects its gate. Carrying credentials,
-preserving an existing account fence, routine connectivity wakes/UI stale-result
-suppression, or the presence of sensitive data alone does not. Explicit review
-requests use the router's direct assurance shortcut. Builders record required
-gates and hand off the corrected snapshot; they do not preload assurance bodies.
+- **Security:** consequential changes/new exposure of trust, authorization,
+  credentials, principal/purpose binding or revocation semantics.
+- **Privacy:** consequential changes to sensitive collection, use, disclosure,
+  derivation, retention, expiry or erasure.
 
-Repository-required independent gates also cover material persistence/migration,
-deletion/durable-state, public/provider contracts and high-risk architecture.
-Release gates and explicit independent-review requests require the specified
-context separation. Use the [handoff](assurance-handoff.md); do not add such gates
-to ordinary bounded work merely because those nouns appear.
+Corrections of these semantics still require the gate. Credentials or sensitive
+data alone do not; neither do connectivity wakes/UI stale-result fixes preserving
+existing fences. Repository-required independent gates also cover material
+persistence/migration, deletion/durable state, public/provider contracts and
+high-risk architecture. Release gates and explicit independent reviews require
+their context separation; ordinary bounded work does not acquire gates merely
+by containing these nouns.
+
+## 4. Implement and prove; 5. close gates
+
+Stay within recorded boundaries and use focused tests at the actual failure seam.
+New evidence changing scope returns to checkpoint 2 before editing that boundary.
+Design/plan requests stop at the proposal: production stays unchanged and planned
+implementation checks/reviews remain prospective.
+
+For recorded required gates, use the [fresh review handoff](assurance-handoff.md)
+after implementation on the corrected snapshot. Address findings and review corrections before completion.
+Unavailable required independence remains pending; builder reasoning cannot
+substitute. Record dispositions and evidence without restating settled contracts.

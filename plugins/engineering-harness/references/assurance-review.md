@@ -1,90 +1,78 @@
 # Security and Privacy Assurance
 
-The invariant catalog is a starting vocabulary, not a complete threat model.
-Security and privacy reviewers consume its rules without restricting findings
-to them. This workflow is an evidence-based review, not a claim of mathematical
-verification, legal compliance, or exhaustive vulnerability absence.
+Evidenced threats can block without a cataloged invariant. Technical assurance is
+not mathematical proof, legal compliance, or a claim of vulnerability absence.
 
 ## Scope and evidence
 
-Select the scope before investigating. **Changed-path assurance** covers the
-named flow or diff and its relevant dependencies. **Release-surface security
-assurance** and **release data-lifecycle privacy review** start from inventories
-of the complete candidate system, including unchanged, legacy, and shadow paths.
-Use those release modes when launch readiness or preparation for an external
-security/privacy review is requested. Ordinary changes retain changed-path scope.
+- **Changed path:** named flow/diff plus callers, dependencies and delayed consumers
+  needed to assess harm.
+- **Release security/data-lifecycle privacy:** launch, whole-system readiness or
+  external-review preparation covers the entire candidate, including unchanged,
+  legacy and shadow paths. A clean diff does not establish release readiness.
 
-Bind either mode to an identifiable snapshot:
-commit plus worktree patch/content digests for local work, or the exact release
-revision for a release gate. Use repository threat assumptions and privacy
-decisions, checking them against the implementation. In changed-path mode, trace immediate callers,
-dependencies, and delayed consumers needed to assess the hypothesized harm.
+Bind evidence to the commit plus worktree patch/content hashes, or exact release
+revision. Verify repository threat/privacy decisions against source. Security owns
+changed/newly exposed trust or authorization boundaries; privacy owns changed
+sensitive collection, use, derivation, disclosure, retention, expiry or erasure.
+Explicit requests select their lens without requiring a diff; existing credentials,
+fences or sensitive-project flags alone select neither. Use both for combined scope.
 
-Select security assurance for changes to or new exposure of trust/authorization
-boundaries; select privacy assurance for changes to sensitive collection, use,
-derivation, retention, disclosure, expiry, or erasure. Explicit assurance
-requests select the appropriate reviewer regardless of whether code changed.
-Carrying credentials or preserving existing fences does not itself select a
-security reviewer; a sensitive project flag does not itself select a privacy
-reviewer. Use both when the requested scope includes both concerns.
+Keep **one release matrix**: source evidence, owner, boundary/data category,
+hypothesis, and status: **unreviewed**, **reviewed with evidence**, **blocked**,
+**unavailable**, or **not applicable with rationale**. Retain initial content before
+probes through existing history or a permitted copy. Update cells and add discovered
+rows; include the reconciled matrix in the final receipt, linking findings by ID.
+State each finding and row-specific limit once. Inventory existence is not proof;
+unreachable/out-of-scope claims need evidence or an explicit limit.
 
-Release modes produce a coverage matrix before attacking individual paths.
-Inventory entries name source evidence, owner, boundary/data category, planned
-hypothesis, and status: unreviewed, reviewed with evidence, blocked, unavailable,
-or not applicable with rationale. Inventory existence is not passing evidence.
-Unreachable or out-of-scope claims require evidence or an explicit scope limit.
+## Independence
 
-An already-fresh reviewer with no builder history is the independent review
-context; record that status and inspect the assigned source. Do not recursively
-delegate the same gate or label that context self-review because it did not spawn
-another reviewer. For a builder seeking required independent review, follow the
-[fresh-context handoff](assurance-handoff.md).
-Context separation and evidence are required; another skill in the builder is
-self-review. Explicit review-only requests retain their requested scope and
-actual context status without inventing an independent gate.
+An already-fresh reviewer without builder history performs the assigned gate and
+records that status; it need not create its own child. Builders use the
+[fresh-context handoff](assurance-handoff.md) after implementation checks.
+Reviewer skills in the builder are **self-review**; unavailable required independent
+review leaves that gate pending. Do not invent independence requirements for
+review-only requests that lack them.
 
-## Findings
+For combined campaigns, provide authorized fresh reviewers scope/non-goals,
+snapshot, contracts, permitted effects and assigned coverage rows. One fresh context
+can cover both lenses on a bounded path. Reconcile complete findings and uncovered
+rows with actual context status; delegation and production-scale coverage are not
+guaranteed.
 
-A blocking finding requires:
+## Findings and receipt
 
-1. a concrete, reachable execution path and its prerequisites;
-2. evidence of a violated security/privacy obligation, whether from an existing
-   invariant, repository requirement, or a newly identified threat;
-3. a material consequence such as unauthorized access, session confusion,
-   sensitive disclosure, retained data after erasure, or blocked revocation.
+A blocker needs a reachable path/prerequisites, an evidenced obligation (repository
+rule, invariant or newly evidenced threat), and material harm. Suggestive names or
+hypothetical possibilities without reachability are questions. Explain uncatalogued
+harm plainly and record any catalog gap separately; no invariant ID is required.
+No production edits; use synthetic checks.
 
-Record location, severity, confidence, evidence or focused reproduction, and
-the smallest correction. For a new threat, explain the obligation and harm in
-plain language; record a catalog gap separately. A missing invariant ID cannot
-downgrade an evidenced defect. Conversely, a suggestive name or hypothetical
-possibility without a reachable path is a question, not a proven blocker.
+Return the **complete currently known blocker set once**, in four fields:
 
-## Completion
+- **Snapshot/context:** exact revision/hashes, fresh/self-review status and context
+  evidence.
+- **Coverage/evidence:** exercised hypotheses, source locations and check/results;
+  completed matrix for release review. Link retained commands/artifacts rather than
+  reproducing their contents or contracts.
+- **Disposition:** complete blocker set (empty when clean), nonblocking follow-ups
+  and pending gates. Each finding includes location, severity/confidence,
+  path/consequence, evidence/reproduction, smallest correction and relationship to
+  prior review. Other sections reference its ID.
+- **Limits:** shared proof limits and residual exposure once; row-specific limits
+  stay in their matrix rows. Preserve every unreviewed/unavailable area.
 
-Return the complete currently known blocker set, severity/confidence and concrete
-paths/evidence, non-blocking follow-ups, exact snapshot, exercised hypotheses,
-unreviewed/unavailable areas and context status. The reviewer changes no production
-files. Use synthetic data and focused checks. Apply the handoff's delta-review and
-initial-review-miss rules after corrections; do not drip-feed known blockers.
+Keep complete evidence behind the links. A clean changed-path receipt normally
+needs 200–300 words plus references: a presentation target, never an investigation
+budget. Expand blockers, pending boundaries, residual exposure and coverage gaps
+enough to assess them. Release matrices and full finding details remain mandatory;
+brevity cannot convert incomplete coverage into a pass.
 
-For release modes, reconcile the final coverage matrix against the initial
-inventory and newly discovered surfaces/destinations. A clean diff does not
-establish release readiness. When both are requested and independent contexts
-are available and authorized, give each reviewer the raw scope/non-goals, snapshot,
-contracts, permitted effects, and its assigned coverage rows. Return findings,
-evidence, uncovered rows, and actual reviewer-context status for reconciliation.
-Loading reviewer skills in the builder is self-review; a fresh reviewer may cover
-both lenses on one bounded path. Leave any required independent gate pending when
-separate review cannot be obtained. When none is required,
-report actual context status without adding a gate. Preserve that status and every
-unreviewed/unavailable row in the handback. The package specifies this handoff
-contract; it does not guarantee runtime delegation or production-scale coverage.
-
-Set coverage and time bounds from the requested assurance scope. The bounded
-architecture audit's ten-minute/three-thread cap does not define assurance
-completion. If a budget ends first, report coverage incomplete; do not describe
-unexamined paths as passing. Release eligibility follows repository policy and
-authorized exceptions, not the absence of findings in a limited pass.
-
+Corrections use the handoff's delta scope and initial-review-miss rules; do not
+drip-feed known blockers. Set coverage/time bounds from the request, not the
+architecture audit's ten-minute/three-thread cap. If budget ends, report incomplete
+coverage; unexamined paths do not pass. Release eligibility follows repository
+policy and authorized exceptions, not absence of findings in a limited review.
 Before stopping authorized work or requiring a new action, apply
-[`precedence-and-exceptions.md`](precedence-and-exceptions.md).
+[precedence and exceptions](precedence-and-exceptions.md).

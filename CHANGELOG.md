@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 - Unreleased
+
+Reduce always-read routing context by placing ordered builder checkpoints behind
+the minimal early exit. Preserve the material scope decision before owner reads
+and production edits. Reuse compact review evidence while retaining fresh-context
+independence, complete findings and explicit unavailable gates. No profile
+migration is required.
+
 ## 0.5.0 - 2026-09-07
 
 Released the exact evaluated candidate

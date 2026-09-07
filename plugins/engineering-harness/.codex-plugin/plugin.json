@@ -1,6 +1,6 @@
 {
   "name": "engineering-harness",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Risk-proportional engineering workflows and scoped or release-wide security/privacy assurance for coding agents.",
   "author": {
     "name": "davidiw",
