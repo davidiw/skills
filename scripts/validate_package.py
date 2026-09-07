@@ -793,6 +793,16 @@ def validate_repository_layout(repository_root: Path, errors: list[str]) -> None
         )
 
 
+def runtime_markdown_targets(text: str) -> list[str]:
+    targets = LINK_PATTERN.findall(text)
+    # Reference-style Markdown and URI autolinks are file references too.
+    for bracketed, plain in re.findall(r"(?m)^ {0,3}\[[^]\n]+\]:\s*(?:<([^>]+)>|(\S+))", text):
+        targets.append(bracketed or plain)
+    targets.extend(re.findall(r"<([A-Za-z][A-Za-z0-9+.-]*://[^>\n]+)>", text))
+    targets.extend(re.findall(r"(?:href|src)=[\"']([^\"']+)[\"']", text))
+    return targets
+
+
 def validate_runtime_boundary(plugin_root: Path, errors: list[str]) -> None:
     """Keep the install source self-contained and free of development corpora."""
     allowed = {".codex-plugin", "skills", "references", "templates", "scripts", "LICENSE"}
@@ -808,8 +818,12 @@ def validate_runtime_boundary(plugin_root: Path, errors: list[str]) -> None:
             require(relative.as_posix() in {f"scripts/{name}" for name in runtime_scripts},
                     f"runtime boundary: non-runtime script {relative}", errors)
         if path.is_file() and path.suffix == ".md":
-            for target in LINK_PATTERN.findall(path.read_text(encoding="utf-8")):
-                if "://" in target or target.startswith("#"):
+            for target in runtime_markdown_targets(path.read_text(encoding="utf-8")):
+                if target.startswith(("https://", "http://", "#")):
+                    continue
+                require("://" not in target,
+                        f"runtime boundary: unsupported file/resource URI {relative}: {target}", errors)
+                if "://" in target:
                     continue
                 resolved = (path.parent / target.split("#", 1)[0]).resolve()
                 require(resolved.is_relative_to(plugin_root.resolve()),

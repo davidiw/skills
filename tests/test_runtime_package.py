@@ -86,6 +86,22 @@ class RuntimePackageTest(unittest.TestCase):
         validate_runtime_boundary(self.plugin, errors)
         self.assertTrue(any("development corpus" in error for error in errors), errors)
 
+    def test_reference_links_and_embedded_file_links_stay_in_runtime(self):
+        for text in ("[answer][policy]\n\n[policy]: ../../answers.md\n",
+                     "<file:///outside/answers.md>",
+                     '<a href="../../answers.md">answer</a>'):
+            with self.subTest(text=text):
+                (self.plugin / "references/leak.md").write_text(text)
+                errors = []
+                validate_runtime_boundary(self.plugin, errors)
+                self.assertTrue(errors)
+
+    def test_file_uris_cannot_bypass_runtime_link_checks(self):
+        (self.plugin / "references/leak.md").write_text("[answers](file:///outside/evals/cases.json)")
+        errors = []
+        validate_runtime_boundary(self.plugin, errors)
+        self.assertTrue(any("unsupported file/resource URI" in error for error in errors), errors)
+
     def test_links_and_symlinks_cannot_escape_to_repository_evidence(self):
         outside = self.root / "answers.md"
         outside.write_text("expected outcomes")
