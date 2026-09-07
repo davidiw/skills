@@ -22,5 +22,5 @@
     "experience-component-reuse",
     "experience-fetch-restraint"
   ],
-  "sandbox_network_access": true
+  "command_boundary": "offline-browser"
 }

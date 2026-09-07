@@ -14,6 +14,8 @@ import shutil
 import signal
 import subprocess
 import sys
+import socketserver
+import tempfile
 import threading
 import time
 
@@ -130,15 +132,127 @@ def assert_frozen_source(package: Path, frozen: dict) -> None:
         raise RuntimeError("candidate fixtures changed")
 
 
-def setup(home: Path, package: Path, catalog: Path, arm: str, auth: Path, delegation=True, custom_reviewer=False, *, expected_runtime, attempts, checkpoint):
+def offline_browser_boundary(home, fixture, env, attempts, checkpoint):
+    """Fail closed before real auth is copied; use Codex's existing command sandbox."""
+    chrome = Path(env.get("EXPERIENCE_CHROMIUM") or shutil.which("chrome-headless-shell") or "")
+    if not chrome.is_file():
+        raise RuntimeError("offline browser boundary requires EXPERIENCE_CHROMIUM")
+    chrome = chrome.resolve()
+    scratch = fixture / ".tmp"
+    scratch.mkdir()
+    # Only tool environment, not Codex service transport, is constrained here.
+    tool_env = {"PATH": os.defpath, "LANG": "C.UTF-8", "TMPDIR": str(scratch),
+                "EXPERIENCE_CHROMIUM": str(chrome)}
+    reads = [home / "skills", home / "plugins/cache", chrome.parent]
+    if (home / "agents").exists():
+        reads.append(home / "agents")
+    host_skills = Path.home() / ".agents/skills"
+    if host_skills.is_dir():
+        reads.append(host_skills)
+    config = '\n'.join([
+        'default_permissions = "experience-offline"', 'web_search = "disabled"',
+        '[features]', 'network_proxy = true',
+        '[shell_environment_policy]', 'inherit = "none"',
+        '[shell_environment_policy.set]',
+        *[json.dumps(k) + ' = ' + json.dumps(v) for k, v in tool_env.items()],
+        '[permissions.experience-offline]', 'extends = ":workspace"',
+        '[permissions.experience-offline.filesystem]',
+        '":root" = "deny"', '":minimal" = "read"',
+        '":slash_tmp" = "deny"', '":tmpdir" = "write"',
+        *[json.dumps(str(p)) + ' = "read"' for p in reads],
+        '[permissions.experience-offline.network]', 'enabled = true',
+        'proxy_url = "http://127.0.0.1:0"', 'socks_url = "http://127.0.0.1:0"',
+        '[permissions.experience-offline.network.domains]', '',
+    ])
+    (home / "config.toml").write_text(config)
+    env["TMPDIR"] = str(scratch)
+    auth_canary = home / "auth.json"
+    outside_canary = home / "boundary-canary"
+    auth_canary.write_text("synthetic credential canary; not authentication")
+    outside_canary.write_text("synthetic outside-file canary")
+    hits = []
+
+    class Sink(socketserver.BaseRequestHandler):
+        def handle(self):
+            hits.append(True)
+            try:
+                self.request.sendall(b"HTTP/1.0 200 OK\r\nContent-Length: 0\r\n\r\n")
+            except OSError:
+                pass
+
+    try:
+        with socketserver.ThreadingTCPServer(("127.0.0.1", 0), Sink) as server:
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                with tempfile.TemporaryDirectory(prefix="boundary-", dir=scratch) as directory:
+                    probe_dir = Path(directory)
+                    alias = probe_dir / "auth-alias"
+                    alias.symlink_to(auth_canary)
+                    probe = probe_dir / "probe.py"
+                    probe.write_text("""import json, os, pathlib, socket, urllib.request
+result = {}
+for name, path in PATHS.items():
+    try: pathlib.Path(path).read_bytes(); result[name] = 'readable'
+    except OSError: result[name] = 'denied'
+for name, proxies in [('direct_http', {}), ('proxy_http', None)]:
+    try:
+        urllib.request.build_opener(urllib.request.ProxyHandler(proxies)).open(URL, timeout=2)
+        result[name] = 'connected'
+    except urllib.error.HTTPError as e: result[name] = str(e.code)
+    except OSError: result[name] = 'blocked'
+try:
+    connection = socket.create_connection(('127.0.0.1', PORT), timeout=2)
+    connection.close(); result['direct_socket'] = 'connected'
+except OSError: result['direct_socket'] = 'blocked'
+a, b = socket.socketpair(); a.send(b'x'); assert b.recv(1) == b'x'
+result['local_ipc'] = 'ok'
+print(json.dumps(result))
+""".replace("PATHS", repr({"auth": str(auth_canary), "auth_alias": str(alias),
+                            "outside": str(outside_canary)}))
+                       .replace("URL", repr(f"http://127.0.0.1:{server.server_address[1]}/"))
+                       .replace("PORT", str(server.server_address[1])))
+                    prefix = ["codex", "sandbox", "-P", "experience-offline", "-C", str(fixture), "--"]
+                    result = command(prefix + ["python3", str(probe)], env, fixture, 30)
+                    attempts.append({"command": prefix + ["<synthetic-boundary-probe>"], "result": result})
+                    checkpoint()
+                    expected = {"auth": "denied", "auth_alias": "denied", "outside": "denied",
+                                "direct_http": "blocked", "proxy_http": "403",
+                                "direct_socket": "blocked", "local_ipc": "ok"}
+                    if result["return_code"] or json.loads(result["stdout"]) != expected or hits:
+                        raise RuntimeError("offline browser boundary preflight failed")
+                    page, shot = probe_dir / "page.html", probe_dir / "page.png"
+                    page.write_text("<!doctype html><h1>Local rendering boundary probe</h1>")
+                    result = command(prefix + [str(chrome), "--no-sandbox", "--disable-gpu",
+                        "--disable-dev-shm-usage", "--window-size=390,844", "--screenshot=" + str(shot),
+                        page.as_uri()], env, fixture, 35)
+                    attempts.append({"command": prefix + ["<local-render-probe>"], "result": result})
+                    checkpoint()
+                    if result["return_code"] or not shot.is_file() or hits:
+                        raise RuntimeError("offline browser rendering preflight failed")
+                    rendered_hash = digest(shot)
+            finally:
+                server.shutdown()
+                thread.join()
+    finally:
+        auth_canary.unlink(missing_ok=True)
+        outside_canary.unlink(missing_ok=True)
+    return {"profile": "experience-offline", "config_sha256": digest(home / "config.toml"),
+            "config": config, "preflight": expected, "local_server_connections": len(hits),
+            "browser_sha256": digest(chrome), "render_probe_sha256": rendered_hash,
+            "limits": "Command sandbox only; Codex service transport is separate. No external endpoint probed."}
+
+
+def setup(home: Path, package: Path, catalog: Path, arm: str, auth: Path, delegation=True, custom_reviewer=False, *, expected_runtime, attempts, checkpoint, fixture=None, offline_browser=False):
     home.mkdir(parents=True, mode=0o700)
-    shutil.copyfile(auth, home / "auth.json")
-    os.chmod(home / "auth.json", 0o600)
     shutil.copytree(catalog, home / "skills")
     if custom_reviewer:
         (home / "agents").mkdir()
         shutil.copyfile(package / "examples/agents/reviewer.toml", home / "agents/reviewer.toml")
     env = {**os.environ, "CODEX_HOME": str(home)}
+    boundary = offline_browser_boundary(home, fixture, env, attempts, checkpoint) if offline_browser else None
+    shutil.copyfile(auth, home / "auth.json")
+    os.chmod(home / "auth.json", 0o600)
     for args in (["codex", "plugin", "marketplace", "add", str(package)],
                  *([["codex", "plugin", "add", "engineering-harness@davidiw-skills", "--json"]]
                    if arm == "harness" else [])):
@@ -163,7 +277,7 @@ def setup(home: Path, package: Path, catalog: Path, arm: str, auth: Path, delega
         raise RuntimeError("expected one installed runtime")
     runtime_hashes = {str(p): verify_runtime(p, expected_runtime)
                       for p in runtimes}
-    return {"inventory": inventory, "runtime_excluded_paths": [],
+    return {"inventory": inventory, "runtime_excluded_paths": [], "command_boundary": boundary,
             "runtime_file_hashes": runtime_hashes, "catalog_file_hashes": tree(catalog),
             "features": {"skip_host_skill_discovery": True, "multi_agent": delegation},
             "agents": {"enabled": delegation, "max_concurrent_threads_per_session": 2,
@@ -321,14 +435,14 @@ def context_records(home: Path) -> list[dict]:
     return contexts
 
 
-def trial(spec, package, source_root, output, number, arm, auth, catalog, model, effort, timeout, frozen=None, sandbox_network_access=False):
+def trial(spec, package, source_root, output, number, arm, auth, catalog, model, effort, timeout, frozen=None, command_boundary=None):
     lane = f"{spec['id']}-{arm}-trial{number}"
     private = output / "private" / lane
     private.mkdir(parents=True)
     home, fixture = private / "codex-home", private / "fixture"
     record = {"case_id": spec["id"], "arm": arm, "trial": number, "model": model,
               "reasoning_effort": effort, "timeout_seconds": timeout,
-              "sandbox_network_access": sandbox_network_access, "setup_commands": []}
+              "command_boundary": command_boundary, "setup_commands": []}
     def checkpoint():
         (private / "record.json").write_text(json.dumps(record, indent=2, ensure_ascii=False))
     try:
@@ -343,7 +457,8 @@ def trial(spec, package, source_root, output, number, arm, auth, catalog, model,
         before = tree(fixture)
         record["fixture_before_hashes"] = before
         setup_info, env = setup(home, package, catalog, arm, auth, spec.get("delegation_available", True), spec.get("custom_reviewer", False),
-                                expected_runtime=frozen["runtime_file_hashes"], attempts=record["setup_commands"], checkpoint=checkpoint)
+                                expected_runtime=frozen["runtime_file_hashes"], attempts=record["setup_commands"], checkpoint=checkpoint,
+                                fixture=fixture, offline_browser=command_boundary == "offline-browser")
         record["setup"] = setup_info
         checkpoint()
         prompt = (spec.get("context", "") + "\n\n" + spec["request"]).strip()
@@ -353,9 +468,10 @@ def trial(spec, package, source_root, output, number, arm, auth, catalog, model,
         environment_rules = ENVIRONMENT_RULES
         if not spec.get("delegation_available", True):
             environment_rules += " New agent contexts and nested model invocations are disabled and not permitted in this environment."
+        permission_args = (["--strict-config"] if command_boundary == "offline-browser" else
+                           ["--sandbox", "workspace-write", "-c", "sandbox_workspace_write.network_access=false"])
         cmd = ["codex", "-a", "never", "exec", "--json", "--skip-git-repo-check",
-               "--sandbox", "workspace-write", "--model", model,
-               "-c", "sandbox_workspace_write.network_access=" + str(sandbox_network_access).lower(),
+               *permission_args, "--model", model,
                "-c", f"model_reasoning_effort={effort}", "--enable", "skip_host_skill_discovery",
                ("--enable" if spec.get("delegation_available", True) else "--disable"), "multi_agent", "-c", "agents.enabled=" + str(spec.get("delegation_available", True)).lower(),
                "-c", "agents.max_concurrent_threads_per_session=2",
@@ -447,6 +563,8 @@ def main():
     if args.output.exists():
         parser.error("output must be new; preserve every attempt")
     matrix = json.loads(args.matrix.read_text())
+    if matrix.get("sandbox_network_access") or matrix.get("command_boundary") not in (None, "offline-browser"):
+        parser.error("unrestricted network or unknown command boundary is not supported")
     cases = {c["id"]: c for c in json.loads((args.matrix.parent / "cases.json").read_text())["cases"]}
     selected = args.case_ids or matrix["case_ids"]
     if not set(selected) <= set(matrix["case_ids"]):
@@ -472,7 +590,7 @@ def main():
         with ThreadPoolExecutor(max_workers=args.max_workers) as pool:
             futures = {pool.submit(trial, case, args.package, args.matrix.parent, args.output,
                                    n, arm, args.auth, pinned, matrix["model"], matrix["reasoning_effort"],
-                                   matrix["timeout_seconds"], frozen, matrix.get("sandbox_network_access", False)): (case["id"], arm, n) for case, arm, n in jobs}
+                                   matrix["timeout_seconds"], frozen, matrix.get("command_boundary")): (case["id"], arm, n) for case, arm, n in jobs}
             for future in as_completed(futures):
                 key = futures[future]
                 record = future.result()

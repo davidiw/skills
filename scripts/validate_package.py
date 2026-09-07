@@ -307,6 +307,8 @@ def validate_evals(errors: list[str]) -> None:
 def validate_experience_matrix(matrix: dict, case_by_id: dict, errors: list[str]) -> None:
     """Protect the approved bounded pilot and genuine identity/restraint coverage."""
     prefix = "experience matrix: "
+    require(matrix.get("command_boundary") == "offline-browser" and not matrix.get("sandbox_network_access"),
+            prefix + "requires the offline-browser command boundary", errors)
     require(matrix.get("schema_version") == 1, prefix + "invalid schema", errors)
     require(matrix.get("prompt_mode") == "natural", prefix + "must use natural prompts", errors)
     require(matrix.get("conditions") == ["control", "harness"], prefix + "requires both arms", errors)

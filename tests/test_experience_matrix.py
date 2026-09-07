@@ -21,6 +21,11 @@ class ExperiencePilotTest(unittest.TestCase):
         validate_experience_matrix(matrix or self.matrix, cases or self.cases, errors)
         return errors
 
+    def test_unrestricted_network_or_missing_boundary_fails(self):
+        for change in [{'sandbox_network_access': True}, {'command_boundary': None}]:
+            matrix = {**self.matrix, **change}
+            self.assertTrue(any('command boundary' in e for e in self.errors(matrix)))
+
     def test_pilot_is_valid(self):
         self.assertEqual(self.errors(), [])
 

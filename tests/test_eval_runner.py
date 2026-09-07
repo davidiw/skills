@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import tempfile
 import subprocess
+import os
+import tomllib
 from unittest.mock import patch
 import unittest
 
@@ -159,6 +161,55 @@ class EvaluationRunnerTest(unittest.TestCase):
         self.assertNotIn(opaque, json.dumps(public))
         self.assertEqual(json.loads(public["arguments"])["fork_turns"], "none")
         self.assertIn("opaque_content_sha256", public["content"][0])
+
+    def test_boundary_failure_precedes_real_auth_copy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'catalog').mkdir()
+            (root / 'auth').write_text('REAL_TEST_CREDENTIAL')
+            def reject(home, *args):
+                self.assertFalse((home / 'auth.json').exists())
+                raise RuntimeError('boundary rejected')
+            with patch.object(runner, 'offline_browser_boundary', side_effect=reject), \
+                 patch.object(runner, 'command') as command:
+                with self.assertRaisesRegex(RuntimeError, 'boundary rejected'):
+                    runner.setup(root / 'home', root, root / 'catalog', 'control', root / 'auth',
+                                 expected_runtime={}, attempts=[], checkpoint=lambda: None,
+                                 fixture=root / 'fixture', offline_browser=True)
+            command.assert_not_called()
+            self.assertFalse((root / 'home/auth.json').exists())
+
+    def test_boundary_config_and_canary_cleanup(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            home, fixture = root / 'home', root / 'fixture'
+            home.mkdir(); fixture.mkdir()
+            browser = root / 'browser'; browser.write_text('synthetic executable')
+            expected = {'auth': 'denied', 'auth_alias': 'denied', 'outside': 'denied',
+                        'direct_http': 'blocked', 'proxy_http': '403',
+                        'direct_socket': 'blocked', 'local_ipc': 'ok'}
+            def run(args, env, cwd, timeout):
+                self.assertIn('synthetic credential canary', (home / 'auth.json').read_text())
+                config = tomllib.loads((home / 'config.toml').read_text())
+                self.assertTrue(config['features']['network_proxy'])
+                self.assertEqual(config['web_search'], 'disabled')
+                self.assertEqual(config['shell_environment_policy']['inherit'], 'none')
+                profile = config['permissions']['experience-offline']
+                self.assertEqual(profile['network']['domains'], {})
+                self.assertEqual(profile['filesystem'][':root'], 'deny')
+                self.assertNotIn(str(home), profile['filesystem'])
+                self.assertNotIn('--sandbox', args)
+                for arg in args:
+                    if arg.startswith('--screenshot='):
+                        Path(arg.split('=', 1)[1]).write_bytes(b'synthetic image')
+                return {'return_code': 0, 'stdout': json.dumps(expected)}
+            with patch.object(runner, 'command', side_effect=run):
+                result = runner.offline_browser_boundary(home, fixture,
+                    {**os.environ, 'EXPERIENCE_CHROMIUM': str(browser)}, [], lambda: None)
+            self.assertEqual(result['preflight'], expected)
+            self.assertFalse((home / 'auth.json').exists())
+            self.assertFalse((home / 'boundary-canary').exists())
+            self.assertEqual(result['local_server_connections'], 0)
 
     def test_failed_setup_still_retains_an_attempt(self):
         with tempfile.TemporaryDirectory() as directory:

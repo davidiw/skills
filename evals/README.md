@@ -184,10 +184,21 @@ per-context cost. Assess read-only source preservation, scope limits, actual ima
 reads, material source-only claims, and restraint. No full-matrix effectiveness
 or efficiency score follows from this small cohort.
 
-The experience pilot sets `sandbox_network_access: true` equally in both arms:
-Linux's network-disabled sandbox also blocks Chromium local IPC. Workspace write
-restrictions remain enabled. Trial instructions prohibit external access, and the
-fixture renderer disables proxy use and DNS resolution. This is **not** an
-OS-enforced network-isolation claim. Other matrices default to network disabled.
-Record the browser binary/version/hash with retained pilot evidence. Preflight it
-inside the same Codex sandbox before starting model trials.
+The experience pilot requires `command_boundary: "offline-browser"`, equally in
+both arms. The runner rejects the former unrestricted-network option. It uses the
+existing Codex permission profile and managed proxy: no domain allow entries,
+default-denied filesystem reads with minimal runtime paths plus fixture/skill/browser
+access, and an explicit tool environment without inherited credentials. The client
+can authenticate for model transport; sandboxed commands cannot read its auth file.
+Web search is disabled separately. See [official Codex permissions](https://learn.chatgpt.com/docs/permissions)
+for the distinction between command permissions and client/service transport.
+
+Before copying real authentication, each trial checks synthetic auth and outside-file
+canaries (including a symlink), direct HTTP/raw TCP bypass against a live local sink,
+proxy rejection, local IPC and a real Chromium render. Any failure stops setup;
+there is no unrestricted-network fallback. Config, outcomes, browser hash and
+render-probe hash are recorded. Linux CLI/kernel support is required; an unsupported
+host leaves rendering/evaluation pending. The preflight tests this command boundary,
+not all Codex capabilities or every possible network protocol/host configuration.
+Retain older pilot results as historical evidence of their recorded weaker boundary;
+do not relabel them as protected by the new one.
