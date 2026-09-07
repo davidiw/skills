@@ -5,64 +5,31 @@ description: Evolve persistent or replicated data and sensitive data lifecycles 
 
 # Data and Compatibility
 
-Compatibility is a consumer behavior claim, not a version comparison or an
-unchanged field name.
+Own persistent/replicated identity, migrations, retention, erasure and online
+repair. Use accepted data contracts and profiles; consult relevant
+[invariants](../../references/invariants.json) only when unresolved.
 
-Use the [invariant catalog](../../references/invariants.json) as normative.
-Interpret only entries whose `owner_skill` names this skill; consume other
-entries without redefining them.
+1. Identify canonical state and every writer, projection and cache on the changed
+   path. Define non-authoritative rebuild/invalidation and stable identity.
+2. For changed sensitive derivation, disclosure, retention or deletion, read
+   [privacy lifecycle](references/privacy-lifecycle.md). Trace metadata and delayed
+   writers: erasure revokes future authority. Record required privacy/security
+   gates for post-build review, without loading their bodies into the builder.
+3. For replicated forms, read [reconciliation](references/representations-and-reconciliation.md).
+   Remote absence alone is not deletion; require explicit destructive semantics
+   or verified lossless movement of the same identity.
+4. For version evolution, read [migrations](references/compatibility-and-migrations.md).
+   Identify supported deployed readers/writers and rollback tools from evidence;
+   make authority transfer idempotent, interruption-safe and validated. Do not
+   support hypothetical predecessors or infer compatibility from version numbers.
+5. For live correction, read [repair](references/live-repair.md): bounded selection,
+   stable identity, compare-and-set, checkpoints and live-writer conflict handling.
+6. Test the relevant interruption, retry, stale writer, erasure and supported
+   coexistence paths. State adapter removal conditions and unexecuted evidence.
 
-## Workflow
-
-1. Identify authoritative source, canonical state, observations, projections,
-   caches, transport forms, generated forms, and every writer. Define how each
-   non-authoritative representation rebuilds or invalidates.
-2. Specify stable identity, collision domain, account or tenant authority,
-   time and timezone semantics, units, provenance, and deletion lifecycle.
-   For sensitive data, read [`privacy-lifecycle.md`](references/privacy-lifecycle.md)
-   and trace inherited purpose, sensitivity, retention, and erasure through all
-   derivatives, including metadata and telemetry. Erasure revokes future write
-   authority. Consume the interface owner's
-   [`authorization context`](../interfaces-and-events/references/authorization-context.md)
-   rather than defining a separate account-only fence.
-3. Inventory deployed readers and writers by persisted, wire, event, storage,
-   worker, and operational capability. Include rollback binaries and tools.
-4. State the supported predecessor profiles and coexistence window from
-   deployment evidence. Do not add compatibility for hypothetical or
-   unreachable states.
-5. Design migration, adoption, or repair as an idempotent state transition with
-   explicit ownership, locks or compare-and-set fencing, interruption points,
-   validation, and recovery. Preserve the source until authority transfer is
-   proven when the contract requires it.
-6. Keep remote absence non-destructive. Deletion requires a tombstone, erasure,
-   same-identity conflict collapse, or verified lossless representation move.
-7. Prefer additive readers and writers during coexistence. A reader may accept
-   newer generations when required capabilities are validated and operators
-   own mixed-version evidence; a numeric minimum alone does not prove semantic
-   compatibility.
-8. For online repair, use bounded selection, stable identity, idempotency,
-   compare-and-set preconditions, checkpointing, rate limits, and live-writer
-   conflict handling. Service shutdown is a risk decision, not a default.
-9. Define representative upgrade, interruption, retry, coexistence, stale
-   authority, downgrade or supported rollback, and deletion scenarios.
-   `verification-and-operations` owns adversarial execution and evidence.
-10. Record adapter removal conditions, telemetry, and the exact release that
-    makes cleanup safe.
-
-Apply migration and coexistence steps only where those lifetimes exist. A
-sensitive synchronous export still needs privacy ownership and erasure analysis
-for its temporary outputs, without an invented migration or job framework.
-
-Read [`representations-and-reconciliation.md`](references/representations-and-reconciliation.md)
-for replicated data. Read
-[`compatibility-and-migrations.md`](references/compatibility-and-migrations.md)
-for version changes. Read [`live-repair.md`](references/live-repair.md) for
-online correction of existing records.
-
-Before stopping work or changing the requested workflow, apply
-[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
-and name the exact rule.
-
-The change is complete when every deployed consumer has a tested interpretation,
-interruption cannot create ambiguous authority or blank state, destructive
-meaning is explicit, and rollback/removal conditions are operationally real.
+Consume [authorization context](../interfaces-and-events/references/authorization-context.md)
+where a mutable principal/capability/purpose/consent/lifecycle authorizes use.
+A synchronous sensitive export does not imply migration or a durable framework.
+Done means each actual consumer has a valid interpretation, destructive meaning
+is explicit and authority stays unambiguous through recovery. Apply
+[precedence](../../references/precedence-and-exceptions.md) for workflow conflicts.

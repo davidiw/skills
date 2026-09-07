@@ -27,3 +27,11 @@ Test account switch, permission loss, consent withdrawal, expiry, and deletion
 between the check and use and between stages. A denied read must not leak via
 its response, cache, telemetry, temporary file, or error body. Select the
 smallest relevant cases; immutable public data does not need account machinery.
+
+For a correction to authorization or sensitive disclosure semantics, record the
+security/privacy gates before implementation and close them on the corrected
+snapshot through the [assurance handoff](../../../references/assurance-handoff.md).
+The final evidence must distinguish the atomic local effect fence from the
+non-atomic external read: name the last authorization check, the call's residual
+exposure, and stale-result suppression. A test sink must actually reject revoked
+writes; a permissive fake does not prove the fence.

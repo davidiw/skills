@@ -20,8 +20,13 @@
 
 Complete before consequential production edits under the
 [Scope expansion gate](../references/change-classification.md#scope-expansion-gate).
+Repeat the decision for each requested behavior/owner; do not combine a supported
+local change and a pending shared boundary into one approved row.
 
 - **Accepted owner/contract:** {Existing owner and accepted contract, with its source.}
+- **Already supported?:** {Yes/no with accepted-contract evidence before choosing
+  a solution. An excluded behavior is pending unless its concrete expansion was
+  explicitly approved; the feature request alone is not that approval.}
 - **Expansion status:** {none / approved / pending — choose one.}
 - **Proposed expansion:** {New shared responsibility or changed contract. For
   `none`, explain how the accepted contract remains unchanged.}

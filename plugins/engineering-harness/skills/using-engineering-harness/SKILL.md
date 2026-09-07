@@ -1,115 +1,83 @@
 ---
 name: using-engineering-harness
-description: Bootstrap or adopt repositories, route ordinary engineering changes, harden demonstrated architecture friction, and coordinate security/privacy reviews, threat reviews, and pre-launch assurance while loading only required specialists.
+description: Route engineering changes and bug fixes, including authorization, consent, expiry, sensitive exports, shared contention, and provider contracts; bootstrap/adopt repositories, harden demonstrated friction, and coordinate security/privacy or pre-launch reviews. Keep ordinary edits minimal and load only required owners.
 ---
 
 # Using Engineering Harness
 
-This is the public entry point. Users choose a workflow, not specialist skills.
+Use the requested workflow: **bootstrap**, **adopt**, **change**, or **harden**.
+Read the target repository's instructions and accepted owner contract. Keep
+implementation, integration, and publication within the user's authorization.
+For a **design/plan request**, permitted work is inspection, a proposed correction
+and synthetic proof. Keep existing production files unchanged. Apply the scope and
+primary-owner checkpoints, then return the design; do not enter implementation or
+claim corrected-code review. Planned implementation gates remain prospective.
 
-Review and assessment requests use **Change in review mode**: classify the
-behavior being reviewed, even though the requested action is read-only. A
-sensitive lifecycle review is consequential; read-only scope does not make its
-subject minimal. For security/privacy assurance, load the applicable reviewer(s)
-from the routing table directly and let their references supply implementation
-contracts. An assurance-only request does not require every implementation
-specialist or authorize fixes. Explicit assurance requests bypass the minimal
-edit shortcut below.
+## Review-only shortcut
 
-**Assurance-only shortcut:** a request to assess security, authorization, or a
-sensitive data lifecycle is an assurance review even if it never uses the word
-“assurance.” Read the routing table, select `security-assurance` and/or
-`privacy-assurance`, complete that review, and finish. Skip the implementation
-owner inventory and specialist-loading steps below. If the user also requests
-fixes, use the full Change route and then review the corrected snapshot.
+An already-fresh delegated reviewer with no builder history performs its assigned
+review here and reports that context status; do not delegate the same gate again.
+Otherwise, for a **release/launch gate or explicit independent review**, the initial agent
+coordinates the [handoff](../../references/assurance-handoff.md) before loading any
+reviewer body. The fresh reviewer must cover the requested gate itself; delegating
+only an adjacent privacy/security lens does not independently review the parent’s lens.
+Other required independent gates use the same handoff.
+Otherwise, security/authorization review selects [security assurance](../security-assurance/SKILL.md);
+privacy/data-lifecycle review selects [privacy assurance](../privacy-assurance/SKILL.md).
+For launch/whole-system readiness, use their release inventory mode, including
+unchanged paths. A named flow or diff uses changed-path mode. Review only; skip
+the builder sequence. Combined reviews use fresh contexts when available.
 
-Choose the assurance mode from the requested scope: a PR, diff, or named flow
-uses changed-path review; a pre-launch, release-wide, or external security/privacy
-readiness request uses the specialists' release-surface/data-lifecycle mode.
-The latter inventories the system beyond the latest diff. For a combined
-security/privacy campaign, use separate specialist contexts over the same frozen
-snapshot when independent contexts are available and authorized. Otherwise label
-self-review and leave any required independent gate pending; loading two skills in one
-context does not establish independence. Reconcile actual coverage and findings
-under the [assurance contract](../../references/assurance-review.md). A request to review
-does not authorize implementation, deployment, or release.
+## Builder sequence — finish each checkpoint before the next
 
-For **every workflow**, apply the
-[Scope expansion gate](../../references/change-classification.md#scope-expansion-gate)
-before implementation and whenever the proposed solution broadens. Reuse
-existing explicit scope approval; ordinary work within it needs no new question.
+1. **Minimal test.** A local reversible edit inside one accepted owner/contract,
+   without changed sensitive semantics, shared contention, durable/external
+   effects, or migration, uses the existing edit/test path and finishes. Copy,
+   pure parser/library, and static-page changes normally stop here: no specialist,
+   scope document, catalog, or assurance. Recheck if the solution broadens.
+2. **Inspect before designing.** For other changes, read the short
+   [classification and primary-owner route](../../references/change-classification.md).
+   Establish the accepted contract before selecting a fix or new state store.
+3. **Decide each boundary before edits.** Complete this small table in the task
+   record or user-visible checkpoint, **one row per requested behavior/owner**:
 
-For **Change** and **Harden**, read `change-classification.md` before applying
-another installed workflow or inspecting solution code. If the resulting route
-is non-minimal, read every selected owner skill before continuing. Another skill
-may supplement this route, but does not replace it.
+   | Behavior and accepted owner/source | Already supported by accepted contract? Evidence | Scope expansion | Approval source and exact limits | Allowed work / blocked boundary |
+   | --- | --- | --- | --- | --- |
 
-## Workflows
+   `none` requires positive contract evidence and unchanged accepted semantics.
+   If the contract excludes the behavior, that row is `pending`. It becomes
+   `approved` only when the user has approved a **concrete boundary expansion**;
+   repeating the feature request in the approval cell is invalid. Approval of an
+   outcome does not approve a new means of crossing an excluded shared boundary.
+   A private alternate path/store still expands the owner's responsibility.
+   **Do not issue a production-edit tool call for a missing/invalid/pending row.**
+   Implement independent `none`/`approved` rows. For pending rows use the compact
+   [approval handback](../../references/scope-approval.md): read and complete its
+   decision fields before returning pending work. Reuse actual proposal
+   approval within its limits; do not ask again for an approved design.
+4. **Primary owner first.** Name and read one implementation specialist for the
+   unresolved decision in **authorized work** before designing the fix; naming it without reading its
+   decision guide does not complete this checkpoint. Add another only for a distinct obligation the primary owner cannot
+   resolve; consequential work generally needs at most two before evidence
+   justifies more. Read relevant contract sections, not the entire invariant
+   catalog. Reuse accepted profile/owner evidence. Record required security/privacy
+   gates when semantics change. Do not read security/privacy reviewer `SKILL.md`
+   bodies in a builder/design context; those bodies go to the fresh reviewer.
+5. **Implement and prove.** Stay inside the recorded boundary. Use focused tests
+   at the actual failure seam. When new evidence changes the scope decision,
+   return to checkpoint 3 before editing that boundary.
+6. **Close recorded gates.** After implementation, obtain required reviews of the
+   corrected snapshot in fresh assurance contexts using the
+   [review handoff](../../references/assurance-handoff.md). Address findings and
+   review corrections before claiming completion. If separate review is unavailable,
+   report the pending gate; do not silently substitute builder reasoning.
 
-- **Bootstrap:** establish authority, constraints, capability profile, and the
-  cheapest useful boundaries for a new repository or major subsystem.
-- **Adopt:** inspect a brownfield repository, propose a capability profile with
-  evidence and confidence, reconcile it with repository decisions, and add
-  only justified enforcement.
-- **Change:** implement an ordinary feature, fix, migration, or refactor. Route
-  internally by risk and keep the public workflow proportional.
-- **Harden:** investigate demonstrated architecture divergence or recurring
-  friction, consolidate ownership, repair the root cause, and prevent recurrence.
+For **adopt**, use the runtime [profile helper](../../scripts/profile_repository.py)
+and [discovery procedure](../../references/profile-discovery.md). For **bootstrap**,
+start with architecture foundations; **harden** starts with architecture hardening.
+These workflows retain the same scope checkpoint. Before a policy conflict could
+stop authorized work, apply [precedence](../../references/precedence-and-exceptions.md).
 
-Read [`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
-before a harness recommendation could stop work, request authority, or alter
-the repository's chosen workflow.
-
-## Route
-
-1. Identify the workflow from the user's request; do not ask the user to pick
-   an internal skill.
-2. Read the repository's `AGENTS.md` or equivalent and locate the changed owner.
-   For Change, apply the minimal test in
-   [`change-classification.md`](../../references/change-classification.md)
-   first. If it passes, use the existing edit/check path and finish; the
-   inventory and risk-accounting steps below do not apply. Otherwise read the
-   relevant design authority, work tracker, and operator-command index when
-   present. Report conflicts rather than replacing repository decisions.
-3. For **Adopt**, run the plugin’s [`profile_repository.py`](../../scripts/profile_repository.py) to create an evidence-backed
-   proposal, review uncertain detections, assign repository enforcement owners,
-   record approved exceptions, and mark the profile accepted.
-4. For **Change** or **Harden**, use
-   [`change-classification.md`](../../references/change-classification.md) to
-   build the smallest applicable internal risk card.
-5. Name the authoritative fact or behavior, its owner, requested outcome,
-   non-goals, and authorized action scopes. Before consequential production edits,
-   record the required Scope expansion decision from `change-classification.md`.
-   A pending expansion blocks edits to that boundary while bounded work continues.
-6. Use the single linked routing table and dominance rules in
-   `change-classification.md`. For every material risk-card signal, either name
-   the selected owner skill or the exact dominance rule that excludes it. Read
-   every selected specialist from the table's direct `SKILL.md` link before
-   proposing work or evidence. A minimal change normally selects no specialist;
-   several triggers on one path form one integrated analysis. Do not infer an
-   owner skill's policy from the invariant catalog or answer a non-minimal
-   request from the router alone.
-7. For consequential work, identify active invariants in
-   [`invariants.json`](../../references/invariants.json) and their current
-   enforcement rungs and exceptions. Reuse existing documents and commands.
-   Select assurance only for the changed authorization/trust or privacy-lifecycle
-   semantics identified by the routing table, or an explicit review request.
-   Preserving an existing fence or handling sensitive data alone is insufficient.
-   The invariant catalog does not limit the defects they may discover.
-8. Execute the user's task. Internal classification is not a substitute for work
-   unless the user requested analysis only.
-
-## Proportionality
-
-- A tiny CLI or static page normally needs one owner and focused proof, not a
-  durable workflow or compatibility program.
-- A state machine is justified by meaningful lifetime, replay, or transition
-  rules, not by ordinary CRUD.
-- Worktrees, queues, release trains, and immutable evidence are activated by
-  repository policy or real integration risk, not imposed universally.
-- A vendor runtime is selected after the required durability and failure
-  contract is explicit.
-
-The route is complete when the selected public workflow is clear, internal
-routing is proportional, every material risk has one owner, and irrelevant
-specialists and artifacts remain unloaded.
+Before final branch review or integration, apply
+[reviewable commits](../verification-and-operations/references/reviewable-commits.md)
+and bind subsequent evidence to the resulting exact revision.

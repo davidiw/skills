@@ -5,53 +5,33 @@ description: Define public or independently consumed contracts and mutable autho
 
 # Interfaces and Events
 
-Treat an interface as a durable consumer agreement, not a serialization detail.
+Own public/provider contracts, mutable authorization and event delivery. Use the
+accepted contract; consult relevant [invariants](../../references/invariants.json)
+only for unresolved interpretation. Private adapter details alone need no new
+interface exercise.
 
-Use the [invariant catalog](../../references/invariants.json) as normative.
-Interpret only entries whose `owner_skill` names this skill; consume other
-entries without redefining them.
+1. Name producers/consumers, trust boundary, authoritative decisions and supported
+   versions. Include alternate callers when they share this contract.
+2. For authority-dependent reads/effects or credential changes, read
+   [authorization context](references/authorization-context.md) before editing.
+   Bind principal/account, capability, purpose, consent and lifecycle. Prove the
+   local atomic effect fence and report non-atomic provider-read residual exposure.
+   Record changed-semantics assurance gates for the corrected snapshot.
+3. Define identity, absence, units/time, validation, errors, idempotency and partial
+   failure only where the changed contract needs them. Reuse canonical decisions.
+4. For events/streams/webhooks, read [event delivery](references/event-delivery.md):
+   committed truth, delivery/recovery, consumer order and version coexistence.
+   A wake is not durable truth; in-process notifications need no invented transport.
+5. Use focused tests for invalidation during calls, denial at the actual effect
+   owner, supported consumers and relevant replay/order failures. A permissive
+   fake cannot prove an atomic authorization fence.
 
-## Workflow
+Use [consumer contract](references/consumer-contract.md) for a new public contract;
+consume the [privacy lifecycle](../data-and-compatibility/references/privacy-lifecycle.md)
+when changed activity/telemetry or temporary outputs inherit sensitive data.
+Additional owner skills require unresolved obligations, not these reference reads.
 
-1. Inventory producers, consumers, authoritative data, trust boundary, and
-   independently deployed versions. Include workers, old clients, tools, and
-   recovery processes rather than only the primary UI.
-   For sensitive or authority-dependent operations, read
-   [`authorization-context.md`](references/authorization-context.md). Bind
-   principal/account, capability, purpose, consent, and lifecycle/expiry; fence
-   synchronous reads and exports as well as durable effects. Credential or
-   capability possession alone does not grant product authority.
-2. Separate query, command, operation-status, and event contracts. A generic
-   row or sync record is not automatically a product mutation API.
-3. Specify identifiers, timestamps and timezones, units, ordering, pagination,
-   optionality, null versus absence, provenance, validation limits, and error
-   taxonomy at the boundary.
-4. For mutations, define preconditions, idempotency, concurrency, partial
-   failure, acknowledgment, retry, and long-running-operation semantics.
-5. For events, classify the fact and delivery contract using
-   [`event-delivery.md`](references/event-delivery.md). Emit from committed
-   truth and give consumers a persisted recovery position when loss matters.
-6. Centralize repeated boundary guarantees such as authentication,
-   authorization, validation, response envelopes, provider error mapping, and
-   privacy-safe activity logging.
-   Activity metadata inherits the source's privacy obligations. Consume the
-   data owner's [`privacy lifecycle`](../data-and-compatibility/references/privacy-lifecycle.md)
-   for logging, telemetry, and delayed writes on sensitive paths.
-7. Define additive and breaking evolution from each consumer's perspective and
-   the required mixed-version, duplicate, gap, reorder, and replay scenarios.
-   `verification-and-operations` owns adversarial execution and evidence.
-8. Publish the smallest contract that supports the required behavior; keep
-   storage and provider representations private.
-
-Use [`consumer-contract.md`](references/consumer-contract.md) for the review
-shape. Use [`event-delivery.md`](references/event-delivery.md) whenever a
-notification, stream, webhook, or message is involved.
-
-Before stopping work or changing the requested workflow, apply
-[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
-and name the exact rule.
-
-The contract is complete when every consumer can interpret identity, order,
-absence, failure, and retry consistently; committed truth is recoverable after
-lost notifications; and compatibility is proven against actual supported
-versions.
+Done means consumers have consistent semantics, compatibility evidence is scoped,
+and the builder has closed recorded gates via the
+[assurance handoff](../../references/assurance-handoff.md). Apply
+[precedence](../../references/precedence-and-exceptions.md) for workflow conflicts.

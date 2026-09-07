@@ -33,11 +33,14 @@ policy, or a new scheduler.
 The correction is incomplete if it only moves the current request's audit after
 commit. A second audit writer may already hold the row lock or connection the
 critical transaction needs. Prove progress with that concurrent writer stalled,
-as well as with this request's callback stalled. Remove optional participation
-in the conflicting contention domain, or prove isolation at its owner; omit the
-optional event for this path when no isolated path is established. Returning
-success must also respect the declared response bound rather than waiting on a
-post-commit optional callback.
+as well as with this request's callback stalled. Removing this invocation's event
+only removes that edge. Correct **all optional writers' participation** in the
+critical domain, including already-running transactions and connection use. A
+"direct" database method can still need the same locked row; its name is not
+isolation evidence. Bound/revoke optional resource ownership through the existing
+owner where supported, or leave that progress claim pending. State activation and
+in-flight writer handling; do not assume stalled legacy writers vanish on rollout.
+Returning success must also respect the response bound.
 
 ## Resource contract
 
@@ -100,3 +103,34 @@ critical-effect and contention contract instead. Mark a
 field `unknown` or `undecided` when repository evidence does not establish it;
 do not silently omit it. State which evidence is automated and which physical
 evidence remains pending.
+
+## Critical progress against an incumbent optional writer
+
+First record a before/after contention table: critical action, every optional
+writer, each shared lock/connection/transaction/queue, and the exact ownership/path
+change that removes their dependency. Omitting this invocation's callback does not
+change another writer's lock or pool use. If that other path is unavailable, leave
+its isolation unproven; do not replace the database with a contention-free fake.
+
+When optional audit/telemetry can contend with a critical action, prove the
+**other-writer case before claiming isolation**: stall an independent optional
+writer while it holds the shared row/lock/connection/queue; only then begin the
+critical action. Assert the critical commit completes within a bounded deadline
+while the writer is still stalled. Release/join all test workers in cleanup.
+The baseline model must reproduce blocking while the optional writer owns the
+identified shared resource. The corrected model changes only the proposed
+isolation and must pass while that writer remains held. Show the mapping to the
+real owner contract; a stalled callback holding no needed resource is not this test.
+A mock that merely verifies the current audit callback was not called proves
+only omission, not contention isolation. Moving that callback after commit is
+also insufficient. Use the existing database owner's independent critical path
+or remove the optional contention dependency across all writers; do not invent a
+new queue/framework. Do not change the critical row to an unrelated free lock in
+a fake: preserve resource identity and model the actual proposed owner mechanism.
+If audit is mandatory, its durability, reserved capacity and failure behavior
+must be explicit before selecting the implementation.
+
+For design-only requests, exercise the proposed isolation in a synthetic model
+and label it design proof; do not modify production code or claim its deployed
+behavior is verified. The proof still needs synchronization, a bounded deadline,
+an independently held contention domain and deterministic worker cleanup.

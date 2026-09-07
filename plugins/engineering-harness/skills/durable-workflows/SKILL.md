@@ -5,77 +5,34 @@ description: Design or correct work that must survive its initiating request, ro
 
 # Durable Workflows
 
-Define the lifecycle before selecting a queue, scheduler, workflow engine, or
-database representation.
+Own work that must outlive its initiator. Preserve the existing admission and
+executor; consult relevant [invariants](../../references/invariants.json) only
+when accepted contracts leave a decision unresolved.
 
-Use the [invariant catalog](../../references/invariants.json) as normative.
-Interpret only entries whose `owner_skill` names this skill; consume other
-entries without redefining them.
+1. Name the admission commit after which losing the caller cannot lose accepted
+   intent; a wake/timer/UI future is not that commit.
+2. Define operation identity, idempotency, protected payload reference, state,
+   attempts, checkpoints and terminal result. Persist critical effects atomically
+   with the transition; deterministic policy produces declarative effects.
+3. Specify applicable retry, timeout, partial-effect, lost-acknowledgment and
+   poison-input behavior. Cancellation, leases and compensation require product
+   semantics; do not invent states for unsupported behavior.
+4. Define coalescing/equivalence and successors. Superseded executors must fence
+   commits, acknowledgments and publication. A connectivity wake must preserve
+   operation/provider backoff and avoid duplicate admission.
+5. Consume [authorization context](../interfaces-and-events/references/authorization-context.md)
+   for authority-dependent work and [privacy lifecycle](../data-and-compatibility/references/privacy-lifecycle.md)
+   for sensitive retries/late writes. Preserving an existing fence alone does not
+   select assurance or another implementation specialist.
+6. Bound noninteractive units by rows/pages/bytes/calls/time; yield between
+   commits. For constrained pools, consume [resource governance](../architecture-foundations/references/runtime-resource-governance.md).
+   Report measured units or truthful coarse phases, never invented percentages.
+7. Exercise relevant rows in the [failure matrix](references/failure-matrix.md).
+   Request-boundary admission needs process-death and lost-ack tests unless those
+   failures are impossible. Owner-focused checks do not require another skill.
 
-## Workflow
-
-1. State the admission promise. If the caller may be told "accepted," identify
-   the atomic write after which losing that caller cannot lose the intent.
-2. Define stable operation identity, authority context, idempotency key,
-   payload reference, state, attempt policy, checkpoint, timestamps, and
-   terminal result. Store private payloads in their owning protected store, not
-   observability or review artifacts.
-3. Model domain state plus command or event as a deterministic transition with
-   declarative effects. Persist any correctness-critical effect or outbox
-   record atomically with the transition.
-4. Define retries, duplicate admission, timeout, process death, partial effect,
-   lost acknowledgment, poison input, and whether cancellation is supported.
-   Do not add a cancellation state when the product has no cancellation
-   behavior. Specify which failures may retry and which require operator or
-   user action.
-5. Define coalescing and successor policy by logical target. A newer intent may
-   supersede an older one, but the older executor must fence every commit,
-   acknowledgment, and publication after supersession.
-6. Bind the operation to the interface owner's
-   [`authorization context`](../interfaces-and-events/references/authorization-context.md)
-   at admission and fence execution, reads, and effects against current
-   principal/account, capability, purpose, consent, and lifecycle/expiry.
-   Consume the data owner's
-   [`privacy lifecycle`](../data-and-compatibility/references/privacy-lifecycle.md)
-   so retries and delayed telemetry cannot recreate erased data.
-7. Bound each noninteractive unit by rows, pages, bytes, calls, or time. Yield
-   between committed units so interactive work can run after the current unit.
-   If the operation holds a constrained runtime pool, consume the
-   [`resource admission contract`](../architecture-foundations/references/runtime-resource-governance.md)
-   without redefining its admission or reclamation policy.
-8. Expose start, truthful coarse phase or measured units, retryability,
-   supported cancellation, and terminal state without turning ephemeral UI
-   state into the workflow owner. Never synthesize byte or percentage progress
-   when the executor cannot measure it.
-9. Define expected recovery for the relevant rows of the
-   [failure matrix](references/failure-matrix.md). Keep owner-focused crash,
-   retry, and ambiguity fixtures in this workflow.
-   Use `verification-and-operations` for an independent fault campaign or
-   exact-revision evidence gate.
-   When admission crosses a request boundary, include process death and a lost
-   acknowledgment after the admission commit unless that boundary cannot
-   exhibit either failure.
-10. Only then choose the smallest adapter that satisfies the
-    [operation contract](../../templates/durable-operation.md).
-
-## Guardrails
-
-- A wake event is not durable admission. A timer, widget future, isolate, or
-  provider callback may wake the owner but does not become the owner.
-- Cancellation, supersession, retention, leases, and compensation are product
-  or adapter decisions, not boilerplate states. Mark an unspecified decision
-  open or unsupported instead of silently inventing behavior.
-- Backoff belongs to the specific operation or provider. Connectivity recovery
-  may wake eligible work once; it does not erase operation-specific backoff.
-- Last-request-wins requires a stable equivalence key and publication fence;
-  wall-clock recency alone is not a correctness rule.
-- Do not add a general job framework for a one-time migration when a small
-  atomic journal has the required states.
-
-Before stopping work or changing the requested workflow, apply
-[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md)
-and name the exact rule.
-
-The workflow is complete when accepted intent survives termination, every
-state is idempotent, stale authority and superseded work cannot commit or
-publish, resource units are bounded, and replay tests prove recovery.
+Use the [operation template](../../templates/durable-operation.md) only when a
+new lifecycle needs recording. A small atomic journal may suffice; do not add a
+general job framework. Done means accepted intent survives, replay is idempotent,
+and stale executors cannot publish. Apply [precedence](../../references/precedence-and-exceptions.md)
+for workflow conflicts.
