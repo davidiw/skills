@@ -26,7 +26,7 @@ generated views, examples, or tests.
 | Package architecture and this authority map | `DESIGN.md` | `README.md` overview |
 | Repository-local execution and publication rules | `AGENTS.md` | Agent sessions in this repository |
 | Public workflow | `skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
-| Internal classes and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
+| Internal classes, scope-expansion approval, and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
 | Invariant statement, activation condition, timing, default rung, and single owner skill | `references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
 | Enforcement timing and rung semantics | `references/enforcement-ladder.md` | Invariant assignments, profiles, and validators |
 | Capability vocabulary and capability-to-invariant activation | `references/capability-activation.json` | Profiles, schema, discovery, and validators |

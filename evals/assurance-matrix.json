@@ -24,6 +24,8 @@
     "tiny-cli-restraint",
     "pure-library-parser-restraint",
     "release-security-surface",
-    "release-privacy-lifecycle"
+    "release-privacy-lifecycle",
+    "temporary-account-oauth-scope",
+    "approved-provider-broker-design"
   ]
 }

@@ -37,4 +37,6 @@ Authorization is scoped, not ceremonial. One explicit instruction may
 authorize several named stages. Reuse that authority without repeated
 confirmation while target, scope, and risk remain unchanged. A request for a
 narrower action never implies an unmentioned external, destructive,
-deployment, installation, repair, or publication action.
+deployment, installation, repair, or publication action. Separately, apply the
+[Scope expansion gate](change-classification.md#scope-expansion-gate) to what is
+being implemented: discovery of adjacent work cannot authorize that work.

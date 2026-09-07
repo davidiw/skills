@@ -2,6 +2,22 @@
 
 ## 0.5.0 - Unreleased
 
+PR #1 revision after `08d0622` (still unpublished): make explicit scope-expansion
+approval a prerequisite before introducing shared surfaces or widening another
+owner's contract. Architecture design and hardening consume the same gate;
+feature flags do not confer authority. Record scope expansion separately from
+action authority and reuse existing explicit approvals. Conditional reviewer
+independence now has a bounded handoff and pending-gate fallback. Restore the
+ordinary-change example alongside assurance and keep release inventory ownership
+with the relevant specialists. Add a temporary-account/mobile-provider scope
+regression and an already-approved design control. The earlier frozen 56-trial
+receipt remains evidence for its original candidate, not this revision.
+
+Migration within the unpublished candidate: reassess open plans for unapproved
+shared surfaces, capture the Scope expansion field, and obtain approval before
+those edits. No profile schema or capability activation changes are introduced;
+this is a workflow approval obligation, not an added system invariant.
+
 Candidate refinement after `d3ca0a0` (still unpublished): expose assurance in
 router/plugin discovery metadata; distinguish preservation of existing fences
 from altered trust/privacy semantics; add release-surface security and release

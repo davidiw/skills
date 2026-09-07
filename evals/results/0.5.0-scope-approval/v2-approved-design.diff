@@ -1,0 +1,146 @@
+diff --git a/DRAFT.md b/DRAFT.md
+index 3b2af97..21fa585 100644
+--- a/DRAFT.md
++++ b/DRAFT.md
+@@ -1,11 +1,132 @@
+-# Temporary-account provider proposal
++# Temporary-account provider-browser broker: implementation plan
+ 
+-A backend browser broker could allow provider callbacks without a permanent
+-mobile registry entry. It would issue a new short-lived provider-browser handoff
+-credential, correlate browser completion to temporary identity/expiry, and add
+-a server return endpoint. A mobile callback compatibility adapter could then
+-share the broker across all providers and permanent accounts.
++## Scope lock and outcome
+ 
+-Putting this behind `TEMP_PROVIDER_BROKER` would allow staged rollout. A follow-on
+-could replace native provider OAuth entirely. This is a proposal, with migration,
+-credential purpose/replay rules, and rollback still unresolved.
++The user explicitly approved this expansion: a temporary-account provider-browser
++broker, a purpose-scoped handoff credential, and its compatibility boundary with
++native mobile OAuth. The approval does not authorize replacing the permanent
++native flow, changing `MobileOAuth.complete`, deployment, provider revocation, or
++production code in this task. `DESIGN.md` remains the current product contract;
++this document is the implementation plan and approval record.
++
++The target behavior is: a temporary account can complete provider linking through
++a backend browser return path, then hand the result to a client through a
++short-lived, single-use credential. Permanent accounts continue to use the
++existing registered-subject native callback and their stored grants.
++
++## Ownership and boundary
++
++* `accounts.py` remains authoritative for temporary identity and its 24-hour
++  lifetime. The implementation must set `expires_at = creation_time + 24h`; the
++  current constructor does not yet do so.
++* A new `TemporaryProviderBroker` owns browser transactions, provider callback
++  correlation, temporary provider-link state, and handoff issuance/consumption.
++  It must not write the permanent registry.
++* `MobileOAuth` remains authoritative for the permanent native callback. Its
++  current permanent-subject guard remains in force for every provider.
++* The compatibility adapter is a narrow boundary: it accepts only a broker
++  handoff for a temporary account and produces the temporary-link result. It
++  never passes that credential to the native callback or upgrades it into an
++  ordinary product session.
++* The composition root selects the broker only for temporary accounts and only
++  when `TEMP_PROVIDER_BROKER` is enabled. Provider and storage details stay
++  behind the broker adapters.
++
++## Handoff contract
++
++Persist a broker transaction keyed by an opaque random `transaction_id`, with
++`temporary_account_id`, provider, fixed purpose `temporary_provider_link`, fixed
++audience `mobile_temporary_link`, issued/expiry times, state, and `consumed_at`.
++Store only a hash of the bearer token. The token carries no provider grant or
++account data and must have a short lifetime (for example, 10 minutes), bounded
++by the temporary account expiry.
++
++The broker validates audience, purpose, account, provider, expiry, account
++lifecycle, and transaction state at browser return and again immediately before
++handoff consumption. Consumption is an atomic compare-and-set that records
++`consumed_at`; retries receive an explicit already-consumed response. Expired or
++deleted accounts revoke future writes, and a late callback cannot recreate the
++account or link. Provider failures, invalid state, expired credentials, replay,
++and account deletion have distinct, non-success outcomes without echoing token
++material.
++
++The native callback and broker use disjoint callback/credential types. A native
++callback cannot consume a broker handoff, and a broker handoff cannot establish a
++permanent registry subject or modify a permanent grant. This is the compatibility
++fence for old mobile clients: they continue to send the existing native callback;
++only clients that understand the broker result use the adapter.
++
++## Expiry and privacy lifecycle
++
++The transaction expiry is `min(account.expires_at, issued_at + handoff_ttl)`. At
++temporary-account expiry, revoke write authority first, mark the transaction and
++link state expired/deleted, and then remove temporary provider material. A
++lazy check on every read/write is required even if a cleanup sweep is added.
++Cleanup must be idempotent and retain a minimal tombstone or equivalent
++compare-and-set fence for the period in which delayed callbacks could arrive.
++
++The account identifier, provider, transaction metadata, token hash, callback
++logs, and failure telemetry inherit the temporary account's purpose and
++retention. Logs must not contain bearer tokens, grants, callback query values, or
++unbounded provider payloads. Define the retention duration and whether a
++provider has already received data before implementation; external provider
++copies cannot be erased by local cleanup. Buffered telemetry and retries must
++check the lifecycle fence so expiry cannot recreate state.
++
++## Migration and rollout cost
++
++This is an additive migration. No permanent-account rows or existing grants are
++converted, and no backfill is needed. Add a versioned broker transaction/link
++representation and additive readers/writers. During coexistence, old clients
++remain native-only while broker-capable clients use the temporary adapter. Gate
++only temporary-account admission with `TEMP_PROVIDER_BROKER`, initially disabled,
++then enable by provider/client cohort after synthetic and integration evidence.
++
++Operational cost includes a bounded transaction store, token-hash lookup and
++single-use fencing, expiry cleanup/tombstones, metrics for issued/expired/
++consumed/replayed transactions, and provider error classification. Migration
++must account for transactions in every state, pending callbacks, expired
++accounts, and rollback binaries that can still see the additive records. No
++record may be silently interpreted as a permanent registry entry.
++
++## Rollback cost and procedure
++
++Rollback is a configuration disable of `TEMP_PROVIDER_BROKER`, followed by
++stopping new temporary broker admissions. Existing native permanent linking is
++unchanged and remains available throughout. In-flight broker transactions may
++complete only if the old binary can safely reject them; otherwise expire them at
++their bounded TTL and surface a retry path. Do not delete transaction rows while
++callbacks can still arrive: retain the tombstone/expiry fence through the maximum
++TTL, then purge hashed tokens and temporary link material with an auditable
++cleanup. Any provider grants already disclosed externally require provider-side
++revocation or must be recorded as an external-erasure limitation. Re-enable is
++safe only after schema readers and lifecycle fences are confirmed compatible.
++
++## Implementation slices and proof
++
++1. Add the 24-hour temporary-account expiry invariant and broker transaction
++   representation, with deterministic clock-based tests.
++2. Implement browser start/return correlation and provider error mapping; test
++   callback duplication, timeout, invalid state, process loss, and provider
++   failure.
++3. Implement purpose/audience validation and atomic single-use handoff; test
++   replay, account switch, permission/capability loss, expiry between check and
++   use, and deletion between stages.
++4. Add the temporary-only compatibility adapter and prove that permanent native
++   callbacks and stored grants are byte-for-byte behaviorally preserved.
++5. Add bounded cleanup, lifecycle-safe telemetry, cohort metrics, and the feature
++   flag; exercise disable/rollback with pending transactions and old-client
++   requests.
++
++Before implementation, run changed-path security and privacy assurance over the
++broker, adapter, credential, expiry, logs, and delayed writers. The assurance
++review is self-review unless an independent reviewer is available; it must leave
++any unavailable coverage explicit. The implementation owner proof is synthetic
++and local; real provider/device and production rollout evidence remain pending.
++
++## Open decisions before coding
++
++The handoff TTL, transaction-store technology, provider grant retention, exact
++temporary-link storage shape, cleanup cadence, client capability signal, and
++external provider-revocation contract are unresolved. They must be decided and
++recorded before implementation; none changes the approved boundary above.

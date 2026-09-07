@@ -1,0 +1,46 @@
+diff --git a/accounts.py b/accounts.py
+index 299c8f6..adadb8f 100644
+--- a/accounts.py
++++ b/accounts.py
+@@ -1,12 +1,23 @@
+ from dataclasses import dataclass
+ 
+ 
++TEMPORARY_ACCOUNT_LIFETIME = 24 * 60 * 60
++
++
+ @dataclass(frozen=True)
+ class Account:
+     account_id: str
+     temporary: bool = False
+     expires_at: int | None = None
+ 
++    def is_expired(self, now: int) -> bool:
++        """Return whether this account has reached its expiry time."""
++        return self.expires_at is not None and now >= self.expires_at
++
+ 
+ def create_temporary(account_id: str, now: int) -> Account:
+-    return Account(account_id, temporary=True)
++    return Account(
++        account_id,
++        temporary=True,
++        expires_at=now + TEMPORARY_ACCOUNT_LIFETIME,
++    )
+diff --git a/tests/test_accounts.py b/tests/test_accounts.py
+index 5034301..529654d 100644
+--- a/tests/test_accounts.py
++++ b/tests/test_accounts.py
+@@ -5,7 +5,11 @@ from mobile_oauth import MobileOAuth, UnsupportedAccount
+ 
+ class AccountTest(unittest.TestCase):
+     def test_temporary_creation(self):
+-        self.assertTrue(create_temporary("temp", 100).temporary)
++        account = create_temporary("temp", 100)
++        self.assertTrue(account.temporary)
++        self.assertEqual(account.expires_at, 100 + 24 * 60 * 60)
++        self.assertFalse(account.is_expired(account.expires_at - 1))
++        self.assertTrue(account.is_expired(account.expires_at))
+ 
+     def test_permanent_mobile_link(self):
+         registry = {"member": {"grants": {}}}

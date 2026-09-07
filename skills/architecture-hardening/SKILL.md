@@ -18,7 +18,10 @@ their meaning.
 1. Name the repeated failure, violated invariant, confirmed execution path,
    and current owner. Use incidents, churn, duplicated semantics, or repeated
    guards as evidence; file size alone is insufficient.
-2. Freeze the bounded outcome and non-goals. Characterize current behavior at
+2. Freeze the bounded outcome and non-goals. Apply the
+   [Scope expansion gate](../../references/change-classification.md#scope-expansion-gate)
+   before an adjacent root-cause discovery broadens the requested repair.
+   Characterize current behavior at
    the owning seam, including the relevant failure path.
 3. Test deletion before abstraction: remove a duplicate entry point,
    representation, compatibility path, or coordination state in the fixture.

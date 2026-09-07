@@ -709,7 +709,7 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     version = manifest.get("version", "")
     require(isinstance(version, str) and bool(VERSION_PATTERN.fullmatch(version)), "manifest version is not semantic", errors)
     prompts = manifest.get("interface", {}).get("defaultPrompt", [])
-    require(isinstance(prompts, list) and 1 <= len(prompts) <= 3, "manifest requires one to three prompts", errors)
+    require(isinstance(prompts, list) and bool(prompts) and all(isinstance(prompt, str) and prompt.strip() for prompt in prompts), "manifest requires nonempty string prompts", errors)
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
     first_release = re.search(r"^## ([0-9]+\.[0-9]+\.[0-9]+)\b", changelog, re.MULTILINE)
     require(bool(first_release) and first_release.group(1) == version, "CHANGELOG latest release differs from manifest", errors)

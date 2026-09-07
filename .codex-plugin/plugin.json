@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Engineering Harness",
     "shortDescription": "Proportional engineering and security/privacy assurance.",
-    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with independent reviewers.",
+    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status.",
     "developerName": "davidiw",
     "category": "Developer Tools",
     "capabilities": [
@@ -34,7 +34,8 @@
     "defaultPrompt": [
       "Bootstrap this repository with the smallest useful engineering harness.",
       "Adopt this existing repository and propose an evidence-backed capability profile.",
-      "Review this system for security and privacy readiness before launch, using independent assurance contexts."
+      "Make this change or harden this hotspot using the smallest justified scope and focused verification.",
+      "Review this system for security and privacy readiness before launch, reporting coverage and reviewer independence."
     ]
   }
 }

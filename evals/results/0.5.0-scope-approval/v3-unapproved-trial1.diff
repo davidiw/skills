@@ -1,0 +1,158 @@
+diff --git a/accounts.py b/accounts.py
+index 299c8f6..2043085 100644
+--- a/accounts.py
++++ b/accounts.py
+@@ -1,12 +1,23 @@
+ from dataclasses import dataclass
+ 
+ 
++TEMPORARY_ACCOUNT_LIFETIME = 24 * 60 * 60
++
++
+ @dataclass(frozen=True)
+ class Account:
+     account_id: str
+     temporary: bool = False
+     expires_at: int | None = None
+ 
++    def expired(self, now: int) -> bool:
++        """Return whether this account has reached its expiry time."""
++        return self.expires_at is not None and now >= self.expires_at
++
+ 
+ def create_temporary(account_id: str, now: int) -> Account:
+-    return Account(account_id, temporary=True)
++    return Account(
++        account_id,
++        temporary=True,
++        expires_at=now + TEMPORARY_ACCOUNT_LIFETIME,
++    )
+diff --git a/mobile_oauth.py b/mobile_oauth.py
+index 3481380..0c0b12b 100644
+--- a/mobile_oauth.py
++++ b/mobile_oauth.py
+@@ -3,14 +3,65 @@ class UnsupportedAccount(ValueError):
+ 
+ 
+ class MobileOAuth:
+-    def __init__(self, permanent_registry):
++    def __init__(self, permanent_registry, temporary_registry=None):
+         self.permanent_registry = permanent_registry
++        # Temporary subjects deliberately have a separate store.  They must
++        # never become resolvable through the permanent native callback.
++        self.temporary_registry = temporary_registry
+ 
+-    def begin(self, account, provider):
+-        if account.temporary or account.account_id not in self.permanent_registry:
++    def begin(self, account, provider, now=None):
++        if account.temporary:
++            if self.temporary_registry is None:
++                raise UnsupportedAccount("native callback requires a permanent registry subject")
++            if provider != "polar":
++                raise UnsupportedAccount("temporary mobile linking is only supported for Polar")
++            if now is not None and account.expired(now):
++                self.temporary_registry.pop(account.account_id, None)
++                raise UnsupportedAccount("temporary account has expired")
++            self.temporary_registry.setdefault(
++                account.account_id,
++                {"expires_at": account.expires_at, "grants": {}},
++            )
++            return {
++                "callback": "temporary-native",
++                "subject": account.account_id,
++                "provider": provider,
++                "expires_at": account.expires_at,
++            }
++
++        if account.account_id not in self.permanent_registry:
+             raise UnsupportedAccount("native callback requires a permanent registry subject")
+         return {"callback": "native", "subject": account.account_id, "provider": provider}
+ 
+-    def complete(self, callback, grant):
++    def complete(self, callback, grant, now=None):
+         account_id = callback["subject"]
++        if callback["callback"] == "temporary-native":
++            if self.temporary_registry is None:
++                raise UnsupportedAccount("temporary account is not configured for mobile linking")
++            if callback["provider"] != "polar":
++                raise UnsupportedAccount("temporary mobile linking is only supported for Polar")
++            expires_at = callback["expires_at"]
++            if now is not None and expires_at is not None and now >= expires_at:
++                self.temporary_registry.pop(account_id, None)
++                raise UnsupportedAccount("temporary account has expired")
++            record = self.temporary_registry.get(account_id)
++            if record is None or record.get("expires_at") != expires_at:
++                raise UnsupportedAccount("temporary account is no longer available")
++            record["grants"][callback["provider"]] = grant
++            return
++
++        if callback["callback"] != "native":
++            raise UnsupportedAccount("unknown native callback")
+         self.permanent_registry[account_id]["grants"][callback["provider"]] = grant
++
++    def purge_expired(self, now):
++        """Remove temporary link state whose account lifetime has ended."""
++        if self.temporary_registry is None:
++            return
++        expired = [
++            account_id
++            for account_id, record in self.temporary_registry.items()
++            if record.get("expires_at") is not None and now >= record["expires_at"]
++        ]
++        for account_id in expired:
++            del self.temporary_registry[account_id]
+diff --git a/tests/test_accounts.py b/tests/test_accounts.py
+index 5034301..90519a3 100644
+--- a/tests/test_accounts.py
++++ b/tests/test_accounts.py
+@@ -5,7 +5,11 @@ from mobile_oauth import MobileOAuth, UnsupportedAccount
+ 
+ class AccountTest(unittest.TestCase):
+     def test_temporary_creation(self):
+-        self.assertTrue(create_temporary("temp", 100).temporary)
++        account = create_temporary("temp", 100)
++        self.assertTrue(account.temporary)
++        self.assertEqual(account.expires_at, 100 + 24 * 60 * 60)
++        self.assertFalse(account.expired(account.expires_at - 1))
++        self.assertTrue(account.expired(account.expires_at))
+ 
+     def test_permanent_mobile_link(self):
+         registry = {"member": {"grants": {}}}
+@@ -17,3 +21,37 @@ class AccountTest(unittest.TestCase):
+     def test_native_callback_requires_permanent_subject(self):
+         with self.assertRaises(UnsupportedAccount):
+             MobileOAuth({}).begin(create_temporary("temp", 100), "polar")
++
++    def test_temporary_polar_link_uses_expiring_separate_state(self):
++        temporary_state = {}
++        oauth = MobileOAuth({}, temporary_state)
++        account = create_temporary("temp", 100)
++
++        callback = oauth.begin(account, "polar", now=100)
++        oauth.complete(callback, "synthetic-grant", now=101)
++
++        self.assertEqual(temporary_state["temp"]["grants"], {"polar": "synthetic-grant"})
++        self.assertNotIn("temp", oauth.permanent_registry)
++
++        oauth.purge_expired(account.expires_at)
++        self.assertNotIn("temp", temporary_state)
++
++    def test_expired_temporary_account_cannot_start_or_complete_link(self):
++        oauth = MobileOAuth({}, {})
++        account = create_temporary("temp", 100)
++        with self.assertRaises(UnsupportedAccount):
++            oauth.begin(account, "polar", now=account.expires_at)
++
++        callback = {
++            "callback": "temporary-native",
++            "subject": "temp",
++            "provider": "polar",
++            "expires_at": account.expires_at,
++        }
++        oauth.temporary_registry["temp"] = {"expires_at": account.expires_at, "grants": {}}
++        with self.assertRaises(UnsupportedAccount):
++            oauth.complete(callback, "late-grant", now=account.expires_at)
++
++    def test_other_temporary_providers_remain_unsupported(self):
++        with self.assertRaises(UnsupportedAccount):
++            MobileOAuth({}).begin(create_temporary("temp", 100), "fitbit", now=100)

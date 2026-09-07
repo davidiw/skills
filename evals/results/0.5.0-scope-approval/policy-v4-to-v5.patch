@@ -1,0 +1,24 @@
+--- a/references/change-classification.md
++++ b/references/change-classification.md
+@@ -24,7 +24,8 @@
+ or client/provider compatibility obligations outside those contracts. Keeping
+ endpoint names unchanged or making added state private/in-memory does not, by
+ itself, establish that the accepted contract is preserved. Private implementation
+-detail that leaves those accepted semantics unchanged is not scope expansion. If that contract prevents the requested feature, obtain approval
++detail that leaves those accepted semantics unchanged is not scope expansion.
++If that contract prevents the requested feature, obtain approval
+ for the concrete contract change before implementing it; treating the boundary
+ as part of the feature does not supply approval.
+ 
+@@ -50,8 +51,9 @@
+ Before consequential production edits, record the **Scope expansion** decision
+ in the existing task/plan: accepted contract and owner; proposed new surface or
+ semantic change; and `none`, `approved`, or `pending`. For `approved`, cite the
+-user instruction that names the expanded shared surface or contract, with its
+-limits. A request naming only the feature/outcome is implementation authority,
++concrete expansion proposal and the user's explicit affirmative response, or a
++user instruction that itself names the expanded shared surface or contract;
++record the approved limits. A request naming only the feature/outcome is implementation authority,
+ not that approval. For `none`, explain how the accepted shared contracts remain
+ unchanged; preserving old callers alone does not establish this. For `pending`,
+ make the decision handback above before editing that boundary. Recheck the record

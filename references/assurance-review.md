@@ -63,10 +63,15 @@ checks to test hypotheses. Review corrective changes at their affected seams.
 
 For release modes, reconcile the final coverage matrix against the initial
 inventory and newly discovered surfaces/destinations. A clean diff does not
-establish release readiness. Split independent security and privacy contexts
-over the same snapshot when both are requested; share raw contracts and source,
-then reconcile overlaps and conflicting dispositions. Preserve independent
-review status and any unreviewed/unavailable rows in the handback.
+establish release readiness. When both are requested and independent contexts
+are available and authorized, give each reviewer the raw scope/non-goals, snapshot,
+contracts, permitted effects, and its assigned coverage rows. Return findings,
+evidence, uncovered rows, and actual reviewer-context status for reconciliation.
+Loading both skills in one context is self-review; leave any required independent
+gate pending when separate review cannot be obtained. When none is required,
+report actual context status without adding a gate. Preserve that status and every
+unreviewed/unavailable row in the handback. The package specifies this handoff
+contract; it does not guarantee runtime delegation or production-scale coverage.
 
 Set coverage and time bounds from the requested assurance scope. The bounded
 architecture audit's ten-minute/three-thread cap does not define assurance

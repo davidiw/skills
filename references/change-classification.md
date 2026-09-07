@@ -6,9 +6,63 @@ For review/assessment requests, classify the subject's impact and retain
 read-only action scope. Requested security/privacy assurance selects its
 reviewer directly, even when no implementation change is requested.
 
+## Scope expansion gate
+
+Check the proposed solution against the user's authorized outcome before any
+implementation, including the minimal shortcut. Introducing a new shared
+protocol, subsystem, credential/session type, framework, compatibility path,
+configuration axis, new shared ownership contract, or materially broadening
+another owner's contract requires
+**explicit user approval of that expansion before implementing it**. Permission
+to implement a feature or fix does not by itself grant this broader scope.
+A feature flag, disabled default, private prototype in production code, or agent-
+authored design note is not approval.
+
+Measure expansion against the repository's accepted contracts before selecting a
+solution or reassigning owners. A shared boundary gains material scope when it
+supports new principal classes, credential purposes, lifetimes, state writers,
+or client/provider compatibility obligations outside those contracts. Keeping
+endpoint names unchanged or making added state private/in-memory does not, by
+itself, establish that the accepted contract is preserved. Private implementation
+detail that leaves those accepted semantics unchanged is not scope expansion.
+If that contract prevents the requested feature, obtain approval
+for the concrete contract change before implementing it; treating the boundary
+as part of the feature does not supply approval.
+
+When an unapproved expansion is proposed, first make the decision concrete: state the requested
+outcome, the adjacent weakness and evidence, affected owners/contracts, the
+smallest option within current scope, the proposed expansion and its compatibility,
+privacy, operational, and maintenance costs. The approval handback must include
+these alternatives and concrete tradeoffs; naming cost categories alone is
+insufficient. Mark unknowns explicitly. Then ask the user to approve that
+specific expansion, citing this gate. Do not implement the expansion while the
+answer is pending. If the bounded option satisfies the request, use it and leave
+adjacent work as a proposal; no approval question is needed for work that stays
+within the authorized contract. Continue independent authorized work and report
+any requested behavior that remains blocked.
+
+Record the user's approval and its exact limits in the existing task/plan. Reuse
+explicit approval already given in the session; do not reconfirm an unchanged
+approved expansion. A broad instruction to finish or harden a feature, technical
+necessity, a review finding, or silence does not supply missing scope authority.
+Recheck this gate when investigation or implementation changes the proposed
+solution, and pass the same scope boundary to delegated workers.
+
+Before consequential production edits, record the **Scope expansion** decision
+in the existing task/plan: accepted contract and owner; proposed new surface or
+semantic change; and `none`, `approved`, or `pending`. For `approved`, cite the
+concrete expansion proposal and the user's explicit affirmative response, or a
+user instruction that itself names the expanded shared surface or contract;
+record the approved limits. A request naming only the feature/outcome is implementation authority,
+not that approval. For `none`, explain how the accepted shared contracts remain
+unchanged; preserving old callers alone does not establish this. For `pending`,
+make the decision handback above before editing that boundary. Recheck the record
+before a proposed private adapter or parallel state store changes this decision.
+Unrecorded or inferred expansion approval cannot pass this gate.
+
 ## Risk card
 
-Record only fields that are relevant:
+Record relevant fields; Scope expansion is required before consequential edits:
 
 - **Authority:** which component owns the fact or behavior, and which principal,
   capability, purpose, consent, or lifecycle/expiry can authorize or revoke use?
@@ -25,6 +79,10 @@ Record only fields that are relevant:
   irreversible effects?
 - **Evidence:** does correctness require a real provider, device, deployment,
   physical artifact, or historical corpus?
+- **Scope expansion:** what new shared surface or new/widened owner contract does the
+  solution introduce beyond the authorized outcome? Record `none`, or the
+  concrete proposal with explicit user approval and limits, or `pending` with
+  expansion implementation blocked under the gate above.
 - **Action:** which of implementation, integration, metadata change,
   deployment, installation, migration, repair, or publication is authorized?
 

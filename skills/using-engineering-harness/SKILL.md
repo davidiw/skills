@@ -27,9 +27,17 @@ Choose the assurance mode from the requested scope: a PR, diff, or named flow
 uses changed-path review; a pre-launch, release-wide, or external security/privacy
 readiness request uses the specialists' release-surface/data-lifecycle mode.
 The latter inventories the system beyond the latest diff. For a combined
-security/privacy campaign, use independent specialist contexts over the same
-frozen snapshot and reconcile their coverage and findings. A request to review
+security/privacy campaign, use separate specialist contexts over the same frozen
+snapshot when independent contexts are available and authorized. Otherwise label
+self-review and leave any required independent gate pending; loading two skills in one
+context does not establish independence. Reconcile actual coverage and findings
+under the [assurance contract](../../references/assurance-review.md). A request to review
 does not authorize implementation, deployment, or release.
+
+For **every workflow**, apply the
+[Scope expansion gate](../../references/change-classification.md#scope-expansion-gate)
+before implementation and whenever the proposed solution broadens. Reuse
+existing explicit scope approval; ordinary work within it needs no new question.
 
 For **Change** and **Harden**, read `change-classification.md` before applying
 another installed workflow or inspecting solution code. If the resulting route
@@ -70,7 +78,9 @@ the repository's chosen workflow.
    [`change-classification.md`](../../references/change-classification.md) to
    build the smallest applicable internal risk card.
 5. Name the authoritative fact or behavior, its owner, requested outcome,
-   non-goals, and authorized action scopes.
+   non-goals, and authorized action scopes. Before consequential production edits,
+   record the required Scope expansion decision from `change-classification.md`.
+   A pending expansion blocks edits to that boundary while bounded work continues.
 6. Use the single linked routing table and dominance rules in
    `change-classification.md`. For every material risk-card signal, either name
    the selected owner skill or the exact dominance rule that excludes it. Read

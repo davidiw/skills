@@ -1,0 +1,110 @@
+diff --git a/accounts.py b/accounts.py
+index 299c8f6..612bc29 100644
+--- a/accounts.py
++++ b/accounts.py
+@@ -7,6 +7,9 @@ class Account:
+     temporary: bool = False
+     expires_at: int | None = None
+ 
++    def expired(self, now: int) -> bool:
++        return self.expires_at is not None and now >= self.expires_at
++
+ 
+ def create_temporary(account_id: str, now: int) -> Account:
+-    return Account(account_id, temporary=True)
++    return Account(account_id, temporary=True, expires_at=now + 24 * 60 * 60)
+diff --git a/mobile_oauth.py b/mobile_oauth.py
+index 3481380..67cab69 100644
+--- a/mobile_oauth.py
++++ b/mobile_oauth.py
+@@ -5,12 +5,45 @@ class UnsupportedAccount(ValueError):
+ class MobileOAuth:
+     def __init__(self, permanent_registry):
+         self.permanent_registry = permanent_registry
++        # Temporary links are deliberately kept out of the permanent registry.
++        # They are disposable state owned by this mobile flow and are removed
++        # when their account expires.
++        self.temporary_links = {}
+ 
+     def begin(self, account, provider):
+-        if account.temporary or account.account_id not in self.permanent_registry:
++        if account.temporary:
++            if provider != "polar":
++                raise UnsupportedAccount("temporary mobile linking supports Polar only")
++            return {
++                "callback": "temporary",
++                "subject": account.account_id,
++                "provider": provider,
++                "expires_at": account.expires_at,
++            }
++        if account.account_id not in self.permanent_registry:
+             raise UnsupportedAccount("native callback requires a permanent registry subject")
+         return {"callback": "native", "subject": account.account_id, "provider": provider}
+ 
+-    def complete(self, callback, grant):
++    def complete(self, callback, grant, now=None):
++        if callback["callback"] == "temporary":
++            expires_at = callback["expires_at"]
++            if now is not None and expires_at is not None and now >= expires_at:
++                self.temporary_links.pop(callback["subject"], None)
++                raise UnsupportedAccount("temporary account has expired")
++            link = self.temporary_links.setdefault(
++                callback["subject"], {"expires_at": expires_at, "grants": {}}
++            )
++            link["grants"][callback["provider"]] = grant
++            return
+         account_id = callback["subject"]
+         self.permanent_registry[account_id]["grants"][callback["provider"]] = grant
++
++    def purge_expired(self, now):
++        """Drop temporary provider links whose 24-hour account lifetime ended."""
++        expired = [
++            account_id
++            for account_id, links in self.temporary_links.items()
++            if links["expires_at"] is not None and links["expires_at"] <= now
++        ]
++        for account_id in expired:
++            self.temporary_links.pop(account_id, None)
+diff --git a/tests/test_accounts.py b/tests/test_accounts.py
+index 5034301..4287cc7 100644
+--- a/tests/test_accounts.py
++++ b/tests/test_accounts.py
+@@ -5,7 +5,28 @@ from mobile_oauth import MobileOAuth, UnsupportedAccount
+ 
+ class AccountTest(unittest.TestCase):
+     def test_temporary_creation(self):
+-        self.assertTrue(create_temporary("temp", 100).temporary)
++        account = create_temporary("temp", 100)
++        self.assertTrue(account.temporary)
++        self.assertEqual(account.expires_at, 100 + 24 * 60 * 60)
++        self.assertFalse(account.expired(100))
++        self.assertTrue(account.expired(account.expires_at))
++
++    def test_temporary_polar_mobile_link(self):
++        registry = {"member": {"grants": {}}}
++        oauth = MobileOAuth(registry)
++        account = create_temporary("temp", 100)
++        callback = oauth.begin(account, "polar")
++        oauth.complete(callback, "synthetic-grant", now=101)
++        self.assertEqual(oauth.temporary_links["temp"]["grants"], {"polar": "synthetic-grant"})
++        self.assertNotIn("temp", registry)
++
++    def test_temporary_polar_link_expires(self):
++        oauth = MobileOAuth({})
++        account = create_temporary("temp", 100)
++        callback = oauth.begin(account, "polar")
++        with self.assertRaises(UnsupportedAccount):
++            oauth.complete(callback, "synthetic-grant", now=account.expires_at)
++        self.assertNotIn("temp", oauth.temporary_links)
+ 
+     def test_permanent_mobile_link(self):
+         registry = {"member": {"grants": {}}}
+@@ -14,6 +35,6 @@ class AccountTest(unittest.TestCase):
+         oauth.complete(callback, "synthetic-grant")
+         self.assertEqual(registry["member"]["grants"], {"polar": "synthetic-grant"})
+ 
+-    def test_native_callback_requires_permanent_subject(self):
++    def test_temporary_native_callback_requires_polar(self):
+         with self.assertRaises(UnsupportedAccount):
+-            MobileOAuth({}).begin(create_temporary("temp", 100), "polar")
++            MobileOAuth({}).begin(create_temporary("temp", 100), "fitbit")

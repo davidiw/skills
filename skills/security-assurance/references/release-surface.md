@@ -36,6 +36,22 @@ Mark absent surfaces not applicable with evidence; mark unknown deployment/IAM
 facts unavailable. A route's absence from documentation does not prove it absent
 from the release.
 
+## Ownership and delegation
+
+These rows identify attack surfaces; they do not transfer every underlying
+analysis to security assurance. Security owns the threat hypothesis and security
+consequence. Deep capacity/resource analysis stays with architecture foundations,
+recovery with the relevant durable/data owner, and operational/deployment proof
+with verification and operations. Economic-abuse analysis needs a named domain
+owner for workload, cost, and acceptable-loss assumptions.
+
+When a row requires that depth, record the owner, bounded question, needed evidence,
+and handoff status. Delegate within the authorized campaign when a suitable
+context is available; otherwise leave that coverage pending. Reconcile the
+returned evidence at the security boundary without absorbing the entire owner's
+workflow into this review. An inventory discovery does not authorize remediation
+or expansion of implementation scope.
+
 ## Challenge and reconcile
 
 Prioritize high-impact reachable paths, privilege transitions, and alternate
