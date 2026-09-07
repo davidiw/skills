@@ -15,11 +15,10 @@ exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
 ## Install
 
-The checkout develops policy **0.5.0**; its release is pending. Install the
-last published immutable stable release:
+Install the immutable **0.5.0** stable release:
 
 ```bash
-codex plugin marketplace add davidiw/skills --ref v0.4.0
+codex plugin marketplace add davidiw/skills --ref v0.5.0
 codex plugin add engineering-harness@davidiw-skills
 ```
 

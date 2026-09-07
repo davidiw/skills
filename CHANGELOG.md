@@ -1,6 +1,20 @@
 # Changelog
 
-## 0.5.0 - Unreleased
+## 0.5.0 - 2026-09-07
+
+Released the exact evaluated candidate
+`e8efc6b70ac4a235981f2481e471917ede28139a` as immutable `v0.5.0`.
+The final 84-trial natural campaign passed all 42 Harness behavioral outcomes,
+including all eight scope-boundary trials, with zero critical forbidden outcomes.
+All 71 unit tests and package/plugin/skill validators passed; independent source
+and critical-evidence reviews found no remaining release blocker. Token-cost
+optimization remains a point-release follow-up under the user's release decision.
+See [the release](https://github.com/davidiw/skills/releases/tag/v0.5.0) and
+[PR #2](https://github.com/davidiw/skills/pull/2) for the final assessment.
+
+The development notes below retain their historical context. Their publication
+holds applied to earlier candidates; earlier receipts keep their original source
+identities and do not substitute for the final campaign.
 
 Separate actual review independence from transport visibility. Keep fresh native
 reviewer contexts, neutral packets, no-history settings and snapshot-bound receipts;
@@ -126,7 +140,7 @@ Migration from 0.4.x:
 5. Update profiles to policy 0.5.0 after review. Profile schema remains 2 with
    an additive optional discovery review field. Retain historical evidence under
    its original policy; run new assurance cases before claiming 0.5.0 behavioral
-   reliability. The stable installation remains v0.4.0 until publication.
+   reliability. Use immutable `v0.5.0` for new stable installation and evidence.
 
 ## 0.4.0 - 2026-09-04
 
