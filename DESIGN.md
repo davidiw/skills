@@ -94,6 +94,16 @@ then reconcile evidence and uncovered rows beyond the latest diff. The
 workflow instructions remain in their owning references rather than becoming
 catalog entries.
 
+## Execution roles and skill policy
+
+Custom-agent roles select execution context, model/reasoning and permissions for
+a narrow mandate. They do not own engineering policy. The runtime's independent
+handoff prefers a configured general reviewer and otherwise uses a fresh generic
+context; it never requires a user's agent inventory. Applicable review skills load
+inside that context. Optional role examples live at repository-level
+`examples/agents/`, outside the install boundary. Skills retain scope, invariants,
+assurance methods, evidence and review-convergence semantics.
+
 ## Proportional activation
 
 Profiles activate invariants implied by actual capabilities plus additional

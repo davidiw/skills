@@ -5,11 +5,14 @@ only for high-risk work named by repository policy. Security/privacy assurance
 uses [`assurance-review.md`](../../../references/assurance-review.md); its
 coverage is not capped by this architecture-audit budget.
 
+Use the [independent handoff](../../../references/assurance-handoff.md) for actual
+context separation, complete known blockers, delta review and initial-review misses.
+
 ## Budget
 
 - One pass.
 - Ten elapsed minutes or three investigation threads, whichever occurs first.
-- At most five findings.
+- Investigate within the budget; return every currently known blocker.
 - Diff and immediate dependencies on a concrete execution path only.
 - Reuse existing review receipts and evidence. Run focused tests only to prove
   or disprove the current hypothesis.
@@ -31,12 +34,12 @@ Mark `BLOCK` only when all are present:
 
 Speculative fragility and architecture preference are non-blocking follow-ups.
 Absence of an invariant ID does not downgrade an evidenced material defect.
-Report severity and confidence. Compress uninvestigated observations into one
-line or omit them.
+Report severity and confidence. Mark uninvestigated areas explicitly; do not silently imply coverage.
 
 ## Handback
 
 The reviewer changes no files and performs no fixes. Return the exact revision,
 threads used, evidence reused, focused commands, and ordered findings. The
 author corrects blockers. The new exact revision receives a delta-scoped review
-of those corrections, never another general audit.
+of corrections, directly affected seams and regressions. Reopen unchanged scope
+only for expanded scope, invalidated assumptions or newly reachable surfaces.

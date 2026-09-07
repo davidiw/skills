@@ -5,11 +5,16 @@ description: Review changed sensitive data collection, use, disclosure, derivati
 
 # Privacy Assurance
 
+If this context built the change or contains its design reasoning, the next step
+is the [fresh-context handoff](../../references/assurance-handoff.md), including
+agent-tool discovery. Do not conduct or claim independent review in the builder,
+or claim delegation unavailable without checking the deferred tool catalog.
+
 Find material privacy defects across the requested data lifecycle, including
 obligations absent from the current harness vocabulary. Read the shared
 [`assurance review contract`](../../references/assurance-review.md) before review.
-Consume the [invariant catalog](../../references/invariants.json); the data owner
-retains normative ownership of privacy lifecycle semantics.
+Use relevant accepted data contracts; consult specific [catalog entries](../../references/invariants.json) only
+when needed. The data owner retains lifecycle ownership.
 
 ## Select mode
 

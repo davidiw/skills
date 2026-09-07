@@ -5,11 +5,16 @@ description: Review altered or newly exposed trust/authorization boundaries, or 
 
 # Security Assurance
 
+If this context built the change or contains its design reasoning, the next step
+is the [fresh-context handoff](../../references/assurance-handoff.md), including
+agent-tool discovery. Do not conduct or claim independent review in the builder,
+or claim delegation unavailable without checking the deferred tool catalog.
+
 Find material security defects in the requested scope, including threats
 the harness has not named yet. Read the shared
 [`assurance review contract`](../../references/assurance-review.md) before review.
-Consume the [invariant catalog](../../references/invariants.json); implementation
-owners retain normative ownership of their behavior.
+Use relevant accepted contracts; consult specific [catalog entries](../../references/invariants.json) only when
+needed. Implementation owners retain normative ownership.
 
 ## Select mode
 
@@ -19,7 +24,8 @@ owners retain normative ownership of their behavior.
 - **Release-surface assurance:** for a pre-launch or external security-readiness
   campaign, read [`release-surface.md`](references/release-surface.md). Build the
   externally reachable/trust-boundary inventory and coverage matrix first,
-  including unchanged and legacy surfaces, then investigate its hypotheses.
+  including unchanged and legacy surfaces, then investigate its hypotheses. The final handback must include the reconciled
+  matrix itself; a narrative findings list cannot close a release inventory.
 
 ## Investigate scoped paths
 

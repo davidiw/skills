@@ -34,10 +34,14 @@ hypothesis, and status: unreviewed, reviewed with evidence, blocked, unavailable
 or not applicable with rationale. Inventory existence is not passing evidence.
 Unreachable or out-of-scope claims require evidence or an explicit scope limit.
 
-Review independently of the implementation reasoning when possible, using a
-separate reviewer with the raw scope, intended behavior, and source snapshot.
-Do not seed it with the author's expected findings. If independent review is
-unavailable, label a self-review and leave any required independent gate pending.
+An already-fresh reviewer with no builder history is the independent review
+context; record that status and inspect the assigned source. Do not recursively
+delegate the same gate or label that context self-review because it did not spawn
+another reviewer. For a builder seeking required independent review, follow the
+[fresh-context handoff](assurance-handoff.md).
+Context separation and evidence are required; another skill in the builder is
+self-review. Explicit review-only requests retain their requested scope and
+actual context status without inventing an independent gate.
 
 ## Findings
 
@@ -57,9 +61,11 @@ possibility without a reachable path is a question, not a proven blocker.
 
 ## Completion
 
-Return ordered findings, reviewed snapshot, exercised hypotheses, and uncovered
-paths. The reviewer changes no production files. Use synthetic data and focused
-checks to test hypotheses. Review corrective changes at their affected seams.
+Return the complete currently known blocker set, severity/confidence and concrete
+paths/evidence, non-blocking follow-ups, exact snapshot, exercised hypotheses,
+unreviewed/unavailable areas and context status. The reviewer changes no production
+files. Use synthetic data and focused checks. Apply the handoff's delta-review and
+initial-review-miss rules after corrections; do not drip-feed known blockers.
 
 For release modes, reconcile the final coverage matrix against the initial
 inventory and newly discovered surfaces/destinations. A clean diff does not
@@ -67,8 +73,9 @@ establish release readiness. When both are requested and independent contexts
 are available and authorized, give each reviewer the raw scope/non-goals, snapshot,
 contracts, permitted effects, and its assigned coverage rows. Return findings,
 evidence, uncovered rows, and actual reviewer-context status for reconciliation.
-Loading both skills in one context is self-review; leave any required independent
-gate pending when separate review cannot be obtained. When none is required,
+Loading reviewer skills in the builder is self-review; a fresh reviewer may cover
+both lenses on one bounded path. Leave any required independent gate pending when
+separate review cannot be obtained. When none is required,
 report actual context status without adding a gate. Preserve that status and every
 unreviewed/unavailable row in the handback. The package specifies this handoff
 contract; it does not guarantee runtime delegation or production-scale coverage.
