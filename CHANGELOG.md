@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.1 - Unreleased
+## 0.5.1 - 2026-09-07
 
 This bounded point release reduces always-read instruction/context cost, improves
 cost attribution and retained-evidence validation, and strengthens the existing

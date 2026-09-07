@@ -15,10 +15,10 @@ exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
 ## Install
 
-Install the immutable **0.5.0** stable release:
+Install the immutable **0.5.1** stable release:
 
 ```bash
-codex plugin marketplace add davidiw/skills --ref v0.5.0
+codex plugin marketplace add davidiw/skills --ref v0.5.1
 codex plugin add engineering-harness@davidiw-skills
 ```
 
