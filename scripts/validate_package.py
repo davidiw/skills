@@ -782,6 +782,17 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     )
 
 
+def validate_repository_layout(repository_root: Path, errors: list[str]) -> None:
+    """Reserve policy ownership for the installable runtime directory."""
+    for name in (".codex-plugin", "skills", "references", "templates"):
+        path = repository_root / name
+        require(
+            not (path.exists() or path.is_symlink()),
+            f"repository layout: legacy policy root {name} is forbidden; use plugins/engineering-harness/{name}",
+            errors,
+        )
+
+
 def validate_runtime_boundary(plugin_root: Path, errors: list[str]) -> None:
     """Keep the install source self-contained and free of development corpora."""
     allowed = {".codex-plugin", "skills", "references", "templates", "scripts", "LICENSE"}
@@ -843,6 +854,7 @@ def validate_public_hygiene(errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
+    validate_repository_layout(ROOT, errors)
     validate_manifest_sources_and_version(errors)
     validate_runtime_boundary(PLUGIN_ROOT, errors)
     validate_skills(errors)

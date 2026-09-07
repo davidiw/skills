@@ -8,7 +8,41 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from validate_package import PLUGIN_ROOT, manifest_at_revision, validate_runtime_boundary
+from validate_package import PLUGIN_ROOT, manifest_at_revision, validate_repository_layout, validate_runtime_boundary
+
+
+class RepositoryLayoutTest(unittest.TestCase):
+    def test_each_legacy_policy_root_is_rejected(self):
+        for name in (".codex-plugin", "skills", "references", "templates"):
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                legacy = root / name
+                legacy.mkdir()
+                (legacy / "duplicate.md").write_text("competing policy")
+                errors = []
+                validate_repository_layout(root, errors)
+                self.assertEqual(len(errors), 1)
+                self.assertIn(f"legacy policy root {name} is forbidden", errors[0])
+
+    def test_repository_scripts_and_nested_runtime_policy_are_allowed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "scripts").mkdir()
+            (root / "scripts/generator.py").write_text("print('generated')\n")
+            for name in (".codex-plugin", "skills", "references", "templates"):
+                (root / "plugins/engineering-harness" / name).mkdir(parents=True)
+            errors = []
+            validate_repository_layout(root, errors)
+            self.assertEqual(errors, [])
+
+    def test_dangling_legacy_alias_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "skills").symlink_to(root / "missing-policy", target_is_directory=True)
+            errors = []
+            validate_repository_layout(root, errors)
+            self.assertEqual(len(errors), 1)
+            self.assertIn("legacy policy root skills is forbidden", errors[0])
 
 
 class RuntimePackageTest(unittest.TestCase):

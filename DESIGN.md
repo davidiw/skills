@@ -58,8 +58,10 @@ runtime skills, references, templates, the manifest, license, and the profile
 scanner/validator consumed by adoption. Runtime file links stay within it.
 Repository rules, architecture/provenance, generators, package validators, tests,
 evaluation fixtures, expected outcomes, and evidence stay outside the install
-source. The package validator checks this boundary, including nested corpus
-folders and symlinks; installation checks compare the unmodified cache with the
+source. Legacy root `.codex-plugin/`, `skills/`, `references/`, and `templates/`
+are forbidden so the runtime remains the sole policy owner. Root `scripts/`
+continues to own repository generators and validators. The package validator
+checks both boundaries, including nested corpus folders and symlinks; installation checks compare the unmodified cache with the
 runtime source. Historical receipts retain their original layouts and hashes.
 
 ## Skill boundaries

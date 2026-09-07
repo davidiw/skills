@@ -17,9 +17,11 @@ the [earlier natural matrix](../0.5.0-natural/README.md).
   harness caches contain exactly the same 60 files / 177,979 bytes as the frozen
   runtime before and after execution. No eval, test, fixture, receipt, or Git
   directory is present. **No cache files were removed to obtain this result.**
-- The final PR runtime, marketplace, cases, matrix, runner, and rubric remain
-  byte-identical to the frozen inputs. Later commits change repository validation
-  and evidence only.
+- At evidence commit `4905a41`, the PR runtime, marketplace, cases, matrix,
+  runner, and rubric were byte-identical to the frozen inputs. The snapshot's
+  runtime-comparison statement records that point. The later scope-lock template
+  reinforcement is outside this run; its behavior has not been retested here.
+  Recorded input hashes, transcripts, and scores remain unchanged.
 
 [Snapshot hashes](snapshot.json), [sanitized transcripts and diffs](manifest.json),
 [per-trial scores](scores.json), [metrics](metrics.json), and the

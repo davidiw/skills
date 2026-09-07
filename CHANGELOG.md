@@ -2,6 +2,15 @@
 
 ## 0.5.0 - Unreleased
 
+PR #2 follow-up: reject legacy root policy directories and aliases while keeping
+repository `scripts/` valid. Align the runtime scope-lock template with the
+mandatory expansion decision: accepted owner/contract, none/approved/pending,
+proposal, approval source/limits, and blocked boundary. This implements the
+existing gate without a new schema or approval requirement. Open consequential
+scope locks should fill these fields before further production edits. The frozen
+`4cbed82` trials predate this template reinforcement; their scores are unchanged
+and do not demonstrate its behavior. Policy remains unpublished.
+
 Runtime packaging refinement: install only `plugins/engineering-harness/` from
 the marketplace, keeping evaluation answers, fixtures, tests, and development
 evidence outside the runtime source. Migrate direct checkout script paths for
