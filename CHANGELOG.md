@@ -2,11 +2,37 @@
 
 ## 0.5.1 - Unreleased
 
-Reduce always-read routing context by placing ordered builder checkpoints behind
-the minimal early exit. Preserve the material scope decision before owner reads
-and production edits. Reuse compact review evidence while retaining fresh-context
-independence, complete findings and explicit unavailable gates. No profile
-migration is required.
+This bounded point release reduces always-read instruction/context cost, improves
+cost attribution and retained-evidence validation, and strengthens the existing
+critical-progress proof after a discovered counterexample.
+
+Demonstrated:
+
+- Router size falls from 5,835 to 2,902 bytes (50.3%); this is instruction size,
+  not a measured whole-session token reduction.
+- Eight scope-pilot Harness trials at `9d0808c` preserve approval boundaries.
+  Same-case input falls 25.2%, uncached input 22.0%, and output only 1.0% versus
+  the released-0.5 scope cases. Valid implementation/reviewer choices also differ;
+  these are Harness-only comparisons, not paired full-matrix overhead.
+- Attribution checks native context identity, completion, integrity and counter
+  reconciliation while preserving original failed and successful receipts.
+- The interrupted `9d0808c` campaign exposes a proposed owner's admission-lock
+  deadlock. It retains 30 executed trials and 54 cancellations before execution,
+  and supplies no full score. Corrected critical-audit focus at `da68a0b` passes
+  2/2 Harness trials with no critical required-outcome or forbidden failure.
+
+Not demonstrated: broad full-matrix efficiency improvement, material output-token
+reduction, <=30% output or total-input overhead across the full matrix, or complete
+same-snapshot 42/42 behavioral equivalence for this point-release candidate.
+Earlier scores remain bound to their original revisions. Final source review
+reconciles the subsequent wording clarification; it is not a new natural trial.
+
+Scope approval, minimal routing, fresh-review independence and the all-writer
+progress obligation remain intact. No invariant, specialist, routing trigger or
+profile obligation is added; no profile migration is needed. Remaining
+[efficiency work](EFFICIENCY-FOLLOW-UP.md) has no assigned release number and does
+not block the planned UI/UX/brand work. Broad efficiency targets are not 0.5.1
+release gates; deterministic validation and final correctness review still are.
 
 ## 0.5.0 - 2026-09-07
 

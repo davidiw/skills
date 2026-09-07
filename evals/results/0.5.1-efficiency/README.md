@@ -153,3 +153,16 @@ contracts, reauthoring a child report and repeating the same evidence in several
 artifacts. Measure focused release, export, correction and scope trials before
 accepting the change. Later compression/targeted-read work is conditional on what
 those measurements demonstrate. No new framework, invariant or skill is proposed.
+
+The original initiative targeted input overhead <=30%, uncached <=25%, output
+<=30% and wall <=15% on a full comparable natural matrix. Those targets remain
+unproven and are not release gates for the bounded 0.5.1 point release. Retain the
+existing correctness obligations, reject known critical regressions and preserve
+failed evidence. Partial observations do not establish full-matrix equivalence.
+
+See [development results](development-results.md) for frozen experiments and their
+limitations, and the [unversioned follow-up](../../../EFFICIENCY-FOLLOW-UP.md) for
+longer-term work. The bounded release decision uses demonstrated instruction-size
+and focused input improvements, strengthened instrumentation, corrected progress
+proof, deterministic validators and final source review. It does not require
+another full matrix solely to establish broad efficiency.
