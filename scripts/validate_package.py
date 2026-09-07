@@ -325,9 +325,18 @@ def validate_assurance_matrix(
         "tiny-cli-restraint", "pure-library-parser-restraint",
         "release-security-surface", "release-privacy-lifecycle",
         "temporary-account-oauth-scope", "approved-provider-broker-design",
+        "independent-review-unavailable", "independent-correction-review",
     }
     require(required <= set(ids), prefix + "missing discovery, restraint, release, or scope coverage", errors)
+    counts = matrix.get("case_trials", {})
+    if not isinstance(counts, dict) or not set(counts) <= set(ids):
+        errors.append(prefix + "invalid per-case trial counts")
+        counts = {}
     for case_id in ids:
+        effective = counts.get(case_id, trials)
+        minimum = 4 if case_id in {"temporary-account-oauth-scope", "approved-provider-broker-design"} else 2
+        require(type(effective) is int and effective >= minimum,
+                prefix + f"requires at least {minimum} trials: {case_id}", errors)
         case = case_by_id.get(case_id)
         if case is None:
             errors.append(prefix + f"unknown case: {case_id}")
