@@ -2,6 +2,62 @@
 
 ## 0.5.0 - Unreleased
 
+Separate actual review independence from transport visibility. Keep fresh native
+reviewer contexts, neutral packets, no-history settings and snapshot-bound receipts;
+record opaque assignments as unavailable rather than requiring a CLI transport.
+No claim of inspected full input follows from an opaque receipt. Concrete unresolved
+handoff concerns remain pending. This removes an additional audit requirement and
+the associated evaluation sandbox workarounds; historical receipts stay unchanged.
+
+Execution-role refinement: prefer a configured general reviewer with a fresh
+generic fallback, keeping Engineering Harness policy in skills rather than role
+instructions. Optional Astra-aware examples remain outside runtime. The final
+evaluation records actual role/model/reasoning/freshness and uses a separate Astra
+cohort; older Luna runs remain developmental evidence. Existing user role names
+are not required and installed user configuration is not a package dependency.
+
+Independent review refinement: require a fresh context without builder-history
+forking, a compact neutral evidence packet, complete known blockers and explicit
+coverage status. Correction review stays delta-scoped; later discoverable blockers
+are recorded as initial-review misses. Unavailable delegation leaves required
+independence pending. Before final integration, clean authorized feature history
+into coherent commits and rebind checks/review to the rewritten exact revision.
+Natural evaluation now covers available/unavailable delegation and review
+convergence, recording per-context time and tokens. These workflow changes require
+open review gates to use the compact handoff; no profile migration is needed.
+
+Release-candidate work on PR #2: simplify the builder into inspect, recorded scope
+decision, primary-owner design, bounded implementation/proof, and corrected-snapshot
+assurance handoff. Pending scope is decided from accepted semantics before choosing
+private adapters or state. Move handback detail behind a conditional reference;
+avoid catalog and reviewer preloads. Strengthen incumbent-writer progress proof and
+release-inventory reconciliation. Existing profiles/invariant meanings are unchanged;
+open plans should adopt the sequenced checkpoint and preserve approved limits.
+The release runner pins competing skills, retains child-context traces and sums
+per-context token usage. Frozen release evidence will identify its exact source;
+prior receipts do not prove these changes.
+
+PR #2 follow-up: reject legacy root policy directories and aliases while keeping
+repository `scripts/` valid. Align the runtime scope-lock template with the
+mandatory expansion decision: accepted owner/contract, none/approved/pending,
+proposal, approval source/limits, and blocked boundary. This implements the
+existing gate without a new schema or approval requirement. Open consequential
+scope locks should fill these fields before further production edits. The frozen
+`4cbed82` trials predate this template reinforcement; their scores are unchanged
+and do not demonstrate its behavior. Policy remains unpublished.
+
+Runtime packaging refinement: install only `plugins/engineering-harness/` from
+the marketplace, keeping evaluation answers, fixtures, tests, and development
+evidence outside the runtime source. Migrate direct checkout script paths for
+profile discovery/validation to that directory; generators and package checks
+remain repository-level. The package validator protects the isolation boundary
+and both Polar scope cases. Narrow the scope gate opening to material shared
+responsibilities or accepted owner-contract expansion; ordinary local feature
+options remain within existing implementation authority. Existing scope approval
+and profile schemas are unchanged. The frozen natural scope run at `4cbed82` preserved the unapproved boundary in
+only one of two harness trials; approved design remained bounded in both. Keep
+0.5.0 unpublished. Older receipts remain evidence for their original trees.
+
 PR #1 revision after `08d0622` (still unpublished): make explicit scope-expansion
 approval a prerequisite before introducing shared surfaces or widening another
 owner's contract. Architecture design and hardening consume the same gate;

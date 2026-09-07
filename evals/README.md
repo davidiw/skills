@@ -71,10 +71,11 @@ The bounded [0.5.0 development notes](results/0.5.0-forward-notes.md) retain
 observed findings, routing misses, retests, and missing evidence from that work.
 
 The candidate [assurance matrix](assurance-matrix.json) uses two trials per arm
-on one frozen package snapshot. It adds natural security/privacy discovery,
+on one frozen package snapshot, with four repeats for each approval-boundary case. It adds natural security/privacy discovery,
 preservation of existing sync/UI fences, copy-only work in a sensitive project,
-and release-wide reviews of unchanged surfaces. A competing diagnosis skill is
-present identically in both arms. Record observable tool reads separately from
+and release-wide reviews of unchanged surfaces. A pinned competing skill catalog is
+present identically in both arms; record the actual injected catalog and any
+inherited runtime-controlled declarations too. Record observable tool reads separately from
 unobservable selection; final prose alone is not routing evidence. Keep setup
 outside model latency and preserve all attempts, timeouts, and failures.
 
@@ -90,3 +91,71 @@ Both cases join the current matrix for future frozen runs; the historical
 with explicit router invocation. Observe actual edits and
 approval requests: mentioning scope in a final answer does not excuse an earlier
 unapproved protocol or credential implementation.
+
+
+The install source is `plugins/engineering-harness/`; this corpus and all receipts
+remain outside it. `run_natural_matrix.py` installs through the repository
+marketplace and rejects a cache that differs from the runtime source. It never
+removes eval/test/Git files from the cache to make an experiment clean.
+`scope-matrix.json` retains the historical two-repeat scope setup; the release
+campaign uses `assurance-matrix.json` with four repeats per scope case. Run it against an immutable checkout, with private raw
+output outside the repository, and review the sanitized receipt before committing.
+
+The [packaged scope run](results/0.5.0-packaged-scope/README.md) records eight
+natural-prompt trials on the frozen runtime. The installation boundary passed;
+unapproved scope enforcement held only once in two harness trials. Approved
+design stayed bounded in both. These results do not justify publishing 0.5.0.
+
+The release runner accepts `--package IMMUTABLE_CHECKOUT --matrix MATRIX_PATH
+--output NEW_PRIVATE_DIRECTORY --catalog PINNED_SKILL_DIRECTORY`. Optional `--case`,
+`--arm`, and `--trials` select focused development runs; the final campaign omits
+those overrides. Two trial lanes bound concurrency. Each trial permits up to
+three contexts for builder and required independent lenses, except the explicit
+unavailable-delegation case (`agents.enabled=false`). The documented concurrent
+thread cap excludes the primary, so two spawned threads permit three total
+contexts. The legacy feature flag alone did not disable deferred agent tools in
+the observed runtime; an initial attempted unavailable run is retained as an
+invalid environment setup, not passing fallback evidence. It retains per-context traces, final token counters
+and elapsed time; parent CLI tokens alone omit reviewer cost. Keep builder and
+reviewer costs separate and sum them for the arm comparison. Private/encrypted
+reasoning is excluded from public evidence; system/developer instructions are
+hashed, with skill catalog declarations and readable skill tree hashes recorded.
+
+`independent-correction-review` checks a bounded delta against its prior receipt,
+including a new regression and an initial-review miss. `independent-review-unavailable`
+disables delegation in both arms and checks truthful self-review/pending status.
+Export trials establish actual builder/reviewer separation when delegation exists.
+Observed tool calls, context ancestry and reviewer handoffs are evidence; matching
+an expected specialist list cannot satisfy an independent gate.
+
+Context ancestry is recorded separately from skills read: loading a reviewer body
+cannot relabel a primary builder as an independent reviewer. Assessments assign
+builder/reviewer/coordinator roles using the handoff and actual actions, retaining
+that evidence. Reference paths in read commands are stronger observations than
+links merely appearing in tool output; both are retained, and dynamic/partial
+reads remain limited by the available trace. Runtime controls follow the
+[Codex configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference);
+configuration alone is not proof of tool unavailability.
+
+The final candidate matrix targets Astra at medium reasoning in both arms. Earlier
+Luna runs remain developmental evidence and are not pooled with this cohort.
+`independent-correction-review` supplies the optional general reviewer example
+identically to both arms (Astra/high, read-only); other cases have no custom roles
+and exercise generic fallback. Record actual child role/model/effort, skill reads,
+no-history spawn and initial messages rather than inferring independence from the
+role name. Relative efficiency is compared within the frozen Astra cohort;
+changes from historical Luna overhead cannot be attributed solely to policy.
+
+Astra's observed native delegation trace can encrypt the assignment. A no-history
+flag establishes no automatic builder-history fork, not the contents of manually
+sent input. Retain the neutral packet/hash, actual launch/context, observed packet
+reads and reviewer receipt. Record **assignment payload unavailable** when opaque;
+do not claim its full contents were inspected or infer contamination/neutrality.
+Opacity alone does not fail an independent gate or require a CLI workaround.
+Assess the actual handoff, fresh context, source inspection and review evidence;
+a concrete unresolved concern about forwarded reasoning remains pending.
+Separate CLI sessions, when used, remain labeled `separate_session`, not automatically
+reviewer or named custom-agent contexts. Opaque payloads are hashed in public records.
+The unavailable case forbids nested model launches as well as disabling agent
+tools in both arms; the instruction restriction is recorded, not represented as
+an operating-system guarantee. All older frozen receipts remain unchanged.

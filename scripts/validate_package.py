@@ -12,16 +12,19 @@ import subprocess
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
+sys.path.insert(0, str(PLUGIN_ROOT / "scripts"))
+
 from profile_repository import check_drift, package_version
 from render_invariants import OUTPUT, render
 from validate_profile import MECHANICAL_RUNGS, VERSION_PATTERN, validate_profile
 
 
-ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_REPOSITORY = "https://github.com/davidiw/skills"
 MARKETPLACE_PATH = ROOT / ".agents" / "plugins" / "marketplace.json"
 ROUTER_SKILL = "using-engineering-harness"
-SKILL_NAMES = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+SKILL_NAMES = {path.parent.name for path in (PLUGIN_ROOT / "skills").glob("*/SKILL.md")}
 SPECIALIST_SKILLS = SKILL_NAMES - {ROUTER_SKILL}
 IMPLICIT_SKILLS = {ROUTER_SKILL}
 RUNGS = {
@@ -96,7 +99,7 @@ def validate_links(path: Path, errors: list[str]) -> None:
 
 
 def validate_skills(errors: list[str]) -> None:
-    skill_files = sorted((ROOT / "skills").glob("*/SKILL.md"))
+    skill_files = sorted((PLUGIN_ROOT / "skills").glob("*/SKILL.md"))
     names = {path.parent.name for path in skill_files}
     require(ROUTER_SKILL in names, f"public router skill is missing: {ROUTER_SKILL}", errors)
     require(names == SKILL_NAMES, "skill inventory changed during validation", errors)
@@ -136,14 +139,14 @@ def validate_skills(errors: list[str]) -> None:
                 errors,
             )
 
-    old_audit = ROOT / "skills" / "architecture-hardening" / "references" / "post-review-audit.md"
-    new_audit = ROOT / "skills" / "verification-and-operations" / "references" / "adversarial-review.md"
+    old_audit = PLUGIN_ROOT / "skills" / "architecture-hardening" / "references" / "post-review-audit.md"
+    new_audit = PLUGIN_ROOT / "skills" / "verification-and-operations" / "references" / "adversarial-review.md"
     require(not old_audit.exists(), "architecture-hardening still owns adversarial review", errors)
     require(new_audit.exists(), "verification-and-operations lacks adversarial review", errors)
 
 
 def validate_invariants(errors: list[str]) -> None:
-    path = ROOT / "references" / "invariants.json"
+    path = PLUGIN_ROOT / "references" / "invariants.json"
     document = json.loads(path.read_text(encoding="utf-8"))
     require(document.get("schema_version") == 2, "invariant schema_version must be 2", errors)
     invariants = document.get("invariants", [])
@@ -191,7 +194,7 @@ def validate_invariants(errors: list[str]) -> None:
     )
 
     activation = json.loads(
-        (ROOT / "references" / "capability-activation.json").read_text(encoding="utf-8")
+        (PLUGIN_ROOT / "references" / "capability-activation.json").read_text(encoding="utf-8")
     )
     require(activation.get("schema_version") == 1, "activation schema_version must be 1", errors)
     activated_ids = set(activation.get("always", []))
@@ -205,7 +208,7 @@ def validate_invariants(errors: list[str]) -> None:
 
 
 def validate_profiles(errors: list[str]) -> None:
-    paths = sorted((ROOT / "templates").glob("project-profile.*.json"))
+    paths = sorted((PLUGIN_ROOT / "templates").glob("project-profile.*.json"))
     paths.append(ROOT / "engineering-harness.json")
     current_version = package_version()
     for path in paths:
@@ -321,9 +324,19 @@ def validate_assurance_matrix(
         "provider-wake-restraint", "ui-fence-restraint", "sensitive-copy-restraint",
         "tiny-cli-restraint", "pure-library-parser-restraint",
         "release-security-surface", "release-privacy-lifecycle",
+        "temporary-account-oauth-scope", "approved-provider-broker-design",
+        "independent-review-unavailable", "independent-correction-review",
     }
-    require(required <= set(ids), prefix + "missing discovery, restraint, or release coverage", errors)
+    require(required <= set(ids), prefix + "missing discovery, restraint, release, or scope coverage", errors)
+    counts = matrix.get("case_trials", {})
+    if not isinstance(counts, dict) or not set(counts) <= set(ids):
+        errors.append(prefix + "invalid per-case trial counts")
+        counts = {}
     for case_id in ids:
+        effective = counts.get(case_id, trials)
+        minimum = 4 if case_id in {"temporary-account-oauth-scope", "approved-provider-broker-design"} else 2
+        require(type(effective) is int and effective >= minimum,
+                prefix + f"requires at least {minimum} trials: {case_id}", errors)
         case = case_by_id.get(case_id)
         if case is None:
             errors.append(prefix + f"unknown case: {case_id}")
@@ -352,6 +365,19 @@ def git_is_ancestor(ancestor: str, descendant: str) -> bool:
         check=False,
     )
     return result.returncode == 0
+
+
+def manifest_at_revision(revision: str) -> bytes | None:
+    """Read immutable runtime metadata across the repository layout migration."""
+    for relative in ("plugins/engineering-harness/.codex-plugin/plugin.json",
+                     ".codex-plugin/plugin.json"):
+        result = subprocess.run(
+            ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
+            capture_output=True, check=False,
+        )
+        if result.returncode == 0:
+            return result.stdout
+    return None
 
 
 def validate_eval_receipt(
@@ -388,13 +414,17 @@ def validate_eval_receipt(
     if revision_retained:
         for relative in (".codex-plugin/plugin.json", "evals/cases.json",
                          "evals/behavioral-matrix.json", "evals/rubric.md"):
-            result = subprocess.run(
-                ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
-                capture_output=True, check=False,
-            )
-            require(result.returncode == 0, prefix + f"recorded input is missing: {relative}", errors)
-            if result.returncode == 0:
-                snapshots[relative] = result.stdout
+            if relative == ".codex-plugin/plugin.json":
+                content = manifest_at_revision(revision)
+            else:
+                result = subprocess.run(
+                    ["git", "-C", str(ROOT), "show", f"{revision}:{relative}"],
+                    capture_output=True, check=False,
+                )
+                content = result.stdout if result.returncode == 0 else None
+            require(content is not None, prefix + f"recorded input is missing: {relative}", errors)
+            if content is not None:
+                snapshots[relative] = content
         if len(snapshots) != 4:
             return
         try:
@@ -685,7 +715,7 @@ def validate_eval_receipts(
 
 
 def validate_manifest_sources_and_version(errors: list[str]) -> None:
-    manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
+    manifest = json.loads((PLUGIN_ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
     require(manifest.get("name") == "engineering-harness", "unexpected plugin name", errors)
     require(manifest.get("skills") == "./skills/", "manifest must expose ./skills/", errors)
     require(manifest.get("homepage") == PUBLIC_REPOSITORY, "manifest homepage is incorrect", errors)
@@ -696,7 +726,7 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
         errors,
     )
     profile_schema = json.loads(
-        (ROOT / "references" / "project-profile.schema.json").read_text(
+        (PLUGIN_ROOT / "references" / "project-profile.schema.json").read_text(
             encoding="utf-8"
         )
     )
@@ -745,7 +775,7 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
         "plugins": [
             {
                 "name": manifest.get("name"),
-                "source": {"source": "local", "path": "."},
+                "source": {"source": "local", "path": "./plugins/engineering-harness"},
                 "policy": {
                     "installation": "AVAILABLE",
                     "authentication": "ON_INSTALL",
@@ -756,9 +786,58 @@ def validate_manifest_sources_and_version(errors: list[str]) -> None:
     }
     require(
         marketplace == expected_marketplace,
-        "marketplace metadata differs from the root engineering-harness plugin",
+        "marketplace metadata differs from the runtime engineering-harness plugin",
         errors,
     )
+
+
+def validate_repository_layout(repository_root: Path, errors: list[str]) -> None:
+    """Reserve policy ownership for the installable runtime directory."""
+    for name in (".codex-plugin", "skills", "references", "templates"):
+        path = repository_root / name
+        require(
+            not (path.exists() or path.is_symlink()),
+            f"repository layout: legacy policy root {name} is forbidden; use plugins/engineering-harness/{name}",
+            errors,
+        )
+
+
+def runtime_markdown_targets(text: str) -> list[str]:
+    targets = LINK_PATTERN.findall(text)
+    # Reference-style Markdown and URI autolinks are file references too.
+    for bracketed, plain in re.findall(r"(?m)^ {0,3}\[[^]\n]+\]:\s*(?:<([^>]+)>|(\S+))", text):
+        targets.append(bracketed or plain)
+    targets.extend(re.findall(r"<([A-Za-z][A-Za-z0-9+.-]*://[^>\n]+)>", text))
+    targets.extend(re.findall(r"(?:href|src)=[\"']([^\"']+)[\"']", text))
+    return targets
+
+
+def validate_runtime_boundary(plugin_root: Path, errors: list[str]) -> None:
+    """Keep the install source self-contained and free of development corpora."""
+    allowed = {".codex-plugin", "skills", "references", "templates", "scripts", "LICENSE"}
+    forbidden = {"evals", "tests", "fixtures", "results", "evidence", ".git", ".agents"}
+    runtime_scripts = {"profile_repository.py", "validate_profile.py"}
+    for path in sorted(plugin_root.rglob("*")):
+        relative = path.relative_to(plugin_root)
+        require(not path.is_symlink(), f"runtime boundary: symlink {relative}", errors)
+        require(relative.parts[0] in allowed, f"runtime boundary: unexpected root {relative}", errors)
+        require(not (set(relative.parts) & forbidden), f"runtime boundary: development corpus {relative}", errors)
+        require(path.suffix not in {".bundle", ".diff", ".patch"}, f"runtime boundary: development artifact {relative}", errors)
+        if path.is_file() and relative.parts[0] == "scripts" and "__pycache__" not in relative.parts:
+            require(relative.as_posix() in {f"scripts/{name}" for name in runtime_scripts},
+                    f"runtime boundary: non-runtime script {relative}", errors)
+        if path.is_file() and path.suffix == ".md":
+            for target in runtime_markdown_targets(path.read_text(encoding="utf-8")):
+                if target.startswith(("https://", "http://", "#")):
+                    continue
+                require("://" not in target,
+                        f"runtime boundary: unsupported file/resource URI {relative}: {target}", errors)
+                if "://" in target:
+                    continue
+                resolved = (path.parent / target.split("#", 1)[0]).resolve()
+                require(resolved.is_relative_to(plugin_root.resolve()),
+                        f"runtime boundary: external file link {relative}: {target}", errors)
+                require(resolved.exists(), f"runtime boundary: missing link {relative}: {target}", errors)
 
 
 def validate_public_hygiene(errors: list[str]) -> None:
@@ -798,7 +877,9 @@ def validate_public_hygiene(errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
+    validate_repository_layout(ROOT, errors)
     validate_manifest_sources_and_version(errors)
+    validate_runtime_boundary(PLUGIN_ROOT, errors)
     validate_skills(errors)
     validate_invariants(errors)
     validate_profiles(errors)

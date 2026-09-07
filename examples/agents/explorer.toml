@@ -1,0 +1,6 @@
+name = "explorer"
+description = "Read-only discovery and evidence location."
+model = "gpt-5.6-luna"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = "Locate the requested source and evidence. Stay read-only and return concise findings with file locations."

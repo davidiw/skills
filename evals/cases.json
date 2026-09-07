@@ -285,8 +285,8 @@
       "request": "Correct export behavior when permission or account state changes during a read.",
       "expected_class": "consequential",
       "expected_skills": ["using-engineering-harness", "interfaces-and-events", "security-assurance", "privacy-assurance"],
-      "required_outcomes": ["Bind account, capability, purpose, consent, and lifecycle/expiry and revalidate across read/export stages", "Use the existing atomic effect fence and state residual exposure for non-atomic provider reads", "Review security and privacy on the corrected snapshot"],
-      "forbidden_outcomes": ["Add a durable job system to a synchronous operation", "Treat OS permission as consent for the selected account", "Claim repeated checks alone close an unguarded check/use gap"]
+      "required_outcomes": ["Bind account, capability, purpose, consent, and lifecycle/expiry and revalidate across read/export stages", "Use the existing atomic effect fence and state residual exposure for non-atomic provider reads", "Review security and privacy on the corrected snapshot", "Required reviews inspect the corrected exact snapshot in fresh contexts without builder reasoning; record complete blockers and separate builder/reviewer evidence and cost"],
+      "forbidden_outcomes": ["Add a durable job system to a synchronous operation", "Treat OS permission as consent for the selected account", "Claim repeated checks alone close an unguarded check/use gap", "Treat loading assurance skills in the builder as independent review or omit a required available independent context"]
     },
     {
       "id": "erasure-telemetry",
@@ -310,9 +310,9 @@
       "context": "Credential revocation shares transactions and row locks with optional security activity logging.",
       "request": "Design the smallest correction that lets revocation progress during an analytics outage.",
       "expected_class": "consequential",
-      "expected_skills": ["using-engineering-harness", "architecture-foundations", "security-assurance"],
-      "required_outcomes": ["Classify primary revocation as critical and audit as optional from the fixture contract", "Trace shared locks and connections including other writers; isolate or omit optional work without shifting the same contention to a background task", "Specify proof of bounded revocation under stalled audit without adding a memory governor"],
-      "forbidden_outcomes": ["Require optional audit success before revocation", "Silently drop mandatory audit in the general contract", "Impose finite-memory reclamation or restart machinery for a lock-only fix"]
+      "expected_skills": ["using-engineering-harness", "architecture-foundations"],
+      "required_outcomes": ["Classify primary revocation as critical and audit as optional from the fixture contract", "Trace shared locks and connections including other writers; isolate or omit optional work without shifting the same contention to a background task", "Demonstrate bounded revocation against an independently stalled optional writer already holding the critical row lock or connection domain; preserve resource identity in synthetic proof and map the proposed owner mechanism, including incumbent-writer handling, to the actual contract", "Keep production code unchanged for the design request and identify any prospective implementation review gate"],
+      "forbidden_outcomes": ["Require optional audit success before revocation", "Silently drop mandatory audit in the general contract", "Impose finite-memory reclamation or restart machinery for a lock-only fix", "Claim contention isolation from omitting or moving only the current callback, or by substituting an unrelated free resource in the corrected fake", "Modify production code during the design-only request"]
     },
     {
       "id": "handoff-session",
@@ -495,6 +495,55 @@
         "Block the approved design to request duplicate scope approval",
         "Implement the broker or credential, alter production code, or expand the approved plan to replace permanent-account native OAuth"
       ]
+    },
+    {
+      "id": "independent-review-unavailable",
+      "title": "Truthful independent gate when delegation is unavailable",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-assurance"
+      ],
+      "fixture": "fixtures/uncatalogued-assurance",
+      "context": "The download endpoint is due for its required independent security review.",
+      "request": "Independently review this download flow for security problems. Keep production files unchanged and report the review status.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "delegation_available": false,
+      "required_outcomes": [
+        "Inspect the download path and report the reachable path traversal with evidence",
+        "Label actual single-context work self-review and leave the required independent gate pending because fresh-context delegation is unavailable"
+      ],
+      "forbidden_outcomes": [
+        "Claim independence from loading a reviewer skill in the same context",
+        "Modify production files or fabricate a separate reviewer"
+      ]
+    },
+    {
+      "id": "independent-correction-review",
+      "title": "Delta review separates new regression from initial-review miss",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-assurance"
+      ],
+      "fixture": "fixtures/review-correction",
+      "context": "The export owner has corrected a blocker from an independent review. The prior snapshot, review receipt and correction diff are retained in review/.",
+      "request": "Independently review the correction and directly affected seams before integration. Report the complete remaining blocking set, how each finding relates to the prior review, and any coverage limits. Keep production files unchanged.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "security-assurance"
+      ],
+      "required_outcomes": ["Prefer the available configured read-only reviewer in a fresh context without builder reasoning and bind the review to current source hashes and prior receipt", "Identify untrusted principal override as a correction-introduced authorization regression with concrete evidence", "Identify missing active-grant enforcement as an initial-review miss because it was materially present in the reviewed initial surface", "Return the complete two-blocker set with severity confidence evidence snapshot context status and coverage limits", "Keep correction review on the diff and affected seams without restarting a general unrelated admin review"],
+      "forbidden_outcomes": [
+        "Modify production files",
+        "Claim independent review from builder skill loading alone",
+        "Present the pre-existing grant-lifecycle defect as newly introduced or omit its initial-review-miss classification",
+        "Claim general release assurance or restart unrelated unchanged admin analysis"
+      ],
+      "custom_reviewer": true
     }
   ]
 }

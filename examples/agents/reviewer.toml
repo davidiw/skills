@@ -1,0 +1,6 @@
+name = "reviewer"
+description = "Independent read-only review of the assigned source and evidence."
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
+developer_instructions = "Independently inspect the assigned source and evidence. Stay read-only and use applicable review skills for policy and methods."

@@ -9,6 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
+sys.path.insert(0, str(PLUGIN_ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from profile_repository import check_drift, propose_profile, scan_repository  # noqa: E402
@@ -19,13 +21,13 @@ from validate_profile import validate_profile  # noqa: E402
 
 class ProfileValidationTest(unittest.TestCase):
     def load_example(self, name: str) -> dict[str, object]:
-        path = ROOT / "templates" / name
+        path = PLUGIN_ROOT / "templates" / name
         return json.loads(path.read_text(encoding="utf-8"))
 
     def test_examples_and_self_profile_are_valid(self) -> None:
         paths = [
-            ROOT / "templates" / "project-profile.minimal.json",
-            ROOT / "templates" / "project-profile.local-first.json",
+            PLUGIN_ROOT / "templates" / "project-profile.minimal.json",
+            PLUGIN_ROOT / "templates" / "project-profile.local-first.json",
             ROOT / "engineering-harness.json",
         ]
         for path in paths:
@@ -339,8 +341,8 @@ class GeneratedInvariantTest(unittest.TestCase):
         self.assertEqual(OUTPUT.read_text(encoding="utf-8"), render())
 
     def test_catalog_has_exactly_one_owner_and_distinct_consumers(self) -> None:
-        document = json.loads((ROOT / "references" / "invariants.json").read_text())
-        skill_names = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+        document = json.loads((PLUGIN_ROOT / "references" / "invariants.json").read_text())
+        skill_names = {path.parent.name for path in (PLUGIN_ROOT / "skills").glob("*/SKILL.md")}
         ids = [item["id"] for item in document["invariants"]]
         self.assertEqual(len(ids), len(set(ids)))
         for item in document["invariants"]:
@@ -353,11 +355,11 @@ class GeneratedInvariantTest(unittest.TestCase):
 
 class SkillInvocationPolicyTest(unittest.TestCase):
     def test_router_is_implicit_and_specialists_are_explicit_only(self) -> None:
-        skill_names = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+        skill_names = {path.parent.name for path in (PLUGIN_ROOT / "skills").glob("*/SKILL.md")}
         router = "using-engineering-harness"
 
         for name in skill_names:
-            metadata = ROOT / "skills" / name / "agents" / "openai.yaml"
+            metadata = PLUGIN_ROOT / "skills" / name / "agents" / "openai.yaml"
             with self.subTest(skill=name):
                 self.assertTrue(metadata.is_file())
                 text = metadata.read_text()
@@ -367,9 +369,9 @@ class SkillInvocationPolicyTest(unittest.TestCase):
 
 class MarketplaceMetadataTest(unittest.TestCase):
     def test_public_repository_identifiers_match(self) -> None:
-        manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+        manifest = json.loads((PLUGIN_ROOT / ".codex-plugin" / "plugin.json").read_text())
         schema = json.loads(
-            (ROOT / "references" / "project-profile.schema.json").read_text()
+            (PLUGIN_ROOT / "references" / "project-profile.schema.json").read_text()
         )
 
         self.assertEqual(manifest["homepage"], "https://github.com/davidiw/skills")
@@ -379,8 +381,8 @@ class MarketplaceMetadataTest(unittest.TestCase):
             "https://github.com/davidiw/skills/project-profile.schema.json",
         )
 
-    def test_marketplace_exposes_the_root_plugin(self) -> None:
-        manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text())
+    def test_marketplace_exposes_only_runtime_plugin(self) -> None:
+        manifest = json.loads((PLUGIN_ROOT / ".codex-plugin" / "plugin.json").read_text())
         marketplace = json.loads(
             (ROOT / ".agents" / "plugins" / "marketplace.json").read_text()
         )
@@ -392,7 +394,7 @@ class MarketplaceMetadataTest(unittest.TestCase):
             [
                 {
                     "name": manifest["name"],
-                    "source": {"source": "local", "path": "."},
+                    "source": {"source": "local", "path": "./plugins/engineering-harness"},
                     "policy": {
                         "installation": "AVAILABLE",
                         "authentication": "ON_INSTALL",

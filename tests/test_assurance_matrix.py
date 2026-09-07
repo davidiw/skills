@@ -5,6 +5,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
+sys.path.insert(0, str(PLUGIN_ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "scripts"))
 from validate_package import validate_assurance_matrix
 
@@ -24,7 +26,34 @@ class AssuranceMatrixTest(unittest.TestCase):
         self.matrix["case_ids"].remove("ui-fence-restraint")
         errors = []
         validate_assurance_matrix(self.matrix, self.cases, errors)
-        self.assertIn("assurance matrix: missing discovery, restraint, or release coverage", errors)
+        self.assertIn("assurance matrix: missing discovery, restraint, release, or scope coverage", errors)
+
+    def test_each_scope_regression_is_required(self):
+        for case_id in ("temporary-account-oauth-scope", "approved-provider-broker-design"):
+            with self.subTest(case_id=case_id):
+                matrix = copy.deepcopy(self.matrix)
+                matrix["case_ids"].remove(case_id)
+                errors = []
+                validate_assurance_matrix(matrix, self.cases, errors)
+                self.assertIn("assurance matrix: missing discovery, restraint, release, or scope coverage", errors)
+
+    def test_independence_regressions_are_required(self):
+        for case_id in ("independent-review-unavailable", "independent-correction-review"):
+            with self.subTest(case_id=case_id):
+                matrix = copy.deepcopy(self.matrix)
+                matrix["case_ids"].remove(case_id)
+                errors = []
+                validate_assurance_matrix(matrix, self.cases, errors)
+                self.assertIn("assurance matrix: missing discovery, restraint, release, or scope coverage", errors)
+
+    def test_scope_release_repeats_cannot_be_reduced(self):
+        for case_id in ("temporary-account-oauth-scope", "approved-provider-broker-design"):
+            with self.subTest(case_id=case_id):
+                matrix = copy.deepcopy(self.matrix)
+                matrix["case_trials"][case_id] = 3
+                errors = []
+                validate_assurance_matrix(matrix, self.cases, errors)
+                self.assertIn(f"assurance matrix: requires at least 4 trials: {case_id}", errors)
 
     def test_single_trial_or_missing_control_is_rejected(self):
         for field, value in (("trials", 1), ("conditions", ["harness"]), ("concurrency", 3)):

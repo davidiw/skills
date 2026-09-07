@@ -6,10 +6,10 @@
     "control",
     "harness"
   ],
-  "model": "gpt-5.6-luna",
+  "model": "gpt-6-astra",
   "reasoning_effort": "medium",
   "concurrency": 2,
-  "timeout_seconds": 240,
+  "timeout_seconds": 420,
   "case_ids": [
     "natural-security-review",
     "natural-privacy-review",
@@ -26,6 +26,13 @@
     "release-security-surface",
     "release-privacy-lifecycle",
     "temporary-account-oauth-scope",
-    "approved-provider-broker-design"
-  ]
+    "approved-provider-broker-design",
+    "static-site-restraint",
+    "independent-review-unavailable",
+    "independent-correction-review"
+  ],
+  "case_trials": {
+    "temporary-account-oauth-scope": 4,
+    "approved-provider-broker-design": 4
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "old_source_revision": "3eb0314e26a47397e03169c4d07facf7d19d12ee",
+  "new_source_revision": "4cbed8215ac195b892845efd146b15d57a36d7e2",
+  "old_root_had_corpus": true,
+  "same_version": "0.5.0",
+  "same_plugin_id": true,
+  "procedure": "Install old root from a local marketplace; update that same checkout to the new source; run codex plugin add again. No direct cache edits.",
+  "setup_note": "An attempt to register a second checkout under the same marketplace name was rejected by the CLI. The upgrade then used the existing registered checkout; no marketplace removal was needed.",
+  "new_runtime_exact_match": true,
+  "new_runtime_file_count": 60,
+  "remaining_corpus_paths": []
+}

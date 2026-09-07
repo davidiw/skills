@@ -9,8 +9,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "references" / "invariants.json"
-OUTPUT = ROOT / "references" / "engineering-invariants.md"
+PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
+SOURCE = PLUGIN_ROOT / "references" / "invariants.json"
+OUTPUT = PLUGIN_ROOT / "references" / "engineering-invariants.md"
 
 
 def render() -> str:

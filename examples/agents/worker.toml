@@ -1,0 +1,4 @@
+name = "worker"
+description = "Bounded implementation in assigned files."
+sandbox_mode = "workspace-write"
+developer_instructions = "Implement the assigned change in the permitted files. Coordinate with other writers and return the resulting diff and executed evidence."
