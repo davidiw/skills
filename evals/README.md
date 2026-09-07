@@ -70,5 +70,23 @@ do not establish natural-prompt discovery or installed-versus-control benefit.
 The bounded [0.5.0 development notes](results/0.5.0-forward-notes.md) retain
 observed findings, routing misses, retests, and missing evidence from that work.
 
+The candidate [assurance matrix](assurance-matrix.json) uses two trials per arm
+on one frozen package snapshot. It adds natural security/privacy discovery,
+preservation of existing sync/UI fences, copy-only work in a sensitive project,
+and release-wide reviews of unchanged surfaces. A competing diagnosis skill is
+present identically in both arms. Record observable tool reads separately from
+unobservable selection; final prose alone is not routing evidence. Keep setup
+outside model latency and preserve all attempts, timeouts, and failures.
+
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.
+
+The scope-approval regression `temporary-account-oauth-scope` models temporary
+accounts tempting a replacement of shipped mobile provider OAuth. Its paired
+`approved-provider-broker-design` case checks reuse of explicit design approval.
+Both cases join the current matrix for future frozen runs; the historical
+14-case matrix and its scores remain unchanged in the original receipt. Focused
+[scope forward checks](results/0.5.0-scope-approval/README.md) exercise the gate
+with explicit router invocation. Observe actual edits and
+approval requests: mentioning scope in a final answer does not excuse an earlier
+unapproved protocol or credential implementation.

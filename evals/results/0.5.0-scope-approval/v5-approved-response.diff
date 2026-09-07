@@ -1,0 +1,255 @@
+diff --git a/DESIGN.md b/DESIGN.md
+index 0262b16..dc3f104 100644
+--- a/DESIGN.md
++++ b/DESIGN.md
+@@ -1,16 +1,234 @@
+-# Accounts and mobile provider linking
+-
+-`accounts.py` owns account creation and expiry. Temporary accounts are a product
+-feature in progress. The product needs a 24-hour lifetime from creation.
+-
+-`mobile_oauth.py` owns the shipped native mobile provider flow. It uses a
+-permanent-account registry because the registered native callback resolves its
+-subject there after the app returns from the provider. Registry entries and
+-provider links outlive mobile requests. Temporary accounts are absent from that
+-registry and are deleted at expiry; simply admitting them through the current
+-callback would not preserve the existing contract.
+-
+-Permanent users must retain the native flow and existing stored grants. Polar
+-is one provider; shared callback changes affect every provider and released
+-mobile clients. No backend browser-return endpoint or handoff credential exists.
+-The draft below explores that adjacent work; it has no acceptance record.
++# Temporary-account provider linking design
++
++## Decision and scope
++
++The approved expansion adds a backend browser broker and a purpose-scoped,
++short-lived handoff credential for temporary-account provider linking. It is a
++design decision only; this change does not modify production code, providers,
++mobile clients, schema, or deployment configuration.
++
++The user approved this exact scope after the following proposal: “designing a
++temporary-account browser broker with a purpose-scoped short-lived handoff
++credential and native compatibility path, including expiry, migration and
++rollback. Permanent accounts keep the native flow. This approval would cover
++design only, with no production code changes.” The approved limits are:
++
++- permanent accounts retain the shipped native callback and existing grants;
++- the broker is initially enabled only for temporary accounts;
++- provider-specific behavior is behind adapters, with Polar as the first
++  provider and the contract applicable to every provider;
++- implementation, migration, deployment, and client release remain separate
++  future authorizations.
++
++This records the scope-expansion decision as **approved**. The expansion is a
++new browser return boundary, broker transaction, and handoff credential. It is
++owned by the provider-linking broker; the existing native flow remains owned by
++`mobile_oauth.py`.
++
++## Behavior
++
++Temporary account creation records `created_at`, `expires_at = created_at + 24
++hours`, and a lifecycle epoch. Expiry is authoritative account state. Every
++broker operation checks the account epoch and expiry at admission and again
++before storing a grant or publishing completion. Expiry rejects new work and
++invalidates outstanding transactions and handoffs.
++
++The temporary flow is:
++
++1. The app asks the broker to begin linking a provider for a temporary account.
++   The request binds account, provider, client flow, purpose
++   (`provider_link`), and account epoch. The broker persists a transaction with
++   a random transaction ID, PKCE challenge, redirect allowlist entry, expiry at
++   the earlier of account expiry or the transaction TTL, and status `pending`.
++2. The broker returns an authorization URL and an app-safe transaction handle.
++   No provider access grant or ordinary product session is returned in this
++   response.
++3. The provider redirects to the backend browser return endpoint. The endpoint
++   validates state, PKCE, provider, redirect registration, transaction status,
++   and transaction/account expiry before exchanging the authorization code.
++4. The broker stores the provider grant under the transaction's temporary
++   account and provider, using an idempotency key. The provider code and raw
++   callback parameters are discarded after exchange. A committed completion
++   record is created before any app redirect.
++5. The endpoint redirects to the registered app callback with a one-time,
++   opaque handoff credential. The credential contains no grant or personal
++   data in its value and is stored only as a hash with transaction ID, account
++   epoch, purpose, audience, issued time, expiry, and consumed state.
++6. The app submits the handoff to the broker's exchange operation. The broker
++   atomically checks audience, purpose, account epoch, expiry, transaction
++   status, and unused state, then marks it consumed and returns only the
++   provider-link result. It cannot establish a normal session, authorize a
++   different account or purpose, or be exchanged twice.
++
++The app may retry the exchange after a response timeout by presenting the same
++credential. A successful first exchange returns the same committed result by
++idempotency key during the bounded retry window; a second effect is never
++performed. Expired, consumed, mismatched, or unknown credentials return one
++uniform failure class without revealing account or provider state.
++
++Permanent accounts continue through `MobileOAuth.begin` and
++`MobileOAuth.complete`, using the permanent registry and existing grants. The
++broker must reject a permanent account in its temporary-account entry point.
++The compatibility adapter is a routing seam: it selects the broker flow for a
++temporary account and the existing native flow for a permanent account. It does
++not make the native callback registry authoritative for temporary accounts.
++
++## Contracts and invariants
++
++The broker exposes three contracts:
++
++- `begin(account, provider, client_redirect, pkce_challenge)` returns an
++  authorization URL and opaque transaction handle, or a typed rejection for
++  expired/unsupported account, provider, redirect, or client.
++- `browser_return(provider, code, state)` is provider-facing and returns only
++  an app redirect after a committed transaction or a generic failure page.
++- `exchange(handoff)` is app-facing and returns a provider-link result. It is
++  bound to the original account, provider, purpose, audience, epoch, and
++  transaction expiry.
++
++The transaction ID, handoff credential, account ID, provider, purpose, and
++timestamps are typed boundary values. Provider grants remain broker-owned
++secret material and are never placed in URLs, logs, browser state, or mobile
++responses. State-changing operations use compare-and-set on transaction status
++and lifecycle epoch. A callback arriving after expiry, deletion, account
++switch, or replay cannot write a grant or publish success.
++
++The browser endpoint is a provider callback boundary, not an authenticated
++product endpoint. State and PKCE establish the pending flow; they do not grant
++product authority. The exchange operation revalidates the full authorization
++context and fences the commit against account expiry/deletion.
++
++## Ownership map
++
++| Concept | Authoritative owner | Writers | Readers | Representations | Recovery or rebuild |
++| --- | --- | --- | --- | --- | --- |
++| Account lifecycle and epoch | `accounts.py` account owner | account creation, expiry/deletion command | broker, native adapter | account record | Rebuildable from account record; deletion is explicit and increments/revokes epoch |
++| Broker transaction state | provider-linking broker | begin, callback, exchange/expiry worker | broker and operator diagnostics | durable transaction record | Resume by status and expiry; compare-and-set makes retry idempotent |
++| Provider grant link | provider-linking broker | successful callback exchange only | provider adapter and account-facing link query | encrypted grant record | Reconcile from committed transaction; never infer from callback absence |
++| Handoff authority | provider-linking broker | callback issuance, atomic exchange, expiry | app exchange endpoint | hashed credential plus metadata | No reconstruction after expiry; revoke by consume, epoch change, or deletion |
++| Native permanent link | `mobile_oauth.py` | existing native completion | existing native clients | permanent registry grant | Existing registry contract and rollback path |
++
++No client, provider, callback handler, or telemetry writer may become a second
++source of account lifecycle or grant-link truth.
++
++## Quality scenarios
++
++### Successful temporary link
++
++Stimulus: a non-expired temporary account starts Polar linking and completes the
++provider callback once.
++
++Operating condition: broker and provider are available; the app exchanges the
++handoff within its TTL.
++
++Expected response: exactly one grant link is committed to the temporary
++account, the app receives success, and no permanent registry entry is created.
++
++Measured bound: one provider code exchange and one successful grant commit per
++transaction, even if the browser return or app exchange is retried.
++
++Evidence source: broker contract tests with a synthetic provider.
++
++### Expiry during the flow
++
++Stimulus: the account reaches its 24-hour expiry after begin but before callback
++exchange or handoff exchange.
++
++Operating condition: callback, retry, or delayed worker arrives after expiry.
++
++Expected response: the operation is rejected; no grant, handoff success, cache,
++telemetry, or delayed retry recreates account state.
++
++Measured bound: zero post-expiry writes accepted for the expired epoch.
++
++Evidence source: focused check with expiry between each check/use boundary.
++
++### Handoff replay and substitution
++
++Stimulus: a handoff is replayed, altered, sent to another account, or sent to a
++different purpose/audience.
++
++Operating condition: attacker controls the browser return URL or app input.
++
++Expected response: exchange fails without revealing whether the transaction or
++account exists; a valid handoff can cause at most one effect.
++
++Measured bound: duplicate provider-link effects are zero; invalid exchange
++responses use one externally equivalent error class.
++
++Evidence source: security changed-path review and replay tests.
++
++### Permanent compatibility
++
++Stimulus: an existing permanent account uses each supported released native
++client and provider.
++
++Operating condition: broker flag is enabled for temporary accounts.
++
++Expected response: native callback resolution and existing grant storage are
++unchanged.
++
++Measured bound: no permanent callback is routed through the temporary broker in
++the initial rollout.
++
++Evidence source: existing native tests plus mixed-version client matrix.
++
++## Privacy, security, and operational requirements
++
++Account IDs, transaction metadata, provider identity, grant state, and
++handoff activity inherit the temporary account's sensitivity and 24-hour
++lifecycle unless repository authority documents a narrower retention. Logs and
++telemetry contain event type, outcome class, provider, and correlation ID only;
++they exclude credentials, authorization codes, raw callback parameters, grant
++contents, and full account identifiers. Expiry/deletion revokes future writers
++before records and derivatives are removed. Any external provider copy or
++already-disclosed data is reported as outside the broker's erasure boundary.
++
++The changed trust boundary requires a scoped security review covering callback
++confusion, state/PKCE binding, redirect validation, credential audience and
++purpose, replay, account substitution, expiry races, and grant disclosure. The
++changed lifecycle requires a scoped privacy review covering transaction/grant
++retention, logs, telemetry, caches, delayed callbacks, and deletion. This
++document is a design contract, not evidence that those reviews have passed.
++
++Operationally, the broker needs counters for begin/callback/exchange outcomes,
++expiry and replay rejections, provider exchange failures, and stale-epoch
++attempts. Correlation IDs must be non-secret. Alerts must not depend on a
++provider grant or handoff value. Cleanup is bounded and idempotent; it cannot
++block expiry or revocation behind optional telemetry.
++
++## Rollout, migration, and rollback
++
++The first release adds the broker behind `TEMP_PROVIDER_BROKER`, default off.
++While off, temporary accounts retain the current explicit unsupported result and
++permanent accounts retain native behavior. Enablement is account-class and
++provider scoped, with a kill switch that stops new broker begins while allowing
++already committed exchanges to finish only until their normal TTL.
++
++The compatibility adapter is additive during coexistence. Existing native
++clients require no new callback contract. New clients must understand the
++broker exchange result and generic failures; old clients remain on native flow
++for permanent accounts. Migration of permanent accounts or replacement of
++native OAuth is explicitly out of this design and requires a new approval.
++
++Rollback disables new temporary broker transactions, marks pending broker
++transactions unavailable after their TTL, and preserves permanent native
++operation. It does not delete committed provider links or silently move them
++into the permanent registry. A later re-enable may resume only non-expired,
++non-revoked transactions whose provider and client contract remain supported.
++Broker tables, adapter code, and telemetry are removable only after all
++transactions and handoffs have expired, committed links have an explicit owner,
++and operators have evidence that no supported client still depends on them.
++
++## Evidence classes
++
++- Synthetic/unit and contract tests: required for expiry, replay, idempotency,
++  provider error mapping, and permanent/native compatibility; pending until
++  implementation exists.
++- Host integration tests: required for callback routing, durable transaction
++  recovery, feature-flag rollback, and mixed client versions; pending.
++- Security and privacy changed-path reviews: required for the scoped boundaries;
++  pending and not performed by this design-only change.
++- Physical/mobile release proof and live-provider proof: not required for this
++  design artifact; required before claiming released-client or real-provider
++  compatibility.

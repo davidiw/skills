@@ -7,17 +7,32 @@ verification, legal compliance, or exhaustive vulnerability absence.
 
 ## Scope and evidence
 
-Bind the review to the changed execution paths and an identifiable snapshot:
+Select the scope before investigating. **Changed-path assurance** covers the
+named flow or diff and its relevant dependencies. **Release-surface security
+assurance** and **release data-lifecycle privacy review** start from inventories
+of the complete candidate system, including unchanged, legacy, and shadow paths.
+Use those release modes when launch readiness or preparation for an external
+security/privacy review is requested. Ordinary changes retain changed-path scope.
+
+Bind either mode to an identifiable snapshot:
 commit plus worktree patch/content digests for local work, or the exact release
 revision for a release gate. Use repository threat assumptions and privacy
-decisions, checking them against the implementation. Trace immediate callers,
+decisions, checking them against the implementation. In changed-path mode, trace immediate callers,
 dependencies, and delayed consumers needed to assess the hypothesized harm.
 
-Select security assurance for principal, credential, grant, trust, or effect
-authority; select privacy assurance for sensitive data use, derivation,
-retention, disclosure, and erasure. Use both when one path changes both. The
-profile activates the obligation; a copy edit elsewhere in a sensitive project
-does not require an assurance campaign.
+Select security assurance for changes to or new exposure of trust/authorization
+boundaries; select privacy assurance for changes to sensitive collection, use,
+derivation, retention, disclosure, expiry, or erasure. Explicit assurance
+requests select the appropriate reviewer regardless of whether code changed.
+Carrying credentials or preserving existing fences does not itself select a
+security reviewer; a sensitive project flag does not itself select a privacy
+reviewer. Use both when the requested scope includes both concerns.
+
+Release modes produce a coverage matrix before attacking individual paths.
+Inventory entries name source evidence, owner, boundary/data category, planned
+hypothesis, and status: unreviewed, reviewed with evidence, blocked, unavailable,
+or not applicable with rationale. Inventory existence is not passing evidence.
+Unreachable or out-of-scope claims require evidence or an explicit scope limit.
 
 Review independently of the implementation reasoning when possible, using a
 separate reviewer with the raw scope, intended behavior, and source snapshot.
@@ -45,6 +60,18 @@ possibility without a reachable path is a question, not a proven blocker.
 Return ordered findings, reviewed snapshot, exercised hypotheses, and uncovered
 paths. The reviewer changes no production files. Use synthetic data and focused
 checks to test hypotheses. Review corrective changes at their affected seams.
+
+For release modes, reconcile the final coverage matrix against the initial
+inventory and newly discovered surfaces/destinations. A clean diff does not
+establish release readiness. When both are requested and independent contexts
+are available and authorized, give each reviewer the raw scope/non-goals, snapshot,
+contracts, permitted effects, and its assigned coverage rows. Return findings,
+evidence, uncovered rows, and actual reviewer-context status for reconciliation.
+Loading both skills in one context is self-review; leave any required independent
+gate pending when separate review cannot be obtained. When none is required,
+report actual context status without adding a gate. Preserve that status and every
+unreviewed/unavailable row in the handback. The package specifies this handoff
+contract; it does not guarantee runtime delegation or production-scale coverage.
 
 Set coverage and time bounds from the requested assurance scope. The bounded
 architecture audit's ten-minute/three-thread cap does not define assurance

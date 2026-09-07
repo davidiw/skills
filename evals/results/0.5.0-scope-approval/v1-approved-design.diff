@@ -1,0 +1,216 @@
+diff --git a/DRAFT.md b/DRAFT.md
+index 3b2af97..27597c9 100644
+--- a/DRAFT.md
++++ b/DRAFT.md
+@@ -1,11 +1,202 @@
+-# Temporary-account provider proposal
++# Approved implementation plan: temporary-account provider browser broker
+ 
+-A backend browser broker could allow provider callbacks without a permanent
+-mobile registry entry. It would issue a new short-lived provider-browser handoff
+-credential, correlate browser completion to temporary identity/expiry, and add
+-a server return endpoint. A mobile callback compatibility adapter could then
+-share the broker across all providers and permanent accounts.
++## Scope lock and authority
+ 
+-Putting this behind `TEMP_PROVIDER_BROKER` would allow staged rollout. A follow-on
+-could replace native provider OAuth entirely. This is a proposal, with migration,
+-credential purpose/replay rules, and rollback still unresolved.
++The user explicitly approved expanding the draft to cover:
++
++- a provider-browser broker for temporary accounts;
++- a short-lived, purpose-scoped handoff credential; and
++- the compatibility boundary between that broker and native mobile OAuth.
++
++The approval is limited to design and implementation planning. It does not
++authorize production-code edits, deployment, provider configuration, data
++migration execution, or replacement of native OAuth. Permanent accounts keep
++the existing `MobileOAuth` native callback contract and their existing stored
++grants throughout this work.
++
++This is consequential work because it adds a server return boundary, a new
++credential type, temporary identity and expiry state, and mixed-version
++compatibility. The plan therefore treats the broker as a separate owner and
++keeps the native adapter as a compatibility boundary rather than changing the
++permanent-account flow.
++
++## Authoritative ownership
++
++| Concept | Owner | Writers | Readers | Representations | Recovery/rebuild |
++| --- | --- | --- | --- | --- | --- |
++| Account identity and temporary expiry | `accounts.py` account owner | account lifecycle service | broker, adapter, expiry worker | `Account`, durable account row | expiry state is authoritative; no callback recreates an expired account |
++| Provider-browser operation | provider-browser broker | broker begin/return handlers | temporary-account linking client, operator diagnostics | durable operation record | replay by operation id with compare-and-set terminal state |
++| Handoff credential | broker credential owner | issuance/revocation path | one broker return exchange | opaque signed or stored reference with typed fields | expiry/revocation state wins; it is never rebuilt as a product session |
++| Permanent native OAuth | `mobile_oauth.py` | current native begin/complete path | released mobile clients and provider adapters | existing callback and registry grant records | existing registry remains authoritative |
++| Provider grant | account/provider-link owner | broker exchange or existing native completion | account features | stored grant record | provider response is an observation; commit is fenced to the operation context |
++
++The composition root wires the broker, account owner, provider adapter, and
++existing native `MobileOAuth`. Provider SDK/storage details stay behind their
++respective adapters. No caller may use the handoff credential as an ordinary
++account session or native callback subject.
++
++## Contract and authorization context
++
++The broker exposes two narrow operations:
++
++1. `begin(account_id, provider, purpose, return_target)` validates that the
++   account is temporary and unexpired, creates one operation, and returns a
++   provider authorization URL plus an opaque handoff credential.
++2. `return(handoff, provider_result)` validates and atomically consumes the
++   handoff, rechecks the account and operation, exchanges the provider result,
++   and commits the grant only if the operation context is still valid.
++
++The handoff carries typed `operation_id`, temporary `account_id`, provider,
++purpose, issued-at, expiry, audience, and single-use/replay state. It is
++accepted only by the broker return endpoint for the same provider and purpose.
++It grants permission to complete that one linking operation; it cannot create
++an account session, access another account, change provider, or enter the
++permanent native callback path. The endpoint must reject malformed, expired,
++wrong-audience, wrong-purpose, already-consumed, and account-mismatch values
++without disclosing account or provider details.
++
++The broker revalidates account expiry, deletion, purpose, and operation state
++after the browser/provider wait and immediately before the grant commit. The
++commit uses an atomic operation/version precondition so expiry or revocation
++cannot race a successful write. If the provider exchange cannot be fenced
++atomically, the plan must document its revocation linearization point and the
++residual exposure; later local publication is suppressed after invalidation.
++
++## Expiry and privacy lifecycle
++
++Temporary accounts retain the product requirement of a 24-hour lifetime from
++creation. The implementation must store an absolute UTC expiry and use one
++clock/format at every boundary. Handoff expiry is shorter than the account
++lifetime and must be chosen from provider round-trip needs, with an explicit
++maximum and no silent extension. An operation cannot extend account lifetime.
++
++At account expiry, the lifecycle owner first revokes future broker writes and
++then removes or tombstones the account and its temporary operation/grant
++records according to the repository's retention decision. Delayed provider
++returns, retries, buffered telemetry, caches, and exports must fail the same
++epoch/tombstone fence and must not recreate state. Logs and diagnostics contain
++operation identifiers and outcome classes only; they inherit the account's
++sensitivity, purpose, retention, and erasure obligations. External provider
++copies are outside local erasure authority and must be reported as such.
++
++Required expiry cases are: begin near expiry; provider return after expiry;
++expiry during provider exchange; duplicate return; account deletion during a
++return; and a replacement account using the old operation identifier.
++
++## Native mobile compatibility boundary
++
++The existing native contract remains the default and sole path for permanent
++accounts: `MobileOAuth.begin` still requires a permanent registry subject, and
++`complete` still writes the existing provider grant shape. No shared callback
++change is required for released clients.
++
++The compatibility adapter is additive and temporary:
++
++- temporary-account callers select the browser broker explicitly;
++- permanent-account callers continue to select `native` and are rejected by
++  the broker unless an explicitly separate future contract is approved;
++- the adapter translates only broker completion into the account-link owner;
++- it never translates a handoff into a native callback subject or migrates
++  permanent grants;
++- provider names and callback versions are validated at the adapter boundary.
++
++The supported coexistence profile is old mobile clients using native OAuth,
++new temporary-account clients using the broker, and a backend capable of
++serving both. No rollback binary may interpret a broker handoff as a native
++callback. A feature/configuration switch may choose temporary-account routing,
++but it is an operational selector, not a second authorization mechanism.
++
++## Migration and rollout
++
++There is no bulk account migration. Existing permanent registry entries and
++provider grants remain untouched. The migration is an additive schema and
++contract rollout:
++
++1. Add the broker operation/credential representation and additive readers;
++   deploy storage and expiry fencing before issuing credentials.
++2. Deploy the backend adapter with issuance disabled, then enable it for a
++   bounded temporary-account cohort after synthetic contract checks pass.
++3. Observe return success, expiry rejection, replay rejection, provider
++   failures, and native-path invariants while old mobile clients continue on
++   native OAuth.
++4. Expand only after mixed-version evidence covers old native clients and the
++   new temporary browser path.
++
++Every operation transition is idempotent and compare-and-set fenced. An
++interrupted rollout leaves permanent records authoritative and temporary
++operations retryable or explicitly terminal; it must not leave dual grant
++authority. The compatibility adapter is removable after the temporary broker
++cohort is retired, all operations are terminal or expired, and telemetry shows
++no supported consumer for its contract. The broker itself has a separate
++removal decision and is not removed by native-flow rollback.
++
++## Rollback and cost
++
++Rollback disables new temporary broker issuance and routes new temporary
++linking attempts to a clear unsupported/maintenance response. It leaves
++already-issued handoffs valid only until their recorded expiry, unless an
++explicit revocation operation is available; the return endpoint remains for
++safe terminalization and replay rejection. In-flight provider exchanges are
++revalidated before any grant commit. Permanent native OAuth continues without
++rollback changes.
++
++The principal costs are:
++
++- one durable operation/credential representation, expiry cleanup, and
++  observability surface;
++- an additive broker endpoint and provider adapter contract;
++- mixed-version tests and support for old native clients during coexistence;
++- operational work to revoke or drain issued handoffs during rollback;
++- privacy review and retention/erasure evidence for temporary records,
++  logs, caches, and provider-disclosed data;
++- eventual cleanup of the adapter, storage, metrics, and runbook after the
++  removal gate is met.
++
++The main residual rollback risk is provider-side authorization already granted
++before local rollback; local rollback can prevent future local commits but
++cannot recall bytes or external provider state. The runbook must name the
++provider revocation action and its evidence separately from local rollback.
++
++## Quality scenarios and evidence
++
++1. **Temporary success** — a valid unexpired temporary account starts Polar
++   linking, completes once, and receives one grant; duplicate return produces
++   no second effect. Bound: one committed grant and one terminal operation.
++2. **Permanent compatibility** — an existing permanent account and old native
++   client complete the current callback path while the broker is enabled.
++   Bound: existing registry/grant behavior is unchanged.
++3. **Expiry fence** — expiry occurs between provider return and commit.
++   Expected: commit is rejected and no grant, cache, telemetry, or error body
++   discloses the account. Bound: no post-expiry local write.
++4. **Replay and confusion** — a handoff is replayed, presented to the wrong
++   provider/purpose/account, or sent to a native callback. Expected: reject
++   without escalation or cross-account effect.
++5. **Mixed rollout** — old native clients, new temporary browser clients, and
++   an older backend reader coexist during the supported window. Expected:
++   native requests remain native and broker records fail closed where the old
++   reader cannot interpret them.
++6. **Rollback** — issuance is disabled during an in-flight cohort. Expected:
++   permanent native linking continues; issued handoffs expire or are revoked;
++   no ambiguous operation state remains.
++
++Evidence must distinguish synthetic/provider-fake tests, storage migration
++checks, and any real provider/mobile release evidence. This plan does not claim
++real-provider or released-client proof; those classes remain pending until an
++authorized implementation and test campaign exists.
++
++## Assurance and implementation order
++
++Implementation owners are architecture foundations (ownership/composition),
++interfaces and events (broker and credential contract), and data and
++compatibility (expiry, records, coexistence, migration, and removal). Security
++assurance reviews the new trust boundary and handoff replay/audience/purpose
++threats. Privacy assurance reviews temporary identity and grant retention,
++expiry/erasure, logs, caches, and delayed writers. Independent assurance is
++required before any release claim; the current repository has only synthetic
++provider tests.
++
++The implementation sequence is: freeze the contract and schema; add focused
++owner tests for authorization and expiry fences; add the broker end-to-end
++slice; exercise mixed-version and rollback cases; run changed-path security
++and privacy reviews; then perform an authorized staged rollout. Production
++code is intentionally unchanged by this plan.

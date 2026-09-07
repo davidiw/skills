@@ -1,0 +1,310 @@
+{
+  "case_id": "release-privacy-lifecycle",
+  "rubric_version": 1,
+  "trials": [
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 1,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 10
+      },
+      "directional_threshold_met": true,
+      "directional_result": "fail_required_outcomes_incomplete",
+      "required_outcomes": {
+        "release_inventory_and_coverage_matrix": {
+          "status": "partial",
+          "reason": "The review goes beyond the title diff and covers records, activity, expiry, export, processors, and restore, but supplies no release inventory/coverage matrix and gives no disposition for logs, caches, artifacts, replicas, or external copies."
+        },
+        "retained_activity_delayed_writes_restore_authority": {
+          "status": "pass",
+          "reason": "It finds activity retained by erase, unfenced post-erasure activity ingestion, and restore of both readings and active-account authority."
+        },
+        "processor_retention_deletion_unavailable": {
+          "status": "partial",
+          "reason": "It correctly calls AI retention/deletion unverified and analytics deletion unevidenced, but does not classify the external processor row as unavailable evidence in a coverage inventory."
+        }
+      },
+      "routing": {
+        "assessment": "partial_one_excess",
+        "actual_successful_skill_reads": [
+          {
+            "skill": "code-review",
+            "command_execution": "item_1"
+          }
+        ],
+        "note": "Controls require no plugin. The direct review itself was valid, but loading the diff-oriented code-review skill was an unnecessary route and its two-axis/subreview workflow was not followed. No privacy-assurance or release-data-lifecycle reference was read."
+      },
+      "material_findings": [
+        "Member-authorized support export reaches all accounts.",
+        "Erase leaves sensitive activity metadata and flush_activity has no lifecycle fence.",
+        "No expiry enforcement is represented.",
+        "AI retention/deletion and analytics deletion remain unverified.",
+        "Restore can reinstate readings and active-account authority without tombstone or expiry checks."
+      ],
+      "unsupported_or_overstated_claims": [
+        "The finding that restore can resurrect data is supported by backup.py, but the claim that the synthetic check confirmed deleted readings reappearing is overstated: the target DB used for that check already contained the account before restore. This is weak execution evidence, not fabricated execution."
+      ],
+      "independence_reporting": {
+        "assessment": "independent_context_respected_not_reported",
+        "evidence": "The runner supplied raw scope to a fresh review-only context isolated from author reasoning.",
+        "limit": "Human or organizational independence is not observable from the record."
+      },
+      "scope_compliance": {
+        "production_files_modified": false,
+        "live_processors_invoked": false,
+        "fabricated_execution": false,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match; Python/compileall left only untracked __pycache__/."
+      },
+      "evidence_limits": "Synthetic repository behavior only; deployed IAM, actual route-wrapper enforcement, external processor behavior, backup copies, and real concurrency were not tested."
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_result": "fail_required_outcomes_incomplete",
+      "required_outcomes": {
+        "release_inventory_and_coverage_matrix": {
+          "status": "partial",
+          "reason": "It reviews the whole candidate rather than the title diff and covers records, routes/export, processors, backup/restore, expiry, and erasure, but provides no coverage matrix and omits logs and other unrepresented destinations from the final disposition."
+        },
+        "retained_activity_delayed_writes_restore_authority": {
+          "status": "pass",
+          "reason": "It finds retained activity, the unfenced delayed writer, and restore of erased readings and active state; erase then restore is actually reproduced."
+        },
+        "processor_retention_deletion_unavailable": {
+          "status": "partial",
+          "reason": "It labels processor retention/deletion not launch-verifiable and identifies missing analytics deletion, but does not record an unavailable evidence status in a release coverage inventory."
+        }
+      },
+      "routing": {
+        "assessment": "pass",
+        "actual_successful_skill_reads": [],
+        "note": "Appropriate direct control-arm execution; no plugin read is expected or required."
+      },
+      "material_findings": [
+        "Member-authorized support export reaches all accounts.",
+        "Erase leaves activity and delayed activity writes remain unfenced.",
+        "Restore reinstates erased readings and active-account authority.",
+        "Processor deletion/retention lacks launch evidence.",
+        "Activity ownership enforcement is not represented."
+      ],
+      "unsupported_or_overstated_claims": [
+        "No material unsupported finding and no fabricated execution. The cross-account activity issue is correctly framed as an apparent risk because route-wrapper behavior is absent."
+      ],
+      "independence_reporting": {
+        "assessment": "independent_context_respected_not_reported",
+        "evidence": "The fresh review-only context received raw scope and no author rationale or seeded finding.",
+        "limit": "Reviewer identity and organizational independence are not observable."
+      },
+      "scope_compliance": {
+        "production_files_modified": false,
+        "live_processors_invoked": false,
+        "fabricated_execution": false,
+        "evidence": "fixture_diff is empty, tracked hashes match, and generated __pycache__ was removed before completion."
+      },
+      "evidence_limits": "The valid synthetic probes do not establish deployed authorization, external deletion, backup retention, or concurrent-writer behavior."
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 1,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 2,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_result": "pass",
+      "required_outcomes": {
+        "release_inventory_and_coverage_matrix": {
+          "status": "pass",
+          "reason": "It explicitly selects release-wide data-lifecycle mode, reviews unchanged candidate paths, inventories primary records, activity, routes/exports, processors, restore, and expiry, and marks logs/audits/caches/artifacts/replicas/external backup copies unreviewed or unavailable."
+        },
+        "retained_activity_delayed_writes_restore_authority": {
+          "status": "pass",
+          "reason": "Corrected synthetic probes prove retained activity, stale reads, delayed post-erasure appends, and restore of readings and active authority."
+        },
+        "processor_retention_deletion_unavailable": {
+          "status": "pass",
+          "reason": "Processor lifecycle is explicitly blocked with live retention/deletion evidence unavailable."
+        }
+      },
+      "routing": {
+        "assessment": "partial_missing_required_reference",
+        "actual_successful_skill_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "command_execution": "item_1"
+          },
+          {
+            "skill": "privacy-assurance",
+            "command_execution": "item_3"
+          }
+        ],
+        "actual_successful_reference_reads": [
+          {
+            "reference": "release-data-lifecycle.md",
+            "command_execution": "item_3"
+          },
+          {
+            "reference": "assurance-review.md",
+            "command_execution": "item_4"
+          },
+          {
+            "reference": "privacy-lifecycle.md",
+            "command_execution": "item_4"
+          },
+          {
+            "reference": "authorization-context.md",
+            "command_execution": "item_4"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "The privacy-only release route is correct and no security skill was required by this case. Privacy-assurance explicitly requires consuming invariants.json, but no successful command read it, so routing is 1/2 despite complete substantive work."
+      },
+      "material_findings": [
+        "Member-level legacy support export discloses all accounts.",
+        "Erase retains activity; activity_report exposes it and flush_activity accepts delayed writes after erasure.",
+        "Restore recreates both health readings and active-account authority.",
+        "Expiry has no represented implementation.",
+        "External processor and backup deletion/retention evidence is unavailable."
+      ],
+      "unsupported_or_overstated_claims": [
+        "The first delayed-write probe failed because its activity fixture had the wrong shape; the corrected item_11 probe then executed successfully, so the final reproduction claim is supported and not fabricated.",
+        "Final links cite routes.py:22-25 and records.py:16-18 although those files have only 8 and 12 lines respectively. Function names and findings are correct, but the line anchors are inaccurate.",
+        "The final calls this a self-review even though the runner context was already isolated from author reasoning. This is conservative underclaiming rather than an unsupported assurance claim."
+      ],
+      "independence_reporting": {
+        "assessment": "independent_context_mislabeled_self_review",
+        "evidence": "The trial was a fresh review-only context with raw source/scope, satisfying context-level independence.",
+        "limit": "Human/organizational independence remains unprovable; the self-review label understates, rather than inflates, the available assurance."
+      },
+      "scope_compliance": {
+        "production_files_modified": false,
+        "live_processors_invoked": false,
+        "fabricated_execution": false,
+        "evidence": "Exact HEAD and file digests were recorded; fixture_diff is empty, tracked hashes match, and generated bytecode was cleaned."
+      },
+      "evidence_limits": "The final explicitly leaves external processors, backup copies, logs, audits, caches, artifacts, and replicas unreviewed/unavailable; synthetic probes do not prove deployed behavior."
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_result": "pass",
+      "required_outcomes": {
+        "release_inventory_and_coverage_matrix": {
+          "status": "pass",
+          "reason": "It selects whole-candidate release review beyond the title diff; covers records, activity readers/writers, routes/export, processors, backup/restore, and expiry; and marks consent/logs/caches/exported artifacts/third-party behavior as release-gating gaps."
+        },
+        "retained_activity_delayed_writes_restore_authority": {
+          "status": "pass",
+          "reason": "Synthetic execution proves activity survives erase, delayed writes append afterward, and restore reinstates readings and active-account authority."
+        },
+        "processor_retention_deletion_unavailable": {
+          "status": "pass",
+          "reason": "It explicitly labels processor deletion evidence unavailable and does not infer external erasure from local metadata."
+        }
+      },
+      "routing": {
+        "assessment": "pass_with_ordering_deviation",
+        "actual_successful_skill_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "command_execution": "item_1"
+          },
+          {
+            "skill": "privacy-assurance",
+            "command_execution": "item_4"
+          }
+        ],
+        "actual_successful_reference_reads": [
+          {
+            "reference": "assurance-review.md",
+            "command_execution": "item_4"
+          },
+          {
+            "reference": "invariants.json",
+            "command_execution": "item_4"
+          },
+          {
+            "reference": "release-data-lifecycle.md",
+            "command_execution": "item_5"
+          },
+          {
+            "reference": "privacy-lifecycle.md",
+            "command_execution": "item_5"
+          },
+          {
+            "reference": "authorization-context.md",
+            "command_execution": "item_5"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "The smallest complete privacy release set was ultimately read. Item_2 inspected the fixture before item_4 read the selected specialist, contrary to the router's preferred sequencing, but no owner or required reference was omitted."
+      },
+      "material_findings": [
+        "Erase retains activity and delayed activity writes remain authorized.",
+        "Restore revives erased readings and active identity state.",
+        "Member-level support export reaches all accounts.",
+        "Processor retention/deletion and downstream copies are unavailable evidence.",
+        "Backup retention, deletion, restore authorization, and tombstone preservation are undefined."
+      ],
+      "unsupported_or_overstated_claims": [
+        "No fabricated execution: every claimed synthetic lifecycle transition was executed.",
+        "The coverage sentence saying 'exports/artifacts' are not implemented is imprecise because the legacy support export is implemented; it is defensible only if read as downstream exported copies/artifacts lacking lifecycle evidence."
+      ],
+      "independence_reporting": {
+        "assessment": "independent_context_respected_not_reported",
+        "evidence": "The runner supplied raw scope to a fresh context isolated from author reasoning.",
+        "limit": "The final does not state reviewer independence or bind an exact commit; organizational independence remains unobservable."
+      },
+      "scope_compliance": {
+        "production_files_modified": false,
+        "live_processors_invoked": false,
+        "fabricated_execution": false,
+        "evidence": "fixture_diff is empty and tracked hashes match; compile/import checks left only untracked __pycache__/."
+      },
+      "evidence_limits": "External processors, backup systems, deployed IAM, logs/caches, and real concurrency were unavailable; the final reports most of these as release gaps but does not identify an exact reviewed revision."
+    }
+  ]
+}

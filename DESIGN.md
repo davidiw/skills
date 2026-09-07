@@ -26,7 +26,7 @@ generated views, examples, or tests.
 | Package architecture and this authority map | `DESIGN.md` | `README.md` overview |
 | Repository-local execution and publication rules | `AGENTS.md` | Agent sessions in this repository |
 | Public workflow | `skills/using-engineering-harness/SKILL.md` | README examples and plugin prompts |
-| Internal classes and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
+| Internal classes, scope-expansion approval, and specialist routing | `references/change-classification.md` | Router skill and eval expectations |
 | Invariant statement, activation condition, timing, default rung, and single owner skill | `references/invariants.json` | Generated invariant Markdown, profiles, skills, and validators |
 | Enforcement timing and rung semantics | `references/enforcement-ladder.md` | Invariant assignments, profiles, and validators |
 | Capability vocabulary and capability-to-invariant activation | `references/capability-activation.json` | Profiles, schema, discovery, and validators |
@@ -74,7 +74,12 @@ hardening owns discovery and repair of divergence; verification and operations
 owns evidence semantics, bounded architecture audits, fault campaigns, and
 release gates. Security and privacy assurance own threat review, including
 evidenced defects outside the catalog; implementation owners retain authority
-over product behavior.
+over product behavior. Each assurance reviewer has changed-path and release-wide
+modes. Release modes begin with attack-surface or data-lifecycle inventories,
+then reconcile evidence and uncovered rows beyond the latest diff. The
+`open-world-assurance` entry records a review-policy obligation; additional
+workflow instructions remain in their owning references rather than becoming
+catalog entries.
 
 ## Proportional activation
 

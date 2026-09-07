@@ -46,7 +46,7 @@ entries without redefining them.
    does not invalidate unchanged content evidence; bind release gates to their
    required revision.
 
-For consequential changes to sensitive flows or authorization boundaries, use
+For consequential alterations to trust/authorization or privacy-lifecycle semantics, use
 the relevant `security-assurance` and/or `privacy-assurance` reviewer under
 [`assurance-review.md`](../../references/assurance-review.md). These reviewers
 may discover material defects outside the invariant catalog. They own threat

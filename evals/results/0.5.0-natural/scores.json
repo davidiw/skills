@@ -1,0 +1,519 @@
+{
+  "scoring_contract": "Frozen evals/rubric.md plus exact case outcomes; see README for applicability interpretation.",
+  "arms": {
+    "control": {
+      "trials": 28,
+      "directional_passes": 13
+    },
+    "harness": {
+      "trials": 28,
+      "directional_passes": 18
+    }
+  },
+  "trials": [
+    {
+      "case_id": "authorization-export",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/export.json"
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 7,
+      "directional_pass": false,
+      "assessment": "assessments/export.json"
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 8,
+      "directional_pass": false,
+      "assessment": "assessments/export.json"
+    },
+    {
+      "case_id": "authorization-export",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 8,
+      "directional_pass": false,
+      "assessment": "assessments/export.json"
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 6,
+      "directional_pass": false,
+      "assessment": "assessments/critical.json"
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "fail",
+      "rubric_total": 5,
+      "directional_pass": false,
+      "assessment": "assessments/critical.json"
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 6,
+      "directional_pass": false,
+      "assessment": "assessments/critical.json"
+    },
+    {
+      "case_id": "critical-audit",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 9,
+      "directional_pass": false,
+      "assessment": "assessments/critical.json"
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/erasure.json"
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/erasure.json"
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/erasure.json"
+    },
+    {
+      "case_id": "erasure-telemetry",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 10,
+      "directional_pass": true,
+      "assessment": "assessments/erasure.json"
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/handoff.json"
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/handoff.json"
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/handoff.json"
+    },
+    {
+      "case_id": "handoff-session",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/handoff.json"
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/natural-privacy.json"
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/natural-privacy.json"
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/natural-privacy.json"
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/natural-privacy.json"
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/natural-security.json"
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/natural-security.json"
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/natural-security.json"
+    },
+    {
+      "case_id": "natural-security-review",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/natural-security.json"
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "provider-wake-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "pure-library-parser-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/release-privacy.json"
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/release-privacy.json"
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/release-privacy.json"
+    },
+    {
+      "case_id": "release-privacy-lifecycle",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/release-privacy.json"
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/release-security.json"
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/release-security.json"
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 10,
+      "directional_pass": false,
+      "assessment": "assessments/release-security.json"
+    },
+    {
+      "case_id": "release-security-surface",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/release-security.json"
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "sensitive-copy-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "tiny-cli-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "rubric_total": 12,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "ui-fence-restraint",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 9,
+      "directional_pass": false,
+      "assessment": "assessments/restraint.json"
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/uncatalogued.json"
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/uncatalogued.json"
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "rubric_total": 11,
+      "directional_pass": true,
+      "assessment": "assessments/uncatalogued.json"
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "rubric_total": 11,
+      "directional_pass": false,
+      "assessment": "assessments/uncatalogued.json"
+    }
+  ]
+}

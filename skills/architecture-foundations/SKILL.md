@@ -13,10 +13,18 @@ Use the [invariant catalog](../../references/invariants.json) as normative.
 Interpret only entries whose `owner_skill` names this skill; consume other
 entries without redefining them.
 
+Before designing a new shared surface or widening another owner's contract,
+apply the [Scope expansion gate](../../references/change-classification.md#scope-expansion-gate).
+Discovery and a surface budget justify a proposal; explicit user approval
+licenses implementation beyond the requested scope. Preserve that boundary
+through Design and Deepen, including work hidden behind a feature flag.
+
 ## Workflow
 
 1. Locate product constraints, architecture authority, domain language, and
    current enforcement. Distinguish accepted design from proposals and history.
+   Record the Scope expansion decision before consequential production edits;
+   a feature request alone cannot approve a changed shared contract.
 2. Write observable quality scenarios for the requested behavior. Include the
    stimulus, operating condition, expected response, and measurable bound.
 3. Trace at least one success path and each material failure path through UI or
@@ -39,7 +47,8 @@ entries without redefining them.
    adapters; deterministic product policy does not point outward to them.
 6. Apply a surface budget. Every added interface, state store, event, job,
    compatibility adapter, configuration axis, and generated artifact must name
-   its owner, proof, observability, and deletion condition.
+   its owner, proof, observability, deletion condition, and scope authority.
+   Resolve pending expansion approval before implementing the surface.
 7. Select one end-to-end slice that proves the boundary. Generalize only after
    the slice exposes a repeated shape.
 8. Move each important rule to the appropriate rung in the

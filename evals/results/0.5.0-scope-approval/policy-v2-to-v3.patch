@@ -1,0 +1,18 @@
+--- a/references/change-classification.md
++++ b/references/change-classification.md
+@@ -17,6 +17,15 @@
+ to implement a feature or fix does not by itself grant this broader scope.
+ A feature flag, disabled default, private prototype in production code, or agent-
+ authored design note is not approval.
++
++Measure expansion against the repository's accepted contracts before selecting a
++solution or reassigning owners. A shared boundary gains material scope when it
++supports new principal classes, credential purposes, lifetimes, state writers,
++or client/provider compatibility obligations outside those contracts. Keeping
++endpoint names unchanged or adding private/in-memory state does not preserve the
++old contract. If that contract prevents the requested feature, obtain approval
++for the concrete contract change before implementing it; treating the boundary
++as part of the feature does not supply approval.
+ 
+ When an unapproved expansion is proposed, first make the decision concrete: state the requested
+ outcome, the adjacent weakness and evidence, affected owners/contracts, the

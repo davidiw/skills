@@ -1,0 +1,87 @@
+diff --git a/accounts.py b/accounts.py
+index 299c8f6..51ffb0f 100644
+--- a/accounts.py
++++ b/accounts.py
+@@ -1,12 +1,23 @@
+ from dataclasses import dataclass
+ 
+ 
++TEMPORARY_ACCOUNT_LIFETIME = 24 * 60 * 60
++
++
+ @dataclass(frozen=True)
+ class Account:
+     account_id: str
+     temporary: bool = False
+     expires_at: int | None = None
+ 
++    def is_expired(self, now: int) -> bool:
++        """Return whether this account can still be used at ``now``."""
++        return self.expires_at is not None and now >= self.expires_at
++
+ 
+ def create_temporary(account_id: str, now: int) -> Account:
+-    return Account(account_id, temporary=True)
++    return Account(
++        account_id,
++        temporary=True,
++        expires_at=now + TEMPORARY_ACCOUNT_LIFETIME,
++    )
+diff --git a/mobile_oauth.py b/mobile_oauth.py
+index 3481380..dd813c0 100644
+--- a/mobile_oauth.py
++++ b/mobile_oauth.py
+@@ -3,14 +3,49 @@ class UnsupportedAccount(ValueError):
+ 
+ 
+ class MobileOAuth:
+-    def __init__(self, permanent_registry):
++    def __init__(self, permanent_registry, temporary_registry=None):
+         self.permanent_registry = permanent_registry
++        # Temporary subjects have their own short-lived registry.  They must
++        # never be inserted into the permanent registry because native
++        # callbacks and stored grants there outlive a request.
++        self.temporary_registry = temporary_registry
+ 
+-    def begin(self, account, provider):
+-        if account.temporary or account.account_id not in self.permanent_registry:
++    def begin(self, account, provider, now=None):
++        if account.temporary:
++            if self.temporary_registry is None:
++                raise UnsupportedAccount("temporary linking requires a temporary registry")
++            if now is not None and account.is_expired(now):
++                self.temporary_registry.pop(account.account_id, None)
++                raise UnsupportedAccount("temporary account has expired")
++            self.temporary_registry.setdefault(
++                account.account_id,
++                {"account": account, "grants": {}},
++            )
++            return {
++                "callback": "native-temporary",
++                "subject": account.account_id,
++                "provider": provider,
++                "expires_at": account.expires_at,
++            }
++
++        if account.account_id not in self.permanent_registry:
+             raise UnsupportedAccount("native callback requires a permanent registry subject")
+         return {"callback": "native", "subject": account.account_id, "provider": provider}
+ 
+-    def complete(self, callback, grant):
++    def complete(self, callback, grant, now=None):
++        if callback.get("callback") == "native-temporary":
++            if self.temporary_registry is None:
++                raise UnsupportedAccount("temporary linking requires a temporary registry")
++            account_id = callback["subject"]
++            expires_at = callback.get("expires_at")
++            if now is not None and expires_at is not None and now >= expires_at:
++                self.temporary_registry.pop(account_id, None)
++                raise UnsupportedAccount("temporary account has expired")
++            entry = self.temporary_registry.get(account_id)
++            if entry is None:
++                raise UnsupportedAccount("temporary account is no longer available")
++            entry["grants"][callback["provider"]] = grant
++            return
++
+         account_id = callback["subject"]
+         self.permanent_registry[account_id]["grants"][callback["provider"]] = grant

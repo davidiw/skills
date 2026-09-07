@@ -1,6 +1,6 @@
 ---
 name: using-engineering-harness
-description: Bootstrap or adopt a repository, route ordinary change work, or harden demonstrated architecture friction while loading only the internal Engineering Harness skills required.
+description: Bootstrap or adopt repositories, route ordinary engineering changes, harden demonstrated architecture friction, and coordinate security/privacy reviews, threat reviews, and pre-launch assurance while loading only required specialists.
 ---
 
 # Using Engineering Harness
@@ -22,6 +22,22 @@ sensitive data lifecycle is an assurance review even if it never uses the word
 `privacy-assurance`, complete that review, and finish. Skip the implementation
 owner inventory and specialist-loading steps below. If the user also requests
 fixes, use the full Change route and then review the corrected snapshot.
+
+Choose the assurance mode from the requested scope: a PR, diff, or named flow
+uses changed-path review; a pre-launch, release-wide, or external security/privacy
+readiness request uses the specialists' release-surface/data-lifecycle mode.
+The latter inventories the system beyond the latest diff. For a combined
+security/privacy campaign, use separate specialist contexts over the same frozen
+snapshot when independent contexts are available and authorized. Otherwise label
+self-review and leave any required independent gate pending; loading two skills in one
+context does not establish independence. Reconcile actual coverage and findings
+under the [assurance contract](../../references/assurance-review.md). A request to review
+does not authorize implementation, deployment, or release.
+
+For **every workflow**, apply the
+[Scope expansion gate](../../references/change-classification.md#scope-expansion-gate)
+before implementation and whenever the proposed solution broadens. Reuse
+existing explicit scope approval; ordinary work within it needs no new question.
 
 For **Change** and **Harden**, read `change-classification.md` before applying
 another installed workflow or inspecting solution code. If the resulting route
@@ -62,7 +78,9 @@ the repository's chosen workflow.
    [`change-classification.md`](../../references/change-classification.md) to
    build the smallest applicable internal risk card.
 5. Name the authoritative fact or behavior, its owner, requested outcome,
-   non-goals, and authorized action scopes.
+   non-goals, and authorized action scopes. Before consequential production edits,
+   record the required Scope expansion decision from `change-classification.md`.
+   A pending expansion blocks edits to that boundary while bounded work continues.
 6. Use the single linked routing table and dominance rules in
    `change-classification.md`. For every material risk-card signal, either name
    the selected owner skill or the exact dominance rule that excludes it. Read
@@ -74,8 +92,9 @@ the repository's chosen workflow.
 7. For consequential work, identify active invariants in
    [`invariants.json`](../../references/invariants.json) and their current
    enforcement rungs and exceptions. Reuse existing documents and commands.
-   When the changed path affects sensitive data or authorization, select the
-   applicable security/privacy assurance reviewers from the routing table.
+   Select assurance only for the changed authorization/trust or privacy-lifecycle
+   semantics identified by the routing table, or an explicit review request.
+   Preserving an existing fence or handling sensitive data alone is insufficient.
    The invariant catalog does not limit the defects they may discover.
 8. Execute the user's task. Internal classification is not a substitute for work
    unless the user requested analysis only.

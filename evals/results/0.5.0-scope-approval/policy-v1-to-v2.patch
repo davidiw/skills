@@ -1,0 +1,73 @@
+--- a/references/assurance-review.md
++++ b/references/assurance-review.md
+@@ -67,8 +67,9 @@
+ are available and authorized, give each reviewer the raw scope/non-goals, snapshot,
+ contracts, permitted effects, and its assigned coverage rows. Return findings,
+ evidence, uncovered rows, and actual reviewer-context status for reconciliation.
+-Loading both skills in one context is self-review; leave the independent gate
+-pending when separate review cannot be obtained. Preserve that status and every
++Loading both skills in one context is self-review; leave any required independent
++gate pending when separate review cannot be obtained. When none is required,
++report actual context status without adding a gate. Preserve that status and every
+ unreviewed/unavailable row in the handback. The package specifies this handoff
+ contract; it does not guarantee runtime delegation or production-scale coverage.
+ 
+--- a/references/change-classification.md
++++ b/references/change-classification.md
+@@ -11,16 +11,19 @@
+ Check the proposed solution against the user's authorized outcome before any
+ implementation, including the minimal shortcut. Introducing a new shared
+ protocol, subsystem, credential/session type, framework, compatibility path,
+-configuration axis, or materially broadening another owner's contract requires
++configuration axis, new shared ownership contract, or materially broadening
++another owner's contract requires
+ **explicit user approval of that expansion before implementing it**. Permission
+ to implement a feature or fix does not by itself grant this broader scope.
+ A feature flag, disabled default, private prototype in production code, or agent-
+ authored design note is not approval.
+ 
+-When expansion is proposed, first make the decision concrete: state the requested
++When an unapproved expansion is proposed, first make the decision concrete: state the requested
+ outcome, the adjacent weakness and evidence, affected owners/contracts, the
+ smallest option within current scope, the proposed expansion and its compatibility,
+-privacy, operational, and maintenance costs. Then ask the user to approve that
++privacy, operational, and maintenance costs. The approval handback must include
++these alternatives and concrete tradeoffs; naming cost categories alone is
++insufficient. Mark unknowns explicitly. Then ask the user to approve that
+ specific expansion, citing this gate. Do not implement the expansion while the
+ answer is pending. If the bounded option satisfies the request, use it and leave
+ adjacent work as a proposal; no approval question is needed for work that stays
+@@ -53,7 +56,7 @@
+   irreversible effects?
+ - **Evidence:** does correctness require a real provider, device, deployment,
+   physical artifact, or historical corpus?
+-- **Scope expansion:** what new surface or widened owner contract does the
++- **Scope expansion:** what new shared surface or new/widened owner contract does the
+   solution introduce beyond the authorized outcome? Record `none`, or the
+   concrete proposal with explicit user approval and limits, or `pending` with
+   expansion implementation blocked under the gate above.
+--- a/skills/using-engineering-harness/SKILL.md
++++ b/skills/using-engineering-harness/SKILL.md
+@@ -29,15 +29,18 @@
+ The latter inventories the system beyond the latest diff. For a combined
+ security/privacy campaign, use separate specialist contexts over the same frozen
+ snapshot when independent contexts are available and authorized. Otherwise label
+-self-review and leave the independent gate pending; loading two skills in one
++self-review and leave any required independent gate pending; loading two skills in one
+ context does not establish independence. Reconcile actual coverage and findings
+ under the [assurance contract](../../references/assurance-review.md). A request to review
+ does not authorize implementation, deployment, or release.
+ 
++For **every workflow**, apply the
++[Scope expansion gate](../../references/change-classification.md#scope-expansion-gate)
++before implementation and whenever the proposed solution broadens. Reuse
++existing explicit scope approval; ordinary work within it needs no new question.
++
+ For **Change** and **Harden**, read `change-classification.md` before applying
+-another installed workflow or inspecting solution code. Its Scope expansion gate
+-applies before implementation and again when the proposed solution broadens,
+-including after a minimal route was selected. If the resulting route
++another installed workflow or inspecting solution code. If the resulting route
+ is non-minimal, read every selected owner skill before continuing. Another skill
+ may supplement this route, but does not replace it.
+ 

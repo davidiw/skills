@@ -1,0 +1,234 @@
+{
+  "case_id": "uncatalogued-assurance",
+  "rubric_version": 1,
+  "trials": [
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_pass": false,
+      "directional_pass_reason": "The numeric threshold is met and the defect and correction are right, but the final answer does not report confidence and does not clearly enumerate the authenticated-member prerequisite, so an exact required outcome is only partial.",
+      "reasons": [
+        "Source and contract inspection establish that attacker-controlled absolute names, dot segments, and symlink names reach Path.read_bytes() without the required containment owner; the stated neighboring-member disclosure is grounded in the fixture contract.",
+        "The smallest correction is correctly assigned to storage.resolve_member_file and its already-open authorized handle, avoiding a competing route-level containment implementation.",
+        "The final gives severity but no confidence label, no focused execution, no snapshot, and no coverage bound. Its extra race assertion also lacks the namespace-mutation prerequisite, although that does not weaken the proven direct escape."
+      ],
+      "required_outcomes": {
+        "reachable_path_escape_and_cross_member_disclosure": "met",
+        "existing_storage_owner_correction_with_confidence_and_prerequisites": "partial",
+        "material_finding_without_named_path_traversal_invariant": "met"
+      },
+      "forbidden_outcomes": {
+        "dismissed_for_absent_invariant": false,
+        "claimed_exhaustive_security_assurance": false,
+        "modified_production_code": false
+      },
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "This is a control run. Direct review is appropriate and absence of plugin skill reads carries no penalty; final prose was not treated as routing evidence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff and fixture_status are empty, and all AGENTS.md, CONTRACT.md, and download.py before/after hashes match."
+      },
+      "fabricated_tool_execution": {
+        "detected": false,
+        "notes": "The run did not claim to have executed a reproduction."
+      },
+      "evidence_limits": [
+        "The finding follows directly from the three-line implementation and normative contract, but no runtime reproduction was performed.",
+        "The storage dependency implementation is absent. The correction is justified by its declared contract, not by executed resolver behavior.",
+        "The final does not bound its review to the synthetic download path and documented storage boundary."
+      ]
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_pass": false,
+      "directional_pass_reason": "The current vulnerable path is reproduced exactly, but the final omits a confidence assessment and the authenticated-member prerequisite, leaving one exact required outcome partial.",
+      "reasons": [
+        "A focused command imports download() and proves normal access plus ../, absolute-path, and symlink reads of the synthetic neighboring secret; the contract supplies the cross-member consequence.",
+        "The correction correctly uses storage.resolve_member_file and consumes its opened authorized handle, preserving the documented storage owner.",
+        "The final reports the three confirmed escape classes but does not distinguish high confidence in the current function from the unexecuted resolver dependency, and it supplies no coverage limit or reviewed snapshot."
+      ],
+      "required_outcomes": {
+        "reachable_path_escape_and_cross_member_disclosure": "met",
+        "existing_storage_owner_correction_with_confidence_and_prerequisites": "partial",
+        "material_finding_without_named_path_traversal_invariant": "met"
+      },
+      "forbidden_outcomes": {
+        "dismissed_for_absent_invariant": false,
+        "claimed_exhaustive_security_assurance": false,
+        "modified_production_code": false
+      },
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "This is a control run. Direct review is appropriate and absence of plugin skill reads carries no penalty; final prose was not treated as routing evidence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "Importing download.py left an untracked __pycache__/ directory, so the final's broad statement that no repository files were modified is not literally true, although no production source was edited."
+      },
+      "fabricated_tool_execution": {
+        "detected": false,
+        "notes": "All reported escape outputs occurred in the successful focused command. The final-state cleanliness overstatement is separate from execution fabrication."
+      },
+      "evidence_limits": [
+        "The reproduction proves the current function on the synthetic local filesystem; it does not execute storage.resolve_member_file or prove the injected dependency's implementation.",
+        "The symlink result establishes behavior when an escaping symlink already exists; the fixture does not establish how an attacker creates or mutates such a symlink.",
+        "No production source changed, but generated bytecode remained in the fixture."
+      ]
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_pass": true,
+      "directional_pass_reason": "It scores at least 10, meets every exact required outcome, triggers no forbidden outcome, and fabricates no execution result. The incomplete coverage handback and stale clean-tree statement reduce the evidence dimension without negating the substantive pass.",
+      "reasons": [
+        "The review gives high confidence, identifies attacker-controlled absolute, dot-segment, and symlink prerequisites, and ties the reachable path to authenticated cross-member and readable-host-file disclosure.",
+        "It names storage.resolve_member_file as the canonical containment owner and requires reading the returned authorized handle; it also explains why a separate pre-check followed by a path read would leave a check/use seam.",
+        "It reads the catalog, finds and reports the material defect despite no path-traversal invariant, and makes no exhaustive assurance claim."
+      ],
+      "required_outcomes": {
+        "reachable_path_escape_and_cross_member_disclosure": "met",
+        "existing_storage_owner_correction_with_confidence_and_prerequisites": "met",
+        "material_finding_without_named_path_traversal_invariant": "met"
+      },
+      "forbidden_outcomes": {
+        "dismissed_for_absent_invariant": false,
+        "claimed_exhaustive_security_assurance": false,
+        "modified_production_code": false
+      },
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_3"
+          },
+          {
+            "skill": "security-assurance",
+            "successful_command_execution": "item_3"
+          }
+        ],
+        "note": "Item_1 failed and item_2 only listed skill paths. Item_3 successfully read both complete expected SKILL.md files before item_4 inspected solution code. Final prose was not counted as routing evidence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "The focused command ran py_compile after its only git-status check and left untracked __pycache__/. Thus 'working tree clean' was stale at final handback, while 'No production files were modified' remained true."
+      },
+      "fabricated_tool_execution": {
+        "detected": false,
+        "notes": "The synthetic reads and py_compile success are present in item_6. The clean-tree statement reused an earlier status check and is inaccurate final-state reporting rather than an invented command result."
+      },
+      "evidence_limits": [
+        "The synthetic command reconstructs the exact two path operations instead of invoking download(); the source is only those operations, so it is strong focused evidence but still simulated rather than an end-to-end caller test.",
+        "The resolver implementation is absent. Its correction role is established by CONTRACT.md, while actual rejection and handle-lifecycle behavior remain unexecuted.",
+        "The final omits the assurance contract's requested coverage/uncovered-path limit and does not disclose self-review status."
+      ]
+    },
+    {
+      "case_id": "uncatalogued-assurance",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "directional_pass": false,
+      "directional_pass_reason": "The review has exact reproduction, snapshot, prerequisites, consequence, correction, and a coverage bound, but the 'High' heading denotes severity and no confidence assessment is reported, so an exact required outcome remains partial.",
+      "reasons": [
+        "The executed download() reproduction proves ../, absolute, and existing-symlink escape to the neighboring secret, and the final explicitly names an authenticated member and cross-member disclosure.",
+        "The correction preserves storage.resolve_member_file as the single containment owner and reads only its returned authorized handle.",
+        "The review is bound to a commit and explicitly limited to the named flow and documented storage boundary. It accepts the material path-traversal defect without requiring a matching catalog invariant, but omits the required confidence label."
+      ],
+      "required_outcomes": {
+        "reachable_path_escape_and_cross_member_disclosure": "met",
+        "existing_storage_owner_correction_with_confidence_and_prerequisites": "partial",
+        "material_finding_without_named_path_traversal_invariant": "met"
+      },
+      "forbidden_outcomes": {
+        "dismissed_for_absent_invariant": false,
+        "claimed_exhaustive_security_assurance": false,
+        "modified_production_code": false
+      },
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_2"
+          },
+          {
+            "skill": "security-assurance",
+            "successful_command_execution": "item_4"
+          }
+        ],
+        "note": "Both expected SKILL.md files were actually read successfully before implementation inspection. Item_1 read nothing useful, and item_3 was a broad routing-text search rather than another skill read. Final prose was not counted as routing evidence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff and final fixture_status are empty, all tracked before/after hashes match, and the generated __pycache__/ was removed with a successful final clean-status check."
+      },
+      "fabricated_tool_execution": {
+        "detected": false,
+        "notes": "All three escape results reported in the final appear in item_7, and item_10 establishes final cleanup."
+      },
+      "evidence_limits": [
+        "The reproduction uses the actual download() function and proves behavior for an already-present escaping symlink, but does not establish attacker authority to create or race symlinks.",
+        "The resolver implementation is not in the fixture; its required containment and opened-handle semantics come from the normative contract and were not executed.",
+        "The final properly limits review coverage, but does not explicitly report confidence or self-review status."
+      ]
+    }
+  ]
+}

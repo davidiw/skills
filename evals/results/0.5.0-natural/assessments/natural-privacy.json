@@ -1,0 +1,204 @@
+{
+  "case_id": "natural-privacy-review",
+  "rubric_version": 1,
+  "trials": [
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 1,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "reasons": [
+        "Correctly grounds health-activity metadata and erasure in CONTRACT.md, proves buffered callback -> erase -> flush recreates the event, and separately proves post-erasure callback admission.",
+        "Requires an atomic active-lifecycle predicate on the write path and pending-callback removal; it does not invent a retained-audit exemption.",
+        "The final answer omits the required explicit evidence/coverage limit, so it does not earn a complete required-outcomes pass despite an 11/12 directional score."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "Control-arm direct review is appropriate; no plugin or specialist read is expected."
+      },
+      "independence_reporting": {
+        "assessment": "respected_but_not_explicitly_labeled",
+        "evidence": "A fresh review thread received raw scope and inspected only the fixture contract and implementation; no author reasoning or expected finding appears in the transcript.",
+        "limit": "The record establishes context separation, not the human authorship or organizational independence of the reviewer."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "Running Python created untracked __pycache__/; this is not a production-source edit."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution. Calling the unfenced admission and unfenced flush two high-severity issues slightly double-counts one lifecycle-fencing defect, but both paths are demonstrated."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "Only the synthetic Store and repository contract were reviewed; external queues, stores, processors, real concurrency, and production deployment state were not represented."
+      }
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "control",
+      "trial": 2,
+      "substantive_grade": "partial",
+      "required_outcomes_grade": "partial",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 1,
+        "scope_and_action_authority": 2,
+        "total": 11
+      },
+      "directional_threshold_met": true,
+      "reasons": [
+        "Correctly traces record_activity -> erase -> flush, reproduces the erased event's recreation, and checks every repository reference to the relevant state and methods.",
+        "Grounds the violation in the declared health-metadata erasure obligation and no-audit-exception clause, then requires write-time atomic lifecycle authority plus pending-callback cleanup.",
+        "The final answer omits the required explicit evidence/coverage limit, so it remains a strong partial rather than a complete pass."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [],
+        "note": "Control-arm direct review is appropriate; no plugin or specialist read is expected."
+      },
+      "independence_reporting": {
+        "assessment": "respected_but_not_explicitly_labeled",
+        "evidence": "A fresh review thread received raw scope and no implementation-author reasoning or expected outcome.",
+        "limit": "The record establishes context separation, not reviewer identity or organizational independence."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "Running Python created untracked __pycache__/; this is not a production-source edit."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": false,
+        "grader_limit": "Only the synthetic repository was exercised; external queues/stores, actual concurrent scheduling, and production deployment state remain unreviewed."
+      }
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 1,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 2,
+        "scope_and_action_authority": 2,
+        "total": 12
+      },
+      "directional_threshold_met": true,
+      "reasons": [
+        "Reports a high-confidence blocking privacy defect with exact source location, reachable sequence, focused reproduction, material consequence, and the smallest correction.",
+        "Correctly classifies the event as health-activity metadata, applies the repository's erasure/no-audit contract, and requires atomic lifecycle authority at persistence rather than deletion alone.",
+        "Binds the review to commit 237d4b4822645434fff3b93f7e5335e13e5afbed and explicitly limits coverage to the represented temporary-identity lifecycle."
+      ],
+      "routing": {
+        "assessment": "pass",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_4"
+          },
+          {
+            "skill": "privacy-assurance",
+            "successful_command_execution": "item_4"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "The initial alias-path read failed, but item_4 successfully read both complete SKILL.md files before solution-code inspection. Privacy-only assurance is the smallest complete set; no security reviewer is warranted by this fixture. Shared assurance, privacy-lifecycle, authorization-context, and invariant references were also read."
+      },
+      "independence_reporting": {
+        "assessment": "respected_but_not_explicitly_labeled",
+        "evidence": "The runner launched a fresh reviewer on raw prompt, contract, source, and frozen skill policy, without implementation reasoning or an expected finding.",
+        "limit": "The final answer does not explicitly call the context independent; the record proves context isolation but cannot prove human/organizational independence. No repository gate requiring a second reviewer is present."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "The focused Python reproduction created untracked __pycache__/ only."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution. The post-erasure admission variant was established by direct inspection of unconditional record_activity(), even though only the pre-erasure-buffer sequence was executed."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": true,
+        "trial_statement": "Coverage was limited to this repository's temporary-identity lifecycle; no external telemetry, logs, or processors are represented here.",
+        "grader_limit": "The reproduction is synthetic and does not prove real production concurrency or external deletion."
+      }
+    },
+    {
+      "case_id": "natural-privacy-review",
+      "arm": "harness",
+      "trial": 2,
+      "substantive_grade": "pass",
+      "required_outcomes_grade": "pass",
+      "rubric_scores": {
+        "routing_precision": 2,
+        "proportionality": 2,
+        "authority_and_semantics": 2,
+        "lifetime_and_failure": 2,
+        "compatibility_and_evidence": 2,
+        "scope_and_action_authority": 2,
+        "total": 12
+      },
+      "directional_threshold_met": true,
+      "reasons": [
+        "Reports the blocking late-writer path with exact locations and executed state showing active/readings removed while events is repopulated.",
+        "Correctly applies the contract's sensitivity, erasure, and no-retained-audit rules and calls for atomic lifecycle fencing at callback persistence/flush and coordination with erasure.",
+        "Binds the review to baseline commit 34b40a8 and explicitly limits coverage to the repository implementation, excluding external queues or stores."
+      ],
+      "routing": {
+        "assessment": "pass_with_ordering_deviation",
+        "observed_specialist_reads": [
+          {
+            "skill": "using-engineering-harness",
+            "successful_command_execution": "item_3"
+          },
+          {
+            "skill": "privacy-assurance",
+            "successful_command_execution": "item_5"
+          }
+        ],
+        "security_assurance_read": false,
+        "note": "The initial alias-path read failed, then item_3 read the router and item_5 read privacy-assurance. Security-assurance was correctly omitted. The implementation was inspected in item_4 before the selected privacy specialist was read, contrary to the router's read-specialist-before-investigation sequencing, but the smallest complete skill set and substantive route were ultimately correct."
+      },
+      "independence_reporting": {
+        "assessment": "respected_but_not_explicitly_labeled",
+        "evidence": "The review was run in a fresh context with raw scope and no author reasoning or expected finding.",
+        "limit": "The final answer does not explicitly label independence; the record proves context isolation only, and no repository gate requiring a second reviewer is present."
+      },
+      "review_only_scope": {
+        "production_files_unchanged": true,
+        "evidence": "fixture_diff is empty and all tracked before/after hashes match.",
+        "runtime_artifact": "The focused Python reproduction created untracked __pycache__/ only."
+      },
+      "unsupported_claims": [
+        "No material unsupported finding and no fabricated execution. The unexecuted post-erasure admission variant follows directly from unconditional record_activity()."
+      ],
+      "evidence_limits": {
+        "reported_by_trial": true,
+        "trial_statement": "Coverage is limited to the repository's contract and implementation; external queues or stores are not present to review.",
+        "grader_limit": "The synthetic model does not prove real production concurrency or external deletion behavior."
+      }
+    }
+  ]
+}

@@ -87,6 +87,12 @@ repairs the root cause, and prevents recurrence. It is not routine review or a
 repository-wide cleanup. Adversarial proof and exact-revision review belong to
 verification and operations.
 
+For a named flow or diff, security/privacy assurance stays on the changed path.
+For pre-launch or external security/privacy readiness, the same reviewers use
+release-wide inventory and coverage matrices, including unchanged and legacy
+surfaces. Merely preserving an existing authorization fence or working in a
+sensitive repository does not activate an independent assurance review.
+
 The normative workflow is in
 [`skills/using-engineering-harness/SKILL.md`](skills/using-engineering-harness/SKILL.md).
 

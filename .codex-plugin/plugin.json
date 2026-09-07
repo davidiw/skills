@@ -1,7 +1,7 @@
 {
   "name": "engineering-harness",
   "version": "0.5.0",
-  "description": "Risk-proportional architecture, durability, compatibility, hardening, and release workflows for coding agents.",
+  "description": "Risk-proportional engineering workflows and scoped or release-wide security/privacy assurance for coding agents.",
   "author": {
     "name": "davidiw",
     "url": "https://github.com/davidiw"
@@ -13,24 +13,29 @@
     "architecture",
     "durable-workflows",
     "compatibility",
-    "verification"
+    "verification",
+    "security-assurance",
+    "privacy-assurance"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Engineering Harness",
-    "shortDescription": "Make consequential changes safer without burdening simple work.",
-    "longDescription": "Bootstrap or adopt repositories, route ordinary changes proportionally, and harden demonstrated architecture divergence with exact evidence.",
+    "shortDescription": "Proportional engineering and security/privacy assurance.",
+    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status.",
     "developerName": "davidiw",
     "category": "Developer Tools",
     "capabilities": [
       "Architecture",
       "Verification",
-      "Operations"
+      "Operations",
+      "Security assurance",
+      "Privacy assurance"
     ],
     "defaultPrompt": [
       "Bootstrap this repository with the smallest useful engineering harness.",
       "Adopt this existing repository and propose an evidence-backed capability profile.",
-      "Route this change proportionally, or harden it only if recurring architecture friction is demonstrated."
+      "Make this change or harden this hotspot using the smallest justified scope and focused verification.",
+      "Review this system for security and privacy readiness before launch, reporting coverage and reviewer independence."
     ]
   }
 }

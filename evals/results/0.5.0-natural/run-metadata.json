@@ -1,0 +1,85 @@
+{
+  "candidate_revision": "a4c32393382b9b2a9ad6f7f35bf2b8b0374795aa",
+  "policy_version": "0.5.0",
+  "cli_version": "codex-cli 0.153.4",
+  "python_version": "3.14.7",
+  "platform": "Linux x86_64",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "trials_per_arm": 2,
+  "case_count": 14,
+  "max_concurrency": 2,
+  "timeout_seconds": 240,
+  "runner_sha256": "574d12d0c9726244d3f1a55ab4c3c8acf84d25ea6bedaef8d016b4dcfe8d293a",
+  "status": "complete",
+  "invalid_pilot": "Expected outcomes were read from installed cache; all pilot results excluded. Collector retained five before stop; final ledger preserves seven completed model records and 49 cancellation/setup-failure records.",
+  "runtime_exclusions": [
+    "evals",
+    "tests",
+    ".git"
+  ],
+  "isolation": "Fresh homes and fixture copies, independently verified installed/control states, identical competing diagnosis skill, explicit exclusion of evaluation material. Runtime policy files remain identical to the frozen source.",
+  "completed_trials": 56,
+  "timeouts": 0,
+  "trial_process_failures": 0,
+  "case_order": "Fixed matrix order; two controls then two harness repeats per case. Up to two jobs overlap.",
+  "sampling_limits": "Single model, two repetitions per arm, small synthetic repositories, fixed order; descriptive comparisons only.",
+  "sanitization": "Runner removes known credential values and common paths; redact_paths.py also normalizes mapping keys and synthetic temporary paths.",
+  "additional_skill_environment": {
+    "full_runtime_skill_catalog_recorded": false,
+    "note": "Fresh CODEX_HOME isolates installed plugin state but does not suppress every user-level skill. A control read the existing code-review skill. Comparisons use the local skill environment, not a catalog restricted to the seeded diagnosis skill.",
+    "observed_extra_skill": "code-review",
+    "sha256": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442",
+    "content_match_to_recorded_output": [
+      {
+        "case_id": "release-privacy-lifecycle",
+        "arm": "control",
+        "trial": 1,
+        "event_item": "item_1"
+      }
+    ]
+  },
+  "release_recommendation": "do_not_publish",
+  "directional_passes": {
+    "control": {
+      "trials": 28,
+      "directional_passes": 13
+    },
+    "harness": {
+      "trials": 28,
+      "directional_passes": 18
+    }
+  },
+  "structural_validation": "48 unit tests, package validator, official plugin validator, and all 10 official skill validators pass.",
+  "model_started_at_utc": "2026-09-06T04:50:00.250078+00:00",
+  "model_ended_at_utc": "2026-09-06T05:25:17.213540+00:00",
+  "artifact_sha256": {
+    "README.md": "55d22e280f48de49dbe7079349876ceb7a7ece3e3e91d8d880fa2e69587899e7",
+    "assessments/critical.json": "0df912a63a9a40419ce5149efb5126209bf27277d13407cf1229220311fd4393",
+    "assessments/erasure.json": "107dd101ddc1d2381dd83a4708442fd0fc6b30a63c2b19dd78c6b3630b0a5033",
+    "assessments/export.json": "a716b90294342606581ba45cff4539fa571212328218f9b478023a42fbce5a1e",
+    "assessments/handoff.json": "56a94543068c0f98dd631bd6bfd37258aa5676eec822909c4e5c4f4d2531838f",
+    "assessments/natural-privacy.json": "d6444bb1b1d71c06dbd7a5bff4b9d345e3ee8a1ef1bfcb712f9e5e7a72f94407",
+    "assessments/natural-security.json": "2cb0093b110a1315082e1dc0a7e1d8dacba97df409b3e7b707daa83e693473ff",
+    "assessments/ordinal-review-probes.json": "8f87cd1313ba84cb54d59c523c4d14db86b0ed7d902f71227497aa6bdb6c1f8a",
+    "assessments/release-privacy.json": "b7a9c6dc0f16720b9ad0be1616d8df38153cf8cede82243c85dba40c55d47dd1",
+    "assessments/release-security.json": "f6c16ece6731bbce0b6e11a910eeab3454dcaa5b591f930143280127ff1c4f6b",
+    "assessments/restraint.json": "5580cb69e7037134052858475490962ea27095f360b0d8c536e9e2ca83a6fda8",
+    "assessments/uncatalogued.json": "2db534e9838d878b8a7b9d3c90deb627f1c8df2bee69a9cec853792c35b77a58",
+    "candidate.bundle": "e2212c81a552969d9eaccd6738f620fca9b1ac6fe0d00fe83ac3d30c32f3a6b3",
+    "integrity-audit.json": "4e8fad60794bbb6ccb95df77ec9b0fcc4a10743b3371c19135f43af1b2735867",
+    "invalid-pilot/attempt-ledger.json": "e70bc3d4a8631cbd7fcd0c69fac8c2cdd74f49be37a11f6e6527faf407c8db43",
+    "invalid-pilot/manifest.json": "5775e7f6913f7b0721d74c481846595c05d138cb861bfea067f436f6025e7294",
+    "invalid-pilot/run_matrix.py": "90cc5b52735fbf3a2278bcac7fe947146fe0d27f3acc198dc21921bf2575e681",
+    "manifest.json": "21ee68eb648719bdd3fd59df7a564d21348a4cbaf59c4cff26539d5a7205b741",
+    "metrics.json": "ed1c0cdb83087b3a0b1c1536363c973afcdb7415f6c51978435d7f7a60e88a53",
+    "redact_paths.py": "eda096e79700c34f8ae8bd0b9869356d856fea19d9cd2709bbba37e77ce75918",
+    "routing.json": "4abdf8bf47d2fe38a169a976dc7b68d48d8c332c7e2f72266dd22b68784bb3b2",
+    "run_matrix.py": "574d12d0c9726244d3f1a55ab4c3c8acf84d25ea6bedaef8d016b4dcfe8d293a",
+    "scores.json": "b9e4722d3673f27649242222c9ee2f6ce494c7c33b5c5156c33bc846d04168cc",
+    "snapshot.json": "5ab40bdfce6f9cd6ca59d871e4383fd13d0e2000842109fb6055f3cbe89dc246",
+    "summarize_results.py": "9aaa189723a77c3d491881b7436cef49c347c48a0aa3e9a49c04c01765d7b728",
+    "summarize_scores.py": "c13e21e20043339cca8a3608b206cd2a99378a90f62473fe1b1d71940383e44b",
+    "test_runner.py": "02c5eacedef0c01dafe9809a5dae46a6787ed40e153a60eb68db72765b815105"
+  }
+}
