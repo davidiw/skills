@@ -9,4 +9,7 @@ Existing routes and state meanings remain accepted unless a specific proposal
 is approved. Small local hierarchy/copy changes may preserve these semantics;
 new destinations, promises or visual identity require explicit approval.
 
-Today owns both current metrics and scheduled actions. Schedules stay inline in Today activity; there is no separate review destination. Weekly averages already belong inside the matching metric. Product priority between summaries and schedule is not authorized to change by a metric request.
+Today owns current metrics and scheduled actions. The placement of new historical
+metric context is not otherwise specified. Schedules stay inline in Today activity.
+Preserve existing routes and product priority; adding a destination or changing the
+relative priority of metrics and scheduled actions requires approval.
