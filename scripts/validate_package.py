@@ -308,8 +308,17 @@ def validate_evals(errors: list[str]) -> None:
 
 
 def validate_methodology_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:
+    require(type(matrix.get("schema_version")) is int and matrix["schema_version"] == 1,
+            "methodology matrix: invalid schema version", errors)
+    require(matrix.get("conditions") == ["control", "harness"],
+            "methodology matrix: both control and harness arms required", errors)
+    require(type(matrix.get("trials")) is int and matrix["trials"] > 0,
+            "methodology matrix: positive trial count required", errors)
     required = {"methodology-trigger", "methodology-single-pair", "methodology-qualified", "methodology-restraint"}
     ids = matrix.get("case_ids", [])
+    if not isinstance(ids, list) or not all(isinstance(x, str) for x in ids):
+        errors.append("methodology matrix: case_ids must be strings")
+        return
     require(required <= set(ids), "methodology matrix: missing discovery/qualification/restraint regression", errors)
     require(len(ids) == len(set(ids)) and set(ids) <= set(cases), "methodology matrix: duplicate or unknown case", errors)
     require(matrix.get("prompt_mode") == "natural", "methodology matrix: natural prompts required", errors)

@@ -100,6 +100,19 @@ class MethodologyAuditTest(unittest.TestCase):
         self.assertTrue(audit_methodology(self.root, {'sources': []}))
 
 class MethodologyCorpusTest(unittest.TestCase):
+    def test_missing_arm_invalid_schema_or_zero_trials_fail(self):
+        sys.path.insert(0, str(ROOT/'scripts'))
+        from validate_package import validate_methodology_matrix
+        matrix = json.loads((ROOT/'evals/methodology-matrix.json').read_text())
+        cases = {c['id']: c for c in json.loads((ROOT/'evals/cases.json').read_text())['cases']}
+        for change in [{'conditions':['harness']}, {'conditions':['control']}, {'conditions':[]},
+                       {'trials':0}, {'trials':True}, {'schema_version':0}, {'schema_version':True},
+                       {'case_ids':[{}]}]:
+            with self.subTest(change=change):
+                errors = []
+                validate_methodology_matrix({**matrix, **change}, cases, errors)
+                self.assertTrue(errors)
+
     def test_regressions_cannot_be_deleted_or_made_explicit(self):
         sys.path.insert(0, str(ROOT/'scripts'))
         from validate_package import validate_methodology_matrix
