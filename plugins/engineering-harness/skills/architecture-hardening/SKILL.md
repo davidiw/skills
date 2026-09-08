@@ -18,7 +18,9 @@ their owners retain normative interpretation.
 4. If another token/store/mutation path/exception seems necessary, expose the
    smallest simplifying options and compatibility costs before implementing an
    unapproved expansion. Move one slice to one owner; serialize shared writers.
-5. Add narrow recurrence prevention and recheck the original failure. Use a
+5. For a reusable engineering lesson, apply
+   [methodology ownership](../verification-and-operations/references/methodology.md)
+   in a separately authorized slice. Add narrow recurrence prevention and recheck the original failure. Use a
    separate verification campaign only when risk or repository policy calls for
    it. Defer cosmetic decomposition and unrelated hotspots.
 

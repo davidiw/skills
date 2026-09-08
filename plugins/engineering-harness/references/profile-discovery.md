@@ -77,3 +77,16 @@ It warns when an enabled capability loses all detector evidence because removal
 cannot be inferred safely. Medium and low signals are review leads, not gate
 failures. Detector evidence changing within an already enabled capability is
 not meaningful drift by itself.
+
+## Methodology registration audit
+
+Source proposals also locate conventional testing, review and performance policy
+files. Existing arbitrary `sources` keys support repository-specific locations.
+For cross-cutting system review, use `--audit-methodology PROFILE` and optional
+repeated `--policy REPOSITORY_PATH` arguments; this is separate from capability
+and policy-version drift, so it can diagnose an older profile without migrating it.
+A nonzero result identifies missing registration/ownership, unresolved paths or
+the known circular “before explicit skill work” pointer. It does not change files,
+execute a referenced command or establish evidence acceptance. Full methodology
+coverage still needs source inspection; see
+[methodology ownership](../skills/verification-and-operations/references/methodology.md).

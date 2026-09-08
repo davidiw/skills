@@ -167,3 +167,12 @@ behavioral run occurred.
 - No vendor runtime dependency or generated repository framework.
 - No replacement for repository-specific review, test, issue, or operator paths.
 - No claim that heuristic profile discovery proves capability absence.
+
+## Engineering methodology discovery
+
+Repository-specific methodology stays in canonical repository policy/specs and
+commands. Profile `sources` registers those policies; existing invariant
+`enforcement` entries name their owner, rung and artifacts. Verification and
+Operations owns claim qualification and the promotion workflow. The profile
+helper audits registrations without running commands or inferring acceptance.
+No second methodology catalog or threshold copy is maintained in the plugin.

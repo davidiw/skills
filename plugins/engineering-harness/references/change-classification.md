@@ -9,7 +9,8 @@ Establish the accepted owner/source and semantics: supported principals, purpose
 lifetimes, writers and compatibility obligations. Do this before selecting a fix
 or state store. Persistent/wire evolution, cross-process lifetime, identity/
 authorization, sensitive collection/use/disclosure/erasure, shared contention,
-physical proof and external release actions are consequential. Record relevant
+physical proof, shared testing/evidence/review policy and external release actions
+are consequential. Record relevant
 authority, lifetime, consumers, failure/proof and action limits; reuse accepted
 profile/owner evidence and read exact catalog entries only for unresolved meanings.
 
@@ -65,7 +66,7 @@ Choose and **read** one implementation skill for the unresolved decision in
 | UI/domain/platform composition, useful-paint ownership | [application composition](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync/migration, sensitive derivation/retention/erasure | [data and compatibility](../skills/data-and-compatibility/SKILL.md) |
 | Recurring divergence/root-cause consolidation | [architecture hardening](../skills/architecture-hardening/SKILL.md) |
-| Exact evidence/release campaigns, operator tools, physical proof | [verification and operations](../skills/verification-and-operations/SKILL.md) |
+| Evidence standards, testing/review methodology, benchmarks, operations | [verification and operations](../skills/verification-and-operations/SKILL.md) |
 
 Bounded work normally needs one specialist; consequential work generally at most
 two before evidence justifies more. Another owner needs a distinct unresolved
