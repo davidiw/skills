@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.5.1",
+  "harness_policy_version": "0.6.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",

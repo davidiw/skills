@@ -1,0 +1,182 @@
+{
+  "date": "2026-09-07",
+  "method": "Read-only shallow clones of current remote default branches; selected entrypoints and references inspected, not installed or executed. Some long files inspected in sections. No upstream test suites run.",
+  "sources": [
+    {
+      "name": "impeccable",
+      "remote": "https://github.com/pbakaus/impeccable.git",
+      "sha": "44e825090eabd187e003920ac9907737a5b97119",
+      "commit_date": "2026-09-07T12:25:27-07:00",
+      "inspected_files": [
+        {
+          "path": ".agents/skills/impeccable/SKILL.md",
+          "bytes": 11597,
+          "sha256": "0c20e5619ce94704f8a86b64e26f350ade0c6fb86b6b886c2881c01caec5a662"
+        },
+        {
+          "path": ".agents/skills/impeccable/reference/shape.md",
+          "bytes": 3547,
+          "sha256": "a55f016c046cb6a27c55bd7f346375aeb506a755c4fbca19a5f92dbd42309c23"
+        },
+        {
+          "path": ".agents/skills/impeccable/reference/critique.md",
+          "bytes": 45944,
+          "sha256": "cb8caddbb3919e5bf7f252143b519fb16db28a244642d937b186cb89962d9201"
+        },
+        {
+          "path": ".agents/skills/impeccable/reference/clarify.md",
+          "bytes": 4590,
+          "sha256": "173dd66abe65633910dcb04a51f40d6ff2a793f87088f022a02fc4cad24dd133"
+        },
+        {
+          "path": ".agents/skills/impeccable/reference/operate.md",
+          "bytes": 4145,
+          "sha256": "a9d2203acd45ca33a13d5c68b02b23ed512425ac15f0e8438318ed124b43729d"
+        },
+        {
+          "path": ".agents/skills/impeccable/reference/polish.md",
+          "bytes": 6646,
+          "sha256": "81666fc7f783b4e3514db6554e713dc0479bd9cdedb06e93d15f8b579aae869a"
+        },
+        {
+          "path": "tests/skill-behavior-harness.test.mjs",
+          "bytes": 7057,
+          "sha256": "a4c211d39cffc0b7278f95a7eca05bbae5f78899ce972503950fd04d667e8fc3"
+        }
+      ]
+    },
+    {
+      "name": "anthropic",
+      "remote": "https://github.com/anthropics/skills.git",
+      "sha": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+      "commit_date": "2026-09-03T09:37:13-07:00",
+      "inspected_files": [
+        {
+          "path": "skills/frontend-design/SKILL.md",
+          "bytes": 9390,
+          "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+        }
+      ]
+    },
+    {
+      "name": "practicalswan",
+      "remote": "https://github.com/practicalswan/agent-skills.git",
+      "sha": "afbb609dec5b7bf08c8384a013b6b3b535517da2",
+      "commit_date": "2026-09-08T02:37:02+07:00",
+      "inspected_files": [
+        {
+          "path": "frontend-design/SKILL.md",
+          "bytes": 16186,
+          "sha256": "e2d8d74516d1c31a153aba29a712935feabf5427431880f9c8a9f8c27d59a169"
+        }
+      ]
+    },
+    {
+      "name": "magnus",
+      "remote": "https://github.com/magnus919/agent-skills.git",
+      "sha": "def688dc1edc7bb1f25194250fe73259f3115ef2",
+      "commit_date": "2026-09-07T01:17:47-04:00",
+      "inspected_files": [
+        {
+          "path": "product-design-and-ux/SKILL.md",
+          "bytes": 5819,
+          "sha256": "e93cbfb38ef368d85da35122f24926d72fc9bd2c922b3dae5e5722173d3b8d96"
+        },
+        {
+          "path": "product-design-and-ux/references/scenario-probes.md",
+          "bytes": 2109,
+          "sha256": "b2056d626b38c003a3cd739cf4365d3065ad77498dd9817752b7c238628acd24"
+        },
+        {
+          "path": "product-design-and-ux/references/task-flows-and-state-models.md",
+          "bytes": 1611,
+          "sha256": "97b5fec47b43c3e30bb90e61fb5e4604f54155e1f2bd2151f9007f89fbcaed9f"
+        },
+        {
+          "path": "brand-designer/SKILL.md",
+          "bytes": 9432,
+          "sha256": "3ee7a3b224f32882d699e3f44c7f6ce5e79c896e79c36c395021020798b8c0c9"
+        },
+        {
+          "path": "brand-designer/templates/voice.md",
+          "bytes": 2976,
+          "sha256": "17e054bc9181a7e093b139c179e2d452ad4ada8aa7d5df70e5ef30fafd0bcf27"
+        }
+      ]
+    },
+    {
+      "name": "nolly",
+      "remote": "https://github.com/nolly-studio/agent-skills.git",
+      "sha": "2008e7f671eb9f55989b73f9e33cbe06e74c428a",
+      "commit_date": "2026-07-21T11:03:23-04:00",
+      "inspected_files": [
+        {
+          "path": "skills/design-md/SKILL.md",
+          "bytes": 8133,
+          "sha256": "6081e815704e2d3ddc7bf621340cf95411b4e190cc9f381a2ed3b7a86e129860"
+        },
+        {
+          "path": "skills/design-md/references/design-md-template.md",
+          "bytes": 4040,
+          "sha256": "bf10be89c278864e2499087dc8f2c2371dcf7d4c4e88f7f9e026d6bdb75de69b"
+        }
+      ]
+    },
+    {
+      "name": "vercel",
+      "remote": "https://github.com/vercel-labs/agent-skills.git",
+      "sha": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "commit_date": "2026-08-28T15:36:07+02:00",
+      "inspected_files": [
+        {
+          "path": "skills/web-design-guidelines/SKILL.md",
+          "bytes": 1231,
+          "sha256": "f4647ca866a3accf763777f83e7682954f0187cd6bea7eea0399796652414e8f"
+        }
+      ]
+    },
+    {
+      "name": "web-guidelines",
+      "remote": "https://github.com/vercel-labs/web-interface-guidelines.git",
+      "sha": "e3d624baaf29dc1fc645aff3e38f03e564d2d6b1",
+      "commit_date": "2026-08-17T17:21:06-07:00",
+      "inspected_files": [
+        {
+          "path": "command.md",
+          "bytes": 7760,
+          "sha256": "5a775e6411f790f518dbc9c1fa7c50a89e6873502d9a3530a6eb223a590bcfe8"
+        }
+      ]
+    },
+    {
+      "name": "design-corpus",
+      "remote": "https://github.com/VoltAgent/awesome-design-md.git",
+      "sha": "8147538b4226ae41e2487a9179e3bcc1f68e8554",
+      "commit_date": "2026-07-31T15:32:38+03:00",
+      "inspected_files": [
+        {
+          "path": "README.md",
+          "bytes": 16023,
+          "sha256": "3f60b909bf66f844a0d122b45c3e39eaaffc43bfcf3c8717e9bc6b47c781457b"
+        },
+        {
+          "path": "design-md/linear.app/DESIGN.md",
+          "bytes": 24354,
+          "sha256": "30bd30e72c48a16e4bdbd010f2d1c85fab657c6fae3cc85389399aab10f9cb5f"
+        },
+        {
+          "path": "design-md/spotify/DESIGN.md",
+          "bytes": 12955,
+          "sha256": "72e964a6cf551d0603f9854f2f42ee08e97ad4d9e17e037f50f6233508288295"
+        },
+        {
+          "path": "design-md/sentry/DESIGN.md",
+          "bytes": 35444,
+          "sha256": "655c91d7d23b5e869a966b7f1b63ae650567ad5d69003cfc64b0ee62c8e02c1f"
+        }
+      ]
+    }
+  ],
+  "harness_baseline": "8f33b5396ed4ec5340a41be12c7e7850d6e8135f",
+  "proving_ground_evidence": "Private inspection artifacts are not published. The proposal summarizes observations and limits; this manifest attests only external source provenance."
+}

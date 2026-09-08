@@ -1,6 +1,6 @@
 interface:
   display_name: "Use Engineering Harness"
-  short_description: "Engineering changes and security/privacy assurance"
+  short_description: "Engineering, experience, and assurance workflows"
   default_prompt: "Use $using-engineering-harness and select the bootstrap, adopt, change, or harden workflow; route specialist guidance internally."
 policy:
   allow_implicit_invocation: true

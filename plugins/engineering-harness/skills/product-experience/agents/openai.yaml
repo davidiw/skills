@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product Experience"
+  short_description: "Resolve user jobs, flows, and recovery"
+  default_prompt: "Use $product-experience to diagnose the task and choose a bounded experience correction."
+policy:
+  allow_implicit_invocation: false

@@ -66,7 +66,7 @@ runtime source. Historical receipts retain their original layouts and hashes.
 
 ## Skill boundaries
 
-The router plus nine specialists remain separate because they answer different
+The router plus twelve specialists remain separate because they answer different
 questions:
 
 | Skill | Question it owns |
@@ -80,6 +80,19 @@ questions:
 | `verification-and-operations` | What evidence proves the claim, and which external action is authorized? |
 | `security-assurance` | Can the changed path violate trust or authorization, including threats absent from the catalog? |
 | `privacy-assurance` | Does sensitive data retain its purpose, lifecycle, and erasure obligations through every changed representation? |
+| `product-experience` | What job, flow, information priority and recovery make sense to the user? |
+| `interface-design` | Does the rendered interface express accepted intent clearly and accessibly? |
+| `brand-and-language` | What identity/visual intent is proposed or accepted, and how is it expressed in naming and language? |
+
+Experience owners add judgment without owning new engineering invariants.
+[Experience routing](plugins/engineering-harness/references/experience-routing.md)
+selects one unresolved decision; the existing scope checkpoint governs expansion.
+Brand and Language owns identity/visual intent at the proposal and accepted-contract
+level; Interface Design applies that intent in composition. Project-specific taste
+stays in repository design authority. Normative accessibility/platform facts come
+from primary platform sources. [Rendered evidence](plugins/engineering-harness/skills/interface-design/references/rendered-evidence.md)
+is proportional: ordinary bounded work needs relevant observations, while retained
+or gated evidence uses the existing integrity/receipt contract.
 
 Every invariant names exactly one normative owner skill. A consuming skill may
 apply that invariant at its seam but does not reinterpret it. Architecture

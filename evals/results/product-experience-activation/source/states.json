@@ -1,0 +1,38 @@
+{
+  "storage": "localStorage under cedar.reflections, within the current browser",
+  "examples": [
+    {
+      "id": "unfinished-example",
+      "week": "2026-09-01",
+      "step": 1,
+      "answers": [
+        "I walked regularly.",
+        "",
+        ""
+      ],
+      "state": "draft"
+    },
+    {
+      "id": "failed-example",
+      "week": "2026-08-25",
+      "step": 2,
+      "answers": [
+        "Rest",
+        "Busy week",
+        "Try a shorter walk"
+      ],
+      "state": "failed"
+    },
+    {
+      "id": "completed-example",
+      "week": "2026-08-18",
+      "step": 2,
+      "answers": [
+        "Routine",
+        "Weather",
+        "Walk indoors"
+      ],
+      "state": "completed"
+    }
+  ]
+}

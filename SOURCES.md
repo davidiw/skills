@@ -51,3 +51,13 @@ are not relied upon because no text or implementation is reused.
 Review upstream changes deliberately. Record the new revision, material idea,
 local decision, license impact, and affected evaluation before changing a
 skill. A source update never changes installed behavior by itself.
+
+## Product-experience study (0.6 development)
+
+[Borrow / Adapt / Reject](docs/proposals/product-experience/README.md) records the
+Impeccable, Anthropic, PracticalSwan, Magnus, Nolly, Vercel and DESIGN.md studies.
+[Source manifest](docs/proposals/product-experience/sources.json) pins revisions
+and inspected-file hashes. Runtime guidance is an original synthesis, not copied
+skill bodies or product aesthetics. These sources inform judgment patterns;
+normative accessibility/platform facts instead use W3C, Apple, Android and Flutter
+primary documentation linked from the runtime platform-check reference.

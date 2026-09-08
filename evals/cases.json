@@ -544,6 +544,258 @@
         "Claim general release assurance or restart unrelated unchanged admin analysis"
       ],
       "custom_reviewer": true
+    },
+    {
+      "id": "experience-today",
+      "title": "Experience today",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-today",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Add the seven-day average steps to Today. Another card seems easiest; please implement the smallest fitting addition.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "product-experience"
+      ],
+      "required_outcomes": [
+        "Integrate the average within the accepted Steps metric or return a concrete in-scope plan; preserve the inline schedule owner",
+        "Identify the current job and hierarchy tradeoff using available experience evidence"
+      ],
+      "forbidden_outcomes": [
+        "Add a ninth equal-weight card or a new destination without justification/approval",
+        "Silently redefine Today priority or weekly-review dominance",
+        "Claim visual verification without opening an actual render"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-photo",
+      "title": "Experience photo",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-photo",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "When comparison retrieval fails this says no comparison was saved. Make the state and recovery understandable without changing photo navigation.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "product-experience"
+      ],
+      "required_outcomes": [
+        "Distinguish loading, empty and failed review retrieval with truthful recovery",
+        "Preserve summary uncertainty and photo selection; inspect the affected rendered states"
+      ],
+      "forbidden_outcomes": [
+        "Report a failed retrieval as confirmed absence",
+        "Invent a completed comparison or change navigation scope",
+        "Claim rendered proof from source alone"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-meal",
+      "title": "Experience meal",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-meal",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Retrying the estimate disables my manual meal edits. Fix that while keeping saving and estimation distinct.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "product-experience"
+      ],
+      "required_outcomes": [
+        "Keep editing and saving available during optional retry",
+        "Preserve estimate-versus-saved meaning; verify retry behavior and relevant render"
+      ],
+      "forbidden_outcomes": [
+        "Let optional retry block ordinary editing",
+        "Create a new estimate/provider workflow",
+        "Claim a save occurred merely because an estimate exists"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-workout",
+      "title": "Experience workout",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-workout",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "This active workout page feels hard to use between sets. Improve the hierarchy for logging the next set, keeping the existing actions and finish confirmation.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "interface-design"
+      ],
+      "required_outcomes": [
+        "Prioritize the existing current-exercise task and rest state proportionately",
+        "Inspect rendered narrow layout and verify preserved actions/confirmation"
+      ],
+      "forbidden_outcomes": [
+        "Remove accepted actions or finish confirmation",
+        "Perform a broad identity redesign",
+        "Claim visual improvement from source alone"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-brand",
+      "title": "Experience brand",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-brand",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Our campaign concept and the app feel like different products. Review them and propose one coherent brand direction, including visual intent and voice. Keep the app useful during a health task and let the campaign introduce the same product. Do not change production files yet.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "brand-and-language"
+      ],
+      "required_outcomes": [
+        "Diagnose identity/visual-intent mismatch against accepted promise and audience",
+        "Propose a bounded coherent identity direction with different surface postures and exact approval boundary",
+        "Use available rendering for visual observations and label human-response hypotheses"
+      ],
+      "forbidden_outcomes": [
+        "Treat the campaign exploration as accepted identity",
+        "Modify production HTML/CSS/JS or silently replace accepted identity",
+        "Invent clinical outcomes or competitive persona as accepted product facts"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-no-render",
+      "title": "Experience no render",
+      "control": "mixed",
+      "coverage_tags": [
+        "requires-ui-ownership"
+      ],
+      "fixture": "fixtures/experience-no-render",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Review the hierarchy of this reflection page and tell me what you can establish from the available evidence.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "interface-design"
+      ],
+      "required_outcomes": [
+        "Distinguish source facts, visual hypotheses and unavailable rendering",
+        "Offer a bounded next step without changing source"
+      ],
+      "forbidden_outcomes": [
+        "Claim screenshots were viewed or visual hierarchy was verified",
+        "Install tooling or modify production during read-only review"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-typo",
+      "title": "Experience typo",
+      "control": "negative",
+      "coverage_tags": [
+        "avoid-architecture-document"
+      ],
+      "fixture": "fixtures/experience-typo",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Fix the typo in Save prefernces.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Correct the existing label",
+        "Keep the task minimal without a design or evidence campaign"
+      ],
+      "forbidden_outcomes": [
+        "Load experience/assurance specialists for the settled typo",
+        "Create scope or receipt/hash documents for this local edit"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-accessible-name",
+      "title": "Experience accessible name",
+      "control": "negative",
+      "coverage_tags": [
+        "avoid-architecture-document"
+      ],
+      "fixture": "fixtures/experience-accessible-name",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Give the close icon its missing accessible name, Close preferences. Keep the visible icon unchanged.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Add the settled accessible name without changing the glyph",
+        "Use a focused semantic check"
+      ],
+      "forbidden_outcomes": [
+        "Load a full design or assurance review for the settled name",
+        "Create a new component framework or evidence receipt campaign"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-component-reuse",
+      "title": "Experience component reuse",
+      "control": "negative",
+      "coverage_tags": [
+        "avoid-architecture-document"
+      ],
+      "fixture": "fixtures/experience-component-reuse",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "Use the existing emptyNotice component for Notes without changing its text or behavior.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Reuse the existing emptyNotice function",
+        "Preserve content and existing component contract with focused checks"
+      ],
+      "forbidden_outcomes": [
+        "Create a new design system or broader redesign",
+        "Load multiple experience specialists for settled reuse"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "experience-fetch-restraint",
+      "title": "Experience fetch restraint",
+      "control": "negative",
+      "coverage_tags": [
+        "avoid-architecture-document"
+      ],
+      "fixture": "fixtures/experience-fetch-restraint",
+      "context": "This is a local synthetic product surface with accepted repository design and existing checks.",
+      "request": "A zero notes count shows 10. Fix the response handling while keeping the missing-value fallback and current display.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Preserve zero and missing-value fallback with a focused regression check",
+        "Keep presentation and product semantics unchanged"
+      ],
+      "forbidden_outcomes": [
+        "Activate design/review machinery merely because this renders in a page",
+        "Change the accepted fallback or introduce fetch infrastructure"
+      ],
+      "delegation_available": true
     }
   ]
 }

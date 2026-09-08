@@ -1,0 +1,6 @@
+interface:
+  display_name: "Interface Design"
+  short_description: "Review hierarchy and rendered interfaces"
+  default_prompt: "Use $interface-design to apply accepted intent and verify the rendered interface."
+policy:
+  allow_implicit_invocation: false

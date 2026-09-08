@@ -159,3 +159,46 @@ reviewer or named custom-agent contexts. Opaque payloads are hashed in public re
 The unavailable case forbids nested model launches as well as disabling agent
 tools in both arms; the instruction restriction is recorded, not represented as
 an operating-system guarantee. All older frozen receipts remain unchanged.
+
+## Product-experience pilot (0.6 development)
+
+[`experience-matrix.json`](experience-matrix.json) selects ten paired natural
+cases: six meaningful decisions (including identity/visual intent and unavailable
+rendering) and four minimal controls. The existing runner and rubric remain in use.
+Expected skill lists describe route coverage; scoring uses required/forbidden
+behavior and evidence, not maximal skill fanout. The original assurance/scope
+matrices retain their cases and are not replaced by this cohort.
+
+Fixtures are synthetic static pages with Node checks and, where available, a
+local Chromium renderer. Supply the same `EXPERIENCE_CHROMIUM` executable to both
+arms and record its version/hash outside the runtime with the campaign evidence.
+`render.py` uses file URLs with external name resolution blocked; no live data,
+server or provider is needed. The unavailable-rendering case intentionally has no
+renderer and forbids installing one. Rendering setup is preflighted separately
+from model trials. Screenshots support visual observations; interaction behavior
+still needs sequence or focused behavioral checks.
+
+Use the runner's isolated homes and pinned competing-skill catalog. Retain failed
+attempts, exact candidate SHA, cache/fixture hashes, native context traces and
+per-context cost. Assess read-only source preservation, scope limits, actual image
+reads, material source-only claims, and restraint. No full-matrix effectiveness
+or efficiency score follows from this small cohort.
+
+The experience pilot requires `command_boundary: "offline-browser"`, equally in
+both arms. The runner rejects the former unrestricted-network option. It uses the
+existing Codex permission profile and managed proxy: no domain allow entries,
+default-denied filesystem reads with minimal runtime paths plus fixture/skill/browser
+access, and an explicit tool environment without inherited credentials. The client
+can authenticate for model transport; sandboxed commands cannot read its auth file.
+Web search is disabled separately. See [official Codex permissions](https://learn.chatgpt.com/docs/permissions)
+for the distinction between command permissions and client/service transport.
+
+Before copying real authentication, each trial checks synthetic auth and outside-file
+canaries (including a symlink), direct HTTP/raw TCP bypass against a live local sink,
+proxy rejection, local IPC and a real Chromium render. Any failure stops setup;
+there is no unrestricted-network fallback. Config, outcomes, browser hash and
+render-probe hash are recorded. Linux CLI/kernel support is required; an unsupported
+host leaves rendering/evaluation pending. The preflight tests this command boundary,
+not all Codex capabilities or every possible network protocol/host configuration.
+Retain older pilot results as historical evidence of their recorded weaker boundary;
+do not relabel them as protected by the new one.

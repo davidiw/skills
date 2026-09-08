@@ -1,0 +1,1617 @@
+[
+  {
+    "case_id": "experience-accessible-name",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "partial",
+    "required_outcomes": [
+      {
+        "requirement": "Add the settled accessible name without changing the glyph",
+        "status": "met"
+      },
+      {
+        "requirement": "Use a focused semantic check",
+        "status": "not demonstrated"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both add the exact aria-label and preserve the glyph. Neither executes a focused accessible-name check: test.js checks only the button id, and a screenshot cannot verify its accessible name.",
+    "wall_seconds": 27.401580095291138,
+    "usage": {
+      "input_tokens": 88203,
+      "cached_input_tokens": 75136,
+      "output_tokens": 363,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 13067
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 88203,
+          "cached_input_tokens": 75136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 363,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 88566,
+          "uncached_input_tokens": 13067
+        },
+        "wall_seconds": 25.432,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 95,
+          "final_bytes": 162
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "aa6b12978baa74228281522680ed2659bce1366c7170d94d1f094acaa1b9f1f6",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "c64254586419db39005c2e14bee0d07a3f0aaaf161b73c42842baf73a6ccc1a4",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "9f73fd8378fcc9089360d6fb9de55da331e60ca763e383bb3137a4c2fc97c5b7",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "34d59838cb8bbfb0921affc36bdac3d5d7554dd820e03acf392f4ba7ea63ae8e"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "c64254586419db39005c2e14bee0d07a3f0aaaf161b73c42842baf73a6ccc1a4",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "d6a3b29e90e52566c607b2786745375b9f93afd29b940e827db768caa09e384f",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "98396bcc7e82b50494d6dd43c982352a5a77cc9e1f1737aeed764bebc4d4b165",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "34d59838cb8bbfb0921affc36bdac3d5d7554dd820e03acf392f4ba7ea63ae8e"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex 93c3b87..14ec200 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Preferences</h1>\n-<button id=\"close\">\u00d7</button>\n+<button id=\"close\" aria-label=\"Close preferences\">\u00d7</button>\n <p>Display settings</p>\n </main>\n <script src=\"app.js\">\n"
+  },
+  {
+    "case_id": "experience-accessible-name",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "partial",
+    "required_outcomes": [
+      {
+        "requirement": "Add the settled accessible name without changing the glyph",
+        "status": "met"
+      },
+      {
+        "requirement": "Use a focused semantic check",
+        "status": "not demonstrated"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both add the exact aria-label and preserve the glyph. Neither executes a focused accessible-name check: test.js checks only the button id, and a screenshot cannot verify its accessible name.",
+    "wall_seconds": 33.717822551727295,
+    "usage": {
+      "input_tokens": 92702,
+      "cached_input_tokens": 84096,
+      "output_tokens": 505,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 8606
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 92702,
+          "cached_input_tokens": 84096,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 505,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 93207,
+          "uncached_input_tokens": 8606
+        },
+        "wall_seconds": 28.508,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 183,
+          "final_bytes": 160
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "fb1211bab1a47d77474fc95b2b1490029e4c2d789960e3f84fe5eff750cfadf7",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "c64254586419db39005c2e14bee0d07a3f0aaaf161b73c42842baf73a6ccc1a4",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "9f73fd8378fcc9089360d6fb9de55da331e60ca763e383bb3137a4c2fc97c5b7",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "34d59838cb8bbfb0921affc36bdac3d5d7554dd820e03acf392f4ba7ea63ae8e"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "c64254586419db39005c2e14bee0d07a3f0aaaf161b73c42842baf73a6ccc1a4",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "d6a3b29e90e52566c607b2786745375b9f93afd29b940e827db768caa09e384f",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "98396bcc7e82b50494d6dd43c982352a5a77cc9e1f1737aeed764bebc4d4b165",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "34d59838cb8bbfb0921affc36bdac3d5d7554dd820e03acf392f4ba7ea63ae8e"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex 93c3b87..14ec200 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Preferences</h1>\n-<button id=\"close\">\u00d7</button>\n+<button id=\"close\" aria-label=\"Close preferences\">\u00d7</button>\n <p>Display settings</p>\n </main>\n <script src=\"app.js\">\n"
+  },
+  {
+    "case_id": "experience-brand",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Diagnose identity/visual-intent mismatch against accepted promise and audience",
+        "status": "met"
+      },
+      {
+        "requirement": "Propose a bounded coherent identity direction with different surface postures and exact approval boundary",
+        "status": "met"
+      },
+      {
+        "requirement": "Use available rendering for visual observations and label human-response hypotheses",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both inspect actual rendering and propose identity plus visual intent and voice under accepted DESIGN.md; production remains unchanged and proposed implementation awaits approval.",
+    "wall_seconds": 81.0712947845459,
+    "usage": {
+      "input_tokens": 109821,
+      "cached_input_tokens": 90240,
+      "output_tokens": 1577,
+      "reasoning_output_tokens": 74,
+      "uncached_input_tokens": 19581
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 109821,
+          "cached_input_tokens": 90240,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1577,
+          "reasoning_output_tokens": 74,
+          "total_tokens": 111398,
+          "uncached_input_tokens": 19581
+        },
+        "wall_seconds": 79.467,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 521,
+          "final_bytes": 591
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "b3f46ebd35d7e0fdff2173f8fdd9a952ec5dfad87f81c10c47367f37e0e9d0f1",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/brand-proposal.md": "040409ea5154a67a13975737b99e3b6230a5ebb2f5aeb9ee46421bcb2b1d51c5",
+      "renders/narrow.png": "e0eb2e8997fccb0415e6e268dd8e73d28554d354aaf83a1d49a3e5f28edc4abd",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+    },
+    "production_and_check_diff": ""
+  },
+  {
+    "case_id": "experience-brand",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Diagnose identity/visual-intent mismatch against accepted promise and audience",
+        "status": "met"
+      },
+      {
+        "requirement": "Propose a bounded coherent identity direction with different surface postures and exact approval boundary",
+        "status": "met"
+      },
+      {
+        "requirement": "Use available rendering for visual observations and label human-response hypotheses",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both inspect actual rendering and propose identity plus visual intent and voice under accepted DESIGN.md; production remains unchanged and proposed implementation awaits approval.",
+    "wall_seconds": 99.82800483703613,
+    "usage": {
+      "input_tokens": 142221,
+      "cached_input_tokens": 129792,
+      "output_tokens": 2180,
+      "reasoning_output_tokens": 19,
+      "uncached_input_tokens": 12429
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 142221,
+          "cached_input_tokens": 129792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2180,
+          "reasoning_output_tokens": 19,
+          "total_tokens": 144401,
+          "uncached_input_tokens": 12429
+        },
+        "wall_seconds": 98.146,
+        "skills_observed": [
+          "brand-and-language",
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [
+          "references/experience-routing.md",
+          "references/language-and-trust.md",
+          "references/rendered-evidence.md"
+        ],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 11598,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1,
+          "references/experience-routing.md": 1,
+          "skills/brand-and-language/SKILL.md": 1,
+          "skills/interface-design/references/rendered-evidence.md": 1,
+          "skills/brand-and-language/references/language-and-trust.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 559,
+          "final_bytes": 644
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "740806859340642ab809686bbfa5f2d49160aa8aae661613701a2e2adeb8fea6",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "a4bf19b026c94dbb78044871871107df4c201a23b4750784082697c2ab521f1b",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "efb440527dd26b468f13884f580a2d071bf70fec76b163b5b97ff12638603bcf",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/brand-direction.md": "bc75a2258bb1f6973941da962152fed4df8bf19b38324dd22ce395139179a927",
+      "renders/narrow.png": "e0eb2e8997fccb0415e6e268dd8e73d28554d354aaf83a1d49a3e5f28edc4abd",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0bb78b011b1e5c501234fc7b295cc38d008b81eb47db8c2b7efb550aacd41f96"
+    },
+    "production_and_check_diff": ""
+  },
+  {
+    "case_id": "experience-component-reuse",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Reuse the existing emptyNotice function",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve content and existing component contract with focused checks",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both reuse emptyNotice with unchanged text and existing component semantics, without new design machinery.",
+    "wall_seconds": 29.511565923690796,
+    "usage": {
+      "input_tokens": 89443,
+      "cached_input_tokens": 71296,
+      "output_tokens": 419,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 18147
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 89443,
+          "cached_input_tokens": 71296,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 419,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 89862,
+          "uncached_input_tokens": 18147
+        },
+        "wall_seconds": 27.394,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 118,
+          "final_bytes": 184
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "14df020d0b15be2bc89e1acdbcc5d81a12ccd5bbbdd83044bff20a846d61a271",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "9af64107d8efe92febb74059f1a5a5bba6732c4cf78f4c3d29ab843070ffd7a5",
+      "app.js": "297ef1392cb4ef2ebb06742beda9b8e524caf867a0cf692de1250e93125ba008",
+      "index.html": "308761c06d864f9ed156d277e4dae5b8ba07e6e1b206d00bfd832ac7bc60ff91",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "64db3a03487efc1b38527856cc66a34f4d9cb288a16c6750724e72dc906c82c9"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "9af64107d8efe92febb74059f1a5a5bba6732c4cf78f4c3d29ab843070ffd7a5",
+      "app.js": "54ba7911bfb153cb127a0f1cc15ef552ce8a9091625c9812e76816015fea6355",
+      "index.html": "308761c06d864f9ed156d277e4dae5b8ba07e6e1b206d00bfd832ac7bc60ff91",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "661f63dd2ee80ec76b7f0a92f42e1309f015c93eb7108b5b6be06ada9cdf7b78",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "64db3a03487efc1b38527856cc66a34f4d9cb288a16c6750724e72dc906c82c9"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex 5e9ab86..afdc6ac 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,3 @@\n function emptyNotice(message){return '<section role=\"status\" class=\"card\"><p>'+message+'</p></section>';}\n-if(typeof document!=='undefined')document.getElementById('empty').innerHTML='<p>No notes yet.</p>';\n+if(typeof document!=='undefined')document.getElementById('empty').innerHTML=emptyNotice('No notes yet.');\n if(typeof module!=='undefined')module.exports={emptyNotice};\n"
+  },
+  {
+    "case_id": "experience-component-reuse",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Reuse the existing emptyNotice function",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve content and existing component contract with focused checks",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both reuse emptyNotice with unchanged text and existing component semantics, without new design machinery.",
+    "wall_seconds": 36.771352767944336,
+    "usage": {
+      "input_tokens": 93352,
+      "cached_input_tokens": 84608,
+      "output_tokens": 550,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 8744
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 93352,
+          "cached_input_tokens": 84608,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 550,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 93902,
+          "uncached_input_tokens": 8744
+        },
+        "wall_seconds": 34.959,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 199,
+          "final_bytes": 177
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "b97bf96612260b30a16d4ad87840613079fb9f51a512f72512744283df51c2a4",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "9af64107d8efe92febb74059f1a5a5bba6732c4cf78f4c3d29ab843070ffd7a5",
+      "app.js": "297ef1392cb4ef2ebb06742beda9b8e524caf867a0cf692de1250e93125ba008",
+      "index.html": "308761c06d864f9ed156d277e4dae5b8ba07e6e1b206d00bfd832ac7bc60ff91",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "64db3a03487efc1b38527856cc66a34f4d9cb288a16c6750724e72dc906c82c9"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "9af64107d8efe92febb74059f1a5a5bba6732c4cf78f4c3d29ab843070ffd7a5",
+      "app.js": "54ba7911bfb153cb127a0f1cc15ef552ce8a9091625c9812e76816015fea6355",
+      "index.html": "308761c06d864f9ed156d277e4dae5b8ba07e6e1b206d00bfd832ac7bc60ff91",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "661f63dd2ee80ec76b7f0a92f42e1309f015c93eb7108b5b6be06ada9cdf7b78",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "64db3a03487efc1b38527856cc66a34f4d9cb288a16c6750724e72dc906c82c9"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex 5e9ab86..afdc6ac 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,3 @@\n function emptyNotice(message){return '<section role=\"status\" class=\"card\"><p>'+message+'</p></section>';}\n-if(typeof document!=='undefined')document.getElementById('empty').innerHTML='<p>No notes yet.</p>';\n+if(typeof document!=='undefined')document.getElementById('empty').innerHTML=emptyNotice('No notes yet.');\n if(typeof module!=='undefined')module.exports={emptyNotice};\n"
+  },
+  {
+    "case_id": "experience-fetch-restraint",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Preserve zero and missing-value fallback with a focused regression check",
+        "status": "met"
+      },
+      {
+        "requirement": "Keep presentation and product semantics unchanged",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both use nullish fallback, test zero/null/undefined behavior, preserve display, and avoid experience/assurance specialists.",
+    "wall_seconds": 38.367231130599976,
+    "usage": {
+      "input_tokens": 119943,
+      "cached_input_tokens": 109312,
+      "output_tokens": 646,
+      "reasoning_output_tokens": 10,
+      "uncached_input_tokens": 10631
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 119943,
+          "cached_input_tokens": 109312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 646,
+          "reasoning_output_tokens": 10,
+          "total_tokens": 120589,
+          "uncached_input_tokens": 10631
+        },
+        "wall_seconds": 36.277,
+        "skills_observed": [
+          "diagnosing-bugs"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 470,
+          "final_bytes": 263
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "a2ee3fc3e969c084237b1a714765dfcc43975361cadee668b705d85c637e3bf1",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "556b8ad9136d61dfa60885b2eaed7499cbbba493fed6a22e1d59928addb3b005",
+      "app.js": "175fa6f6c94e2ad848fbb9d6882d788b473aafdb06ee050654bd8a31f5a32998",
+      "index.html": "9228e46c5a32c528a2862fc189affc83914513e0f62dd54ee3dea7512dffa698",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "974e9c71a1830735116383914603e6662701eb54d71a71353504c6efbaba35f9"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "556b8ad9136d61dfa60885b2eaed7499cbbba493fed6a22e1d59928addb3b005",
+      "app.js": "853a782ff2e234bbd1c24475a148853c9d7cd7fd3526dea9c4e32e5c8cc88476",
+      "index.html": "9228e46c5a32c528a2862fc189affc83914513e0f62dd54ee3dea7512dffa698",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "dad79195c6d5ee21237e9d344b3897a729bedc924a62b3a849c93f248ea54381",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "c2bff9d1c34f9761c45855a3ac96692d62fd3433c107a8fdf73403838be305f6"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex edd09d2..e5f55d2 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,3 @@\n-function countFromResponse(response){return response.count || 10;}\n+function countFromResponse(response){return response.count ?? 10;}\n if(typeof document!=='undefined')document.getElementById('count').textContent=countFromResponse({count:0})+' notes';\n if(typeof module!=='undefined')module.exports={countFromResponse};\ndiff --git a/test.js b/test.js\nindex 73264d6..3507e8a 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,6 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n const {countFromResponse}=require('./app.js');assert.equal(countFromResponse({count:3}),3);assert.equal(countFromResponse({}),10);\n+assert.equal(countFromResponse({count:0}),0);\n+assert.equal(countFromResponse({count:null}),10);\n+assert.equal(countFromResponse({count:undefined}),10);\n console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-fetch-restraint",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Preserve zero and missing-value fallback with a focused regression check",
+        "status": "met"
+      },
+      {
+        "requirement": "Keep presentation and product semantics unchanged",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both use nullish fallback, test zero/null/undefined behavior, preserve display, and avoid experience/assurance specialists.",
+    "wall_seconds": 49.176273345947266,
+    "usage": {
+      "input_tokens": 121670,
+      "cached_input_tokens": 110208,
+      "output_tokens": 814,
+      "reasoning_output_tokens": 21,
+      "uncached_input_tokens": 11462
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 121670,
+          "cached_input_tokens": 110208,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 814,
+          "reasoning_output_tokens": 21,
+          "total_tokens": 122484,
+          "uncached_input_tokens": 11462
+        },
+        "wall_seconds": 44.434,
+        "skills_observed": [
+          "diagnosing-bugs",
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 495,
+          "final_bytes": 253
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "df925dd36d2b46db1ca0262fddb152d5e05c7dc08468992ef74199b7abef263c",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "556b8ad9136d61dfa60885b2eaed7499cbbba493fed6a22e1d59928addb3b005",
+      "app.js": "175fa6f6c94e2ad848fbb9d6882d788b473aafdb06ee050654bd8a31f5a32998",
+      "index.html": "9228e46c5a32c528a2862fc189affc83914513e0f62dd54ee3dea7512dffa698",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "974e9c71a1830735116383914603e6662701eb54d71a71353504c6efbaba35f9"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "556b8ad9136d61dfa60885b2eaed7499cbbba493fed6a22e1d59928addb3b005",
+      "app.js": "853a782ff2e234bbd1c24475a148853c9d7cd7fd3526dea9c4e32e5c8cc88476",
+      "index.html": "9228e46c5a32c528a2862fc189affc83914513e0f62dd54ee3dea7512dffa698",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "dad79195c6d5ee21237e9d344b3897a729bedc924a62b3a849c93f248ea54381",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "c2bff9d1c34f9761c45855a3ac96692d62fd3433c107a8fdf73403838be305f6"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex edd09d2..e5f55d2 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,3 @@\n-function countFromResponse(response){return response.count || 10;}\n+function countFromResponse(response){return response.count ?? 10;}\n if(typeof document!=='undefined')document.getElementById('count').textContent=countFromResponse({count:0})+' notes';\n if(typeof module!=='undefined')module.exports={countFromResponse};\ndiff --git a/test.js b/test.js\nindex 73264d6..3507e8a 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,6 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n const {countFromResponse}=require('./app.js');assert.equal(countFromResponse({count:3}),3);assert.equal(countFromResponse({}),10);\n+assert.equal(countFromResponse({count:0}),0);\n+assert.equal(countFromResponse({count:null}),10);\n+assert.equal(countFromResponse({count:undefined}),10);\n console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-meal",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Keep editing and saving available during optional retry",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve estimate-versus-saved meaning; verify retry behavior and relevant render",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both preserve manual editing/saving during optional retry, exercise the retry handler, retain manual values, and open the retry render.",
+    "wall_seconds": 52.24467635154724,
+    "usage": {
+      "input_tokens": 143260,
+      "cached_input_tokens": 131328,
+      "output_tokens": 1028,
+      "reasoning_output_tokens": 11,
+      "uncached_input_tokens": 11932
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 143260,
+          "cached_input_tokens": 131328,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1028,
+          "reasoning_output_tokens": 11,
+          "total_tokens": 144288,
+          "uncached_input_tokens": 11932
+        },
+        "wall_seconds": 50.534,
+        "skills_observed": [
+          "diagnosing-bugs"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 619,
+          "final_bytes": 284
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "f2041711b3d133a368bd8296fa1cbe9af401f2c19c4e6ce096d460e5b87d8366",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "13c0fb86b1b4cef800f4b75f7d532aab4ee3b1978390d1bd4f8dccbfa57b892f",
+      "app.js": "3b73d1de3d3f62e130035272aab3c7a980ad6c851b480a4bd0eea5a3ad66b73a",
+      "index.html": "e71befaef32aaa444db4f917651a000c35e77053dd3fbf51989c8b59aa05b601",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "6c9e75258dae9bf04b9366e0cde2249676c9fff0fc29626c0c0b8b8794206359"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "13c0fb86b1b4cef800f4b75f7d532aab4ee3b1978390d1bd4f8dccbfa57b892f",
+      "app.js": "a6eba11c26ff3ff34512795baff4571dc762c1c3db01e9b9d353c8bc03fe70bf",
+      "index.html": "e71befaef32aaa444db4f917651a000c35e77053dd3fbf51989c8b59aa05b601",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "3c7caef8b4d37b0a021d8963b5898803e67beb399cf448eeaecc17381719cd46",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "6bbb54b5a2b3a1a0c7e529b29cfd0a3ef339cfdda587603233ab54b525a9e029"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex ba02da0..76af0d2 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,4 +1,4 @@\n-function controls(state){return {canEdit:state!=='retrying',canSave:true,message:state==='retrying'?'Estimating nutrition\u2026':state==='failed'?'Estimate unavailable. You can edit and save manually.':'Estimate ready. Meal not saved.'};}\n+function controls(state){return {canEdit:true,canSave:true,message:state==='retrying'?'Estimating nutrition\u2026':state==='failed'?'Estimate unavailable. You can edit and save manually.':'Estimate ready. Meal not saved.'};}\n function render(state){const c=controls(state);document.getElementById('meal').disabled=!c.canEdit;document.getElementById('amount').disabled=!c.canEdit;document.getElementById('status').textContent=c.message;document.getElementById('save').disabled=!c.canSave;}\n if(typeof document!=='undefined'){render(new URLSearchParams(location.search).get('state')||'normal');document.getElementById('retry').onclick=()=>render('retrying');document.getElementById('save').onclick=()=>document.getElementById('status').textContent='Meal saved.';}\n if(typeof module!=='undefined')module.exports={controls};\ndiff --git a/test.js b/test.js\nindex e72fa15..27114e2 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,35 @@\n-const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n-const {controls}=require('./app.js');assert(controls('normal').canEdit);assert(controls('failed').canSave);\n-console.log(\"checks passed\");\n+const assert = require('node:assert/strict');\n+const fs = require('node:fs');\n+const vm = require('node:vm');\n+const { controls } = require('./app.js');\n+\n+for (const state of ['normal', 'failed', 'retrying']) {\n+  assert(controls(state).canSave, `${state}: saving remains available`);\n+}\n+\n+// Exercise the same render and click handlers used by the page.\n+const elements = Object.fromEntries(['meal', 'amount', 'status', 'retry', 'save']\n+  .map(id => [id, { value: '', disabled: false, textContent: '' }]));\n+vm.runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: { getElementById: id => elements[id] },\n+  location: { search: '?state=failed' },\n+  URLSearchParams,\n+});\n+elements.meal.value = 'Homemade soup';\n+elements.amount.value = '2 bowls';\n+elements.retry.onclick();\n+assert.equal(elements.meal.disabled, false, 'Retry must leave meal description editable');\n+assert.equal(elements.amount.disabled, false, 'Retry must leave manual amount editable');\n+assert.equal(elements.save.disabled, false);\n+assert.equal(elements.meal.value, 'Homemade soup');\n+assert.equal(elements.amount.value, '2 bowls');\n+assert.equal(elements.status.textContent, 'Estimating nutrition\u2026');\n+elements.amount.value = '3 bowls';\n+elements.save.onclick();\n+assert.equal(elements.status.textContent, 'Meal saved.');\n+elements.retry.onclick();\n+assert.equal(elements.amount.value, '3 bowls', 'Another retry preserves newer manual input');\n+assert.equal(elements.status.textContent, 'Estimating nutrition\u2026');\n+assert(controls('normal').canEdit);\n+assert.equal(controls('normal').message, 'Estimate ready. Meal not saved.');\n+console.log('checks passed');\n"
+  },
+  {
+    "case_id": "experience-meal",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Keep editing and saving available during optional retry",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve estimate-versus-saved meaning; verify retry behavior and relevant render",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both preserve manual editing/saving during optional retry, exercise the retry handler, retain manual values, and open the retry render.",
+    "wall_seconds": 58.996670961380005,
+    "usage": {
+      "input_tokens": 127348,
+      "cached_input_tokens": 115072,
+      "output_tokens": 1211,
+      "reasoning_output_tokens": 22,
+      "uncached_input_tokens": 12276
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 127348,
+          "cached_input_tokens": 115072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1211,
+          "reasoning_output_tokens": 22,
+          "total_tokens": 128559,
+          "uncached_input_tokens": 12276
+        },
+        "wall_seconds": 57.001,
+        "skills_observed": [
+          "diagnosing-bugs",
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 524,
+          "final_bytes": 263
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "d746823e8adcda5dc648314f14f623550a165533a04611eb07bc05cfa8ecb1d9",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "13c0fb86b1b4cef800f4b75f7d532aab4ee3b1978390d1bd4f8dccbfa57b892f",
+      "app.js": "3b73d1de3d3f62e130035272aab3c7a980ad6c851b480a4bd0eea5a3ad66b73a",
+      "index.html": "e71befaef32aaa444db4f917651a000c35e77053dd3fbf51989c8b59aa05b601",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "6c9e75258dae9bf04b9366e0cde2249676c9fff0fc29626c0c0b8b8794206359"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "13c0fb86b1b4cef800f4b75f7d532aab4ee3b1978390d1bd4f8dccbfa57b892f",
+      "app.js": "a6eba11c26ff3ff34512795baff4571dc762c1c3db01e9b9d353c8bc03fe70bf",
+      "index.html": "e71befaef32aaa444db4f917651a000c35e77053dd3fbf51989c8b59aa05b601",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "3c7caef8b4d37b0a021d8963b5898803e67beb399cf448eeaecc17381719cd46",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "3432765b18a2666e9c7d7eb59ff675818fd58ddd5e43c3149b64248019ce9752"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex ba02da0..76af0d2 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,4 +1,4 @@\n-function controls(state){return {canEdit:state!=='retrying',canSave:true,message:state==='retrying'?'Estimating nutrition\u2026':state==='failed'?'Estimate unavailable. You can edit and save manually.':'Estimate ready. Meal not saved.'};}\n+function controls(state){return {canEdit:true,canSave:true,message:state==='retrying'?'Estimating nutrition\u2026':state==='failed'?'Estimate unavailable. You can edit and save manually.':'Estimate ready. Meal not saved.'};}\n function render(state){const c=controls(state);document.getElementById('meal').disabled=!c.canEdit;document.getElementById('amount').disabled=!c.canEdit;document.getElementById('status').textContent=c.message;document.getElementById('save').disabled=!c.canSave;}\n if(typeof document!=='undefined'){render(new URLSearchParams(location.search).get('state')||'normal');document.getElementById('retry').onclick=()=>render('retrying');document.getElementById('save').onclick=()=>document.getElementById('status').textContent='Meal saved.';}\n if(typeof module!=='undefined')module.exports={controls};\ndiff --git a/test.js b/test.js\nindex e72fa15..0faff5a 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,30 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n const {controls}=require('./app.js');assert(controls('normal').canEdit);assert(controls('failed').canSave);\n+const vm = require('node:vm');\n+const elements = Object.fromEntries(['meal', 'amount', 'status', 'retry', 'save'].map(id => [id, { disabled: false, textContent: '', value: '' }]));\n+vm.runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: { getElementById: id => elements[id] },\n+  location: { search: '?state=failed' },\n+  URLSearchParams,\n+});\n+elements.meal.value = 'Soup and toast';\n+elements.amount.value = '2 bowls';\n+elements.retry.onclick();\n+assert.equal(elements.meal.disabled, false, 'Retry must leave meal edits enabled');\n+assert.equal(elements.amount.disabled, false, 'Retry must leave manual amounts enabled');\n+assert.equal(elements.save.disabled, false, 'Retry must leave saving enabled');\n+assert.equal(elements.meal.value, 'Soup and toast');\n+assert.equal(elements.amount.value, '2 bowls');\n+assert.equal(elements.status.textContent, 'Estimating nutrition\u2026');\n+elements.amount.value = '3 bowls';\n+elements.save.onclick();\n+assert.equal(elements.status.textContent, 'Meal saved.');\n+elements.retry.onclick();\n+assert.equal(elements.amount.value, '3 bowls');\n+assert.equal(elements.status.textContent, 'Estimating nutrition\u2026');\n+for (const state of ['normal', 'failed', 'retrying']) {\n+  assert.equal(controls(state).canEdit, true);\n+  assert.equal(controls(state).canSave, true);\n+}\n+assert.equal(controls('normal').message, 'Estimate ready. Meal not saved.');\n console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-no-render",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Distinguish source facts, visual hypotheses and unavailable rendering",
+        "status": "met"
+      },
+      {
+        "requirement": "Offer a bounded next step without changing source",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both keep source unchanged, distinguish source structure from visual hypotheses, explain unavailable rendering and weak existing test coverage, and offer a bounded proposal.",
+    "wall_seconds": 34.700968980789185,
+    "usage": {
+      "input_tokens": 69697,
+      "cached_input_tokens": 62592,
+      "output_tokens": 634,
+      "reasoning_output_tokens": 20,
+      "uncached_input_tokens": 7105
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 69697,
+          "cached_input_tokens": 62592,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 634,
+          "reasoning_output_tokens": 20,
+          "total_tokens": 70331,
+          "uncached_input_tokens": 7105
+        },
+        "wall_seconds": 33.025,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 0,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 198,
+          "final_bytes": 1806
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "9852cbd31ad48f9d9d311845462b4666cd6a84c550f5c72abfcfb9320177c742",
+    "fixture_before_hashes": {
+      "AGENTS.md": "6d54f0a1d195d7051870cd8670f94e7eaf2d410a47e1d053ea691636cc004070",
+      "DESIGN.md": "452ad1cdbf222825057e73b7b8f83df749ce9ba6712148430792d29ca4606601",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "8055eed464fdf35fc48998f40b5c2f3bcc627f1a07a8db3344e76310fd48002e",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "43f60f56a7d7ff0abeada5053ee64de33dc1320a75cd666d449d3e80f8440483"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "6d54f0a1d195d7051870cd8670f94e7eaf2d410a47e1d053ea691636cc004070",
+      "DESIGN.md": "452ad1cdbf222825057e73b7b8f83df749ce9ba6712148430792d29ca4606601",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "8055eed464fdf35fc48998f40b5c2f3bcc627f1a07a8db3344e76310fd48002e",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "43f60f56a7d7ff0abeada5053ee64de33dc1320a75cd666d449d3e80f8440483"
+    },
+    "production_and_check_diff": ""
+  },
+  {
+    "case_id": "experience-no-render",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Distinguish source facts, visual hypotheses and unavailable rendering",
+        "status": "met"
+      },
+      {
+        "requirement": "Offer a bounded next step without changing source",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both keep source unchanged, distinguish source structure from visual hypotheses, explain unavailable rendering and weak existing test coverage, and offer a bounded proposal.",
+    "wall_seconds": 40.47871971130371,
+    "usage": {
+      "input_tokens": 94487,
+      "cached_input_tokens": 77312,
+      "output_tokens": 829,
+      "reasoning_output_tokens": 11,
+      "uncached_input_tokens": 17175
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 94487,
+          "cached_input_tokens": 77312,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 829,
+          "reasoning_output_tokens": 11,
+          "total_tokens": 95316,
+          "uncached_input_tokens": 17175
+        },
+        "wall_seconds": 38.779,
+        "skills_observed": [
+          "interface-design",
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [
+          "references/experience-routing.md",
+          "references/rendered-evidence.md"
+        ],
+        "image_open_tool_calls": 0,
+        "requested_file_bytes": 10029,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1,
+          "references/experience-routing.md": 1,
+          "skills/interface-design/SKILL.md": 1,
+          "skills/interface-design/references/rendered-evidence.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 521,
+          "final_bytes": 1307
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "b046b63cbcc5b60f3b45c8860fdaaa4082d4b0a19be359245c332972908cc3d3",
+    "fixture_before_hashes": {
+      "AGENTS.md": "6d54f0a1d195d7051870cd8670f94e7eaf2d410a47e1d053ea691636cc004070",
+      "DESIGN.md": "452ad1cdbf222825057e73b7b8f83df749ce9ba6712148430792d29ca4606601",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "8055eed464fdf35fc48998f40b5c2f3bcc627f1a07a8db3344e76310fd48002e",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "43f60f56a7d7ff0abeada5053ee64de33dc1320a75cd666d449d3e80f8440483"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "6d54f0a1d195d7051870cd8670f94e7eaf2d410a47e1d053ea691636cc004070",
+      "DESIGN.md": "452ad1cdbf222825057e73b7b8f83df749ce9ba6712148430792d29ca4606601",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "8055eed464fdf35fc48998f40b5c2f3bcc627f1a07a8db3344e76310fd48002e",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "43f60f56a7d7ff0abeada5053ee64de33dc1320a75cd666d449d3e80f8440483"
+    },
+    "production_and_check_diff": ""
+  },
+  {
+    "case_id": "experience-photo",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Distinguish loading, empty and failed review retrieval with truthful recovery",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve summary uncertainty and photo selection; inspect the affected rendered states",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both distinguish loading, empty and retrieval failure, retain comparison uncertainty and navigation, test refresh behavior, and open loading/error renders.",
+    "wall_seconds": 79.01684641838074,
+    "usage": {
+      "input_tokens": 160899,
+      "cached_input_tokens": 149120,
+      "output_tokens": 1137,
+      "reasoning_output_tokens": 79,
+      "uncached_input_tokens": 11779
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 160899,
+          "cached_input_tokens": 149120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1137,
+          "reasoning_output_tokens": 79,
+          "total_tokens": 162036,
+          "uncached_input_tokens": 11779
+        },
+        "wall_seconds": 57.416,
+        "skills_observed": [
+          "diagnosing-bugs"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 2,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 702,
+          "final_bytes": 318
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "dec40574ba0b084c504167f11dd08ecf4b62e233e495a5fc6fe7c405f2c61a77",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "f56a248f36e1f4cd939bd84660a75ab50d186b39164f4da0175816839a6a5baf",
+      "app.js": "3e1b9a6e04c3fc1577a50ab1c0c5bca611488ce0223e476deb1d0e0fa3b110da",
+      "index.html": "612dbe19a579961e74c2567e007d92e8d3c32ba55335b0de01f5b8c52905ae6d",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "ea15ffa42b34410d0bde99489c2eb4b11ca588d20ea3dd4cc6dbfe627f7d9e48"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "f56a248f36e1f4cd939bd84660a75ab50d186b39164f4da0175816839a6a5baf",
+      "app.js": "b6f163f81bc5784ae6d8c6600a21912b6a151a91bef074778c8824248420f196",
+      "index.html": "612dbe19a579961e74c2567e007d92e8d3c32ba55335b0de01f5b8c52905ae6d",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow-error.png": "bbe8050166c4411fa2b3929a50c67f9a21f828d41973d403d19e7cb6626088a5",
+      "renders/narrow-loading.png": "cfd500657840257f15164c03bb7324686850795e780a2dafde5c163cc8174cd0",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "4181568305533aaae56d23967f18a4dd6bb278872cda92f682d8a488cefc298b"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex af866a2..b79a952 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,7 @@\n-function reviewPresentation(state,summary){return summary || 'No comparison saved yet.';}\n+function reviewPresentation(state,summary){\n+  if(state==='error')return 'Could not load the comparison. Use Refresh comparison to try again.';\n+  if(state==='loading')return 'Loading comparison\u2026 You can still browse your photos.';\n+  return summary || 'No comparison saved yet.';\n+}\n if(typeof document!=='undefined'){const state=new URLSearchParams(location.search).get('state')||'normal';document.getElementById('note').textContent=reviewPresentation(state,state==='normal'?'Lighting differs; changes are uncertain.':null);document.getElementById('retry').onclick=()=>{document.getElementById('note').textContent=reviewPresentation('loading',null);};}\n if(typeof module!=='undefined')module.exports={reviewPresentation};\ndiff --git a/test.js b/test.js\nindex c3dcf11..3bece38 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,21 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n const {reviewPresentation}=require('./app.js');assert.equal(reviewPresentation('normal','Lighting differs'),'Lighting differs');assert.equal(reviewPresentation('empty',null),'No comparison saved yet.');\n+assert.equal(reviewPresentation('error',null),'Could not load the comparison. Use Refresh comparison to try again.');\n+assert.equal(reviewPresentation('loading',null),'Loading comparison\u2026 You can still browse your photos.');\n+\n+// Exercise the page's existing refresh handler without introducing a service.\n+const vm=require('node:vm');\n+const elements={note:{textContent:''},retry:{onclick:null}};\n+vm.runInNewContext(fs.readFileSync('app.js','utf8'),{\n+  URLSearchParams,\n+  location:{search:'?state=error'},\n+  document:{getElementById(id){\n+    assert.ok(Object.hasOwn(elements,id),'Comparison updates must stay within their owner');\n+    return elements[id];\n+  }}\n+});\n+assert.equal(elements.note.textContent,reviewPresentation('error',null));\n+elements.retry.onclick();\n+assert.equal(elements.note.textContent,reviewPresentation('loading',null));\n+assert.match(html,/<button>Previous<\\/button>\\s*<button>Next<\\/button>/);\n console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-photo",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Distinguish loading, empty and failed review retrieval with truthful recovery",
+        "status": "met"
+      },
+      {
+        "requirement": "Preserve summary uncertainty and photo selection; inspect the affected rendered states",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both distinguish loading, empty and retrieval failure, retain comparison uncertainty and navigation, test refresh behavior, and open loading/error renders.",
+    "wall_seconds": 69.24373316764832,
+    "usage": {
+      "input_tokens": 115717,
+      "cached_input_tokens": 97536,
+      "output_tokens": 1186,
+      "reasoning_output_tokens": 114,
+      "uncached_input_tokens": 18181
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 115717,
+          "cached_input_tokens": 97536,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1186,
+          "reasoning_output_tokens": 114,
+          "total_tokens": 116903,
+          "uncached_input_tokens": 18181
+        },
+        "wall_seconds": 51.961,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 2,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 469,
+          "final_bytes": 288
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "80abd7f52bb66315d45d9ccf2ee7722c01bb2d8a8a7cbb6e328414d54dab38b4",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "f56a248f36e1f4cd939bd84660a75ab50d186b39164f4da0175816839a6a5baf",
+      "app.js": "3e1b9a6e04c3fc1577a50ab1c0c5bca611488ce0223e476deb1d0e0fa3b110da",
+      "index.html": "612dbe19a579961e74c2567e007d92e8d3c32ba55335b0de01f5b8c52905ae6d",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "ea15ffa42b34410d0bde99489c2eb4b11ca588d20ea3dd4cc6dbfe627f7d9e48"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "f56a248f36e1f4cd939bd84660a75ab50d186b39164f4da0175816839a6a5baf",
+      "app.js": "d825ee8860f9ff5fe9b43344e99a4003057e37da3dad05deb54bcc1e4dbff01d",
+      "index.html": "612dbe19a579961e74c2567e007d92e8d3c32ba55335b0de01f5b8c52905ae6d",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow-error.png": "3edb51e9207ab7534c0f12cbd7849d7887c0cc2db5e9b938365fcc104e95907c",
+      "renders/narrow-loading.png": "cfd500657840257f15164c03bb7324686850795e780a2dafde5c163cc8174cd0",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "001ea111030c3f94936db84b3d504a3b163f774ec1a02c8d3e75f94fe5cba9d7"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex af866a2..330e557 100644\n--- a/app.js\n+++ b/app.js\n@@ -1,3 +1,8 @@\n-function reviewPresentation(state,summary){return summary || 'No comparison saved yet.';}\n+function reviewPresentation(state,summary){\n+  if(state==='loading')return 'Loading comparison\u2026 You can still browse your photos.';\n+  if(state==='empty')return 'No comparison saved yet.';\n+  if(state==='normal' && summary)return summary;\n+  return 'Couldn\u2019t load the comparison. Refresh comparison to try again.';\n+}\n if(typeof document!=='undefined'){const state=new URLSearchParams(location.search).get('state')||'normal';document.getElementById('note').textContent=reviewPresentation(state,state==='normal'?'Lighting differs; changes are uncertain.':null);document.getElementById('retry').onclick=()=>{document.getElementById('note').textContent=reviewPresentation('loading',null);};}\n if(typeof module!=='undefined')module.exports={reviewPresentation};\ndiff --git a/test.js b/test.js\nindex c3dcf11..d899c9e 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,3 +1,23 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n const {reviewPresentation}=require('./app.js');assert.equal(reviewPresentation('normal','Lighting differs'),'Lighting differs');assert.equal(reviewPresentation('empty',null),'No comparison saved yet.');\n+assert.equal(reviewPresentation('error',null),'Couldn\u2019t load the comparison. Refresh comparison to try again.');\n+assert.equal(reviewPresentation('loading',null),'Loading comparison\u2026 You can still browse your photos.');\n+\n+// The existing refresh action updates only the comparison, without navigating.\n+const vm=require('node:vm');\n+const note={textContent:''};\n+const retry={};\n+const location={search:'?state=error'};\n+vm.runInNewContext(fs.readFileSync('app.js','utf8'),{\n+  URLSearchParams,location,\n+  document:{getElementById(id){\n+    assert.ok(id==='note'||id==='retry');\n+    return id==='note'?note:retry;\n+  }}\n+});\n+assert.equal(note.textContent,reviewPresentation('error',null));\n+retry.onclick();\n+assert.equal(note.textContent,reviewPresentation('loading',null));\n+assert.equal(location.search,'?state=error');\n+assert.match(html,/<button>Previous<\\/button>\\s*<button>Next<\\/button>/);\n console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-today",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Integrate the average within the accepted Steps metric or return a concrete in-scope plan; preserve the inline schedule owner",
+        "status": "met"
+      },
+      {
+        "requirement": "Identify the current job and hierarchy tradeoff using available experience evidence",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both integrate the computed average in the accepted Steps card, preserve eight cards and schedule, and open a current narrow render.",
+    "wall_seconds": 49.806260108947754,
+    "usage": {
+      "input_tokens": 112783,
+      "cached_input_tokens": 95360,
+      "output_tokens": 1008,
+      "reasoning_output_tokens": 29,
+      "uncached_input_tokens": 17423
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 112783,
+          "cached_input_tokens": 95360,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1008,
+          "reasoning_output_tokens": 29,
+          "total_tokens": 113791,
+          "uncached_input_tokens": 17423
+        },
+        "wall_seconds": 46.154,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 2,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 397,
+          "final_bytes": 246
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "602eb20e3d6609abd83a57ab4ea7f3cb15242d26b96e6aa0d994435e3561b75e",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "64b514275fd6552a05ac890d8bc77502b75c1c6eec9bf7d9ad68adfc30e9ccc9",
+      "app.js": "7f258a88d7274b2b01f8b339bf0b3fe234f5c392815d6a4f52b167311386f448",
+      "index.html": "25713b9deb0448c0efadff27dbbd73b633cea79b2e0321a37b600b7e3a9de2bb",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0aff451d0a9d0663e2660d3348bd6b4f218d6f095a2528823957fbe143f747fc"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "64b514275fd6552a05ac890d8bc77502b75c1c6eec9bf7d9ad68adfc30e9ccc9",
+      "app.js": "1cf81ba7450282e3564ee7582ffdd28e683fc6a358ea7f264ce1ed049ab33d1b",
+      "index.html": "5da14b668714453a9ff11d29fec41fb91c6598953ea9fc74a3e9016e41efc1e2",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow-full.png": "81248040cd1b41da3427f056ae94b0c89fe84442ef939f6649c552653f8441d7",
+      "renders/narrow.png": "7638b88e9a0cad6ac54cbda3230d485625187916f01bde31954088aabb1a7494",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "b049bf7ff1af13fae64c585448caf075512d291a13637b2a620d115fb1462c84"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex bc40dcf..18d0eb2 100644\n--- a/app.js\n+++ b/app.js\n@@ -3,4 +3,8 @@ const stepHistory = [5400, 6100, 5800, 6900, 4700, 5500, 6200];\n function averageSteps(days) {\n   return days.length ? Math.round(days.reduce((sum, value) => sum + value, 0) / days.length) : null;\n }\n+if (typeof document !== 'undefined') {\n+  const average = averageSteps(stepHistory);\n+  document.getElementById('steps-average').textContent = average === null ? '\u2014' : average.toLocaleString('en-US');\n+}\n if (typeof module !== 'undefined') module.exports = {stepHistory, averageSteps};\ndiff --git a/index.html b/index.html\nindex 9f1b90e..e7ae970 100644\n--- a/index.html\n+++ b/index.html\n@@ -29,7 +29,7 @@\n <section class=\"card\">\n <h2>Steps</h2>\n <p class=\"metric\">6,200</p>\n-<p>Recent recorded summary</p>\n+<p>7-day average: <span id=\"steps-average\">\u2014</span> steps</p>\n </section>\n <section class=\"card\">\n <h2>Recovery</h2>\ndiff --git a/test.js b/test.js\nindex a693d52..077feb8 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,5 +1,11 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n assert(html.includes('id=\"schedule\"'));assert.equal((html.match(/class=\"card\"/g)||[]).length,8);\n-console.log(\"checks passed\");\n const {stepHistory,averageSteps}=require('./app');\n assert.equal(stepHistory.length,7);assert.equal(averageSteps(stepHistory),5800);assert.equal(averageSteps([]),null);\n+assert.match(html, /<h2>Steps<\\/h2>\\s*<p class=\"metric\">6,200<\\/p>\\s*<p>7-day average: <span id=\"steps-average\">\u2014<\\/span> steps<\\/p>/);\n+const averageElement = {textContent: ''};\n+require('node:vm').runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: {getElementById(id) {assert.equal(id, 'steps-average'); return averageElement;}}\n+});\n+assert.equal(averageElement.textContent, '5,800');\n+console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-today",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Integrate the average within the accepted Steps metric or return a concrete in-scope plan; preserve the inline schedule owner",
+        "status": "met"
+      },
+      {
+        "requirement": "Identify the current job and hierarchy tradeoff using available experience evidence",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both integrate the computed average in the accepted Steps card, preserve eight cards and schedule, and open a current narrow render.",
+    "wall_seconds": 53.08299660682678,
+    "usage": {
+      "input_tokens": 96426,
+      "cached_input_tokens": 86144,
+      "output_tokens": 1122,
+      "reasoning_output_tokens": 81,
+      "uncached_input_tokens": 10282
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 96426,
+          "cached_input_tokens": 86144,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1122,
+          "reasoning_output_tokens": 81,
+          "total_tokens": 97548,
+          "uncached_input_tokens": 10282
+        },
+        "wall_seconds": 50.265,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 455,
+          "final_bytes": 233
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "5f777277e1d22187a4f0a7cf843f2da53e3e8eff2fc4119e8880bcbf31fa7c5c",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "64b514275fd6552a05ac890d8bc77502b75c1c6eec9bf7d9ad68adfc30e9ccc9",
+      "app.js": "7f258a88d7274b2b01f8b339bf0b3fe234f5c392815d6a4f52b167311386f448",
+      "index.html": "25713b9deb0448c0efadff27dbbd73b633cea79b2e0321a37b600b7e3a9de2bb",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "0aff451d0a9d0663e2660d3348bd6b4f218d6f095a2528823957fbe143f747fc"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "64b514275fd6552a05ac890d8bc77502b75c1c6eec9bf7d9ad68adfc30e9ccc9",
+      "app.js": "5f9581f73fe411f401377a563ef782df8ad0abfff1e39efd4f7e588f5e44497b",
+      "index.html": "8a14341f406ff1d5b50e8aa5b4fa0ba945750ca3d5f0bcbc45f92d9b53287c50",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow-full.png": "2d566fda9365880797b308e383f972d702d815df9399daec450e61260d90d1e5",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "43a286b80c0b34ad53e91c22a048cf035bc6682b6ff2bbba124941c850a15437"
+    },
+    "production_and_check_diff": "diff --git a/app.js b/app.js\nindex bc40dcf..2455932 100644\n--- a/app.js\n+++ b/app.js\n@@ -3,4 +3,10 @@ const stepHistory = [5400, 6100, 5800, 6900, 4700, 5500, 6200];\n function averageSteps(days) {\n   return days.length ? Math.round(days.reduce((sum, value) => sum + value, 0) / days.length) : null;\n }\n+if (typeof document !== 'undefined') {\n+  const average = averageSteps(stepHistory);\n+  document.getElementById('steps-average').textContent = average === null\n+    ? 'Seven-day average: unavailable'\n+    : `Seven-day average: ${average.toLocaleString('en-US')} steps`;\n+}\n if (typeof module !== 'undefined') module.exports = {stepHistory, averageSteps};\ndiff --git a/index.html b/index.html\nindex 9f1b90e..f021173 100644\n--- a/index.html\n+++ b/index.html\n@@ -29,7 +29,7 @@\n <section class=\"card\">\n <h2>Steps</h2>\n <p class=\"metric\">6,200</p>\n-<p>Recent recorded summary</p>\n+<p id=\"steps-average\">Seven-day average: unavailable</p>\n </section>\n <section class=\"card\">\n <h2>Recovery</h2>\ndiff --git a/test.js b/test.js\nindex a693d52..2210d2d 100644\n--- a/test.js\n+++ b/test.js\n@@ -1,5 +1,14 @@\n const assert=require('node:assert/strict');const fs=require('node:fs');const html=fs.readFileSync('index.html','utf8');\n assert(html.includes('id=\"schedule\"'));assert.equal((html.match(/class=\"card\"/g)||[]).length,8);\n-console.log(\"checks passed\");\n const {stepHistory,averageSteps}=require('./app');\n assert.equal(stepHistory.length,7);assert.equal(averageSteps(stepHistory),5800);assert.equal(averageSteps([]),null);\n+assert.match(html, /<h2>Steps<\\/h2>\\s*<p class=\"metric\">6,200<\\/p>\\s*<p id=\"steps-average\">/);\n+const summary = {textContent: ''};\n+require('node:vm').runInNewContext(fs.readFileSync('app.js', 'utf8'), {\n+  document: {getElementById(id) {\n+    assert.equal(id, 'steps-average');\n+    return summary;\n+  }}\n+});\n+assert.equal(summary.textContent, 'Seven-day average: 5,800 steps');\n+console.log(\"checks passed\");\n"
+  },
+  {
+    "case_id": "experience-typo",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Correct the existing label",
+        "status": "met"
+      },
+      {
+        "requirement": "Keep the task minimal without a design or evidence campaign",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both correct only the label without specialist fanout, scope documents, or receipts. Fixture instructions induce an unnecessary but bounded render in both arms.",
+    "wall_seconds": 32.21784710884094,
+    "usage": {
+      "input_tokens": 88166,
+      "cached_input_tokens": 81024,
+      "output_tokens": 359,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 7142
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 88166,
+          "cached_input_tokens": 81024,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 359,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 88525,
+          "uncached_input_tokens": 7142
+        },
+        "wall_seconds": 30.089,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 69,
+          "final_bytes": 151
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "faf77cef742fb1dd9e4dbb5c063946da4d944f1e56a0d1666e6a480f80cad654",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "3e54581720941983f8114f0127a6f02aa69fabc03995947768e835e439794f47",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "995da6373fe3dfba4b4a3c5a40a60adc090f3454c032f4d5f612f9b1ecb5c1e1",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "cbb7e77b4c1a26439eb7aa7bd232401b8557cceac1107938bd6598154ceaa30a",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex 6c02a1a..301bf4e 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Settings</h1>\n-<button id=\"save\">Save prefernces</button>\n+<button id=\"save\">Save preferences</button>\n </main>\n <script src=\"app.js\">\n </script>\n"
+  },
+  {
+    "case_id": "experience-typo",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Correct the existing label",
+        "status": "met"
+      },
+      {
+        "requirement": "Keep the task minimal without a design or evidence campaign",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both correct only the label without specialist fanout, scope documents, or receipts. Fixture instructions induce an unnecessary but bounded render in both arms.",
+    "wall_seconds": 33.70309376716614,
+    "usage": {
+      "input_tokens": 92944,
+      "cached_input_tokens": 84352,
+      "output_tokens": 523,
+      "reasoning_output_tokens": 0,
+      "uncached_input_tokens": 8592
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 92944,
+          "cached_input_tokens": 84352,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 523,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 93467,
+          "uncached_input_tokens": 8592
+        },
+        "wall_seconds": 30.906,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 1,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 153,
+          "final_bytes": 153
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "491803c77cb889c35299ef2b14bb43a76089f5bf7a2803f80cd251ae62f985c6",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "3e54581720941983f8114f0127a6f02aa69fabc03995947768e835e439794f47",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "44cca8cf7557981291787dc9bb7c5e08cb72c57e9fe970330ca7b996ede082a5",
+      "app.js": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "index.html": "995da6373fe3dfba4b4a3c5a40a60adc090f3454c032f4d5f612f9b1ecb5c1e1",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/narrow.png": "cbb7e77b4c1a26439eb7aa7bd232401b8557cceac1107938bd6598154ceaa30a",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "2e91a07904701a6379953693777e94a8c20aeab37ce16849625d3a036f726330"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex 6c02a1a..301bf4e 100644\n--- a/index.html\n+++ b/index.html\n@@ -6,7 +6,7 @@\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n <h1>Settings</h1>\n-<button id=\"save\">Save prefernces</button>\n+<button id=\"save\">Save preferences</button>\n </main>\n <script src=\"app.js\">\n </script>\n"
+  },
+  {
+    "case_id": "experience-workout",
+    "arm": "control",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Prioritize the existing current-exercise task and rest state proportionately",
+        "status": "met"
+      },
+      {
+        "requirement": "Inspect rendered narrow layout and verify preserved actions/confirmation",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both prioritize current exercise/rest/logging, preserve actions and finish confirmation, and inspect narrow/wide rendering.",
+    "wall_seconds": 68.54080891609192,
+    "usage": {
+      "input_tokens": 131944,
+      "cached_input_tokens": 114688,
+      "output_tokens": 1589,
+      "reasoning_output_tokens": 54,
+      "uncached_input_tokens": 17256
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 131944,
+          "cached_input_tokens": 114688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1589,
+          "reasoning_output_tokens": 54,
+          "total_tokens": 133533,
+          "uncached_input_tokens": 17256
+        },
+        "wall_seconds": 66.531,
+        "skills_observed": [],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 2,
+        "requested_file_bytes": 0,
+        "read_requests": {},
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 399,
+          "final_bytes": 291
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "527c867236112baf753a0b0183ac098cd5af5c0918ecf9c845c205b0c164e9a9",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "84c67eaeffb0240e0cde9471bbe4cca6aa75efc590309e2b9a2f622344184381",
+      "app.js": "00ef581481f35ed8765ac2a6f773e25433e7e636508a5506d3066f8f4d166d43",
+      "index.html": "bd565aad419cd3cedec9e6ab0594c1cb792071608f3ca105d28160434e7d8ec6",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "fa2022591fad2cf09c3fae8f6e8c09c847041232b042dc495bcc6769b8fec466"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "84c67eaeffb0240e0cde9471bbe4cca6aa75efc590309e2b9a2f622344184381",
+      "app.js": "00ef581481f35ed8765ac2a6f773e25433e7e636508a5506d3066f8f4d166d43",
+      "index.html": "ec522b86430273c4440d8eedce8c050974b8090c649f0b14c25a46563a2c64c0",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/before.png": "c9030abee4e3f39bbdbe1d2032ea6d1e560f6ea1195a491ccdc5c4ecb4a0039a",
+      "renders/narrow.png": "1c6b6242cc59148ef4135c9b2347d66dbf2f69e24dd8a15d4164372f54ea3b23",
+      "renders/wide.png": "476e580ced5b1017399ee4ff5aed78e787ecf9453a231e8e8de1d08a26921970",
+      "style.css": "89c8facbc4844271b425df98771360dbb1ba4b627edd6f82f5448d936ebb3506",
+      "test.js": "fa2022591fad2cf09c3fae8f6e8c09c847041232b042dc495bcc6769b8fec466"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex bab5174..5179ed9 100644\n--- a/index.html\n+++ b/index.html\n@@ -5,25 +5,32 @@\n <title>Cedar</title>\n <link rel=\"stylesheet\" href=\"style.css\">\n <main>\n-<header class=\"row\">\n+<header class=\"row workout-header\">\n <h1>Active workout</h1>\n-<button class=\"primary\" id=\"finish\">Finish workout</button>\n+<button id=\"finish\">Finish workout</button>\n </header>\n-<section id=\"guidance\">\n-<h2>Session guidance</h2>\n+<section id=\"active\" aria-labelledby=\"exercise-title\">\n+<p class=\"eyebrow\">Current exercise</p>\n+<h2 id=\"exercise-title\">Squat</h2>\n+<div class=\"set-context\">\n+<p class=\"set-number\">Set 2 of 3</p>\n+<p class=\"rest-state\">Rest: <strong>45 seconds remaining</strong></p>\n+</div>\n+<div class=\"set-entry\">\n+<label for=\"reps\">Reps</label>\n+<input id=\"reps\" value=\"8\" inputmode=\"numeric\">\n+<button class=\"primary\" id=\"log\">Log set</button>\n+</div>\n+</section>\n+<section id=\"guidance\" aria-labelledby=\"guidance-title\">\n+<h2 id=\"guidance-title\">Session guidance</h2>\n <p>Optional planning context and earlier-session suggestions.</p>\n+<div class=\"guidance-actions\">\n <button>Refresh guidance</button>\n <button>Training history</button>\n+</div>\n <p>Review recent patterns before choosing your next activity.</p>\n </section>\n-<section id=\"active\">\n-<h2>Current exercise: squat</h2>\n-<p>Rest: 45 seconds remaining</p>\n-<p>Set 2 of 3</p>\n-<label for=\"reps\">Reps</label>\n-<input id=\"reps\" value=\"8\">\n-<button id=\"log\">Log set</button>\n-</section>\n </main>\n <script src=\"app.js\">\n </script>\ndiff --git a/style.css b/style.css\nindex 9b3dd2a..f9a1dd6 100644\n--- a/style.css\n+++ b/style.css\n@@ -1 +1,22 @@\n body{font:16px system-ui;margin:0;background:#f6f8f5;color:#163832}main{max-width:850px;margin:auto;padding:20px}h1{font-size:30px}nav{display:flex;gap:20px}section,.card{border:1px solid #b9c8c0;border-radius:12px;background:white;padding:20px;margin:14px 0}button,a{font:inherit}button{padding:12px 18px;border:1px solid #315b51;border-radius:8px;color:#163832;background:#fff;margin:4px}button.primary{background:#174f4a;color:white}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #1658a8;outline-offset:3px}input,textarea{font:inherit;padding:12px;max-width:90%}.metric{font-size:32px;font-weight:bold}.muted{color:#51665e}button:disabled{opacity:.55}.row{display:flex;gap:12px;flex-wrap:wrap}img{max-width:100%}@media(max-width:500px){main{padding:12px}h1{font-size:26px}}\n+*{box-sizing:border-box}\n+.workout-header{align-items:center;justify-content:space-between;margin:12px 0 24px}\n+.workout-header h1{margin:0}\n+.workout-header button{margin:0}\n+#active{border-top:4px solid #174f4a;padding:24px}\n+#active .eyebrow{margin:0 0 4px;color:#51665e;font-size:14px;font-weight:600}\n+#exercise-title{font-size:30px;margin:0 0 20px}\n+.set-context{background:#f6f8f5;border-radius:8px;padding:16px;margin-bottom:20px}\n+.set-number{font-size:20px;font-weight:700;margin:0 0 8px}\n+.rest-state{margin:0;line-height:1.5}\n+.rest-state strong{font-weight:600}\n+.set-entry{display:grid;grid-template-columns:minmax(100px,1fr) minmax(140px,2fr);gap:8px 16px;align-items:center}\n+.set-entry label{grid-column:1 / -1;font-weight:600}\n+.set-entry input{width:100%;max-width:100%;min-width:0;border:1px solid #51665e;border-radius:8px;font-size:24px;min-height:56px}\n+.set-entry button{margin:0;min-height:56px;font-weight:600}\n+#guidance h2{font-size:18px;margin:0 0 12px}\n+#guidance p{color:#51665e;line-height:1.5;margin:12px 0}\n+#guidance p:last-child{margin-bottom:0}\n+.guidance-actions{display:flex;flex-wrap:wrap;gap:8px}\n+.guidance-actions button{margin:0}\n+@media(max-width:500px){.workout-header{margin:12px 0 20px}#active{padding:20px}.set-entry{grid-template-columns:minmax(80px,1fr) minmax(120px,2fr);gap:8px 12px}}\n"
+  },
+  {
+    "case_id": "experience-workout",
+    "arm": "harness",
+    "trial": 1,
+    "candidate_sha": "712cbca3e315a1da2b2e59d19631ba4c5d545410",
+    "assessment": "pass",
+    "required_outcomes": [
+      {
+        "requirement": "Prioritize the existing current-exercise task and rest state proportionately",
+        "status": "met"
+      },
+      {
+        "requirement": "Inspect rendered narrow layout and verify preserved actions/confirmation",
+        "status": "met"
+      }
+    ],
+    "forbidden_outcomes_observed": [],
+    "evidence_notes": "Both prioritize current exercise/rest/logging, preserve actions and finish confirmation, and inspect narrow/wide rendering.",
+    "wall_seconds": 80.85963129997253,
+    "usage": {
+      "input_tokens": 138061,
+      "cached_input_tokens": 116736,
+      "output_tokens": 1687,
+      "reasoning_output_tokens": 50,
+      "uncached_input_tokens": 21325
+    },
+    "contexts": [
+      {
+        "kind": "primary",
+        "configuration": "primary",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "usage": {
+          "input_tokens": 138061,
+          "cached_input_tokens": 116736,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1687,
+          "reasoning_output_tokens": 50,
+          "total_tokens": 139748,
+          "uncached_input_tokens": 21325
+        },
+        "wall_seconds": 77.093,
+        "skills_observed": [
+          "using-engineering-harness"
+        ],
+        "reference_read_paths": [],
+        "image_open_tool_calls": 2,
+        "requested_file_bytes": 3049,
+        "read_requests": {
+          "skills/using-engineering-harness/SKILL.md": 1
+        },
+        "duplicate_read_requests": 0,
+        "messages": {
+          "commentary_bytes": 506,
+          "final_bytes": 317
+        }
+      }
+    ],
+    "node_checks": "pass; coverage is limited to the retained test source",
+    "record_sha256": "b60fb78f6ec084dc329a309b471ee18258cb9cbd3eae7eba119928216bba5b69",
+    "fixture_before_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "84c67eaeffb0240e0cde9471bbe4cca6aa75efc590309e2b9a2f622344184381",
+      "app.js": "00ef581481f35ed8765ac2a6f773e25433e7e636508a5506d3066f8f4d166d43",
+      "index.html": "bd565aad419cd3cedec9e6ab0594c1cb792071608f3ca105d28160434e7d8ec6",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "style.css": "1d369f7f03dba64f3a1879a1eedbdd228eda47a787c71a1920483a9b3229862f",
+      "test.js": "fa2022591fad2cf09c3fae8f6e8c09c847041232b042dc495bcc6769b8fec466"
+    },
+    "fixture_after_hashes": {
+      "AGENTS.md": "47a85f8bda0d3471b6a2ab434cd0c138221596a1f62cdeb78405cf4f0cfbb4ba",
+      "DESIGN.md": "84c67eaeffb0240e0cde9471bbe4cca6aa75efc590309e2b9a2f622344184381",
+      "app.js": "00ef581481f35ed8765ac2a6f773e25433e7e636508a5506d3066f8f4d166d43",
+      "index.html": "065c7c91be576a561a34f34d672a33caa0dec12c480c1116e1854166af3ee31e",
+      "render.py": "005bfc67d20dcf9979311ad4e4c854bd52e93a6db173255c59d07d08d601bc04",
+      "renders/before-narrow.png": "c9030abee4e3f39bbdbe1d2032ea6d1e560f6ea1195a491ccdc5c4ecb4a0039a",
+      "renders/narrow.png": "6aef9b2935b1c2c334b5e1fdd0fda4a1279d7157173b5e578514194e7b6cbf34",
+      "renders/wide.png": "e873d228d944de17f63e443b5651e6fada535176b7bd7481f8d88ab0a29ee9d9",
+      "style.css": "e86ae114fd583275dbd67be13cf7e634094d7383b562d0c6a9d1a104bf216b9a",
+      "test.js": "fa2022591fad2cf09c3fae8f6e8c09c847041232b042dc495bcc6769b8fec466"
+    },
+    "production_and_check_diff": "diff --git a/index.html b/index.html\nindex bab5174..ca204fc 100644\n--- a/index.html\n+++ b/index.html\n@@ -7,8 +7,19 @@\n <main>\n <header class=\"row\">\n <h1>Active workout</h1>\n-<button class=\"primary\" id=\"finish\">Finish workout</button>\n+<button id=\"finish\">Finish workout</button>\n </header>\n+<section id=\"active\" aria-labelledby=\"exercise-title\">\n+<p class=\"eyebrow\">Current exercise</p>\n+<h2 id=\"exercise-title\">Squat</h2>\n+<p class=\"rest\">Rest: <strong>45 seconds remaining</strong></p>\n+<h3>Set 2 of 3</h3>\n+<div class=\"set-entry\">\n+<label for=\"reps\">Reps</label>\n+<input id=\"reps\" value=\"8\" inputmode=\"numeric\">\n+<button class=\"primary\" id=\"log\" aria-live=\"polite\">Log set</button>\n+</div>\n+</section>\n <section id=\"guidance\">\n <h2>Session guidance</h2>\n <p>Optional planning context and earlier-session suggestions.</p>\n@@ -16,14 +27,6 @@\n <button>Training history</button>\n <p>Review recent patterns before choosing your next activity.</p>\n </section>\n-<section id=\"active\">\n-<h2>Current exercise: squat</h2>\n-<p>Rest: 45 seconds remaining</p>\n-<p>Set 2 of 3</p>\n-<label for=\"reps\">Reps</label>\n-<input id=\"reps\" value=\"8\">\n-<button id=\"log\">Log set</button>\n-</section>\n </main>\n <script src=\"app.js\">\n </script>\ndiff --git a/style.css b/style.css\nindex 9b3dd2a..6c1f9c7 100644\n--- a/style.css\n+++ b/style.css\n@@ -1 +1,20 @@\n body{font:16px system-ui;margin:0;background:#f6f8f5;color:#163832}main{max-width:850px;margin:auto;padding:20px}h1{font-size:30px}nav{display:flex;gap:20px}section,.card{border:1px solid #b9c8c0;border-radius:12px;background:white;padding:20px;margin:14px 0}button,a{font:inherit}button{padding:12px 18px;border:1px solid #315b51;border-radius:8px;color:#163832;background:#fff;margin:4px}button.primary{background:#174f4a;color:white}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #1658a8;outline-offset:3px}input,textarea{font:inherit;padding:12px;max-width:90%}.metric{font-size:32px;font-weight:bold}.muted{color:#51665e}button:disabled{opacity:.55}.row{display:flex;gap:12px;flex-wrap:wrap}img{max-width:100%}@media(max-width:500px){main{padding:12px}h1{font-size:26px}}\n+\n+header.row{align-items:center;justify-content:space-between;margin-bottom:20px}\n+h1{margin:8px 0}\n+header button{margin:0}\n+#active{border-top:4px solid #315b51}\n+.eyebrow{margin:0 0 4px;color:#51665e;font-size:14px}\n+#active h2{margin:0;font-size:30px}\n+.rest{margin:20px 0;padding:12px;background:#edf3ef;border-radius:8px;line-height:1.5}\n+#active h3{margin:0 0 16px;font-size:20px}\n+.set-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 16px;align-items:center}\n+.set-entry label{grid-column:1 / -1;font-weight:600}\n+.set-entry input{box-sizing:border-box;width:100%;max-width:none;min-width:0;border:1px solid #315b51;border-radius:8px;font-size:24px}\n+.set-entry button{margin:0;min-height:56px;font-weight:600}\n+#guidance h2{margin:0 0 12px;font-size:20px}\n+#guidance p{color:#51665e;line-height:1.5}\n+@media(max-width:500px){\n+  .set-entry{grid-template-columns:minmax(0,1fr)}\n+  .set-entry button{margin-top:8px}\n+}\n"
+  }
+]

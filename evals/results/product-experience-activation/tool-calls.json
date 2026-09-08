@@ -1,0 +1,46 @@
+[
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"pwd; rg --files -g '!node_modules' -g '!package-lock.json' -g '!yarn.lock' -g '!pnpm-lock.yaml'\",\"max_output_tokens\":4000}));\ntext(await tools.exec_command({cmd:\"cat <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/skills/using-engineering-harness/SKILL.md\",\"max_output_tokens\":6500}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"ls -a; cat README.md DESIGN.md states.json app.js index.html\",\"max_output_tokens\":8000}));\ntext(await tools.exec_command({cmd:\"cat <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/references/change-classification.md <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/references/experience-routing.md\",\"max_output_tokens\":7000}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"rg --files --hidden .agents .codex; git status --short\",\"max_output_tokens\":2500}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"cat <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/skills/product-experience/SKILL.md <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/references/scope-approval.md\",\"max_output_tokens\":6500}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"cat <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/skills/interface-design/references/rendered-evidence.md <CODEX_HOME>/plugins/cache/davidiw-skills/engineering-harness/0.6.0/skills/product-experience/references/tasks-and-recovery.md; node -e \\\"try { console.log(require.resolve('playwright')) } catch(e) { console.log('playwright unavailable') }\\\"\",\"max_output_tokens\":5000}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(ALL_TOOLS.filter(x=>/browser|playwright/.test(x.name+\" \"+x.description)).map(x=>({name:x.name,description:x.description.slice(0,150)})));\ntext(await tools.exec_command({cmd:\"command -v chromium chromium-browser google-chrome; ls .tmp; node -e \\\"for (const m of ['puppeteer','@playwright/test','playwright-core']) { try { console.log(m,require.resolve(m)) } catch {} }\\\"\",\"max_output_tokens\":1500}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"mkdir -p .tmp/cedar-review; cat > .tmp/cedar-review/inspect.cjs <<'EOF'\\nconst {spawn}=require('node:child_process');\\nconst fs=require('node:fs');\\nconst path=require('node:path');\\nconst browser=spawn('<BROWSER_CACHE>/chromium_headless_shell-1234/chrome-headless-shell-linux64/headless_shell',['--no-sandbox','--headless','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-pipe','--user-data-dir='+path.resolve('.tmp/cedar-review/profile')],{stdio:['ignore','ignore','pipe','pipe','pipe']});\\nlet serial=0, pending=new Map(), buffer='';\\nbrowser.stdio[4].on('data',chunk=>{buffer+=chunk;let i;while((i=buffer.indexOf('\\\\0'))>=0){const m=JSON.parse(buffer.slice(0,i));buffer=buffer.slice(i+1);if(pending.has(m.id)){pending.get(m.id)(m);pending.delete(m.id)}}});\\nfunction send(method,params={},sessionId){return new Promise(resolve=>{const id=++serial;pending.set(id,resolve);browser.stdio[3].write(JSON.stringify({id,method,params,sessionId})+'\\\\0')})}\\n(async()=>{const t=await send('Target.createTarget',{url:'about:blank'});const a=await send('Target.attachToTarget',{targetId:t.result.targetId,flatten:true});const s=a.result.sessionId;const call=(m,p)=>send(m,p,s);const ev=async expression=>{let r=await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.result.exceptionDetails)throw Error(JSON.stringify(r.result.exceptionDetails));return r.result.result.value};\\nawait call('Page.enable');await call('Emulation.setDeviceMetricsOverride',{width:1000,height:800,deviceScaleFactor:1,mobile:false});await call('Page.navigate',{url:'file://'+path.resolve('index.html')});\\nawait ev(\\\"new Promise(resolve=>{const tick=()=>document.getElementById('app')?.innerText?resolve(true):setTimeout(tick,20);tick()})\\\");\\nconst results=[]; const capture=async name=>{results.push({name,text:await ev('document.body.innerText'),rows:await ev(\\\"JSON.parse(localStorage.getItem('cedar.reflections') || '[]')\\\")});const shot=await call('Page.captureScreenshot',{format:'png'});fs.writeFileSync('.tmp/cedar-review/'+name+'.png',Buffer.from(shot.result.data,'base64'))};\\nawait ev(\\\"localStorage.clear();location.hash='#today';render()\\\");await capture('empty-today');\\nawait ev(\\\"location.hash='#reflection';render()\\\");await ev(\\\"document.getElementById('answer').value='Synthetic saved answer';document.getElementById('answer').dispatchEvent(new Event('input'))\\\");await capture('partial');\\nawait ev(\\\"location.hash='#today';render()\\\");await capture('left');await ev(\\\"location.hash='#reflection';render()\\\");await capture('reentry');\\nconst examples=JSON.parse(fs.readFileSync('states.json')).examples;\\nawait ev(`localStorage.setItem('cedar.reflections',${JSON.stringify(JSON.stringify(examples))});location.hash='#today';render()`);await capture('stored-today');\\nawait ev(\\\"location.hash='#history';render()\\\");await capture('history');\\nawait ev(\\\"location.hash='#reflection/unfinished-example';render()\\\");await capture('resumed-by-id');\\nawait ev(\\\"location.hash='#reflection/failed-example';render()\\\");await capture('failed');\\nawait call('Network.enable');await call('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0});await ev(\\\"document.getElementById('next').click()\\\");await capture('offline-retry');\\nawait call('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});await ev(\\\"document.getElementById('next').click()\\\");await capture('success');\\nawait ev(\\\"location.hash='#reflection/missing';render()\\\");await capture('missing');\\nfs.writeFileSync('.tmp/cedar-review/observations.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));await send('Browser.close');})().catch(e=>{console.error(e);browser.kill();process.exitCode=1});\\nEOF\\nnode .tmp/cedar-review/inspect.cjs\",\"max_output_tokens\":3000,\"yield_time_ms\":1000}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"sed -i \\\"s@linux64/headless_shell@linux64/chrome-headless-shell@\\\" .tmp/cedar-review/inspect.cjs\\nnode .tmp/cedar-review/inspect.cjs\",\"max_output_tokens\":3000,\"yield_time_ms\":1000}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"python3 - <<'PY'\\np='.tmp/cedar-review/inspect.cjs'\\ns=open(p).read().replace(';render()', '')\\ns=s.replace('return r.result.result.value', \\\"await call('Runtime.evaluate',{expression:'new Promise(r=>setTimeout(r,30))',awaitPromise:true});return r.result.result.value\\\")\\ns=s.replace(\\\"location.hash='#reflection'\\\", \\\"document.querySelector('a[href=\\\\\\\"#reflection\\\\\\\"]').click()\\\") if False else s\\nopen(p,'w').write(s)\\nPY\\nnode .tmp/cedar-review/inspect.cjs > .tmp/cedar-review/run.json\",\"max_output_tokens\":1000,\"yield_time_ms\":1000}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.write_stdin({session_id:38820,chars:\"\",\"yield_time_ms\":1000,\"max_output_tokens\":1000}));\nimage((await tools.view_image({path: \"<FIXTURE>/.tmp/cedar-review/stored-today.png\"})).image_url);\nimage((await tools.view_image({path: \"<FIXTURE>/.tmp/cedar-review/failed.png\"})).image_url);\ntext(await tools.exec_command({cmd:\"node -e \\\"const x=require('./.tmp/cedar-review/observations.json'); console.log(x.map(s=>({state:s.name,records:s.rows.length,text:s.text})))\\\"\",\"max_output_tokens\":1600}));\n"
+  },
+  {
+    "name": "exec",
+    "arguments": "text(await tools.exec_command({cmd:\"git diff --exit-code -- app.js index.html DESIGN.md README.md states.json; git status --short\",\"max_output_tokens\":1000}));\n"
+  }
+]

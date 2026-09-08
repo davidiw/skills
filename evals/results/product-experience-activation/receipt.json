@@ -1,0 +1,345 @@
+{
+  "kind": "single Harness-only natural activation smoke",
+  "source_revision": "0979843e5ad35bf5dbde707afb36a0b0e7867f18",
+  "runtime_file_hashes": {
+    ".codex-plugin/plugin.json": "d7ba0f090bb1b8753d0385dc884ffc1aed9ee666ead344594960783d42b1a7f9",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "0c11e901e8627f06f9e1d250301a370d73d96f6f88298d4a58d43afc4c5220fd",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+    "references/change-classification.md": "f7e530635d691090e6a8ff40201f05f423f5ef1fbe8c4bc682bbb8172091a579",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "b740720bf280576d65d802f70c0723a5890ea6e08b35d040dd79514c3001c33e",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "1d4226b109d7f3c4724a7d8f7c5855ad9ee9a3e0c4dc2358e98a21d5cf8ebf80",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "6b807e4f4b390df0a7f1a3e84b36b986fd88529b3985eeaad81b56b91a2977ca",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "cf43ee26a12671095712ad1a9c7c5373b43e6c695fc5d5c5959880c8d7b596c6",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "d1933f29552d645a62c5e19654b7d5c46a7e1629c3ae2d4b94b47d8393a318ff",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "ee819b59dc533dc0ffe81b671da8edcfe494c1659358982a4d63faaf6eafe343",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "ad2df8f5fb75a4db9e9db9704903efbbd9273d4a95c4173cfcffe88fd70956eb",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/evidence-contract.md": "e4e2ca10743506999bf961c9f8d35d1ac2e37455e7d09aa08f1d1795d2675435",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "0c25a09a0ed97eef8b35a7d888cd8deea2aa26bd5b3e033b2b2b3573536affee",
+    "templates/project-profile.minimal.json": "b80dbd13ee05ed27bc9ec219386134c9a42d7d92725dc8cfb0ba0f3e569b88df",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "runner_sha256": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d",
+  "evaluation_input_hashes": {
+    "evals/experience-matrix.json": "cd1bff084eb4194621296589be4039bda9e4fdb1b70b25964ac528618b649b35",
+    "evals/cases.json": "5def87990274f43b04c842c1aeb544f0be30276b1bda9df31e24b2e10f077e80",
+    "evals/run_natural_matrix.py": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d"
+  },
+  "request": "Cedar has Today for immediate work, History for completed activity, and an existing Weekly Reflection flow. Users who leave a reflection halfway through don't know where to resume it. Review the current flow and propose the smallest coherent recovery/entry behavior. Do not add a new destination or change production unless the accepted contract supports it.",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "cli_version": "codex-cli 0.153.4",
+  "context": {
+    "id": "01a07e44-9f27-7932-9c5b-f9b9383e634e",
+    "source": "exec",
+    "kind": "primary",
+    "parent_context_id": null,
+    "completed": true,
+    "agent_configuration": "primary"
+  },
+  "context_count": 1,
+  "control_invocations": 0,
+  "matrix_modified": false,
+  "skill_bodies_read": [
+    "product-experience",
+    "using-engineering-harness"
+  ],
+  "reference_paths_in_read_commands": [
+    "references/change-classification.md",
+    "references/experience-routing.md",
+    "references/rendered-evidence.md",
+    "references/scope-approval.md",
+    "references/tasks-and-recovery.md"
+  ],
+  "native_returned_read_evidence": [
+    {
+      "call_id": "call_8ugOsPs7HXWvncIXyHa9kmK2",
+      "returned_text_markers": [
+        "name: using-engineering-harness"
+      ],
+      "output_sha256": "846c3aaf19ea557e5503a2f91d922fe9ad6aae538fe6b60ff46b8834201e4463"
+    },
+    {
+      "call_id": "call_5Qcvm2pH1n3zBlC0mIS7s5Vz",
+      "returned_text_markers": [
+        "name: product-experience"
+      ],
+      "output_sha256": "169b9118f83aa3d7433d1a5265a0822390367672129ed5032f8820d96b03fc1b"
+    },
+    {
+      "call_id": "call_PU738nIG2wq4hBnLn1x3wwgc",
+      "returned_text_markers": [
+        "# Tasks and recovery"
+      ],
+      "output_sha256": "586e3e240d5ecc98b2c9508cbd633329347daf6bd9c5eb365b231ad14edbb0a7"
+    }
+  ],
+  "fixture_before_hashes": {
+    "DESIGN.md": "03a4014a7899d0242f05c0bcab29aae3eb6915de1bff28ba77110f7577bafde0",
+    "README.md": "93675635aa9fe063cca81ee12f10750d81cba0c7b1fc39a0b66fb08007cf025b",
+    "app.js": "1b4476555bf67b180d2cfa90c7ab83bba2378f95587fc0be8921af59c3533563",
+    "index.html": "f8ea691dbeed21304037d10251d0f4376a32008268424165f988b41cddcda48f",
+    "states.json": "26383854610e5611e715613830d502079d8518cb25a8d1c939b566fff2557987"
+  },
+  "fixture_after_production_hashes": {
+    "DESIGN.md": "03a4014a7899d0242f05c0bcab29aae3eb6915de1bff28ba77110f7577bafde0",
+    "README.md": "93675635aa9fe063cca81ee12f10750d81cba0c7b1fc39a0b66fb08007cf025b",
+    "app.js": "1b4476555bf67b180d2cfa90c7ab83bba2378f95587fc0be8921af59c3533563",
+    "index.html": "f8ea691dbeed21304037d10251d0f4376a32008268424165f988b41cddcda48f",
+    "states.json": "26383854610e5611e715613830d502079d8518cb25a8d1c939b566fff2557987"
+  },
+  "scratch_artifact_count": 68,
+  "runtime_before_and_after_match": true,
+  "credential_copy_removed": true,
+  "command_boundary_preflight": {
+    "auth": "denied",
+    "auth_alias": "denied",
+    "outside": "denied",
+    "direct_http": "blocked",
+    "proxy_http": "403",
+    "direct_socket": "blocked",
+    "local_ipc": "ok"
+  },
+  "context_isolation": {
+    "fresh_home": true,
+    "no_resume_or_fork": true,
+    "custom_agent_catalog": {},
+    "environment_instructions": "Treat the current directory as the complete target repository. Inspect only this repository and runtime-provided skill/agent-role resources, not parent directories, other repositories, evaluation cases, expected outcomes, grading artifacts, other fixtures or runner records. Keep edits in this repository. No network calls or external system mutations. These restrictions apply to delegated agents too. They are environment limits, not workflow-selection instructions.",
+    "pinned_catalog_file_hashes": {
+      "code-review/SKILL.md": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442",
+      "code-review/agents/openai.yaml": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352",
+      "diagnosing-bugs/SKILL.md": "b9339b09ee3980808d8c5a35c7251b891b8b1e0036ec4ca37812b976ebddf6b6",
+      "diagnosing-bugs/agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+      "diagnosing-bugs/scripts/hitl-loop.template.sh": "18ae07e1cc49b32c71767e241a6e8de4be74ef21d5e3b7e39034d9c7335f2d80",
+      "domain-modeling/ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+      "domain-modeling/CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+      "domain-modeling/SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579",
+      "domain-modeling/agents/openai.yaml": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
+      "find-skills/SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f",
+      "grill-with-docs/SKILL.md": "610d091047bcfb9db0f75c057d15538481a721111579fc5ec7f83ad9131a2165",
+      "grill-with-docs/agents/openai.yaml": "94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9",
+      "improve-codebase-architecture/HTML-REPORT.md": "0b0936104158abeef7246ff6cbabefa4dc055f17589f2833f2d93001421910a1",
+      "improve-codebase-architecture/SKILL.md": "7b76f01b0eefe49a127754c9027a6235a036a21348df5dad988893d8b2f384d6",
+      "improve-codebase-architecture/agents/openai.yaml": "c8cb20f68ebf0edb4e497bc11ae5fcaa196004e661cd189015b04f4109ced7f1",
+      "writing-for-agents/SKILL-MECHANICS.md": "b4c54a0aaad3f6eddefde6d06770a0e401fbb8fc6a8f49ce18af816bd144d14d",
+      "writing-for-agents/SKILL.md": "a842323e664e5af104eac5c97ad22fda929ebeb62d81c501161ac1f6f482db58",
+      "writing-for-agents/agents/openai.yaml": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b"
+    },
+    "declared_available_skills": "- imagegen: Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas. (file: r2/imagegen/SKILL.md)\n- openai-docs: Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge\u2014including 'you,' 'your,' 'this app,' or 'this coding agent' when they refer to Codex\u2014and for OpenAI APIs/products and ChatGPT Work. Also use for model choice/migration, prompting, SDKs, Responses, Realtime, agents, evals, and Chat/Work/Codex comparisons. Do not use for generic app/software tasks that merely mention Codex. (file: r2/openai-docs/SKILL.md)\n- plugin-creator: Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entries by default. Use when Codex needs to create a new personal plugin, add optional plugin structure, generate or update marketplace entries for plugin ordering and availability metadata, or update an existing local plugin during development with the CLI-driven cachebuster and reinstall flow. (file: r2/plugin-creator/SKILL.md)\n- skill-creator: Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. (file: r2/skill-creator/SKILL.md)\n- skill-installer: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos). (file: r2/skill-installer/SKILL.md)\n- code-review: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes \u2014 Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \"review since X\". (file: r1/code-review/SKILL.md)\n- code-review: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes \u2014 Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \"review since X\". (file: r0/code-review/SKILL.md)\n- diagnosing-bugs: Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow. (file: r1/diagnosing-bugs/SKILL.md)\n- diagnosing-bugs: Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow. (file: r0/diagnosing-bugs/SKILL.md)\n- domain-modeling: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model. (file: r1/domain-modeling/SKILL.md)\n- domain-modeling: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model. (file: r0/domain-modeling/SKILL.md)\n- engineering-harness:using-engineering-harness: Route engineering changes and bug fixes, including authorization, consent, expiry, sensitive exports, shared contention, and provider contracts; bootstrap/adopt repositories, harden demonstrated friction, and coordinate security/privacy, UX/UI/brand, or pre-launch reviews. Keep ordinary edits minimal and load only required owners. (file: r3/engineering-harness/0.6.0/skills/using-engineering-harness/SKILL.md)\n- find-skills: Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill. (file: r1/find-skills/SKILL.md)\n- find-skills: Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill. (file: r0/find-skills/SKILL.md)\n- writing-for-agents: Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. (file: r1/writing-for-agents/SKILL.md)\n- writing-for-agents: Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. (file: r0/writing-for-agents/SKILL.md)",
+    "declared_resource_tree_hashes": {
+      "r2/imagegen/SKILL.md": {
+        "LICENSE.txt": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+        "SKILL.md": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba",
+        "agents/openai.yaml": "9ca574af14580dc7a2a3dc37a1796d17f93cb8850be66501f0799ef8603e9dc0",
+        "assets/imagegen-small.svg": "cff5f34f57ff60b3ee92eaedd17b15e96dd4b9e776df3e78936c9e00d42be294",
+        "assets/imagegen.png": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20",
+        "references/cli.md": "ecfc2e09261a0feb3482517a5fa0ff410cb7d1958e3cbd2ac6b61586f5b81405",
+        "references/codex-network.md": "c88298ca4481f6116a16fa7987434fc977f8b311c1bbc0c3d862ffd0c5981148",
+        "references/image-api.md": "dc975d7af8a4888967251a0276014b4a71ea30455294944b762256373ce3e569",
+        "references/prompting.md": "b210b051c775860267080941eba968212bf0ac7fce581d75c5dcc217d8293f8b",
+        "references/sample-prompts.md": "70474177d151855b175c6133de2aae1d90b7f146b0dab50ec830972c47d72183",
+        "scripts/image_gen.py": "b4345cf835e5b593b97df6bb2b70bda493b8a97eee4cabbc99b2fa57dba9b448",
+        "scripts/remove_chroma_key.py": "a5893c4bd04b21abced33731ea89d2ac428e81d92a0368eb18ffbe4fda5253e2"
+      },
+      "r2/openai-docs/SKILL.md": {
+        "LICENSE.txt": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+        "SKILL.md": "7cb8fa1b2a0c635b5c61ffe1da7b8594a7ea0fce5b71e8d523e2025d88b2a05e",
+        "agents/openai.yaml": "44b9efac6be1bae32d869aa2942fecbe4dcae82682ee03e4120f2f9b7d4658ec",
+        "assets/openai-small.svg": "45be1f0757eb18889eefb1e7db79668ef46a275dc4e0e78e8df5ebd7f6cdeadc",
+        "assets/openai.png": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c",
+        "references/codex-self-knowledge.md": "8c8fb00e6e5cb1977924f5164684a6095427fa828bbc765225f17d9aeb79a912",
+        "references/latest-model.md": "f25e351e522dd6e30e82d482f31f44c992e794b11031cdcb6ac7c0e6b20c9d5d",
+        "references/mcp-diagnostics.md": "49bbd2f73df7bbd7f86c80425dea4da2d301c22046080399a36bfc0ca49509e9",
+        "references/model-migration.md": "5f20c38fbbb10319767b216d91ba74bae49c68fc1bfd6d1abd7c9b4cc9cb9ab0",
+        "references/model-selection.md": "ba2d164abbca30435a460a0bc3a7d82398dce2bdf092705c98ba55b3f3af38a8",
+        "references/official-docs.md": "7962f2dce55089b93bde4115bb89fd42f20993c1597a2b13edd4956f463875b9",
+        "references/prompting-guide.md": "db913884cfe0fabf29bee1a139918f56e299decfa0a14d61c48596f23f76621d",
+        "references/upgrade-guide.md": "ed1b75a89b8ec4d67787774ef6c4e8b98eace16c63348f42e969e6ffa67cb656",
+        "references/upgrading-to-gpt-5p6-sol.md": "9a918a0c8dd051d574f2fd0309201afa8a9b9c08241c11ca1fb0ac2f4724e7ac",
+        "scripts/fetch-codex-manual.mjs": "f53eb6d2f286e9efcc397e8bee93a938e37296c90953e4e06e94899ef1b6c363",
+        "scripts/resolve-latest-model-info": "7354dbb030ca0736dd633a7ca1b930cf640abd40370725dea3a458cb51d49523",
+        "scripts/resolve-latest-model-info.cjs": "eeb1bb486018e16b37edfc06b1a37179dbc672982d501040d4f7142f29dd2e64"
+      },
+      "r2/plugin-creator/SKILL.md": {
+        "SKILL.md": "71b95b8219644f95d633721e7f7cd3c469edfc8fe50f8415d400dfb2d74bc7b9",
+        "agents/openai.yaml": "fecaf35d692bd3d33d1a065648258d12e393afa9055d78adf6e57b42f4142f6d",
+        "assets/plugin-creator-small.svg": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+        "assets/plugin-creator.png": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+        "references/installing-and-updating.md": "91c4781d48568fcc708b45566b08fb610ad1c88672720ae512f9525a1cf9cb20",
+        "references/plugin-json-spec.md": "eeb640130f69636affaa299d4170d5a7ae6a0ff978296ddf75c409ce6dd87b91",
+        "scripts/create_basic_plugin.py": "272cb14e02ad7c76ac40777443c49cfecfa333ee28ab7f6214210b72c8fd02ae",
+        "scripts/identifier_validation.py": "a6d51ce4a9a7e8f85626ff5808a467a67574e7f8cdf1167ffb467c5f67e57223",
+        "scripts/read_marketplace_name.py": "ba24e6d91eed6f778bde022a967be335c6253983b5ecd1c5e30c8483385887fd",
+        "scripts/update_plugin_cachebuster.py": "6a630dfbdc2bca6952580da9c2c7ece08030926819ccd81d9deb518c24c1b0ed",
+        "scripts/validate_plugin.py": "f4eeadb733b28b0c3e714de263a76d6542866a672f3e99bdffcf4dbcdf85e944"
+      },
+      "r2/skill-creator/SKILL.md": {
+        "SKILL.md": "6656e54755638e8efcf275a472b9672eaa8a9a1b9e59dc210e275b03b59e1e66",
+        "agents/openai.yaml": "d07d21b93fcf3d4dc8d9a3399c05fc226a49a333a96d3e1c68b451b8dd9eade6",
+        "assets/skill-creator-small.svg": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+        "assets/skill-creator.png": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+        "license.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "references/openai_yaml.md": "ffac39318e408108141d40f820968e59f70434a891694f9bf1d25be8237b150c",
+        "scripts/generate_openai_yaml.py": "816df12072d74faf924d802a6599a139997e1441e90bfe4869ec304f2e5e2851",
+        "scripts/init_skill.py": "bf0656a5f9d8d8cdecf0245eaf27e1df8e0e9b6d40ccdda814eb8e3d5f6992c8",
+        "scripts/quick_validate.py": "ee6dba90f44d37171c5a6edb8095979c54919ff6822c1a907afca2e78c48738c"
+      },
+      "r2/skill-installer/SKILL.md": {
+        "LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "SKILL.md": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee",
+        "agents/openai.yaml": "5ce223d8b1070b82c42298538f1b8d376f788eb9e7a42a987e8c094070d73f0e",
+        "assets/skill-installer-small.svg": "3928703ff00dc1a681e7a22401843b7edcbd4b2051651ce4c43b75f7e140504e",
+        "assets/skill-installer.png": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605",
+        "scripts/github_utils.py": "61c1bbe2ae217433b4b6f9f09f21aca4df52c12598068343ade719f706e4859b",
+        "scripts/install-skill-from-github.py": "38f311b75664bb063808f982c600271ebc4b560830f491705190f88a94e3e781",
+        "scripts/list-skills.py": "9d6dfb2abf3afeee7f027a89fb1626b918a973da18f4eb6c25681286301beb41"
+      },
+      "r1/code-review/SKILL.md": {
+        "SKILL.md": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442",
+        "agents/openai.yaml": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352"
+      },
+      "r0/code-review/SKILL.md": {
+        "SKILL.md": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442",
+        "agents/openai.yaml": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352"
+      },
+      "r1/diagnosing-bugs/SKILL.md": {
+        "SKILL.md": "b9339b09ee3980808d8c5a35c7251b891b8b1e0036ec4ca37812b976ebddf6b6",
+        "agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+        "scripts/hitl-loop.template.sh": "18ae07e1cc49b32c71767e241a6e8de4be74ef21d5e3b7e39034d9c7335f2d80"
+      },
+      "r0/diagnosing-bugs/SKILL.md": {
+        "SKILL.md": "b9339b09ee3980808d8c5a35c7251b891b8b1e0036ec4ca37812b976ebddf6b6",
+        "agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+        "scripts/hitl-loop.template.sh": "18ae07e1cc49b32c71767e241a6e8de4be74ef21d5e3b7e39034d9c7335f2d80"
+      },
+      "r1/domain-modeling/SKILL.md": {
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+        "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+        "SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579",
+        "agents/openai.yaml": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b"
+      },
+      "r0/domain-modeling/SKILL.md": {
+        "ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+        "CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+        "SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579",
+        "agents/openai.yaml": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b"
+      },
+      "r3/engineering-harness/0.6.0/skills/using-engineering-harness/SKILL.md": {
+        "SKILL.md": "ee819b59dc533dc0ffe81b671da8edcfe494c1659358982a4d63faaf6eafe343",
+        "agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3"
+      },
+      "r1/find-skills/SKILL.md": {
+        "SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+      },
+      "r0/find-skills/SKILL.md": {
+        "SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+      },
+      "r1/writing-for-agents/SKILL.md": {
+        "SKILL-MECHANICS.md": "b4c54a0aaad3f6eddefde6d06770a0e401fbb8fc6a8f49ce18af816bd144d14d",
+        "SKILL.md": "a842323e664e5af104eac5c97ad22fda929ebeb62d81c501161ac1f6f482db58",
+        "agents/openai.yaml": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b"
+      },
+      "r0/writing-for-agents/SKILL.md": {
+        "SKILL-MECHANICS.md": "b4c54a0aaad3f6eddefde6d06770a0e401fbb8fc6a8f49ce18af816bd144d14d",
+        "SKILL.md": "a842323e664e5af104eac5c97ad22fda929ebeb62d81c501161ac1f6f482db58",
+        "agents/openai.yaml": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b"
+      }
+    },
+    "limits": "Host .agents skills and CLI system skills remain declared despite skip_host_skill_discovery; their observed file trees are hashed here. No personal custom agents or previous conversation. Native base/turn instructions retained privately; no claim of a hermetic competing-skill catalog."
+  },
+  "checks": {
+    "natural_router_read": "pass",
+    "natural_product_experience_read": "pass",
+    "tasks_and_recovery_read": "pass",
+    "one_specialist_body": "pass",
+    "bounded_recovery_proposal": "pass",
+    "no_production_edits_or_implemented_expansion": "pass"
+  },
+  "retained_private_artifact_sha256": {
+    "manifest.json": "bfaa69225f5add16087b7e19fb10ed542bad0a207b4f3da032bd11110df168d8",
+    "prepare_and_run.py": "415c8a179d16eea7b7c354845bb72e51f4296e9342335be813d835c36dc21cb1",
+    "private/weekly-reflection-activation-smoke-harness-trial1/record.json": "742c408a5867ae0b3c5d289ad7b787391d73e150b778b7374cd9bae9684310af",
+    "private/weekly-reflection-activation-smoke-harness-trial1/codex-home/sessions/2026/09/07/rollout-2026-09-07T16-47-01-01a07e44-9f27-7932-9c5b-f9b9383e634e.jsonl": "cb599b7dee00fb49a2e7e4e76b6578a738027c6d809af0fad403356076bd91dd",
+    "private/weekly-reflection-activation-smoke-harness-trial1/fixture/.tmp/cedar-review/inspect.cjs": "2aa50a1bb8d7736a2d6add363e565fe0a005ff21b786987ef45c809ffba428fe",
+    "private/weekly-reflection-activation-smoke-harness-trial1/fixture/.tmp/cedar-review/observations.json": "47488bd1b1c3b55650a460854abfde3a877f16a942f07357523ee3008a536818",
+    "private/weekly-reflection-activation-smoke-harness-trial1/fixture/.tmp/cedar-review/stored-today.png": "46bc66e565f16b27269513000f5390eda3ab2262543b4e85a9767ace077ee1a1",
+    "private/weekly-reflection-activation-smoke-harness-trial1/fixture/.tmp/cedar-review/failed.png": "e11770d514fa053a6f5ab09014d79183814192c495cd2be6a587ede5d392eb22"
+  },
+  "public_artifact_sha256": {
+    "response.md": "c99a45766a78213ea928cc1b4d4a91f5f6cfe73c3c96b8292d33b30ae4c8ef26",
+    "tool-calls.json": "fb3cf2257bfb8d4921113eddb315648de14f9189e1ced852f16695be53c48413",
+    "source/DESIGN.md": "03a4014a7899d0242f05c0bcab29aae3eb6915de1bff28ba77110f7577bafde0",
+    "source/app.js": "1b4476555bf67b180d2cfa90c7ab83bba2378f95587fc0be8921af59c3533563",
+    "source/README.md": "93675635aa9fe063cca81ee12f10750d81cba0c7b1fc39a0b66fb08007cf025b",
+    "source/index.html": "f8ea691dbeed21304037d10251d0f4376a32008268424165f988b41cddcda48f",
+    "source/states.json": "26383854610e5611e715613830d502079d8518cb25a8d1c939b566fff2557987"
+  },
+  "limitations": [
+    "One activation observation, not reliable-frequency or comparative-effectiveness evidence.",
+    "No control, statistical, broad efficiency or full-cohort claims.",
+    "The earlier conversation remains unpaired; original pilot remains nine pass / one partial per arm.",
+    "Accessible-name partial is unchanged and not a release gate under the latest user acceptance.",
+    "Scratch renderer setup errors and corrections remain in native trace; no model retry occurred.",
+    "Only the two explicitly opened screenshots establish image inspection; captured files alone do not."
+  ],
+  "response_export": "Final response verbatim except repository-relative DESIGN.md link rebased to retained source/DESIGN.md."
+}
