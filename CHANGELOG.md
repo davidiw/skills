@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.7.0 - Unreleased
+## 0.7.0 - 2026-09-08
 
 Strengthens natural discovery for engineering methodology, shared test/evidence
 infrastructure and review/safety/compatibility policy. The existing verification
@@ -15,7 +15,13 @@ not execute policies or prove behavioral coverage. Schema 2 and arbitrary source
 keys remain unchanged. Migration: review source registrations and their existing
 invariant owner/artifacts before adopting this minor policy line. Audit findings
 are review leads for a separate system slice, not permission to alter product PRs
-or relax their acceptance rules. Stable installation remains v0.6.0.
+or relax their acceptance rules. Stable installation pins `v0.7.0`.
+
+The four-case natural Harness/control cohort completed eight executions; all four
+Harness outcomes met their bounded requirements. This is one trial per arm/case,
+not a statistical effectiveness or efficiency claim. Evidence retains its original
+source identity; the released runtime matches the evaluated runtime. Real
+VitalThread performance artifacts were not executed or certified.
 
 ## 0.6.0 - 2026-09-07
 
