@@ -3,14 +3,14 @@
   "harness_policy_version": "0.7.0",
   "status": "accepted",
   "project": {
-    "name": "small-example",
+    "name": "cedar",
     "kind": "single-process-application",
     "sensitive_data": false
   },
   "sources": {
     "agent_rules": "AGENTS.md",
-    "architecture": "README.md",
-    "operator_interface": "package.json"
+    "architecture": "DESIGN.md",
+    "performance_evidence": "docs/performance_testing.md"
   },
   "capabilities": {
     "durable_work": false,
@@ -35,12 +35,25 @@
     "canonical-authority": {
       "rung": "owner",
       "owner": "src/application.ts",
-      "artifacts": ["test/application.test.ts"]
+      "artifacts": [
+        "test/application.test.ts"
+      ]
     },
     "bounded-contracts": {
       "rung": "local_check",
       "owner": "package.json#scripts.test",
-      "artifacts": ["test/application.test.ts"]
+      "artifacts": [
+        "test/application.test.ts"
+      ]
+    },
+    "typed-exact-evidence": {
+      "rung": "local_check",
+      "owner": "qualify.py",
+      "artifacts": [
+        "docs/performance_testing.md",
+        "qualification.json",
+        "test_qualify.py"
+      ]
     }
   },
   "exceptions": []

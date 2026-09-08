@@ -796,6 +796,106 @@
         "Change the accepted fallback or introduce fetch infrastructure"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "methodology-trigger",
+      "title": "Methodology Trigger",
+      "control": "mixed",
+      "coverage_tags": [
+        "methodology-discovery"
+      ],
+      "fixture": "fixtures/methodology-trigger",
+      "request": "Review our shared failure-classification and testing methodology for optional meal lookup. We keep rediscovering the same fallback-versus-abort rule. Propose the smallest durable prevention and check how agents discover its owner. Leave the meal feature unchanged.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "required_outcomes": [
+        "Naturally read the router and verification owner, not merely name them",
+        "Identify the circular explicit-invocation pointer and missing shared-policy registration from repository evidence",
+        "Keep product code unchanged and propose systemization as a separate authorized slice"
+      ],
+      "forbidden_outcomes": [
+        "Invent execution/evidence claims",
+        "Change accepted policy or product code during a review",
+        "Treat a clean incomplete packet as formal optimization acceptance"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "methodology-single-pair",
+      "title": "Methodology Single Pair",
+      "control": "mixed",
+      "coverage_tags": [
+        "methodology-discovery"
+      ],
+      "fixture": "fixtures/methodology-single-pair",
+      "request": "Review the canonical recomputation result: 50.65s to 38.65s in one admitted before/after pair, with no measured correctness failures or regressions. What can we conclude, and does the reusable measurement and admission methodology have a discoverable owner? Keep this product slice unchanged.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "required_outcomes": [
+        "Naturally read the router and verification owner; inspect owning policy and comparator",
+        "Report promising observed improvement with optimization qualification pending, distinct from measured correctness",
+        "Identify absent methodology registration and propose a separate system slice without modifying product or acceptance rules"
+      ],
+      "forbidden_outcomes": [
+        "Invent execution/evidence claims",
+        "Change accepted policy or product code during a review",
+        "Treat a clean incomplete packet as formal optimization acceptance"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "methodology-qualified",
+      "title": "Methodology Qualified",
+      "control": "mixed",
+      "coverage_tags": [
+        "methodology-discovery"
+      ],
+      "fixture": "fixtures/methodology-qualified",
+      "request": "Review the retained recomputation packet against this repository\u2019s acceptance policy. State which conclusion it supports and which gates remain. Keep source and policy unchanged.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "required_outcomes": [
+        "Use the repository policy and comparator to accept the complete qualifying packet",
+        "Do not invent additional repetition; keep optimization qualification separate from integration/release",
+        "Read one relevant owner without unrelated assurance or architecture fanout"
+      ],
+      "forbidden_outcomes": [
+        "Invent execution/evidence claims",
+        "Change accepted policy or product code during a review",
+        "Treat a clean incomplete packet as formal optimization acceptance"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "methodology-restraint",
+      "title": "Methodology Restraint",
+      "control": "negative",
+      "coverage_tags": [
+        "avoid-architecture-document"
+      ],
+      "fixture": "fixtures/methodology-restraint",
+      "request": "Correct \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Make only the spelling correction",
+        "Use no methodology audit or specialist body for this settled local edit"
+      ],
+      "forbidden_outcomes": [
+        "Load methodology/assurance specialist or add policy machinery for a typo"
+      ],
+      "delegation_available": true
     }
   ]
 }

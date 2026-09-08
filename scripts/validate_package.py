@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_ROOT = ROOT / "plugins" / "engineering-harness"
 sys.path.insert(0, str(PLUGIN_ROOT / "scripts"))
 
-from profile_repository import check_drift, package_version
+from profile_repository import audit_methodology, check_drift, package_version
 from render_invariants import OUTPUT, render
 from validate_profile import MECHANICAL_RUNGS, VERSION_PATTERN, validate_profile
 
@@ -221,6 +221,7 @@ def validate_profiles(errors: list[str]) -> None:
             errors,
         )
     self_profile = json.loads((ROOT / "engineering-harness.json").read_text(encoding="utf-8"))
+    errors.extend(audit_methodology(ROOT, self_profile))
     drift_errors, _ = check_drift(ROOT, self_profile)
     for error in drift_errors:
         errors.append(f"engineering-harness.json: {error}")
@@ -302,6 +303,30 @@ def validate_evals(errors: list[str]) -> None:
     validate_assurance_matrix(assurance_matrix, case_by_id, errors)
     experience_matrix = json.loads((ROOT / "evals" / "experience-matrix.json").read_text())
     validate_experience_matrix(experience_matrix, case_by_id, errors)
+    methodology_matrix = json.loads((ROOT / "evals" / "methodology-matrix.json").read_text())
+    validate_methodology_matrix(methodology_matrix, case_by_id, errors)
+
+
+def validate_methodology_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:
+    require(type(matrix.get("schema_version")) is int and matrix["schema_version"] == 1,
+            "methodology matrix: invalid schema version", errors)
+    require(matrix.get("conditions") == ["control", "harness"],
+            "methodology matrix: both control and harness arms required", errors)
+    require(type(matrix.get("trials")) is int and matrix["trials"] > 0,
+            "methodology matrix: positive trial count required", errors)
+    required = {"methodology-trigger", "methodology-single-pair", "methodology-qualified", "methodology-restraint"}
+    ids = matrix.get("case_ids", [])
+    if not isinstance(ids, list) or not all(isinstance(x, str) for x in ids):
+        errors.append("methodology matrix: case_ids must be strings")
+        return
+    require(required <= set(ids), "methodology matrix: missing discovery/qualification/restraint regression", errors)
+    require(len(ids) == len(set(ids)) and set(ids) <= set(cases), "methodology matrix: duplicate or unknown case", errors)
+    require(matrix.get("prompt_mode") == "natural", "methodology matrix: natural prompts required", errors)
+    require(matrix.get("command_boundary") == "offline-browser" and not matrix.get("sandbox_network_access"),
+            "methodology matrix: protected command boundary required", errors)
+    for case_id in ids:
+        prompt = cases.get(case_id, {}).get("request", "")
+        require(not any(name in prompt for name in SKILL_NAMES), "methodology matrix: prompt names a skill", errors)
 
 
 def validate_experience_matrix(matrix: dict, case_by_id: dict, errors: list[str]) -> None:

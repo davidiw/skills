@@ -202,3 +202,20 @@ host leaves rendering/evaluation pending. The preflight tests this command bound
 not all Codex capabilities or every possible network protocol/host configuration.
 Retain older pilot results as historical evidence of their recorded weaker boundary;
 do not relabel them as protected by the new one.
+
+## Engineering methodology regressions
+
+`methodology-matrix.json` is a bounded natural Harness/control cohort. It tests
+PR #3's circular explicit-invocation pointer, PR #9's admitted-single-pair versus
+qualification distinction, a complete qualifying packet with a different
+repository-owned repetition rule, and ordinary typo restraint. Product code and
+accepted policy remain read-only in the three assessment cases. The fixtures are
+synthetic reductions, not executions or correctness assessments of VitalThread.
+
+Assess returned skill reads and owning policy/check use, truthful conclusions,
+separate system-slice proposals, and actual diffs. A named skill without a body
+read does not establish activation. Control need not fail. The complete packet
+case guards against always saying “more evidence needed”; its policy supplies the
+requirement. Runtime skills contain no experiment-specific thresholds. The
+existing runner retains snapshots, failed attempts, native contexts and cost
+measurements; no full historical matrix is required for this focused cohort.

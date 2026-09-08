@@ -1,6 +1,6 @@
 ---
 name: verification-and-operations
-description: Build or apply adversarial, fault, physical, exact-revision, and operational verification. Use for acceptance gates, high-risk audits, benchmarks, release evidence, generated artifacts, migrations, live repairs, deployment, installation, publication, or rollback; not for ordinary focused unit testing alone.
+description: Build or apply adversarial, fault, physical, exact-revision, and operational verification. Use for engineering methodology, evidence standards, shared test/review infrastructure, acceptance gates, benchmarks, release evidence, generated artifacts, migrations and external operations; not for ordinary focused unit testing alone.
 ---
 
 # Verification and Operations
@@ -9,7 +9,9 @@ Own exact evidence, independent campaigns and authorized external operations,
 not ordinary focused unit tests. Use repository commands and relevant
 [invariants](../../references/invariants.json); avoid a parallel operator system.
 
-1. Bind requested acceptance to source, toolchain, environment and authorized
+1. For reusable methodology or performance acceptance, first read
+   [methodology ownership](references/methodology.md) and locate its registered
+   repository policy. Bind requested acceptance to source, toolchain, environment and authorized
    actions. Separate implementation, automated proof and physical/external proof.
 2. Select proof at the actual failure seam: deterministic, replay/fault,
    mixed-version, performance or physical evidence as warranted. For constrained

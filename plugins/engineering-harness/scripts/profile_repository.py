@@ -324,6 +324,13 @@ def _repository_revision(repository: Path) -> str:
     return revision if result.returncode == 0 and re.fullmatch(r"[0-9a-f]{40}", revision) else "unversioned"
 
 
+METHODOLOGY_SOURCES = {
+    "testing_policy": ("docs/agents/testing.md", "TESTING.md", "docs/testing.md"),
+    "review_policy": ("docs/agents/workflow.md", "docs/review_policy.md"),
+    "performance_evidence": ("docs/performance_testing.md", "docs/performance_policy.md"),
+}
+
+
 def _discover_sources(repository: Path) -> dict[str, str]:
     candidates = {
         "agent_rules": ("AGENTS.md", "CLAUDE.md"),
@@ -332,6 +339,7 @@ def _discover_sources(repository: Path) -> dict[str, str]:
         "compatibility": ("compatibility_manifest.json",),
         "acceptance_contracts": ("acceptance_contracts.json", "docs/acceptance_contracts.json"),
         "operator_interface": ("vt", "Makefile", "package.json", "pyproject.toml"),
+        **METHODOLOGY_SOURCES,
     }
     sources: dict[str, str] = {}
     for name, paths in candidates.items():
@@ -340,6 +348,64 @@ def _discover_sources(repository: Path) -> dict[str, str]:
                 sources[name] = f"./{relative}" if name == "operator_interface" else relative
                 break
     return sources
+
+
+def audit_methodology(repository: Path, profile: dict, policies: Iterable[str] = ()) -> list[str]:
+    """Audit registration, not whether a policy's tests ran or its claims pass."""
+    errors = validate_profile(profile)
+    if errors:
+        return errors
+    repository = repository.resolve()
+
+    def resolve(value: str) -> Path | None:
+        path = Path(value.split("#", 1)[0])
+        if path.is_absolute() or ".." in path.parts:
+            return None
+        target = (repository / path).resolve()
+        return target if target.is_relative_to(repository) and target.exists() else None
+
+    registered = {}
+    for name, value in profile["sources"].items():
+        target = resolve(value)
+        if target is None:
+            errors.append(f"missing or escaping registered source: {name}={value}")
+        else:
+            registered[target] = name
+    candidates = set(policies)
+    candidates.update(
+        value for name, value in _discover_sources(repository).items()
+        if name in METHODOLOGY_SOURCES
+    )
+    # Custom policy locations use existing sources keys, not another schema.
+    candidates.update(value for name, value in profile["sources"].items()
+                      if name.endswith("_policy") or name == "performance_evidence")
+    for value in sorted(candidates):
+        target = resolve(value)
+        if target is None or not target.is_file():
+            errors.append(f"missing or escaping methodology policy: {value}")
+            continue
+        if target not in registered:
+            errors.append(f"unregistered methodology policy: {value}; review sources registration separately")
+            continue
+        owners = [entry for entry in profile["enforcement"].values()
+                  if target in [resolve(entry["owner"]),
+                                *(resolve(p) for p in entry.get("artifacts", []))]]
+        if not owners:
+            errors.append(f"methodology policy lacks an enforcement owner/rung: {value}")
+        for entry in owners:
+            if resolve(entry["owner"]) is None:
+                errors.append(f"methodology owner is missing or not a repository path: {entry['owner']}")
+            for artifact in entry.get("artifacts", []):
+                if resolve(artifact) is None:
+                    errors.append(f"methodology artifact is missing or escaping: {artifact}")
+    agent_rules = profile["sources"].get("agent_rules")
+    agent_path = resolve(agent_rules) if agent_rules else None
+    if agent_path and agent_path.is_file():
+        for line in agent_path.read_text(encoding="utf-8").splitlines():
+            if re.search(r"before\s+`?\$using-engineering-harness`?\s+work", line, re.I):
+                errors.append(f"circular Harness trigger in {agent_rules}: name the work that requires discovery, not prior skill selection")
+                break
+    return errors
 
 
 def propose_profile(repository: Path) -> dict[str, object]:
@@ -453,11 +519,27 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("repository", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--check", type=Path, metavar="PROFILE")
+    parser.add_argument("--audit-methodology", type=Path, metavar="PROFILE")
+    parser.add_argument("--policy", action="append", default=[], metavar="REPOSITORY_PATH",
+                        help="additional known methodology policy to audit; never executes it")
     args = parser.parse_args(argv)
     repository = args.repository.resolve()
     if not repository.is_dir():
         print(f"not a repository directory: {repository}", file=sys.stderr)
         return 2
+
+    if (args.audit_methodology and (args.check or args.output)) or (args.policy and not args.audit_methodology):
+        parser.error("methodology audit is a separate read-only mode; --policy requires it")
+    if args.audit_methodology:
+        try:
+            profile = json.loads(args.audit_methodology.read_text(encoding="utf-8"))
+            errors = audit_methodology(repository, profile, args.policy)
+        except (OSError, ValueError) as error:
+            print(error, file=sys.stderr)
+            return 2
+        print(json.dumps({"audit": "methodology-registration", "findings": errors,
+                          "limit": "Registration audit only; policy behavior and execution evidence require owning checks."}, indent=2))
+        return 1 if errors else 0
 
     if args.check:
         try:

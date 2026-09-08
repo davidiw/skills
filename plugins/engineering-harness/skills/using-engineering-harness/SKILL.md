@@ -1,11 +1,13 @@
 ---
 name: using-engineering-harness
-description: Route engineering changes and bug fixes, including authorization, consent, expiry, sensitive exports, shared contention, and provider contracts; bootstrap/adopt repositories, harden demonstrated friction, and coordinate security/privacy, UX/UI/brand, or pre-launch reviews. Keep ordinary edits minimal and load only required owners.
+description: "Route engineering changes and cross-cutting methodology: evidence standards, testing infrastructure, review/safety/compatibility policy, and reusable harness behavior. Adopt repositories, harden friction, and coordinate security/privacy or UX/UI/brand reviews. Keep ordinary fixes minimal."
 ---
 
 # Using Engineering Harness
 
-Read repository instructions and the accepted owner contract. Implementation,
+Read repository instructions and the accepted owner contract. For consequential
+work, discover its canonical policy and enforcement owner through
+`engineering-harness.json`; a task need not name this skill. Implementation,
 integration and publication stay within the user's respective authorization.
 **Design/plan requests always keep production unchanged:** inspect, propose and
 use synthetic proof; implementation checks/reviews remain prospective.
@@ -26,6 +28,8 @@ use synthetic proof; implementation checks/reviews remain prospective.
   privacy/lifecycle reviews use [privacy](../privacy-assurance/SKILL.md). Combined
   reviews use fresh contexts when available. Whole-system reviews cover unchanged
   paths through release inventory mode; named flows/diffs use changed-path mode.
+  For engineering-methodology or performance-evidence assessment, use
+  [verification and operations](../verification-and-operations/SKILL.md).
   For UX/UI/brand critique, select the [experience owner](../../references/experience-routing.md).
   Keep production unchanged and skip the builder checkpoints.
 - **Other change or design:** complete the

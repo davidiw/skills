@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "pairs": [
+    {
+      "id": "0",
+      "admitted": true,
+      "before_seconds": 50.65,
+      "after_seconds": 38.65,
+      "correctness_failures": 0,
+      "regressions": 0
+    },
+    {
+      "id": "1",
+      "admitted": true,
+      "before_seconds": 50.65,
+      "after_seconds": 38.65,
+      "correctness_failures": 0,
+      "regressions": 0
+    },
+    {
+      "id": "2",
+      "admitted": true,
+      "before_seconds": 50.65,
+      "after_seconds": 38.65,
+      "correctness_failures": 0,
+      "regressions": 0
+    }
+  ]
+}

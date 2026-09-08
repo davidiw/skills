@@ -1,0 +1,407 @@
+{
+  "kind": "bounded natural methodology cohort",
+  "source_revision": "7e2acdf6ba2bca0537a06baad4c236184fe36353",
+  "policy_version": "0.7.0",
+  "runtime_file_hashes": {
+    ".codex-plugin/plugin.json": "5db66e0eb5e55ee75f3681b3c8f2c76dccac1577d7762bec94c44c2f190d7f2b",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "0c11e901e8627f06f9e1d250301a370d73d96f6f88298d4a58d43afc4c5220fd",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+    "references/change-classification.md": "c47b29dc3c9be102a704c5b76c01571c12a52959a4c727a4f385258bdec89adf",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "6b807e4f4b390df0a7f1a3e84b36b986fd88529b3985eeaad81b56b91a2977ca",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "cf43ee26a12671095712ad1a9c7c5373b43e6c695fc5d5c5959880c8d7b596c6",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "687ccc147ce933bf03f0d8e90a9d0c877a1450e949680e23efc3b1f2c4164154",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "30835c0a8aab3e0976a2f1ee4119a05c8e77434c32a0a1e0eb41e6bdd82645c8",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/evidence-contract.md": "e4d70b9595e6ae15c491b39ee7ea50ac3fb230b2130b6f5eb89ba4421bd21293",
+    "skills/verification-and-operations/references/methodology.md": "f869c054c804038395112652a9e2ae19c98b3d28d97828628910f2a63b33cff7",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "fd796b212d9a11ec1c73e15ffa083df5a794789e90a05007f5e4931c5f4eba65",
+    "templates/project-profile.minimal.json": "10deaf86239ea27f50c32abbf62285425fb27d8db6b0177aefac710f3f21db72",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "input_hashes": {
+    "<EVALS>/methodology-matrix.json": "c4c6f4b5ef771658c629f6e650bd829eb45f9fc4b1c4a99062918b15f14efd8b",
+    "<EVALS>/cases.json": "9d91b149408c0053db49ed3b8f7ddfa9bba7143b5f4296818393cb8f493768bb",
+    "<EVALS>/run_natural_matrix.py": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d"
+  },
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "executions": 8,
+  "timeouts": 0,
+  "trials": [
+    {
+      "case_id": "methodology-qualified",
+      "arm": "control",
+      "context_id": "01a0820a-952a-7260-b48d-279c79e8eae2",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [],
+      "reference_paths_in_read_commands": [],
+      "native_read_pairs": [],
+      "registration_audit_called": false,
+      "qualification_command_called": true,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "3ca3b3b0eb3709547dbe4944b6f926ab03ddac89bbd65043b14695f375043389",
+      "native_trace_sha256": "319316cac68c0bdbf1baa57b81f2d6b2255f10a2dabc787d661ae8fa7353b0c7",
+      "wall_seconds": 29.918930768966675,
+      "usage": {
+        "input_tokens": 61021,
+        "cached_input_tokens": 53888,
+        "output_tokens": 440,
+        "reasoning_output_tokens": 33,
+        "uncached_input_tokens": 7133
+      },
+      "final_response": "The packet supports **accepted optimization qualification for the declared local experiment**.\n\n- All 3 pairs are admitted, meeting [qualification.json](qualification.json)\u2019s minimum; the packet is marked complete.\n- Every pair reports zero correctness failures and regressions.\n- Each pair improves from 50.65 s to 38.65 s: 12 s, approximately 23.7%.\n- `python qualify.py` returned `accepted`; the qualification unit test passed.\n\n**Remaining gates:** full product integration and release acceptance. [DESIGN.md](DESIGN.md) explicitly separates integration, and [the evidence policy](docs/performance_testing.md) excludes integration and release acceptance from this comparator\u2019s scope. The packet therefore does not establish those gates have passed.\n\nSource and policy remain unchanged.",
+      "assessment": "correct evidence/scope behavior; no Harness selection expected"
+    },
+    {
+      "case_id": "methodology-qualified",
+      "arm": "harness",
+      "context_id": "01a0820b-2af2-7380-892a-99f78952937e",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [
+        "code-review",
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "reference_paths_in_read_commands": [
+        "references/evidence-contract.md",
+        "references/methodology.md"
+      ],
+      "native_read_pairs": [
+        {
+          "call_id": "call_KlrOqEPdPAIZn34Llm6ux6bv",
+          "markers": [
+            "name: using-engineering-harness"
+          ],
+          "output_sha256": "199149204689405e278de77c4a55e823726252c92b7bc5ad573fb00d4901153a"
+        },
+        {
+          "call_id": "call_iMcSMErAg1chEE75ouVJ1wZX",
+          "markers": [
+            "name: verification-and-operations"
+          ],
+          "output_sha256": "1ec538bb6abb0629158a8aea9c77eaf76cb9b3a15b31ce51067c353eb5f0ae24"
+        },
+        {
+          "call_id": "call_FzdzpLrklkuXgcjORCGhx2Jx",
+          "markers": [
+            "# Repository-owned engineering methodology"
+          ],
+          "output_sha256": "793b0a2f0b5c12c809cf858bec8128f8c965091c46d895457046fb6c609d8ba1"
+        }
+      ],
+      "registration_audit_called": false,
+      "qualification_command_called": true,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "ab826859a84ec1245926cde07b38a38729686f8ebcdd0e9c2e4146f7d9985598",
+      "native_trace_sha256": "7f2eb3581ad0982ee35df09ee21144ea6550d6585b86fd9b9c55cc7b4c0db8a2",
+      "wall_seconds": 49.26871681213379,
+      "usage": {
+        "input_tokens": 89277,
+        "cached_input_tokens": 77568,
+        "output_tokens": 819,
+        "reasoning_output_tokens": 8,
+        "uncached_input_tokens": 11709
+      },
+      "final_response": "The packet supports **accepted optimization qualification for the declared local synthetic experiment**.\n\n- All 3 pairs are admitted, meeting `qualification.json`\u2019s minimum of 3; the packet is complete.\n- Every pair improves from 50.65 s to 38.65 s\u201412 s, or approximately 23.7% faster\u2014with zero recorded correctness failures or regressions.\n- `python -B qualify.py` returned `qualification: accepted` and `measured_checks_passed: true`.\n- `python -B -m unittest test_qualify.py` passed its 1 test.\n\n**Remaining gates:** full product integration remains separate under `DESIGN.md`; integration and release acceptance are outside this comparator\u2019s scope under `docs/performance_testing.md`. No additional repetition is required for this local qualification.\n\nSource and policy were left unchanged.",
+      "assessment": "required behavioral outcomes pass; competing code-review body also read"
+    },
+    {
+      "case_id": "methodology-restraint",
+      "arm": "control",
+      "context_id": "01a0820b-36b4-70d3-8f50-80a27572c70c",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [],
+      "reference_paths_in_read_commands": [],
+      "native_read_pairs": [],
+      "registration_audit_called": false,
+      "qualification_command_called": false,
+      "production_files_changed": [
+        "README.md"
+      ],
+      "only_scratch_additions": true,
+      "record_sha256": "f958eaf44944508c5995641453b39e6caf4a27c3bd3f30bcbb36aa5365b01cb6",
+      "native_trace_sha256": "3c9ab1d2e469eac383fdf2db708871d89212a0180523835996c43fe90917f2f7",
+      "wall_seconds": 19.20149850845337,
+      "usage": {
+        "input_tokens": 43179,
+        "cached_input_tokens": 37888,
+        "output_tokens": 126,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 5291
+      },
+      "final_response": "Corrected \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+      "assessment": "correct evidence/scope behavior; no Harness selection expected"
+    },
+    {
+      "case_id": "methodology-restraint",
+      "arm": "harness",
+      "context_id": "01a0820b-a817-7951-9140-da0976308d05",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [],
+      "reference_paths_in_read_commands": [],
+      "native_read_pairs": [],
+      "registration_audit_called": false,
+      "qualification_command_called": false,
+      "production_files_changed": [
+        "README.md"
+      ],
+      "only_scratch_additions": true,
+      "record_sha256": "cb2bbcc98c7ff7676bc0eaaef0fcb49459008d18292111c529af8c7b1f3115d1",
+      "native_trace_sha256": "74218b3c2038b346e99db29c2e784a2813787f55c39d168c776c87f206cd4f2f",
+      "wall_seconds": 23.88855767250061,
+      "usage": {
+        "input_tokens": 43759,
+        "cached_input_tokens": 38144,
+        "output_tokens": 147,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 5615
+      },
+      "final_response": "Corrected \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+      "assessment": "required behavioral outcomes pass"
+    },
+    {
+      "case_id": "methodology-single-pair",
+      "arm": "control",
+      "context_id": "01a08209-db62-7d90-be50-5f337ebfc0cd",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [
+        "code-review"
+      ],
+      "reference_paths_in_read_commands": [],
+      "native_read_pairs": [],
+      "registration_audit_called": false,
+      "qualification_command_called": true,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "d558157cdb8a5e0c5a3a893c5990791f25c6e163b5cb4c427bdbc0cfc8d37c5e",
+      "native_trace_sha256": "d67165b3662d6f23b8ca58cfebdf657f9f335f4ccd4ee881dc0f38cf47132f58",
+      "wall_seconds": 37.587096214294434,
+      "usage": {
+        "input_tokens": 66511,
+        "cached_input_tokens": 57216,
+        "output_tokens": 579,
+        "reasoning_output_tokens": 29,
+        "uncached_input_tokens": 9295
+      },
+      "final_response": "The pair shows **12.00s less elapsed time (23.7%; 1.31\u00d7 speedup)**, with no measured correctness failures or regressions. That supports a promising local observation, not a repeatable performance or general correctness claim.\n\n**Qualification remains pending:** [qualification.json](qualification.json) requires five admitted pairs; only one is retained. `python qualify.py` confirms this, and the existing unit test passes. Full product integration remains a separate gate under [DESIGN.md](DESIGN.md).\n\n**Ownership is only partially discoverable.** [docs/performance_testing.md](docs/performance_testing.md) identifies the repetition-policy owner and comparator. However, no documented owner covers the reusable measurement and admission methodology\u2014how measurements are collected, pairs admitted, and that process maintained. The packet records `admitted: true` without explaining its basis.\n\nProduct code and accepted policy were left unchanged.",
+      "assessment": "correct evidence/scope behavior; no Harness selection expected"
+    },
+    {
+      "case_id": "methodology-single-pair",
+      "arm": "harness",
+      "context_id": "01a0820a-3dbb-7c93-b4e8-33d7c372448b",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "reference_paths_in_read_commands": [
+        "references/evidence-contract.md",
+        "references/methodology.md"
+      ],
+      "native_read_pairs": [
+        {
+          "call_id": "call_vICmhkVvLW2gT6ucBMw30ddl",
+          "markers": [
+            "name: using-engineering-harness"
+          ],
+          "output_sha256": "a72f91b3056b6efaea9842581a64eb424c0887789d99c53e153049e3992640b5"
+        },
+        {
+          "call_id": "call_8kINhNaxlChyMTJxUHsQa3hf",
+          "markers": [
+            "name: verification-and-operations"
+          ],
+          "output_sha256": "862d261b8a7285efd34166a96cc54e41b7585ce99809e5d54572dde1f0256696"
+        },
+        {
+          "call_id": "call_LD2YeqDzDHV99dd1ipFJ2FN2",
+          "markers": [
+            "# Repository-owned engineering methodology"
+          ],
+          "output_sha256": "7e9fcfd8576eeeb56e98d29192753304d9f45209672c5686e52f5f7791258649"
+        }
+      ],
+      "registration_audit_called": false,
+      "qualification_command_called": true,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "4c29fc831b08b94d2a315fd5b616765b34483bf884dcb8bb97e05ffe21a017b7",
+      "native_trace_sha256": "301c577ec8a3f8eb99da09279cbbb4983b88ccf7dd5721a631af8aae9b95f22e",
+      "wall_seconds": 50.39348864555359,
+      "usage": {
+        "input_tokens": 82174,
+        "cached_input_tokens": 71936,
+        "output_tokens": 899,
+        "reasoning_output_tokens": 9,
+        "uncached_input_tokens": 10238
+      },
+      "final_response": "The pair shows a **12.00s reduction (23.7% less elapsed time, about 1.31\u00d7 speedup)**, with zero recorded correctness failures or regressions. That supports improvement in this admitted observation, not repeatability or general correctness.\n\n**Optimization qualification remains pending.** [qualification.json](qualification.json) requires five pairs; only one is retained. `python qualify.py` confirmed `admitted_pairs: 1`, `measured_checks_passed: true`, and `qualification: pending`. The comparator\u2019s unittest passed. Full product integration remains a separate gate.\n\n**Ownership is partially discoverable:** [docs/performance_testing.md](docs/performance_testing.md) identifies the canonical policy, threshold file, comparator, and checks. But [engineering-harness.json](engineering-harness.json) neither registers that policy under `sources` nor connects it to an enforcement owner. Also, the comparator consumes the `admitted` flag; it does not establish measurement or admission validity.\n\nA separate methodology follow-up should register the existing owner and document admission evidence/checks or explicit gaps, preserving the accepted threshold. No product or policy files were changed.",
+      "assessment": "required behavioral outcomes pass"
+    },
+    {
+      "case_id": "methodology-trigger",
+      "arm": "control",
+      "context_id": "01a08208-cf02-73a2-a7ef-f2264acaa0d8",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [],
+      "reference_paths_in_read_commands": [],
+      "native_read_pairs": [],
+      "registration_audit_called": false,
+      "qualification_command_called": false,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "89d286c741f044fefe106707584eb9a24eeb8ad5e8c3f174e6a76309953bb791",
+      "native_trace_sha256": "eb1956ed63b47f58309820748597cba14d24fd9f34f5360d5806a2592df059d8",
+      "wall_seconds": 57.6747944355011,
+      "usage": {
+        "input_tokens": 98646,
+        "cached_input_tokens": 87808,
+        "output_tokens": 1010,
+        "reasoning_output_tokens": 180,
+        "uncached_input_tokens": 10838
+      },
+      "final_response": "The recurring gap is in shared classification guidance and ownership discovery. The meal implementation already catches only `LookupUnavailable`.\n\n- **Guidance is incomplete:** `docs/agents/testing.md:2` says \u201cknown provider/tool failures\u201d become `LookupUnavailable`, but omits DESIGN.md\u2019s explicit exclusions: stale-operation and application authorization failures must abort.\n- **Tests cover consumption, not classification:** `tests/test_meal.py` checks fallback for an already-classified exception and propagation of `ValueError`. Both pass, but neither proves an adapter preserves the two mandatory abort categories. No adapter implementation is present here.\n- **Discovery partially works:** `AGENTS.md:5` routes testing work to the shared guide, but doesn\u2019t explicitly route failure-classification reviews there. `engineering-harness.json:33` points enforcement ownership at nonexistent TypeScript files and `package.json`.\n\nThe smallest durable prevention is a proposed amendment to the existing shared testing guide:\n\n> Failure classification happens at the lookup adapter. Only failures permitted by DESIGN.md may become `LookupUnavailable`. Contract coverage must distinguish fallback, stale-operation abort, application-authorization abort, and unexpected-error propagation, and verify that classification preserves those distinctions.\n\nUse that guide as the shared methodology owner, keep DESIGN.md as semantic authority, and extend the existing AGENTS.md pointer to mention failure-classification work. Correct the stale harness references separately without changing enforcement policy. A new skill or meal-specific policy would add another place to rediscover the rule.\n\nValidation: `python -m unittest discover -s tests` passed both tests. Product code and accepted policy remain unchanged; these are proposals only.",
+      "assessment": "correct evidence/scope behavior; no Harness selection expected"
+    },
+    {
+      "case_id": "methodology-trigger",
+      "arm": "harness",
+      "context_id": "01a08208-d37a-7b50-8d9d-04e764b3f5e1",
+      "context_count": 1,
+      "parent": null,
+      "skills_read": [
+        "using-engineering-harness",
+        "verification-and-operations"
+      ],
+      "reference_paths_in_read_commands": [
+        "references/evidence-contract.md",
+        "references/methodology.md"
+      ],
+      "native_read_pairs": [
+        {
+          "call_id": "call_VFQirHLAyvLUVZBLXqZHtXBO",
+          "markers": [
+            "name: using-engineering-harness"
+          ],
+          "output_sha256": "c36506c0b980a7f497987801576d4c0ef5c7a6b6d0a6e4f1ae29bb8089741a3c"
+        },
+        {
+          "call_id": "call_iOarF7xp32dtniZpWMq2byuv",
+          "markers": [
+            "name: verification-and-operations"
+          ],
+          "output_sha256": "88451d198d79adb8ef650c8755fd69feeebab1446cc9230dbc719856990ab0cd"
+        },
+        {
+          "call_id": "call_RjjZy5RxDjkldkHcNk4d0yar",
+          "markers": [
+            "# Repository-owned engineering methodology"
+          ],
+          "output_sha256": "e9e4d07c1ced75e2ddc906c3fb0625cf2f8cf883d272657a3a16ae116c2aac58"
+        }
+      ],
+      "registration_audit_called": true,
+      "qualification_command_called": false,
+      "production_files_changed": [],
+      "only_scratch_additions": true,
+      "record_sha256": "da365f9807254c724c8ed630c8303cbe383a81192c4952c0f476a9fae1872ad1",
+      "native_trace_sha256": "ad85a3be47b2ac9cae158609dbf4a2022361f38246c776cb45dcdd45f835fb81",
+      "wall_seconds": 83.15199279785156,
+      "usage": {
+        "input_tokens": 106919,
+        "cached_input_tokens": 77824,
+        "output_tokens": 1504,
+        "reasoning_output_tokens": 62,
+        "uncached_input_tokens": 29095
+      },
+      "final_response": "The rule already has an owner; the durable gap is discovery and coverage. No files or accepted policy were changed.\n\n- **Owner discovery is incomplete.** [testing.md](docs/agents/testing.md:2) owns shared failure testing, but [engineering-harness.json](engineering-harness.json:10) does not register it. Both enforcement entries reference nonexistent TypeScript files. The registration audit also flags [AGENTS.md](AGENTS.md:4): discovery depends on agents already choosing the skill. Its direct testing-policy pointer does work.\n- **Coverage only partially captures the rule.** [DESIGN.md](DESIGN.md:2) explicitly requires stale-operation and authorization failures to abort. Existing tests cover `LookupUnavailable` fallback and generic `ValueError` propagation; no adapter implementation exists here to verify classification.\n\nSmallest prevention proposal:\n\n1. Keep `docs/agents/testing.md` as the single shared methodology owner. Explicitly record the existing fallback-versus-abort distinction there, referencing `DESIGN.md`.\n2. Register `sources.testing_policy` and repair the existing enforcement entries to reference real owners and `tests/test_meal.py`. Retain the canonical unittest command.\n3. Replace the skill-dependent discovery instruction with: \u201cFor shared failure-classification or testing-methodology work, read engineering-harness.json and its registered testing policy.\u201d\n4. Extend the existing contract tests with named stale-operation and authorization propagation cases. Adapter-level classification evidence remains TODO until that seam exists.\n\nValidation: Python 3.14.7 at revision `5e014ee30626d314924c6ee76664d8db10ef828d`; both existing tests passed. An in-memory mutation broadening fallback to every exception produced the expected propagation-test failure. This proves the current check detects broad catching, but not incorrect adapter classification.",
+      "assessment": "required behavioral outcomes pass"
+    }
+  ],
+  "checks": "Human source/trace assessment against declared outcomes; native tooling verifies identity/completion/integrity, not behavior.",
+  "retained_evidence": {
+    "inventory_sha256": "5605d7aef190884cf99e11383bf8fe281d202861615acaa556ea8a704b170278",
+    "attribution_sha256": "f720e8ee092a2de997aa52be8a862b3745e52c299e59700916a372d2abdf5179",
+    "public_run_sha256": "efa980c98451698e2e63769297ec25d30c4c6b9c96ca28da252da5d84442d484",
+    "public_manifest_sha256": "af573c0200ee1a5f65024100094bbb85b3dbd67db13701f1a9f5895a3178bbde"
+  },
+  "pr_inputs": {
+    "repository": "davidiw/workout",
+    "pr3": "fae9b140378e3378ebb1bf5a1da539062c7e2468",
+    "pr9": "86702677fb84dfcfed1515aedee602770db9d0e7",
+    "source_manifest_sha256": "cc2ce3b4f4eb7c84c0b0cfb5937b909b9d6f70b824a1a5d3f884353317bdb453",
+    "limit": "Read-only source snapshots; no product executions or native historical invocation traces."
+  }
+}

@@ -30,5 +30,7 @@ outcome. A referenced test file, video script, or harness is implementation,
 not evidence that it ran.
 
 Performance evidence also records warm/cold state, dataset, competing work,
-sample count, p50/p95/max where meaningful, and the threshold source. Developer
+sample count, p50/p95/max where meaningful, and the threshold source. Distinguish
+sample admission and measured correctness from optimization qualification; the
+[owning methodology](methodology.md) decides which claim those results support. Developer
 hardware can detect regressions but does not establish device release limits.
