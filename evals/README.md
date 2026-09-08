@@ -219,3 +219,18 @@ case guards against always saying “more evidence needed”; its policy supplie
 requirement. Runtime skills contain no experiment-specific thresholds. The
 existing runner retains snapshots, failed attempts, native contexts and cost
 measurements; no full historical matrix is required for this focused cohort.
+
+## Method reconciliation cohort
+
+`method-reconciliation-matrix.json` uses the existing natural runner for unresolved
+local diagnosis, domain vocabulary/behavior separation, generic spec/standards
+review, and the existing typo restraint. One execution per case/arm is a bounded
+regression sample, not statistical effectiveness. Pin the same competing catalog
+in both arms; retaining overlapping skills in this isolated test measures whether
+Harness follows its preferred workflow without restoring the ordinary installation.
+
+Assess actual reference/skill reads, distinguishing evidence, complete known review
+defects, unchanged review/proposal fixtures, and local repair with a regression.
+Do not require maximal skill loading or control failure. Authoring policy and
+platform utility boundaries receive source/structural review; this cohort does not
+measure their natural effectiveness. Historical receipts remain immutable.

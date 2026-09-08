@@ -28,7 +28,7 @@ new shared state, protocols or configuration.
    state/paths before introducing abstraction. Separate local/fake evidence from
    unexecuted physical or deployment proof.
 
-Read [quality/ownership](references/quality-and-ownership.md) for a new design's
+Read [quality/ownership](references/quality-and-ownership.md) for domain-meaning ambiguity or a new design's
 scenario formats; [brownfield deepening](references/brownfield-deepening.md) when
 existing ownership is unclear. Use verification only for an independent campaign
 or exact/physical gate, not ordinary focused tests.

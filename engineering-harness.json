@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.7.0",
+  "harness_policy_version": "0.8.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",
@@ -15,7 +15,8 @@
     "evaluation_cases": "evals/cases.json",
     "evaluation_rubric": "evals/rubric.md",
     "validation": "scripts/validate_package.py",
-    "methodology_policy": "plugins/engineering-harness/skills/verification-and-operations/references/methodology.md"
+    "methodology_policy": "plugins/engineering-harness/skills/verification-and-operations/references/methodology.md",
+    "skill_authoring_policy": "docs/agents/skill-authoring.md"
   },
   "capabilities": {
     "durable_work": false,
@@ -56,7 +57,9 @@
         "tests/test_validation.py",
         "plugins/engineering-harness/skills/verification-and-operations/references/methodology.md",
         "plugins/engineering-harness/scripts/profile_repository.py",
-        "tests/test_methodology.py"
+        "tests/test_methodology.py",
+        "docs/agents/skill-authoring.md",
+        "tests/test_method_reconciliation.py"
       ]
     }
   },

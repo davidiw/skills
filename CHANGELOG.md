@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.0 - Unreleased
+
+Reconciles useful external engineering methods under existing Harness owners.
+Generic reviews compare accepted behavior and repository standards in one scoped
+review; unresolved debugging uses targeted evidence without a mandatory broad
+workflow; domain clarification remains with Architecture Foundations. The router
+prefers its selected workflow and permits distinct platform utilities without
+transferring scope or review authority. No specialist, invariant or schema added.
+
+Migration: review overlapping globally advertised engineering workflows and keep
+one preferred entry point. Explicit user/repository requirements still apply.
+No personal skill installation or removal is performed by the package. Existing
+review independence, scope and evidence obligations remain authoritative. Stable
+installation remains `v0.7.0`; this candidate is not a release.
+
 ## 0.7.0 - 2026-09-08
 
 Strengthens natural discovery for engineering methodology, shared test/evidence
