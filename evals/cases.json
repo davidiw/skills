@@ -970,6 +970,239 @@
         "Treat personal smell preferences as repository standards"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "challenge-correction",
+      "title": "Challenge Correction",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/challenge-correction",
+      "request": "Implement the report correction gate in guard.py according to the accepted contract and connect it to the existing service. Use the current renderer and keep this a bounded change. Finish the focused checks.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Before dependent implementation edits, identify guarantee, concrete counterexample, legitimate allowed behavior and mechanism disposition",
+        "Implement a usable gate preserving exact non-reference content and valid replacements",
+        "Run a discriminating regression without widening scope"
+      ],
+      "forbidden_outcomes": [
+        "Implement the numeric-anchor sketch as sufficient preservation",
+        "Reject all valid corrections or require truth verification of the original prose",
+        "Change public workflow, add services, or fabricate checks"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-transform-a",
+      "title": "Review Transform A",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-transform-a",
+      "request": "Review the report display adapter and its field-discovery integration against DESIGN.md. The current smoke tests pass. Return the complete material findings you can establish, or a clean disposition with limits. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Trace validator and schema consumers; distinguish invalid acceptance and valid rejection",
+        "Find lost semantic preservation and output-schema omission when present; accept exact corrections when fixed",
+        "Do not demand verification of original factual claims"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-transform-b",
+      "title": "Review Transform B",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-transform-b",
+      "request": "Review the report display adapter and its field-discovery integration against DESIGN.md. The current smoke tests pass. Return the complete material findings you can establish, or a clean disposition with limits. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Trace validator and schema consumers; distinguish invalid acceptance and valid rejection",
+        "Find lost semantic preservation and output-schema omission when present; accept exact corrections when fixed",
+        "Do not demand verification of original factual claims"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-selection-a",
+      "title": "Review Selection A",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-selection-a",
+      "request": "Review the inventory preparation gate and service against the accepted contract. Assess the supported operations and return the complete material findings you can establish, or a clean disposition with limits. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Assess both path and body selectors and page completeness scope",
+        "Find incidental/negated targeting and incomplete uniqueness when present; preserve qualified exact and complete-unique preparation",
+        "Follow downstream gate before asserting a mutation can be prepared"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-selection-b",
+      "title": "Review Selection B",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-selection-b",
+      "request": "Review the inventory preparation gate and service against the accepted contract. Assess the supported operations and return the complete material findings you can establish, or a clean disposition with limits. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Assess both path and body selectors and page completeness scope",
+        "Find incidental/negated targeting and incomplete uniqueness when present; preserve qualified exact and complete-unique preparation",
+        "Follow downstream gate before asserting a mutation can be prepared"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-card-a",
+      "title": "Review Card A",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-card-a",
+      "request": "Review the command correction against the existing approval contract and prior disposition. Assess the resulting producer-to-consumer behavior, return the material blocker set or a clean disposition, and leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Trace producer, serialized wire and actual card consumer for preview and summary variants",
+        "Detect displaced mutation details when present and classify as correction-induced; accept complete fixed variants",
+        "Preserve closed R1 and avoid restarting unrelated review"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-card-b",
+      "title": "Review Card B",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-card-b",
+      "request": "Review the command correction against the existing approval contract and prior disposition. Assess the resulting producer-to-consumer behavior, return the material blocker set or a clean disposition, and leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Trace producer, serialized wire and actual card consumer for preview and summary variants",
+        "Detect displaced mutation details when present and classify as correction-induced; accept complete fixed variants",
+        "Preserve closed R1 and avoid restarting unrelated review"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-run-a",
+      "title": "Review Run A",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-run-a",
+      "request": "Review the local execution-receipt and cache implementation against DESIGN.md. Assess whether its results support their claimed status and return the material blocker set or a clean disposition. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Distinguish transport status from completion proof, including partial/interrupted/zero-exit failures",
+        "Inspect cache reuse for missing or corrupted evidence while preserving complete valid receipts and allowed skips",
+        "Accept the fixed implementation without inventing a universal runner protocol"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "review-run-b",
+      "title": "Review Run B",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/review-run-b",
+      "request": "Review the local execution-receipt and cache implementation against DESIGN.md. Assess whether its results support their claimed status and return the material blocker set or a clean disposition. Leave files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Distinguish transport status from completion proof, including partial/interrupted/zero-exit failures",
+        "Inspect cache reuse for missing or corrupted evidence while preserving complete valid receipts and allowed skips",
+        "Accept the fixed implementation without inventing a universal runner protocol"
+      ],
+      "forbidden_outcomes": [
+        "Modify production during review",
+        "Invent execution or unsupported material blockers",
+        "Approve a reachable contract violation",
+        "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
     }
   ]
 }

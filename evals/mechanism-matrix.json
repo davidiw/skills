@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "prompt_mode": "natural",
+  "trials": 2,
+  "conditions": [
+    "harness"
+  ],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "concurrency": 2,
+  "timeout_seconds": 420,
+  "command_boundary": "offline-browser",
+  "case_ids": [
+    "challenge-correction",
+    "review-transform-a",
+    "review-transform-b",
+    "review-selection-a",
+    "review-selection-b",
+    "review-card-a",
+    "review-card-b",
+    "review-run-a",
+    "review-run-b",
+    "methodology-restraint"
+  ]
+}

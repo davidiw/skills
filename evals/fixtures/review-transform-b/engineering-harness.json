@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "harness_policy_version": "0.8.0",
+  "status": "accepted",
+  "project": {
+    "name": "cedar",
+    "kind": "single-process-application",
+    "sensitive_data": false
+  },
+  "sources": {
+    "agent_rules": "AGENTS.md",
+    "architecture": "DESIGN.md"
+  },
+  "capabilities": {
+    "durable_work": false,
+    "offline_operation": false,
+    "replicated_state": false,
+    "multiple_clients": false,
+    "external_providers": false,
+    "ai_mediated_actions": false,
+    "generated_artifacts": false,
+    "physical_devices": false,
+    "shared_production_state": false,
+    "artifact_publication": false,
+    "mutable_authority_context": false,
+    "event_delivery": false,
+    "interactive_clients": false,
+    "asynchronous_interactive_loading": false,
+    "shared_nonpreemptible_storage": false,
+    "constrained_runtime_resources": false,
+    "multiple_adapters": false
+  },
+  "enforcement": {
+    "canonical-authority": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "bounded-contracts": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "typed-exact-evidence": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    }
+  },
+  "exceptions": []
+}
