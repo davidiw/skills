@@ -26,8 +26,8 @@ An executed result binds:
 - explicit owner override, if policy permits one.
 
 The verifier validates receipt shape and artifact digests before trusting the
-outcome. When the operation has its own completion protocol, exit zero is necessary
-but not sufficient: validate required terminal evidence and reconcile completion,
+outcome. When the operation has its own completion protocol, exit status alone is
+insufficient: validate required terminal evidence and reconcile completion,
 failures and policy-accepted skips before issuing **or reusing** success. Interrupted,
 partial, failed-with-zero-exit, missing or corrupted evidence cannot become PASS.
 Cache reuse must validate the applicable source/contract identity, artifact integrity
