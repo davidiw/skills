@@ -64,7 +64,11 @@ Wait for the complete handback before editing its snapshot or acting on partial
 findings. Continue independent work elsewhere; prefer 60-second bounded
 waits, avoiding short polling/progress-only messages. Correct the full blocker set
 within authorized scope. Reuse the reviewer for **delta review** of corrections,
-affected seams and regressions, retaining prior receipts/coverage. Reopen unchanged
+affected seams and regressions, retaining prior receipts/coverage. Ask what the fix
+removed, replaced or relocated, and which consumers relied on that behavior or
+information. Validate the affected producer-to-consumer boundary; shared serialized
+fixtures, focused integration or existing rendered-consumer tests may suffice.
+This does not require a new end-to-end framework. Reopen unchanged
 scope only when corrections expand scope, invalidate assumptions or expose a newly
 reachable surface. A later blocker materially present and reasonably discoverable
 initially is an **initial-review miss**, unless explicitly unreviewed/unavailable;

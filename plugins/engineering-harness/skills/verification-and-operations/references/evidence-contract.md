@@ -26,7 +26,15 @@ An executed result binds:
 - explicit owner override, if policy permits one.
 
 The verifier validates receipt shape and artifact digests before trusting the
-outcome. A referenced test file, video script, or harness is implementation,
+outcome. When the operation has its own completion protocol, exit zero is necessary
+but not sufficient: validate required terminal evidence and reconcile completion,
+failures and policy-accepted skips before issuing **or reusing** success. Interrupted,
+partial, failed-with-zero-exit, missing or corrupted evidence cannot become PASS.
+Cache reuse must validate the applicable source/contract identity, artifact integrity
+and completion evidence, not merely a prior PASS label. Preserve valid evidence
+and useful caching; repositories own runner-specific enforcement of this contract.
+
+A referenced test file, video script, or harness is implementation,
 not evidence that it ran.
 
 Performance evidence also records warm/cold state, dataset, competing work,
