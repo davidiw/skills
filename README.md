@@ -13,18 +13,18 @@ The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
 exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
-Stable **0.7.0** strengthens methodology discovery and repository-owned policy
-registration: [changes and migration](CHANGELOG.md). Product Experience, Interface
+Stable **0.8.0** reconciles diagnosis, general review and domain methods under
+existing Harness owners: [changes and migration](CHANGELOG.md). Product Experience, Interface
 Design, and Brand and Language remain available: [scope and research](docs/proposals/product-experience/README.md).
 Meaningful UX/UI/brand work selects one unresolved owner; settled small UI
 corrections remain minimal.
 
 ## Install
 
-Install the immutable **0.7.0** stable release:
+Install the immutable **0.8.0** stable release:
 
 ```bash
-codex plugin marketplace add davidiw/skills --ref v0.7.0
+codex plugin marketplace add davidiw/skills --ref v0.8.0
 codex plugin add engineering-harness@davidiw-skills
 ```
 

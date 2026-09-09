@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.8.0 - Unreleased
+## 0.8.0 - 2026-09-08
 
 Reconciles useful external engineering methods under existing Harness owners.
 Generic reviews compare accepted behavior and repository standards in one scoped
@@ -13,7 +13,15 @@ Migration: review overlapping globally advertised engineering workflows and keep
 one preferred entry point. Explicit user/repository requirements still apply.
 No personal skill installation or removal is performed by the package. Existing
 review independence, scope and evidence obligations remain authoritative. Stable
-installation remains `v0.7.0`; this candidate is not a release.
+installation pins `v0.8.0`.
+
+The paired competing-catalog probe retains one Harness pass and three routing
+partials: overlapping skills can load before the router. A separate clean-catalog
+Harness-only smoke passes four cases. These are distinct conditions, not proof
+of broad efficiency or statistical superiority. Both retain their original
+evaluated source identity; the released runtime is unchanged. Receipt exports
+now use normalized native context IDs and preserve historical IDs separately;
+regression coverage includes the third known review-fixture defect.
 
 ## 0.7.0 - 2026-09-08
 
