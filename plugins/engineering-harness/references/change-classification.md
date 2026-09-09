@@ -59,7 +59,7 @@ Choose and **read** one implementation skill for the unresolved decision in
 
 | Decision | Primary implementation skill |
 | --- | --- |
-| Ownership/dependencies, shared scarce pools or serialized contention | [architecture foundations](../skills/architecture-foundations/SKILL.md) |
+| Domain semantics/ownership/dependencies, shared scarce pools or serialized contention | [architecture foundations](../skills/architecture-foundations/SKILL.md) |
 | Admission/replay/recovery; work outlives its initiator | [durable workflows](../skills/durable-workflows/SKILL.md) |
 | Public/provider contracts, mutable authorization, credential purpose, events | [interfaces and events](../skills/interfaces-and-events/SKILL.md) |
 | Meaningful UX/UI/brand decision | [experience routing](experience-routing.md), then its one primary owner |

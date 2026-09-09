@@ -9,6 +9,10 @@ Own exact evidence, independent campaigns and authorized external operations,
 not ordinary focused unit tests. Use repository commands and relevant
 [invariants](../../references/invariants.json); avoid a parallel operator system.
 
+For an unresolved failure, use [diagnosis](references/diagnosis.md); for a generic
+code review, use [change review](references/change-review.md). These methods may
+be read directly without loading this skill.
+
 1. For reusable methodology or performance acceptance, first read
    [methodology ownership](references/methodology.md) and locate its registered
    repository policy. Bind requested acceptance to source, toolchain, environment and authorized

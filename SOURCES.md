@@ -61,3 +61,11 @@ and inspected-file hashes. Runtime guidance is an original synthesis, not copied
 skill bodies or product aesthetics. These sources inform judgment patterns;
 normative accessibility/platform facts instead use W3C, Apple, Android and Flutter
 primary documentation linked from the runtime platform-check reference.
+
+## Installed-method reconciliation
+
+The archived mattpocock/skills snapshots informed a bounded independent synthesis
+of diagnosis, spec/standards review, terminology clarification and instruction
+authoring. [Input hashes and adoption decisions](docs/reviews/method-reconciliation.md)
+identify the exact locally inspected bodies; no upstream revision/license claim
+or copied implementation is inferred from those snapshots.

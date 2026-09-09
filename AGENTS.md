@@ -18,3 +18,4 @@
   release are separate actions. Perform only the scopes the user named.
 - Keep public artifacts free of private content, local absolute paths, and
   machine-specific configuration.
+- For instruction/discovery edits, follow `docs/agents/skill-authoring.md`.

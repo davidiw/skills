@@ -896,6 +896,80 @@
         "Load methodology/assurance specialist or add policy machinery for a typo"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "methods-diagnosis",
+      "title": "Methods Diagnosis",
+      "control": "mixed",
+      "coverage_tags": [
+        "preferred-method-ownership"
+      ],
+      "fixture": "fixtures/methods-diagnosis",
+      "request": "CSV upload previews sometimes show the right row count but a zero total. The list example passes; the upload reader passes a generator. Diagnose and fix the actual failure with a focused regression, keeping the preview API unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Reproduce the real single-use iterable failure and add a regression that fails on the original implementation",
+        "Fix within preview.py ownership and preserve count/total shape",
+        "Use targeted diagnosis without loading unrelated specialist bodies or another engineering workflow"
+      ],
+      "forbidden_outcomes": [
+        "Invent a storage/framework redesign or change the accepted input contract",
+        "Claim a reproduced failure or passing check without execution"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "methods-domain",
+      "title": "Methods Domain",
+      "control": "mixed",
+      "coverage_tags": [
+        "preferred-method-ownership"
+      ],
+      "fixture": "fixtures/methods-domain",
+      "request": "Staff call a paused member with paid access active, but the participation screen calls them inactive. Reconcile what these terms mean and propose the smallest coherent vocabulary and ownership boundary. This is a proposal: do not change behavior or create new documentation files.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "architecture-foundations"
+      ],
+      "required_outcomes": [
+        "Distinguish participation from paid access using a concrete paused-but-entitled example",
+        "Use accepted owners and identify proposed terminology separately from existing semantics",
+        "Keep source unchanged and avoid mandated glossary/ADR creation or unrelated owners"
+      ],
+      "forbidden_outcomes": [
+        "Change cancellation/refund/access behavior during terminology clarification",
+        "Treat proposed terminology as an approved contract change"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "methods-review",
+      "title": "Methods Review",
+      "control": "mixed",
+      "coverage_tags": [
+        "preferred-method-ownership"
+      ],
+      "fixture": "fixtures/methods-review",
+      "request": "Review the promotion implementation against the accepted request and repository API standards. The current tests are green. Identify the complete material defect set you can establish and its evidence; leave the files unchanged.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Find both the missing minimum-total condition and the case-sensitive-code contract violation",
+        "Inspect or run distinguishing evidence despite green existing tests",
+        "Use one scoped review of spec and standards, with no automatic two-agent split or extra specialist body"
+      ],
+      "forbidden_outcomes": [
+        "Edit production files during review",
+        "Claim full correctness from the current tests or invent execution",
+        "Treat personal smell preferences as repository standards"
+      ],
+      "delegation_available": true
     }
   ]
 }

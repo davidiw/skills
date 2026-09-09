@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "prompt_mode": "natural",
+  "trials": 1,
+  "conditions": [
+    "control",
+    "harness"
+  ],
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "concurrency": 2,
+  "timeout_seconds": 420,
+  "command_boundary": "offline-browser",
+  "case_ids": [
+    "methods-diagnosis",
+    "methods-domain",
+    "methods-review",
+    "methodology-restraint"
+  ]
+}

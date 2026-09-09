@@ -45,6 +45,7 @@ generated views, examples, or tests.
 | Profile cross-source semantic validation | `plugins/engineering-harness/scripts/validate_profile.py` | Profile discovery, package validation, and unit tests |
 | Package version | `plugins/engineering-harness/.codex-plugin/plugin.json` | Profiles, receipts, and changelog checks |
 | Release history and migration notes | `CHANGELOG.md` | Adopters and reviewers |
+| Harness instruction authoring | `docs/agents/skill-authoring.md` | Repository contributors and validators |
 | Design provenance | `SOURCES.md` | README summary |
 | Instruction precedence, exceptions, and authorization reuse | `plugins/engineering-harness/references/precedence-and-exceptions.md` | Router and specialist pointers |
 
@@ -176,3 +177,14 @@ commands. Profile `sources` registers those policies; existing invariant
 Operations owns claim qualification and the promotion workflow. The profile
 helper audits registrations without running commands or inferring acceptance.
 No second methodology catalog or threshold copy is maintained in the plugin.
+
+## Supporting methods and utilities
+
+Harness selects the engineering workflow and existing owner. Verification and
+Operations owns conditional diagnosis and general change-review methods; they can
+be consumed without loading its specialist body. Architecture Foundations owns
+domain-meaning clarification. Instruction craft is repository development policy.
+Platform plugin/skill utilities remain useful for concrete format/install tasks;
+they do not create another scope, review or acceptance workflow. Explicit user and
+repository requirements remain authoritative. Personal skill catalogs are neither
+a package dependency nor modified by adoption.

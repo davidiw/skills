@@ -3,14 +3,13 @@
   "harness_policy_version": "0.8.0",
   "status": "accepted",
   "project": {
-    "name": "small-example",
+    "name": "methods-domain",
     "kind": "single-process-application",
     "sensitive_data": false
   },
   "sources": {
     "agent_rules": "AGENTS.md",
-    "architecture": "README.md",
-    "operator_interface": "package.json"
+    "architecture": "DESIGN.md"
   },
   "capabilities": {
     "durable_work": false,
@@ -34,13 +33,15 @@
   "enforcement": {
     "canonical-authority": {
       "rung": "owner",
-      "owner": "src/application.ts",
-      "artifacts": ["test/application.test.ts"]
+      "owner": "DESIGN.md"
     },
     "bounded-contracts": {
-      "rung": "local_check",
-      "owner": "package.json#scripts.test",
-      "artifacts": ["test/application.test.ts"]
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "typed-exact-evidence": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
     }
   },
   "exceptions": []

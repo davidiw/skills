@@ -1,0 +1,859 @@
+{
+  "source_revision": "f075a93db1e50fbe1850066e7b615866e50da35d",
+  "policy_version": "0.8.0",
+  "runs": [
+    {
+      "name": "natural-f075a93",
+      "purpose": "competition probe with both arms",
+      "integrity_inventory_sha256": "350fd0eef0f074b7ede1de340bf136d5bfc7df3b1d1e1e1d061d0d741dfa8720",
+      "input_hashes": {
+        "evals/method-reconciliation-matrix.json": "57116d95dcde66272ef94da7189a7a0b361d9dddb341495d3044ed140766586b",
+        "evals/cases.json": "97e24a3d5e336d3c35006cdae955f2e6c08f97abb6b95fd7f27ae62184bc5e90",
+        "evals/run_natural_matrix.py": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d"
+      },
+      "catalog_file_hashes": {
+        "code-review/SKILL.md": "9cf46653dd9c710ea1e6c22423caf31a794c88773bc94bdaa23140277f470442",
+        "code-review/agents/openai.yaml": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352",
+        "diagnosing-bugs/SKILL.md": "b9339b09ee3980808d8c5a35c7251b891b8b1e0036ec4ca37812b976ebddf6b6",
+        "diagnosing-bugs/agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+        "diagnosing-bugs/scripts/hitl-loop.template.sh": "18ae07e1cc49b32c71767e241a6e8de4be74ef21d5e3b7e39034d9c7335f2d80",
+        "domain-modeling/ADR-FORMAT.md": "f1f36cd3f8d3b6474ddd5855da4e233bfc4ae1a1c5024909ccf11871819a41b2",
+        "domain-modeling/CONTEXT-FORMAT.md": "b8cc318f2a4285b530e908b6bc43901c3c5cd11100362636bbc4216639bef597",
+        "domain-modeling/SKILL.md": "152e2c97239affb12a60c5f4a7e74ab546a49ae169688c81f4e2ccc42dafa579",
+        "domain-modeling/agents/openai.yaml": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
+        "find-skills/SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f",
+        "grill-with-docs/SKILL.md": "610d091047bcfb9db0f75c057d15538481a721111579fc5ec7f83ad9131a2165",
+        "grill-with-docs/agents/openai.yaml": "94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9",
+        "improve-codebase-architecture/HTML-REPORT.md": "0b0936104158abeef7246ff6cbabefa4dc055f17589f2833f2d93001421910a1",
+        "improve-codebase-architecture/SKILL.md": "7b76f01b0eefe49a127754c9027a6235a036a21348df5dad988893d8b2f384d6",
+        "improve-codebase-architecture/agents/openai.yaml": "c8cb20f68ebf0edb4e497bc11ae5fcaa196004e661cd189015b04f4109ced7f1",
+        "writing-for-agents/SKILL-MECHANICS.md": "b4c54a0aaad3f6eddefde6d06770a0e401fbb8fc6a8f49ce18af816bd144d14d",
+        "writing-for-agents/SKILL.md": "a842323e664e5af104eac5c97ad22fda929ebeb62d81c501161ac1f6f482db58",
+        "writing-for-agents/agents/openai.yaml": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b"
+      },
+      "summary": {
+        "control": {
+          "executions": 4,
+          "contexts": 6,
+          "median_wall_seconds": 37.02,
+          "usage": {
+            "input_tokens": 519721,
+            "cached_input_tokens": 469120,
+            "uncached_input_tokens": 50601,
+            "output_tokens": 3624
+          }
+        },
+        "harness": {
+          "executions": 4,
+          "contexts": 4,
+          "median_wall_seconds": 47.49,
+          "usage": {
+            "input_tokens": 307933,
+            "cached_input_tokens": 260736,
+            "uncached_input_tokens": 47197,
+            "output_tokens": 3187
+          }
+        }
+      },
+      "trials": [
+        {
+          "case_id": "methodology-restraint",
+          "arm": "control",
+          "trial": 1,
+          "record_sha256": "6ae2936ae0c7a1d57810237d39be1327281a9b891619aee3d054406618c30c6a",
+          "wall_seconds": 14.396362781524658,
+          "usage": {
+            "input_tokens": 42412,
+            "cached_input_tokens": 37376,
+            "output_tokens": 147,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 5036
+          },
+          "contexts": [
+            {
+              "id": "01a08347-ef60-7192-94ce-80f6bccb45b6",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 12.177,
+              "usage": {
+                "input_tokens": 42412,
+                "cached_input_tokens": 37376,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 147,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 42559,
+                "uncached_input_tokens": 5036
+              },
+              "skills_observed": [],
+              "method_output_markers": {},
+              "trace_sha256": "c510fcbcb208b3a1f4c47a5994333fa99e53f2f25ea7636c09bf71fe7d521f8b",
+              "recorded_id": "01a08347-ef60-7192-94ce-80f6bccb45b6",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "README.md"
+          ],
+          "diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+          "response": "Corrected \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "891072ddc6d590d0dd2d3d5a778f13c334de04373d9733998f7c741a3f5b0b06",
+          "fixture_after_sha256": "f47521a67ef992f83e9b76a7df51f26e690593fd80cc353a933941f3c3ce60a4"
+        },
+        {
+          "case_id": "methodology-restraint",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "98efd2cba977b4298454058667400b5fa5167d5f112d8f63957fd2beecc7406b",
+          "wall_seconds": 16.651758670806885,
+          "usage": {
+            "input_tokens": 42894,
+            "cached_input_tokens": 37632,
+            "output_tokens": 147,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 5262
+          },
+          "contexts": [
+            {
+              "id": "01a08348-2cb2-7a20-93f2-95d6aa472d84",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 13.3,
+              "usage": {
+                "input_tokens": 42894,
+                "cached_input_tokens": 37632,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 147,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 43041,
+                "uncached_input_tokens": 5262
+              },
+              "skills_observed": [],
+              "method_output_markers": {},
+              "trace_sha256": "8152b3841bf5118b722d912e7e1686081b9226696eb1881c2e7b2b194d27b20f",
+              "recorded_id": "01a08348-2cb2-7a20-93f2-95d6aa472d84",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "README.md"
+          ],
+          "diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+          "response": "Corrected \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "891072ddc6d590d0dd2d3d5a778f13c334de04373d9733998f7c741a3f5b0b06",
+          "fixture_after_sha256": "f47521a67ef992f83e9b76a7df51f26e690593fd80cc353a933941f3c3ce60a4"
+        },
+        {
+          "case_id": "methods-diagnosis",
+          "arm": "control",
+          "trial": 1,
+          "record_sha256": "ced705898d709fa88345b0b52de63333cab560e66b456d8d08f8925467d92990",
+          "wall_seconds": 45.54930019378662,
+          "usage": {
+            "input_tokens": 117803,
+            "cached_input_tokens": 100480,
+            "output_tokens": 941,
+            "reasoning_output_tokens": 9,
+            "uncached_input_tokens": 17323
+          },
+          "contexts": [
+            {
+              "id": "01a08345-620d-7e02-ba6a-d9f6c7545f3b",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 43.403,
+              "usage": {
+                "input_tokens": 117803,
+                "cached_input_tokens": 100480,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 941,
+                "reasoning_output_tokens": 9,
+                "total_tokens": 118744,
+                "uncached_input_tokens": 17323
+              },
+              "skills_observed": [
+                "diagnosing-bugs"
+              ],
+              "method_output_markers": {},
+              "trace_sha256": "f0b44f9d77e79eadc7baeb89c5b8f6cd7853aefa82e879d6f74df2f25a627524",
+              "recorded_id": "01a08345-620d-7e02-ba6a-d9f6c7545f3b",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "preview.py",
+            "test_preview.py"
+          ],
+          "diff_sha256": "f4c0489fabc8723d7a3e399de92966b39592994b11f1ea9d45041ae9bbe4a9e4",
+          "response": "Fixed: counting exhausted the generator before totaling. The preview now calculates both in one pass, preserving the API and exact integer arithmetic.\n\nAdded a focused generator regression, confirmed it failed before the fix and passes afterward.\n\nValidation: `python3 -m unittest` \u2014 2 tests passed; `git diff --check` passed.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [
+            "diagnosing-bugs"
+          ],
+          "fixture_before_sha256": "dc9a390663abb12a54d7a8049ce7322c1c045f7b0a97c38f07495c4439aee3a3",
+          "fixture_after_sha256": "73a3f485be9510a5af671a6d617af1a8489484a000686ed26ea25110738af535"
+        },
+        {
+          "case_id": "methods-diagnosis",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "b148efc4a12a92d33a661df083b4a2337b9fba25885491cc2122bd1203425564",
+          "wall_seconds": 44.75996494293213,
+          "usage": {
+            "input_tokens": 108549,
+            "cached_input_tokens": 87936,
+            "output_tokens": 863,
+            "reasoning_output_tokens": 7,
+            "uncached_input_tokens": 20613
+          },
+          "contexts": [
+            {
+              "id": "01a08345-6429-7370-982d-ce90e06ed9d0",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 42.429,
+              "usage": {
+                "input_tokens": 108549,
+                "cached_input_tokens": 87936,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 863,
+                "reasoning_output_tokens": 7,
+                "total_tokens": 109412,
+                "uncached_input_tokens": 20613
+              },
+              "skills_observed": [
+                "diagnosing-bugs",
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {
+                "skills/verification-and-operations/references/diagnosis.md": [
+                  "call_GkCrC0G66qsPBqqtQVi9ZjHD"
+                ]
+              },
+              "trace_sha256": "bb5df98f4ca88aaef32387269386fac6cd87a6418ecfcc8845608f36d014a9d4",
+              "recorded_id": "01a08345-6429-7370-982d-ce90e06ed9d0",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "preview.py",
+            "test_preview.py"
+          ],
+          "diff_sha256": "903a07408e4dc78418a4a16ecc21eee948f491f7744b35876abd69c8389878be",
+          "response": "Fixed: counting exhausted the generator, leaving nothing to total. The preview now computes both in one pass, preserving the API and exact integer arithmetic.\n\nAdded a generator regression that failed before the fix and passes afterward. `python3 -m unittest` passes both tests; `git diff --check` is clean.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "partial: overlapping skill read",
+          "overlapping_skills": [
+            "diagnosing-bugs"
+          ],
+          "fixture_before_sha256": "dc9a390663abb12a54d7a8049ce7322c1c045f7b0a97c38f07495c4439aee3a3",
+          "fixture_after_sha256": "81fcc3849e31b824a1d58a511a0241a2fa4f4b8ad57f351f2864bf2cadd86fc8"
+        },
+        {
+          "case_id": "methods-domain",
+          "arm": "control",
+          "trial": 1,
+          "record_sha256": "ce6e72b216d08374c58c1dac7f888c4a868b7db2651d6f0313073be51543fac1",
+          "wall_seconds": 28.495366096496582,
+          "usage": {
+            "input_tokens": 44499,
+            "cached_input_tokens": 38400,
+            "output_tokens": 455,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 6099
+          },
+          "contexts": [
+            {
+              "id": "01a08346-4955-7fe2-a881-c3fc3ed53c99",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 25.825,
+              "usage": {
+                "input_tokens": 44499,
+                "cached_input_tokens": 38400,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 455,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 44954,
+                "uncached_input_tokens": 6099
+              },
+              "skills_observed": [
+                "domain-modeling"
+              ],
+              "method_output_markers": {},
+              "trace_sha256": "a9c3f12eee5922879d09b85add2912b07ec1c47b2b2ab7c3f6a714b11d0c1efa",
+              "recorded_id": "01a08346-4955-7fe2-a881-c3fc3ed53c99",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "\u201cActive\u201d describes two independent facts. [terms.md](terms.md) records this ambiguity; [DESIGN.md](DESIGN.md) already separates their ownership. A paused member can still have paid access, so the two descriptions need not conflict.\n\nThe smallest coherent vocabulary is:\n\n| Term | Meaning | Owner |\n|---|---|---|\n| **Member** | An enrolled person, regardless of participation or access | Shared vocabulary |\n| **Participation: participating / paused** | Whether the member is participating | `participation.py` |\n| **Paid access: valid / expired** | Whether the current time is before the paid-through date | `access.py` |\n\nRetire unqualified **active/inactive** from proposed staff and screen language. Describe the reported case as **\u201cParticipation: paused \u00b7 Paid access: valid.\u201d** Avoid a combined \u201cmember status.\u201d\n\nEach owner answers only its own question. Participation must not determine paid access, and paid access must not imply participation. The UI presents those answers with explicit labels.\n\nTwo boundary checks keep this coherent:\n\n- Pausing before the paid-through date leaves paid access valid.\n- At the paid-through instant, access expires\u2014the code uses strict `<`\u2014without changing participation.\n\nThis is a naming proposal only: existing stored `\"active\"` values, behavior, refund and cancellation semantics, and accepted contracts remain unchanged. No files were changed.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [
+            "domain-modeling"
+          ],
+          "fixture_before_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d",
+          "fixture_after_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d"
+        },
+        {
+          "case_id": "methods-domain",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "6ed736d3586a53931724f390ca8a7d5cc2ad6fc67307caa9aca17a37fed58809",
+          "wall_seconds": 50.212252616882324,
+          "usage": {
+            "input_tokens": 87986,
+            "cached_input_tokens": 76928,
+            "output_tokens": 1075,
+            "reasoning_output_tokens": 12,
+            "uncached_input_tokens": 11058
+          },
+          "contexts": [
+            {
+              "id": "01a08346-47d2-7131-b034-fe7e01141e9f",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 48.13,
+              "usage": {
+                "input_tokens": 87986,
+                "cached_input_tokens": 76928,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 1075,
+                "reasoning_output_tokens": 12,
+                "total_tokens": 89061,
+                "uncached_input_tokens": 11058
+              },
+              "skills_observed": [
+                "architecture-foundations",
+                "domain-modeling",
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {
+                "skills/architecture-foundations/references/quality-and-ownership.md": [
+                  "call_mfmBtaUPFg9AjAO3SlSJ0KLd"
+                ]
+              },
+              "trace_sha256": "6bbafe9c3d9c577b81c8db47b9497ee2aa74d034f3b625874399ba5cbaf3d293",
+              "recorded_id": "01a08346-47d2-7131-b034-fe7e01141e9f",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "\u201cActive\u201d conflates two independent facts: staff mean **has paid access**, while the participation screen means **participating**. [terms.md](terms.md) already marks this ambiguity unresolved; [DESIGN.md](DESIGN.md) explicitly separates the facts.\n\nThe smallest proposed vocabulary is:\n\n| Term | Meaning | Owner |\n| --- | --- | --- |\n| **Member** | Enrolled person; retain the existing definition | Existing vocabulary |\n| **Participation: Participating / Paused** | Whether participation is active or paused | `participation.py` |\n| **Paid access: Available / Unavailable** | Whether the current time is before `paid_through` | `access.py` |\n\nFor the reported member, display **\u201cParticipation: Paused \u00b7 Paid access: Available.\u201d** Avoid unqualified \u201cactive\u201d or \u201cinactive\u201d in member-facing and staff-facing labels.\n\nKeep the existing ownership boundary: participation owns participation status; access owns the time-based access decision. Screens consume those answers and label them explicitly. No combined member-status flag or new owner is needed.\n\nSynthetic checks against the existing functions confirmed that:\n\n- Paused members retain access before `paid_through`.\n- Access ends exactly at `paid_through`, regardless of participation.\n- Active participation alone does not guarantee access.\n\nThis remains a naming proposal. No files, behavior, accepted contracts, refund rules, or cancellation semantics changed.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "partial: overlapping skill read",
+          "overlapping_skills": [
+            "domain-modeling"
+          ],
+          "fixture_before_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d",
+          "fixture_after_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d"
+        },
+        {
+          "case_id": "methods-review",
+          "arm": "control",
+          "trial": 1,
+          "record_sha256": "83eef22c253a1985831b8ac47b3fe78623c20e6cb0a281000c9791dd0066312a",
+          "wall_seconds": 60.441675901412964,
+          "usage": {
+            "input_tokens": 315007,
+            "cached_input_tokens": 292864,
+            "output_tokens": 2081,
+            "reasoning_output_tokens": 29,
+            "uncached_input_tokens": 22143
+          },
+          "contexts": [
+            {
+              "id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 58.817,
+              "usage": {
+                "input_tokens": 166808,
+                "cached_input_tokens": 156928,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 1098,
+                "reasoning_output_tokens": 29,
+                "total_tokens": 167906,
+                "uncached_input_tokens": 9880
+              },
+              "skills_observed": [
+                "code-review"
+              ],
+              "method_output_markers": {},
+              "trace_sha256": "312764787239383870f09d35229f4ab7b8974e7f135129fd9df6a92b01c3896c",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            },
+            {
+              "id": "01a08347-275e-7ef1-bbab-c90e050245a3",
+              "kind": "delegated",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 27.443,
+              "usage": {
+                "input_tokens": 82640,
+                "cached_input_tokens": 74368,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 546,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 83186,
+                "uncached_input_tokens": 8272
+              },
+              "skills_observed": [],
+              "method_output_markers": {},
+              "trace_sha256": "633237756d619bd981cc6c83b1da3f8c7c63a8dd0d3f0b0a173d80e57543142e",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "delegated"
+            },
+            {
+              "id": "01a08347-38c9-7131-80a0-d3aa36761792",
+              "kind": "delegated",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 26.253,
+              "usage": {
+                "input_tokens": 65559,
+                "cached_input_tokens": 61568,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 437,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 65996,
+                "uncached_input_tokens": 3991
+              },
+              "skills_observed": [],
+              "method_output_markers": {},
+              "trace_sha256": "d2ed9c26e9f322132844acd07de81d22e13b2c11085d1c1e7155bdd9d2eb0eb2",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "delegated"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "Found **three material defects**.\n\n**Standards \u2014 two findings** ([STANDARDS.md:2](STANDARDS.md#L2)):\n\n- **[P2] Codes are normalized** \u2014 [promo.py:2](promo.py#L2) calls `code.upper()`, violating case-sensitive matching. `apply(100, \"save10\")` returns `90.0`; expected `100`.\n- **[P2] Undiscounted totals bypass rounding** \u2014 [promo.py:4](promo.py#L4) returns the input directly. `apply(12.345, \"OTHER\")` returns `12.345`; expected `12.35`.\n\n**Spec \u2014 one finding** ([SPEC.md:2](SPEC.md#L2)):\n\n- **[P2] Minimum purchase threshold is missing** \u2014 [promo.py:2](promo.py#L2) checks only the code. `apply(49, \"SAVE10\")` returns `44.1`; expected `49`, because eligibility starts at `50`.\n\nBoth existing tests pass; read-only probes reproduced all three defects. No files changed. No additional material defects established.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [
+            "code-review"
+          ],
+          "fixture_before_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da",
+          "fixture_after_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da"
+        },
+        {
+          "case_id": "methods-review",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "47c0900dce72d7f1fe19b62a12fb5a6c072afef423d41422bee320a85e741353",
+          "wall_seconds": 50.77440547943115,
+          "usage": {
+            "input_tokens": 68504,
+            "cached_input_tokens": 58240,
+            "output_tokens": 1102,
+            "reasoning_output_tokens": 38,
+            "uncached_input_tokens": 10264
+          },
+          "contexts": [
+            {
+              "id": "01a08347-3857-7fc2-8f57-4f03775ea260",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 48.553,
+              "usage": {
+                "input_tokens": 68504,
+                "cached_input_tokens": 58240,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 1102,
+                "reasoning_output_tokens": 38,
+                "total_tokens": 69606,
+                "uncached_input_tokens": 10264
+              },
+              "skills_observed": [
+                "code-review",
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {
+                "skills/verification-and-operations/references/change-review.md": [
+                  "call_4IWWDvfzYu6KJQQos16mFSzq"
+                ]
+              },
+              "trace_sha256": "d79f9765cc184d5bcf1c9a730b257dbf7b8ab3a060bc93f3b4d58be5a8928094",
+              "recorded_id": "01a08347-3857-7fc2-8f57-4f03775ea260",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "Found **three material defects**, all high confidence, in the current implementation at `3434b6b182ab938ce71b42ca7eaca9e1332811a7`:\n\n1. **[P1] Missing minimum total** \u2014 [promo.py:2](promo.py:2) applies the discount without checking eligibility. `apply(49, \"SAVE10\")` returns `44.1`; expected `49`. [SPEC.md:2](SPEC.md:2) requires a total of at least 50.\n\n2. **[P2] Codes are incorrectly normalized** \u2014 [promo.py:2](promo.py:2) calls `.upper()`, violating the case-sensitive identifier rule in [STANDARDS.md:2](STANDARDS.md:2). Both `apply(100, \"save10\")` and `apply(100, \"Save10\")` return `90.0`; expected `100`.\n\n3. **[P2] Unknown-code results bypass rounding** \u2014 [promo.py:4](promo.py:4) returns the input directly. `apply(12.345, \"OTHER\")` returns `12.345`; expected `12.35` under [STANDARDS.md:2](STANDARDS.md:2). Unknown codes must leave the promotion amount unchanged while still satisfying API output rounding.\n\nBoth existing tests pass, but neither exercises these failures. All three were reproduced with read-only checks; the threshold boundary (`50 \u2192 45`) also passed. Files were left unchanged.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "partial: overlapping skill read",
+          "overlapping_skills": [
+            "code-review"
+          ],
+          "fixture_before_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da",
+          "fixture_after_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da"
+        }
+      ]
+    },
+    {
+      "name": "clean-f075a93",
+      "purpose": "Harness-only clean-catalog independence smoke; not comparative evidence",
+      "integrity_inventory_sha256": "054cfa71ba52470f67141bfada787aae8aed093643daf042f500eefdf01221af",
+      "input_hashes": {
+        "evals/method-reconciliation-matrix.json": "57116d95dcde66272ef94da7189a7a0b361d9dddb341495d3044ed140766586b",
+        "evals/cases.json": "97e24a3d5e336d3c35006cdae955f2e6c08f97abb6b95fd7f27ae62184bc5e90",
+        "evals/run_natural_matrix.py": "0b8e25b5fa7ce844b55d8156267d20c11169152adde5090133e3bb81faef820d"
+      },
+      "catalog_file_hashes": {
+        "find-skills/SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+      },
+      "summary": {
+        "harness": {
+          "executions": 4,
+          "contexts": 4,
+          "median_wall_seconds": 45.11,
+          "usage": {
+            "input_tokens": 283361,
+            "cached_input_tokens": 242048,
+            "uncached_input_tokens": 41313,
+            "output_tokens": 2928
+          }
+        }
+      },
+      "trials": [
+        {
+          "case_id": "methodology-restraint",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "d58a6d7860eeb5169250d8f7efba4a6fc706005a4e9126a45ee90a5f3ecb7976",
+          "wall_seconds": 25.740060567855835,
+          "usage": {
+            "input_tokens": 42141,
+            "cached_input_tokens": 37120,
+            "output_tokens": 184,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 5021
+          },
+          "contexts": [
+            {
+              "id": "01a08349-dc49-79b3-837f-c2a438dce1c9",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 16.709,
+              "usage": {
+                "input_tokens": 42141,
+                "cached_input_tokens": 37120,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 184,
+                "reasoning_output_tokens": 0,
+                "total_tokens": 42325,
+                "uncached_input_tokens": 5021
+              },
+              "skills_observed": [],
+              "method_output_markers": {},
+              "trace_sha256": "9f975a6c0d1906f0511d0314aa81aae3310a8a01c781eb52b4536c549f793226",
+              "recorded_id": "01a08349-dc49-79b3-837f-c2a438dce1c9",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "README.md"
+          ],
+          "diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+          "response": "Corrected \u201cdefualt\u201d to \u201cdefault\u201d in README.md.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "891072ddc6d590d0dd2d3d5a778f13c334de04373d9733998f7c741a3f5b0b06",
+          "fixture_after_sha256": "f47521a67ef992f83e9b76a7df51f26e690593fd80cc353a933941f3c3ce60a4"
+        },
+        {
+          "case_id": "methods-diagnosis",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "65969d1ae59922e2c64d372874b16c08b15c70119d1470c4f4522bf197f0a12a",
+          "wall_seconds": 41.12557673454285,
+          "usage": {
+            "input_tokens": 77587,
+            "cached_input_tokens": 64640,
+            "output_tokens": 689,
+            "reasoning_output_tokens": 8,
+            "uncached_input_tokens": 12947
+          },
+          "contexts": [
+            {
+              "id": "01a08348-e740-70f0-8a2e-e67afbfde0c8",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 35.597,
+              "usage": {
+                "input_tokens": 77587,
+                "cached_input_tokens": 64640,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 689,
+                "reasoning_output_tokens": 8,
+                "total_tokens": 78276,
+                "uncached_input_tokens": 12947
+              },
+              "skills_observed": [
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {},
+              "trace_sha256": "948dcd821b8ee2638808f0d87891ba25e1e6ceee279446f5cf2b3d24a709beea",
+              "recorded_id": "01a08348-e740-70f0-8a2e-e67afbfde0c8",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [
+            "preview.py",
+            "test_preview.py"
+          ],
+          "diff_sha256": "903a07408e4dc78418a4a16ecc21eee948f491f7744b35876abd69c8389878be",
+          "response": "Fixed: counting exhausted the generator before totals were calculated. `preview()` now computes count and total in one pass, preserving the API and exact integer arithmetic.\n\nAdded a generator regression that failed before the fix and passes afterward. `python3 -m unittest` passes both tests; `git diff --check` is clean.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "dc9a390663abb12a54d7a8049ce7322c1c045f7b0a97c38f07495c4439aee3a3",
+          "fixture_after_sha256": "81fcc3849e31b824a1d58a511a0241a2fa4f4b8ad57f351f2864bf2cadd86fc8"
+        },
+        {
+          "case_id": "methods-domain",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "63f7d50bb0be6734e14f5e80e6a68b5eeea8efc69d261c5ae46f32a59467f369",
+          "wall_seconds": 52.72328495979309,
+          "usage": {
+            "input_tokens": 101376,
+            "cached_input_tokens": 91264,
+            "output_tokens": 1081,
+            "reasoning_output_tokens": 28,
+            "uncached_input_tokens": 10112
+          },
+          "contexts": [
+            {
+              "id": "01a08348-cb98-7460-8513-e9f852338be2",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 50.689,
+              "usage": {
+                "input_tokens": 101376,
+                "cached_input_tokens": 91264,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 1081,
+                "reasoning_output_tokens": 28,
+                "total_tokens": 102457,
+                "uncached_input_tokens": 10112
+              },
+              "skills_observed": [
+                "architecture-foundations",
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {
+                "skills/architecture-foundations/references/quality-and-ownership.md": [
+                  "call_fP9kh8F87mytohFZ0UtNi1UZ"
+                ]
+              },
+              "trace_sha256": "22ca6e1926976af3999ca2014d82b3d59d7fb8b5e6829121ecef251862155f80",
+              "recorded_id": "01a08348-cb98-7460-8513-e9f852338be2",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "The member is **paused with paid access**. Staff are describing access; the participation screen is describing participation. \u201cActive\u201d conflates two independent facts.\n\n[terms.md](terms.md) records that ambiguity. [DESIGN.md](DESIGN.md) already establishes separate ownership, and the code follows it.\n\nThe smallest vocabulary proposal is:\n\n| Concept | Meaning and proposed wording | Owner |\n| --- | --- | --- |\n| Member | An enrolled person; unchanged | Existing membership contract |\n| Participation | **Participating** or **Paused** | `participation.py`, using `participation` |\n| Paid access | **Has paid access** or **No paid access**, at a specified time | `access.py`, using `now < paid_through` |\n\nAvoid unqualified **active/inactive** in staff language and screen labels. For this case, display **\u201cParticipation: Paused\u201d** and, wherever access is relevant, **\u201cPaid access: Yes.\u201d** Internal `\"active\"` values and function names can remain unchanged.\n\nKeep the existing ownership boundary: participation determines whether someone participates; access determines whether their paid period covers the current time. Screens consume those answers without inventing a combined member status. Pausing must not alter paid-through dates, refunds, or cancellation semantics.\n\nI checked the existing functions with synthetic cases: paused members retain access before the paid-through boundary; participating members lack access at or after it. Those counterexamples show why neither fact can stand in for the other.\n\nNo files or behavior changed; these wording choices remain a proposal.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d",
+          "fixture_after_sha256": "c7c82614133027cdadd6c20b389d001f22b2d1683404fd16497ac726a297838d"
+        },
+        {
+          "case_id": "methods-review",
+          "arm": "harness",
+          "trial": 1,
+          "record_sha256": "3167cd65c16ff9aa8a881d1a858953ab789bdd810048bcf0e51b035323e592d3",
+          "wall_seconds": 49.10283613204956,
+          "usage": {
+            "input_tokens": 62257,
+            "cached_input_tokens": 49024,
+            "output_tokens": 974,
+            "reasoning_output_tokens": 40,
+            "uncached_input_tokens": 13233
+          },
+          "contexts": [
+            {
+              "id": "01a08349-ad0f-7353-b2e0-cc355eb470f3",
+              "kind": "primary",
+              "model": "gpt-6-astra",
+              "reasoning_effort": "medium",
+              "completed": true,
+              "wall_seconds": 43.804,
+              "usage": {
+                "input_tokens": 62257,
+                "cached_input_tokens": 49024,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 974,
+                "reasoning_output_tokens": 40,
+                "total_tokens": 63231,
+                "uncached_input_tokens": 13233
+              },
+              "skills_observed": [
+                "using-engineering-harness"
+              ],
+              "method_output_markers": {
+                "skills/verification-and-operations/references/change-review.md": [
+                  "call_6cfb0oCgsj3wRLVQJjEnFsaZ"
+                ]
+              },
+              "trace_sha256": "1eea78eb2c353895de9f6c6bbe39df6eafe186e4b9e169f2b2e5503022a893e5",
+              "recorded_id": "01a08349-ad0f-7353-b2e0-cc355eb470f3",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
+            }
+          ],
+          "changed_files": [],
+          "diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+          "response": "Found **three material defects**, all P2 severity with high confidence:\n\n1. **Missing minimum total check** \u2014 [promo.py:2](promo.py:2) applies SAVE10 regardless of total. `apply(49, \"SAVE10\")` returns `44.1`; expected `49` under [SPEC.md:2](SPEC.md:2), which requires totals of at least 50.\n\n2. **Case-sensitive codes are normalized** \u2014 [promo.py:2](promo.py:2) calls `.upper()`, violating [STANDARDS.md:2](STANDARDS.md:2). Both `apply(100, \"save10\")` and `apply(100, \"Save10\")` return `90.0`; expected `100` because those codes are unknown.\n\n3. **Unknown-code results bypass rounding** \u2014 [promo.py:4](promo.py:4) returns the input directly. `apply(12.345, \"OTHER\")` returns `12.345`; expected `12.35` under the API\u2019s two-decimal rounding requirement in [STANDARDS.md:2](STANDARDS.md:2).\n\nBoth existing tests pass, but neither exercises these defects. Focused checks reproduced all three and confirmed the threshold boundary: `apply(50, \"SAVE10\") == 45.0`.\n\nReviewed the current implementation, SHA-256 `c52a272fcec3fbc4e7d7a15f0a00c383f6645b615d5a539023ceab223335ba7d`. Files were left unchanged.",
+          "behavioral_outcomes": "bounded and correct",
+          "routing_outcome": "pass",
+          "overlapping_skills": [],
+          "fixture_before_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da",
+          "fixture_after_sha256": "43c65e875c71fe62d42cfdf7ee5e851b434aa138311d48a0d4a38200a49c39da"
+        }
+      ]
+    }
+  ],
+  "runtime_file_hashes": {
+    ".codex-plugin/plugin.json": "307c5dbb5a4feebe43e2cf10debcab98b07a3a44c6e94d3d8bce92a9f1c828ba",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "0c11e901e8627f06f9e1d250301a370d73d96f6f88298d4a58d43afc4c5220fd",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+    "references/change-classification.md": "d7a0b3abebbcadc9bc44d1a40d0b5e1c5bce2e260bf170db9b514c08880145b0",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "4291fe11f3952d3b3b41ffe66ac7b4c19550123409656f615e0ba308dacdd4af",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "65f5b238ae07a3e1173b74bccb3f06d735155eb36c79048487df2d2ddf49b332",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "9645259fcc1c1b81e45579e2ec1ce3462a5d49398b39e451091c131b0b305ba3",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "d79e9076a54e3d523a47f665fb368f754a48b38ad6b5d574bbe8966bdbabbaf9",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/change-review.md": "398d37c34889210e6c125356c88a8a01b4c522069879206076d5ba96eb7437f8",
+    "skills/verification-and-operations/references/diagnosis.md": "17780cd9cc586ab633ee00678e3cb4c3185473a01c03b7c7777a9392a84a19dd",
+    "skills/verification-and-operations/references/evidence-contract.md": "e4d70b9595e6ae15c491b39ee7ea50ac3fb230b2130b6f5eb89ba4421bd21293",
+    "skills/verification-and-operations/references/methodology.md": "f869c054c804038395112652a9e2ae19c98b3d28d97828628910f2a63b33cff7",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "6343507bd484c10f4b75fbe95dee06c9efabfec9d023fa1a62a04604f6f9f25f",
+    "templates/project-profile.minimal.json": "985798d45cb6fd1dfc872e801e551c87e82d422a82366672110a587d10f53611",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "context_identity_export": {
+    "analyzer_sha256": "8eeecbe00fee3a14b21b76f221f0ef550a7b0f8472de6b7ed48845b11671f05a",
+    "function": "attribute_costs.export_contexts",
+    "join": "trace_sha256 after analyze verifies native identities and retained integrity",
+    "historical_fields": [
+      "recorded_id",
+      "recorded_kind"
+    ]
+  }
+}

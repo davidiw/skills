@@ -1,6 +1,6 @@
 ---
 name: using-engineering-harness
-description: "Route engineering changes and cross-cutting methodology: evidence standards, testing infrastructure, review/safety/compatibility policy, and reusable harness behavior. Adopt repositories, harden friction, and coordinate security/privacy or UX/UI/brand reviews. Keep ordinary fixes minimal."
+description: "Route engineering changes, debugging, code review, domain/architecture decisions and cross-cutting methodology: evidence standards, testing infrastructure, review/safety/compatibility policy, and reusable harness behavior. Adopt repositories, harden friction, and coordinate security/privacy or UX/UI/brand reviews. Keep ordinary fixes minimal."
 ---
 
 # Using Engineering Harness
@@ -9,6 +9,9 @@ Read repository instructions and the accepted owner contract. For consequential
 work, discover its canonical policy and enforcement owner through
 `engineering-harness.json`; a task need not name this skill. Implementation,
 integration and publication stay within the user's respective authorization.
+Harness owns the engineering workflow; use other skills only for a distinct
+utility or an explicit user/repository requirement, not a second overlapping
+workflow. Their tools do not choose scope, owners or review gates.
 **Design/plan requests always keep production unchanged:** inspect, propose and
 use synthetic proof; implementation checks/reviews remain prospective.
 
@@ -19,6 +22,9 @@ use synthetic proof; implementation checks/reviews remain prospective.
   contention, durable/external effects or migration. Use existing edits/focused checks
   and finish. Copy, pure parser/library and static-page work normally needs no specialist, scope document,
   catalog or assurance. Reclassify if the solution broadens.
+  If the cause remains unresolved, use the conditional
+  [diagnosis method](../verification-and-operations/references/diagnosis.md);
+  reading a method does not require its owner skill or an architecture exercise.
 - **Review only:** an already-fresh reviewer without builder history performs its
   assigned gate and records that status; do not delegate it again. Otherwise,
   release/launch gates and required or explicit independent reviews begin with the
@@ -31,6 +37,7 @@ use synthetic proof; implementation checks/reviews remain prospective.
   For engineering-methodology or performance-evidence assessment, use
   [verification and operations](../verification-and-operations/SKILL.md).
   For UX/UI/brand critique, select the [experience owner](../../references/experience-routing.md).
+  Other code reviews use the [change-review method](../verification-and-operations/references/change-review.md).
   Keep production unchanged and skip the builder checkpoints.
 - **Other change or design:** complete the
   [builder checkpoints](../../references/change-classification.md) in order before
