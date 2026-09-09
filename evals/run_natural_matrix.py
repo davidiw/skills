@@ -548,6 +548,16 @@ def credential_strings(auth):
     return result
 
 
+def redaction_paths(output, package, matrix, catalog):
+    # A relative "." is a path, not a request to redact every punctuation mark.
+    return {str(Path(output).resolve()): "<OUTPUT>",
+            str(Path(package).resolve()): "<PACKAGE>",
+            str(Path(matrix).resolve().parent): "<EVALS>",
+            str(Path(catalog).resolve()): "<CATALOG>",
+            str(Path(__file__).resolve().parent): "<RUNNER>",
+            str(Path.home()): "<USER_HOME>"}
+
+
 def main():
     parser = argparse.ArgumentParser()
     for name in ("package", "matrix", "output", "catalog"):
@@ -601,9 +611,7 @@ def main():
         records = [json.loads(p.read_text()) for p in (args.output / "private").glob("*/record.json")]
     run["interrupted"] = interrupted
     records.sort(key=lambda r: (r["case_id"], r["arm"], r["trial"]))
-    replacements = {str(args.output): "<OUTPUT>", str(args.package): "<PACKAGE>",
-                    str(args.matrix.parent): "<EVALS>", str(args.catalog): "<CATALOG>",
-                    str(Path(__file__).parent): "<RUNNER>", str(Path.home()): "<USER_HOME>"}
+    replacements = redaction_paths(args.output, args.package, args.matrix, args.catalog)
     public = args.output / "public"
     public.mkdir()
     secrets = credential_strings(json.loads(args.auth.read_text()))

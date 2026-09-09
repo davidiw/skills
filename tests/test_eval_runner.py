@@ -63,6 +63,16 @@ class EvaluationRunnerTest(unittest.TestCase):
                 runner.verify_runtime(runtime, runner.tree(source))
             self.assertTrue((runtime / ".git").exists())
 
+    def test_relative_paths_do_not_redact_punctuation_or_inventory(self):
+        replacements = runner.redaction_paths("run", ".", "evals/cases.json", "catalog")
+        value = {"skills/example/SKILL.md": "0.9.0. Done.",
+                 "path": str(Path.cwd() / "private.txt"),
+                 "eval_input": "evals/cases.json"}
+        result = runner.redact(value, replacements, [])
+        self.assertEqual(result["skills/example/SKILL.md"], "0.9.0. Done.")
+        self.assertEqual(result["eval_input"], "evals/cases.json")
+        self.assertEqual(result["path"], "<PACKAGE>/private.txt")
+
     def test_redaction_covers_dictionary_keys_and_nested_transcripts(self):
         value = {"private/path": {"stdout": "private/path secret-token"}}
         self.assertEqual(runner.redact(value, {"private/path": "<PATH>"}, ["secret-token"]),
