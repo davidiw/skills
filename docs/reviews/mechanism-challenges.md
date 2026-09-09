@@ -37,3 +37,5 @@ conditional additions at the existing owners preserve the accepted workflow.
 See the predeclared [campaign](../../evals/mechanism-campaign.md). Fixture unit
 checks establish that the intended faults and fixed counterparts are distinguishable;
 they do not establish improved agent judgment.
+
+Observed results and corrections: [bounded comparison](../../evals/results/mechanism-challenges/README.md). The comparison does not establish improved overall judgment.

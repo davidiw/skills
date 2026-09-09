@@ -14,6 +14,12 @@ reusing success. Existing accepted skips and sound caches remain valid. Historic
 evidence retains its exact policy/source identity and is not upgraded by this entry.
 Stable installation remains pinned to published v0.8.0.
 
+The bounded 40-invocation comparison retains its original snapshots and limitations.
+It does not establish improved judgment: the builder checkpoint was not exercised,
+fixed controls needed repair, and candidate reviews missed a nonstandard-JSON case.
+Post-comparison fixture and relative-argument export corrections have deterministic
+proof only; historical outcomes are not upgraded onto the final candidate.
+
 ## 0.8.0 - 2026-09-08
 
 Reconciles useful external engineering methods under existing Harness owners.
