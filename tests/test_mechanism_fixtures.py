@@ -19,7 +19,8 @@ class MechanismFixtures(unittest.TestCase):
     def test_transform_fault_and_fixed(self):
         for version, faulty in [('a',True),('b',False)]:
             execute('review-transform-'+version, f'''
-from guard import accept,fields
+from guard import accept
+from service import display_fields as fields
 faulty={faulty}
 for before,after in [('A -8 kg; B 4 kg','A 8 kg; B 4 kg'),('A 8 kg','A 8 lb'),('A 8 kg; B 4 kg','A 4 kg; B 8 kg')]:
     assert accept(before,after,{{}}) == faulty
@@ -96,6 +97,48 @@ with tempfile.TemporaryDirectory() as tmp:
   try: issue(p,0);raise AssertionError('malformed inventory accepted')
   except ValueError: pass
 ''')
+    def test_fixed_commands_allow_equivalent_json_strings(self):
+        execute('review-selection-b', r'''
+from gate import admitted
+for op in ['amend_path','amend_body']:
+ m={'op':op,'path':{'id':'1'},'body':{'target_id':'1'}}
+ page={'rows':[{'id':'1','name':'Crate','slot_code':'S1'}],'scope':'all','complete':True}
+ assert admitted(m,'Update "\u0043rate".',page)
+ page['rows'][0]['name']='café'
+ assert admitted(m,'Update "café".',page)
+ page['rows'][0]['name']='a/b'
+ assert admitted(m,'Update "a\/b".',page)
+ for bad in ['Update "a/b". trailing','Do not update "a/b".','Update ["a/b"].','Update "a/b" "other".']:
+  assert not admitted(m,bad,page)
+''')
+
+    def test_fixed_card_does_not_overwrite_submitted_metadata(self):
+        execute('review-card-b', '''
+from transport import wire
+from client import render
+for lines in [[],[{'sku':'R9','quantity':23}]]:
+ output=render(wire('dispatch_edit','Depot',{'lines':lines,'collection_action':'submitted-value'}))
+ assert 'submitted-value' in output
+ assert ('clear' if not lines else 'replace') in output
+''')
+
+    def test_fixed_receipt_rejects_non_json_constants(self):
+        execute('review-run-b', '''
+from receipts import issue,reuse
+from pathlib import Path
+import tempfile,json
+with tempfile.TemporaryDirectory() as tmp:
+ p=Path(tmp)/'report'
+ events=[{'kind':'start','run_id':'r','expected':['a']},{'kind':'result','run_id':'r','id':'a','status':'pass'},{'kind':'done','run_id':'r','ok':True}]
+ p.write_text('\\n'.join(json.dumps(x) for x in events));receipt=issue(p,0)
+ for value in [float('nan'),float('inf'),float('-inf')]:
+  events[1]['duration']=value
+  p.write_text('\\n'.join(json.dumps(x) for x in events))
+  try: issue(p,0);raise AssertionError('non-JSON constant accepted')
+  except ValueError: pass
+  assert not reuse(receipt,p)
+''')
+
     def test_campaign_pairs_and_minimal_control(self):
         matrix=json.loads((ROOT/'evals/mechanism-matrix.json').read_text())
         self.assertEqual(matrix['trials'],2)

@@ -1,9 +1,12 @@
 import hashlib,json
 from pathlib import Path
 
+def invalid_constant(value):
+    raise ValueError("non-JSON constant")
+
 def evidence(report):
     raw=Path(report).read_bytes()
-    events=[json.loads(line) for line in raw.decode().splitlines()]
+    events=[json.loads(line, parse_constant=invalid_constant) for line in raw.decode().splitlines()]
     if len(events)<2 or events[0].get("kind")!="start" or events[-1].get("kind")!="done" or events[-1].get("ok") is not True:
         raise ValueError("incomplete report")
     first=events[0];expected=first["expected"]

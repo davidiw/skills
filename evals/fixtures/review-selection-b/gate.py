@@ -19,4 +19,10 @@ def admitted(mutation, command, page):
         labels.append(row["name"])
     if row.get("slot_code"):
         labels.append(row["name"] + " / " + row["slot_code"])
-    return any(command == "Update " + json.dumps(label) + "." for label in labels)
+    if not command.startswith('Update "') or not command.endswith('".'):
+        return False
+    try:
+        label = json.loads(command[len("Update "):-1])
+    except ValueError:
+        return False
+    return isinstance(label, str) and label in labels
