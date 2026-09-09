@@ -63,11 +63,23 @@ class MethodReconciliationTest(unittest.TestCase):
         self.assertEqual(preview(['7', '3']), expected)
         self.assertNotEqual(preview(iter(['7', '3'])), expected)
 
-    def test_review_fixture_has_two_independently_reachable_contract_defects(self):
+    def test_review_fixture_has_three_independently_reachable_contract_defects(self):
         apply = module('methods-review/promo.py').apply
         self.assertEqual(apply(100, 'SAVE10'), 90)
         self.assertNotEqual(apply(10, 'SAVE10'), 10)
         self.assertNotEqual(apply(100, 'save10'), 100)
+        self.assertNotEqual(apply(12.345, 'OTHER'), round(12.345, 2))
+
+    def test_retained_receipt_exports_unique_context_ids(self):
+        receipt = json.loads((ROOT / 'evals/results/method-reconciliation/receipt.json').read_text())
+        for run in receipt['runs']:
+            contexts = [c for t in run['trials'] for c in t['contexts']]
+            self.assertEqual(len({c['id'] for c in contexts}), len(contexts))
+            self.assertTrue(all('recorded_id' in c for c in contexts))
+        review = next(t for t in receipt['runs'][0]['trials']
+                      if t['case_id'] == 'methods-review' and t['arm'] == 'control')
+        self.assertEqual(len(review['contexts']), 3)
+        self.assertEqual(len({c['recorded_id'] for c in review['contexts']}), 1)
 
     def test_domain_fixture_has_distinct_existing_facts(self):
         participating = module('methods-domain/participation.py').participating

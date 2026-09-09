@@ -87,3 +87,19 @@ and utility boundaries receive source/structural review, not a natural-effective
 claim. No new independent-review gate is introduced or proven by the generic
 review fixture; existing required fresh-review policy remains unchanged. No live
 provider, device, deployment or VitalThread execution is claimed.
+
+### Context identity export correction
+
+The original receipt exported flattened runner IDs, giving the control review's
+parent and two children the same ID. Corrected `id` and `kind` come from
+`attribute_costs.analyze()` through `export_contexts()`, joined by trace SHA-256;
+`recorded_id` and `recorded_kind` preserve the historical values. This is an
+initial-review evidence miss, corrected using the existing retained native traces.
+No trace, trial, score, timing, token count, runtime or fixture was changed.
+
+A synthetic parent/two-child regression exercises analysis, reordered export and
+JSON round-trip with flattened historical IDs; missing/duplicate/unmatched trace
+joins fail. The committed receipt is checked for unique exported IDs. The review
+fixture test now also preserves the discovered undiscounted-rounding defect. The
+competing-catalog result remains one pass/three routing partials, and the separate
+clean-catalog smoke remains four passes; no model evaluations were rerun.

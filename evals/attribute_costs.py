@@ -395,6 +395,31 @@ def analyze(run, runtime, integrity=None, integrity_sha256=None):
                             "Private reasoning and message contents are not emitted. No behavioral scoring is performed."]}
 
 
+def export_contexts(receipt_contexts, normalized_contexts):
+    """Join a receipt to analyze() results by trace digest, never flattened ID/order.
+
+    Preserve historical identity/kind separately. This updates context metadata
+    only; callers retain their source identity, behavioral assessments and costs.
+    """
+    by_trace = {c["trace_sha256"]: c for c in normalized_contexts}
+    ids = [c["id"] for c in normalized_contexts]
+    traces = [c["trace_sha256"] for c in receipt_contexts]
+    if (len(by_trace) != len(normalized_contexts) or len(set(ids)) != len(ids)
+            or not all(ids) or len(set(traces)) != len(traces)
+            or set(traces) != set(by_trace)):
+        raise ValueError("Receipt/native context inventory does not reconcile")
+    exported = []
+    for context in receipt_contexts:
+        native = by_trace[context["trace_sha256"]]
+        if (native.get("identity_source") != "first raw session header"
+                or context.get("recorded_id", context.get("id")) != native["recorded_id"]
+                or context.get("recorded_kind", context.get("kind")) != native["recorded_kind"]):
+            raise ValueError("Receipt context differs from normalized historical metadata")
+        exported.append({**context, **{key: native[key] for key in
+                         ("id", "recorded_id", "identity_source", "kind", "recorded_kind")}})
+    return exported
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("run", "runtime", "output"):

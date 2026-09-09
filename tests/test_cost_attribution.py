@@ -237,6 +237,49 @@ class CostAttributionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "completion"):
                 COST.analyze(run, runtime)
 
+    def test_export_preserves_three_native_contexts_with_one_legacy_id(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run, runtime, path, trace, record = self.fixture(Path(directory))
+            parent_events = [json.loads(line) for line in trace.read_text().splitlines()]
+            for number in (1, 2):
+                child_id = f"child-{number}"
+                events = copy.deepcopy(parent_events)
+                events[0]["payload"] = {"id": child_id, "source": {
+                    "subagent": {"thread_spawn": {"parent_thread_id": "context"}}}}
+                events.insert(1, event("session_meta", {"id": "context"}))
+                for item in events:
+                    payload = item["payload"]
+                    if "turn_id" in payload:
+                        payload["turn_id"] = child_id + "-turn"
+                    if "response_id" in payload:
+                        payload["response_id"] = child_id + "-response"
+                child_trace = trace.with_name(f"rollout-child-{number}.jsonl")
+                child_trace.write_text("\n".join(json.dumps(e) for e in events))
+                child = copy.deepcopy(record["contexts"][0])
+                child["trace_file"] = "sessions/" + child_trace.name
+                record["contexts"].append(child)
+            record["context_count"] = 3
+            record["aggregate_usage"] = COST.usage_sum(c["usage"] for c in record["contexts"])
+            path.write_text(json.dumps(record))
+            (run / "public/manifest.json").write_text(json.dumps([record]))
+            normalized = COST.analyze(run, runtime)["trials"][0]["contexts"]
+            legacy = [{"id": c["id"], "kind": c["kind"], "trace_sha256": COST.sha(
+                (path.parent / "codex-home" / c["trace_file"]).read_bytes())}
+                for c in reversed(record["contexts"])]
+            exported = COST.export_contexts(legacy, normalized)
+            receipt = run / "public/receipt.json"
+            receipt.write_text(json.dumps({"contexts": exported}))
+            restored = json.loads(receipt.read_text())["contexts"]
+            self.assertEqual({c["id"] for c in restored}, {"context", "child-1", "child-2"})
+            self.assertEqual([c["recorded_id"] for c in restored], ["context"] * 3)
+            self.assertEqual([c["kind"] for c in restored], ["delegated", "delegated", "primary"])
+            self.assertEqual([c["id"] for c in legacy], ["context"] * 3)
+            self.assertEqual(COST.export_contexts(exported, normalized), exported)
+            for invalid in (legacy[:-1], legacy + [legacy[0]],
+                            [{**legacy[0], "trace_sha256": "unknown"}, *legacy[1:]]):
+                with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                    COST.export_contexts(invalid, normalized)
+
     def test_child_role_uses_nested_native_metadata_and_does_not_guess_when_absent(self):
         for metadata, configuration, role in (
                 ({"source": {"subagent": {"thread_spawn": {"agent_role": "reviewer"}}}}, "custom", "reviewer"),

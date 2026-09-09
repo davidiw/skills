@@ -88,7 +88,10 @@
               },
               "skills_observed": [],
               "method_output_markers": {},
-              "trace_sha256": "c510fcbcb208b3a1f4c47a5994333fa99e53f2f25ea7636c09bf71fe7d521f8b"
+              "trace_sha256": "c510fcbcb208b3a1f4c47a5994333fa99e53f2f25ea7636c09bf71fe7d521f8b",
+              "recorded_id": "01a08347-ef60-7192-94ce-80f6bccb45b6",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -134,7 +137,10 @@
               },
               "skills_observed": [],
               "method_output_markers": {},
-              "trace_sha256": "8152b3841bf5118b722d912e7e1686081b9226696eb1881c2e7b2b194d27b20f"
+              "trace_sha256": "8152b3841bf5118b722d912e7e1686081b9226696eb1881c2e7b2b194d27b20f",
+              "recorded_id": "01a08348-2cb2-7a20-93f2-95d6aa472d84",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -182,7 +188,10 @@
                 "diagnosing-bugs"
               ],
               "method_output_markers": {},
-              "trace_sha256": "f0b44f9d77e79eadc7baeb89c5b8f6cd7853aefa82e879d6f74df2f25a627524"
+              "trace_sha256": "f0b44f9d77e79eadc7baeb89c5b8f6cd7853aefa82e879d6f74df2f25a627524",
+              "recorded_id": "01a08345-620d-7e02-ba6a-d9f6c7545f3b",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -238,7 +247,10 @@
                   "call_GkCrC0G66qsPBqqtQVi9ZjHD"
                 ]
               },
-              "trace_sha256": "bb5df98f4ca88aaef32387269386fac6cd87a6418ecfcc8845608f36d014a9d4"
+              "trace_sha256": "bb5df98f4ca88aaef32387269386fac6cd87a6418ecfcc8845608f36d014a9d4",
+              "recorded_id": "01a08345-6429-7370-982d-ce90e06ed9d0",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -289,7 +301,10 @@
                 "domain-modeling"
               ],
               "method_output_markers": {},
-              "trace_sha256": "a9c3f12eee5922879d09b85add2912b07ec1c47b2b2ab7c3f6a714b11d0c1efa"
+              "trace_sha256": "a9c3f12eee5922879d09b85add2912b07ec1c47b2b2ab7c3f6a714b11d0c1efa",
+              "recorded_id": "01a08346-4955-7fe2-a881-c3fc3ed53c99",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [],
@@ -343,7 +358,10 @@
                   "call_mfmBtaUPFg9AjAO3SlSJ0KLd"
                 ]
               },
-              "trace_sha256": "6bbafe9c3d9c577b81c8db47b9497ee2aa74d034f3b625874399ba5cbaf3d293"
+              "trace_sha256": "6bbafe9c3d9c577b81c8db47b9497ee2aa74d034f3b625874399ba5cbaf3d293",
+              "recorded_id": "01a08346-47d2-7131-b034-fe7e01141e9f",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [],
@@ -391,10 +409,13 @@
                 "code-review"
               ],
               "method_output_markers": {},
-              "trace_sha256": "312764787239383870f09d35229f4ab7b8974e7f135129fd9df6a92b01c3896c"
+              "trace_sha256": "312764787239383870f09d35229f4ab7b8974e7f135129fd9df6a92b01c3896c",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             },
             {
-              "id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "id": "01a08347-275e-7ef1-bbab-c90e050245a3",
               "kind": "delegated",
               "model": "gpt-6-astra",
               "reasoning_effort": "medium",
@@ -411,10 +432,13 @@
               },
               "skills_observed": [],
               "method_output_markers": {},
-              "trace_sha256": "633237756d619bd981cc6c83b1da3f8c7c63a8dd0d3f0b0a173d80e57543142e"
+              "trace_sha256": "633237756d619bd981cc6c83b1da3f8c7c63a8dd0d3f0b0a173d80e57543142e",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "delegated"
             },
             {
-              "id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "id": "01a08347-38c9-7131-80a0-d3aa36761792",
               "kind": "delegated",
               "model": "gpt-6-astra",
               "reasoning_effort": "medium",
@@ -431,7 +455,10 @@
               },
               "skills_observed": [],
               "method_output_markers": {},
-              "trace_sha256": "d2ed9c26e9f322132844acd07de81d22e13b2c11085d1c1e7155bdd9d2eb0eb2"
+              "trace_sha256": "d2ed9c26e9f322132844acd07de81d22e13b2c11085d1c1e7155bdd9d2eb0eb2",
+              "recorded_id": "01a08346-db36-7793-ad10-be3bc8686655",
+              "identity_source": "first raw session header",
+              "recorded_kind": "delegated"
             }
           ],
           "changed_files": [],
@@ -484,7 +511,10 @@
                   "call_4IWWDvfzYu6KJQQos16mFSzq"
                 ]
               },
-              "trace_sha256": "d79f9765cc184d5bcf1c9a730b257dbf7b8ab3a060bc93f3b4d58be5a8928094"
+              "trace_sha256": "d79f9765cc184d5bcf1c9a730b257dbf7b8ab3a060bc93f3b4d58be5a8928094",
+              "recorded_id": "01a08347-3857-7fc2-8f57-4f03775ea260",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [],
@@ -558,7 +588,10 @@
               },
               "skills_observed": [],
               "method_output_markers": {},
-              "trace_sha256": "9f975a6c0d1906f0511d0314aa81aae3310a8a01c781eb52b4536c549f793226"
+              "trace_sha256": "9f975a6c0d1906f0511d0314aa81aae3310a8a01c781eb52b4536c549f793226",
+              "recorded_id": "01a08349-dc49-79b3-837f-c2a438dce1c9",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -606,7 +639,10 @@
                 "using-engineering-harness"
               ],
               "method_output_markers": {},
-              "trace_sha256": "948dcd821b8ee2638808f0d87891ba25e1e6ceee279446f5cf2b3d24a709beea"
+              "trace_sha256": "948dcd821b8ee2638808f0d87891ba25e1e6ceee279446f5cf2b3d24a709beea",
+              "recorded_id": "01a08348-e740-70f0-8a2e-e67afbfde0c8",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [
@@ -660,7 +696,10 @@
                   "call_fP9kh8F87mytohFZ0UtNi1UZ"
                 ]
               },
-              "trace_sha256": "22ca6e1926976af3999ca2014d82b3d59d7fb8b5e6829121ecef251862155f80"
+              "trace_sha256": "22ca6e1926976af3999ca2014d82b3d59d7fb8b5e6829121ecef251862155f80",
+              "recorded_id": "01a08348-cb98-7460-8513-e9f852338be2",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [],
@@ -710,7 +749,10 @@
                   "call_6cfb0oCgsj3wRLVQJjEnFsaZ"
                 ]
               },
-              "trace_sha256": "1eea78eb2c353895de9f6c6bbe39df6eafe186e4b9e169f2b2e5503022a893e5"
+              "trace_sha256": "1eea78eb2c353895de9f6c6bbe39df6eafe186e4b9e169f2b2e5503022a893e5",
+              "recorded_id": "01a08349-ad0f-7353-b2e0-cc355eb470f3",
+              "identity_source": "first raw session header",
+              "recorded_kind": "primary"
             }
           ],
           "changed_files": [],
@@ -804,5 +846,14 @@
     "templates/project-profile.minimal.json": "985798d45cb6fd1dfc872e801e551c87e82d422a82366672110a587d10f53611",
     "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
     "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "context_identity_export": {
+    "analyzer_sha256": "8eeecbe00fee3a14b21b76f221f0ef550a7b0f8472de6b7ed48845b11671f05a",
+    "function": "attribute_costs.export_contexts",
+    "join": "trace_sha256 after analyze verifies native identities and retained integrity",
+    "historical_fields": [
+      "recorded_id",
+      "recorded_kind"
+    ]
   }
 }
