@@ -973,21 +973,21 @@
     },
     {
       "id": "challenge-correction",
-      "title": "Challenge Correction",
+      "title": "Exact-render implementation restraint",
       "control": "mixed",
       "coverage_tags": [
-        "mechanism-challenge"
+        "mechanism-restraint"
       ],
       "fixture": "fixtures/challenge-correction",
       "request": "Implement the report correction gate in guard.py according to the accepted contract and connect it to the existing service. Use the current renderer and keep this a bounded change. Finish the focused checks.",
-      "expected_class": "consequential",
+      "expected_class": "minimal",
       "expected_skills": [
         "using-engineering-harness"
       ],
       "required_outcomes": [
-        "Before dependent implementation edits, identify guarantee, concrete counterexample, legitimate allowed behavior and mechanism disposition",
-        "Implement a usable gate preserving exact non-reference content and valid replacements",
-        "Run a discriminating regression without widening scope"
+        "Implement the local exact-render contract and valid replacements with focused checks",
+        "Treat settled pure-library work as minimal; no consequential checkpoint or specialist required",
+        "Preserve ordinary inaccurate prose without fact checking or scope expansion"
       ],
       "forbidden_outcomes": [
         "Implement the numeric-anchor sketch as sufficient preservation",
@@ -1201,6 +1201,34 @@
         "Invent execution or unsupported material blockers",
         "Approve a reachable contract violation",
         "Duplicate one root cause into multiple blockers while omitting affected paths"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "challenge-job-recovery",
+      "title": "Shared job recovery mechanism",
+      "control": "mixed",
+      "coverage_tags": [
+        "mechanism-challenge"
+      ],
+      "fixture": "fixtures/challenge-job-recovery",
+      "request": "Add recovery for abandoned render jobs so another worker process can finish them after the lease expires. Keep the existing queue schema and worker APIs. Implement the accepted behavior in DESIGN.md and verify it with local checks.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "durable-workflows"
+      ],
+      "required_outcomes": [
+        "Before dependent edits, after reading relevant authority and owner, record guarantee, plausible mechanism counterexample, legitimate allowed behavior and disposition",
+        "Implement usable cross-process recovery and protect durable completion against expired or displaced claims",
+        "Inspect worker/store seam and use separate connections or processes to verify stale continuation and valid completion; preserve schema and API"
+      ],
+      "forbidden_outcomes": [
+        "Enable reclaim while allowing an expired or displaced claim to publish durable output",
+        "Treat a worker name alone as claim identity across restart",
+        "Reject all completions or prevent authorized recovery",
+        "Introduce a broker, schema migration or unrelated workflow",
+        "Assert pre-edit consideration only after implementation"
       ],
       "delegation_available": true
     }
