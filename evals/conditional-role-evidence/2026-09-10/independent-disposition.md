@@ -1,7 +1,8 @@
 # Independent post-trial disposition
 
 Complete reviewer receipt below, with local path prefixes replaced by symbolic
-labels. Original receipt SHA-256: `d30d7b8b15847336b6f30ad17384d0d2a7eec44593d513b92cc6685537431cce`.
+labels and the local receipt link mapped to its adjacent published artifact.
+Original receipt SHA-256: `d30d7b8b15847336b6f30ad17384d0d2a7eec44593d513b92cc6685537431cce`.
 
 The maintenance change remains ready for its separate PR at `e709a2f5090a3884caadfb23ba2637fd6d12e542`, with the previously recorded environment limitation disclosed. The workflow source at `ea958c9a923c556bf60b94cc3cfbbb2748fd9888` may proceed as a draft PR with an explicit pending natural acceptance gate. The connected workflow has not completed acceptance, and the declared trial budget is exhausted.
 
@@ -26,7 +27,7 @@ The actual corrective sequence supports these narrower positive conclusions:
 
 There were **seven model contexts in the corrective repeat**: the primary, one invalid startup reviewer, two supporting coordinators, and three valid role contexts. The separate coordinator exports are essential; the primary export alone is not the complete tree. The earlier hypothesis about a long-lived session causing permission inheritance remains **unproven**. The corrective trial’s initial inheritance mismatch is independently observed.
 
-[posttrial-validation.json](<scratch>/posttrial-validation.json) is now available. Its raw logs show all **7 reservation + 2 hook + 11 natural-reviewer methods passing**, with zero skips and unchanged source/test hashes. These are useful external development results, not natural operator execution. The eleven-test file exactly matches the natural reviewer’s authored Python block, SHA-256 `ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7`. The existing-empty-SKU path is outside those checks’ coverage.
+[posttrial-validation.json](posttrial-validation.json) is now available. Its raw logs show all **7 reservation + 2 hook + 11 natural-reviewer methods passing**, with zero skips and unchanged source/test hashes. These are useful external development results, not natural operator execution. The eleven-test file exactly matches the natural reviewer’s authored Python block, SHA-256 `ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7`. The existing-empty-SKU path is outside those checks’ coverage.
 
 The maintenance reviewer’s 55-method result and prior package/plugin/skill validations remain applicable. The broader suites retain the disclosed single baseline loopback-bind `PermissionError`; they should not be described as wholly green. Original archive-validation failures should remain preserved alongside the corrected Git-backed results.
 
