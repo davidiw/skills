@@ -46,6 +46,11 @@ use synthetic proof; implementation checks/reviews remain prospective.
   **No production-edit call for a missing, invalid or pending scope row.** Continue
   independent authorized work.
 
+Consequential implementation/design work, or an explicitly requested separated
+task, uses the conditional workflow in the
+[handoff](../../references/assurance-handoff.md#conditional-four-role-workflow).
+Minimal work remains local unless separation is explicitly requested.
+
 **Adopt:** use the [profile helper](../../scripts/profile_repository.py) and
 [discovery](../../references/profile-discovery.md). **Bootstrap:** start with
 architecture foundations. **Harden:** start with architecture hardening.

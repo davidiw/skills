@@ -1,0 +1,76 @@
+{
+  "role": "operator",
+  "reviewer": {
+    "path": "<scratch>/existing_sku_acceptance.py",
+    "sha256_pre": "74eda006683741f2311f7da810deb7eb608f6fc92fc36654dd34150061d06f1d",
+    "sha256_post": "74eda006683741f2311f7da810deb7eb608f6fc92fc36654dd34150061d06f1d"
+  },
+  "checks": [
+    {
+      "target": "produced-task-snapshot",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 existing_sku_acceptance.py produced-task-snapshot",
+      "exit": 1,
+      "tests": 1,
+      "passed": 0,
+      "failures": 0,
+      "errors": 1,
+      "skips": 0,
+      "source_sha256_pre": "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36",
+      "source_sha256_post": "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36",
+      "source_unchanged": true,
+      "stdout": "sku-produced.stdout",
+      "stderr": "sku-produced.stderr",
+      "observation": "ValueError: invalid reservation for an existing empty-string SKU"
+    },
+    {
+      "target": "workflow-corrected-snapshot/evals/conditional-role-reference",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 existing_sku_acceptance.py workflow-corrected-snapshot/evals/conditional-role-reference",
+      "exit": 0,
+      "tests": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "source_sha256_pre": "a6711178b864d84e81e6c21d5cedcc8c16ea4dbd24ace4f96ad65bdb0799394f",
+      "source_sha256_post": "a6711178b864d84e81e6c21d5cedcc8c16ea4dbd24ace4f96ad65bdb0799394f",
+      "source_unchanged": true,
+      "stdout": "sku-reference.stdout",
+      "stderr": "sku-reference.stderr",
+      "observation": "Existing empty-string SKU reservation is accepted and availability decreases to 2"
+    }
+  ],
+  "scope": {
+    "storage": "in-memory SQLite only",
+    "retries": 0,
+    "assertions_changed": false,
+    "source_changes": false,
+    "interpretation": "External post-trial coverage only; this does not repair the produced snapshot or complete historical/natural trials."
+  },
+  "artifacts": {
+    "status": "sku-command-status.tsv",
+    "produced_inventory_sha256": "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36",
+    "reference_inventory_sha256": "a6711178b864d84e81e6c21d5cedcc8c16ea4dbd24ace4f96ad65bdb0799394f"
+  },
+  "output_redactions": {
+    "sku-produced.stdout": {
+      "original_sha256": "3442b921067bc8835d524a4cc62735479e829905a5ba5d76a6e0dbc727f5b48e",
+      "published_sha256": "3442b921067bc8835d524a4cc62735479e829905a5ba5d76a6e0dbc727f5b48e",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "sku-produced.stderr": {
+      "original_sha256": "1bc530f56136ee0eb5854a06609a9c6e5743ead2134bcfb71b48050f71bbe65f",
+      "published_sha256": "a18b8c1fa79b3e429a5a72ee325175691245c975675b8fb26158bf1afc7e0ed7",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "sku-reference.stdout": {
+      "original_sha256": "72fa90340838fd7f786269a4f0adc20f3aea4324dc1bee57071e65a3955e40fc",
+      "published_sha256": "72fa90340838fd7f786269a4f0adc20f3aea4324dc1bee57071e65a3955e40fc",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "sku-reference.stderr": {
+      "original_sha256": "8fe38711978b67ec4e5a160f6530ebebb69a301ee2ac2fdaf554dc4c842587d5",
+      "published_sha256": "8fe38711978b67ec4e5a160f6530ebebb69a301ee2ac2fdaf554dc4c842587d5",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    }
+  }
+}

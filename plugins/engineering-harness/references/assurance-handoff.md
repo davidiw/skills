@@ -22,7 +22,9 @@ review. Ordinary bounded work uses focused builder checks.
    - authoritative contracts and already-executed commands/results;
    - reviewer identity, actual no-history setting, assigned reviewer `SKILL.md` paths.
    Use concise fields and links, with shared limits once. Exclude builder reasoning,
-   design justifications, expected findings and persuasive conclusions.
+   expected findings and persuasive approval conclusions. A plan-review packet may
+   include its proposed mechanism artifact as an unaccepted review subject; it does
+   not turn that artifact into requirements or approval, and excludes private history.
 3. Launch with the selected configured role in the native role argument, or
    record why the generic fallback applies. Set **no builder-history fork**
    (`fork_context: false` or equivalent). Send only the packet or its location
@@ -75,6 +77,55 @@ gates, custom/generic role, actual child model/reasoning, skills read and freshn
 Measure builder/reviewer tokens and time separately when observable. Use existing
 tools; this contract guarantees neither runtime delegation nor production-scale
 coverage.
+
+## Conditional four-role workflow
+
+Use for consequential implementation/design after classification and accepted
+scope/primary-owner mechanism, or when a task explicitly requests it. This extends
+the existing router, classification, handoff, and evidence owners; it adds no role
+policy, specialist, invariant, or mandatory personal agent inventory. A design-only
+task stops after its reviewed proposal.
+
+1. The planner establishes requirements and saves a proposal-as-subject packet.
+   A fresh reviewer independently challenges the unaccepted proposal before the
+   worker's first production edit. Concrete disagreements resolve against the
+   requirements without dismissing evidenced material defects or treating plan
+   approval as implementation acceptance.
+2. The worker receives the bounded resolved brief and implements only that contract.
+   The reviewer owns substantive tests and inspects the implementation and affected
+   consumers before its final acceptance disposition. The planner cannot substitute
+   approval.
+3. The operator applies reviewer assertions and expected behavior unchanged in a
+   scratch copy. It does not weaken them or retry a failure until green; substantive
+   test corrections return to the reviewer. It reports command, hashes, counts,
+   status, and complete output. Corrections reuse reviewer, worker, and operator
+   contexts where available and retain earlier failures.
+
+For this workflow, inspect available native role and permission interfaces before
+launch. Role labels, configuration declarations, and child acknowledgements express
+intent; they do not establish effective permissions. Launch a neutral **startup-only**
+assignment that names the task root, exact policy/runtime sources, permitted startup
+observations, and read/action boundaries. It permits no substantive review,
+implementation, or tests.
+
+After launch, bind native execution metadata to that context and verify its actual
+no-history setting, model/effort when available, and required effective permissions
+before substantive work. Then send the substantive assignment by follow-up to that
+same context, retaining the exact runtime and allowed read scope; do not rediscover
+policy through unrelated workspace enumeration or replace the assigned candidate
+with installed policy. A Codex installation might map read-only review and
+workspace-write work to `reviewer`, `worker`, or `operator` with `fork_turns: none`;
+names and model pins are not portable requirements. If inherited limits are
+incompatible, use an already available session interface at the required limits and
+dispatch the configured role there, then verify that child and record any supporting
+coordinator separately. An incompatible or unverifiable context remains pending: do
+not continue substantive work in it, broaden permissions, invent a launcher, or run
+diagnostic probes. Valid role and coordinator contexts remain available for follow-up.
+
+Before operator execution, freeze the source revision plus relevant dirty/untracked
+hashes, reviewer artifact hash, scratch inputs, and command. Retain scratch outputs,
+counts, statuses, and complete results after execution and before reviewer
+acceptance. No concurrent mutation may occur while a snapshot is under test/review.
 
 ## Transport limits
 

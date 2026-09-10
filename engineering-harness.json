@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "harness_policy_version": "0.8.0",
+  "harness_policy_version": "0.9.0",
   "status": "accepted",
   "project": {
     "name": "engineering-harness",
@@ -16,6 +16,7 @@
     "evaluation_rubric": "evals/rubric.md",
     "validation": "scripts/validate_package.py",
     "methodology_policy": "plugins/engineering-harness/skills/verification-and-operations/references/methodology.md",
+    "independent_handoff_policy": "plugins/engineering-harness/references/assurance-handoff.md",
     "skill_authoring_policy": "docs/agents/skill-authoring.md"
   },
   "capabilities": {
@@ -58,6 +59,10 @@
         "plugins/engineering-harness/skills/verification-and-operations/references/methodology.md",
         "plugins/engineering-harness/scripts/profile_repository.py",
         "tests/test_methodology.py",
+        "plugins/engineering-harness/references/assurance-handoff.md",
+        "plugins/engineering-harness/templates/review-packet.md",
+        "tests/test_conditional_role_fixtures.py",
+        "evals/conditional-role-verification-plan.md",
         "docs/agents/skill-authoring.md",
         "tests/test_method_reconciliation.py"
       ]

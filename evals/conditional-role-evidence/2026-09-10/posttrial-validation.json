@@ -1,0 +1,131 @@
+{
+  "role": "operator",
+  "produced_snapshot": {
+    "path": "<scratch>/produced-task-snapshot",
+    "origin": "routing-v3/inventory-app after 900s whole-tree interruption",
+    "reviewer_test_matches_produced_test": true,
+    "source_before_after": {
+      "AGENTS.md": [
+        "4c00551249043fc2993389c7c9ff9cba722f9fd2485ca3b832da0fc9a9cbc550",
+        "4c00551249043fc2993389c7c9ff9cba722f9fd2485ca3b832da0fc9a9cbc550"
+      ],
+      "DESIGN.md": [
+        "2f4d17eff47d2e0a7c1dbd9526f0f7f38af931447ec92e9ba75a7a6bc2770ea6",
+        "2f4d17eff47d2e0a7c1dbd9526f0f7f38af931447ec92e9ba75a7a6bc2770ea6"
+      ],
+      "client.py": [
+        "12e22cf70d84e227ce163533eacc67d8e697091d7cfadc699faa2ef980d43165",
+        "12e22cf70d84e227ce163533eacc67d8e697091d7cfadc699faa2ef980d43165"
+      ],
+      "inventory.py": [
+        "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36",
+        "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36"
+      ],
+      "test_reservations.py": [
+        "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7",
+        "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 reservation_acceptance.py produced-task-snapshot",
+      "exit": 0,
+      "tests": 7,
+      "passed": 7,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "stdout": "posttrial-produced-reservation.stdout",
+      "stderr": "posttrial-produced-reservation.stderr"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 reservation_hook_acceptance.py produced-task-snapshot",
+      "exit": 0,
+      "tests": 2,
+      "passed": 2,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "stdout": "posttrial-produced-hook.stdout",
+      "stderr": "posttrial-produced-hook.stderr"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 natural-reviewer-acceptance.py",
+      "cwd": "posttrial-operator-scratch",
+      "exit": 0,
+      "tests": 11,
+      "passed": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "stdout": "posttrial-natural-reviewer.stdout",
+      "stderr": "posttrial-natural-reviewer.stderr"
+    }
+  ],
+  "explicit_method_count": {
+    "reservation_acceptance": 7,
+    "reservation_hook_acceptance": 2,
+    "natural_reviewer_acceptance": 11,
+    "total": 20,
+    "passed": 20,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "scratch": {
+    "path": "<scratch>/posttrial-operator-scratch",
+    "test_reservations_sha256_before_reviewer": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7",
+    "test_reservations_sha256_after_reviewer": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7",
+    "natural_reviewer_sha256": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7",
+    "source_hashes_unchanged": true
+  },
+  "prior_native_evidence": {
+    "minimal_trial_native": "natural-minimal-native.json",
+    "minimal_trial_completion": "natural-minimal-completion.json",
+    "minimal_trial_source_check": "initial-trial-source-check.json",
+    "minimal_trial": "one test passed after a one-line client label correction; prior evidence was read-only verified and no model trial was repeated"
+  },
+  "limitations": [
+    "Natural corrective run stopped at 900 seconds before its own operator execution and final acceptance; these checks are external post-trial evidence only.",
+    "Unbounded integer-range coverage is unavailable; checks cover the explicit finite invalid-input cases in the reviewer artifacts.",
+    "No claim is made that a natural operator stage completed."
+  ],
+  "artifacts": {
+    "manifest": "produced-task-snapshot.json",
+    "command_status": "posttrial-command-status.tsv",
+    "natural_reviewer_expected_sha256": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7"
+  },
+  "output_redactions": {
+    "posttrial-produced-reservation.stdout": {
+      "original_sha256": "d81633174984140d21225c7c06af62e5800f33dbe0057fde614a7534c42e7aff",
+      "published_sha256": "1da5d9aa5e3fb336cc70225695f9cdc6ea0d2ed392a24040faae225ab88c83eb",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "posttrial-produced-reservation.stderr": {
+      "original_sha256": "53edfb0354878c94e6a41b5fbe0f4ce6230987d40c12e164d0682ad4484d2cea",
+      "published_sha256": "53edfb0354878c94e6a41b5fbe0f4ce6230987d40c12e164d0682ad4484d2cea",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "posttrial-produced-hook.stdout": {
+      "original_sha256": "eb8b748bf6c4f16fd308064341bb3ce2aacec01da5938d0caf8e2420ad38fc83",
+      "published_sha256": "eb8b748bf6c4f16fd308064341bb3ce2aacec01da5938d0caf8e2420ad38fc83",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "posttrial-produced-hook.stderr": {
+      "original_sha256": "3d6f36122002ad00475934b4c2fdfda7da5699055c52e83f252c5d6145ab6afc",
+      "published_sha256": "3d6f36122002ad00475934b4c2fdfda7da5699055c52e83f252c5d6145ab6afc",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "posttrial-natural-reviewer.stdout": {
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    },
+    "posttrial-natural-reviewer.stderr": {
+      "original_sha256": "5fe428fa7090b3f573618e0eeca2e80983d37fde984560a14b8668cc70a72a65",
+      "published_sha256": "5fe428fa7090b3f573618e0eeca2e80983d37fde984560a14b8668cc70a72a65",
+      "transform": "replace local workspace prefixes with symbolic scratch/workspace labels"
+    }
+  }
+}

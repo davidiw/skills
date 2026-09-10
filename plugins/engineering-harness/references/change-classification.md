@@ -97,6 +97,15 @@ high-risk architecture. Release gates and explicit independent reviews require
 their context separation; ordinary bounded work does not acquire gates merely
 by containing these nouns.
 
+## Conditional consequential handoff
+
+After accepted scope and the primary owner has established the proposed mechanism,
+consequential implementation/design work uses the existing conditional
+[four-role handoff](assurance-handoff.md#conditional-four-role-workflow). An
+explicit request may also select it. Minimal work remains local unless separation
+is explicitly requested. The handoff does not alter classification, scope, or
+required gates; design-only work remains proposal-only.
+
 ## 4. Implement and prove; 5. close gates
 
 Stay within recorded boundaries and use focused tests at the actual failure seam.

@@ -20,8 +20,16 @@ opaque payload as inspected. Do not put a self-referential checksum inside the p
 - Prior review receipt: {for correction review; prior snapshot and coverage limits}
 - Correction delta: {changed paths and directly affected seams; none on first pass}
 
-Exclude builder reasoning, design justifications, expected findings and persuasive
-conclusions. Use the [fresh-context handoff](../references/assurance-handoff.md).
+For an accepted conditional four-role workflow, also record the neutral
+proposal-as-subject hash; observed role/context identity, no-history setting,
+model/effort and effective permissions; reviewer-artifact hash; and scratch
+input/output hashes. Leave unavailable stages pending rather than substituting a
+coordinator for a configured role.
+
+Exclude builder reasoning, expected findings, and persuasive approval conclusions.
+For plan review, include the proposed mechanism artifact only as an unaccepted
+review subject, distinct from requirements; exclude private history. Use the
+[fresh-context handoff](../references/assurance-handoff.md).
 
 ## Reviewer handback
 
