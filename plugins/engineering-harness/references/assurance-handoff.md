@@ -101,16 +101,26 @@ task stops after its reviewed proposal.
    status, and complete output. Corrections reuse reviewer, worker, and operator
    contexts where available and retain earlier failures.
 
-Before launch, inspect the available native role/configuration interface and choose
-existing suitable roles. After launch and before dependent production or test action,
-record actual context identity, no-history, model/effort when available, and effective
-action limits. A Codex installation might map these to read-only `reviewer` and
-workspace-write `worker`/`operator` with `fork_turns: none`; names and model pins are
-not portable requirements. A permission-limited existing session interface may be
-used. Record a generic coordinator separately from a configured role. If a required
-role, fresh context, or permission is unavailable, retain the failure and leave that
-stage pending: do not substitute, invent a launcher, broaden permissions, or diagnose
-around it.
+For this workflow, inspect available native role and permission interfaces before
+launch. Role labels, configuration declarations, and child acknowledgements express
+intent; they do not establish effective permissions. Launch a neutral **startup-only**
+assignment that names the task root, exact policy/runtime sources, permitted startup
+observations, and read/action boundaries. It permits no substantive review,
+implementation, or tests.
+
+After launch, bind native execution metadata to that context and verify its actual
+no-history setting, model/effort when available, and required effective permissions
+before substantive work. Then send the substantive assignment by follow-up to that
+same context, retaining the exact runtime and allowed read scope; do not rediscover
+policy through unrelated workspace enumeration or replace the assigned candidate
+with installed policy. A Codex installation might map read-only review and
+workspace-write work to `reviewer`, `worker`, or `operator` with `fork_turns: none`;
+names and model pins are not portable requirements. If inherited limits are
+incompatible, use an already available session interface at the required limits and
+dispatch the configured role there, then verify that child and record any supporting
+coordinator separately. An incompatible or unverifiable context remains pending: do
+not continue substantive work in it, broaden permissions, invent a launcher, or run
+diagnostic probes. Valid role and coordinator contexts remain available for follow-up.
 
 Before operator execution, freeze the source revision plus relevant dirty/untracked
 hashes, reviewer artifact hash, scratch inputs, and command. Retain scratch outputs,
