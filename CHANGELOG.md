@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.9.0 - Unreleased
+
+Strengthens existing consequential mechanism decisions, calibrated general review,
+displaced-consumer correction review and terminal completion/cache evidence. No
+new specialist, invariant, schema, independent gate or runner is introduced.
+Minimal and review-only paths retain their existing exits.
+
+Migration: review profiles moving from 0.8 to this candidate evidence policy.
+Record concrete mechanism challenges before dependent consequential edits;
+repository runners with a completion protocol must validate it before issuing or
+reusing success. Existing accepted skips and sound caches remain valid. Historical
+evidence retains its exact policy/source identity and is not upgraded by this entry.
+Stable installation remains pinned to published v0.8.0.
+
+The bounded 40-invocation comparison retains its original snapshots and limitations.
+It does not establish improved judgment: the builder checkpoint was not exercised,
+fixed controls needed repair, and candidate reviews missed a nonstandard-JSON case.
+Post-comparison fixture and relative-argument export corrections have deterministic
+proof only; historical outcomes are not upgraded onto the final candidate.
+
 ## 0.8.0 - 2026-09-08
 
 Reconciles useful external engineering methods under existing Harness owners.

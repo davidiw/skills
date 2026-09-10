@@ -1,0 +1,42 @@
+{
+  "fixture_sha256": "d2364675c678dc48ab035997831c398b14df4ebe78410a23221817ba292c6ec7",
+  "contract_sha256": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+  "command": [
+    "python3",
+    "-c",
+    "\nfrom pathlib import Path\nfrom receipts import issue,reuse\nimport json\nbase='{\"kind\":\"start\",\"run_id\":\"r\",\"expected\":[\"a\"]}\\n{\"kind\":\"result\",\"run_id\":\"r\",\"id\":\"a\",\"status\":\"pass\"}\\n{\"kind\":\"done\",\"run_id\":\"r\",\"ok\":true}'\nrows=[]\nfor name,raw in [('valid',base),('failure overwritten',base.replace('\"status\":\"pass\"','\"status\":\"fail\",\"status\":\"pass\"')),('unsuccessful terminal overwritten',base.replace('\"ok\":true','\"ok\":false,\"ok\":true')),('plain failure',base.replace('\"status\":\"pass\"','\"status\":\"fail\"'))]:\n p=Path('report.jsonl');p.write_text(raw)\n try:r=issue(p,0,snapshot='exact-source');rows.append({'variant':name,'issued':r['status'],'reused':reuse(r,p,snapshot='exact-source'),'raw':raw})\n except ValueError:rows.append({'variant':name,'issued':False})\nprint(json.dumps(rows))\n"
+  ],
+  "return_code": 0,
+  "observations": [
+    {
+      "variant": "valid",
+      "issued": "PASS",
+      "reused": true,
+      "raw": "{\"kind\":\"start\",\"run_id\":\"r\",\"expected\":[\"a\"]}\n{\"kind\":\"result\",\"run_id\":\"r\",\"id\":\"a\",\"status\":\"pass\"}\n{\"kind\":\"done\",\"run_id\":\"r\",\"ok\":true}"
+    },
+    {
+      "variant": "failure overwritten",
+      "issued": "PASS",
+      "reused": true,
+      "raw": "{\"kind\":\"start\",\"run_id\":\"r\",\"expected\":[\"a\"]}\n{\"kind\":\"result\",\"run_id\":\"r\",\"id\":\"a\",\"status\":\"fail\",\"status\":\"pass\"}\n{\"kind\":\"done\",\"run_id\":\"r\",\"ok\":true}"
+    },
+    {
+      "variant": "unsuccessful terminal overwritten",
+      "issued": "PASS",
+      "reused": true,
+      "raw": "{\"kind\":\"start\",\"run_id\":\"r\",\"expected\":[\"a\"]}\n{\"kind\":\"result\",\"run_id\":\"r\",\"id\":\"a\",\"status\":\"pass\"}\n{\"kind\":\"done\",\"run_id\":\"r\",\"ok\":false,\"ok\":true}"
+    },
+    {
+      "variant": "plain failure",
+      "issued": false
+    }
+  ],
+  "adjudication": "Material local-protocol defect: conflicting duplicate status/ok fields erase raw failure evidence before validation. DESIGN.md explicitly rejects duplicates and failures. Not a universal JSON-parser requirement; derived from this evidence contract. review-run-b cannot serve as a clean control for this cohort.",
+  "outcomes": {
+    "baseline_trial1": "miss",
+    "baseline_trial2": "detected",
+    "candidate_trial1": "miss",
+    "candidate_trial2": "miss"
+  },
+  "no_fixture_repair_or_model_rerun": true
+}

@@ -97,6 +97,20 @@ high-risk architecture. Release gates and explicit independent reviews require
 their context separation; ordinary bounded work does not acquire gates merely
 by containing these nouns.
 
+### Challenge a consequential correctness mechanism
+
+After reading the relevant authority and owner, and **before dependent edits**,
+record a concise decision in the existing checkpoint: observable guarantee;
+a plausible counterexample to the proposed mechanism; legitimate behavior it
+must still allow; and whether the mechanism survives or must change. Use an
+earlier assistant message or completed record-only write, not the edit call or
+a retrospective completion claim. “Considered safety” is not a concrete challenge.
+
+Compare the smallest materially different alternative when it changes correctness,
+compatibility or complexity; no alternatives quota, extra document or agent.
+Retaining the mechanism is valid when the concrete path already excludes the
+counterexample. This applies to consequential correctness choices, not every edit.
+
 ## 4. Implement and prove; 5. close gates
 
 Stay within recorded boundaries and use focused tests at the actual failure seam.

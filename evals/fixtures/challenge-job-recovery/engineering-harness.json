@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "harness_policy_version": "0.8.0",
+  "status": "accepted",
+  "project": {
+    "name": "render-queue",
+    "kind": "multi-process-worker",
+    "sensitive_data": false
+  },
+  "sources": {
+    "agent_rules": "AGENTS.md",
+    "architecture": "DESIGN.md"
+  },
+  "capabilities": {
+    "durable_work": true,
+    "offline_operation": false,
+    "replicated_state": false,
+    "multiple_clients": false,
+    "external_providers": false,
+    "ai_mediated_actions": false,
+    "generated_artifacts": false,
+    "physical_devices": false,
+    "shared_production_state": true,
+    "artifact_publication": false,
+    "mutable_authority_context": false,
+    "event_delivery": false,
+    "interactive_clients": false,
+    "asynchronous_interactive_loading": false,
+    "shared_nonpreemptible_storage": false,
+    "constrained_runtime_resources": false,
+    "multiple_adapters": false
+  },
+  "enforcement": {
+    "canonical-authority": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "coalesced-bounded-work": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "discoverable-operations": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "durable-admission": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "normal-failure-semantics": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "separate-action-authority": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "typed-exact-evidence": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    },
+    "versioned-compatibility": {
+      "rung": "owner",
+      "owner": "DESIGN.md"
+    }
+  },
+  "exceptions": []
+}

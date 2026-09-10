@@ -9,17 +9,29 @@ loading Verification and Operations is not a prerequisite.
    profile/document pointers. Infer a comparison base only when unambiguous; state
    the choice. A missing spec limits coverage; inspect available contracts rather
    than inventing a setup procedure or blocking all useful review.
-2. Inspect both obligations within the applicable surface: does behavior satisfy
-   the accepted request, including failures and omissions, and does it respect
-   repository standards? Follow callers/dependencies needed to establish a defect.
-   A green test suite does not prove omitted behavior is implemented. Read its
-   coverage before relying on it; use focused checks to challenge concrete paths.
-3. Treat design smells as questions until there is a demonstrated consequence or
-   accepted rule. Do not impose a generic smell catalog, document layout or
-   refactoring preference. Distinguish required behavior from optional improvement.
-4. Return one complete blocking set with snapshot, source/spec locations,
-   severity/confidence, execution path and evidence; separate nonblocking advice
-   and unavailable coverage. Consolidate duplicate findings across the two lenses.
+2. Inspect accepted behavior and repository standards along the execution path.
+   For correctness boundaries (validators, sanitizers, normalizers, identity
+   resolution, completion detection), challenge both an invalid case that could
+   pass and a valid case that could be rejected or damaged. Trace downstream
+   protections before reporting a defect; challenge the reviewer's hypothesis too.
+   A green suite does not cover omitted behavior: inspect coverage and use focused
+   checks at the concrete seam.
+3. Match coverage to the claim: identify relevant variants and actual consumers
+   in a compact working map or existing record, not a new mandatory document.
+   Consider applicable input/output schemas, selectors, success/failure paths,
+   partial/complete evidence and preview-backed/summary-only consumers. Do not
+   claim the family is covered from one variant. Follow the existing delta-review
+   contract when a correction displaces behavior or information.
+4. Block only on an evidenced plausible path, an applicable accepted requirement
+   and material consequence. Smells are questions, not standards. A limited
+   preservation guarantee does not require proving all original prose or health
+   claims true. Separate source inspection, author-reported checks, personally
+   executed checks and physical/provider evidence. A clean corrected implementation
+   is a valid result; finding something is not the objective.
+5. Return the complete currently known blocker set together, with snapshot,
+   source/contract locations, severity/confidence, execution path and evidence.
+   Consolidate duplicate symptoms while retaining affected paths; separate
+   nonblocking advice and unavailable coverage. Preserve prior dispositions.
 
 Both lenses normally fit the same review context. Use the existing
 [handoff](../../../references/assurance-handoff.md) for required independence,
