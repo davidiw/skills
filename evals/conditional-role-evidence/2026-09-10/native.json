@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "purpose": "Bounded routing observations, not reliability evidence",
+  "records": [
+    {
+      "id": "01a08a3b-da2b-77e3-b44f-0842405933f7",
+      "trial": "initial-connected",
+      "source_kind": "configured role",
+      "role": "reviewer",
+      "parent_id": "01a08a3a-a4cc-7033-970c-1c9a70a4bde0",
+      "role_path": "/root/reviewer",
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": true,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "6dd6efbe5c42f36c202309bad2c1f5df8f76aa2d816b4a3a8011b84eec62400d",
+      "events": []
+    },
+    {
+      "id": "01a08a3a-a4cc-7033-970c-1c9a70a4bde0",
+      "trial": "initial-connected",
+      "source_kind": "primary or supporting coordinator",
+      "role": null,
+      "parent_id": null,
+      "role_path": null,
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": null,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "2646a80df8b41165be9ba0d5a092e9814eb3d3b67388bee2729fef64388a6978",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:32:53.414Z",
+          "operation": "spawn_agent",
+          "arguments": {
+            "task_name": "reviewer",
+            "agent_type": "reviewer",
+            "fork_turns": "none"
+          },
+          "assignment_payload": "opaque"
+        }
+      ]
+    },
+    {
+      "id": "01a08a3a-a950-73a2-bcf5-04ead4799efe",
+      "trial": "minimal",
+      "source_kind": "primary or supporting coordinator",
+      "role": null,
+      "parent_id": null,
+      "role_path": null,
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": null,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "a20c6660edfb34c4e8fddb0251af7fb80883ab1018bd73822336bf846675ff0a",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:32:06.460Z",
+          "operation": "complete child receipt",
+          "sha256": "47e53867dea5c7ee9fb4172e17491545944bf549fa83f2de4f2db1b0c0a3c211"
+        }
+      ]
+    },
+    {
+      "id": "01a08a44-5292-7542-a508-496894f63ead",
+      "trial": "corrective-connected",
+      "source_kind": "primary or supporting coordinator",
+      "role": null,
+      "parent_id": null,
+      "role_path": null,
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": null,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "493b78baff591d0f6e41ae45c27e4339e7a2b28ba03bcdd78ce873760351b296",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:43:05.636Z",
+          "operation": "spawn_agent",
+          "arguments": {
+            "task_name": "reservation_review",
+            "agent_type": "reviewer",
+            "fork_turns": "none"
+          },
+          "assignment_payload": "opaque"
+        }
+      ]
+    },
+    {
+      "id": "01a08a45-31ad-7f42-9f1e-afb57c5f54f3",
+      "trial": "corrective-connected",
+      "source_kind": "configured role",
+      "role": "reviewer",
+      "parent_id": "01a08a44-5292-7542-a508-496894f63ead",
+      "role_path": "/root/reservation_review",
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": true,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "danger-full-access"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "fb7b4732d9b151a94f5cc1111f84a53a6011505094958484d147d7f6ceee24a7",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:43:34.824Z",
+          "operation": "complete child receipt",
+          "sha256": "367f916087221b873ecb1141b382fdf2e102dd2c6b9b88d87342c80cf1aa823c"
+        }
+      ]
+    },
+    {
+      "id": "01a08a46-77a3-7361-b974-748f042c08de",
+      "trial": "corrective-connected",
+      "source_kind": "configured role",
+      "role": "reviewer",
+      "parent_id": "01a08a45-f45b-7883-bb46-2bcc986fe38c",
+      "role_path": "/root/reservation_reviewer",
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": true,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "read-only"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "adece812161412fe532ad31efba7804c5c570e7ee14a295b0643bbe4f5a162b0",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:44:57.720Z",
+          "operation": "complete child receipt",
+          "sha256": "1bd911f2ae96f6929e9088f02b610758cd9e31fceafd4be8b1298414abbadb61"
+        },
+        {
+          "timestamp": "2026-09-10T07:52:38.096Z",
+          "operation": "complete child receipt",
+          "sha256": "d64310a633179a05e65a3467b188a0a45a24514c78cb2e5c87dbb7db9544401a"
+        },
+        {
+          "timestamp": "2026-09-10T07:54:26.073Z",
+          "operation": "complete child receipt",
+          "sha256": "e2c485ecebea2360af2100ac12ba0d181762ed05f5707c33aead7cabc8334e27"
+        }
+      ]
+    },
+    {
+      "id": "01a08a45-f45b-7883-bb46-2bcc986fe38c",
+      "trial": "corrective-connected",
+      "source_kind": "primary or supporting coordinator",
+      "role": null,
+      "parent_id": null,
+      "role_path": null,
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": null,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "read-only"
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "2de15a4b9fe7fc9d72c1d181565e0965b53dbc919403c4ae4fed34e183d38ece",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:44:29.079Z",
+          "operation": "spawn_agent",
+          "arguments": {
+            "task_name": "reservation_reviewer",
+            "agent_type": "reviewer",
+            "fork_turns": "none"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:45:07.992Z",
+          "operation": "complete child receipt",
+          "sha256": "1bf5b3a604ddd69881cf3f52a4d25f68cdd5b7e865548cff0abe463de05549ed"
+        },
+        {
+          "timestamp": "2026-09-10T07:46:45.006Z",
+          "operation": "followup_task",
+          "arguments": {
+            "target": "/root/reservation_reviewer"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:52:46.734Z",
+          "operation": "complete child receipt",
+          "sha256": "eb560901c53982eb2023a61e885f77b05c8c34ae40c6e894bbd0739a6e32a981"
+        },
+        {
+          "timestamp": "2026-09-10T07:54:00.025Z",
+          "operation": "followup_task",
+          "arguments": {
+            "target": "/root/reservation_reviewer"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:54:31.980Z",
+          "operation": "complete child receipt",
+          "sha256": "bf119cf9fbc55b4a509ef18c637ff4cf3e6cd42ed6fdf7d2d9d789f2e5e415c8"
+        }
+      ]
+    },
+    {
+      "id": "01a08a47-97ae-7f40-97e6-033de654cdd2",
+      "trial": "corrective-connected",
+      "source_kind": "configured role",
+      "role": "operator",
+      "parent_id": "01a08a46-cd73-7891-ae5e-22cd32006f3a",
+      "role_path": "/root/operator_startup",
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": true,
+      "effective_contexts": [
+        {
+          "model": "gpt-5.6-luna",
+          "effort": "medium",
+          "sandbox_policy": {
+            "type": "workspace-write",
+            "network_access": false,
+            "exclude_tmpdir_env_var": false,
+            "exclude_slash_tmp": false
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "68cdb1dbb524f5409eacf16c2f29837edeeb6eeeb49bfd8088419414f49346b6",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:46:23.908Z",
+          "operation": "complete child receipt",
+          "sha256": "eb40fedbc14d613f27530277e7de181f9820737579bd8d77978aff1377e67142"
+        }
+      ]
+    },
+    {
+      "id": "01a08a46-cd73-7891-ae5e-22cd32006f3a",
+      "trial": "corrective-connected",
+      "source_kind": "primary or supporting coordinator",
+      "role": null,
+      "parent_id": null,
+      "role_path": null,
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": null,
+      "effective_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "sandbox_policy": {
+            "type": "workspace-write",
+            "network_access": false,
+            "exclude_tmpdir_env_var": false,
+            "exclude_slash_tmp": false
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "c9e7d48d0cdbbafb48f4359418d18243dfc2917b387e1ab74b18404f5e1bef35",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:45:33.582Z",
+          "operation": "spawn_agent",
+          "arguments": {
+            "task_name": "worker_startup",
+            "agent_type": "worker",
+            "fork_turns": "none"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:45:42.825Z",
+          "operation": "spawn_agent",
+          "arguments": {
+            "task_name": "operator_startup",
+            "agent_type": "operator",
+            "fork_turns": "none"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:47:20.512Z",
+          "operation": "complete child receipt",
+          "sha256": "8855df77c10f1047c3410b2d1177bf8e5ee9974b818fb14e524870c4aa71ed69"
+        },
+        {
+          "timestamp": "2026-09-10T07:54:03.136Z",
+          "operation": "followup_task",
+          "arguments": {
+            "target": "/root/worker_startup"
+          },
+          "assignment_payload": "opaque"
+        },
+        {
+          "timestamp": "2026-09-10T07:56:32.668Z",
+          "operation": "followup_task",
+          "arguments": {
+            "target": "/root/worker_startup"
+          },
+          "assignment_payload": "opaque"
+        }
+      ]
+    },
+    {
+      "id": "01a08a47-7399-7543-8276-0396b618440d",
+      "trial": "corrective-connected",
+      "source_kind": "configured role",
+      "role": "worker",
+      "parent_id": "01a08a46-cd73-7891-ae5e-22cd32006f3a",
+      "role_path": "/root/worker_startup",
+      "runtime_version": "0.154.0",
+      "configured_instructions_present": true,
+      "effective_contexts": [
+        {
+          "model": "gpt-5.6-terra",
+          "effort": "medium",
+          "sandbox_policy": {
+            "type": "workspace-write",
+            "network_access": false,
+            "exclude_tmpdir_env_var": false,
+            "exclude_slash_tmp": false
+          },
+          "approval_policy": "never"
+        }
+      ],
+      "native_file_sha256": "f3a7cfc882830b7044d98a34b2e9820c9e552231949011f059b73e4cd81edc78",
+      "events": [
+        {
+          "timestamp": "2026-09-10T07:45:56.883Z",
+          "operation": "complete child receipt",
+          "sha256": "888381340add8779a9558476453d98fdb14e1d7bc675299dc8876c5d21726869"
+        },
+        {
+          "timestamp": "2026-09-10T07:56:19.845Z",
+          "operation": "complete child receipt",
+          "sha256": "c0fc257ed079c4ce370ecc0fd4583878e3acee8829093c807f0b49765e875b6d"
+        }
+      ]
+    }
+  ]
+}

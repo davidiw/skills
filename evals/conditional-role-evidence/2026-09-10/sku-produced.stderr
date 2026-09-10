@@ -1,0 +1,17 @@
+test_existing_empty_text_sku_is_accepted (__main__.ExistingSkuAcceptance.test_existing_empty_text_sku_is_accepted) ... ERROR
+
+======================================================================
+ERROR: test_existing_empty_text_sku_is_accepted (__main__.ExistingSkuAcceptance.test_existing_empty_text_sku_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/existing_sku_acceptance.py", line 19, in test_existing_empty_text_sku_is_accepted
+    inventory.reserve(db, "blank-sku", "", 1),
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/produced-task-snapshot/inventory.py", line 28, in reserve
+    raise ValueError("invalid reservation")
+ValueError: invalid reservation
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

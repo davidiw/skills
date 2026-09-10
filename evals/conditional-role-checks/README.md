@@ -2,7 +2,8 @@
 
 These tests were authored by the configured independent reviewer and are kept
 outside the task fixture. The operator executes their bytes unchanged against a
-frozen source directory. They are acceptance evidence, not runtime Harness policy.
+frozen source directory. They are acceptance checks; execution receipts provide evidence. They are not
+runtime Harness policy.
 
 ```sh
 python3 evals/conditional-role-checks/reservation_acceptance.py FROZEN_TASK_ROOT

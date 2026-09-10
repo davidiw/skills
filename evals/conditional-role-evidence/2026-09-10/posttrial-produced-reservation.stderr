@@ -1,0 +1,12 @@
+test_final_unit_competing_processes (__main__.ReservationAcceptance.test_final_unit_competing_processes) ... ok
+test_hook_rollback_and_committed_visibility (__main__.ReservationAcceptance.test_hook_rollback_and_committed_visibility) ... ok
+test_insufficient_result_persists (__main__.ReservationAcceptance.test_insufficient_result_persists) ... ok
+test_invalid_arguments_and_global_id_conflicts_do_not_mutate (__main__.ReservationAcceptance.test_invalid_arguments_and_global_id_conflicts_do_not_mutate) ... ok
+test_reserved_retry_after_process_exit (__main__.ReservationAcceptance.test_reserved_retry_after_process_exit) ... ok
+test_same_operation_competing_processes (__main__.ReservationAcceptance.test_same_operation_competing_processes) ... ok
+test_schema_and_public_consumer (__main__.ReservationAcceptance.test_schema_and_public_consumer) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.519s
+
+OK

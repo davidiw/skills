@@ -1,0 +1,7 @@
+test_insufficient_hook_failure_cannot_be_retried_into_success (__main__.HookRollbackAcceptance.test_insufficient_hook_failure_cannot_be_retried_into_success) ... ok
+test_reserved_hook_failure_cannot_be_retried_into_success (__main__.HookRollbackAcceptance.test_reserved_hook_failure_cannot_be_retried_into_success) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

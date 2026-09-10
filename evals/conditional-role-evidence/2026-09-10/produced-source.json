@@ -1,0 +1,13 @@
+{
+  "origin": "Corrective connected task frozen at the 900-second interruption",
+  "files": {
+    "AGENTS.md": "4c00551249043fc2993389c7c9ff9cba722f9fd2485ca3b832da0fc9a9cbc550",
+    "DESIGN.md": "2f4d17eff47d2e0a7c1dbd9526f0f7f38af931447ec92e9ba75a7a6bc2770ea6",
+    "client.py": "12e22cf70d84e227ce163533eacc67d8e697091d7cfadc699faa2ef980d43165",
+    "inventory.py": "ab1365bf613970466c9ea75c8b7e23ac675645cb5109e44948910f2f61c76d36",
+    "test_reservations.py": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7"
+  },
+  "reviewer_test_sha256": "ab0c432dca8bcfe489eec1bdcfc068d138fcbefa99009660cc3960cc65c6d7f7",
+  "trial_test_matches_reviewer": true,
+  "candidate_revision": "ea958c9a923c556bf60b94cc3cfbbb2748fd9888"
+}
