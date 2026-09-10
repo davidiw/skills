@@ -1,0 +1,74 @@
+[
+  {
+    "version": "baseline",
+    "trial": 1,
+    "record_sha256": "189cf85b99c93b79be00d7757478f3870ce819c37cb3760821c50913237afa32",
+    "checks": {
+      "authored_checks": {
+        "exit": 0,
+        "stdout": "",
+        "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.490s\n\nOK\n"
+      },
+      "same_name_stale_continuation": {
+        "passed": true
+      },
+      "expiry_and_competing_processes": {
+        "passed": true
+      }
+    }
+  },
+  {
+    "version": "baseline",
+    "trial": 2,
+    "record_sha256": "13a85b207ea18f4b3c04eea92a4413cb1e648bcda639668443f527bf820629b5",
+    "checks": {
+      "authored_checks": {
+        "exit": 0,
+        "stdout": "",
+        "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.225s\n\nOK\n"
+      },
+      "same_name_stale_continuation": {
+        "passed": true
+      },
+      "expiry_and_competing_processes": {
+        "passed": true
+      }
+    }
+  },
+  {
+    "version": "candidate",
+    "trial": 1,
+    "record_sha256": "8c406ea963ae108e4c1297c85304cc9a16d70f61df8dab2165cab03864c7f088",
+    "checks": {
+      "authored_checks": {
+        "exit": 0,
+        "stdout": "",
+        "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.388s\n\nOK\n"
+      },
+      "same_name_stale_continuation": {
+        "passed": true
+      },
+      "expiry_and_competing_processes": {
+        "passed": true
+      }
+    }
+  },
+  {
+    "version": "candidate",
+    "trial": 2,
+    "record_sha256": "7f8ca1179ad698797f00e37ecf8b7ee54e6980747e09b2ae990b1c31276367ae",
+    "checks": {
+      "authored_checks": {
+        "exit": 0,
+        "stdout": "",
+        "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.388s\n\nOK\n"
+      },
+      "same_name_stale_continuation": {
+        "passed": true
+      },
+      "expiry_and_competing_processes": {
+        "passed": true
+      }
+    }
+  }
+]

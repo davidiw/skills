@@ -1,0 +1,3543 @@
+{
+  "schema_version": 1,
+  "candidate_sha": "59a39881d4bc61331ffc6b661209761eebbed8f6",
+  "published_baseline_sha": "d7f9ff8fbdf8bcfd734d79ef5a231e182acfd4b5",
+  "plan": "evals/mechanism-followup.md",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "comparison_budget": 44,
+  "rescue_prompts_supplied": 0,
+  "replacement_trials": 0,
+  "policy_or_fixture_changes": 0,
+  "runs": {
+    "baseline": {
+      "source_revision": "73f75e7c32e230593def8380d409995d98dd0584",
+      "runtime_file_hashes": {
+        ".codex-plugin/plugin.json": "307c5dbb5a4feebe43e2cf10debcab98b07a3a44c6e94d3d8bce92a9f1c828ba",
+        "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+        "references/assurance-handoff.md": "0c11e901e8627f06f9e1d250301a370d73d96f6f88298d4a58d43afc4c5220fd",
+        "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+        "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+        "references/change-classification.md": "d7a0b3abebbcadc9bc44d1a40d0b5e1c5bce2e260bf170db9b514c08880145b0",
+        "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+        "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+        "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+        "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+        "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+        "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+        "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+        "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+        "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+        "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+        "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+        "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+        "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+        "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+        "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+        "skills/architecture-foundations/SKILL.md": "4291fe11f3952d3b3b41ffe66ac7b4c19550123409656f615e0ba308dacdd4af",
+        "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+        "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+        "skills/architecture-foundations/references/quality-and-ownership.md": "65f5b238ae07a3e1173b74bccb3f06d735155eb36c79048487df2d2ddf49b332",
+        "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+        "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+        "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+        "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+        "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+        "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+        "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+        "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+        "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+        "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+        "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+        "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+        "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+        "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+        "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+        "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+        "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+        "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+        "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+        "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+        "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+        "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+        "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+        "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+        "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+        "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+        "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+        "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+        "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+        "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+        "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+        "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+        "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+        "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+        "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+        "skills/using-engineering-harness/SKILL.md": "9645259fcc1c1b81e45579e2ec1ce3462a5d49398b39e451091c131b0b305ba3",
+        "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+        "skills/verification-and-operations/SKILL.md": "d79e9076a54e3d523a47f665fb368f754a48b38ad6b5d574bbe8966bdbabbaf9",
+        "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+        "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+        "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+        "skills/verification-and-operations/references/change-review.md": "398d37c34889210e6c125356c88a8a01b4c522069879206076d5ba96eb7437f8",
+        "skills/verification-and-operations/references/diagnosis.md": "17780cd9cc586ab633ee00678e3cb4c3185473a01c03b7c7777a9392a84a19dd",
+        "skills/verification-and-operations/references/evidence-contract.md": "e4d70b9595e6ae15c491b39ee7ea50ac3fb230b2130b6f5eb89ba4421bd21293",
+        "skills/verification-and-operations/references/methodology.md": "f869c054c804038395112652a9e2ae19c98b3d28d97828628910f2a63b33cff7",
+        "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+        "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+        "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+        "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+        "templates/project-profile.local-first.json": "6343507bd484c10f4b75fbe95dee06c9efabfec9d023fa1a62a04604f6f9f25f",
+        "templates/project-profile.minimal.json": "985798d45cb6fd1dfc872e801e551c87e82d422a82366672110a587d10f53611",
+        "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+        "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+      },
+      "input_hashes": {
+        "evals/mechanism-followup-matrix.json": "cb7d4bdd9867b9a527887bcfc4b98c13d86e2202469e7c59a97d14d96f3e55d2",
+        "evals/cases.json": "f4282cd90679daa3ce84443e62f2c26a253675148d1f577cfc5973fbd3d1d3df",
+        "evals/run_natural_matrix.py": "8aca9e2bcf126d4afe97e8059cadab4335078ccbfe09260b00523544f4b46e5c"
+      },
+      "catalog_file_hashes": {
+        "find-skills/SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+      },
+      "cli_version": "codex-cli 0.154.0",
+      "runtime_tree_sha256": "cf6eb811a26f17fe2b71f084e15752338affdcf57226de10527422d9fe201e10",
+      "metrics": {
+        "trials": 22,
+        "contexts": 22,
+        "usage": {
+          "input_tokens": 1710848,
+          "cached_input_tokens": 1408896,
+          "output_tokens": 31090,
+          "reasoning_output_tokens": 2077,
+          "uncached_input_tokens": 301952
+        },
+        "wall_seconds_median": 55.08492612838745,
+        "model_invocations": 103
+      },
+      "execution_failure_count": 0,
+      "integrity_status": "verified_against_supplied_inventory",
+      "inventory_sha256": "abb311bf040cfa615373f57c5c69f893a9ff73d511bfeb8e35f104da7dbff01a",
+      "observation_excerpt_sha256": "69e6940e34a9ec0d43361117b1267e56ac6f082f373f2a4c272cd037d5e56ca7"
+    },
+    "candidate": {
+      "source_revision": "59a39881d4bc61331ffc6b661209761eebbed8f6",
+      "runtime_file_hashes": {
+        ".codex-plugin/plugin.json": "f317e04f940318dd1ca4a20ea465c285fac4370de0d1c361e4e39369e151c0b2",
+        "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+        "references/assurance-handoff.md": "1ead7ac9f36837bb9335c8e59baaf01949c9aa6196ef38e30eec8983a0c661db",
+        "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+        "references/capability-activation.json": "033160d5608856578b31224c7c3235a9eae08a44cb60f89cd29f4b76f06ab5f6",
+        "references/change-classification.md": "ba7bf5a246aedac292e3247e3603261a7e8644ea08076df6c8d5f40c633bc2a4",
+        "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+        "references/engineering-invariants.md": "fb9206d026b9040bcf191b68a872ce7a6e46a8e399aad6b418c86d8492dbc8c6",
+        "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+        "references/invariants.json": "6371ce65ac7d68c29c840627454bdd7962202885a8712fcc83756356625090a8",
+        "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+        "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+        "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+        "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+        "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+        "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+        "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+        "skills/application-composition/SKILL.md": "8b3848a344ca8faa7f490b3840d9fd3c10871428be7d4aef0d04ac6d7b69a322",
+        "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+        "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+        "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+        "skills/architecture-foundations/SKILL.md": "4291fe11f3952d3b3b41ffe66ac7b4c19550123409656f615e0ba308dacdd4af",
+        "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+        "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+        "skills/architecture-foundations/references/quality-and-ownership.md": "65f5b238ae07a3e1173b74bccb3f06d735155eb36c79048487df2d2ddf49b332",
+        "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+        "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+        "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+        "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+        "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+        "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+        "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+        "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+        "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+        "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+        "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+        "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+        "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+        "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+        "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+        "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+        "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+        "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+        "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+        "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+        "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+        "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+        "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+        "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+        "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+        "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+        "skills/privacy-assurance/SKILL.md": "07e994a3f9614baa752c006c4c88449a5321a180c952444352c5453709b944c4",
+        "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+        "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+        "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+        "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+        "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+        "skills/security-assurance/SKILL.md": "aaa6091a1044e181b03194210f18fd327445e1c81d565dd03a70621244f74a25",
+        "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+        "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+        "skills/using-engineering-harness/SKILL.md": "9645259fcc1c1b81e45579e2ec1ce3462a5d49398b39e451091c131b0b305ba3",
+        "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+        "skills/verification-and-operations/SKILL.md": "d79e9076a54e3d523a47f665fb368f754a48b38ad6b5d574bbe8966bdbabbaf9",
+        "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+        "skills/verification-and-operations/references/adversarial-review.md": "d98cda8d5352064a735ba3ab13c99ccd06edbef4f5ef8d1b949b66b0442f8806",
+        "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+        "skills/verification-and-operations/references/change-review.md": "ee8bd6c18c83730215ad52e7efedaf29945a33f906f98b9d810da109db040710",
+        "skills/verification-and-operations/references/diagnosis.md": "17780cd9cc586ab633ee00678e3cb4c3185473a01c03b7c7777a9392a84a19dd",
+        "skills/verification-and-operations/references/evidence-contract.md": "fecf3d4283007ae78440fa16efa51b838931884acf19ed43ee366294169ac089",
+        "skills/verification-and-operations/references/methodology.md": "f869c054c804038395112652a9e2ae19c98b3d28d97828628910f2a63b33cff7",
+        "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+        "skills/verification-and-operations/references/reviewable-commits.md": "c7f7e3e5a9ce5ecbb192389e143a2f666e03a4ce3cf2c2e491d214e1621f3e9b",
+        "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+        "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+        "templates/project-profile.local-first.json": "3462537dc85231581e1a5dd4ffd6a3c8e56698007e4699e9bcf1b7069745d060",
+        "templates/project-profile.minimal.json": "5139a7236cd1a71cca6e916d7f7e094a081d94eed0a621fe1f6b97fdc5c3644b",
+        "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+        "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+      },
+      "input_hashes": {
+        "evals/mechanism-followup-matrix.json": "cb7d4bdd9867b9a527887bcfc4b98c13d86e2202469e7c59a97d14d96f3e55d2",
+        "evals/cases.json": "f4282cd90679daa3ce84443e62f2c26a253675148d1f577cfc5973fbd3d1d3df",
+        "evals/run_natural_matrix.py": "8aca9e2bcf126d4afe97e8059cadab4335078ccbfe09260b00523544f4b46e5c"
+      },
+      "catalog_file_hashes": {
+        "find-skills/SKILL.md": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f"
+      },
+      "cli_version": "codex-cli 0.154.0",
+      "runtime_tree_sha256": "31332fd541e3deb30f997320d713a12ba3e19728dd3d80b971427a3f854899cb",
+      "metrics": {
+        "trials": 22,
+        "contexts": 22,
+        "usage": {
+          "input_tokens": 1755393,
+          "cached_input_tokens": 1467648,
+          "output_tokens": 32509,
+          "reasoning_output_tokens": 1965,
+          "uncached_input_tokens": 287745
+        },
+        "wall_seconds_median": 58.988635778427124,
+        "model_invocations": 105
+      },
+      "execution_failure_count": 0,
+      "integrity_status": "verified_against_supplied_inventory",
+      "inventory_sha256": "90dbdb187a5ea1753d9747ffbde4c26f56d768eeb092c44e5c974bfaf2e86ed1",
+      "observation_excerpt_sha256": "442c9b73bef38a793b83a76b7bb32039bb85bb73a109944cdf1814e88d31d9cb"
+    }
+  },
+  "trials": [
+    {
+      "version": "baseline",
+      "case_id": "challenge-correction",
+      "trial": 1,
+      "record_sha256": "9f811a479ebdedd9f1e3c0817c0ba0bc0b3bbdb5dc47b0c47ec4cfe983d8d8b2",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "612d2de8d5ff6247ae27f76dc688b8c7f077cb8dc6d42be02b26e580f7539f08",
+        "NOTES.md": "230d9124a1e1b79ae9e9ebb9cfa78c0e718f76b3f4d99955c6d2cd9471f4a8e4",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "7c531f4cf0d8dc775de9023ae1bc9129e37bd14a4d7bcc40df1ae93bd7808022",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "a4dbd1cae7da5812f6d6dfcde0db5037f5bf8f0d18a87e5502357b250c22fdd5",
+        "test_display.py": "da659f74e2cbb433aa071ad3c8bba9091f6b8739f057e0bcb96567b2bdcb6bd4"
+      },
+      "fixture_after_sha256": "6f1a81785a4340193d3dc41d5a18743aebf77868568d86b5bb9bead9e2d4d371",
+      "fixture_diff_sha256": "43eec41d6c87c803dda68d5df0e2c8ae4eb6f5f66ea7caa5cd85df7c605bf89a",
+      "changed_original_files": [
+        "guard.py",
+        "test_display.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 55.60757565498352,
+      "contexts": [
+        {
+          "id": "01a088c4-1734-7ce1-8cb6-0163d700a908",
+          "recorded_id": "01a088c4-1734-7ce1-8cb6-0163d700a908",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "c09b3283e30907817edda9e0b7aeb5ecd9ece3a93a11348ebe9ea10de323596c",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 61726,
+            "cached_input_tokens": 47744,
+            "output_tokens": 1267,
+            "reasoning_output_tokens": 50,
+            "uncached_input_tokens": 13982
+          },
+          "wall_seconds": 53.058,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Exact-render implementation and valid/rejected correction scratch checks pass; minimal route with no specialist.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "implementation_replay": [
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+        },
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "version": "baseline",
+      "case_id": "challenge-correction",
+      "trial": 2,
+      "record_sha256": "56a816c7cb56c85b45f8a37be6c1b634ddcd640e9190e199dc0c9f66951a598b",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "612d2de8d5ff6247ae27f76dc688b8c7f077cb8dc6d42be02b26e580f7539f08",
+        "NOTES.md": "230d9124a1e1b79ae9e9ebb9cfa78c0e718f76b3f4d99955c6d2cd9471f4a8e4",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "7c531f4cf0d8dc775de9023ae1bc9129e37bd14a4d7bcc40df1ae93bd7808022",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "a4dbd1cae7da5812f6d6dfcde0db5037f5bf8f0d18a87e5502357b250c22fdd5",
+        "test_display.py": "da659f74e2cbb433aa071ad3c8bba9091f6b8739f057e0bcb96567b2bdcb6bd4"
+      },
+      "fixture_after_sha256": "65c679942d13a395e0969193a7d54271d3df960abe03ffb432aedb2fded8bcdb",
+      "fixture_diff_sha256": "0a4b338f9216ed228c3f73fd97242ab6f8755773bba7bf489180081e03932dc1",
+      "changed_original_files": [
+        "guard.py",
+        "test_display.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 52.70642805099487,
+      "contexts": [
+        {
+          "id": "01a088c5-160a-7be0-9c55-3351c69b4345",
+          "recorded_id": "01a088c5-160a-7be0-9c55-3351c69b4345",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "473ebc6ffbd23afd114122d6687c178d08c2586468f29fb0782b98435a32f373",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 61910,
+            "cached_input_tokens": 49792,
+            "output_tokens": 1268,
+            "reasoning_output_tokens": 28,
+            "uncached_input_tokens": 12118
+          },
+          "wall_seconds": 50.288,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Exact-render implementation and valid/rejected correction scratch checks pass; minimal route with no specialist.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "implementation_replay": [
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+        },
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "version": "baseline",
+      "case_id": "challenge-job-recovery",
+      "trial": 1,
+      "record_sha256": "189cf85b99c93b79be00d7757478f3870ce819c37cb3760821c50913237afa32",
+      "fixture_before_hashes": {
+        "AGENTS.md": "0ac6c5326d84c6eb2199bb82244e874d480a2fc7e5c48f230e51671dc177cd3d",
+        "DESIGN.md": "49a1b0b1f06cf3471b95c643b2ef54bf32322ceaa1fb02d1816b21fac480b2b9",
+        "NOTES.md": "5f1bc5b1b311cc8c2b34614d3f44e237eabe7672f1f3c90adda838e8aa24e6ad",
+        "engineering-harness.json": "71821b067e40fab53e36e74c8aaa6059d671abee7406b9617f21ab539dd01016",
+        "job_store.py": "6a1f014478e8085d277b8f27f93a819ede563fc6b62d68f79a6abc1338563beb",
+        "test_queue.py": "d3d87212751c1e765808197f81b9f1ef4af952610b6f52e6b07e716e58c308ad",
+        "worker.py": "69ab81bebf0dd63d547f0f46235a7c2f565d9b2baa9349509884350a92728d15"
+      },
+      "fixture_after_sha256": "dfcd2a74b5ff4834a024ed793b476b55db831b898a6415df8057378b339fa109",
+      "fixture_diff_sha256": "6b4c32338e97bf4321c4cf52dfd062fd6020217abd60ce52ee2b5a2269e0a058",
+      "changed_original_files": [
+        "job_store.py",
+        "test_queue.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 115.25538635253906,
+      "contexts": [
+        {
+          "id": "01a088c0-7c8f-71b2-9c47-5eab5c1d7c42",
+          "recorded_id": "01a088c0-7c8f-71b2-9c47-5eab5c1d7c42",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "9bdff7da9af3e3b0a14e0a2412efea71d629e6229d4fa7736e2519cf6fddcda3",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 152758,
+            "cached_input_tokens": 132864,
+            "output_tokens": 2921,
+            "reasoning_output_tokens": 124,
+            "uncached_input_tokens": 19894
+          },
+          "wall_seconds": 113.018,
+          "skills_observed": [
+            "durable-workflows",
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "references/change-classification.md": 1,
+            "skills/durable-workflows/SKILL.md": 1,
+            "skills/durable-workflows/references/failure-matrix.md": 1,
+            "skills/verification-and-operations/references/reviewable-commits.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        2
+      ],
+      "outcome": "Durable cross-process recovery and stale/expired completion protection pass retained process replays; checkpoint assessed separately.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "checkpoint": {
+        "authority_read_ordinal": 17,
+        "owner_read_ordinal": 26,
+        "decision_message_ordinal": 39,
+        "first_dependent_edit_ordinal": 40,
+        "first_production_edit_ordinal": 40,
+        "checkpoint_complete": false,
+        "guarantee": "explicit",
+        "plausible_counterexample": "risks named; causal challenge not fully stated before editing",
+        "legitimate_behavior": "implicit in recovery/completion plan",
+        "disposition": "retain serialized claim and conditional completion",
+        "limitation": "Assessment is of observable pre-edit content, not private reasoning or implementation correctness.",
+        "borderline_partial": true,
+        "assessment_sensitivity": "Counting the distributed implicit risk/test/mechanism account as complete would yield baseline 1/2 instead of 0/2; do not claim a robust comparative advantage from this distinction."
+      },
+      "implementation_replay": {
+        "authored_checks": {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.490s\n\nOK\n"
+        },
+        "same_name_stale_continuation": {
+          "passed": true
+        },
+        "expiry_and_competing_processes": {
+          "passed": true
+        }
+      }
+    },
+    {
+      "version": "baseline",
+      "case_id": "challenge-job-recovery",
+      "trial": 2,
+      "record_sha256": "13a85b207ea18f4b3c04eea92a4413cb1e648bcda639668443f527bf820629b5",
+      "fixture_before_hashes": {
+        "AGENTS.md": "0ac6c5326d84c6eb2199bb82244e874d480a2fc7e5c48f230e51671dc177cd3d",
+        "DESIGN.md": "49a1b0b1f06cf3471b95c643b2ef54bf32322ceaa1fb02d1816b21fac480b2b9",
+        "NOTES.md": "5f1bc5b1b311cc8c2b34614d3f44e237eabe7672f1f3c90adda838e8aa24e6ad",
+        "engineering-harness.json": "71821b067e40fab53e36e74c8aaa6059d671abee7406b9617f21ab539dd01016",
+        "job_store.py": "6a1f014478e8085d277b8f27f93a819ede563fc6b62d68f79a6abc1338563beb",
+        "test_queue.py": "d3d87212751c1e765808197f81b9f1ef4af952610b6f52e6b07e716e58c308ad",
+        "worker.py": "69ab81bebf0dd63d547f0f46235a7c2f565d9b2baa9349509884350a92728d15"
+      },
+      "fixture_after_sha256": "d4d654cd93c6a533149f84cfba69d432564a91f78f6e5f9bc6f1f711dea3aa90",
+      "fixture_diff_sha256": "9ba33d5a53d4e8bc613ee40cd14ee3deab644424ad3e299e374ca3f34c0e88e1",
+      "changed_original_files": [
+        "job_store.py",
+        "test_queue.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 96.71364736557007,
+      "contexts": [
+        {
+          "id": "01a088c2-72af-7820-a56f-d9b032ebec96",
+          "recorded_id": "01a088c2-72af-7820-a56f-d9b032ebec96",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "91f8913846f08448d4000ddd4fdf61b6116a3df1b560d2146b238f2e76fa523a",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 130076,
+            "cached_input_tokens": 116096,
+            "output_tokens": 2574,
+            "reasoning_output_tokens": 57,
+            "uncached_input_tokens": 13980
+          },
+          "wall_seconds": 94.58,
+          "skills_observed": [
+            "durable-workflows",
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "references/change-classification.md": 1,
+            "skills/durable-workflows/SKILL.md": 1,
+            "skills/durable-workflows/references/failure-matrix.md": 1,
+            "skills/verification-and-operations/references/reviewable-commits.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        2
+      ],
+      "outcome": "Durable cross-process recovery and stale/expired completion protection pass retained process replays; checkpoint assessed separately.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "checkpoint": {
+        "authority_read_ordinal": 18,
+        "owner_read_ordinal": 28,
+        "decision_message_ordinal": null,
+        "first_dependent_edit_ordinal": 36,
+        "first_production_edit_ordinal": 36,
+        "checkpoint_complete": false,
+        "guarantee": "explicit",
+        "plausible_counterexample": "risks named; causal challenge not fully stated before editing",
+        "legitimate_behavior": "implicit in recovery/completion plan",
+        "disposition": "scope-level intention only before owner read; no post-owner decision summary",
+        "limitation": "Assessment is of observable pre-edit content, not private reasoning or implementation correctness."
+      },
+      "implementation_replay": {
+        "authored_checks": {
+          "exit": 0,
+          "stdout": "",
+          "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.225s\n\nOK\n"
+        },
+        "same_name_stale_continuation": {
+          "passed": true
+        },
+        "expiry_and_competing_processes": {
+          "passed": true
+        }
+      }
+    },
+    {
+      "version": "baseline",
+      "case_id": "methodology-restraint",
+      "trial": 1,
+      "record_sha256": "ed023e71fb5895c315f2076cd7aa36552983cc6a66a85317bd9145843b5f7b26",
+      "fixture_before_hashes": {
+        "AGENTS.md": "b5ae34fe187644cbdde02bdc506626a2f0744c621494a81a2518a85e21400cf5",
+        "DESIGN.md": "9d0bb30b3a132f796da855efd80f74536986b744657216faec80a249ad196e49",
+        "README.md": "1ffef5ebb47ef7921b91f6e2d4fdf85d90f580ff8d0b7fcc8b4e839e05296cae",
+        "engineering-harness.json": "974d7e3236dba62fecc56efa77b38a9e0c3afaa4a574e52fb9f021ba1a2ab105",
+        "parser.py": "7a2085093d082e2732cdace7384dc271b03ed6ef6756dcac8f9d0b13f82d458a"
+      },
+      "fixture_after_sha256": "96d1e498b3640469021354ce3078a2c397f04bdeea4f3ea917cd253dfe1ced73",
+      "fixture_diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+      "changed_original_files": [
+        "README.md"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 16.413795948028564,
+      "contexts": [
+        {
+          "id": "01a088d7-3df6-7b12-b7ab-7c851831c804",
+          "recorded_id": "01a088d7-3df6-7b12-b7ab-7c851831c804",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "b2990efd412e26db445bd7dc9efd3e0c61aaeeb0abce2babe409ad41d0d85fba",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 42153,
+            "cached_input_tokens": 32896,
+            "output_tokens": 159,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 9257
+          },
+          "wall_seconds": 14.002,
+          "skills_observed": [],
+          "read_requests": {},
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Only requested typo changed; no methodology specialist or checkpoint machinery.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "methodology-restraint",
+      "trial": 2,
+      "record_sha256": "6ee2e70cd1c620ebcdb838f2640b6fc0e38f4be49acfbfe0314499bc9caf6f5c",
+      "fixture_before_hashes": {
+        "AGENTS.md": "b5ae34fe187644cbdde02bdc506626a2f0744c621494a81a2518a85e21400cf5",
+        "DESIGN.md": "9d0bb30b3a132f796da855efd80f74536986b744657216faec80a249ad196e49",
+        "README.md": "1ffef5ebb47ef7921b91f6e2d4fdf85d90f580ff8d0b7fcc8b4e839e05296cae",
+        "engineering-harness.json": "974d7e3236dba62fecc56efa77b38a9e0c3afaa4a574e52fb9f021ba1a2ab105",
+        "parser.py": "7a2085093d082e2732cdace7384dc271b03ed6ef6756dcac8f9d0b13f82d458a"
+      },
+      "fixture_after_sha256": "96d1e498b3640469021354ce3078a2c397f04bdeea4f3ea917cd253dfe1ced73",
+      "fixture_diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+      "changed_original_files": [
+        "README.md"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 17.156609058380127,
+      "contexts": [
+        {
+          "id": "01a088d7-a247-7773-860b-bc2c5141421f",
+          "recorded_id": "01a088d7-a247-7773-860b-bc2c5141421f",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "88c6c0342480cf5680958a08739db2021f891242abc59aaef8b83f45609086e7",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 42136,
+            "cached_input_tokens": 33024,
+            "output_tokens": 147,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 9112
+          },
+          "wall_seconds": 14.895,
+          "skills_observed": [],
+          "read_requests": {},
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Only requested typo changed; no methodology specialist or checkpoint machinery.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-card-a",
+      "trial": 1,
+      "record_sha256": "cac2650cee6ad0e75000137c0ee32035156521b8a4789c12ddcfa5f0192c5d69",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "d4f5fe0c804a5aecf0e93c70443dcc0b8b345061f8de36f61f15b9b3fe7fb219",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "6ef8d0b281fa9cbfe38119a54b2021ed1c24729acfbe5215da3bb0175d0e8988",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 44.16514182090759,
+      "contexts": [
+        {
+          "id": "01a088ce-994a-71c0-a036-4e309e52330d",
+          "recorded_id": "01a088ce-994a-71c0-a036-4e309e52330d",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "b114501f0664b6943265d3a50582697173ce13896d1e8d9dda13b5f3b28a7f77",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63393,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1002,
+            "reasoning_output_tokens": 9,
+            "uncached_input_tokens": 8737
+          },
+          "wall_seconds": 42.123,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds correction-displaced dispatch details through producer/wire/rendered consumer; preserves closed R1 and preview-backed variant.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-card-a",
+      "trial": 2,
+      "record_sha256": "6d6aab4055b6c4b9baf147419ad394aaeeeae38ce2f5bf47d867cc69ecd5fb5f",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "d4f5fe0c804a5aecf0e93c70443dcc0b8b345061f8de36f61f15b9b3fe7fb219",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "6ef8d0b281fa9cbfe38119a54b2021ed1c24729acfbe5215da3bb0175d0e8988",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 46.741482734680176,
+      "contexts": [
+        {
+          "id": "01a088cf-6e03-7c30-a45c-47d3a63751ef",
+          "recorded_id": "01a088cf-6e03-7c30-a45c-47d3a63751ef",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "db989b236c420e2d3d3809900f69c6566f08d465cc81ebf16cc6a9fec768243d",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63385,
+            "cached_input_tokens": 49408,
+            "output_tokens": 860,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 13977
+          },
+          "wall_seconds": 44.957,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds correction-displaced dispatch details through producer/wire/rendered consumer; preserves closed R1 and preview-backed variant.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-card-b",
+      "trial": 1,
+      "record_sha256": "48f36bfd643f8f463fd49c9fe931d6cdfcfaedcef79ab7ba522200e2e8a99ff8",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "b342603b5f35275ac6186d4e4c5704992e031ce7e24a34cb0eba51068616c4d7",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "aee4a16710b5cb34f6811102ed3440cd731daaa82704389600058a93611b34d3",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 44.431190729141235,
+      "contexts": [
+        {
+          "id": "01a088d0-4a42-7242-bbc2-0ad8b9f51134",
+          "recorded_id": "01a088d0-4a42-7242-bbc2-0ad8b9f51134",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "f870dd103042b6db51a0eef405cc76bd2b8409c9c01162289c65856e715b3713",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63259,
+            "cached_input_tokens": 54528,
+            "output_tokens": 1007,
+            "reasoning_output_tokens": 53,
+            "uncached_input_tokens": 8731
+          },
+          "wall_seconds": 42.656,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts complete preview/summary variants and omitted/clear/replace collections; R1 stays closed.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-card-b",
+      "trial": 2,
+      "record_sha256": "886587ed4cd25e508c33be4dc16ecb97116cdad4c9a01f5fb1cc26ea639520eb",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "b342603b5f35275ac6186d4e4c5704992e031ce7e24a34cb0eba51068616c4d7",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "aee4a16710b5cb34f6811102ed3440cd731daaa82704389600058a93611b34d3",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 45.18265891075134,
+      "contexts": [
+        {
+          "id": "01a088d1-2197-7352-a05e-6f251d7ae335",
+          "recorded_id": "01a088d1-2197-7352-a05e-6f251d7ae335",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "f2004d11d6ec2a14a4881d951164763e9b4a778fbd773ca0984453b8fc8687fa",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63308,
+            "cached_input_tokens": 49408,
+            "output_tokens": 1015,
+            "reasoning_output_tokens": 22,
+            "uncached_input_tokens": 13900
+          },
+          "wall_seconds": 43.041,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts complete preview/summary variants and omitted/clear/replace collections; R1 stays closed.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-run-a",
+      "trial": 1,
+      "record_sha256": "0ff4031a4c1cee67978c701b6252ea0676f3876ce70ae74535897a0890c700b5",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d09fab8e64e4c177a8b969f65d30d8fb4e423285e4f982d5dc39a13cdf5ab665",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "9acf3ddad2531cf7ad43aeb3f92229eb59df49e56d54a3d54b378d99c2405fdc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 66.11022281646729,
+      "contexts": [
+        {
+          "id": "01a088d2-0bef-7362-beaa-259396fd4f38",
+          "recorded_id": "01a088d2-0bef-7362-beaa-259396fd4f38",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "d7045911d6c25acde8e72e8b4d09afdd43fce8d78a3e1ef57fff0d050e17c2f6",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 83587,
+            "cached_input_tokens": 73344,
+            "output_tokens": 1500,
+            "reasoning_output_tokens": 80,
+            "uncached_input_tokens": 10243
+          },
+          "wall_seconds": 63.156,
+          "skills_observed": [
+            "using-engineering-harness",
+            "verification-and-operations"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1,
+            "skills/verification-and-operations/references/evidence-contract.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds unvalidated completion evidence, ignored interruption and unchecked reuse; preserves valid execution/reuse.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-run-a",
+      "trial": 2,
+      "record_sha256": "4ff1234fa95cd1210724c09961b98e1a3060178f29530a1ce9579eceb92a1bd7",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d09fab8e64e4c177a8b969f65d30d8fb4e423285e4f982d5dc39a13cdf5ab665",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "9acf3ddad2531cf7ad43aeb3f92229eb59df49e56d54a3d54b378d99c2405fdc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 54.49712038040161,
+      "contexts": [
+        {
+          "id": "01a088d3-398b-79f1-817d-b5e604e2de64",
+          "recorded_id": "01a088d3-398b-79f1-817d-b5e604e2de64",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "daa1d2b236f3efb65fc99c94fb7140ba7656c13b99e84e30f3cf7874b3e41434",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63297,
+            "cached_input_tokens": 49280,
+            "output_tokens": 1319,
+            "reasoning_output_tokens": 72,
+            "uncached_input_tokens": 14017
+          },
+          "wall_seconds": 52.039,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds unvalidated completion evidence, ignored interruption and unchecked reuse; preserves valid execution/reuse.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-run-b",
+      "trial": 1,
+      "record_sha256": "167dd4c5e508c8e3c6ef701be4fb70698e8531a44cfaa4d90789612b7decafeb",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d2364675c678dc48ab035997831c398b14df4ebe78410a23221817ba292c6ec7",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "8ce574cc34136ee67f1762e86baf26b1fb634a1b14b5d18c16baa7532b79acfd",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 69.8641676902771,
+      "contexts": [
+        {
+          "id": "01a088d4-4c24-7bb0-8480-54e9167396a7",
+          "recorded_id": "01a088d4-4c24-7bb0-8480-54e9167396a7",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "2b6a27ceb769dddbb6686877314303a875682eb28f83ca2999ed911c1c8d7963",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 102207,
+            "cached_input_tokens": 91648,
+            "output_tokens": 1652,
+            "reasoning_output_tokens": 272,
+            "uncached_input_tokens": 10559
+          },
+          "wall_seconds": 67.822,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "outcome": "Originally labeled fixed, but duplicate JSON keys can hide failure during issuance and reuse; qualification invalidated without repair or rerun.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": true,
+      "clean_control_qualified": false,
+      "duplicate_key_defect_detected": false,
+      "first_complete_review": "clean disposition misses established duplicate-key failure concealment",
+      "known_defect_miss": true,
+      "miss_classification": "initial-review miss on the evaluated snapshot; newly discovered fixture qualification gap, not a correction introduced during this campaign"
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-run-b",
+      "trial": 2,
+      "record_sha256": "14fa17884f98af6dbeef68400a04db03876a9336515d4b2817288e58f00f6202",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d2364675c678dc48ab035997831c398b14df4ebe78410a23221817ba292c6ec7",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "8ce574cc34136ee67f1762e86baf26b1fb634a1b14b5d18c16baa7532b79acfd",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 94.46411108970642,
+      "contexts": [
+        {
+          "id": "01a088d5-a6b5-72e2-b002-c9c7c69c6a3b",
+          "recorded_id": "01a088d5-a6b5-72e2-b002-c9c7c69c6a3b",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "39c4e919b9d49c1b4a6f660a09a8be67e69787dab802a615f8dd918d4d476ddd",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 151863,
+            "cached_input_tokens": 138496,
+            "output_tokens": 2382,
+            "reasoning_output_tokens": 461,
+            "uncached_input_tokens": 13367
+          },
+          "wall_seconds": 92.811,
+          "skills_observed": [
+            "using-engineering-harness",
+            "verification-and-operations"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1,
+            "skills/verification-and-operations/references/evidence-contract.md": 1,
+            "skills/verification-and-operations/references/methodology.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Originally labeled fixed, but duplicate JSON keys can hide failure during issuance and reuse; qualification invalidated without repair or rerun.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "clean_control_qualified": false,
+      "duplicate_key_defect_detected": true,
+      "first_complete_review": "duplicate-key failure concealment detected",
+      "known_defect_miss": false,
+      "miss_classification": null
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-selection-a",
+      "trial": 1,
+      "record_sha256": "3d6f47b6e89becb99d96dfdfb6b1e1c2eddea81c5af15f5f350acc3a9643637c",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "42840c7a4c8654626995cd04c18371ee777c6ca813889466e1356061f194d562",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "3223a358fafbb80d45d44c2086156f8f270c6e832aaab992796c6643cf8e20cc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 76.49945092201233,
+      "contexts": [
+        {
+          "id": "01a088c9-f89e-7ae1-8dc1-ce6c49757e35",
+          "recorded_id": "01a088c9-f89e-7ae1-8dc1-ce6c49757e35",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "b9e8fc2bdedea8078e416fdc38ff65c99f4aee89ac98d950bb4430b23adc6091",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 83306,
+            "cached_input_tokens": 68864,
+            "output_tokens": 2028,
+            "reasoning_output_tokens": 97,
+            "uncached_input_tokens": 14442
+          },
+          "wall_seconds": 74.723,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds non-affirmative label matching, query-local uniqueness and qualified-label rejection; traces both selectors through preparation.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-selection-a",
+      "trial": 2,
+      "record_sha256": "d01158b162faf4e0553941739a98533329b7670399bbac9030b808f2a1e771fb",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "42840c7a4c8654626995cd04c18371ee777c6ca813889466e1356061f194d562",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "3223a358fafbb80d45d44c2086156f8f270c6e832aaab992796c6643cf8e20cc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 58.58919668197632,
+      "contexts": [
+        {
+          "id": "01a088cb-46c8-7e22-b761-33658ee158c1",
+          "recorded_id": "01a088cb-46c8-7e22-b761-33658ee158c1",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "33f323183fed1aad472a0818d58e7a6c14d04c789b54b3ce8288ab80763ab9b2",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63612,
+            "cached_input_tokens": 44928,
+            "output_tokens": 1465,
+            "reasoning_output_tokens": 158,
+            "uncached_input_tokens": 18684
+          },
+          "wall_seconds": 56.823,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds non-affirmative label matching, query-local uniqueness and qualified-label rejection; traces both selectors through preparation.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-selection-b",
+      "trial": 1,
+      "record_sha256": "43b5eb913264c52aa8eab049ab9e26732e0e9bbdf6c853752e2770c5d3c27135",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "79b007b8bfcf69fc56ba54e1328b68c891bc90c2c948b0810c2c7acea931c42b",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "ae7e310a70ba5e1719dc8929ad7822882bb5d3cc615b5412abc2e1af2939e2fc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 61.46209692955017,
+      "contexts": [
+        {
+          "id": "01a088cc-53c1-7e80-9116-6c08fa346cf9",
+          "recorded_id": "01a088cc-53c1-7e80-9116-6c08fa346cf9",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "bdc2e374b0bbeb7dbd7212f50c406c1bd599eadaa95805d405d4e668994b61c7",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 82224,
+            "cached_input_tokens": 62720,
+            "output_tokens": 1508,
+            "reasoning_output_tokens": 106,
+            "uncached_input_tokens": 19504
+          },
+          "wall_seconds": 59.861,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts verified JSON-label parsing and both uniqueness proofs; traces both selectors and preserves arguments.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-selection-b",
+      "trial": 2,
+      "record_sha256": "4950069bffd46214a480b2ad1afa54b0b910e37849d9c70fb00f11cbff9d3d15",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "79b007b8bfcf69fc56ba54e1328b68c891bc90c2c948b0810c2c7acea931c42b",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "ae7e310a70ba5e1719dc8929ad7822882bb5d3cc615b5412abc2e1af2939e2fc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 64.51066446304321,
+      "contexts": [
+        {
+          "id": "01a088cd-6d08-7fc1-adf6-5b7dd6c2a1d2",
+          "recorded_id": "01a088cd-6d08-7fc1-adf6-5b7dd6c2a1d2",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "ad82787e2c9691a59033a0e1a20163caee205e18a2623628f4661b25026907f1",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 82169,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1640,
+            "reasoning_output_tokens": 113,
+            "uncached_input_tokens": 27513
+          },
+          "wall_seconds": 62.928,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts verified JSON-label parsing and both uniqueness proofs; traces both selectors and preserves arguments.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-transform-a",
+      "trial": 1,
+      "record_sha256": "ced996ebc9d80adb3ff8f18989d1c5dfd26802d48dacc6505e1ddfbe454b0f7e",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "1efde64160131b7b87c8009d3034d1020b090474302a8d52525f3ff48b9291a8",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4d1baabc951108aa4cbdd33b68839c4904e8f58e0eab837cde1395bab43782c2",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 53.301217555999756,
+      "contexts": [
+        {
+          "id": "01a088c6-1080-77f1-94fa-1ab83f982ad3",
+          "recorded_id": "01a088c6-1080-77f1-94fa-1ab83f982ad3",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "09db4db143396222d25c70810a7db0eecff1cbe0febff96990848870b1824dad",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63593,
+            "cached_input_tokens": 44928,
+            "output_tokens": 1308,
+            "reasoning_output_tokens": 154,
+            "uncached_input_tokens": 18665
+          },
+          "wall_seconds": 51.292,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds invalid publication, valid digit-label rejection, and root output-schema omission through actual service consumers.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-transform-a",
+      "trial": 2,
+      "record_sha256": "9ba78f3cd3316ef68f013773a95f79d4b1aadf13e6d4a5126c08922c79ba23e0",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "1efde64160131b7b87c8009d3034d1020b090474302a8d52525f3ff48b9291a8",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4d1baabc951108aa4cbdd33b68839c4904e8f58e0eab837cde1395bab43782c2",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 54.56227660179138,
+      "contexts": [
+        {
+          "id": "01a088c7-0ebb-7c93-ab3b-256dfca81b2d",
+          "recorded_id": "01a088c7-0ebb-7c93-ab3b-256dfca81b2d",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "c5faa1aee2d8fecff4f55331870166829e17d935db3502c76b351043142c112d",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63514,
+            "cached_input_tokens": 54528,
+            "output_tokens": 1408,
+            "reasoning_output_tokens": 132,
+            "uncached_input_tokens": 8986
+          },
+          "wall_seconds": 52.408,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds invalid publication, valid digit-label rejection, and root output-schema omission through actual service consumers.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-transform-b",
+      "trial": 1,
+      "record_sha256": "7b2975b77341e133551a86774d8c0d675589a8b189a4b4aad3ac0ca3d60e8e92",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "4bcdff9f9bfffc9610e394592ea637cf301b8890e180f356b9cf6fbc020616c2",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4a10db43d6747d79ef9873cb2ed28a01cb95fc8113d5edbd07e97b557e1738e9",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 57.07230734825134,
+      "contexts": [
+        {
+          "id": "01a088c8-0d91-7fe1-860f-032b5cccb374",
+          "recorded_id": "01a088c8-0d91-7fe1-860f-032b5cccb374",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "36bfe1e59a0a8d6137bd7d4ed5c7d7888d858eccefd7e64d3d993febc38483bd",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63683,
+            "cached_input_tokens": 50432,
+            "output_tokens": 1386,
+            "reasoning_output_tokens": 47,
+            "uncached_input_tokens": 13251
+          },
+          "wall_seconds": 55.098,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts exact-render adapter and root input/output discovery with bounded malformed/nested-input exclusions.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "baseline",
+      "case_id": "review-transform-b",
+      "trial": 2,
+      "record_sha256": "311bef9a7cd45bc154c9a1f5154c368830d23cfada1325da8b1ef2edfa9af3ff",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "4bcdff9f9bfffc9610e394592ea637cf301b8890e180f356b9cf6fbc020616c2",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4a10db43d6747d79ef9873cb2ed28a01cb95fc8113d5edbd07e97b557e1738e9",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 49.037333488464355,
+      "contexts": [
+        {
+          "id": "01a088c9-1051-73e1-a579-ac3b2ee08a5e",
+          "recorded_id": "01a088c9-1051-73e1-a579-ac3b2ee08a5e",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "c0f0c8d1bb9440b2ceef9124a8093cdc15bbdf23f2d818419d9e712ade90e9db",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63689,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1274,
+            "reasoning_output_tokens": 42,
+            "uncached_input_tokens": 9033
+          },
+          "wall_seconds": 47.289,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts exact-render adapter and root input/output discovery with bounded malformed/nested-input exclusions.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "challenge-correction",
+      "trial": 1,
+      "record_sha256": "4c0331ca95f2735b1ec5191f381b1e1bac4a0fccb757cc8d1459948f9f462156",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "612d2de8d5ff6247ae27f76dc688b8c7f077cb8dc6d42be02b26e580f7539f08",
+        "NOTES.md": "230d9124a1e1b79ae9e9ebb9cfa78c0e718f76b3f4d99955c6d2cd9471f4a8e4",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "7c531f4cf0d8dc775de9023ae1bc9129e37bd14a4d7bcc40df1ae93bd7808022",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "a4dbd1cae7da5812f6d6dfcde0db5037f5bf8f0d18a87e5502357b250c22fdd5",
+        "test_display.py": "da659f74e2cbb433aa071ad3c8bba9091f6b8739f057e0bcb96567b2bdcb6bd4"
+      },
+      "fixture_after_sha256": "8a17b34f371f13411c8362e54311f3841867adc8887d2eb164f72a9e574bb891",
+      "fixture_diff_sha256": "b920f1d5de42014c758c2914a4ad4c140b3cf0fd81b7eab1105b32790927c17a",
+      "changed_original_files": [
+        "guard.py"
+      ],
+      "added_source_files": [
+        "test_guard.py"
+      ],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 67.88360285758972,
+      "contexts": [
+        {
+          "id": "01a088c4-6a50-7d51-8971-229b12a3338b",
+          "recorded_id": "01a088c4-6a50-7d51-8971-229b12a3338b",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "728f5e405962395e32c811090c7ee4206831788d21b77bc985e82e5cde21d9e1",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 96416,
+            "cached_input_tokens": 87296,
+            "output_tokens": 1501,
+            "reasoning_output_tokens": 95,
+            "uncached_input_tokens": 9120
+          },
+          "wall_seconds": 65.162,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/reviewable-commits.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Exact-render implementation and valid/rejected correction scratch checks pass; minimal route with no specialist.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "implementation_replay": [
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+        },
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "case_id": "challenge-correction",
+      "trial": 2,
+      "record_sha256": "8261f0be811ea525c3295a18815dcedc183e376de2bade46f73bae9f6a607182",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "612d2de8d5ff6247ae27f76dc688b8c7f077cb8dc6d42be02b26e580f7539f08",
+        "NOTES.md": "230d9124a1e1b79ae9e9ebb9cfa78c0e718f76b3f4d99955c6d2cd9471f4a8e4",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "7c531f4cf0d8dc775de9023ae1bc9129e37bd14a4d7bcc40df1ae93bd7808022",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "a4dbd1cae7da5812f6d6dfcde0db5037f5bf8f0d18a87e5502357b250c22fdd5",
+        "test_display.py": "da659f74e2cbb433aa071ad3c8bba9091f6b8739f057e0bcb96567b2bdcb6bd4"
+      },
+      "fixture_after_sha256": "6d2289afb76d180f82595e5c9513479848a3ec5b0fdf1e662143d931f2eb56e6",
+      "fixture_diff_sha256": "0c239c2fbe71a6de13dd2c13c38bc77d5d398bdf275a773cfeacb802fdad63b3",
+      "changed_original_files": [
+        "guard.py"
+      ],
+      "added_source_files": [
+        "test_guard.py"
+      ],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 56.852463245391846,
+      "contexts": [
+        {
+          "id": "01a088c5-9c76-7441-9939-f00547e332bb",
+          "recorded_id": "01a088c5-9c76-7441-9939-f00547e332bb",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "108ea9958a8747472c144f04459181a4659f297e63f9e0c99959a6e3500bbe3f",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 78851,
+            "cached_input_tokens": 70528,
+            "output_tokens": 1343,
+            "reasoning_output_tokens": 50,
+            "uncached_input_tokens": 8323
+          },
+          "wall_seconds": 54.582,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Exact-render implementation and valid/rejected correction scratch checks pass; minimal route with no specialist.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "implementation_replay": [
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+        },
+        {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "case_id": "challenge-job-recovery",
+      "trial": 1,
+      "record_sha256": "8c406ea963ae108e4c1297c85304cc9a16d70f61df8dab2165cab03864c7f088",
+      "fixture_before_hashes": {
+        "AGENTS.md": "0ac6c5326d84c6eb2199bb82244e874d480a2fc7e5c48f230e51671dc177cd3d",
+        "DESIGN.md": "49a1b0b1f06cf3471b95c643b2ef54bf32322ceaa1fb02d1816b21fac480b2b9",
+        "NOTES.md": "5f1bc5b1b311cc8c2b34614d3f44e237eabe7672f1f3c90adda838e8aa24e6ad",
+        "engineering-harness.json": "71821b067e40fab53e36e74c8aaa6059d671abee7406b9617f21ab539dd01016",
+        "job_store.py": "6a1f014478e8085d277b8f27f93a819ede563fc6b62d68f79a6abc1338563beb",
+        "test_queue.py": "d3d87212751c1e765808197f81b9f1ef4af952610b6f52e6b07e716e58c308ad",
+        "worker.py": "69ab81bebf0dd63d547f0f46235a7c2f565d9b2baa9349509884350a92728d15"
+      },
+      "fixture_after_sha256": "8755836f7edf8b7013c1c0b81edb4f13ac3bdd22a99e1e3ab5b2d17bcd072702",
+      "fixture_diff_sha256": "70f90d9459d0ca0c46900ac8ad734ba2b9d074f01682c7b6e2caec63a854ecaa",
+      "changed_original_files": [
+        "job_store.py",
+        "test_queue.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 116.16096878051758,
+      "contexts": [
+        {
+          "id": "01a088c0-7ccf-7733-9b30-92c3fa485687",
+          "recorded_id": "01a088c0-7ccf-7733-9b30-92c3fa485687",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "3a118822561dbb555548b26e6f7046576d245a4f90612ab21cf59d399e090a5a",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 135112,
+            "cached_input_tokens": 103552,
+            "output_tokens": 3068,
+            "reasoning_output_tokens": 242,
+            "uncached_input_tokens": 31560
+          },
+          "wall_seconds": 114.101,
+          "skills_observed": [
+            "durable-workflows",
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "references/change-classification.md": 1,
+            "skills/durable-workflows/SKILL.md": 1,
+            "skills/durable-workflows/references/failure-matrix.md": 1,
+            "skills/verification-and-operations/references/reviewable-commits.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Durable cross-process recovery and stale/expired completion protection pass retained process replays; checkpoint assessed separately.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "checkpoint": {
+        "authority_read_ordinal": 18,
+        "owner_read_ordinal": 28,
+        "decision_message_ordinal": 42,
+        "first_dependent_edit_ordinal": 43,
+        "first_production_edit_ordinal": 51,
+        "checkpoint_complete": true,
+        "guarantee": "explicit",
+        "plausible_counterexample": "explicit",
+        "legitimate_behavior": "explicit",
+        "disposition": "retain serialized claim and conditional completion",
+        "limitation": "Assessment is of observable pre-edit content, not private reasoning or implementation correctness."
+      },
+      "implementation_replay": {
+        "authored_checks": {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.388s\n\nOK\n"
+        },
+        "same_name_stale_continuation": {
+          "passed": true
+        },
+        "expiry_and_competing_processes": {
+          "passed": true
+        }
+      }
+    },
+    {
+      "version": "candidate",
+      "case_id": "challenge-job-recovery",
+      "trial": 2,
+      "record_sha256": "7f8ca1179ad698797f00e37ecf8b7ee54e6980747e09b2ae990b1c31276367ae",
+      "fixture_before_hashes": {
+        "AGENTS.md": "0ac6c5326d84c6eb2199bb82244e874d480a2fc7e5c48f230e51671dc177cd3d",
+        "DESIGN.md": "49a1b0b1f06cf3471b95c643b2ef54bf32322ceaa1fb02d1816b21fac480b2b9",
+        "NOTES.md": "5f1bc5b1b311cc8c2b34614d3f44e237eabe7672f1f3c90adda838e8aa24e6ad",
+        "engineering-harness.json": "71821b067e40fab53e36e74c8aaa6059d671abee7406b9617f21ab539dd01016",
+        "job_store.py": "6a1f014478e8085d277b8f27f93a819ede563fc6b62d68f79a6abc1338563beb",
+        "test_queue.py": "d3d87212751c1e765808197f81b9f1ef4af952610b6f52e6b07e716e58c308ad",
+        "worker.py": "69ab81bebf0dd63d547f0f46235a7c2f565d9b2baa9349509884350a92728d15"
+      },
+      "fixture_after_sha256": "ad2a6ee4f1f2515916e53c8c0257591709a72ebf921f2b54d1afeb249c99176e",
+      "fixture_diff_sha256": "7158629e16c8b2c487f36d456e90dbe429d7d866f36c66b09d03de745b79bd36",
+      "changed_original_files": [
+        "job_store.py",
+        "test_queue.py"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 121.8118543624878,
+      "contexts": [
+        {
+          "id": "01a088c2-647c-78f2-baee-73774025551e",
+          "recorded_id": "01a088c2-647c-78f2-baee-73774025551e",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "9952171699e27b8e2e422bcc254aba87c5eb455e334ed34be5222c7af7dadeef",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 178778,
+            "cached_input_tokens": 142208,
+            "output_tokens": 3000,
+            "reasoning_output_tokens": 134,
+            "uncached_input_tokens": 36570
+          },
+          "wall_seconds": 119.771,
+          "skills_observed": [
+            "durable-workflows",
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "references/change-classification.md": 1,
+            "skills/durable-workflows/SKILL.md": 1,
+            "skills/durable-workflows/references/failure-matrix.md": 1,
+            "skills/verification-and-operations/references/reviewable-commits.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Durable cross-process recovery and stale/expired completion protection pass retained process replays; checkpoint assessed separately.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "checkpoint": {
+        "authority_read_ordinal": 18,
+        "owner_read_ordinal": 28,
+        "decision_message_ordinal": 41,
+        "first_dependent_edit_ordinal": 42,
+        "first_production_edit_ordinal": 42,
+        "checkpoint_complete": true,
+        "guarantee": "explicit",
+        "plausible_counterexample": "explicit",
+        "legitimate_behavior": "explicit",
+        "disposition": "retain serialized claim and conditional completion",
+        "limitation": "Assessment is of observable pre-edit content, not private reasoning or implementation correctness."
+      },
+      "implementation_replay": {
+        "authored_checks": {
+          "exit": 0,
+          "stdout": "",
+          "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.388s\n\nOK\n"
+        },
+        "same_name_stale_continuation": {
+          "passed": true
+        },
+        "expiry_and_competing_processes": {
+          "passed": true
+        }
+      }
+    },
+    {
+      "version": "candidate",
+      "case_id": "methodology-restraint",
+      "trial": 1,
+      "record_sha256": "3e6567914a0321443373f86c7e75983e9aaaadbf1541163a554ca4cc1d2fa855",
+      "fixture_before_hashes": {
+        "AGENTS.md": "b5ae34fe187644cbdde02bdc506626a2f0744c621494a81a2518a85e21400cf5",
+        "DESIGN.md": "9d0bb30b3a132f796da855efd80f74536986b744657216faec80a249ad196e49",
+        "README.md": "1ffef5ebb47ef7921b91f6e2d4fdf85d90f580ff8d0b7fcc8b4e839e05296cae",
+        "engineering-harness.json": "974d7e3236dba62fecc56efa77b38a9e0c3afaa4a574e52fb9f021ba1a2ab105",
+        "parser.py": "7a2085093d082e2732cdace7384dc271b03ed6ef6756dcac8f9d0b13f82d458a"
+      },
+      "fixture_after_sha256": "96d1e498b3640469021354ce3078a2c397f04bdeea4f3ea917cd253dfe1ced73",
+      "fixture_diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+      "changed_original_files": [
+        "README.md"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 17.168099880218506,
+      "contexts": [
+        {
+          "id": "01a088d8-4f94-7862-a43b-f7f8b18b265e",
+          "recorded_id": "01a088d8-4f94-7862-a43b-f7f8b18b265e",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "59c1fae6554f3295e7aad27cf386a418b12a397677bfad1fadff885f52a8561a",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 42091,
+            "cached_input_tokens": 37120,
+            "output_tokens": 141,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 4971
+          },
+          "wall_seconds": 14.965,
+          "skills_observed": [],
+          "read_requests": {},
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Only requested typo changed; no methodology specialist or checkpoint machinery.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "methodology-restraint",
+      "trial": 2,
+      "record_sha256": "8df8a42503a642a2b6bba1c264261750cf70cb41db6e0c8fbc7ebf6ecdf8a43d",
+      "fixture_before_hashes": {
+        "AGENTS.md": "b5ae34fe187644cbdde02bdc506626a2f0744c621494a81a2518a85e21400cf5",
+        "DESIGN.md": "9d0bb30b3a132f796da855efd80f74536986b744657216faec80a249ad196e49",
+        "README.md": "1ffef5ebb47ef7921b91f6e2d4fdf85d90f580ff8d0b7fcc8b4e839e05296cae",
+        "engineering-harness.json": "974d7e3236dba62fecc56efa77b38a9e0c3afaa4a574e52fb9f021ba1a2ab105",
+        "parser.py": "7a2085093d082e2732cdace7384dc271b03ed6ef6756dcac8f9d0b13f82d458a"
+      },
+      "fixture_after_sha256": "96d1e498b3640469021354ce3078a2c397f04bdeea4f3ea917cd253dfe1ced73",
+      "fixture_diff_sha256": "5413ff6bea1a6d43c52bc0b4b016308c287943ff83d8c1254c20946d4c1d387b",
+      "changed_original_files": [
+        "README.md"
+      ],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 18.285818099975586,
+      "contexts": [
+        {
+          "id": "01a088d8-ba9e-79b0-b4e8-ae5eea156892",
+          "recorded_id": "01a088d8-ba9e-79b0-b4e8-ae5eea156892",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "77887fbb4faff833f592eb14ed67a10674b6c10352c85cb6d6f516e403cf3f83",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 42106,
+            "cached_input_tokens": 37120,
+            "output_tokens": 147,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 4986
+          },
+          "wall_seconds": 16.117,
+          "skills_observed": [],
+          "read_requests": {},
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Only requested typo changed; no methodology specialist or checkpoint machinery.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-card-a",
+      "trial": 1,
+      "record_sha256": "f73c5eb68609a8dcc9e860199090a1030fe0a6ce10cb32e6a9c2058398a5004e",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "d4f5fe0c804a5aecf0e93c70443dcc0b8b345061f8de36f61f15b9b3fe7fb219",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "6ef8d0b281fa9cbfe38119a54b2021ed1c24729acfbe5215da3bb0175d0e8988",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 40.494006872177124,
+      "contexts": [
+        {
+          "id": "01a088cf-935c-76c0-af04-0d67338c65da",
+          "recorded_id": "01a088cf-935c-76c0-af04-0d67338c65da",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "9ec4d7e715295d557ba83d1a81eacb9b4085abce7c3d65bd8ff78f85c2674754",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63594,
+            "cached_input_tokens": 54656,
+            "output_tokens": 839,
+            "reasoning_output_tokens": 13,
+            "uncached_input_tokens": 8938
+          },
+          "wall_seconds": 38.682,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds correction-displaced dispatch details through producer/wire/rendered consumer; preserves closed R1 and preview-backed variant.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-card-a",
+      "trial": 2,
+      "record_sha256": "1593ba408ec0056c4ba713027824567e2eaba3651dcb66c6b9665f1269084346",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "d4f5fe0c804a5aecf0e93c70443dcc0b8b345061f8de36f61f15b9b3fe7fb219",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "6ef8d0b281fa9cbfe38119a54b2021ed1c24729acfbe5215da3bb0175d0e8988",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 51.6965217590332,
+      "contexts": [
+        {
+          "id": "01a088d0-66bb-7bb3-864a-a01aea04133a",
+          "recorded_id": "01a088d0-66bb-7bb3-864a-a01aea04133a",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "c4be1b97f21a00dd7e107a35f541994690e7103208130174c8436d9d7d3f588f",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 65022,
+            "cached_input_tokens": 47744,
+            "output_tokens": 1041,
+            "reasoning_output_tokens": 34,
+            "uncached_input_tokens": 17278
+          },
+          "wall_seconds": 44.589,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1,
+            "references/assurance-handoff.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds correction-displaced dispatch details through producer/wire/rendered consumer; preserves closed R1 and preview-backed variant.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-card-b",
+      "trial": 1,
+      "record_sha256": "0be4f90b69316090ad4ef29c1d5eae157fdabd6af1911ba31c2313b45ed3da55",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "b342603b5f35275ac6186d4e4c5704992e031ce7e24a34cb0eba51068616c4d7",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "aee4a16710b5cb34f6811102ed3440cd731daaa82704389600058a93611b34d3",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 44.284929513931274,
+      "contexts": [
+        {
+          "id": "01a088d1-4c12-78f3-858e-f878872dfd13",
+          "recorded_id": "01a088d1-4c12-78f3-858e-f878872dfd13",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "cc07a74415f9352da1bf34843f1b4f578c38a36776900b82ac0aa0147e03128d",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63392,
+            "cached_input_tokens": 54656,
+            "output_tokens": 867,
+            "reasoning_output_tokens": 0,
+            "uncached_input_tokens": 8736
+          },
+          "wall_seconds": 42.181,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts complete preview/summary variants and omitted/clear/replace collections; R1 stays closed.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-card-b",
+      "trial": 2,
+      "record_sha256": "938afb3da59738f7b5105bb33c727885a1b69fa072d88c7edd5bf14cba16d320",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "5ed129fda7c75abdaeab1eeba221f8360602495b5c21340387327acef52d0690",
+        "client.py": "30f67241c4c762f345e83f96485773c82269d3fc210dc46e77e511368be244db",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "previous/producer.py": "ba13b79b473baa375d257e0fde80d8d48aaa9165bdc021f4efbb7288a8a5fb10",
+        "prior-review.md": "13c47122003c42c5c4f4808d35eeaa71051cdca43250320aeefcd35080924074",
+        "producer.py": "b342603b5f35275ac6186d4e4c5704992e031ce7e24a34cb0eba51068616c4d7",
+        "test_card.py": "ad2b2ccd2d09ee19bf5faafa54c6bb90a13dc7dcad10b9e39829008cd1a8b1ef",
+        "transport.py": "625f1af7a48251fba1829d39f68631ba7aa14fbd0a5fd7b9a31b897effdd2f3f"
+      },
+      "fixture_after_sha256": "aee4a16710b5cb34f6811102ed3440cd731daaa82704389600058a93611b34d3",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 53.97919487953186,
+      "contexts": [
+        {
+          "id": "01a088d2-2c63-77a3-bbbb-7a15449b7223",
+          "recorded_id": "01a088d2-2c63-77a3-bbbb-7a15449b7223",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "ad6e2148426ff6d56deac8531311e529d214b20b01503a3f1e8850ca68b0e6fb",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 81901,
+            "cached_input_tokens": 72448,
+            "output_tokens": 1109,
+            "reasoning_output_tokens": 73,
+            "uncached_input_tokens": 9453
+          },
+          "wall_seconds": 50.978,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts complete preview/summary variants and omitted/clear/replace collections; R1 stays closed.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-run-a",
+      "trial": 1,
+      "record_sha256": "33d3b67bce0e35d42223e617a977f63939cc680e8d90917d0139e342a92290ab",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d09fab8e64e4c177a8b969f65d30d8fb4e423285e4f982d5dc39a13cdf5ab665",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "9acf3ddad2531cf7ad43aeb3f92229eb59df49e56d54a3d54b378d99c2405fdc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 74.24423670768738,
+      "contexts": [
+        {
+          "id": "01a088d3-3145-7b71-801d-7962db6fc155",
+          "recorded_id": "01a088d3-3145-7b71-801d-7962db6fc155",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "5746a13fe19561bec8f17142a4eec8ad032f43766c30ef714049225e5e7fa86f",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 85382,
+            "cached_input_tokens": 74240,
+            "output_tokens": 1592,
+            "reasoning_output_tokens": 80,
+            "uncached_input_tokens": 11142
+          },
+          "wall_seconds": 68.638,
+          "skills_observed": [
+            "using-engineering-harness",
+            "verification-and-operations"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1,
+            "skills/verification-and-operations/references/evidence-contract.md": 1,
+            "skills/verification-and-operations/references/methodology.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds unvalidated completion evidence, ignored interruption and unchecked reuse; preserves valid execution/reuse.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-run-a",
+      "trial": 2,
+      "record_sha256": "650625e0b0c23e45bbe2099ab74a313375138a9cdc79daa26c6e485feba2dc01",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d09fab8e64e4c177a8b969f65d30d8fb4e423285e4f982d5dc39a13cdf5ab665",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "9acf3ddad2531cf7ad43aeb3f92229eb59df49e56d54a3d54b378d99c2405fdc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 66.53827691078186,
+      "contexts": [
+        {
+          "id": "01a088d4-7aed-7533-9757-e8a0e5e29663",
+          "recorded_id": "01a088d4-7aed-7533-9757-e8a0e5e29663",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "7e358fe932797a8da13e0bf10c7c19b7e42558d820da03c49e45a619b6bfc7e7",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 84370,
+            "cached_input_tokens": 73728,
+            "output_tokens": 1705,
+            "reasoning_output_tokens": 123,
+            "uncached_input_tokens": 10642
+          },
+          "wall_seconds": 64.489,
+          "skills_observed": [
+            "using-engineering-harness",
+            "verification-and-operations"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1,
+            "skills/verification-and-operations/references/evidence-contract.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds unvalidated completion evidence, ignored interruption and unchecked reuse; preserves valid execution/reuse.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-run-b",
+      "trial": 1,
+      "record_sha256": "400e011eea3df27706de92cdb3859d9b822cd9049a71732c5327f799b4154f07",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d2364675c678dc48ab035997831c398b14df4ebe78410a23221817ba292c6ec7",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "8ce574cc34136ee67f1762e86baf26b1fb634a1b14b5d18c16baa7532b79acfd",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 74.47216749191284,
+      "contexts": [
+        {
+          "id": "01a088d5-bb27-79c3-85d4-2211bf9331fd",
+          "recorded_id": "01a088d5-bb27-79c3-85d4-2211bf9331fd",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "219120c396c0f2b7f855e7133e015f966e8684dd10a5f90f9707e7d05d174001",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 83956,
+            "cached_input_tokens": 69120,
+            "output_tokens": 1817,
+            "reasoning_output_tokens": 310,
+            "uncached_input_tokens": 14836
+          },
+          "wall_seconds": 72.575,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "outcome": "Originally labeled fixed, but duplicate JSON keys can hide failure during issuance and reuse; qualification invalidated without repair or rerun.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": true,
+      "clean_control_qualified": false,
+      "duplicate_key_defect_detected": false,
+      "first_complete_review": "clean disposition misses established duplicate-key failure concealment",
+      "known_defect_miss": true,
+      "miss_classification": "initial-review miss on the evaluated snapshot; newly discovered fixture qualification gap, not a correction introduced during this campaign"
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-run-b",
+      "trial": 2,
+      "record_sha256": "4cfa1e6b294027333aab6b1deefe1922f8002996398e4a277fb0c3bb17f09182",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "b2cec0fdebfbea00e70b34e208c3b23f966dfea96bacada8385ee684742165a7",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "receipts.py": "d2364675c678dc48ab035997831c398b14df4ebe78410a23221817ba292c6ec7",
+        "test_receipts.py": "cec8d9063c5fa9cd573e61ef301198ce2fdfb7acdb7b0fbee478032b3d5053e3"
+      },
+      "fixture_after_sha256": "8ce574cc34136ee67f1762e86baf26b1fb634a1b14b5d18c16baa7532b79acfd",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 74.95284867286682,
+      "contexts": [
+        {
+          "id": "01a088d7-039c-7983-b699-dd484bef9db3",
+          "recorded_id": "01a088d7-039c-7983-b699-dd484bef9db3",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "293aacf0e78f0812a922f1a66b4f1031cbd815b8b0129bf95a523cbfc56036f8",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 103428,
+            "cached_input_tokens": 92288,
+            "output_tokens": 1903,
+            "reasoning_output_tokens": 270,
+            "uncached_input_tokens": 11140
+          },
+          "wall_seconds": 73.377,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "outcome": "Originally labeled fixed, but duplicate JSON keys can hide failure during issuance and reuse; qualification invalidated without repair or rerun.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": true,
+      "clean_control_qualified": false,
+      "duplicate_key_defect_detected": false,
+      "first_complete_review": "clean disposition misses established duplicate-key failure concealment",
+      "known_defect_miss": true,
+      "miss_classification": "initial-review miss on the evaluated snapshot; newly discovered fixture qualification gap, not a correction introduced during this campaign"
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-selection-a",
+      "trial": 1,
+      "record_sha256": "6324909861f34a3843ff5c7d31308ff249de0a169e63681f037de0d787792bc5",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "42840c7a4c8654626995cd04c18371ee777c6ca813889466e1356061f194d562",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "3223a358fafbb80d45d44c2086156f8f270c6e832aaab992796c6643cf8e20cc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 65.31229710578918,
+      "contexts": [
+        {
+          "id": "01a088ca-ccf7-7261-9378-9a9fbdcbe9fc",
+          "recorded_id": "01a088ca-ccf7-7261-9378-9a9fbdcbe9fc",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "5620695d104932288bbafe6ee71e147dc357feeeb05b007bec69c1b8b818345c",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 64398,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1531,
+            "reasoning_output_tokens": 65,
+            "uncached_input_tokens": 9742
+          },
+          "wall_seconds": 59.16,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds non-affirmative label matching, query-local uniqueness and qualified-label rejection; traces both selectors through preparation.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-selection-a",
+      "trial": 2,
+      "record_sha256": "e263d98dd03958c8b229e3e04c4a9abdccf7b455ac350ebfe06dd9dfb9be8609",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "42840c7a4c8654626995cd04c18371ee777c6ca813889466e1356061f194d562",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "3223a358fafbb80d45d44c2086156f8f270c6e832aaab992796c6643cf8e20cc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 84.98447513580322,
+      "contexts": [
+        {
+          "id": "01a088cb-e044-75e3-9c8d-2153b1b37d73",
+          "recorded_id": "01a088cb-e044-75e3-9c8d-2153b1b37d73",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "cbfda03275f7caddeeaba5832dd57f5c10401c15b4ca90e481a8c8378c22ad2a",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 84184,
+            "cached_input_tokens": 67968,
+            "output_tokens": 2238,
+            "reasoning_output_tokens": 179,
+            "uncached_input_tokens": 16216
+          },
+          "wall_seconds": 82.969,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds non-affirmative label matching, query-local uniqueness and qualified-label rejection; traces both selectors through preparation.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-selection-b",
+      "trial": 1,
+      "record_sha256": "37bfbf5476c43a9a31cb76fddcfab0d4c1df9b72a2258bd3c738aed344124fac",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "79b007b8bfcf69fc56ba54e1328b68c891bc90c2c948b0810c2c7acea931c42b",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "ae7e310a70ba5e1719dc8929ad7822882bb5d3cc615b5412abc2e1af2939e2fc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 64.05053544044495,
+      "contexts": [
+        {
+          "id": "01a088cd-535d-7ab0-ad34-9dc0c0d23062",
+          "recorded_id": "01a088cd-535d-7ab0-ad34-9dc0c0d23062",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "4bb63a002566bb7ee7e6e9c101e7d2714e7f35cc769c23d952941649b402b42c",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 82642,
+            "cached_input_tokens": 54784,
+            "output_tokens": 1669,
+            "reasoning_output_tokens": 95,
+            "uncached_input_tokens": 27858
+          },
+          "wall_seconds": 62.442,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts verified JSON-label parsing and both uniqueness proofs; traces both selectors and preserves arguments.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-selection-b",
+      "trial": 2,
+      "record_sha256": "9f37301a005b47a0ac6cb4a557ab2e29755a48a8db0997eb42b4dd9629c62802",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "925157ec65f8dec0c93f03856b36e50f42f32b01889ac630347ad64df458987a",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "gate.py": "79b007b8bfcf69fc56ba54e1328b68c891bc90c2c948b0810c2c7acea931c42b",
+        "service.py": "acfda818e387abe43a321b3a44904b76eaac0feb12dd457c3b9a0483e8f47604",
+        "test_prepare.py": "35d5893fcbbff76cac8712929aa27ff80b8ea77cc9bac77fe794ac6957cfdece"
+      },
+      "fixture_after_sha256": "ae7e310a70ba5e1719dc8929ad7822882bb5d3cc615b5412abc2e1af2939e2fc",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 60.20166230201721,
+      "contexts": [
+        {
+          "id": "01a088ce-793c-77a2-aed6-125bb8a9c242",
+          "recorded_id": "01a088ce-793c-77a2-aed6-125bb8a9c242",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "aaafbd017a4b5075a6115fc9caa9cf898c64b28e3343d0f153edab9ff8f8bb75",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 64645,
+            "cached_input_tokens": 54784,
+            "output_tokens": 1586,
+            "reasoning_output_tokens": 68,
+            "uncached_input_tokens": 9861
+          },
+          "wall_seconds": 58.297,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts verified JSON-label parsing and both uniqueness proofs; traces both selectors and preserves arguments.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-transform-a",
+      "trial": 1,
+      "record_sha256": "0db61b16da98147653d99a4307c2c0b147fe5d54f3544db9740aa004e6742e92",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "1efde64160131b7b87c8009d3034d1020b090474302a8d52525f3ff48b9291a8",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4d1baabc951108aa4cbdd33b68839c4904e8f58e0eab837cde1395bab43782c2",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 56.354326009750366,
+      "contexts": [
+        {
+          "id": "01a088c6-a09b-7970-9a67-2ccc27a88eca",
+          "recorded_id": "01a088c6-a09b-7970-9a67-2ccc27a88eca",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "a043df653e400498532482aa9aef551475edc9b645248ebf6e3897e979f0ba8f",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63836,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1339,
+            "reasoning_output_tokens": 47,
+            "uncached_input_tokens": 9180
+          },
+          "wall_seconds": 54.432,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds invalid publication, valid digit-label rejection, and root output-schema omission through actual service consumers.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 1,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-transform-a",
+      "trial": 2,
+      "record_sha256": "e087d4b6fdb45cf77b0f41bfaf586476e13972572b410364a107f25b42e5bc42",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "1efde64160131b7b87c8009d3034d1020b090474302a8d52525f3ff48b9291a8",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4d1baabc951108aa4cbdd33b68839c4904e8f58e0eab837cde1395bab43782c2",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 51.23314070701599,
+      "contexts": [
+        {
+          "id": "01a088c7-b9dd-7da0-af46-df26ea81335b",
+          "recorded_id": "01a088c7-b9dd-7da0-af46-df26ea81335b",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "0d57251e5b1501caf50a80dde756336abc9ba10fc95141fe8d91bb6dbc451784",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63886,
+            "cached_input_tokens": 54784,
+            "output_tokens": 1313,
+            "reasoning_output_tokens": 33,
+            "uncached_input_tokens": 9102
+          },
+          "wall_seconds": 49.313,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Finds invalid publication, valid digit-label rejection, and root output-schema omission through actual service consumers.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "declared material defects found",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-transform-b",
+      "trial": 1,
+      "record_sha256": "3d1ef549394828b8d5f1ab488f8f132aa4feb7009dbfcdbfccb47351cadc9cf7",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "4bcdff9f9bfffc9610e394592ea637cf301b8890e180f356b9cf6fbc020616c2",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4a10db43d6747d79ef9873cb2ed28a01cb95fc8113d5edbd07e97b557e1738e9",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 54.02153491973877,
+      "contexts": [
+        {
+          "id": "01a088c8-afd1-7f50-9b04-9ca815d2c46a",
+          "recorded_id": "01a088c8-afd1-7f50-9b04-9ca815d2c46a",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "dc68b2ec04485225dd9056f986009acc88b1d5e4d7c4c7aa88d9c6bace1c4572",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63752,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1312,
+            "reasoning_output_tokens": 18,
+            "uncached_input_tokens": 9096
+          },
+          "wall_seconds": 52.29,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts exact-render adapter and root input/output discovery with bounded malformed/nested-input exclusions.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    },
+    {
+      "version": "candidate",
+      "case_id": "review-transform-b",
+      "trial": 2,
+      "record_sha256": "0dc8c19d369b72355c71da8bea39e4c93b2fb5ee1c726ece54edad8c855083d8",
+      "fixture_before_hashes": {
+        "AGENTS.md": "05f7d3689b0f01095b16ee68befeafdbe6468dcfa37160db03e370e59bc03cdc",
+        "DESIGN.md": "ece5002f3d482796e76dbdcac817ddee3ccc75f2e0550d90252299b9c5292d28",
+        "engineering-harness.json": "44ce4156cce2d987fde4e7ea3a3f11526b48abc48eb232ff95e2d19f85dee855",
+        "guard.py": "4bcdff9f9bfffc9610e394592ea637cf301b8890e180f356b9cf6fbc020616c2",
+        "renderer.py": "a2ce8246c3a4a53ea8b85c91fb6678be1d7bf4e9047d445cf6c51de10432942c",
+        "service.py": "3b1451c9a1ccd3e20c9fe79d2a5ec062198b56096b0873a4eff1e9b5d6cec64b",
+        "test_display.py": "f0a032b1cd8c8f2f782f71da90863d841bf020d66c4317e9b60d53a99deeb48b"
+      },
+      "fixture_after_sha256": "4a10db43d6747d79ef9873cb2ed28a01cb95fc8113d5edbd07e97b557e1738e9",
+      "fixture_diff_sha256": "7a6c15e32fcd700c9657bdf1b70a5462a5769f49541cc0a6113e744f145b5b16",
+      "changed_original_files": [],
+      "added_source_files": [],
+      "return_code": 0,
+      "contexts_completed": true,
+      "wall_seconds": 57.775609254837036,
+      "contexts": [
+        {
+          "id": "01a088c9-b5ef-7b13-a36a-446830bfa0b6",
+          "recorded_id": "01a088c9-b5ef-7b13-a36a-446830bfa0b6",
+          "kind": "primary",
+          "recorded_kind": "primary",
+          "trace_sha256": "d7778dbe4dcd5337cfff40a7f7e3ed2e5e32930effdb26ef4b67f9423bd142b8",
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "usage": {
+            "input_tokens": 63651,
+            "cached_input_tokens": 54656,
+            "output_tokens": 1448,
+            "reasoning_output_tokens": 36,
+            "uncached_input_tokens": 8995
+          },
+          "wall_seconds": 55.973,
+          "skills_observed": [
+            "using-engineering-harness"
+          ],
+          "read_requests": {
+            "skills/using-engineering-harness/SKILL.md": 1,
+            "skills/verification-and-operations/references/change-review.md": 1
+          },
+          "identity_source": "first raw session header"
+        }
+      ],
+      "rubric_order": [
+        "routing",
+        "proportionality",
+        "authority_semantics",
+        "lifetime_failure",
+        "compatibility_evidence",
+        "scope_authority"
+      ],
+      "rubric_scores": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "outcome": "Accepts exact-render adapter and root input/output discovery with bounded malformed/nested-input exclusions.",
+      "unsupported_material_blockers": 0,
+      "overlapping_finding_entries": 0,
+      "critical_forbidden_outcome_observed": false,
+      "first_complete_review": "clean with stated limits",
+      "known_defect_miss": false
+    }
+  ],
+  "limitations": [
+    "Two trials per case/version are descriptive, not general reliability or causal effectiveness proof.",
+    "Synthetic local sources only; no live provider/device/deployment claims.",
+    "Both versions produced correct builders and found the declared review defects; no review-detection advantage is established.",
+    "The baseline named relevant risks but did not fully state the required challenge and legitimate behavior after the owner read before edits. This is an observable-record assessment, not a claim about private reasoning.",
+    "Candidate transform-a trial 1 splits unknown-reference acceptance from its overlapping invalid-publication finding; retain this consolidation weakness.",
+    "Receipt fixed control was invalidated: duplicate status/ok keys conceal failed evidence. Baseline detects it once in two; candidate misses it twice. This is not counted as a baseline false positive. Clean qualified controls are only transform/selection/card.",
+    "Pinned catalog and readable host-skill hashes retained; inherited native system/tool/catalog declarations remain runtime-controlled. Personal custom agents were not copied.",
+    "Zero supplied rescues is by design and does not establish reduced real-user intervention.",
+    "Original 40-trial campaign is immutable and is not pooled with this repaired cohort."
+  ]
+}
