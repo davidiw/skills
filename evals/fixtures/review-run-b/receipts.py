@@ -4,9 +4,26 @@ from pathlib import Path
 def invalid_constant(value):
     raise ValueError("non-JSON constant")
 
+def reject_duplicate_members(pairs):
+    result={}
+    for key,value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON member")
+        result[key]=value
+    return result
+
+def json_records(raw):
+    """Decode JSONL records without treating JSON string characters as delimiters."""
+    lines=raw.split(b"\n")
+    if raw.endswith(b"\n"):
+        lines.pop()
+    return [json.loads(line.decode("utf-8"), parse_constant=invalid_constant,
+                       object_pairs_hook=reject_duplicate_members)
+            for line in lines]
+
 def evidence(report):
     raw=Path(report).read_bytes()
-    events=[json.loads(line, parse_constant=invalid_constant) for line in raw.decode().splitlines()]
+    events=json_records(raw)
     if len(events)<2 or events[0].get("kind")!="start" or events[-1].get("kind")!="done" or events[-1].get("ok") is not True:
         raise ValueError("incomplete report")
     first=events[0];expected=first["expected"]
