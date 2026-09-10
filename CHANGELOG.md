@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.9.0 - Unreleased
+
+Adds a conditional four-role workflow for consequential implementation/design after
+accepted scope and primary-owner mechanism, or for an explicitly requested
+separated task, under the existing router, classification, handoff, and evidence
+owners. A neutral proposal is challenged before implementation; a worker implements
+the accepted contract; an operator executes unchanged reviewer checks in scratch;
+and the reviewer decides the frozen result. Native permissions and fresh context are
+preconditions, so an unavailable stage remains pending. Design-only and ordinary
+minimal paths retain their existing exits.
+
+Migration: adopters of this unreleased candidate apply it to consequential
+implementation/design after accepted scope and owner mechanism, or to an explicitly
+requested separated task; minimal work remains local unless explicitly separated.
+Record native role/interface observations, permission failures,
+proposal/reviewer/scratch hashes, and complete results under the existing
+handoff/evidence contract. Installed and published pins remain at `v0.8.0`; old
+receipts remain bound to their original source and policy versions.
+
 ## 0.8.0 - 2026-09-08
 
 Reconciles useful external engineering methods under existing Harness owners.
