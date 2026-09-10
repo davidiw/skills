@@ -7,6 +7,12 @@ displaced-consumer correction review and terminal completion/cache evidence. No
 new specialist, invariant, schema, independent gate or runner is introduced.
 Minimal and review-only paths retain their existing exits.
 
+Receipt fixture maintenance now rejects duplicate decoded JSON member names at
+every object depth and recognizes only LF JSONL records (with CRLF support and
+one terminal LF). The digest remains over the original bytes; malformed, blank,
+or bare-CR-separated reports remain invalid. This is a current deterministic
+fixture qualification, not a regrade of retained evaluation evidence.
+
 Migration: review profiles moving from 0.8 to this candidate evidence policy.
 Record concrete mechanism challenges before dependent consequential edits;
 repository runners with a completion protocol must validate it before issuing or
