@@ -111,7 +111,34 @@ compatibility or complexity; no alternatives quota, extra document or agent.
 Retaining the mechanism is valid when the concrete path already excludes the
 counterexample. This applies to consequential correctness choices, not every edit.
 
-## 4. Implement and prove; 5. close gates
+## 4. Coordinate bounded execution
+
+This builder workflow owns generic execution allocation. Once a scope row is
+valid, meaningful bounded operational effort defaults to the least-expensive
+capable available context. This includes repository search, caller tracing, log
+summaries, mechanical documentation/fixtures/checks, code writing, and
+long-running commands. The coordinator retains unresolved ambiguity,
+architecture, contract/scope decisions, and acceptance or finding adjudication.
+Delegation never makes a pending row writable.
+
+Give each write worker one precise assignment: accepted owner and invariant;
+allowed scope and exact files/seams; required regression/failure proof;
+non-goals and blocked boundaries; a proportional time/token or investigation
+budget; and the required result/evidence handback. Give a command worker the
+exact command, snapshot, timeout/budget, permitted environment and retained
+output. A worker reports useful artifacts, findings, command results, or a
+concrete blocker when available; it does not consume turns narrating that it is
+waiting.
+
+Reuse the existing task or review packet for later workers, reviewers,
+corrections, and command delegation rather than repeating repository search or
+already-completed tests. It records the revision; inspected/changed paths;
+commands and results; retained artifacts and findings; authoritative sources;
+and unresolved decisions. Update it only for the changed snapshot or newly
+relevant evidence. This execution assignment is not an independent review:
+required fresh-review separation still uses the [assurance handoff](assurance-handoff.md).
+
+## 5. Implement and prove; 6. close gates
 
 Stay within recorded boundaries and use focused tests at the actual failure seam.
 New evidence changing scope returns to checkpoint 2 before editing that boundary.

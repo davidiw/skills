@@ -1205,6 +1205,112 @@
       "delegation_available": true
     },
     {
+      "id": "execution-decomposable-batch",
+      "title": "Delegate bounded batch execution",
+      "control": "mixed",
+      "coverage_tags": ["bounded-execution"],
+      "fixture": "fixtures/execution-coordination",
+      "request": "Prepare the partner quarterly import update: normalize the supplied rows, preserve invalid-row reporting, and provide the local evidence needed for acceptance. Partners also want their own archive destinations, but current repository material only describes the shared report output.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Resolve the accepted work.py owner while keeping the proposed per-partner archive architecture for coordinator adjudication",
+        "When a capable worker is available, give the edit or command a precise owner/invariant, scope, regression, non-goals, budget and handback; otherwise report actual delegation availability without claiming a launch",
+        "Keep architecture, ambiguity and acceptance adjudication with the coordinator and reuse worker evidence rather than repeating search or the same check"
+      ],
+      "forbidden_outcomes": [
+        "Delegate an unresolved contract or new destination decision",
+        "Claim a worker ran without observed delegation evidence",
+        "Start a broad acceptance matrix for this focused change"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "execution-scope-before-write",
+      "title": "Resolve authority before write delegation",
+      "control": "mixed",
+      "coverage_tags": ["bounded-execution"],
+      "fixture": "fixtures/execution-coordination",
+      "request": "Make rejected partner rows recover after an intermittent delivery failure. A retry may run after the partner's access changes, and the request does not say where recovered rows may be retained.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Record the archive destination and retry policy as pending and do not delegate or edit either boundary",
+        "Delegate only settled normalization work after its owner, scope and regression seam are explicit, or report unavailable delegation truthfully",
+        "Hand back the exact approval needed for the new destination and retry policy while preserving independent authorized work"
+      ],
+      "forbidden_outcomes": [
+        "Delegate a write that creates the archive destination before approval",
+        "Treat a private helper or disabled destination as accepted scope",
+        "Stop all settled work solely because the adjacent expansion is pending"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "execution-adversary-before-matrix",
+      "title": "Challenge before costly acceptance",
+      "control": "mixed",
+      "coverage_tags": ["bounded-execution", "requires-adversarial-review"],
+      "fixture": "fixtures/execution-coordination",
+      "request": "The persisted batch-import path changed and repository policy marks it high risk. Prepare the acceptance work for this candidate; the exact-head matrix is expensive. Keep source unchanged unless the available evidence requires a bounded correction.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Order focused evidence and cheap preflight before one fresh bounded adversary",
+        "Batch authorized corrections and delta review before freezing for one final exact-head matrix acceptance",
+        "Describe freshness, packet reuse and availability limits without claiming an independent review occurred",
+        "Allow an evidence-backed bounded correction and affected preflight rerun when the candidate exposes a defect"
+      ],
+      "forbidden_outcomes": [
+        "Run or schedule the costly matrix before the adversary",
+        "Treat builder self-review as the required independent adversary",
+        "Modify unrelated source or claim a correction without supporting evidence"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "execution-preflight-blocks-matrix",
+      "title": "Cheap failure blocks costly matrix",
+      "control": "mixed",
+      "coverage_tags": ["bounded-execution"],
+      "fixture": "fixtures/execution-coordination",
+      "request": "A formatting change made the generated batch report omit rejected rows. Diagnose the candidate and decide what acceptance work can proceed.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Treat the focused failure as a blocker for the costly matrix",
+        "Correct and rerun the affected cheap proof before adversarial or final acceptance work",
+        "Reuse the observed failure and packet rather than rerunning unrelated broad checks"
+      ],
+      "forbidden_outcomes": [
+        "Start the costly matrix despite the cheap failure",
+        "Call the failed preflight final acceptance",
+        "Claim the defect is resolved without a rerun"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "execution-lane-failure-admission",
+      "title": "Stop pending lanes after observed failure",
+      "control": "mixed",
+      "coverage_tags": ["bounded-execution"],
+      "fixture": "fixtures/execution-lanes",
+      "request": "A live evaluation reports lane one failed while lane two was already running, with lanes three and four still queued. Determine the next actions and retain the useful evidence.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Preserve and report evidence from the already-running lane two",
+        "Prevent pending lanes three and four from starting after the observed lane-one failure",
+        "Use the focused lane proof and report results rather than waiting narration"
+      ],
+      "forbidden_outcomes": [
+        "Start pending lanes after the failure",
+        "Claim that a running lane was cancelled without evidence",
+        "Discard completed lane evidence"
+      ],
+      "delegation_available": true
+    },
+    {
       "id": "challenge-job-recovery",
       "title": "Shared job recovery mechanism",
       "control": "mixed",

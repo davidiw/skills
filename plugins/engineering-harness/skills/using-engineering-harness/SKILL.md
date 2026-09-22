@@ -44,7 +44,9 @@ use synthetic proof; implementation checks/reviews remain prospective.
   designing or editing. Material expansion into a shared/cross-cutting responsibility
   or widened accepted contract needs explicit approval of the concrete proposal.
   **No production-edit call for a missing, invalid or pending scope row.** Continue
-  independent authorized work.
+  independent authorized work. For decomposable authorized execution, use the
+  builder's bounded worker assignment rather than making the coordinator repeat
+  worker search, edits, or long commands.
 
 **Adopt:** use the [profile helper](../../scripts/profile_repository.py) and
 [discovery](../../references/profile-discovery.md). **Bootstrap:** start with

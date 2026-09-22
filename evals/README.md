@@ -82,6 +82,14 @@ outside model latency and preserve all attempts, timeouts, and failures.
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.
 
+The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
+five-case natural cohort for generic execution coordination: decomposable worker
+assignment, scope resolution before writing, adversarial ordering, cheap failure
+admission, and lane admission after an observed failure. It uses the same runner,
+fresh paired arms, and evidence rules as the other matrices. A plan-only case
+records actual delegation availability and handoff evidence; it does not turn an
+unavailable runtime capability into a claimed worker launch.
+
 The scope-approval regression `temporary-account-oauth-scope` models temporary
 accounts tempting a replacement of shipped mobile provider OAuth. Its paired
 `approved-provider-broker-design` case checks reuse of explicit design approval.

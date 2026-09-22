@@ -30,7 +30,9 @@ be read directly without loading this skill.
    implies deployment, tagging, installation or publication authority.
 5. Before final branch review/integration, apply [reviewable commits](references/reviewable-commits.md).
    Refresh affected evidence after changes and bind final gates to the required
-   revision. Keep private payloads/secrets outside public artifacts.
+   revision. For a required adversarial gate, use its preflight → adversary →
+   correction/delta → freeze → final-acceptance order. Keep private
+   payloads/secrets outside public artifacts.
 
 For generated/physical output, read [artifact proof](references/artifact-and-physical-proof.md).
 For a required independent high-risk audit, read [adversarial review](references/adversarial-review.md).

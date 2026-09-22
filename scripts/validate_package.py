@@ -305,6 +305,8 @@ def validate_evals(errors: list[str]) -> None:
     validate_experience_matrix(experience_matrix, case_by_id, errors)
     methodology_matrix = json.loads((ROOT / "evals" / "methodology-matrix.json").read_text())
     validate_methodology_matrix(methodology_matrix, case_by_id, errors)
+    execution_matrix = json.loads((ROOT / "evals" / "execution-matrix.json").read_text())
+    validate_execution_matrix(execution_matrix, case_by_id, errors)
 
 
 def validate_methodology_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:
@@ -327,6 +329,34 @@ def validate_methodology_matrix(matrix: dict, cases: dict, errors: list[str]) ->
     for case_id in ids:
         prompt = cases.get(case_id, {}).get("request", "")
         require(not any(name in prompt for name in SKILL_NAMES), "methodology matrix: prompt names a skill", errors)
+
+
+def validate_execution_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:
+    prefix = "execution matrix: "
+    require(matrix.get("schema_version") == 1, prefix + "invalid schema", errors)
+    require(matrix.get("prompt_mode") == "natural", prefix + "natural prompts required", errors)
+    require(matrix.get("conditions") == ["control", "harness"], prefix + "both arms required", errors)
+    require(type(matrix.get("trials")) is int and matrix["trials"] > 0,
+            prefix + "positive trial count required", errors)
+    require(type(matrix.get("concurrency")) is int and 1 <= matrix["concurrency"] <= 2,
+            prefix + "concurrency must be bounded to two", errors)
+    require(matrix.get("command_boundary") == "offline-browser" and not matrix.get("sandbox_network_access"),
+            prefix + "protected command boundary required", errors)
+    required = {
+        "execution-decomposable-batch", "execution-scope-before-write",
+        "execution-adversary-before-matrix", "execution-preflight-blocks-matrix",
+        "execution-lane-failure-admission",
+    }
+    ids = matrix.get("case_ids", [])
+    if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):
+        errors.append(prefix + "case_ids must be strings")
+        return
+    require(required <= set(ids), prefix + "missing delegation, authority, ordering, preflight, or lane coverage", errors)
+    require(len(ids) == len(set(ids)) and set(ids) <= set(cases), prefix + "duplicate or unknown case", errors)
+    for case_id in ids:
+        case = cases.get(case_id, {})
+        require(bool(case.get("fixture")), prefix + f"fixture required: {case_id}", errors)
+        require("$" not in case.get("request", ""), prefix + f"prompt names a skill: {case_id}", errors)
 
 
 def validate_experience_matrix(matrix: dict, case_by_id: dict, errors: list[str]) -> None:
