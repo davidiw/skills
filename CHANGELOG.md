@@ -1,13 +1,13 @@
 # Changelog
 
-## 0.9.0 - Unreleased
+## 0.9.0 - 2026-09-22
 
 Strengthens existing consequential mechanism decisions, calibrated general review,
 displaced-consumer correction review and terminal completion/cache evidence. No
 new specialist, invariant, schema, independent gate or runner is introduced.
 Minimal and review-only paths retain their existing exits.
 
-The candidate now makes the existing builder workflow the generic bounded
+This release makes the existing builder workflow the generic bounded
 execution owner: capable workers receive owner/invariant, scope, regression,
 non-goal, budget and handback limits while coordinators retain ambiguity,
 architecture and adjudication. Existing task/review packets are reused for
@@ -15,8 +15,8 @@ command workers and fresh review handoffs. High-risk review now orders cheap pre
 one bounded adversary, batched corrections/delta review, freeze, and one final
 exact-head acceptance; a cheap failure prevents the costly matrix from starting.
 The existing natural runner gains fixture-backed behavioral coverage for these
-orders and lane admission. This changes routing/evidence guidance within the
-unreleased 0.9.0 candidate; adopters moving from 0.8.0 should apply the new
+orders and lane admission. This changes routing/evidence guidance in 0.9.0;
+adopters moving from 0.8.0 should apply the new
 execution packet and review ordering to open consequential work. Historical
 evidence remains bound to its recorded policy and source revision.
 
@@ -26,18 +26,21 @@ one terminal LF). The digest remains over the original bytes; malformed, blank,
 or bare-CR-separated reports remain invalid. This is a current deterministic
 fixture qualification, not a regrade of retained evaluation evidence.
 
-Migration: review profiles moving from 0.8 to this candidate evidence policy.
+Migration: review profiles moving from 0.8 to the 0.9.0 evidence policy.
 Record concrete mechanism challenges before dependent consequential edits;
 repository runners with a completion protocol must validate it before issuing or
 reusing success. Existing accepted skips and sound caches remain valid. Historical
 evidence retains its exact policy/source identity and is not upgraded by this entry.
-Stable installation remains pinned to published v0.8.0.
+Stable installation pins published `v0.9.0`.
 
 The bounded 40-invocation comparison retains its original snapshots and limitations.
 It does not establish improved judgment: the builder checkpoint was not exercised,
 fixed controls needed repair, and candidate reviews missed a nonstandard-JSON case.
 Post-comparison fixture and relative-argument export corrections have deterministic
-proof only; historical outcomes are not upgraded onto the final candidate.
+proof only; historical outcomes are not upgraded onto this release.
+
+The A–E execution cohort had ten setup failures before any model call. It supplies
+no behavioral or efficiency proof and no broader qualification claim.
 
 ## 0.8.0 - 2026-09-08
 
