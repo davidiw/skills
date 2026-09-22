@@ -32,18 +32,23 @@ class ExecutionMatrixTest(unittest.TestCase):
                 matrix["case_ids"].remove(case_id)
                 self.assertTrue(self.errors(matrix))
 
-    def test_unknown_or_explicit_prompt_fails(self):
+    def test_unknown_or_named_skill_prompt_fails(self):
         matrix = copy.deepcopy(self.matrix)
         matrix["case_ids"][-1] = "missing-case"
         self.assertTrue(self.errors(matrix))
-        cases = copy.deepcopy(self.cases)
-        cases["execution-decomposable-batch"]["request"] = "Use $verification-and-operations."
-        self.assertTrue(self.errors(cases=cases))
+        for request in ["Use verification-and-operations.", "Use $verification-and-operations."]:
+            with self.subTest(request=request):
+                cases = copy.deepcopy(self.cases)
+                cases["execution-decomposable-batch"]["request"] = request
+                self.assertTrue(self.errors(cases=cases))
 
     def test_missing_protected_boundary_fails(self):
         for change in [{"command_boundary": None}, {"sandbox_network_access": True}]:
             with self.subTest(change=change):
                 self.assertTrue(self.errors({**self.matrix, **change}))
+
+    def test_matrix_cannot_declare_runner_concurrency(self):
+        self.assertTrue(self.errors({**self.matrix, "concurrency": 2}))
 
 
 if __name__ == "__main__":

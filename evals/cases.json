@@ -1279,13 +1279,14 @@
       "expected_skills": ["using-engineering-harness", "verification-and-operations"],
       "required_outcomes": [
         "Treat the focused failure as a blocker for the costly matrix",
-        "Correct and rerun the affected cheap proof before adversarial or final acceptance work",
+        "Identify and propose the bounded correction, then withhold costly acceptance until an authorized correction and affected cheap proof",
         "Reuse the observed failure and packet rather than rerunning unrelated broad checks"
       ],
       "forbidden_outcomes": [
         "Start the costly matrix despite the cheap failure",
         "Call the failed preflight final acceptance",
-        "Claim the defect is resolved without a rerun"
+        "Claim the defect is resolved without a rerun",
+        "Edit source without authorization"
       ],
       "delegation_available": true
     },

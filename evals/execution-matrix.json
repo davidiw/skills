@@ -5,7 +5,6 @@
   "conditions": ["control", "harness"],
   "model": "gpt-6-astra",
   "reasoning_effort": "medium",
-  "concurrency": 2,
   "timeout_seconds": 420,
   "command_boundary": "offline-browser",
   "case_ids": [

@@ -338,8 +338,8 @@ def validate_execution_matrix(matrix: dict, cases: dict, errors: list[str]) -> N
     require(matrix.get("conditions") == ["control", "harness"], prefix + "both arms required", errors)
     require(type(matrix.get("trials")) is int and matrix["trials"] > 0,
             prefix + "positive trial count required", errors)
-    require(type(matrix.get("concurrency")) is int and 1 <= matrix["concurrency"] <= 2,
-            prefix + "concurrency must be bounded to two", errors)
+    require("concurrency" not in matrix,
+            prefix + "concurrency belongs to runner --max-workers, not the matrix", errors)
     require(matrix.get("command_boundary") == "offline-browser" and not matrix.get("sandbox_network_access"),
             prefix + "protected command boundary required", errors)
     required = {
@@ -356,7 +356,9 @@ def validate_execution_matrix(matrix: dict, cases: dict, errors: list[str]) -> N
     for case_id in ids:
         case = cases.get(case_id, {})
         require(bool(case.get("fixture")), prefix + f"fixture required: {case_id}", errors)
-        require("$" not in case.get("request", ""), prefix + f"prompt names a skill: {case_id}", errors)
+        prompt = case.get("request", "")
+        require(not any(name in prompt for name in SKILL_NAMES),
+                prefix + f"prompt names a skill: {case_id}", errors)
 
 
 def validate_experience_matrix(matrix: dict, case_by_id: dict, errors: list[str]) -> None:
