@@ -7,7 +7,9 @@ review. Ordinary bounded work uses focused builder checks.
 
 ## Prepare and launch
 
-1. For implementation handoffs, finish focused builder checks. For review-only
+1. For implementation handoffs, finish focused builder checks and the cheapest
+   relevant preflight before a costly matrix or final exact-head acceptance. A
+   cheap failure blocks that later work until corrected and rechecked. For review-only
    requests, prepare the packet from existing evidence; the fresh reviewer owns
    the assigned investigation and proofs. Inspect the launcher's available roles and
    prefer a configured general read-only reviewer; use a fresh generic fallback
@@ -18,10 +20,12 @@ review. Ordinary bounded work uses focused builder checks.
    skills in the builder cannot satisfy independence.
 2. **Before launch**, save and hash a neutral packet containing:
    - outcome, acceptance criteria, scope/non-goals, permitted review actions;
-   - commit plus worktree diff/file hashes and relevant source locations;
-   - authoritative contracts and already-executed commands/results;
+   - revision plus inspected/changed paths, worktree diff/file hashes and relevant source locations;
+   - authoritative contracts, already-executed commands/results, retained artifacts/findings, and unresolved decisions;
    - reviewer identity, actual no-history setting, assigned reviewer `SKILL.md` paths.
-   Use concise fields and links, with shared limits once. Exclude builder reasoning,
+   Reuse the existing task or review packet when it already contains these
+   neutral facts; add review identity and snapshot fields rather than duplicating searches or
+   completed command output. Use concise fields and links, with shared limits once. Exclude builder reasoning,
    design justifications, expected findings and persuasive conclusions.
 3. Launch with the selected configured role in the native role argument, or
    record why the generic fallback applies. Set **no builder-history fork**
@@ -43,6 +47,14 @@ roles. Astra suits difficult root work and consequential review, with proportion
 reasoning; scouts/mechanical work need not use the highest setting.
 
 ## Receipt and corrections
+
+For a high-risk adversarial gate, order the work as: focused evidence and cheap
+preflight; one bounded independent adversary; batch authorized corrections and
+delta review; freeze the candidate; then one final exact-head acceptance. Do not
+run the costly final matrix before that adversary. After freeze, do not make
+ordinary edits between the final acceptance evidence and its handback. A final
+blocker requires the necessary affected checks after correction and a newly
+frozen candidate; it never turns partial preflight evidence into acceptance.
 
 Request the **complete currently known blocker set in one pass**: severity,
 confidence, concrete paths and evidence; nonblocking follow-ups; unreviewed or

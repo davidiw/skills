@@ -1,12 +1,16 @@
-# Post-Review Adversarial Review
+# Pre-Acceptance Adversarial Review
 
-This is one bounded independent challenge after normal exact-revision review,
-only for high-risk work named by repository policy. Security/privacy assurance
+This is one bounded independent challenge after focused evidence and cheap
+preflight but before a costly matrix or final exact-head acceptance, only for
+high-risk work named by repository policy. Security/privacy assurance
 uses [`assurance-review.md`](../../../references/assurance-review.md); its
 coverage is not capped by this architecture-audit budget.
 
 Use the [independent handoff](../../../references/assurance-handoff.md) for actual
-context separation, complete known blockers, delta review and initial-review misses.
+context separation, packet reuse, complete known blockers, delta review and
+initial-review misses. Correct the complete blocker set, delta-review the
+affected seams, freeze the resulting candidate, and run one final exact-head
+acceptance. A cheap preflight failure prevents the costly matrix from starting.
 
 ## Budget
 
@@ -40,6 +44,8 @@ Report severity and confidence. Mark uninvestigated areas explicitly; do not sil
 
 The reviewer changes no files and performs no fixes. Return the exact revision,
 threads used, evidence reused, focused commands, and ordered findings. The
-author corrects blockers. The new exact revision receives a delta-scoped review
-of corrections, directly affected seams and regressions. Reopen unchanged scope
-only for expanded scope, invalidated assumptions or newly reachable surfaces.
+author corrects blockers in one batch. The new exact revision receives a
+delta-scoped review of corrections, directly affected seams and regressions,
+then freezes for one final exact-head acceptance. Reopen unchanged scope only
+for expanded scope, invalidated assumptions or newly reachable surfaces. A final
+acceptance blocker still requires affected checks after its correction.

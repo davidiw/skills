@@ -7,6 +7,19 @@ displaced-consumer correction review and terminal completion/cache evidence. No
 new specialist, invariant, schema, independent gate or runner is introduced.
 Minimal and review-only paths retain their existing exits.
 
+The candidate now makes the existing builder workflow the generic bounded
+execution owner: capable workers receive owner/invariant, scope, regression,
+non-goal, budget and handback limits while coordinators retain ambiguity,
+architecture and adjudication. Existing task/review packets are reused for
+command workers and fresh review handoffs. High-risk review now orders cheap preflight,
+one bounded adversary, batched corrections/delta review, freeze, and one final
+exact-head acceptance; a cheap failure prevents the costly matrix from starting.
+The existing natural runner gains fixture-backed behavioral coverage for these
+orders and lane admission. This changes routing/evidence guidance within the
+unreleased 0.9.0 candidate; adopters moving from 0.8.0 should apply the new
+execution packet and review ordering to open consequential work. Historical
+evidence remains bound to its recorded policy and source revision.
+
 Receipt fixture maintenance now rejects duplicate decoded JSON member names at
 every object depth and recognizes only LF JSONL records (with CRLF support and
 one terminal LF). The digest remains over the original bytes; malformed, blank,

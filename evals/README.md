@@ -82,6 +82,14 @@ outside model latency and preserve all attempts, timeouts, and failures.
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.
 
+The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
+five-case natural cohort for generic execution coordination: decomposable worker
+assignment, scope resolution before writing, adversarial ordering, cheap failure
+admission, and lane admission after an observed failure. It uses the same runner,
+fresh paired arms, and evidence rules as the other matrices. A case that only
+plans records actual delegation availability and handoff evidence; it does not
+turn an unavailable runtime capability into a claimed worker launch.
+
 The scope-approval regression `temporary-account-oauth-scope` models temporary
 accounts tempting a replacement of shipped mobile provider OAuth. Its paired
 `approved-provider-broker-design` case checks reuse of explicit design approval.
@@ -108,8 +116,9 @@ design stayed bounded in both. These results do not justify publishing 0.5.0.
 
 The release runner accepts `--package IMMUTABLE_CHECKOUT --matrix MATRIX_PATH
 --output NEW_PRIVATE_DIRECTORY --catalog PINNED_SKILL_DIRECTORY`. Optional `--case`,
-`--arm`, and `--trials` select focused development runs; the final campaign omits
-those overrides. Two trial lanes bound concurrency. Each trial permits up to
+`--arm`, `--trials`, and `--max-workers` select focused development runs; the
+final campaign omits those overrides. `--max-workers` controls execution
+concurrency; `execution-matrix.json` does not duplicate that setting. Each trial permits up to
 three contexts for builder and required independent lenses, except the explicit
 unavailable-delegation case (`agents.enabled=false`). The documented concurrent
 thread cap excludes the primary, so two spawned threads permit three total

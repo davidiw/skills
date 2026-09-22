@@ -53,3 +53,11 @@ rules, or expanding the product PR. When system work is authorized, establish it
 owner → registration → executable check → eval/evidence, recording gaps honestly.
 Return to the product slice against its actual revision and existing acceptance
 rules; a Harness update never upgrades old evidence or waives a pending gate.
+
+For reusable execution coordination, the canonical generic workflow is the
+[builder checkpoints](../../../references/change-classification.md), not a
+parallel delegation policy. Keep architecture and unresolved authority with the
+coordinator; reuse the existing task/review packet for executable checks and
+assurance handoffs. A long command is a worker assignment when a capable worker is
+available, and unavailable delegation remains an evidence limit rather than a
+fictional launch.
