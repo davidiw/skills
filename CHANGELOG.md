@@ -8,7 +8,10 @@ immutable captured inputs and material producer/build/model/configuration
 provenance, separately versioned from mutable human labels. Existing admission,
 control-plane progress and evidence-class guarantees remain unchanged.
 Activation now explicitly includes wrappers over external runtime owners and
-retained replay/evaluation/regression evidence. No new invariant, specialist,
+retained replay/evaluation/regression evidence. `physical_devices` and
+`multiple_adapters` now activate resource admission/reclamation independently of
+`constrained_runtime_resources`; generated profiles include an enforcement entry
+for repository review. No new invariant, specialist,
 profile schema, permanent agent, independent gate or review budget is added.
 
 Existing specialist references and builder/review packets carry conditional
@@ -21,7 +24,9 @@ cases or passing structural checks does not establish model behavior.
 Migration from 0.9.0: review the two invariant enforcement entries before changing
 `harness_policy_version` to `0.10.0`. Locate a repository-wide resource lifecycle
 owner when the profile also covers devices/adapters; retain existing database
-proof and add relevant lifecycle contracts. For product-created evaluation
+proof and add relevant lifecycle contracts. Profiles with physical devices or
+multiple adapters must review/add that enforcement entry even when constrained
+runtime resources are false. For product-created evaluation
 evidence, retain review/test receipts and register capture/corpus contract tests.
 Document borrow/transfer and evidence/label boundaries in existing owners, apply
 the conditional handbacks and composition pass to open cooperating-owner work,
@@ -30,7 +35,12 @@ missing provenance for old captures or relabel historical receipts: re-capture
 or leave new-policy reuse pending where required identity is unavailable.
 Published 0.9.0 and its immutable tag remain unchanged. Adoption of this candidate
 must name its exact source revision; stable install remains pinned to v0.9.0
-until a separately authorized 0.10.0 publication.
+until a separately authorized 0.10.0 publication. Stable publication also awaits
+a natural installed/control routing run with observed specialist body reads and
+full evidence-identity proof, including versioned canonical encoding or verified
+digest manifests. The prior router-only/`repr` forward probes do not satisfy that
+gate and are not retroactively upgraded by stronger eval expectations. This is
+a pre-release gate, not a gate for merging the unreleased development candidate.
 
 ## 0.9.0 - 2026-09-22
 

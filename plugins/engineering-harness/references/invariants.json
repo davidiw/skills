@@ -183,7 +183,7 @@
     },
     {
       "id": "typed-exact-evidence",
-      "statement": "Claims bind to exact revisions and evidence classes; generated, simulated, automated, physical, and production observations never substitute for one another. Replayable or comparative evidence additionally binds the immutable input evidence and the material producer/configuration/model provenance required to reproduce its meaning. Human labels, adjudications, or corrections remain separately identified and may change without rewriting captured evidence.",
+      "statement": "Claims bind to exact revisions and evidence classes; generated, simulated, automated, physical, and production observations never substitute for one another. Replayable or comparative evidence additionally binds the immutable input evidence and the material producer/build/model/configuration provenance required to reproduce its meaning. Human labels, adjudications, or corrections remain separately identified and may change without rewriting captured evidence.",
       "activates_when": "a result gates integration, release, compatibility, safety, or physical behavior; or replay, evaluation, or regression artifacts are retained or compared as evidence",
       "default_rung": "ci_check",
       "enforcement_timing": "risk_proportional",

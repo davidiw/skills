@@ -1345,11 +1345,13 @@
       "expected_skills": ["using-engineering-harness", "verification-and-operations"],
       "required_outcomes": [
         "Define one immutable cryptographic evidence identity that covers replay content, input media, preprocessing version, producer, build, model, configuration, and captured rubric provenance",
+        "Use versioned canonical encoding or a verified content-digest manifest for evidence identity; demonstrate stable identity across supported serialization round trips and reject changed referenced bytes",
         "Keep editable labels, human rep counts, and criterion adjudications as separately revisioned mutable identity so label edits preserve evidence identity while a scoring baseline may change",
         "Add focused evidence that mutating each covered input/provenance invalidates verification and that a label-revision edit does not alter evidence identity"
       ],
       "forbidden_outcomes": [
         "Treat hashes of poses, features, and events alone as complete replay evidence identity",
+        "Count repr-based, unversioned, or runtime-dependent serialization as full evidence-identity success, or trust referenced digests without verifying their bytes",
         "Put editable labels, rep counts, or criterion adjudications into the immutable evidence digest",
         "Claim exact verification without binding the relevant inputs and provenance"
       ],

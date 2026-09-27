@@ -43,6 +43,7 @@
       "typed-exact-evidence"
     ],
     "physical_devices": [
+      "resource-admission-and-reclamation",
       "typed-boundaries",
       "typed-exact-evidence"
     ],
@@ -78,6 +79,7 @@
       "resource-admission-and-reclamation"
     ],
     "multiple_adapters": [
+      "resource-admission-and-reclamation",
       "bounded-contracts",
       "explicit-composition"
     ]
