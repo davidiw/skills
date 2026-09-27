@@ -1312,6 +1312,91 @@
       "delegation_available": true
     },
     {
+      "id": "camera-borrower-lease",
+      "title": "Keep an already-open camera borrowed across analysis",
+      "control": "mixed",
+      "coverage_tags": ["requires-ui-ownership", "requires-external-provider"],
+      "fixture": "fixtures/camera-borrower-lease",
+      "context": "A live preview opens one camera connection before optional analysis begins. Analysis owns a frame subscription and supports start, pause, resume, stop, and later re-entry. The preview exposes pause and resume controls, but after analysis stops the camera is disconnected and cannot resume.",
+      "request": "Fix the analysis integration so a paused preview can resume its already-open camera after analysis completes. Keep the current camera port and preview behavior.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "application-composition"],
+      "required_outcomes": [
+        "Identify the borrower closing a caller-owned camera as an ownership violation at the composition seam, rather than treating pause/resume UI state as camera lifecycle authority",
+        "Preserve the borrowed camera through analysis teardown and exercise analysis start, pause, resume, stop, and re-entry atop the same connected preview",
+        "Keep acquisition and final close with the existing preview/composition owner"
+      ],
+      "forbidden_outcomes": [
+        "Mask the disconnect by changing pause/resume UI state or reopening a replacement camera",
+        "Transfer camera ownership to analysis without an explicit transfer contract",
+        "Claim device or physical proof from host fakes"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "replay-capture-evidence-identity",
+      "title": "Separate immutable replay evidence from editable labels",
+      "control": "positive",
+      "coverage_tags": ["requires-exact-evidence"],
+      "fixture": "fixtures/replay-capture-evidence",
+      "context": "A replay capture stores pose, feature, and event hashes. Input media, preprocessing version, producer, build, model, configuration, and captured rubric provenance currently live in a manifest alongside editable human labels, rep counts, and criterion adjudications.",
+      "request": "Make replay captures verifiable while keeping the user-facing label, rep count, and criterion adjudication editable.",
+      "expected_class": "consequential",
+      "expected_skills": ["using-engineering-harness", "verification-and-operations"],
+      "required_outcomes": [
+        "Define one immutable cryptographic evidence identity that covers replay content, input media, preprocessing version, producer, build, model, configuration, and captured rubric provenance",
+        "Keep editable labels, human rep counts, and criterion adjudications as separately revisioned mutable identity so label edits preserve evidence identity while a scoring baseline may change",
+        "Add focused evidence that mutating each covered input/provenance invalidates verification and that a label-revision edit does not alter evidence identity"
+      ],
+      "forbidden_outcomes": [
+        "Treat hashes of poses, features, and events alone as complete replay evidence identity",
+        "Put editable labels, rep counts, or criterion adjudications into the immutable evidence digest",
+        "Claim exact verification without binding the relevant inputs and provenance"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "caller-stream-label-restraint",
+      "title": "Keep a caller-owned stream parser small",
+      "control": "negative",
+      "coverage_tags": ["avoid-durable-runtime", "avoid-event-system", "avoid-state-machine", "avoid-repository-layer", "avoid-compatibility-machinery", "avoid-architecture-document", "avoid-operational-infrastructure"],
+      "fixture": "fixtures/caller-stream-parser",
+      "context": "A synchronous file wrapper parses a caller-owned text stream into records. It has no persistence, background work, delivery, generated output, or provenance requirements.",
+      "request": "Add an optional string label to the parsed result and focused tests, preserving the caller's ownership of the stream.",
+      "expected_class": "minimal",
+      "expected_skills": ["using-engineering-harness"],
+      "required_outcomes": [
+        "Add the optional label in the existing parser/result path while leaving the caller-owned stream open",
+        "Use focused parser tests and preserve behavior when the label is omitted"
+      ],
+      "forbidden_outcomes": [
+        "Add lifecycle tables, cryptographic provenance, repositories, events, jobs, state machines, compatibility machinery, or an architecture document",
+        "Take ownership of or close the caller-owned stream"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "camera-explicit-transfer",
+      "title": "Allow an explicitly transferred camera owner to close",
+      "control": "mixed",
+      "coverage_tags": ["requires-external-provider"],
+      "fixture": "fixtures/camera-explicit-transfer",
+      "context": "A preview explicitly hands a camera session to a recording operation and must not use it afterward. The recorder becomes responsible for final close.",
+      "request": "Implement the accepted camera handoff and focused checks for the recording operation.",
+      "expected_class": "bounded",
+      "expected_skills": ["using-engineering-harness", "application-composition"],
+      "required_outcomes": [
+        "Make the transfer explicit and prove the former preview owner can no longer use or close the camera",
+        "Allow the recording owner to use and finally close the transferred camera"
+      ],
+      "forbidden_outcomes": [
+        "Apply a blanket never-close rule to a valid transfer",
+        "Leave both owners able to act after transfer",
+        "Invent a second camera or lifecycle framework"
+      ],
+      "delegation_available": true
+    },
+    {
       "id": "challenge-job-recovery",
       "title": "Shared job recovery mechanism",
       "control": "mixed",

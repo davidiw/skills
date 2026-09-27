@@ -11,7 +11,11 @@ consult relevant [invariants](../../references/invariants.json) only when needed
 1. Trace each affected surface to the canonical deterministic policy owner.
    Distinguish domain results, transport/storage forms and view state.
 2. Keep assembly in a composition root; adapters translate rather than redefine
-   policy. Unsupported platform capabilities remain explicit.
+   policy. Unsupported platform capabilities remain explicit. When an adapter
+   wraps an external owner, trace acquisition, teardown and subsequent reuse or
+   re-entry under the declared owned/borrowed/transferred contract. At the
+   composition seam, prove borrowed owners remain usable after wrapper close or
+   pause; for transfer, prove the old owner can no longer act.
 3. For UI/loading, read [interactive surfaces](references/interactive-surfaces.md).
    Separate useful first interaction from independent enrichment; route state is
    transient, while accepted durable work remains with its existing owner.

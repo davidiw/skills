@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.10.0 - Unreleased
+
+Strengthens `resource-admission-and-reclamation` with owned, borrowed and
+explicitly transferred resource lifecycles, and `typed-exact-evidence` with
+immutable captured inputs and material producer/build/model/configuration
+provenance, separately versioned from mutable human labels. Existing admission,
+control-plane progress and evidence-class guarantees remain unchanged.
+Activation now explicitly includes wrappers over external runtime owners and
+retained replay/evaluation/regression evidence. No new invariant, specialist,
+profile schema, permanent agent, independent gate or review budget is added.
+
+Existing specialist references and builder/review packets carry conditional
+resource/evidence handbacks, a coordinator pass over one to three cooperating
+owner sequences, and focused composition/mutation proof. Ordinary parser,
+file-wrapper and UI edits keep the minimal path. Fixture-backed behavioral cases
+cover destructive borrowed teardown, mutable provenance, and restraint; adding
+cases or passing structural checks does not establish model behavior.
+
+Migration from 0.9.0: review the two invariant enforcement entries before changing
+`harness_policy_version` to `0.10.0`. Locate a repository-wide resource lifecycle
+owner when the profile also covers devices/adapters; retain existing database
+proof and add relevant lifecycle contracts. For product-created evaluation
+evidence, retain review/test receipts and register capture/corpus contract tests.
+Document borrow/transfer and evidence/label boundaries in existing owners, apply
+the conditional handbacks and composition pass to open cooperating-owner work,
+and verify teardown/re-entry and evidence mutation semantics. Do not invent
+missing provenance for old captures or relabel historical receipts: re-capture
+or leave new-policy reuse pending where required identity is unavailable.
+Published 0.9.0 and its immutable tag remain unchanged. Adoption of this candidate
+must name its exact source revision; stable install remains pinned to v0.9.0
+until a separately authorized 0.10.0 publication.
+
 ## 0.9.0 - 2026-09-22
 
 Strengthens existing consequential mechanism decisions, calibrated general review,

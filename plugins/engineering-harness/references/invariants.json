@@ -84,8 +84,8 @@
     },
     {
       "id": "resource-admission-and-reclamation",
-      "statement": "Activities holding scarce runtime resources are admitted against protected reserves, have one owning lifecycle, and complete or cooperatively yield within a bounded deadline; required control-plane progress is never reclaimed for optional work. A safety/correctness-critical action cannot depend on an optional telemetry or audit effect, including contention that effect introduces. A mandatory audit has an explicit durability, capacity, and failure contract.",
-      "activates_when": "runtime activities contend for memory, buffers, peripherals, sockets, task capacity, locks, database connections, transactions, serialized queues, or another contention domain that can block required progress",
+      "statement": "Activities holding scarce runtime resources are admitted against protected reserves and complete or cooperatively yield within a bounded deadline; required control-plane progress is never reclaimed for optional work. A safety/correctness-critical action cannot depend on an optional telemetry or audit effect, including contention that effect introduces. A mandatory audit has an explicit durability, capacity, and failure contract. Activities holding scarce or external runtime resources have one owning lifecycle. A component may destructively release only resources it owns or whose ownership was explicitly transferred to it. A wrapper, lease, adapter, observer, or analysis session over a borrowed resource releases only the handles/subscriptions it acquired; closing it must not destroy the underlying owner unless that transfer is part of the declared contract.",
+      "activates_when": "runtime activities contend for memory, buffers, peripherals, sockets, task capacity, locks, database connections, transactions, serialized queues, or another contention domain that can block required progress; or a component wraps an externally owned runtime resource whose teardown or subsequent reuse crosses owners",
       "default_rung": "runtime_guard",
       "enforcement_timing": "boundary_introduction",
       "owner_skill": "architecture-foundations",
@@ -183,8 +183,8 @@
     },
     {
       "id": "typed-exact-evidence",
-      "statement": "Claims bind to exact revisions and evidence classes; generated, simulated, automated, physical, and production observations never substitute for one another.",
-      "activates_when": "a result gates integration, release, compatibility, safety, or physical behavior",
+      "statement": "Claims bind to exact revisions and evidence classes; generated, simulated, automated, physical, and production observations never substitute for one another. Replayable or comparative evidence additionally binds the immutable input evidence and the material producer/configuration/model provenance required to reproduce its meaning. Human labels, adjudications, or corrections remain separately identified and may change without rewriting captured evidence.",
+      "activates_when": "a result gates integration, release, compatibility, safety, or physical behavior; or replay, evaluation, or regression artifacts are retained or compared as evidence",
       "default_rung": "ci_check",
       "enforcement_timing": "risk_proportional",
       "owner_skill": "verification-and-operations",
