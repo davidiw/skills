@@ -321,6 +321,44 @@ class ProfileDiscoveryTest(unittest.TestCase):
         self.assertTrue(profile["capabilities"]["constrained_runtime_resources"])
         self.assertIn("resource-admission-and-reclamation", profile["enforcement"])
 
+    def test_borrowed_resources_activate_without_constrained_resource_signal(self) -> None:
+        for physical, adapters in ((True, False), (False, True), (True, True)):
+            with self.subTest(physical=physical, adapters=adapters):
+                with tempfile.TemporaryDirectory() as directory:
+                    repository = Path(directory)
+                    paths = []
+                    if physical:
+                        paths.append("hardware/camera.py")
+                    if adapters:
+                        paths.extend(("adapters/camera.py", "adapters/analysis.py"))
+                    for relative in paths:
+                        path = repository / relative
+                        path.parent.mkdir(parents=True, exist_ok=True)
+                        path.write_text(
+                            "class AnalysisLease:\n"
+                            "    def __init__(self, camera):\n"
+                            "        self.borrowed_camera = camera\n"
+                            "    def close(self):\n"
+                            "        self.borrowed_camera.close()\n"
+                        )
+                    profile = propose_profile(repository)
+                self.assertEqual(profile["capabilities"]["physical_devices"], physical)
+                self.assertEqual(profile["capabilities"]["multiple_adapters"], adapters)
+                self.assertFalse(profile["capabilities"]["constrained_runtime_resources"])
+                self.assertIn("resource-admission-and-reclamation", profile["enforcement"])
+                self.assertEqual(
+                    profile["enforcement"]["resource-admission-and-reclamation"],
+                    {"rung": "principle", "owner": "review-required"},
+                )
+                self.assertEqual(validate_profile(profile), [])
+
+    def test_plain_parser_does_not_activate_resource_enforcement(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            (repository / "parser.py").write_text("def parse(stream): return list(stream)\n")
+            profile = propose_profile(repository)
+        self.assertNotIn("resource-admission-and-reclamation", profile["enforcement"])
+
     def test_new_high_confidence_capability_is_meaningful_drift(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             repository = Path(directory)

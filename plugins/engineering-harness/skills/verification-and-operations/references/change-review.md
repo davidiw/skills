@@ -15,7 +15,9 @@ loading Verification and Operations is not a prerequisite.
    pass and a valid case that could be rejected or damaged. Trace downstream
    protections before reporting a defect; challenge the reviewer's hypothesis too.
    A green suite does not cover omitted behavior: inspect coverage and use focused
-   checks at the concrete seam.
+   checks at the concrete seam. For cross-owner composition, trace at least one
+   complete lifecycle through the changed owners, including teardown and re-entry
+   where meaningful; isolated component tests do not establish that contract.
 3. Match coverage to the claim: identify relevant variants and actual consumers
    in a compact working map or existing record, not a new mandatory document.
    Consider applicable input/output schemas, selectors, success/failure paths,

@@ -11,7 +11,9 @@ or state store. Persistent/wire evolution, cross-process lifetime, identity/
 authorization, sensitive collection/use/disclosure/erasure, shared contention,
 physical proof, shared testing/evidence/review policy and external release actions
 are consequential. Record relevant
-authority, lifetime, consumers, failure/proof and action limits; reuse accepted
+authority, lifetime, consumers, failure/proof and action limits; for resource
+boundaries distinguish own/borrow/transfer, and for reusable evidence distinguish
+immutable evidence identity from mutable labels; reuse accepted
 profile/owner evidence and read exact catalog entries only for unresolved meanings.
 
 ## Scope expansion gate
@@ -134,7 +136,22 @@ Reuse the existing task or review packet for later workers, reviewers,
 corrections, and command delegation rather than repeating repository search or
 already-completed tests. It records the revision; inspected/changed paths;
 commands and results; retained artifacts and findings; authoritative sources;
-and unresolved decisions. Update it only for the changed snapshot or newly
+and unresolved decisions. For consequential resource-bearing work, the handback
+identifies resources created/owned, borrowed or transferred; permitted destructive
+operations; what remains usable after close; and delayed callbacks/resources
+that may outlive close. For evaluation/artifact work, identify immutable inputs,
+producer/build and model/configuration provenance, mutable labels/adjudications,
+and changes that invalidate baseline compatibility. Omit these fields when
+irrelevant; ordinary UI or parser edits need neither.
+
+When multiple workers change cooperating owners, the coordinator makes one short
+composition pass after handback and before any independent adversarial review:
+which sequences cross changed owners, and what happens at every transition?
+Record one to three highest-risk cross-owner scenarios in the existing stable
+review packet, including teardown/re-entry or delayed completion when meaningful,
+and point to focused composition regressions. Surface the seams as neutral
+reviewer questions, not expected findings. This adds no agent, independent gate,
+or review budget. Update the packet only for the changed snapshot or newly
 relevant evidence. This execution assignment is not an independent review:
 required fresh-review separation still uses the [assurance handoff](assurance-handoff.md).
 

@@ -22,6 +22,10 @@ review. Ordinary bounded work uses focused builder checks.
    - outcome, acceptance criteria, scope/non-goals, permitted review actions;
    - revision plus inspected/changed paths, worktree diff/file hashes and relevant source locations;
    - authoritative contracts, already-executed commands/results, retained artifacts/findings, and unresolved decisions;
+   - for multiple workers changing cooperating owners, the coordinator's one to
+     three cross-owner composition scenarios and highest-risk seams as neutral
+     reviewer questions; the reviewer may challenge or supplement them within
+     the existing budget;
    - reviewer identity, actual no-history setting, assigned reviewer `SKILL.md` paths.
    Reuse the existing task or review packet when it already contains these
    neutral facts; add review identity and snapshot fields rather than duplicating searches or

@@ -13,6 +13,10 @@ The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
 exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
+The **0.10.0 candidate** strengthens borrowed/transferred resource lifecycles,
+reusable evidence identity and conditional cross-owner composition checks:
+[changes and migration](CHANGELOG.md). It is not yet a published stable release.
+
 Stable **0.9.0** adds bounded execution allocation and high-risk acceptance
 ordering under existing Harness owners: [changes and migration](CHANGELOG.md). Product Experience, Interface
 Design, and Brand and Language remain available: [scope and research](docs/proposals/product-experience/README.md).

@@ -33,6 +33,13 @@ Then test four questions:
 4. Can the owner be located from repository wayfinding and enforced dependency
    direction?
 
+For resource-bearing concepts, extend the existing map with **Owned / Borrowed /
+Transferred**, the transfer boundary (if any), permitted destructive operations,
+and what must remain usable after close. Owning a wrapper or subscription does
+not imply owning the underlying resource. A transfer identifies when the old
+owner loses authority and the new owner gains it. Ordinary value/parser work
+needs no resource table.
+
 An ownership gap is resolved in the design before implementation proceeds.
 
 ## Domain meaning before structure
