@@ -346,12 +346,14 @@ def validate_execution_matrix(matrix: dict, cases: dict, errors: list[str]) -> N
         "execution-decomposable-batch", "execution-scope-before-write",
         "execution-adversary-before-matrix", "execution-preflight-blocks-matrix",
         "execution-lane-failure-admission",
+        "iteration-fixture-login-does-not-prove-production",
+        "iteration-full-matrix-after-freeze",
     }
     ids = matrix.get("case_ids", [])
     if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):
         errors.append(prefix + "case_ids must be strings")
         return
-    require(required <= set(ids), prefix + "missing delegation, authority, ordering, preflight, or lane coverage", errors)
+    require(required <= set(ids), prefix + "missing delegation, authority, ordering, preflight, lane, iteration-proof, or final-regression-timing coverage", errors)
     require(len(ids) == len(set(ids)) and set(ids) <= set(cases), prefix + "duplicate or unknown case", errors)
     for case_id in ids:
         case = cases.get(case_id, {})

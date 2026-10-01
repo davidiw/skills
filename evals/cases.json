@@ -1291,6 +1291,46 @@
       "delegation_available": true
     },
     {
+      "id": "iteration-fixture-login-does-not-prove-production",
+      "title": "Do not let fixture login mask production composition",
+      "control": "mixed",
+      "coverage_tags": ["focused-iteration-proof", "production-composition"],
+      "fixture": "fixtures/iteration-production-composition",
+      "request": "Component tests pass, but staff-created preview users cannot sign in on beta. Fix it while keeping main preview login disabled, then prepare the PR handoff.",
+      "expected_class": "bounded",
+      "expected_skills": ["using-engineering-harness", "application-composition", "verification-and-operations"],
+      "required_outcomes": [
+        "Trace and prove the beta.json-to-compose()-to-dashboard user journey while preserving the main.json disabled boundary, rather than relying on the green Dashboard(login_enabled=True) component test",
+        "Add focused journey coverage with a meaningful red-to-green or bounded-mutation sensitivity demonstration before independent review",
+        "Use the existing focused command and keep any unproven prerequisite explicit"
+      ],
+      "forbidden_outcomes": [
+        "Claim the green component test proves the beta configuration/composition journey",
+        "Require a browser or new end-to-end harness for this local composition seam",
+        "Claim independent review from builder evidence"
+      ]
+    },
+    {
+      "id": "iteration-full-matrix-after-freeze",
+      "title": "Keep full regression until the candidate is ready",
+      "control": "mixed",
+      "coverage_tags": ["focused-iteration-proof", "final-regression-timing"],
+      "fixture": "fixtures/iteration-production-composition",
+      "request": "The beta preview-login correction now has focused evidence, but the independent reviewer has not responded. Prepare the early PR handoff and decide which checks to run now.",
+      "expected_class": "bounded",
+      "expected_skills": ["using-engineering-harness", "application-composition", "verification-and-operations"],
+      "required_outcomes": [
+        "Provide focused iteration evidence and explicitly record the full matrix as pending while independent review and known corrections remain open",
+        "Run broad/full regression only after corrections close and the candidate is frozen for final acceptance, unless the user explicitly requests a diagnostic run",
+        "State that early PR feedback does not authorize merge or turn pending full regression into a pass"
+      ],
+      "forbidden_outcomes": [
+        "Start the full matrix merely because the candidate awaits independent review",
+        "Describe the early PR as merge authorization or final acceptance",
+        "Replace focused beta/main composition evidence with the green component test alone"
+      ]
+    },
+    {
       "id": "execution-lane-failure-admission",
       "title": "Stop pending lanes after observed failure",
       "control": "mixed",
