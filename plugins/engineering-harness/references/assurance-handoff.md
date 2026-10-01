@@ -7,9 +7,12 @@ review. Ordinary bounded work uses focused builder checks.
 
 ## Prepare and launch
 
-1. For implementation handoffs, finish focused builder checks and the cheapest
-   relevant preflight before a costly matrix or final exact-head acceptance. A
-   cheap failure blocks that later work until corrected and rechecked. For review-only
+1. For implementation handoffs, finish the author's
+   [focused iteration proof](../skills/verification-and-operations/references/evidence-contract.md#focused-iteration-proof)
+   and cheapest relevant preflight before requesting a readiness verdict.
+   Pending author proof cannot be replaced by reviewer closure; early design
+   feedback remains available when labeled as such. A cheap failure blocks
+   final acceptance until corrected and rechecked. For review-only
    requests, prepare the packet from existing evidence; the fresh reviewer owns
    the assigned investigation and proofs. Inspect the launcher's available roles and
    prefer a configured general read-only reviewer; use a fresh generic fallback
@@ -52,13 +55,18 @@ reasoning; scouts/mechanical work need not use the highest setting.
 
 ## Receipt and corrections
 
-For a high-risk adversarial gate, order the work as: focused evidence and cheap
+For a high-risk adversarial gate, order the work as: focused iteration evidence and cheap
 preflight; one bounded independent adversary; batch authorized corrections and
 delta review; freeze the candidate; then one final exact-head acceptance. Do not
 run the costly final matrix before that adversary. After freeze, do not make
 ordinary edits between the final acceptance evidence and its handback. A final
 blocker requires the necessary affected checks after correction and a newly
 frozen candidate; it never turns partial preflight evidence into acceptance.
+
+Likewise, broad/full regression belongs after known corrections are closed and
+the final candidate is frozen, not during ordinary iteration or while awaiting
+review. An explicit user-requested diagnostic full run is the narrow exception;
+record it as diagnostic rather than final acceptance.
 
 Request the **complete currently known blocker set in one pass**: severity,
 confidence, concrete paths and evidence; nonblocking follow-ups; unreviewed or

@@ -2,6 +2,20 @@
 
 ## 0.10.0 - Unreleased
 
+Adds conditional PR delivery guidance for user- or repository-authorized work:
+open a reviewable PR with focused evidence and explicitly pending final
+regression, and include its URL in the handback. Focused iteration proof now
+starts from the user-visible promise, exercises actual production composition
+and defaults for cross-owner/configuration flows, keeps fixture-enabled
+prerequisites from masking the production path, and uses assumption-derived
+negative boundaries with meaningful sensitivity when practical. It remains
+proportional: simple local fixes need no uniform browser or new harness.
+Broad/full regression waits for known corrections and a frozen final candidate,
+except for an explicitly user-requested diagnostic run. This refines feedback
+timing without relaxing final verification, review, integration or release gates.
+No additional publication authority, invariant, profile schema or specialist is
+introduced.
+
 Strengthens `resource-admission-and-reclamation` with owned, borrowed and
 explicitly transferred resource lifecycles, and `typed-exact-evidence` with
 immutable captured inputs and material producer/build/model/configuration
@@ -21,7 +35,15 @@ file-wrapper and UI edits keep the minimal path. Fixture-backed behavioral cases
 cover destructive borrowed teardown, mutable provenance, and restraint; adding
 cases or passing structural checks does not establish model behavior.
 
-Migration from 0.9.0: review the two invariant enforcement entries before changing
+Migration from 0.9.0: for open work, replace any fixture-only prerequisite
+claim with focused iteration proof of the user-visible promise and actual
+production composition/defaults; record unproven production prerequisites,
+assumption-derived negative boundaries, and pending final regression. Keep an
+early PR reviewable on focused evidence, then run broad/full regression only
+after known corrections close and the final candidate freezes, unless an
+explicit diagnostic run is requested. This is a bounded refinement of the
+existing evidence/review order, not a new gate, harness, browser requirement,
+or merge authority. Review the two invariant enforcement entries before changing
 `harness_policy_version` to `0.10.0`. Locate a repository-wide resource lifecycle
 owner when the profile also covers devices/adapters; retain existing database
 proof and add relevant lifecycle contracts. Profiles with physical devices or

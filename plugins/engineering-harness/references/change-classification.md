@@ -16,6 +16,12 @@ boundaries distinguish own/borrow/transfer, and for reusable evidence distinguis
 immutable evidence identity from mutable labels; reuse accepted
 profile/owner evidence and read exact catalog entries only for unresolved meanings.
 
+For a behavioral change, state the observable promise and relevant failure
+conditions before implementation, independently of the proposed mechanism.
+Choose a focused proof seam now and exercise it early; the
+[iteration proof contract](../skills/verification-and-operations/references/evidence-contract.md#focused-iteration-proof)
+defines when component fixtures are insufficient.
+
 ## Scope expansion gate
 
 **2. Decide every requested behavior/owner before production edits.** Record in
@@ -158,6 +164,9 @@ required fresh-review separation still uses the [assurance handoff](assurance-ha
 ## 5. Implement and prove; 6. close gates
 
 Stay within recorded boundaries and use focused tests at the actual failure seam.
+Complete the [focused iteration proof](../skills/verification-and-operations/references/evidence-contract.md#focused-iteration-proof)
+before independent readiness review; the coordinator owns the composed outcome
+across delegated components. Keep final broad regression pending until freeze.
 New evidence changing scope returns to checkpoint 2 before editing that boundary.
 Design/plan requests stop at the proposal: production stays unchanged and planned
 implementation checks/reviews remain prospective.

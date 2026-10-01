@@ -25,7 +25,7 @@ class ExecutionMatrixTest(unittest.TestCase):
     def test_candidate_matrix_is_valid(self):
         self.assertEqual(self.errors(), [])
 
-    def test_required_a_to_e_cases_cannot_be_removed(self):
+    def test_required_execution_and_iteration_cases_cannot_be_removed(self):
         for case_id in self.matrix["case_ids"]:
             with self.subTest(case_id=case_id):
                 matrix = copy.deepcopy(self.matrix)

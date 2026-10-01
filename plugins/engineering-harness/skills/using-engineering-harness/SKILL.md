@@ -54,6 +54,9 @@ architecture foundations. **Harden:** start with architecture hardening.
 All three retain the builder scope checkpoint.
 
 Before policy conflict stops authorized work, apply
-[precedence](../../references/precedence-and-exceptions.md). Before final branch
+[precedence](../../references/precedence-and-exceptions.md). When the user or
+repository authorizes PR delivery, including a standing user preference, apply
+[PR delivery](../verification-and-operations/references/reviewable-commits.md#pr-delivery)
+at the first coherent commit. Before final branch
 review/integration, apply [reviewable commits](../verification-and-operations/references/reviewable-commits.md)
 and bind subsequent evidence to the resulting exact revision.

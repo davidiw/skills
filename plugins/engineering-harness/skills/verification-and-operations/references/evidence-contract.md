@@ -43,6 +43,51 @@ sample admission and measured correctness from optimization qualification; the
 [owning methodology](methodology.md) decides which claim those results support. Developer
 hardware can detect regressions but does not establish device release limits.
 
+## Focused iteration proof
+
+State the user-visible promise before implementation and prove it early during
+iteration at its actual failure seam, independently of the proposed mechanism.
+Before independent readiness review, complete that focused proof. Record the promise,
+the production composition and defaults that reach it, the focused command or
+observation, and any prerequisite that remains unproven. For a flow crossing
+owners or configuration, exercise the real production assembly/default path and
+the relevant alternate state; a component test or a fixture-only injection does
+not establish that composition.
+
+When a claim depends on packaged startup, rendered deployment configuration or
+a UI/API connection, cover that entrypoint rather than rebuilding its wiring in
+the fixture. Use existing harnesses and keep simulated providers at their external
+boundary. Separate local composition evidence from deployed/external proof.
+
+Do not make a prerequisite appear true by enabling it only in the test fixture
+when whether production supplies it is part of the claim (for example, fixture
+login, a feature flag, provider availability, or configuration). Test setup may
+model an accepted prerequisite, but the evidence must identify it and separately
+prove or leave pending the production path that supplies it. Add negative
+boundary cases from the stated assumptions, and demonstrate their sensitivity
+with an old-code failure or a bounded mutation when practical. A browser,
+end-to-end harness, or new test framework is not a default requirement for a
+local fix; use the smallest existing proof that reaches the seam.
+When a focused command can run locally, execute the failing case rather than
+inferring failure from source inspection. If sensitivity cannot be exercised,
+record that gap rather than claiming the proof complete.
+The failure must reach the intended assertion, not fail at compilation or setup.
+Restore the candidate and retain the passing result with the negative evidence;
+do not mutate live systems for sensitivity checks.
+
+Iteration proof is deliberately not final acceptance. Run a broad/full
+regression only after known corrections are closed and the candidate is frozen
+for final landing or a required final gate. Do not consume it while iterating or
+awaiting review unless the user explicitly requests a diagnostic full run. An
+early PR may carry focused evidence and an explicit pending full regression;
+opening it neither implies merge authority nor converts pending work to passing
+evidence.
+
+A PR-only handoff remains iteration: completing the code does not itself select
+the final acceptance stage. Leave broad regression pending until the task reaches
+the repository's final landing/review gate with its prerequisites closed, or the
+user explicitly requests final acceptance or a diagnostic full run.
+
 ## Evidence identity and label identity
 
 For retained replay, evaluation or regression artifacts used as evidence, the
