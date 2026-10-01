@@ -2,6 +2,13 @@
 
 ## 0.10.0 - Unreleased
 
+Adds conditional PR delivery guidance for user- or repository-authorized work:
+open a reviewable PR before expensive verification, update its evidence as checks
+run, and include its URL in the handback. Standing user preferences are honored;
+explicit exceptions remain authoritative. This changes feedback timing without
+relaxing final verification, review, integration or release gates. No additional
+publication authority, invariant, profile schema or specialist is introduced.
+
 Strengthens `resource-admission-and-reclamation` with owned, borrowed and
 explicitly transferred resource lifecycles, and `typed-exact-evidence` with
 immutable captured inputs and material producer/build/model/configuration
