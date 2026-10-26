@@ -25,25 +25,22 @@ use synthetic proof; implementation checks/reviews remain prospective.
   If the cause remains unresolved, use the conditional
   [diagnosis method](../verification-and-operations/references/diagnosis.md);
   reading a method does not require its owner skill or an architecture exercise.
-- **Review only:** an already-fresh reviewer without builder history performs its
-  assigned gate and records that status; do not delegate it again. Otherwise,
-  release/launch gates and required or explicit independent reviews begin with the
-  [handoff](../../references/assurance-handoff.md) before any reviewer-body read.
-  The child must review the requested gate itself, not merely an adjacent lens.
-  Other security/authorization reviews use [security](../security-assurance/SKILL.md);
-  privacy/lifecycle reviews use [privacy](../privacy-assurance/SKILL.md). Combined
-  reviews use fresh contexts when available. Whole-system reviews cover unchanged
-  paths through release inventory mode; named flows/diffs use changed-path mode.
-  For engineering-methodology or performance-evidence assessment, use
-  [verification and operations](../verification-and-operations/SKILL.md).
-  For UX/UI/brand critique, select the [experience owner](../../references/experience-routing.md).
-  Other code reviews use the [change-review method](../verification-and-operations/references/change-review.md).
-  Keep production unchanged and skip the builder checkpoints.
+- **Review only:** keep production unchanged and skip builder checkpoints. An
+  already-fresh reviewer performs and records its assigned gate; otherwise,
+  required/explicit independent or release review starts with the
+  [handoff](../../references/assurance-handoff.md). Select the primary requested
+  lens: [security](../security-assurance/SKILL.md),
+  [privacy](../privacy-assurance/SKILL.md),
+  [verification](../verification-and-operations/SKILL.md), an
+  [experience owner](../../references/experience-routing.md), or the
+  [change-review method](../verification-and-operations/references/change-review.md).
+  Named flows use changed-path mode; launch/whole-system work uses release
+  inventory mode. Combine fresh contexts only for distinct required lenses.
 - **Other change or design:** complete the
   [builder checkpoints](../../references/change-classification.md) in order before
   designing or editing. Material expansion into a shared/cross-cutting responsibility
   or widened accepted contract needs explicit approval of the concrete proposal.
-  **No production-edit call for a missing, invalid or pending scope row.** Continue
+  **Do not edit across an unresolved or unapproved scope boundary.** Continue
   independent authorized work. For decomposable authorized execution, use the
   builder's bounded worker assignment rather than making the coordinator repeat
   worker search, edits, or long commands.

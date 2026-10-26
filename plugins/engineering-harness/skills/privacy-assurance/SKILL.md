@@ -5,16 +5,14 @@ description: Review changed sensitive data collection, use, disclosure, derivati
 
 # Privacy Assurance
 
-If this context built the change or contains its design reasoning, the next step
-is the [fresh-context handoff](../../references/assurance-handoff.md), including
-agent-tool discovery. Do not conduct or claim independent review in the builder,
-or claim delegation unavailable without checking the deferred tool catalog.
-
-Find material privacy defects across the requested data lifecycle, including
-obligations absent from the current harness vocabulary. Read the shared
-[`assurance review contract`](../../references/assurance-review.md) before review.
-Use relevant accepted data contracts; consult specific [catalog entries](../../references/invariants.json) only
-when needed. The data owner retains lifecycle ownership.
+Read the shared [`assurance review contract`](../../references/assurance-review.md)
+before review; it owns scope, independence, handoff, findings and direct-invocation
+limits. Find material privacy defects across the requested data lifecycle,
+including obligations absent from the current harness vocabulary. Use relevant
+accepted data contracts and consult specific [catalog entries](../../references/invariants.json)
+only when needed. The data owner retains lifecycle ownership.
+Apply [precedence](../../references/precedence-and-exceptions.md) for conflicts
+or before requiring a new action.
 
 ## Select mode
 
@@ -49,8 +47,4 @@ when needed. The data owner retains lifecycle ownership.
    compliance from this technical review.
 
 For credential or session authority defects, use `security-assurance` at the
-shared seam. Before stopping work or changing scope, apply
-[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md).
-
-The review is complete when every scoped sensitive representation and late
-writer has a disposition, and unproven erasure or review coverage is explicit.
+shared seam.

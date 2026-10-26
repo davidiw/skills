@@ -24,41 +24,25 @@ defines when component fixtures are insufficient.
 
 ## Scope expansion gate
 
-**2. Decide every requested behavior/owner before production edits.** Record in
-an existing task record or user-visible checkpoint; reuse settled rows and update
-them when new evidence changes scope:
+**2. Establish scope before production edits.** Reuse the user request, accepted
+contract and prior approvals. Read owner skills and inspect evidence as needed to
+resolve scope; the gate applies to edits, not investigation.
 
-| Behavior and accepted owner/source | Already supported? Evidence | Scope expansion | Approval source/exact limits | Allowed work / blocked boundary |
-| --- | --- | --- | --- | --- |
+For consequential changes, keep a concise decision in the existing task packet:
+behavior/owner, accepted boundary, authority and any unapproved expansion. Use a
+table only when several boundaries make it useful. Routine implementation choices
+within the accepted feature need neither separate approval nor another scope form.
 
-Material expansion into a shared/cross-cutting responsibility or widening an
-accepted contract needs explicit user approval before implementation:
+An explicit request can authorize a concrete expanded behavior. Ask only when a
+material change to product, authority, lifetime, compatibility or shared-owner
+semantics is outside the authority already given. A private helper, disabled
+flag, technical necessity or agent-authored design cannot authorize that change.
+Do not rewrite the accepted contract to authorize your implementation.
 
-- `none`: positive evidence that the behavior is supported and accepted semantics
-  remain unchanged. A local choice plainly within the feature and contract needs
-  no separate architecture approval.
-- `approved`: the concrete boundary-expansion proposal, explicit user approval
-  and exact limits. Reuse a clear affirmative response within those limits.
-- `pending`: the contract excludes the behavior and no approved proposal covers
-  it. Leave this boundary untouched; implement independent authorized rows.
-
-Finish this checkpoint in an earlier assistant message or a completed
-record-only write, **before reading the primary-owner skill or issuing a
-production-edit call**. Creating the record inside the production-edit call does
-not complete this checkpoint.
-
-**No production-edit tool call for a missing, invalid or pending row.** A flag,
-disabled default, private/in-memory path/store, preserved old callers, necessity,
-design note or feature request is not scope approval. Repeating the outcome or
-citing a feature request that predates the proposal cannot approve its new means.
-Do not rewrite the accepted contract to authorize your own implementation.
-
-For example, a durable-principal callback contract does not support short-lived
-principals merely because a new resolver/grant store is private or provider-specific.
-Expiry in the account owner may remain authorized; expanding callback subjects/
-lifetimes is pending. An unaccepted draft and a smaller invented alternative both
-need approval if they cross that boundary. Before returning pending work, complete
-the [approval handback](scope-approval.md).
+Leave unresolved or unapproved boundaries untouched while completing independent
+authorized work. Before returning a pending boundary, use the
+[approval handback](scope-approval.md). Reuse the resulting approval within its
+limits instead of asking again.
 
 ## 3. Read the primary owner before designing
 
@@ -110,9 +94,9 @@ by containing these nouns.
 After reading the relevant authority and owner, and **before dependent edits**,
 record a concise decision in the existing checkpoint: observable guarantee;
 a plausible counterexample to the proposed mechanism; legitimate behavior it
-must still allow; and whether the mechanism survives or must change. Use an
-earlier assistant message or completed record-only write, not the edit call or
-a retrospective completion claim. “Considered safety” is not a concrete challenge.
+must still allow; and whether the mechanism survives or must change. Use the
+existing task packet, without a separate document or retrospective claim.
+“Considered safety” is not a concrete challenge.
 
 Compare the smallest materially different alternative when it changes correctness,
 compatibility or complexity; no alternatives quota, extra document or agent.
@@ -121,13 +105,13 @@ counterexample. This applies to consequential correctness choices, not every edi
 
 ## 4. Coordinate bounded execution
 
-This builder workflow owns generic execution allocation. Once a scope row is
-valid, meaningful bounded operational effort defaults to the least-expensive
+This builder workflow owns generic execution allocation. Once scope and authority
+are established, meaningful bounded operational effort defaults to the least-expensive
 capable available context. This includes repository search, caller tracing, log
 summaries, mechanical documentation/fixtures/checks, code writing, and
 long-running commands. The coordinator retains unresolved ambiguity,
 architecture, contract/scope decisions, and acceptance or finding adjudication.
-Delegation never makes a pending row writable.
+Delegation never authorizes an unresolved or unapproved boundary.
 
 Give each write worker one precise assignment: accepted owner and invariant;
 allowed scope and exact files/seams; required regression/failure proof;

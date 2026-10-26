@@ -55,18 +55,11 @@ reasoning; scouts/mechanical work need not use the highest setting.
 
 ## Receipt and corrections
 
-For a high-risk adversarial gate, order the work as: focused iteration evidence and cheap
-preflight; one bounded independent adversary; batch authorized corrections and
-delta review; freeze the candidate; then one final exact-head acceptance. Do not
-run the costly final matrix before that adversary. After freeze, do not make
-ordinary edits between the final acceptance evidence and its handback. A final
-blocker requires the necessary affected checks after correction and a newly
-frozen candidate; it never turns partial preflight evidence into acceptance.
-
-Likewise, broad/full regression belongs after known corrections are closed and
-the final candidate is frozen, not during ordinary iteration or while awaiting
-review. An explicit user-requested diagnostic full run is the narrow exception;
-record it as diagnostic rather than final acceptance.
+For a high-risk adversarial gate, use the [focused iteration proof](../skills/verification-and-operations/references/evidence-contract.md#focused-iteration-proof),
+then one bounded independent adversary, batched authorized corrections and delta
+review, candidate freeze, and final exact-head acceptance. Do not edit between
+final evidence and handback; a final blocker needs affected checks and a newly
+frozen candidate.
 
 Request the **complete currently known blocker set in one pass**: severity,
 confidence, concrete paths and evidence; nonblocking follow-ups; unreviewed or

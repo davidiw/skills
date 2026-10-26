@@ -5,16 +5,14 @@ description: Review altered or newly exposed trust/authorization boundaries, or 
 
 # Security Assurance
 
-If this context built the change or contains its design reasoning, the next step
-is the [fresh-context handoff](../../references/assurance-handoff.md), including
-agent-tool discovery. Do not conduct or claim independent review in the builder,
-or claim delegation unavailable without checking the deferred tool catalog.
-
-Find material security defects in the requested scope, including threats
-the harness has not named yet. Read the shared
-[`assurance review contract`](../../references/assurance-review.md) before review.
-Use relevant accepted contracts; consult specific [catalog entries](../../references/invariants.json) only when
-needed. Implementation owners retain normative ownership.
+Read the shared [`assurance review contract`](../../references/assurance-review.md)
+before review; it owns scope, independence, handoff, findings and direct-invocation
+limits. Find material security defects in the requested scope, including threats
+the harness has not named. Use relevant accepted contracts and consult specific
+[catalog entries](../../references/invariants.json) only when needed.
+Implementation owners retain normative ownership.
+Apply [precedence](../../references/precedence-and-exceptions.md) for conflicts
+or before requiring a new action.
 
 ## Select mode
 
@@ -48,8 +46,4 @@ needed. Implementation owners retain normative ownership.
    prerequisites, consequence, confidence, and coverage limits.
 
 For sensitive retention or erasure consequences, use `privacy-assurance` at the
-shared seam. Before stopping work or changing scope, apply
-[`precedence-and-exceptions.md`](../../references/precedence-and-exceptions.md).
-
-The review is complete when the scoped threats have dispositions and evidence,
-and any remaining required coverage or independent review is explicit.
+shared seam.

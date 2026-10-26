@@ -2,6 +2,11 @@
 
 ## 0.10.0 - Unreleased
 
+Scope decisions now reuse established authority and existing task notes; a table
+or separate record-only call is not mandatory. Read owner guidance as needed
+before resolving scope. Unapproved material boundary changes still stop edits;
+ordinary implementation choices do not trigger new approval requests.
+
 Adds conditional PR delivery guidance for user- or repository-authorized work:
 open a reviewable PR with focused evidence and explicitly pending final
 regression, and include its URL in the handback. Focused iteration proof now
@@ -15,6 +20,13 @@ except for an explicitly user-requested diagnostic run. This refines feedback
 timing without relaxing final verification, review, integration or release gates.
 No additional publication authority, invariant, profile schema or specialist is
 introduced.
+
+Audit refinement: focused proof and final-regression timing remain canonical in
+the evidence contract. Builder, handoff and PR guidance now link that owner;
+security/privacy share assurance scope, independence, findings and direct-use
+limits in one reference while retaining their distinct investigation modes.
+This removes duplication without changing activation, gates, authorization or
+the 0.10.0 policy surface.
 
 Strengthens `resource-admission-and-reclamation` with owned, borrowed and
 explicitly transferred resource lifecycles, and `typed-exact-evidence` with
