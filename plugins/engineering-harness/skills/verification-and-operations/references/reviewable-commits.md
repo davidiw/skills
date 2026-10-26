@@ -16,14 +16,12 @@ draft. Update the same PR as the work progresses and include its URL in the fina
 handback. If publication fails, report the concrete blocker and retain the branch
 for retry rather than claiming submission.
 
-Treat expensive tests as pending final-gate work for an early PR, not work to
-start opportunistically while the candidate is still iterating or awaiting
-review. Run broad/full regression after known corrections are closed and the
-candidate is frozen, unless the user explicitly requests a diagnostic run.
-Required verification and review still gate final acceptance, integration and
-release. Bind each result to the tested revision and
-never describe pending, blocked or local-only checks as passing CI. PR submission
-does not authorize merge, deployment, artifact publication or release changes.
+An early PR carries focused evidence and explicitly pending final gates. Follow
+the [focused iteration proof](evidence-contract.md#focused-iteration-proof) for
+full-regression timing; required verification and review still gate final
+acceptance, integration and release. Bind results to the tested revision; never
+call pending, blocked or local-only checks passing. PR submission does not
+authorize merge, deployment, artifact publication or release changes.
 
 ## Final history review
 
