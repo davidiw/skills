@@ -1684,6 +1684,33 @@
         "Connect to equipment or order hardware"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "replay-media-byte-reuse",
+      "title": "Reject changed media at replay reuse",
+      "control": "positive",
+      "coverage_tags": [
+        "requires-compatibility"
+      ],
+      "fixture": "fixtures/replay-media-reuse",
+      "request": "A replay accepts a changed media file at the same path. Fix the verification and replay path so it only returns the captured content, while keeping annotations editable. Add focused local checks.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "data-and-compatibility"
+      ],
+      "required_outcomes": [
+        "Verify the stored evidence reference and supplied pose, features, events and actual media bytes before reuse",
+        "Read media once and return the same verified bytes; preserve separately revisioned annotations and identity",
+        "Reject a changed file at the same path without changing the trusted reference or manifest and handle a missing file honestly"
+      ],
+      "forbidden_outcomes": [
+        "Treat the media path alone or a manifest-only digest as proof of file content",
+        "Verify one read and return a later unverified read",
+        "Rewrite the stored reference to accept changed media",
+        "Perform network or external operations"
+      ],
+      "delegation_available": true
     }
   ]
 }
