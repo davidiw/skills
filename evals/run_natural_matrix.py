@@ -157,6 +157,36 @@ def codex_sandbox_executable():
     raise RuntimeError("Codex native executable not found")
 
 
+def verify_sandbox_resources(resources, fixture, env, attempts, checkpoint):
+    """Compare resource bytes inside the command sandbox before copying authentication."""
+    if not resources:
+        return
+    scratch = fixture / ".tmp"
+    with tempfile.TemporaryDirectory(prefix="resource-check-", dir=scratch) as directory:
+        probe = Path(directory) / "resources.py"
+        probe.write_text("""import hashlib, json, pathlib, sys
+paths = json.loads(sys.argv[1])
+result = {}
+for path in paths:
+    try: result[path] = hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
+    except OSError: result[path] = None
+print(json.dumps(result))
+""")
+        expected = {str(path): value for path, value in resources.items()}
+        prefix = ["codex", "sandbox", "-P", "experience-offline", "-C", str(fixture), "--"]
+        result = command(prefix + ["python3", str(probe), json.dumps(list(expected))], env, fixture, 30)
+        attempts.append({"command": prefix + ["<resource-visibility-probe>"], "result": result})
+        checkpoint()
+        try:
+            actual = json.loads(result["stdout"])
+        except (ValueError, KeyError):
+            actual = None
+        if result["return_code"] or actual != expected:
+            raise RuntimeError("offline browser resource visibility preflight failed; "
+                               "the output directory may be hidden by the /tmp sandbox denial; "
+                               "choose an output directory outside /tmp")
+
+
 def offline_browser_boundary(home, fixture, env, attempts, checkpoint):
     """Fail closed before real auth is copied; use Codex's existing command sandbox."""
     chrome = Path(env.get("EXPERIENCE_CHROMIUM") or shutil.which("chrome-headless-shell") or "")
@@ -165,6 +195,7 @@ def offline_browser_boundary(home, fixture, env, attempts, checkpoint):
     chrome = chrome.resolve()
     scratch = fixture / ".tmp"
     scratch.mkdir()
+    (home / "plugins/cache").mkdir(parents=True, exist_ok=True)
     # Only tool environment, not Codex service transport, is constrained here.
     tool_env = {"PATH": os.defpath, "LANG": "C.UTF-8", "TMPDIR": str(scratch),
                 "EXPERIENCE_CHROMIUM": str(chrome)}
@@ -246,6 +277,13 @@ print(json.dumps(result))
                                 "direct_socket": "blocked", "local_ipc": "ok"}
                     if result["return_code"] or json.loads(result["stdout"]) != expected or hits:
                         raise RuntimeError("offline browser boundary preflight failed")
+                    with tempfile.TemporaryDirectory(prefix="boundary-resources-", dir=home / "plugins/cache") as resource_dir:
+                        resource_dir = Path(resource_dir)
+                        skill, reference = resource_dir / "skills/example/SKILL.md", resource_dir / "references/example.md"
+                        for resource in (skill, reference):
+                            resource.parent.mkdir(parents=True, exist_ok=True)
+                            resource.write_text("synthetic resource visibility canary")
+                        verify_sandbox_resources({p: digest(p) for p in (skill, reference)}, fixture, env, attempts, checkpoint)
                     page, shot = probe_dir / "page.html", probe_dir / "page.png"
                     page.write_text("<!doctype html><h1>Local rendering boundary probe</h1>")
                     result = command(prefix + [str(chrome), "--no-sandbox", "--disable-gpu",
@@ -276,8 +314,6 @@ def setup(home: Path, package: Path, catalog: Path, arm: str, auth: Path, delega
         shutil.copyfile(package / "examples/agents/reviewer.toml", home / "agents/reviewer.toml")
     env = {**os.environ, "CODEX_HOME": str(home)}
     boundary = offline_browser_boundary(home, fixture, env, attempts, checkpoint) if offline_browser else None
-    shutil.copyfile(auth, home / "auth.json")
-    os.chmod(home / "auth.json", 0o600)
     for args in (["codex", "plugin", "marketplace", "add", str(package)],
                  *([["codex", "plugin", "add", "engineering-harness@davidiw-skills", "--json"]]
                    if arm == "harness" else [])):
@@ -302,6 +338,13 @@ def setup(home: Path, package: Path, catalog: Path, arm: str, auth: Path, delega
         raise RuntimeError("expected one installed runtime")
     runtime_hashes = {str(p): verify_runtime(p, expected_runtime)
                       for p in runtimes}
+    if offline_browser:
+        resources = {home / "skills" / name: value for name, value in tree(home / "skills").items()}
+        for runtime, hashes in runtime_hashes.items():
+            resources.update({Path(runtime) / name: value for name, value in hashes.items()})
+        verify_sandbox_resources(resources, fixture, env, attempts, checkpoint)
+    shutil.copyfile(auth, home / "auth.json")
+    os.chmod(home / "auth.json", 0o600)
     return {"inventory": inventory, "runtime_excluded_paths": [], "command_boundary": boundary,
             "runtime_file_hashes": runtime_hashes, "catalog_file_hashes": tree(catalog),
             "features": {"skip_host_skill_discovery": True, "multi_agent": delegation},
