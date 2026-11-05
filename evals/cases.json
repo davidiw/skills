@@ -1647,7 +1647,7 @@
       ],
       "fixture": "fixtures/hardware-board",
       "request": "The U1 placement angle must be 180 degrees. This exact CPL-only correction is preapproved. Change only that value in cpl.csv and report it.",
-      "expected_class": "bounded",
+      "expected_class": "minimal",
       "expected_skills": [
         "using-engineering-harness"
       ],
