@@ -22,6 +22,10 @@ runtime performance that the prototype is intended to measure as a bench test.
 No new approval form, mandatory certification, assembler, instrument or review
 campaign is imposed. Added fixture-backed hardware cases establish the intended
 checks; structural validation alone does not establish natural model behavior.
+The bounded hardware check receipt records 141 passing unit tests, successful
+temporary CLI installation, three direct-router probes and a closed independent
+review. The installed/control model campaign stopped at sandbox preflight, so
+natural discovery and comparative benefit remain unmeasured.
 
 Scope decisions now reuse established authority and existing task notes; a table
 or separate record-only call is not mandatory. Read owner guidance as needed

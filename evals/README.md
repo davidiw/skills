@@ -90,6 +90,9 @@ file handoffs without authorizing physical builds. The narrow preapproved CPL
 case is a restraint control. Run this cohort with the existing frozen installed
 versus control runner; adding cases and passing fixture checks alone does not
 establish natural discovery or a benefit over the control arm.
+The [bounded hardware checks](results/hardware-skills/checks.md) retain three
+direct-router probes, a temporary CLI installation and the blocked natural-run
+attempts, with those evidence classes kept separate.
 
 The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
 five-case natural cohort for generic execution coordination: decomposable worker
