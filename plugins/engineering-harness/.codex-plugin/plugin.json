@@ -1,7 +1,7 @@
 {
   "name": "engineering-harness",
   "version": "0.10.0",
-  "description": "Proportional engineering and methodology, repository-owned evidence policy, product experience, and security/privacy assurance for coding agents.",
+  "description": "Proportional software and hardware engineering, repository-owned evidence policy, product experience, and security/privacy assurance for coding agents.",
   "author": {
     "name": "davidiw",
     "url": "https://github.com/davidiw"
@@ -18,7 +18,9 @@
     "privacy-assurance",
     "product-experience",
     "interface-design",
-    "brand-and-language"
+    "brand-and-language",
+    "hardware-engineering",
+    "hardware-qualification"
   ],
   "skills": "./skills/",
   "interface": {

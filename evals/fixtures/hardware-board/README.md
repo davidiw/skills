@@ -1,0 +1,2 @@
+# Synthetic sensor board
+The canonical geometry and quantities are board.json and bom.csv. Run `python3 generate_cpl.py` to generate cpl.csv and `python3 check_board.py` to compare output and requested job settings to the design. This fixture is not fabrication approval. Job settings are a local snapshot, not a vendor submission. Rotation is measured clockwise from the board X axis; component rotation is the footprint rotation plus the pad-1 offset in the footprint data.

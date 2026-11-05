@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hardware Qualification"
+  short_description: "Measure and qualify physical hardware"
+  default_prompt: "Use $hardware-qualification to plan and assess physical hardware qualification."
+policy:
+  allow_implicit_invocation: false

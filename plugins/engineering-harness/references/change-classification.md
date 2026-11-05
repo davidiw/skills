@@ -58,6 +58,8 @@ Choose and **read** one implementation skill for the unresolved decision in
 | UI/domain/platform composition, useful-paint ownership | [application composition](../skills/application-composition/SKILL.md) |
 | Persistent identity, sync/migration, sensitive derivation/retention/erasure | [data and compatibility](../skills/data-and-compatibility/SKILL.md) |
 | Recurring divergence/root-cause consolidation | [architecture hardening](../skills/architecture-hardening/SKILL.md) |
+| Electrical/power/connector design, PCB or mechanical CAD, sourcing and fabrication/assembly handoff | [hardware engineering](../skills/hardware-engineering/SKILL.md) |
+| Physical first power-up, bench experiments, hardware measurements and qualification for production | [hardware qualification](../skills/hardware-qualification/SKILL.md) |
 | Evidence standards, testing/review methodology, benchmarks, operations | [verification and operations](../skills/verification-and-operations/SKILL.md) |
 
 Bounded work normally needs one specialist; consequential work generally at most
@@ -67,6 +69,12 @@ Synchronous fencing need not load durable workflows; observing a job need not lo
 composition; internal adapters need not load interfaces; focused tests need not
 load verification. Existing ownership needs no architecture exercise; hardening
 needs recurring evidence.
+
+Hardware owners consume existing evidence/operation policy; they do not turn
+generic firmware edits into PCB work or add fabrication authority. A known
+local placement correction can stay minimal. Shared verification tooling still
+belongs to verification and operations; read the hardware handoff reference
+only when its actual fabrication or assembly semantics are relevant.
 
 For critical progress blocked by optional work, read the
 [incumbent-writer proof](../skills/architecture-foundations/references/runtime-resource-governance.md#critical-progress-against-an-incumbent-optional-writer)

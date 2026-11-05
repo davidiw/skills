@@ -1,6 +1,6 @@
 # Engineering Harness
 
-Engineering Harness is an owned Codex plugin for making consequential software
+Engineering Harness is an owned Codex plugin for making consequential software and hardware
 changes without imposing distributed-system ceremony on ordinary work. It helps
 an agent locate authority, reason about lifetime and contracts, preserve data
 and compatibility, and produce evidence appropriate to the actual risk.
@@ -16,6 +16,9 @@ exposes the `plugins/engineering-harness/` runtime plugin for installation.
 The **0.10.0 candidate** strengthens borrowed/transferred resource lifecycles,
 reusable evidence identity and conditional cross-owner composition checks:
 [changes and migration](CHANGELOG.md). It is not yet a published stable release.
+It also adds electrical/PCB/mechanical design and manufacturing guidance, plus
+bench qualification that distinguishes prototype experiments from production
+acceptance. These skills reuse the existing evidence and authorization policy.
 
 Stable **0.9.0** adds bounded execution allocation and high-risk acceptance
 ordering under existing Harness owners: [changes and migration](CHANGELOG.md). Product Experience, Interface
@@ -129,7 +132,7 @@ rewritten. See
 
 ## Internal skills
 
-The router progressively loads twelve internal specialists:
+The router progressively loads fourteen internal specialists:
 
 | Skill | Normative responsibility |
 | --- | --- |
@@ -140,6 +143,8 @@ The router progressively loads twelve internal specialists:
 | `data-and-compatibility` | Representations, identity, deletion, migration, repair, and mixed versions |
 | `architecture-hardening` | Divergence discovery, consolidation, root-cause repair, and recurrence prevention |
 | `verification-and-operations` | Evidence semantics, fault injection, physical proof, exact revisions, and operations |
+| `hardware-engineering` | Electrical/power/connector design, PCB/mechanical CAD, sourcing, and manufacturing handoff |
+| `hardware-qualification` | First power-up, instrumented experiments, physical qualification, and minimum production circuit evidence |
 | `security-assurance` | Authorization and trust threats, including defects outside the invariant catalog |
 | `privacy-assurance` | Sensitive data use, derivation, retention, expiry, erasure, and delayed writers |
 | `product-experience` | User jobs, task flows, information priority, navigation and recovery |

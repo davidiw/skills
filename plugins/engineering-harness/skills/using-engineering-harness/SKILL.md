@@ -1,6 +1,6 @@
 ---
 name: using-engineering-harness
-description: "Route engineering changes, debugging, code review, domain/architecture decisions and cross-cutting methodology: evidence standards, testing infrastructure, review/safety/compatibility policy, and reusable harness behavior. Adopt repositories, harden friction, and coordinate security/privacy or UX/UI/brand reviews. Keep ordinary fixes minimal."
+description: "Route engineering changes, debugging, code review, domain/architecture decisions, PCB/mechanical CAD design, hardware qualification and manufacturing handoffs, and cross-cutting methodology: evidence, testing and review policy. Adopt repositories, harden friction, and coordinate security/privacy or UX/UI/brand reviews. Keep ordinary fixes minimal."
 ---
 
 # Using Engineering Harness
@@ -34,6 +34,9 @@ use synthetic proof; implementation checks/reviews remain prospective.
   [verification](../verification-and-operations/SKILL.md), an
   [experience owner](../../references/experience-routing.md), or the
   [change-review method](../verification-and-operations/references/change-review.md).
+  For electrical, PCB/CAD or assembly review, use
+  [hardware engineering](../hardware-engineering/SKILL.md); for physical test
+  evidence or bench readiness, use [hardware qualification](../hardware-qualification/SKILL.md).
   Named flows use changed-path mode; launch/whole-system work uses release
   inventory mode. Combine fresh contexts only for distinct required lenses.
 - **Other change or design:** complete the

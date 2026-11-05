@@ -307,6 +307,49 @@ def validate_evals(errors: list[str]) -> None:
     validate_methodology_matrix(methodology_matrix, case_by_id, errors)
     execution_matrix = json.loads((ROOT / "evals" / "execution-matrix.json").read_text())
     validate_execution_matrix(execution_matrix, case_by_id, errors)
+    hardware_matrix = json.loads((ROOT / "evals" / "hardware-matrix.json").read_text())
+    validate_hardware_matrix(hardware_matrix, case_by_id, errors)
+
+
+def validate_hardware_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:
+    """Check corpus structure only; this does not execute a behavioral trial."""
+    prefix = "hardware matrix: "
+    require(type(matrix.get("schema_version")) is int and matrix["schema_version"] == 1,
+            prefix + "invalid schema", errors)
+    require(matrix.get("prompt_mode") == "natural", prefix + "natural prompts required", errors)
+    require(matrix.get("conditions") == ["control", "harness"], prefix + "both arms required", errors)
+    require(type(matrix.get("trials")) is int and matrix["trials"] > 0,
+            prefix + "positive trial count required", errors)
+    require(matrix.get("command_boundary") == "offline-browser" and not matrix.get("sandbox_network_access"),
+            prefix + "protected command boundary required", errors)
+    required = {"hardware-missing-design", "hardware-impedance-evidence", "hardware-rotation",
+                "hardware-job-drill", "hardware-controls", "hardware-prototype-runtime",
+                "hardware-production-calibration", "hardware-narrow-cpl", "hardware-bench-plan"}
+    ids = matrix.get("case_ids", [])
+    if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):
+        errors.append(prefix + "case_ids must be strings")
+        return
+    require(required <= set(ids), prefix + "missing hardware regression", errors)
+    require(len(ids) == len(set(ids)) and set(ids) <= set(cases),
+            prefix + "duplicate or unknown case", errors)
+    controls = {cases.get(case_id, {}).get("control") for case_id in ids}
+    require({"positive", "negative"} <= controls, prefix + "positive and negative controls required", errors)
+    fixtures = (ROOT / "evals" / "fixtures").resolve()
+    for case_id in ids:
+        case = cases.get(case_id, {})
+        fixture = case.get("fixture")
+        if not isinstance(fixture, str):
+            errors.append(prefix + f"fixture required: {case_id}")
+            continue
+        path = (ROOT / "evals" / fixture).resolve()
+        require(path.parent == fixtures and path.name.startswith("hardware-") and path.is_dir()
+                and (path / "AGENTS.md").is_file()
+                and sum(item.is_file() for item in path.rglob("*")) >= 2,
+                prefix + f"invalid fixture: {case_id}", errors)
+        prompt = case.get("request", "")
+        require(isinstance(prompt, str) and bool(prompt.strip()) and
+                not any(name in prompt for name in SKILL_NAMES),
+                prefix + f"natural prompt required: {case_id}", errors)
 
 
 def validate_methodology_matrix(matrix: dict, cases: dict, errors: list[str]) -> None:

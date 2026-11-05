@@ -2,6 +2,27 @@
 
 ## 0.10.0 - Unreleased
 
+Adds explicit-only Hardware Engineering and Hardware Qualification specialists,
+selected through the existing public router for electrical/PCB/mechanical design,
+manufacturing handoff and physical bench experiments. Conditional references
+cover architecture/controls/cost tradeoffs before routing, source extraction and
+EDA tools, actual assembler previews and JLC job settings, and safe repeatable
+qualification toward a minimum production circuit. Known local CPL-only fixes
+remain minimal; shared validation-tool defects retain Verification and Operations
+ownership. Prototype order eligibility, measured qualification and production
+acceptance are distinct claims under the existing evidence policy. This extends
+the unreleased 0.10.0 candidate; published releases and tags remain unchanged.
+
+Hardware migration: existing capability vocabulary, profile schema, invariant
+owners and activation remain unchanged. Use the two new specialist routes only
+for their physical-design or qualification decisions; generic firmware work
+keeps its existing owner. Reuse accepted experiment requirements and deviations;
+resolve unsafe connector/power/process unknowns before exposure, while leaving
+runtime performance that the prototype is intended to measure as a bench test.
+No new approval form, mandatory certification, assembler, instrument or review
+campaign is imposed. Added fixture-backed hardware cases establish the intended
+checks; structural validation alone does not establish natural model behavior.
+
 Scope decisions now reuse established authority and existing task notes; a table
 or separate record-only call is not mandatory. Read owner guidance as needed
 before resolving scope. Unapproved material boundary changes still stop edits;
@@ -18,7 +39,7 @@ proportional: simple local fixes need no uniform browser or new harness.
 Broad/full regression waits for known corrections and a frozen final candidate,
 except for an explicitly user-requested diagnostic run. This refines feedback
 timing without relaxing final verification, review, integration or release gates.
-No additional publication authority, invariant, profile schema or specialist is
+No additional publication authority, invariant or profile schema is
 introduced.
 
 Audit refinement: focused proof and final-regression timing remain canonical in
@@ -37,7 +58,7 @@ Activation now explicitly includes wrappers over external runtime owners and
 retained replay/evaluation/regression evidence. `physical_devices` and
 `multiple_adapters` now activate resource admission/reclamation independently of
 `constrained_runtime_resources`; generated profiles include an enforcement entry
-for repository review. No new invariant, specialist,
+for repository review. No new invariant,
 profile schema, permanent agent, independent gate or review budget is added.
 
 Existing specialist references and builder/review packets carry conditional
