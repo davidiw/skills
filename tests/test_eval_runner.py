@@ -189,6 +189,30 @@ class EvaluationRunnerTest(unittest.TestCase):
             command.assert_not_called()
             self.assertFalse((root / 'home/auth.json').exists())
 
+    def test_codex_native_executable_detection_and_scope(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = root / 'node_modules/@openai/codex'
+            launcher = package / 'bin/codex.js'
+            launcher.parent.mkdir(parents=True)
+            launcher.write_text('launcher')
+            native = package / 'node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex'
+            native.parent.mkdir(parents=True)
+            native.write_text('native')
+            with patch.object(runner.shutil, 'which', return_value=str(launcher)), \
+                 patch.object(runner.platform, 'machine', return_value='x86_64'), \
+                 patch.object(runner.sys, 'platform', 'linux'):
+                self.assertEqual(runner.codex_sandbox_executable(), native)
+                native.unlink()
+                with self.assertRaisesRegex(RuntimeError, 'native executable not found'):
+                    runner.codex_sandbox_executable()
+                with patch.object(runner.platform, 'machine', return_value='unknown'):
+                    with self.assertRaisesRegex(RuntimeError, 'unsupported Codex platform'):
+                        runner.codex_sandbox_executable()
+            with patch.object(runner.shutil, 'which', return_value=None):
+                with self.assertRaisesRegex(RuntimeError, 'requires codex'):
+                    runner.codex_sandbox_executable()
+
     def test_boundary_config_and_canary_cleanup(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -208,12 +232,19 @@ class EvaluationRunnerTest(unittest.TestCase):
                 self.assertEqual(profile['network']['domains'], {})
                 self.assertEqual(profile['filesystem'][':root'], 'deny')
                 self.assertNotIn(str(home), profile['filesystem'])
+                native = runner.codex_sandbox_executable()
+                self.assertEqual(profile['filesystem'][str(native)], 'read')
+                self.assertNotIn(str(native.parent), profile['filesystem'])
                 self.assertNotIn('--sandbox', args)
                 for arg in args:
                     if arg.startswith('--screenshot='):
                         Path(arg.split('=', 1)[1]).write_bytes(b'synthetic image')
                 return {'return_code': 0, 'stdout': json.dumps(expected)}
-            with patch.object(runner, 'command', side_effect=run):
+            native = root / 'codex-runtime/native-codex'
+            native.parent.mkdir()
+            native.write_text('synthetic native executable')
+            with patch.object(runner, 'command', side_effect=run), \
+                 patch.object(runner, 'codex_sandbox_executable', return_value=native):
                 result = runner.offline_browser_boundary(home, fixture,
                     {**os.environ, 'EXPERIENCE_CHROMIUM': str(browser)}, [], lambda: None)
             self.assertEqual(result['preflight'], expected)

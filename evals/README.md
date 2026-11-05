@@ -94,6 +94,14 @@ The [bounded hardware checks](results/hardware-skills/checks.md) retain three
 direct-router probes, a temporary CLI installation and the blocked natural-run
 attempts, with those evidence classes kept separate.
 
+The [0.10.0 release cohort](release-0.10.0-matrix.json) uses the same protected
+runner and paired installed/control arms for resource borrowing, complete
+evidence identity, hardware handoff, prototype readiness, local restraint and
+bench planning. It is a bounded one-trial release check, not a statistical
+reliability study. Retain setup failures as well as model outcomes, inspect actual
+specialist reads, and verify the evidence-identity implementation against its
+canonical-encoding/verified-digest contract before claiming that gate closed.
+
 The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
 five-case natural cohort for generic execution coordination: decomposable worker
 assignment, scope resolution before writing, adversarial ordering, cheap failure

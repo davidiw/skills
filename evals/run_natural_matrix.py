@@ -8,6 +8,7 @@ from datetime import datetime
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import re
 import shutil
@@ -132,6 +133,30 @@ def assert_frozen_source(package: Path, frozen: dict) -> None:
         raise RuntimeError("candidate fixtures changed")
 
 
+def codex_sandbox_executable():
+    """Locate the native executable that Codex re-executes inside its sandbox."""
+    executable = shutil.which("codex")
+    if not executable:
+        raise RuntimeError("offline browser boundary requires codex")
+    executable = Path(executable).resolve()
+    if executable.name != "codex.js" or executable.parent.name != "bin":
+        return executable
+    package = executable.parent.parent
+    targets = {"x86_64": ("codex-linux-x64", "x86_64-unknown-linux-musl"),
+               "aarch64": ("codex-linux-arm64", "aarch64-unknown-linux-musl")}
+    if sys.platform != "linux" or platform.machine() not in targets:
+        raise RuntimeError("unsupported Codex platform package")
+    name, triple = targets[platform.machine()]
+    # Follow Node's upward node_modules lookup, then the launcher's vendor fallback.
+    candidates = [parent / "node_modules/@openai" / name / "vendor" / triple / "bin/codex"
+                  for parent in (package, *package.parents)]
+    candidates.append(package / "vendor" / triple / "bin/codex")
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.resolve()
+    raise RuntimeError("Codex native executable not found")
+
+
 def offline_browser_boundary(home, fixture, env, attempts, checkpoint):
     """Fail closed before real auth is copied; use Codex's existing command sandbox."""
     chrome = Path(env.get("EXPERIENCE_CHROMIUM") or shutil.which("chrome-headless-shell") or "")
@@ -143,7 +168,7 @@ def offline_browser_boundary(home, fixture, env, attempts, checkpoint):
     # Only tool environment, not Codex service transport, is constrained here.
     tool_env = {"PATH": os.defpath, "LANG": "C.UTF-8", "TMPDIR": str(scratch),
                 "EXPERIENCE_CHROMIUM": str(chrome)}
-    reads = [home / "skills", home / "plugins/cache", chrome.parent]
+    reads = [home / "skills", home / "plugins/cache", chrome.parent, codex_sandbox_executable()]
     if (home / "agents").exists():
         reads.append(home / "agents")
     host_skills = Path.home() / ".agents/skills"
