@@ -1,0 +1,4 @@
+# Synthetic prototype
+A board has three adjacent configuration positions, currently tiny solder links between two connectors, each reached with tweezers. During development an operator must change modes 20 times per session, including while wearing gloves; the enclosure opens only with a screwdriver. The team has not decided whether settings need to survive reset, whether the enclosure may have openings, or the target per-unit cost. Candidate switch, button, solder link and header alternatives are under consideration; no changes have been approved.
+
+Prototype power polarity and connector face were checked on one bench unit. Runtime, thermal range, repeatability and long-term drift were not measured. A single room-temperature calibration was recorded; there is no production tolerance or population study. No equipment is connected to this fixture.

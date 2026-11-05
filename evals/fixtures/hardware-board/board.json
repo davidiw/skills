@@ -1,0 +1,17 @@
+{
+  "components": [
+    {
+      "ref": "U1",
+      "footprint_rotation": 90,
+      "pad1_offset": 90,
+      "x": 12,
+      "y": 8
+    }
+  ],
+  "minimum_drill_mm": 0.25,
+  "stackup": {
+    "material": "FR4",
+    "thickness_mm": 1.6
+  },
+  "trace_width_mm": 0.2
+}

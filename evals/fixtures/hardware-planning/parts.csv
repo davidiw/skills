@@ -1,0 +1,5 @@
+option,footprint_mm,unit_cost_usd,interaction
+switch,6x3,0.32,maintained
+button,4x4,0.12,momentary
+solder link,2x1,0.01,tool required
+header,5x2,0.08,jumper required

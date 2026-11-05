@@ -35,6 +35,18 @@ Reviewed on 2026-09-04.
 These local repositories supplied examples and counterexamples. Their licenses
 are not relied upon because no text or implementation is reused.
 
+The 2026-11-04 hardware additions also use lessons from the native-display
+qualification work at `davidiw/mera-hardware`, commit
+`a06fe2eede84dae10d5f63441b810010ab68dfe9`: architecture and control-usability
+tradeoffs, exact supplier evidence, prototype versus production qualification,
+actual assembler placement corrections, and concrete file handoffs. The runtime
+contains generalized guidance; evaluation fixtures are independently authored
+synthetic examples with no private supplier correspondence or job access tokens.
+The exact hardware revision is recorded for provenance, not a claim that its
+physical assembly or the new skills are qualified. Primary KiCad and JLC
+documentation is linked from the relevant tool/assembler references; current
+service limits and prices remain external facts to verify for each job.
+
 | Repository | Reviewed revision | Evidence incorporated |
 | --- | --- | --- |
 | VitalThread (`workout.codex`) | `c67719688b34ec6509d26e579df4a3d51bfa1ef9` | Local-first storage contention, durable work, event classes, account fencing, compatibility profiles, exact-revision evidence, and guarded operations |

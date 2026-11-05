@@ -1,0 +1,157 @@
+{
+  "kind": "bounded hardware skill validation",
+  "date": "2026-11-04",
+  "source_revision": "2ced9d263530fe40183f95dddaea28edd79b9d0e",
+  "harness_policy_version": "0.10.0",
+  "official_cli_version": "codex-cli 0.166.0",
+  "checks": {
+    "unit_tests": {
+      "passed": true,
+      "count": 141
+    },
+    "package_validator": {
+      "passed": true
+    },
+    "official_skill_validation": {
+      "passed": true,
+      "skills": [
+        "hardware-engineering",
+        "hardware-qualification"
+      ]
+    },
+    "isolated_cli_installation": {
+      "passed": true,
+      "runtime_matches_source": true,
+      "runtime_count": 1
+    }
+  },
+  "review": {
+    "context": "fresh read-only reviewer; fork_turns none",
+    "initial_revision": "1872267778aa609ee426214c77b8d8c23948db68",
+    "packet_sha256": "0ddf33b6010ab66369d04defe8dd4f7ad72da149abaa4e330e11a3cf6d5ff729",
+    "finding": "P3: narrow CPL case class disagreed with minimal route",
+    "delta_revision": "2ced9d263530fe40183f95dddaea28edd79b9d0e",
+    "delta_result": "closed; no known findings",
+    "limits": "Direct-router probes and natural model discovery not reviewed."
+  },
+  "direct_router_probes": {
+    "invocation": "Explicit source-router guidance in three fresh worker contexts; no builder-history fork. Not installed natural discovery or control comparison.",
+    "results": {
+      "rotation": {
+        "fixture": "hardware-board",
+        "before_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+          "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+          "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+          "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+          "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+          "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+          "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+          "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+          "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+        },
+        "after_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+          "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+          "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+          "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+          "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+          "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+          "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+          "generate_cpl.py": "7e7051ef65d71a26a85e4db7ee4253573b763230605346d88cf146ff54a8e32c",
+          "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+        },
+        "changed_files": [
+          "cpl.csv",
+          "generate_cpl.py"
+        ]
+      },
+      "minimal": {
+        "fixture": "hardware-board",
+        "before_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+          "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+          "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+          "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+          "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+          "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+          "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+          "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+          "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+        },
+        "after_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+          "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+          "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+          "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+          "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+          "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+          "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+          "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+          "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+        },
+        "changed_files": [
+          "cpl.csv"
+        ]
+      },
+      "bench": {
+        "fixture": "hardware-planning",
+        "before_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+          "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+          "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+        },
+        "after_sha256": {
+          "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+          "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+          "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+          "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+        },
+        "changed_files": []
+      }
+    },
+    "outcomes": {
+      "rotation": "Generator and regenerated CPL correct; separate draft drill mismatch surfaced; board/BOM/job unchanged.",
+      "minimal": "Only requested CPL field changed; generator limitation disclosed without widening edit scope.",
+      "bench": "Read-only prospective plan; measurements NOT MEASURED; missing conditions and equipment/action limits stated."
+    }
+  },
+  "installed_natural_campaign": {
+    "requested_cases": [
+      "hardware-rotation",
+      "hardware-prototype-runtime",
+      "hardware-narrow-cpl",
+      "hardware-bench-plan"
+    ],
+    "conditions": [
+      "control",
+      "harness"
+    ],
+    "attempts": [
+      {
+        "id": "1872267-initial",
+        "trial_count": 8,
+        "completed_model_executions": 0,
+        "result": "Setup blocked: incorrect Chromium path."
+      },
+      {
+        "id": "1872267-retry",
+        "trial_count": 8,
+        "completed_model_executions": 0,
+        "result": "Setup blocked before auth copy: protected sandbox could not execute current Codex binary."
+      }
+    ],
+    "natural_discovery_status": "NOT MEASURED",
+    "benefit_over_control": "NOT MEASURED"
+  },
+  "limits": [
+    "Synthetic checks and direct forward probes do not establish real hardware correctness or physical qualification.",
+    "No complete installed/control behavioral cohort was executed.",
+    "No live vendor job, board, installed user plugin, stable tag or release was modified."
+  ]
+}

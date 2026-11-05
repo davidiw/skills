@@ -1,0 +1,774 @@
+{
+  "schema_version": 1,
+  "kind": "captured bounded natural release campaign; observations only",
+  "source_revision": "6fa21342024d42b55fb6187887b1edde9ee428c3",
+  "policy_version": "0.10.0",
+  "cli_version": "codex-cli 0.166.0",
+  "runtime_file_sha256": {
+    ".codex-plugin/plugin.json": "76c14bf7027636b52b8998058cc7a0d79cf72209df4864597eb50bb2cd5026f3",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "b2097dbd55d9515c5ed13ca8d4b13162c27bc5fc3f8c14d06d1e536fe302a92a",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "d8f19b39087f4ca21962bad3b9c2b3085d36b4fb073c33092060d1a3d6d9f6c3",
+    "references/change-classification.md": "4e87c7e5db8c0fa282bc9d0aa68872374065020858b90ef1b02416e7e7626fb4",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "051a3a67636ae29b61b7f1f0e4c35007df2762e2c3354597baebf3c27f982d98",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "e84e399086ee8fa828c3fcac9e24c42d9e43fcf2ce4e0fdae52ee48aa2e535b4",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "69f6bf42e0d8a75a7e6830ffc225af274cde20baf02678f88c02036eae5e6b7e",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "4291fe11f3952d3b3b41ffe66ac7b4c19550123409656f615e0ba308dacdd4af",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "15fe8b631d7b341cfbce85355e0a3ca8cbe0d0f787e71a9ef87c8178b2f4fca0",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/hardware-engineering/SKILL.md": "fb592f7d3532f07015cc5ade98e5de40e51869a89f5de1e03e2797802120a9a7",
+    "skills/hardware-engineering/agents/openai.yaml": "6650d8b7aa7516f85763cd331330b1f4bc7c5b9afdc82dc86b5bcea535512b32",
+    "skills/hardware-engineering/references/design-decisions.md": "8c696aceb0d94046fbf6e6856dcc2e581b13650cc2c78f219530f4ad30df42bd",
+    "skills/hardware-engineering/references/eda-and-mechanics.md": "caa805043e724942015b46711684e6c549e2147873aa33656d1f3d80fad5b766",
+    "skills/hardware-engineering/references/jlcpcb.md": "4312fc13ff1abfc2f12f8abf8592592c0593242101fad769ced646480dcde7b6",
+    "skills/hardware-engineering/references/manufacturing-handoff.md": "f75369c0f27387d7c8ea74a80dc898de14b1dad119fe14cfa72173dc42cc8904",
+    "skills/hardware-qualification/SKILL.md": "2011e6a3f22af677ea359d0354f9787f1b9cf479f7e514fd90da8a383eff3b05",
+    "skills/hardware-qualification/agents/openai.yaml": "b0468abf691a909b419a0d6626fa1e0e4ccbabfeb47126cfb6fc175039a3cef1",
+    "skills/hardware-qualification/references/bench-and-production.md": "2bbe1e5cb2498cd78f210dc845b0cc3ad7b286c4b9bc3d0efd4130649023b752",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "916e52962b0007be21ac516dd373276c090b13c817f3e48be55ca33d38cedeb8",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "4a04bfc9d8b656d01349ddc21bb448bd984f7a40bd08293ee3ddaea905c068a4",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "8f952752ddf3189bd30b34ee18765c45611fd5459a6bfbc317d9f4fd7701f6cb",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "1e3bebb31da6fb5b54ec61f1e8ec11d3866e324e0769630c2cc58bbc28b4feb9",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "f41d32c2e7a60df1a086afb164e948d8b1952992234e86d033e4c7f3f8c6fd2e",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/change-review.md": "0d8cf2be75c398cc46d99ea952daba3eb3d784f2f06f93bada76d19d99a7dfb5",
+    "skills/verification-and-operations/references/diagnosis.md": "17780cd9cc586ab633ee00678e3cb4c3185473a01c03b7c7777a9392a84a19dd",
+    "skills/verification-and-operations/references/evidence-contract.md": "fe745c03ed0cec6f00391aae5f78ff3f6c9075ae0c10b67b0c8222e4fbfd4df4",
+    "skills/verification-and-operations/references/methodology.md": "e98ce265d0dcbbd73e8f5c9432604364f1b6e9764fe0ea84ac32f653c40e5692",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "8a5ad978e622998bc1892dbf83cb8233f1158440c1033ad3957506e6e10fd6a5",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "a7315d34be5d3d9a61266c41b75bde00206111497f94b0c2d4e946327d3c7c05",
+    "templates/project-profile.minimal.json": "f0ce79a272202c519174ddd896bcddc528cf6295251f06ee93363e498352e009",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "input_file_sha256": {
+    "evals/release-0.10.0-matrix.json": "5bbc06080f98a343a86924fc539c164a7868db43a4825d993979b0ccca68f7ce",
+    "evals/cases.json": "b7d1003ebff4d16261e79f4177f0b280d70b68c54778b5fcb2123a8284bdd7c6",
+    "evals/run_natural_matrix.py": "68b7f2860eec09327de0d342e621f443bd90c40f4ca0f0211422a1bc25bd2d63"
+  },
+  "matrix_sha256": "5bbc06080f98a343a86924fc539c164a7868db43a4825d993979b0ccca68f7ce",
+  "runner_sha256": "68b7f2860eec09327de0d342e621f443bd90c40f4ca0f0211422a1bc25bd2d63",
+  "catalog_file_sha256": {},
+  "run_metadata_sha256": "5626878d08bb6a45cfd773f3d4751e58774f36b1aa586713efbc6eecebca1b0b",
+  "planned_trials": 12,
+  "completed_trials": 12,
+  "trials_per_case_arm": 1,
+  "conditions": [
+    "control",
+    "harness"
+  ],
+  "results": [
+    {
+      "case_id": "camera-borrower-lease",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "74e459ce2d18bee71e0b5a6f6842738b7ab9a10e10fd16c06e9d5c6d8ff79871",
+        "CONTRACT.md": "5108c7483d451e54e96d240cc3a5f60024b83e5214b40e7348d3788b3137f8db",
+        "composition.py": "ff8651a8203cc9a093817cdda5a24a6110f6f2ca037cab33ba806c123d06d907"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "74e459ce2d18bee71e0b5a6f6842738b7ab9a10e10fd16c06e9d5c6d8ff79871",
+        "CONTRACT.md": "5108c7483d451e54e96d240cc3a5f60024b83e5214b40e7348d3788b3137f8db",
+        "composition.py": "ddd26626230d4591d53788d33f73be0c06a68d9e5acc7a188f4ea537780a28d2",
+        "test_composition.py": "f006a4d72a59b2beb08668e9dfd6b8f014b4b5846606ef7d56fbd155108870f8"
+      },
+      "changed_files": [
+        "composition.py",
+        "test_composition.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "3e5e90bfabd7982bef2c39a5b28031d95bff547ef95bbca212a2c8682cc92438",
+      "final_message_sha256": "686255171ada786f5ebe95388c7f14d535d58022dfdc412cca0d2838d075c6dc",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 67132,
+        "cached_input_tokens": 59648,
+        "output_tokens": 982,
+        "reasoning_output_tokens": 17,
+        "uncached_input_tokens": 7484
+      },
+      "wall_seconds": 33.616647720336914,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "camera-borrower-lease",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "74e459ce2d18bee71e0b5a6f6842738b7ab9a10e10fd16c06e9d5c6d8ff79871",
+        "CONTRACT.md": "5108c7483d451e54e96d240cc3a5f60024b83e5214b40e7348d3788b3137f8db",
+        "composition.py": "ff8651a8203cc9a093817cdda5a24a6110f6f2ca037cab33ba806c123d06d907"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "74e459ce2d18bee71e0b5a6f6842738b7ab9a10e10fd16c06e9d5c6d8ff79871",
+        "CONTRACT.md": "5108c7483d451e54e96d240cc3a5f60024b83e5214b40e7348d3788b3137f8db",
+        "composition.py": "ddd26626230d4591d53788d33f73be0c06a68d9e5acc7a188f4ea537780a28d2",
+        "test_composition.py": "17163ededc29175601a3d8274abc8062a803adf12fa79f2b919f443c27769412"
+      },
+      "changed_files": [
+        "composition.py",
+        "test_composition.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "337776fc1cb804e77c9031bde6609605662622d6ce08b6b0d1231fb516296e92",
+      "final_message_sha256": "f469e39ef04ed5c612c91f326552f2f2f310b075474f4a2544bdfb14e3916de7",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 71919,
+        "cached_input_tokens": 66048,
+        "output_tokens": 1044,
+        "reasoning_output_tokens": 18,
+        "uncached_input_tokens": 5871
+      },
+      "wall_seconds": 37.454049587249756,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    },
+    {
+      "case_id": "hardware-bench-plan",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "changed_files": [],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "6f1d790ea5d3af6e2bf3fbe2349a4896a9e80d1237928e04125c3dde0f1a4927",
+      "final_message_sha256": "fa6fec46dc0d79cb1bf687637d7d7b4ed7d7ff367f1f2d6094519280c22e502c",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 51918,
+        "cached_input_tokens": 47744,
+        "output_tokens": 836,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 4174
+      },
+      "wall_seconds": 44.69591164588928,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "hardware-bench-plan",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "hardware-qualification",
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "changed_files": [],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "779eedafb4999198946fde8fd8134ef78b401684b87328d05cf930f00dc1f133",
+      "final_message_sha256": "743e5863650d67df398bb3a90467fc135b16e35f92010161e7558c339d149039",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 59072,
+        "cached_input_tokens": 51200,
+        "output_tokens": 1570,
+        "reasoning_output_tokens": 35,
+        "uncached_input_tokens": 7872
+      },
+      "wall_seconds": 64.86216711997986,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    },
+    {
+      "case_id": "hardware-narrow-cpl",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "changed_files": [
+        "cpl.csv"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "e21f10c2a3e472b0cf6642fdf35e675654e18792d770cf70ca9db6a03436b49b",
+      "final_message_sha256": "9bc7dbac407ae21296146be64d1b7ccf9f47b47db478b4f6baf8ae9711e3a85d",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 64408,
+        "cached_input_tokens": 60416,
+        "output_tokens": 302,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 3992
+      },
+      "wall_seconds": 18.917728900909424,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "hardware-narrow-cpl",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "changed_files": [
+        "cpl.csv"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "a0b3c28e92b91d33b76e91b516443e753210ef31bf200036169cf2e41ea5f7ae",
+      "final_message_sha256": "48e31b345b60910d20202b14479eaa48d294eea0101c779c3f11e24512406fb6",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 55131,
+        "cached_input_tokens": 50432,
+        "output_tokens": 383,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 4699
+      },
+      "wall_seconds": 19.22308349609375,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    },
+    {
+      "case_id": "hardware-prototype-runtime",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "changed_files": [],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "907b1a5961b4c9a7f2780a00e19c5558634a750c25e09d62fc7cc018011d423f",
+      "final_message_sha256": "837762893e5e7b3011237d5710c2b6aabac6bc743bf2a07c54c0b0aba7407a13",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 51888,
+        "cached_input_tokens": 44800,
+        "output_tokens": 585,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 7088
+      },
+      "wall_seconds": 34.60858869552612,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "hardware-prototype-runtime",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "hardware-engineering",
+        "hardware-qualification",
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "design.md": "b98df5b24183e624f9ab37c8810627adcd62c881d1d1dcfbc5690bf24e70a532",
+        "experiments.md": "02f8962516c08d89d81ba7d3cdc8eebd94fd8a74fba7e4cd7d11a208f5d4693e",
+        "parts.csv": "92e23b758a780db339cc290e93e6fd1b8d8b7be6363987df88518792d77566a4"
+      },
+      "changed_files": [],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "76bec33391172f9caee1a1e5031549949dfea861ab1a98b27ab3c3cf8c435bf0",
+      "final_message_sha256": "52514bd19c9a49af0699f4131d559ea0684bc9dc8b794260eaa9ed356ee0c7cf",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 60153,
+        "cached_input_tokens": 51840,
+        "output_tokens": 1096,
+        "reasoning_output_tokens": 0,
+        "uncached_input_tokens": 8313
+      },
+      "wall_seconds": 42.01561880111694,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    },
+    {
+      "case_id": "hardware-rotation",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "7e7051ef65d71a26a85e4db7ee4253573b763230605346d88cf146ff54a8e32c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "changed_files": [
+        "cpl.csv",
+        "generate_cpl.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "066cffe930ceec22e0cdeb98a91074c556992ee2824adc1a7f371df3f70caf4c",
+      "final_message_sha256": "25a388764c61b168d68c722eb981de0b41b7cbc1fecf29b6fb4566b34daf6eea",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 82548,
+        "cached_input_tokens": 73984,
+        "output_tokens": 1082,
+        "reasoning_output_tokens": 39,
+        "uncached_input_tokens": 8564
+      },
+      "wall_seconds": 39.64705562591553,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "hardware-rotation",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "c8e717371754dbfec035ecad1747b155de21ee0930713aa615b818c9726d9aba",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "677976986a738d62fbb771e0572ab9ba5129831f0110e68db9ff876f05c1ba4c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "7b8b027e7f8ab30d1004216aae8ded1460a8da656c276132a9a0dd9e957bd5b7",
+        "README.md": "ebb001f5df3669ea63dc09d8d006137c51a932855df05205e87c86268d2ab862",
+        "board.json": "b5d882f41bcf3e72375c923a317717531c82265aca7e98c2cbdcb3ffcb7f867f",
+        "bom.csv": "15a6b7d9b3e7c5bfa9aa4575b02e23041c4e129cbef53c5f1577865e3deedae7",
+        "check_board.py": "4697fb5ec3b14a3964891a90539c1be3e1e670935ba942d8bb3d89b775f3369c",
+        "connector.txt": "4bca7f343b891a84d3b43b81f90ce1ea4c543fa1822a6ee3837a06742c9eb0fd",
+        "cpl.csv": "0a436148dc8d7a918f89bd1bc5d89e1b12df0d85b06fd1aacaa5b7991bfd0329",
+        "evidence.md": "649c3145465c297fd2550bfaaf4eb5421fae990a56f1a7fa4e4edc983f35f852",
+        "generate_cpl.py": "7e7051ef65d71a26a85e4db7ee4253573b763230605346d88cf146ff54a8e32c",
+        "job-settings.json": "54e34575b72dee02e2d141aba859b5afe02dc9d5e8051a6693cb2a279cc3b8d1"
+      },
+      "changed_files": [
+        "cpl.csv",
+        "generate_cpl.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "2eb37adda9e185d4d71b0649c70ae944eb29c037cbb4f31701147c81ef489bbd",
+      "final_message_sha256": "a11d758c3a3819f7c331d5533423590c576fc2a809c4e843e0e20f5798daa7b7",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 136546,
+        "cached_input_tokens": 117376,
+        "output_tokens": 1496,
+        "reasoning_output_tokens": 45,
+        "uncached_input_tokens": 19170
+      },
+      "wall_seconds": 54.541932821273804,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    },
+    {
+      "case_id": "replay-capture-evidence-identity",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "8e0fa539473f753a10bc45b39f5ff84065e66dcb3eb398e33e708c6a9aecbc80",
+        "CONTRACT.md": "2eab6eef2680eb0d1c733ef5751112bdd6c69520674de43390a8e28b8a933bbc",
+        "capture.py": "ffb364923b409e647653c7faab6300c0ba9c5c8372d9c9402f5f883de9cbabab"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "8e0fa539473f753a10bc45b39f5ff84065e66dcb3eb398e33e708c6a9aecbc80",
+        "CONTRACT.md": "2eab6eef2680eb0d1c733ef5751112bdd6c69520674de43390a8e28b8a933bbc",
+        "capture.py": "3d167029fa296d58438f75bbc5fac5f2162a2cb54f012898f0d45dd8b0664cf0"
+      },
+      "changed_files": [
+        "capture.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "a434e7baef13ae660eab305d7a44703bc70c12b2c0ba00b5ff97d90ec1e441d3",
+      "final_message_sha256": "3fcbc76fccef8f32af6038d0f3b4ce1a15d627c8a4b0dd8da8881d64b4e8357b",
+      "context_count": 1,
+      "aggregate_usage": {
+        "input_tokens": 68570,
+        "cached_input_tokens": 57984,
+        "output_tokens": 1681,
+        "reasoning_output_tokens": 330,
+        "uncached_input_tokens": 10586
+      },
+      "wall_seconds": 50.72628045082092,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": null
+    },
+    {
+      "case_id": "replay-capture-evidence-identity",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "timed_out": false,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "data-and-compatibility",
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "8e0fa539473f753a10bc45b39f5ff84065e66dcb3eb398e33e708c6a9aecbc80",
+        "CONTRACT.md": "2eab6eef2680eb0d1c733ef5751112bdd6c69520674de43390a8e28b8a933bbc",
+        "capture.py": "ffb364923b409e647653c7faab6300c0ba9c5c8372d9c9402f5f883de9cbabab"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "8e0fa539473f753a10bc45b39f5ff84065e66dcb3eb398e33e708c6a9aecbc80",
+        "CONTRACT.md": "2eab6eef2680eb0d1c733ef5751112bdd6c69520674de43390a8e28b8a933bbc",
+        "capture.py": "f3456fefc97817d2b6d6e71c194076618ac97ea9a91eecafaf514c64dd7c11dc",
+        "test_capture.py": "27624cd9e8a63f3d4f9a1b14b9ccd4694af0c45321688c1903061b43d0cd4601"
+      },
+      "changed_files": [
+        "capture.py",
+        "test_capture.py"
+      ],
+      "runner_artifacts": [
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock"
+      ],
+      "private_record_sha256": "80ec12729a86362eb34344191f4b796e00c8b438ef8299b76df4fe2a755391af",
+      "final_message_sha256": "baa31369f67b4a1a2d695f18c2cf031138b2f930d6882d50a594c033dca31712",
+      "context_count": 2,
+      "aggregate_usage": {
+        "input_tokens": 383624,
+        "cached_input_tokens": 340352,
+        "output_tokens": 4572,
+        "reasoning_output_tokens": 498,
+        "uncached_input_tokens": 43272
+      },
+      "wall_seconds": 117.08864784240723,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      },
+      "resource_preflight_passed": true,
+      "source_runtime_match": true
+    }
+  ],
+  "evidence_retention": {
+    "public_replayable": false,
+    "limitation": "Raw isolated transcripts and trial outputs remain private because they contain local paths and platform context. File/input/output digests and observations are retained here. One trial per case/arm establishes bounded outcomes only, not statistical reliability, efficiency benefit or physical validation. Semantic acceptance is recorded separately."
+  }
+}

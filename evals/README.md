@@ -82,6 +82,26 @@ outside model latency and preserve all attempts, timeouts, and failures.
 Cases without a fixture are taxonomy fixtures until a realistic isolated
 repository is added. Do not count them as end-to-end behavioral evidence.
 
+The fixture-backed [hardware cohort](hardware-matrix.json) covers missing design
+inputs, unsupported impedance evidence, placement generation, actual-job drill
+settings, operator controls, prototype/production distinctions and bench planning.
+The board data and supplier/job snapshots are synthetic; they test decisions and
+file handoffs without authorizing physical builds. The narrow preapproved CPL
+case is a restraint control. Run this cohort with the existing frozen installed
+versus control runner; adding cases and passing fixture checks alone does not
+establish natural discovery or a benefit over the control arm.
+The [bounded hardware checks](results/hardware-skills/checks.md) retain three
+direct-router probes, a temporary CLI installation and the blocked natural-run
+attempts, with those evidence classes kept separate.
+
+The [0.10.0 release cohort](release-0.10.0-matrix.json) uses the same protected
+runner and paired installed/control arms for resource borrowing, complete
+evidence identity, hardware handoff, prototype readiness, local restraint and
+bench planning. It is a bounded one-trial release check, not a statistical
+reliability study. Retain setup failures as well as model outcomes, inspect actual
+specialist reads, and verify the evidence-identity implementation against its
+canonical-encoding/verified-digest contract before claiming that gate closed.
+
 The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
 five-case natural cohort for generic execution coordination: decomposable worker
 assignment, scope resolution before writing, adversarial ordering, cheap failure

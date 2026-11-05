@@ -1,6 +1,31 @@
 # Changelog
 
-## 0.10.0 - Unreleased
+## 0.10.0 - 2026-11-04
+
+Adds explicit-only Hardware Engineering and Hardware Qualification specialists,
+selected through the existing public router for electrical/PCB/mechanical design,
+manufacturing handoff and physical bench experiments. Conditional references
+cover architecture/controls/cost tradeoffs before routing, source extraction and
+EDA tools, actual assembler previews and JLC job settings, and safe repeatable
+qualification toward a minimum production circuit. Known local CPL-only fixes
+remain minimal; shared validation-tool defects retain Verification and Operations
+ownership. Prototype order eligibility, measured qualification and production
+acceptance are distinct claims under the existing evidence policy. This extends
+the 0.10.0 candidate; older published releases and tags remain unchanged.
+
+Hardware migration: existing capability vocabulary, profile schema, invariant
+owners and activation remain unchanged. Use the two new specialist routes only
+for their physical-design or qualification decisions; generic firmware work
+keeps its existing owner. Reuse accepted experiment requirements and deviations;
+resolve unsafe connector/power/process unknowns before exposure, while leaving
+runtime performance that the prototype is intended to measure as a bench test.
+No new approval form, mandatory certification, assembler, instrument or review
+campaign is imposed. Added fixture-backed hardware cases establish the intended
+checks; structural validation alone does not establish natural model behavior.
+The initial bounded hardware check receipt records 141 passing unit tests, successful
+temporary CLI installation, three direct-router probes and a closed independent
+review. The installed/control model campaign stopped at sandbox preflight, so
+natural discovery and comparative benefit remain unmeasured.
 
 Scope decisions now reuse established authority and existing task notes; a table
 or separate record-only call is not mandatory. Read owner guidance as needed
@@ -18,7 +43,7 @@ proportional: simple local fixes need no uniform browser or new harness.
 Broad/full regression waits for known corrections and a frozen final candidate,
 except for an explicitly user-requested diagnostic run. This refines feedback
 timing without relaxing final verification, review, integration or release gates.
-No additional publication authority, invariant, profile schema or specialist is
+No additional publication authority, invariant or profile schema is
 introduced.
 
 Audit refinement: focused proof and final-regression timing remain canonical in
@@ -37,7 +62,7 @@ Activation now explicitly includes wrappers over external runtime owners and
 retained replay/evaluation/regression evidence. `physical_devices` and
 `multiple_adapters` now activate resource admission/reclamation independently of
 `constrained_runtime_resources`; generated profiles include an enforcement entry
-for repository review. No new invariant, specialist,
+for repository review. No new invariant,
 profile schema, permanent agent, independent gate or review budget is added.
 
 Existing specialist references and builder/review packets carry conditional
@@ -67,14 +92,26 @@ the conditional handbacks and composition pass to open cooperating-owner work,
 and verify teardown/re-entry and evidence mutation semantics. Do not invent
 missing provenance for old captures or relabel historical receipts: re-capture
 or leave new-policy reuse pending where required identity is unavailable.
-Published 0.9.0 and its immutable tag remain unchanged. Adoption of this candidate
-must name its exact source revision; stable install remains pinned to v0.9.0
-until a separately authorized 0.10.0 publication. Stable publication also awaits
-a natural installed/control routing run with observed specialist body reads and
-full evidence-identity proof, including versioned canonical encoding or verified
-digest manifests. The prior router-only/`repr` forward probes do not satisfy that
-gate and are not retroactively upgraded by stronger eval expectations. This is
-a pre-release gate, not a gate for merging the unreleased development candidate.
+Published 0.9.0 and its immutable tag remain unchanged. Install this release
+from immutable `v0.10.0`; name the exact source revision for reusable evidence.
+The pre-release natural installed/control routing and full evidence-identity
+requirements are closed by the [release qualification](evals/results/hardware-skills/release-0.10.0.md).
+The six-case paired campaign completed 12 executions with observed specialist
+body reads and versioned canonical encoding. Its initial replay result proved
+manifest integrity but omitted raw-media reuse verification; a targeted paired
+case then proved same-path changed-byte rejection at the actual consuming seam.
+The two campaigns use byte-identical runtime policy. Earlier direct-router and
+`repr` probes retain their original limitations and are not retroactively
+upgraded. These are bounded one-trial observations, not statistical reliability,
+efficiency benefit or physical-device evidence.
+
+Release follow-up also exposes hardware in the visible plugin capabilities,
+long description and default prompts. JLC guidance conditionally requires the
+manufacturer's current impedance-control worksheet with the fabrication
+submission. The evaluation runner admits only its exact native executable and
+verifies sandbox readability of actual skill/reference resources before copying
+authentication; inaccessible output locations fail closed without broadening
+filesystem or network access.
 
 ## 0.9.0 - 2026-09-22
 

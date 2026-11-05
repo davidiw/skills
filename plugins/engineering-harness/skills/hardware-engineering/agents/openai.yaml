@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hardware Engineering"
+  short_description: "Design electrical and mechanical hardware"
+  default_prompt: "Use $hardware-engineering to resolve physical hardware design decisions."
+policy:
+  allow_implicit_invocation: false

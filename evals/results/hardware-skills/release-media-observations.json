@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "kind": "targeted actual-media consuming-path qualification",
+  "source_revision": "713c0b8e8861bb07231837268d03a0e7e812aee7",
+  "policy_version": "0.10.0",
+  "prior_campaign_source": "6fa21342024d42b55fb6187887b1edde9ee428c3",
+  "runtime_matches_prior_campaign": true,
+  "runtime_file_sha256": {
+    ".codex-plugin/plugin.json": "76c14bf7027636b52b8998058cc7a0d79cf72209df4864597eb50bb2cd5026f3",
+    "LICENSE": "14fc7144731682d6c0efb03b937ad760574473acbcdec627c6d3854c50e056db",
+    "references/assurance-handoff.md": "b2097dbd55d9515c5ed13ca8d4b13162c27bc5fc3f8c14d06d1e536fe302a92a",
+    "references/assurance-review.md": "04235f16e9dd095b49c6a7419fd75cbb3a341e73b2de00cbf58aec152af15e18",
+    "references/capability-activation.json": "d8f19b39087f4ca21962bad3b9c2b3085d36b4fb073c33092060d1a3d6d9f6c3",
+    "references/change-classification.md": "4e87c7e5db8c0fa282bc9d0aa68872374065020858b90ef1b02416e7e7626fb4",
+    "references/enforcement-ladder.md": "d65e2f20a827af02f2d13f9387fcdc09a60d263020aac79c9f82a6c130c6d163",
+    "references/engineering-invariants.md": "051a3a67636ae29b61b7f1f0e4c35007df2762e2c3354597baebf3c27f982d98",
+    "references/experience-routing.md": "b58dec0819a5abbc5fcf5de603f62d42248fa147082a2b16bec6e9709046d0b7",
+    "references/invariants.json": "e84e399086ee8fa828c3fcac9e24c42d9e43fcf2ce4e0fdae52ee48aa2e535b4",
+    "references/precedence-and-exceptions.md": "940d271ccafe743b344b6ec7e43ec3c10c5f220ade547f6305129662d4525ba4",
+    "references/profile-discovery.md": "09e6a919007977332d94e80fd95a3c5cb6474aa516d56243998deb8d8632e682",
+    "references/project-profile.schema.json": "d94c00261895bddda14abdef6e52e6c8125e636fd381dde299344929b2571103",
+    "references/scope-approval.md": "b4007fca8ca4c3810680fca0a8bda2b5069d63548963873c1099ca931f0bee94",
+    "references/versioning.md": "bf210c45ae8fc590d4e363a9c264bf9ad6668c8e1802919d5125a673af90d31b",
+    "scripts/profile_repository.py": "918dd5e930d7240f123545d31970875f91d350038faeeac7031431c93940f248",
+    "scripts/validate_profile.py": "691eeb48ff53677395119a74468bc4f3ee2e6266059a9775d31ca294810bec30",
+    "skills/application-composition/SKILL.md": "69f6bf42e0d8a75a7e6830ffc225af274cde20baf02678f88c02036eae5e6b7e",
+    "skills/application-composition/agents/openai.yaml": "28789ef20f6f69b29c8a35289af85e32f3d3af536f529139cb5aaf4dc6457ab7",
+    "skills/application-composition/references/adapters-and-ai.md": "7ba2150c39b78b54cba1294fd07a04330c7e87e49b8f670658cdc852a50778c2",
+    "skills/application-composition/references/interactive-surfaces.md": "8e83aca81639f697a7e0656084ede73ed1284e5872a5839a7163a5accc2eba29",
+    "skills/architecture-foundations/SKILL.md": "4291fe11f3952d3b3b41ffe66ac7b4c19550123409656f615e0ba308dacdd4af",
+    "skills/architecture-foundations/agents/openai.yaml": "96d35df4776e0334c3d18c4e2e22fd0146ef250f4ead6ef48e10cd6e243ca149",
+    "skills/architecture-foundations/references/brownfield-deepening.md": "4a6616f9f1d4d5853a49659f749807a320482f64db87763ff2c11b8cb93d077f",
+    "skills/architecture-foundations/references/quality-and-ownership.md": "15fe8b631d7b341cfbce85355e0a3ca8cbe0d0f787e71a9ef87c8178b2f4fca0",
+    "skills/architecture-foundations/references/runtime-resource-governance.md": "fb6ecbd014b529b6cf04bfa061c00262ffbac228f16a400327a2f17d6a9db700",
+    "skills/architecture-hardening/SKILL.md": "3b865918b4ee0400925eb1bc01836671ec3e24688956a257a8fc82d105e25b47",
+    "skills/architecture-hardening/agents/openai.yaml": "77a92c45093d139a099fbdb248b8afd72bd9a536edf8a4015e113b26d11938aa",
+    "skills/architecture-hardening/references/hotspot-method.md": "772a0404c054515803f5173e3bee18e4ec5539b54ee910db0cdb600324b53b6b",
+    "skills/brand-and-language/SKILL.md": "652e3e2d96905bf09f51edf2e8e3bb000d6566284d1e06b2469df11fc578831d",
+    "skills/brand-and-language/agents/openai.yaml": "f13eae568c1c8bfb8a7f5ea7d892177f4e8c334427422768bd9535ef09796a18",
+    "skills/brand-and-language/references/language-and-trust.md": "2c19012496c5538a23451edfaf7af7e5a265c783bb730cabed777dccce6c20b8",
+    "skills/data-and-compatibility/SKILL.md": "0ded72ba23743898da95b5f3c8172c52dafdff45d7de3f179791c893e04e6c3e",
+    "skills/data-and-compatibility/agents/openai.yaml": "2d42eb696f263864c0cc99cca5c55de54cbb6ccd19a3fe5f410b3f3adb1f3823",
+    "skills/data-and-compatibility/references/compatibility-and-migrations.md": "7c3fc687996c57f5e778854a2694342eecd8f4698afb94cab2bcad558250a025",
+    "skills/data-and-compatibility/references/live-repair.md": "3a23798817287e069b81ebaaf0eca37c164b681289c2171d1c1de47d75a556e2",
+    "skills/data-and-compatibility/references/privacy-lifecycle.md": "ac64e3eac853ba3e481451bd226214b18d6dfb8231fe66551cc9855a2fda4f2a",
+    "skills/data-and-compatibility/references/representations-and-reconciliation.md": "57b5ea47a43e91776a2a240db8be1d2a559f9bbc469356b338244dbf6ab7c3f0",
+    "skills/durable-workflows/SKILL.md": "2532077580bc55b12a606a068d62b7d50e21f70b82f31f2bf76444c5e7307094",
+    "skills/durable-workflows/agents/openai.yaml": "e091c439fcb87271e1dd606c7d3ede077d50aa7c6f442103c387c4ffc5689969",
+    "skills/durable-workflows/references/failure-matrix.md": "0e776941d24b4084ec64d8bc068e1badcd42b057a6e891fb574de77c7597f2a0",
+    "skills/hardware-engineering/SKILL.md": "fb592f7d3532f07015cc5ade98e5de40e51869a89f5de1e03e2797802120a9a7",
+    "skills/hardware-engineering/agents/openai.yaml": "6650d8b7aa7516f85763cd331330b1f4bc7c5b9afdc82dc86b5bcea535512b32",
+    "skills/hardware-engineering/references/design-decisions.md": "8c696aceb0d94046fbf6e6856dcc2e581b13650cc2c78f219530f4ad30df42bd",
+    "skills/hardware-engineering/references/eda-and-mechanics.md": "caa805043e724942015b46711684e6c549e2147873aa33656d1f3d80fad5b766",
+    "skills/hardware-engineering/references/jlcpcb.md": "4312fc13ff1abfc2f12f8abf8592592c0593242101fad769ced646480dcde7b6",
+    "skills/hardware-engineering/references/manufacturing-handoff.md": "f75369c0f27387d7c8ea74a80dc898de14b1dad119fe14cfa72173dc42cc8904",
+    "skills/hardware-qualification/SKILL.md": "2011e6a3f22af677ea359d0354f9787f1b9cf479f7e514fd90da8a383eff3b05",
+    "skills/hardware-qualification/agents/openai.yaml": "b0468abf691a909b419a0d6626fa1e0e4ccbabfeb47126cfb6fc175039a3cef1",
+    "skills/hardware-qualification/references/bench-and-production.md": "2bbe1e5cb2498cd78f210dc845b0cc3ad7b286c4b9bc3d0efd4130649023b752",
+    "skills/interface-design/SKILL.md": "11f871b8a7a753befa3ea7cba64e15aeb2d2b460f840313a072fedcf164f8954",
+    "skills/interface-design/agents/openai.yaml": "0d20ad63ee8b75f2919b2fb413a5ade8bda6b9ad07b591bbb7ca5b1b5467a826",
+    "skills/interface-design/references/design-authority.md": "ca5e14a7335c01a96fe8e1d30b06f04151a8095d98cad967a3612099bd288595",
+    "skills/interface-design/references/platform-checks.md": "b45b8c1ae6259ce5250b5f35ad4fde4da6cdf6a826745dab6f7cfd847857f89a",
+    "skills/interface-design/references/rendered-evidence.md": "305f6b4d8cb3457c71f519b37f30ba7d8ae8a4a7bd36bda7e0b5739cb92cf0ce",
+    "skills/interfaces-and-events/SKILL.md": "98aeef9dfc4d53555fd14a0bc690750e7123294c6d061d014a2ece90034f46aa",
+    "skills/interfaces-and-events/agents/openai.yaml": "f3f45b8ccf7441fd748fbef9737e45ba5d5a3581e1429a4f28acf61a5d8f9f0d",
+    "skills/interfaces-and-events/references/authorization-context.md": "daa8ad551fc96e3b1539e8e977b55a1ce5e08f52ac40f5c65453735110869bb7",
+    "skills/interfaces-and-events/references/consumer-contract.md": "6f5d032a31351f20a0363faf669d5cf35de7d387c9035ae69d6f0ca634612ea2",
+    "skills/interfaces-and-events/references/event-delivery.md": "8acbeefd19e4b2e05d9df883964d11488d06fc656129ff9fd9432682253731e0",
+    "skills/privacy-assurance/SKILL.md": "916e52962b0007be21ac516dd373276c090b13c817f3e48be55ca33d38cedeb8",
+    "skills/privacy-assurance/agents/openai.yaml": "ec3e2c064f97b507e336e815f9aa56bb7cea90e0a5843380a23e0a7ec0ab658c",
+    "skills/privacy-assurance/references/release-data-lifecycle.md": "9c3fa74f97b625ee2a36118e0fa392f096ae20b0570a32749d92c4fb0d457fd3",
+    "skills/product-experience/SKILL.md": "37a7a65fcc10275079d5796da89b136c3fa54833a3f7b966c3d1c10cc74cf053",
+    "skills/product-experience/agents/openai.yaml": "afc0702ee60e44de7a25cfaf7bc0e90f64b94a94d7a5061f94c9f372bac9807d",
+    "skills/product-experience/references/tasks-and-recovery.md": "f2cecc97bebc4f2753a8e2611e387357f7df858c5393e2b5617bcf31f8a822a3",
+    "skills/security-assurance/SKILL.md": "4a04bfc9d8b656d01349ddc21bb448bd984f7a40bd08293ee3ddaea905c068a4",
+    "skills/security-assurance/agents/openai.yaml": "a57f933cf105e17a427ff2a03ff570265eb216637421b80f2d50a0c842dffb16",
+    "skills/security-assurance/references/release-surface.md": "3f6b5c6371d0557fec2f6032bc9d33d9b82d5214bffa01a116908c3d7a4731d9",
+    "skills/using-engineering-harness/SKILL.md": "8f952752ddf3189bd30b34ee18765c45611fd5459a6bfbc317d9f4fd7701f6cb",
+    "skills/using-engineering-harness/agents/openai.yaml": "8e472f83f5f599d7c64d855fa7d7f8fff109dd4de2905bf5122e679b11009be3",
+    "skills/verification-and-operations/SKILL.md": "1e3bebb31da6fb5b54ec61f1e8ec11d3866e324e0769630c2cc58bbc28b4feb9",
+    "skills/verification-and-operations/agents/openai.yaml": "f91692e7a70431b3aca7bb3af2f11d65add5717ad56b3702c80acdf0954d585e",
+    "skills/verification-and-operations/references/adversarial-review.md": "f41d32c2e7a60df1a086afb164e948d8b1952992234e86d033e4c7f3f8c6fd2e",
+    "skills/verification-and-operations/references/artifact-and-physical-proof.md": "fc40d62e63d072c751d473190be4d5a0ac3c34e79f2bd29ad0ff751adeb6b4ed",
+    "skills/verification-and-operations/references/change-review.md": "0d8cf2be75c398cc46d99ea952daba3eb3d784f2f06f93bada76d19d99a7dfb5",
+    "skills/verification-and-operations/references/diagnosis.md": "17780cd9cc586ab633ee00678e3cb4c3185473a01c03b7c7777a9392a84a19dd",
+    "skills/verification-and-operations/references/evidence-contract.md": "fe745c03ed0cec6f00391aae5f78ff3f6c9075ae0c10b67b0c8222e4fbfd4df4",
+    "skills/verification-and-operations/references/methodology.md": "e98ce265d0dcbbd73e8f5c9432604364f1b6e9764fe0ea84ac32f653c40e5692",
+    "skills/verification-and-operations/references/operator-interface.md": "a68a240a3d354dc4b3ed72a5c7649b98715187ddb4a260fb3748a1e4e1e75d31",
+    "skills/verification-and-operations/references/reviewable-commits.md": "8a5ad978e622998bc1892dbf83cb8233f1158440c1033ad3957506e6e10fd6a5",
+    "templates/compatibility-plan.md": "5336e714483235fd27c745ce7c2a195807dadfb1985e6db9773b249155031f7c",
+    "templates/durable-operation.md": "6a05c2ce8b8029dec053c28379de685bee1d31e629a97317827fa4ab7a77312c",
+    "templates/project-profile.local-first.json": "a7315d34be5d3d9a61266c41b75bde00206111497f94b0c2d4e946327d3c7c05",
+    "templates/project-profile.minimal.json": "f0ce79a272202c519174ddd896bcddc528cf6295251f06ee93363e498352e009",
+    "templates/review-packet.md": "845b11f4304b6f7746a8dcec7755b21ab3c99e54776a9ce56d92d059ca6aaf37",
+    "templates/scope-lock.md": "a47449f4b43cec8e6045ad5e4e465ba8a8b36a02c71b34fbb8b02b09e8cc5246"
+  },
+  "input_file_sha256": {
+    "evals/release-media-matrix.json": "d215c54639d5f8cb7dc456db25bba01b12a792997aa8edb42e137e4473c07fe7",
+    "evals/cases.json": "a1404013b86bd7a7be6cd24c70b95ae93c19ecc3beb195fdcd66333baeb8a7c4",
+    "evals/run_natural_matrix.py": "68b7f2860eec09327de0d342e621f443bd90c40f4ca0f0211422a1bc25bd2d63"
+  },
+  "run_metadata_sha256": "f14f241730063e3b728998b2ee7aa01713e91111a7d2c0450b127f84404b0856",
+  "trials_per_case_arm": 1,
+  "conditions": [
+    "control",
+    "harness"
+  ],
+  "results": [
+    {
+      "case_id": "replay-media-byte-reuse",
+      "arm": "control",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "measurement_complete": true,
+      "observed_skill_bodies": [],
+      "fixture_before_sha256": {
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "73e3153b317de3d3628e605c02173201ecf7a1e42b78d25dc3a5b26513613e4e",
+        "reuse.py": "1da0c9881a1e2971a6c42067d9840a6e2b7ebc607cc5dafb8e0284cbed3fd306",
+        "test_reuse.py": "c3db5fc38be925874c3047f4b9f1d7cdf24d2c1488582cdd63b89094736ce004",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "d259b725fc7d86ef8fa57486846e8ddde01433107b5f538b6fe748228f2b1892",
+        "reuse.py": "1bcaac76ff8d388680512fd0bc658cecc4401c265f0afbcc992c230aacbb4ab8",
+        "test_reuse.py": "bcfbde54016c0e1e449da4ca4767897048bcfbd33021ff0f4f2c9e5b795afe54",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      },
+      "changed_files": [
+        "capture.py",
+        "reuse.py",
+        "test_reuse.py"
+      ],
+      "private_record_sha256": "e01b6ebb46fd53d7f82d0bb9d498a7277ec22d1bcd94959279f4eb3d1a6ede9a",
+      "aggregate_usage": {
+        "input_tokens": 82953,
+        "cached_input_tokens": 74624,
+        "output_tokens": 1759,
+        "reasoning_output_tokens": 145,
+        "uncached_input_tokens": 8329
+      },
+      "context_count": 1,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      }
+    },
+    {
+      "case_id": "replay-media-byte-reuse",
+      "arm": "harness",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "return_code": 0,
+      "measurement_complete": true,
+      "observed_skill_bodies": [
+        "using-engineering-harness"
+      ],
+      "fixture_before_sha256": {
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "73e3153b317de3d3628e605c02173201ecf7a1e42b78d25dc3a5b26513613e4e",
+        "reuse.py": "1da0c9881a1e2971a6c42067d9840a6e2b7ebc607cc5dafb8e0284cbed3fd306",
+        "test_reuse.py": "c3db5fc38be925874c3047f4b9f1d7cdf24d2c1488582cdd63b89094736ce004",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      },
+      "fixture_after_sha256": {
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "38c6374f79ae28193a44a01571e55dfcbf6c16bd30032a18b8569cafa42975a9",
+        "reuse.py": "1bcaac76ff8d388680512fd0bc658cecc4401c265f0afbcc992c230aacbb4ab8",
+        "test_reuse.py": "0ee97b6ecccea3fcc9b846a7469805499e2f57b5288b06518e50e92015df60b0",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      },
+      "changed_files": [
+        "capture.py",
+        "reuse.py",
+        "test_reuse.py"
+      ],
+      "private_record_sha256": "a68f886049e82deb46886a6e0360801c7483a81f239b584b23d4facda5153276",
+      "aggregate_usage": {
+        "input_tokens": 106651,
+        "cached_input_tokens": 93696,
+        "output_tokens": 1834,
+        "reasoning_output_tokens": 75,
+        "uncached_input_tokens": 12955
+      },
+      "context_count": 1,
+      "boundary_denials": {
+        "auth": "denied",
+        "auth_alias": "denied",
+        "outside": "denied",
+        "direct_http": "blocked",
+        "proxy_http": "403",
+        "direct_socket": "blocked",
+        "local_ipc": "ok"
+      }
+    }
+  ],
+  "independent_actual_output_checks": [
+    {
+      "arm": "control",
+      "record_sha256": "e01b6ebb46fd53d7f82d0bb9d498a7277ec22d1bcd94959279f4eb3d1a6ede9a",
+      "source_revision": "713c0b8e8861bb07231837268d03a0e7e812aee7",
+      "observed_skills": [],
+      "probe_sha256": "96be25b3661d965a15046d95fc06069dae542f332b401c1c8b91de681344bf43",
+      "probe_exit_code": 0,
+      "checks": [
+        "intact media accepted",
+        "actual media read exactly once",
+        "raw pose/features/events mutations rejected",
+        "stored model provenance mutation rejected",
+        "mutable annotations preserve identity and reuse",
+        "changed media bytes at same path rejected with reference/evidence unchanged",
+        "missing media rejected"
+      ],
+      "output_file_sha256": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "d259b725fc7d86ef8fa57486846e8ddde01433107b5f538b6fe748228f2b1892",
+        "reuse.py": "1bcaac76ff8d388680512fd0bc658cecc4401c265f0afbcc992c230aacbb4ab8",
+        "test_reuse.py": "bcfbde54016c0e1e449da4ca4767897048bcfbd33021ff0f4f2c9e5b795afe54",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      }
+    },
+    {
+      "arm": "harness",
+      "record_sha256": "a68f886049e82deb46886a6e0360801c7483a81f239b584b23d4facda5153276",
+      "source_revision": "713c0b8e8861bb07231837268d03a0e7e812aee7",
+      "observed_skills": [
+        "using-engineering-harness"
+      ],
+      "probe_sha256": "96be25b3661d965a15046d95fc06069dae542f332b401c1c8b91de681344bf43",
+      "probe_exit_code": 0,
+      "checks": [
+        "intact media accepted",
+        "actual media read exactly once",
+        "raw pose/features/events mutations rejected",
+        "stored model provenance mutation rejected",
+        "mutable annotations preserve identity and reuse",
+        "changed media bytes at same path rejected with reference/evidence unchanged",
+        "missing media rejected"
+      ],
+      "output_file_sha256": {
+        ".tmp/codex-bwrap-synthetic-mount-targets-1000/lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "AGENTS.md": "ba282816b534ed2db7e71f68a7752529424a7cd4668dc74b2192d79bc2c17812",
+        "CONTRACT.md": "4c1502017e49b14c9f7ce0c3d52e7b068e00cec9d4e148a964f48a4e9d1a6071",
+        "capture.py": "38c6374f79ae28193a44a01571e55dfcbf6c16bd30032a18b8569cafa42975a9",
+        "reuse.py": "1bcaac76ff8d388680512fd0bc658cecc4401c265f0afbcc992c230aacbb4ab8",
+        "test_reuse.py": "0ee97b6ecccea3fcc9b846a7469805499e2f57b5288b06518e50e92015df60b0",
+        "testdata.txt": "d8a38943c48cf04bf44a5281ecea91924898a137ba1d340f8263b0bf4e6a1e13"
+      }
+    }
+  ],
+  "evidence_retention": {
+    "public_replayable": false,
+    "limitation": "Raw transcripts and completed trial files remain private; source/output identities and exact supported checks are retained. No evaluator reference repair was applied to the checked model outputs. One paired trial does not establish statistical reliability or comparative benefit."
+  }
+}

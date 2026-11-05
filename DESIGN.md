@@ -3,7 +3,7 @@
 ## Objective
 
 Provide one coherent, framework-neutral package that helps coding agents make
-consequential application changes safely while leaving simple work simple.
+consequential software and hardware changes safely while leaving simple work simple.
 
 The internal reasoning order is:
 
@@ -67,7 +67,7 @@ runtime source. Historical receipts retain their original layouts and hashes.
 
 ## Skill boundaries
 
-The router plus twelve specialists remain separate because they answer different
+The router plus fourteen specialists remain separate because they answer different
 questions:
 
 | Skill | Question it owns |
@@ -79,6 +79,8 @@ questions:
 | `data-and-compatibility` | How do representations and deployed consumers evolve safely? |
 | `architecture-hardening` | Where has ownership diverged, and how is the root cause consolidated? |
 | `verification-and-operations` | What evidence proves the claim, and which external action is authorized? |
+| `hardware-engineering` | Which electrical, PCB, mechanical and manufacturing design meets the intended experiment or product requirements? |
+| `hardware-qualification` | Which safe, reproducible physical experiments establish the minimum reliable production circuit? |
 | `security-assurance` | Can the changed path violate trust or authorization, including threats absent from the catalog? |
 | `privacy-assurance` | Does sensitive data retain its purpose, lifecycle, and erasure obligations through every changed representation? |
 | `product-experience` | What job, flow, information priority and recovery make sense to the user? |
@@ -86,6 +88,12 @@ questions:
 | `brand-and-language` | What identity/visual intent is proposed or accepted, and how is it expressed in naming and language? |
 
 Experience owners add judgment without owning new engineering invariants.
+Hardware owners also consume existing invariants: Hardware Engineering owns
+domain design/manufacturing decisions; Hardware Qualification owns physical
+test selection and execution. Verification and Operations retains evidence
+semantics and operation authority. Their references distinguish prototype
+order eligibility, physical qualification and production acceptance without
+adding a second policy catalog or mandatory review for ordinary local fixes.
 [Experience routing](plugins/engineering-harness/references/experience-routing.md)
 selects one unresolved decision; the existing scope checkpoint governs expansion.
 Brand and Language owns identity/visual intent at the proposal and accepted-contract

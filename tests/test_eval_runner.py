@@ -189,6 +189,30 @@ class EvaluationRunnerTest(unittest.TestCase):
             command.assert_not_called()
             self.assertFalse((root / 'home/auth.json').exists())
 
+    def test_codex_native_executable_detection_and_scope(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = root / 'node_modules/@openai/codex'
+            launcher = package / 'bin/codex.js'
+            launcher.parent.mkdir(parents=True)
+            launcher.write_text('launcher')
+            native = package / 'node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex'
+            native.parent.mkdir(parents=True)
+            native.write_text('native')
+            with patch.object(runner.shutil, 'which', return_value=str(launcher)), \
+                 patch.object(runner.platform, 'machine', return_value='x86_64'), \
+                 patch.object(runner.sys, 'platform', 'linux'):
+                self.assertEqual(runner.codex_sandbox_executable(), native)
+                native.unlink()
+                with self.assertRaisesRegex(RuntimeError, 'native executable not found'):
+                    runner.codex_sandbox_executable()
+                with patch.object(runner.platform, 'machine', return_value='unknown'):
+                    with self.assertRaisesRegex(RuntimeError, 'unsupported Codex platform'):
+                        runner.codex_sandbox_executable()
+            with patch.object(runner.shutil, 'which', return_value=None):
+                with self.assertRaisesRegex(RuntimeError, 'requires codex'):
+                    runner.codex_sandbox_executable()
+
     def test_boundary_config_and_canary_cleanup(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -208,18 +232,74 @@ class EvaluationRunnerTest(unittest.TestCase):
                 self.assertEqual(profile['network']['domains'], {})
                 self.assertEqual(profile['filesystem'][':root'], 'deny')
                 self.assertNotIn(str(home), profile['filesystem'])
+                native = runner.codex_sandbox_executable()
+                self.assertEqual(profile['filesystem'][str(native)], 'read')
+                self.assertNotIn(str(native.parent), profile['filesystem'])
                 self.assertNotIn('--sandbox', args)
+                if args[-2].endswith('resources.py'):
+                    return {'return_code': 0, 'stdout': json.dumps({p: runner.digest(Path(p)) for p in json.loads(args[-1])})}
                 for arg in args:
                     if arg.startswith('--screenshot='):
                         Path(arg.split('=', 1)[1]).write_bytes(b'synthetic image')
                 return {'return_code': 0, 'stdout': json.dumps(expected)}
-            with patch.object(runner, 'command', side_effect=run):
+            native = root / 'codex-runtime/native-codex'
+            native.parent.mkdir()
+            native.write_text('synthetic native executable')
+            with patch.object(runner, 'command', side_effect=run), \
+                 patch.object(runner, 'codex_sandbox_executable', return_value=native):
                 result = runner.offline_browser_boundary(home, fixture,
                     {**os.environ, 'EXPERIENCE_CHROMIUM': str(browser)}, [], lambda: None)
             self.assertEqual(result['preflight'], expected)
             self.assertFalse((home / 'auth.json').exists())
             self.assertFalse((home / 'boundary-canary').exists())
+            self.assertEqual(list((home / 'plugins/cache').iterdir()), [])
             self.assertEqual(result['local_server_connections'], 0)
+
+    def test_resource_check_blocks_before_auth_and_install_runs_without_auth(self):
+        for fail in (True, False):
+            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                (root / 'catalog').mkdir()
+                (root / 'catalog/SKILL.md').write_text('catalog')
+                (root / 'auth').write_text('test credential')
+                home = root / 'home'
+                resource = 'skills/example/SKILL.md'
+                expected = {resource: runner.hashlib.sha256(b'installed').hexdigest()}
+                def run(args, env, cwd, timeout):
+                    self.assertFalse((home / 'auth.json').exists())
+                    if args[1:3] == ['plugin', 'add']:
+                        target = home / 'plugins/cache/example/engineering-harness/1' / resource
+                        target.parent.mkdir(parents=True)
+                        target.write_bytes(b'installed')
+                    inventory = {'installed': [{'pluginId': 'engineering-harness@example'}]}
+                    return {'return_code': 0, 'stdout': json.dumps(inventory), 'stderr': ''}
+                def check(resources, fixture, env, attempts, checkpoint):
+                    self.assertFalse((home / 'auth.json').exists())
+                    self.assertEqual(len(resources), 2)
+                    if fail:
+                        raise RuntimeError('resource visibility preflight failed')
+                with patch.object(runner, 'offline_browser_boundary', return_value={}), \
+                     patch.object(runner, 'command', side_effect=run), \
+                     patch.object(runner, 'verify_sandbox_resources', side_effect=check):
+                    if fail:
+                        with self.assertRaisesRegex(RuntimeError, 'resource visibility'):
+                            runner.setup(home, root, root / 'catalog', 'harness', root / 'auth',
+                                         expected_runtime=expected, attempts=[], checkpoint=lambda: None,
+                                         fixture=root / 'fixture', offline_browser=True)
+                        self.assertFalse((home / 'auth.json').exists())
+                    else:
+                        runner.setup(home, root, root / 'catalog', 'harness', root / 'auth',
+                                     expected_runtime=expected, attempts=[], checkpoint=lambda: None,
+                                     fixture=root / 'fixture', offline_browser=True)
+                        self.assertEqual((home / 'auth.json').read_text(), 'test credential')
+
+    def test_resource_probe_rejects_hidden_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / '.tmp').mkdir()
+            with patch.object(runner, 'command', return_value={'return_code': 0, 'stdout': '{}'}):
+                with self.assertRaisesRegex(RuntimeError, 'outside /tmp'):
+                    runner.verify_sandbox_resources({root / 'missing': 'hash'}, root, {}, [], lambda: None)
 
     def test_failed_setup_still_retains_an_attempt(self):
         with tempfile.TemporaryDirectory() as directory:

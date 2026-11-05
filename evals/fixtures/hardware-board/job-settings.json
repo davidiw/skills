@@ -1,0 +1,5 @@
+{
+  "snapshot_source": "synthetic local order draft",
+  "min_via_drill_mm": 0.3,
+  "units": "mm"
+}

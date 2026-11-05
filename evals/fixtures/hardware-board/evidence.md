@@ -1,0 +1,2 @@
+# Electrical notes (synthetic)
+Board input: 3.3 V nominal from the regulated connector. Output: digital sensor data on the header. Connector polarity and contact face were checked against the local connector drawing. Power-up current was limited and no abnormal heating was observed on one prototype. A draft note says “50 ohm controlled impedance”; no field solver result, stackup dielectric constant, coupon measurement, or raw impedance data is available. Runtime and temperature range have not been measured.
