@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "Engineering Harness",
     "shortDescription": "Engineering, product experience, and assurance.",
-    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status. Resolve meaningful UX, interface, and brand decisions with repository design authority, bounded scope, and proportional rendered evidence.",
+    "longDescription": "Bootstrap or adopt repositories, route ordinary changes, harden demonstrated friction, and coordinate changed-path or pre-launch security/privacy assurance with explicit reviewer-independence status. Resolve meaningful UX, interface, and brand decisions with repository design authority, bounded scope, and proportional rendered evidence. Design electrical circuits, PCBs and mechanical assemblies, prepare manufacturing handoffs, and plan hardware qualification with explicit prototype and production evidence limits.",
     "developerName": "davidiw",
     "category": "Developer Tools",
     "capabilities": [
@@ -37,14 +37,16 @@
       "Privacy assurance",
       "Product experience",
       "Interface design",
-      "Brand and language"
+      "Brand and language",
+      "Hardware engineering"
     ],
     "defaultPrompt": [
       "Bootstrap this repository with the smallest useful engineering harness.",
       "Adopt this existing repository and propose an evidence-backed capability profile.",
       "Make this change or harden this hotspot using the smallest justified scope and focused verification.",
       "Review this system for security and privacy readiness before launch, reporting coverage and reviewer independence.",
-      "Review this experience and propose the smallest useful correction within its accepted product and brand direction."
+      "Review this experience and propose the smallest useful correction within its accepted product and brand direction.",
+      "Design or review this PCB prototype and prepare its manufacturing handoff, distinguishing physical test questions from production acceptance."
     ]
   }
 }

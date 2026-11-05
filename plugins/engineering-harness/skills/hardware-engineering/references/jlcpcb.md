@@ -55,6 +55,12 @@ finish, paste apertures, stencil thickness, mask registration and via treatment
 where actual component drawings or artwork expose a conflict. Do not automatically
 require ENIG or a stepped stencil for every prototype.
 
+When required by the actual job, obtain the manufacturer's current impedance-
+control worksheet/template, complete it for the routed structures and selected
+stackup, and include it with the fabrication submission. Retain the completed
+document with the matching board files; a calculator result or order checkbox
+does not replace a requested worksheet.
+
 Public component APIs and an exported preview can support review without live
 account access. State the limits of those observations. Keep private cart access
 tokens, account details and supplier correspondence out of public artifacts.
