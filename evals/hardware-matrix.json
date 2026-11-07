@@ -25,6 +25,7 @@
     "hardware-unpowered-status",
     "hardware-erc-placement-coverage",
     "hardware-local-bypass-restraint",
-    "hardware-jlc-sourcing-allocation"
+    "hardware-jlc-sourcing-allocation",
+    "hardware-local-ci-before-pr"
   ]
 }

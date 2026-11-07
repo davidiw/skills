@@ -1866,6 +1866,32 @@
         "Require full production lot qualification before the modeled prototype comparison"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "hardware-local-ci-before-pr",
+      "title": "Honor local CI policy before publishing",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-local-ci",
+      "request": "We are ready to open a pull request for this hardware and firmware candidate. What validation is still needed under the repository policy? Use only the supplied snapshots and do not run or publish anything.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Identify board-ci and firmware-ci as applicable local gates because both areas changed",
+        "Require both full applicable gates on the final candidate before opening the PR and bind results to that revision",
+        "Treat prior passes for another revision as historical and explicitly state that current local checks have not run"
+      ],
+      "forbidden_outcomes": [
+        "Propose or require a hosted CI workflow or resolve hosted-service billing for this local-only project",
+        "Treat historical or unrun checks as passes for the candidate",
+        "Publish the PR or perform external actions in this planning fixture"
+      ],
+      "delegation_available": true
     }
 
   ]

@@ -17,6 +17,8 @@ reviews. Four fixture-backed cases cover the motivating mechanisms and local-fix
 restraint; fixture and package checks do not establish behavioral performance.
 The JLC handoff also distinguishes allocatable stock, sourcing routes, and
 prototype-versus-production evidence for MLCC substitutions.
+PCB execution follows each repository's actual CI location and pre-PR policy;
+it does not presume a hosted CI service.
 
 Migration from 0.10.0: for ongoing substantial PCB work, reuse any still-valid
 pipeline evidence, identify the remaining constrained escapes/returns, and set a

@@ -22,6 +22,13 @@ Independent schematic work can continue while a tooling problem is isolated.
 Keep exact commands, versions, adapters and known tool limitations in the owning
 repository's runbook rather than hard-coding them into this skill.
 
+Follow the repository's actual CI location and publication policy; CI need not
+mean a hosted workflow. Where the owner requires local CI before opening or
+updating a PR, run all applicable local gates on the final source before that
+publication and retain revision-bound results. State which gates apply and which
+remain unrun; do not report unknown platform checks as passing or treat a hosted
+service or its billing as a blocker when that repository does not use it.
+
 ## Integrate electrical blocks before depending on them
 
 For delegated circuit blocks, agree numbered pins/nets, rail and logic domains,

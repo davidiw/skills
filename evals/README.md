@@ -107,6 +107,8 @@ checking the fixtures does not establish that a model detects their defects.
 The cohort also includes a synthetic JLC inventory case with reserved stock,
 unquoted pricing, lifecycle status and two biased-capacitance models; it tests
 the reasoning without contacting the assembler or placing orders.
+The local-CI case checks that stale local results do not satisfy an owner's
+pre-PR gates and that no hosted service is invented for a local-only repository.
 
 The [0.10.0 release cohort](release-0.10.0-matrix.json) uses the same protected
 runner and paired installed/control arms for resource borrowing, complete
