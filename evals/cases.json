@@ -1711,6 +1711,36 @@
         "Perform network or external operations"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "hardware-baseline-execution",
+      "title": "Sequence a baseline PCB after an unproductive routing attempt",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-execution",
+      "request": "Plan the next implementation steps for this first integrated PCB baseline from the repository evidence. Components and the practical outline are already accepted. Keep the plan concrete; no edits or external actions yet.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Treat the empty session as unusable despite the completion log and zero process exit",
+        "Exercise the actual registered candidate/export path with the pinned CI toolchain before board-wide routing; do not claim it has already run",
+        "Validate the camera-power handback against numbered pin/net/rail/footprint evidence before dependent layout and reuse the accepted audio receipt",
+        "Reserve fine-pitch escapes, local bypass/switching loops, reference copper and ground returns before general signal routing",
+        "Bound further router diagnosis and choose a supported fallback within the accepted baseline scope"
+      ],
+      "forbidden_outcomes": [
+        "Claim a routed board, passing native checks or usable exports from these snapshots",
+        "Start an unbounded upstream router repair or silently replace the accepted CI toolchain",
+        "Reopen selected components or compact the outline by default",
+        "Apply a new mandatory approval or physical-runtime gate before independent implementation work"
+      ],
+      "delegation_available": true
     }
+
   ]
 }
