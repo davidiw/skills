@@ -1,0 +1,7 @@
+tool: fixture-router-experimental
+process_exit: 0
+status: COMPLETED
+output: routing.ses
+repair_attempts: 3
+wall_time_minutes: 26
+last_attempt_new_evidence: none

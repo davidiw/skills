@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.11.0 - Unreleased
+
+Adds a conditional PCB execution method for new boards and substantial reroutes:
+prove the registered candidate/export path with the pinned toolchain early,
+accept native circuit-block handbacks before dependent layout, reserve critical
+escapes and local ground returns before general routing, and bound unsuccessful
+tool-repair loops with a supported fallback. Router completion now explicitly
+requires usable output and native post-import checks. Local CPL fixes retain
+their focused path. Exact tool commands and adapters remain repository-owned.
+
+Migration from0.10.0: for ongoing substantial PCB work, reuse any still-valid
+pipeline evidence, identify the remaining constrained escapes/returns, and set a
+bounded recovery plan for failing tools. Do not restart an established design or
+repeat a completed pilot. Invariant meaning, activation, profile schema,
+publication authority and prototype/production evidence distinctions are
+unchanged. No new universal review, approval or certification gate is added.
+This is an unreleased candidate; stable install instructions remain pinned to
+v0.10.0. Structural checks and bounded probes do not establish reduced board
+completion time or installed discovery performance.
+
 ## 0.10.0 - 2026-11-04
 
 Adds explicit-only Hardware Engineering and Hardware Qualification specialists,

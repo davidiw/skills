@@ -1,0 +1,12 @@
+{
+  "registered_candidate": "make board-candidate",
+  "registered_export": "make board-review-export",
+  "ci_toolchain": "fixture-eda-pinned",
+  "workstation_toolchain": "fixture-eda-newer",
+  "new_registration_exercised": false,
+  "accepted_existing_pipeline_receipt": null,
+  "available_supported_fallbacks": [
+    "native editing with the pinned toolchain",
+    "route only the remaining nets while preserving critical geometry"
+  ]
+}
