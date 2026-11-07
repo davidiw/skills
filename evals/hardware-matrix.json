@@ -24,6 +24,7 @@
     "hardware-charge-variant",
     "hardware-unpowered-status",
     "hardware-erc-placement-coverage",
-    "hardware-local-bypass-restraint"
+    "hardware-local-bypass-restraint",
+    "hardware-jlc-sourcing-allocation"
   ]
 }

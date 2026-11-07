@@ -104,6 +104,9 @@ claim that their extracted board is routed or validated. Run each case in an
 isolated fixture copy with only its natural prompt and fixture; keep outcomes and
 scoring expectations outside the model's context. Adding and mechanically
 checking the fixtures does not establish that a model detects their defects.
+The cohort also includes a synthetic JLC inventory case with reserved stock,
+unquoted pricing, lifecycle status and two biased-capacitance models; it tests
+the reasoning without contacting the assembler or placing orders.
 
 The [0.10.0 release cohort](release-0.10.0-matrix.json) uses the same protected
 runner and paired installed/control arms for resource borrowing, complete

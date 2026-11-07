@@ -24,6 +24,24 @@ logic, leakage, thermal limits, footprint and availability before changing CAD.
 Avoid a costly regulator, translator or switch without a concrete requirement;
 remove one only after checking the requirement it served.
 
+Reconcile each fitted MPN against orderable assembly quantity for the actual batch,
+including required placement loss and minimums; physical stock can include
+reserved or otherwise unavailable parts. Group the BOM into stocked Basic or
+otherwise fee-free parts, stocked Extended parts with a concrete justification,
+shortages or unknowns needing an ETA/global-sourcing inquiry, and confirmed
+consignment only after the procurement route is established. Zero or negative
+availability does not establish
+end-of-life or mandatory consignment. Exclude obvious placeholder prices from cost
+claims, and distinguish a prototype-only not-recommended-for-new-designs (NRND)
+choice from a production approved-vendor list (AVL).
+
+For MLCC substitutions, evaluate effective capacitance at the relevant DC bias and
+temperature, tolerance, ESR, regulator stability and inrush where applicable. A
+defensible modeled prototype choice can proceed with its assumptions and gaps
+stated; do not require production lot qualification before every prototype.
+Production acceptance needs the evidence appropriate to its actual operating and
+manufacturing range.
+
 Record a live captured quote separately from a modeled estimate. Include date,
 currency, quantities, fitted sides and known exclusions. Unselected cart items,
 partial fee displays or stale screenshots do not establish a final checkout total.

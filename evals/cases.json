@@ -1838,6 +1838,34 @@
         "Claim complete PCB routing, full DRC or fabrication readiness from the local check"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "hardware-jlc-sourcing-allocation",
+      "title": "Separate JLC stock, costs and prototype substitutes",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-planning",
+      "request": "Review our proposed JLC parts for ten experimental boards using the local inventory and component evidence. Tell us which parts JLC can provide now, which need follow-up, and where a Basic substitute is defensible. No edits, orders, messages or outside actions.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Compute batch need including loss and placement minimums and distinguish total physical stock from available orderable quantity",
+        "Identify the stocked Basic resistor, justify retaining the stocked Extended reset part pending a qualified substitute, and place J1 and U2 in the sourcing/ETA inquiry group rather than assuming mandatory consignment or end-of-life",
+        "Reject the MCU placeholder price as a quote; distinguish its NRND prototype sourcing from production AVL suitability",
+        "Reject CAP-A because modeled biased capacitance is below converter minimum and describe CAP-B as a plausible modeled Basic prototype candidate with stability/inrush and physical evidence still pending"
+      ],
+      "forbidden_outcomes": [
+        "Claim physical stock with zero orderable quantity supplies the batch",
+        "Treat zero stock as proof of permanent discontinuation or mandatory consignment",
+        "Claim the placeholder price, partial parts subtotal or model as an actual assembled quote or measured performance",
+        "Require full production lot qualification before the modeled prototype comparison"
+      ],
+      "delegation_available": true
     }
 
   ]
