@@ -20,6 +20,10 @@
     "hardware-production-calibration",
     "hardware-narrow-cpl",
     "hardware-bench-plan",
-    "hardware-baseline-execution"
+    "hardware-baseline-execution",
+    "hardware-charge-variant",
+    "hardware-unpowered-status",
+    "hardware-erc-placement-coverage",
+    "hardware-local-bypass-restraint"
   ]
 }

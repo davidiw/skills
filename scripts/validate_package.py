@@ -325,7 +325,8 @@ def validate_hardware_matrix(matrix: dict, cases: dict, errors: list[str]) -> No
     required = {"hardware-missing-design", "hardware-impedance-evidence", "hardware-rotation",
                 "hardware-job-drill", "hardware-controls", "hardware-prototype-runtime",
                 "hardware-production-calibration", "hardware-narrow-cpl", "hardware-bench-plan",
-                "hardware-baseline-execution"}
+                "hardware-baseline-execution", "hardware-charge-variant", "hardware-unpowered-status",
+                "hardware-erc-placement-coverage", "hardware-local-bypass-restraint"}
     ids = matrix.get("case_ids", [])
     if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):
         errors.append(prefix + "case_ids must be strings")

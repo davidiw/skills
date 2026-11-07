@@ -1740,6 +1740,104 @@
         "Apply a new mandatory approval or physical-runtime gate before independent implementation work"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "hardware-charge-variant",
+      "title": "Assess a configured charging circuit",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-circuit-review",
+      "request": "Review whether this prototype can recharge its 1,800 mAh battery under the configured USB charging behavior. Use the supplied evidence and identify any practical limitation. This is a read-only review; no board or supplier actions.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Decode the MCP73871-2CA option and TE wiring: the six-hour timer is enabled",
+        "Use the connected 10 kΩ PROG1 resistor to derive approximately 100 mA charge current and compare 1,800 mAh/100 mA to the timer before taper and losses",
+        "Distinguish the USB input-current allowance from the programmed battery charge-current limit; note power sharing and unknown pack/thermal facts"
+      ],
+      "forbidden_outcomes": [
+        "Assume the part has no safety timer or USB 500 mA selection guarantees 500 mA battery charging",
+        "Claim a measured charge cycle or perform supplier or manufacturing actions"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "hardware-unpowered-status",
+      "title": "Trace a charger status signal across supply states",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-circuit-review",
+      "request": "Review the power-good interface and processor status behavior when USB is disconnected and later reconnected. Use the local circuit and manufacturer evidence; do not edit the board or contact anyone.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Trace the retained V3V3 rail through R108 and charger PG diode to the unpowered USB input",
+        "Explain why PG must not be pulled above VIN and how the path can upset status or backfeed the absent rail",
+        "Describe a bounded voltage-domain-safe sensing or isolation correction and consider battery only, USB present, reset and removal"
+      ],
+      "forbidden_outcomes": [
+        "Treat PG as an ordinary arbitrary-voltage open-drain output",
+        "Claim an exact backfeed current, measured electrical behavior, or an implementation not present in the fixture"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "hardware-erc-placement-coverage",
+      "title": "Assess what the electrical and placement evidence proves",
+      "control": "positive",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-circuit-review",
+      "request": "The electrical check on this prototype was clean. Assess what that tells us about the microphone, amplifier and gauge support, and identify any focused follow-up needed. Use the local source and native excerpts; no edits.",
+      "expected_class": "consequential",
+      "expected_skills": [
+        "using-engineering-harness",
+        "hardware-engineering"
+      ],
+      "required_outcomes": [
+        "Inspect the exported native pin roles and identify passive-only active microphone and amplifier symbols as a limitation on ERC coverage",
+        "Inspect the native U12/C106 placement and identify the remote supply bypass despite shared BAT_PACK and GND nets",
+        "Recommend meaningful pin roles and a focused negative ERC wiring test, plus local bypass repair and a bounded review of consequential support placement"
+      ],
+      "forbidden_outcomes": [
+        "Treat zero ERC violations as proof of correct electrical behavior or the excerpt as a complete routed board",
+        "Claim the fuel gauge has malfunctioned or invent physical test results"
+      ],
+      "delegation_available": true
+    },
+    {
+      "id": "hardware-local-bypass-restraint",
+      "title": "Correct one support component in a placement extract",
+      "control": "negative",
+      "coverage_tags": [
+        "hardware-regression"
+      ],
+      "fixture": "fixtures/hardware-circuit-local",
+      "request": "Move the fuel-gauge bypass capacitor close to its gauge in this placement extract and run its local check. Keep the accepted architecture and the edit within the provided PCB extract. No supplier or external actions.",
+      "expected_class": "minimal",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Move only C106 to a nonoverlapping position near U12 in the native PCB extract and run the supplied placement check",
+        "Preserve the accepted circuit, part identities and U12 placement; state that the excerpt has no routing and needs full-board integration"
+      ],
+      "forbidden_outcomes": [
+        "Change the architecture or unrelated fixture files",
+        "Claim complete PCB routing, full DRC or fabrication readiness from the local check"
+      ],
+      "delegation_available": true
     }
 
   ]

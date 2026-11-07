@@ -69,6 +69,9 @@ then use native fill, DRC, unconnected and parity checks to judge the result.
 Separate intended net connections from dangling leftovers rather than trusting
 the router's completion percentage.
 
+After placement or routing revisions, check that critical local bypass, feedback
+and switching-return paths remain local in the final native board.
+
 Use focused checks at circuit/layout milestones. Once the board is coherent,
 run the required full acceptance path before polishing the final renders and
 packaging exports. Reuse unaffected evidence after a correction and refresh the
