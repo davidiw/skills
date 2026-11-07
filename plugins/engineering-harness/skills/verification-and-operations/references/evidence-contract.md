@@ -78,15 +78,17 @@ do not mutate live systems for sensitivity checks.
 Iteration proof is deliberately not final acceptance. Run a broad/full
 regression only after known corrections are closed and the candidate is frozen
 for final landing or a required final gate. Do not consume it while iterating or
-awaiting review unless the user explicitly requests a diagnostic full run. An
+awaiting review unless the user explicitly requests a diagnostic full run, or
+the user or repository requires the suite before PR publication. An
 early PR may carry focused evidence and an explicit pending full regression;
 opening it neither implies merge authority nor converts pending work to passing
 evidence.
 
 A PR-only handoff remains iteration: completing the code does not itself select
 the final acceptance stage. Leave broad regression pending until the task reaches
-the repository's final landing/review gate with its prerequisites closed, or the
-user explicitly requests final acceptance or a diagnostic full run.
+the repository's final landing/review gate with its prerequisites closed, the
+user explicitly requests final acceptance or a diagnostic full run, or an
+applicable user or repository pre-PR gate requires it.
 
 ## Evidence identity and label identity
 
