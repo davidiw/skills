@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.11.0 - Unreleased
+## 0.11.0 - 2026-11-08
 
 Clarifies compact-first placement, milestone stopping conditions and prepared
 owner handoffs. Additional paid prototype iterations need a specific learning
@@ -34,9 +34,9 @@ publication authority and prototype/production evidence distinctions are
 unchanged. No new universal review, approval or certification gate is added.
 Honor an existing owner-required pre-PR CI gate before publication; otherwise
 the early reviewable-PR path remains available. Report passing local CI as local.
-This is an unreleased candidate; stable install instructions remain pinned to
-v0.10.0. Structural checks and bounded probes do not establish reduced board
-completion time or installed discovery performance.
+Stable installation is pinned to immutable `v0.11.0`. Structural checks and
+bounded probes do not establish reduced board completion time or installed
+discovery performance.
 
 ## 0.10.0 - 2026-11-04
 
