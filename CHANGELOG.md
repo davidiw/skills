@@ -2,6 +2,10 @@
 
 ## 0.11.0 - Unreleased
 
+Clarifies compact-first placement, milestone stopping conditions and prepared
+owner handoffs. Additional paid prototype iterations need a specific learning
+purpose; an oversized baseline does not make its fabrication a required step.
+
 Adds a conditional PCB execution method for new boards and substantial reroutes:
 prove the registered candidate/export path with the pinned toolchain early,
 accept native circuit-block handbacks before dependent layout, reserve critical

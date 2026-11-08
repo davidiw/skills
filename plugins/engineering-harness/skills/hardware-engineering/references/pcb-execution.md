@@ -41,9 +41,22 @@ evidence stays explicit while independent work continues.
 
 ## Place and route in dependency order
 
-Honor the authorized envelope. When the user asks for a working baseline and
-defers optimization, use practical placement space and postpone compaction or
-minor BOM savings until the connected baseline exists.
+Honor the user's current envelope, cost and elapsed-time priorities; later
+direction can supersede an earlier oversized-baseline plan. Name the next native
+deliverable and its completion condition. When compactness is a first-build
+constraint, use complete actual-footprint placement and bounded critical escapes
+to expose the limiting geometry before a full reroute. Consider layer count and
+assembly sides early; extra routing layers do not resolve component collisions.
+When optimization is explicitly deferred, practical placement space is appropriate.
+An oversized routed baseline does not by itself justify an extra paid build: name
+the question that requires that iteration and why existing hardware or the intended
+first build cannot answer it.
+
+Close a supported milestone and advance. Preserve its valid electrical and tool
+evidence; refresh the mechanisms affected by the next placement/routing change.
+Supplier answers, general audits or unrelated tooling work must not indefinitely
+extend a completed electrical-baseline claim. Keep fabrication, physical operation
+and product qualification as their own subsequent claims.
 
 Place connector escapes, local bypass/bulk capacitors, switching loops, and
 critical ground/return vias before general signal routing. Respect component
