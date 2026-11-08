@@ -20,6 +20,15 @@ are achievable in the actual circuit, including external connections. Resolve
 potentially damaging unknowns or accommodate them safely in hardware before
 exposing a device; unknown performance may instead be a bounded experiment.
 
+For a consequential part, decode the behavior-relevant ordering suffix and
+reconcile its configuration pins against the native circuit. Calculate whether
+the configured behavior can satisfy the intended use, and trace externally
+pulled signals through the relevant powered and unpowered states. For example,
+compare a charger's programmed battery current and enabled timer with battery
+capacity while treating the USB input limit as a separate constraint; check
+status-pin paths when USB is absent. Apply this reasoning where the circuit
+warrants it, not as a new worksheet for every passive.
+
 Calculate available margin against the guaranteed input range after supply
 tolerance, cable/trace/switch loss and relevant load conditions. A nominal supply
 equal to a device's minimum leaves no guaranteed positive margin. Controller-family

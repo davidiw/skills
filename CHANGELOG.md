@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.11.0 - 2026-11-08
+
+Clarifies compact-first placement, milestone stopping conditions and prepared
+owner handoffs. Additional paid prototype iterations need a specific learning
+purpose; an oversized baseline does not make its fabrication a required step.
+
+Adds a conditional PCB execution method for new boards and substantial reroutes:
+prove the registered candidate/export path with the pinned toolchain early,
+accept native circuit-block handbacks before dependent layout, reserve critical
+escapes and local ground returns before general routing, and bound unsuccessful
+tool-repair loops with a supported fallback. Router completion now explicitly
+requires usable output and native post-import checks. Local CPL fixes retain
+their focused path. Exact tool commands and adapters remain repository-owned.
+
+Refines consequential electrical review with exact-part configuration and
+powered/unpowered state reasoning, meaningful ERC pin roles, final local-support
+placement checks, and concrete challenges for already-required independent
+reviews. Four fixture-backed cases cover the motivating mechanisms and local-fix
+restraint; fixture and package checks do not establish behavioral performance.
+The JLC handoff also distinguishes allocatable stock, sourcing routes, and
+prototype-versus-production evidence for MLCC substitutions.
+PCB execution follows each repository's actual CI location and pre-PR policy;
+it does not presume a hosted CI service.
+PR delivery and proof timing also honor explicitly required pre-publication
+checks and recognize local CI as passing when it is the repository's CI contract.
+
+Migration from 0.10.0: for ongoing substantial PCB work, reuse any still-valid
+pipeline evidence, identify the remaining constrained escapes/returns, and set a
+bounded recovery plan for failing tools. Do not restart an established design or
+repeat a completed pilot. Invariant meaning, activation, profile schema,
+publication authority and prototype/production evidence distinctions are
+unchanged. No new universal review, approval or certification gate is added.
+Honor an existing owner-required pre-PR CI gate before publication; otherwise
+the early reviewable-PR path remains available. Report passing local CI as local.
+Stable installation is pinned to immutable `v0.11.0`. Structural checks and
+bounded probes do not establish reduced board completion time or installed
+discovery performance.
+
 ## 0.10.0 - 2026-11-04
 
 Adds explicit-only Hardware Engineering and Hardware Qualification specialists,

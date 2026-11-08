@@ -76,3 +76,13 @@ automated passes, prototype-order eligibility, physical qualification and
 production acceptance. Distinguish eligibility from authorization to upload,
 purchase, fabricate or publish; reuse the user's existing action authority.
 For JLCPCB, use [the assembler-specific reference](jlcpcb.md).
+
+Before assigning owner work, finish the research and preparation available to the
+agent. Ask for specific photos, dimensions, documents or measured results, naming
+the decision enabled, when the answer is needed and work that can continue. Match
+bench instructions to the identified board revision, fitted population and available
+instruments; an order or fabricated board is not proof it matches the latest PR.
+Prepare exact connections, limits and a result format before asking the owner to
+execute a powered experiment. Keep supplier inquiries ready to send and distinct
+from permission to send them; final quotes and submissions must name the intended
+build rather than an obsolete reference outline.

@@ -1,0 +1,28 @@
+{
+  "purpose": "first functional integrated baseline",
+  "outline_mm": [
+    70,
+    90
+  ],
+  "size_optimization_requested": false,
+  "selected_components": "accepted; no architecture decision pending",
+  "pin_and_rail_contracts": "approved integration register",
+  "worker_blocks": [
+    {
+      "name": "camera power",
+      "claim": "complete",
+      "native_pin_net_footprint_evidence": null
+    },
+    {
+      "name": "audio",
+      "claim": "accepted against integration register",
+      "native_pin_net_footprint_evidence": "existing accepted block receipt"
+    }
+  ],
+  "placement": "coarse preliminary placement",
+  "connector_escapes_reserved": false,
+  "local_bypass_and_switching_loops_placed": false,
+  "local_ground_returns_reserved": false,
+  "signal_unconnected_items": 12,
+  "ground_unconnected_items": 5
+}

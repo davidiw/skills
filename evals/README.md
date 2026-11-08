@@ -94,6 +94,22 @@ The [bounded hardware checks](results/hardware-skills/checks.md) retain three
 direct-router probes, a temporary CLI installation and the blocked natural-run
 attempts, with those evidence classes kept separate.
 
+Four additional electrical cases use a filtered native/netlist snapshot and
+offline manufacturer facts to exercise charger variant/timer reasoning,
+unpowered status-pin paths, ERC coverage and final bypass placement. A separate
+two-footprint local-edit fixture is a restraint control. These are partial
+designs extracted from `davidiw/mera-hardware` commit `2520213`, not manufacturing
+artifacts; never use their original ERC receipt to
+claim that their extracted board is routed or validated. Run each case in an
+isolated fixture copy with only its natural prompt and fixture; keep outcomes and
+scoring expectations outside the model's context. Adding and mechanically
+checking the fixtures does not establish that a model detects their defects.
+The cohort also includes a synthetic JLC inventory case with reserved stock,
+unquoted pricing, lifecycle status and two biased-capacitance models; it tests
+the reasoning without contacting the assembler or placing orders.
+The local-CI case checks that stale local results do not satisfy an owner's
+pre-PR gates and that no hosted service is invented for a local-only repository.
+
 The [0.10.0 release cohort](release-0.10.0-matrix.json) uses the same protected
 runner and paired installed/control arms for resource borrowing, complete
 evidence identity, hardware handoff, prototype readiness, local restraint and

@@ -1,0 +1,943 @@
+<?xml version='1.0' encoding='utf-8'?>
+<export version="E">
+  <components>
+    <comp ref="U40">
+      <value>MAX98357A</value>
+      <footprint>V1:TQFN-16-1EP_3x3mm_P0.5mm_EP1.23x1.23mm</footprint>
+      <fields>
+        <field name="Manufacturer">Analog Devices</field>
+        <field name="MPN">MAX98357AETE+T</field>
+        <field name="LCSC">C910544</field>
+        <field name="Footprint">V1:TQFN-16-1EP_3x3mm_P0.5mm_EP1.23x1.23mm</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="U40" description="" />
+      <property name="Manufacturer" value="Analog Devices" />
+      <property name="MPN" value="MAX98357AETE+T" />
+      <property name="LCSC" value="C910544" />
+      <property name="Sheetname" value="audio" />
+      <property name="Sheetfile" value="mera-v1-audio.kicad_sch" />
+      <sheetpath names="/audio/" tstamps="/5ed0471f-c35d-5ea4-8e1b-74025a287d44/" />
+      <tstamps>74d390ac-f52c-5a7b-a6a7-10ecbd59a67c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+            <pin num="3" />
+            <pin num="4" />
+            <pin num="5" />
+            <pin num="6" />
+            <pin num="7" />
+            <pin num="8" />
+            <pin num="9" />
+            <pin num="10" />
+            <pin num="11" />
+            <pin num="12" />
+            <pin num="13" />
+            <pin num="14" />
+            <pin num="15" />
+            <pin num="16" />
+            <pin num="17" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R102">
+      <value>10k 1%</value>
+      <footprint>V1:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:R_0402_1005Metric</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="R102" description="" />
+      <property name="Manufacturer" value="Yageo" />
+      <property name="MPN" value="RC0402FR-0710KL" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="charger" />
+      <property name="Sheetfile" value="mera-v1-charger.kicad_sch" />
+      <sheetpath names="/charger/" tstamps="/54757a82-85dc-5c66-a6f2-829cdaa4be62/" />
+      <tstamps>c3e2f740-f322-51f0-838a-d54fe794b130</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R108">
+      <value>10k 1%</value>
+      <footprint>V1:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="MPN">RC0402FR-0710KL</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:R_0402_1005Metric</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="R108" description="" />
+      <property name="Manufacturer" value="Yageo" />
+      <property name="MPN" value="RC0402FR-0710KL" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="charger" />
+      <property name="Sheetfile" value="mera-v1-charger.kicad_sch" />
+      <sheetpath names="/charger/" tstamps="/54757a82-85dc-5c66-a6f2-829cdaa4be62/" />
+      <tstamps>30468712-1953-57d5-9b09-fa81ef5d744f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U10">
+      <value>MCP73871-2CAI/ML</value>
+      <footprint>V1:QFN-20-1EP_4x4mm_P0.5mm_EP2.7x2.7mm</footprint>
+      <fields>
+        <field name="Manufacturer">Microchip</field>
+        <field name="MPN">MCP73871-2CAI/ML</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:QFN-20-1EP_4x4mm_P0.5mm_EP2.7x2.7mm</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="U10" description="" />
+      <property name="Manufacturer" value="Microchip" />
+      <property name="MPN" value="MCP73871-2CAI/ML" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="charger" />
+      <property name="Sheetfile" value="mera-v1-charger.kicad_sch" />
+      <sheetpath names="/charger/" tstamps="/54757a82-85dc-5c66-a6f2-829cdaa4be62/" />
+      <tstamps>e1c56c55-d378-5672-86d4-cea22c68259c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+            <pin num="3" />
+            <pin num="4" />
+            <pin num="5" />
+            <pin num="6" />
+            <pin num="7" />
+            <pin num="8" />
+            <pin num="9" />
+            <pin num="10" />
+            <pin num="11" />
+            <pin num="12" />
+            <pin num="13" />
+            <pin num="14" />
+            <pin num="15" />
+            <pin num="16" />
+            <pin num="17" />
+            <pin num="18" />
+            <pin num="19" />
+            <pin num="20" />
+            <pin num="21" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C106">
+      <value>100nF 25V X7R</value>
+      <footprint>V1:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Taiyo Yuden</field>
+        <field name="MPN">TMK105B7104MV-FR</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:C_0402_1005Metric</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="C106" description="" />
+      <property name="Manufacturer" value="Taiyo Yuden" />
+      <property name="MPN" value="TMK105B7104MV-FR" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="fuel_gauge" />
+      <property name="Sheetfile" value="mera-v1-fuel_gauge.kicad_sch" />
+      <sheetpath names="/fuel_gauge/" tstamps="/aacecc0f-e577-5d9e-b368-602c1cde3895/" />
+      <tstamps>18e38284-d50c-577b-9c43-32f251bc9e89</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U12">
+      <value>MAX17048G+T10</value>
+      <footprint>V1:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm</footprint>
+      <fields>
+        <field name="Manufacturer">Analog Devices</field>
+        <field name="MPN">MAX17048G+T10</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="U12" description="" />
+      <property name="Manufacturer" value="Analog Devices" />
+      <property name="MPN" value="MAX17048G+T10" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="fuel_gauge" />
+      <property name="Sheetfile" value="mera-v1-fuel_gauge.kicad_sch" />
+      <sheetpath names="/fuel_gauge/" tstamps="/aacecc0f-e577-5d9e-b368-602c1cde3895/" />
+      <tstamps>edb5763c-b529-5969-a9ab-337e38b1743f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+            <pin num="3" />
+            <pin num="4" />
+            <pin num="5" />
+            <pin num="6" />
+            <pin num="7" />
+            <pin num="8" />
+            <pin num="9" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="MK1">
+      <value>T5838</value>
+      <footprint>V1:T5838_LGA_CAV_3p5x2p65mm</footprint>
+      <fields>
+        <field name="Manufacturer">TDK InvenSense</field>
+        <field name="MPN">MMICT5838-00-012</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:T5838_LGA_CAV_3p5x2p65mm</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="MK1" description="" />
+      <property name="Manufacturer" value="TDK InvenSense" />
+      <property name="MPN" value="MMICT5838-00-012" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="microphone" />
+      <property name="Sheetfile" value="mera-v1-microphone.kicad_sch" />
+      <sheetpath names="/microphone/" tstamps="/e5a2f117-c467-5f7f-87db-e1cd57a6a25a/" />
+      <tstamps>2e654422-dad2-577c-9d0c-029397ade921</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+            <pin num="3" />
+            <pin num="4" />
+            <pin num="5" />
+            <pin num="6" />
+            <pin num="7" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>WT01P461-S1-N16R32X</value>
+      <footprint>V1:WT01P461-S1</footprint>
+      <fields>
+        <field name="Manufacturer">Wireless-Tag</field>
+        <field name="MPN">WT01P461-S1-N16R32X</field>
+        <field name="LCSC" />
+        <field name="Footprint">V1:WT01P461-S1</field>
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <libsource lib="V1" part="U1" description="" />
+      <property name="Manufacturer" value="Wireless-Tag" />
+      <property name="MPN" value="WT01P461-S1-N16R32X" />
+      <property name="LCSC" value="" />
+      <property name="Sheetname" value="module" />
+      <property name="Sheetfile" value="mera-v1-module.kicad_sch" />
+      <sheetpath names="/module/" tstamps="/e6fcc92d-5d88-5882-b88e-e88d0177d1c5/" />
+      <tstamps>ab7c15fd-faef-52c6-898d-1e7f4c242f8a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1" />
+            <pin num="2" />
+            <pin num="3" />
+            <pin num="4" />
+            <pin num="5" />
+            <pin num="6" />
+            <pin num="7" />
+            <pin num="8" />
+            <pin num="9" />
+            <pin num="10" />
+            <pin num="11" />
+            <pin num="12" />
+            <pin num="13" />
+            <pin num="14" />
+            <pin num="15" />
+            <pin num="16" />
+            <pin num="17" />
+            <pin num="18" />
+            <pin num="19" />
+            <pin num="20" />
+            <pin num="21" />
+            <pin num="22" />
+            <pin num="23" />
+            <pin num="24" />
+            <pin num="25" />
+            <pin num="26" />
+            <pin num="27" />
+            <pin num="28" />
+            <pin num="29" />
+            <pin num="30" />
+            <pin num="31" />
+            <pin num="32" />
+            <pin num="33" />
+            <pin num="34" />
+            <pin num="35" />
+            <pin num="36" />
+            <pin num="37" />
+            <pin num="38" />
+            <pin num="39" />
+            <pin num="40" />
+            <pin num="41" />
+            <pin num="42" />
+            <pin num="43" />
+            <pin num="44" />
+            <pin num="45" />
+            <pin num="46" />
+            <pin num="47" />
+            <pin num="48" />
+            <pin num="49" />
+            <pin num="50" />
+            <pin num="51" />
+            <pin num="52" />
+            <pin num="53" />
+            <pin num="54" />
+            <pin num="55" />
+            <pin num="56" />
+            <pin num="57" />
+            <pin num="58" />
+            <pin num="59" />
+            <pin num="60" />
+            <pin num="61" />
+            <pin num="62" />
+            <pin num="63" />
+            <pin num="64" />
+            <pin num="65" />
+            <pin num="66" />
+            <pin num="67" />
+            <pin num="68" />
+            <pin num="69" />
+            <pin num="70" />
+            <pin num="71" />
+            <pin num="72" />
+            <pin num="73" />
+            <pin num="74" />
+            <pin num="75" />
+            <pin num="76" />
+            <pin num="77" />
+            <pin num="78" />
+            <pin num="79" />
+            <pin num="80" />
+            <pin num="81" />
+            <pin num="82" />
+            <pin num="83" />
+            <pin num="84" />
+            <pin num="85" />
+            <pin num="86" />
+            <pin num="87" />
+            <pin num="88" />
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="V1" part="C106">
+      <fields>
+        <field name="Reference">C106</field>
+        <field name="Value">100nF 25V X7R</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive" />
+        <pin num="2" name="2" type="passive" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="MK1">
+      <fields>
+        <field name="Reference">MK1</field>
+        <field name="Value">T5838</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="DATA" type="passive" />
+        <pin num="2" name="SELECT_tied_GND" type="passive" />
+        <pin num="3" name="GND" type="passive" />
+        <pin num="4" name="WAKE" type="passive" />
+        <pin num="5" name="THSEL" type="passive" />
+        <pin num="6" name="CLK" type="passive" />
+        <pin num="7" name="VDD" type="passive" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="R102">
+      <fields>
+        <field name="Reference">R102</field>
+        <field name="Value">10k 1%</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive" />
+        <pin num="2" name="2" type="passive" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="R108">
+      <fields>
+        <field name="Reference">R108</field>
+        <field name="Value">10k 1%</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive" />
+        <pin num="2" name="2" type="passive" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="U1">
+      <fields>
+        <field name="Reference">U1</field>
+        <field name="Value">WT01P461-S1-N16R32X</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in" />
+        <pin num="2" name="ANT_2G4" type="bidirectional" />
+        <pin num="3" name="GND" type="power_in" />
+        <pin num="4" name="C61_U0RXD_GPIO10" type="input" />
+        <pin num="5" name="C61_U0TXD_GPIO11" type="output" />
+        <pin num="6" name="C61_EN" type="input" />
+        <pin num="7" name="C61_GPIO0" type="bidirectional" />
+        <pin num="8" name="C61_GPIO1" type="bidirectional" />
+        <pin num="9" name="C61_GPIO4" type="bidirectional" />
+        <pin num="10" name="C61_GPIO5" type="bidirectional" />
+        <pin num="11" name="C61_GPIO6" type="bidirectional" />
+        <pin num="12" name="C61_GPIO7" type="bidirectional" />
+        <pin num="13" name="C61_GPIO8_STRAP" type="bidirectional" />
+        <pin num="14" name="C61_GPIO9_STRAP" type="input" />
+        <pin num="15" name="GND" type="power_in" />
+        <pin num="16" name="P4_GPIO1" type="bidirectional" />
+        <pin num="17" name="P4_GPIO2" type="bidirectional" />
+        <pin num="18" name="P4_GPIO3" type="bidirectional" />
+        <pin num="19" name="P4_GPIO4" type="bidirectional" />
+        <pin num="20" name="P4_GPIO5" type="bidirectional" />
+        <pin num="21" name="P4_GPIO6" type="bidirectional" />
+        <pin num="22" name="P4_GPIO7" type="bidirectional" />
+        <pin num="23" name="P4_GPIO8" type="bidirectional" />
+        <pin num="24" name="P4_GPIO9" type="bidirectional" />
+        <pin num="25" name="P4_GPIO10" type="bidirectional" />
+        <pin num="26" name="P4_GPIO11" type="bidirectional" />
+        <pin num="27" name="P4_GPIO20" type="bidirectional" />
+        <pin num="28" name="P4_GPIO21" type="bidirectional" />
+        <pin num="29" name="P4_GPIO22" type="bidirectional" />
+        <pin num="30" name="P4_GPIO23" type="bidirectional" />
+        <pin num="31" name="GND" type="power_in" />
+        <pin num="32" name="DSI_DATAP1" type="bidirectional" />
+        <pin num="33" name="DSI_DATAN1" type="bidirectional" />
+        <pin num="34" name="DSI_CLKN" type="output" />
+        <pin num="35" name="DSI_CLKP" type="output" />
+        <pin num="36" name="DSI_DATAP0" type="output" />
+        <pin num="37" name="DSI_DATAN0" type="output" />
+        <pin num="38" name="GND" type="power_in" />
+        <pin num="39" name="CSI_DATAN0" type="input" />
+        <pin num="40" name="CSI_DATAP0" type="input" />
+        <pin num="41" name="CSI_CLKP" type="input" />
+        <pin num="42" name="CSI_CLKN" type="input" />
+        <pin num="43" name="CSI_DATAN1" type="input" />
+        <pin num="44" name="CSI_DATAP1" type="input" />
+        <pin num="45" name="GND" type="power_in" />
+        <pin num="46" name="USB_DM" type="bidirectional" />
+        <pin num="47" name="USB_DP" type="bidirectional" />
+        <pin num="48" name="P4_GPIO24_USB1_N0" type="bidirectional" />
+        <pin num="49" name="P4_GPIO25_USB1_P0" type="bidirectional" />
+        <pin num="50" name="GND" type="power_in" />
+        <pin num="51" name="P4_GPIO26_USB1_N1" type="bidirectional" />
+        <pin num="52" name="P4_GPIO27_USB1_P1" type="bidirectional" />
+        <pin num="53" name="P4_GPIO28" type="bidirectional" />
+        <pin num="54" name="P4_GPIO29" type="bidirectional" />
+        <pin num="55" name="P4_GPIO30" type="bidirectional" />
+        <pin num="56" name="P4_GPIO31" type="bidirectional" />
+        <pin num="57" name="P4_GPIO32" type="bidirectional" />
+        <pin num="58" name="P4_GPIO33" type="bidirectional" />
+        <pin num="59" name="P4_GPIO34_JTAG_STRAP" type="bidirectional" />
+        <pin num="60" name="P4_GPIO35_BOOT_STRAP" type="input" />
+        <pin num="61" name="P4_GPIO36_BOOT_STRAP" type="input" />
+        <pin num="62" name="P4_GPIO37_BOOT_UART_TX" type="output" />
+        <pin num="63" name="P4_GPIO38_BOOT_UART_RX" type="input" />
+        <pin num="64" name="ESP_LDO_VO4" type="bidirectional" />
+        <pin num="65" name="GND" type="power_in" />
+        <pin num="66" name="P4_GPIO39" type="bidirectional" />
+        <pin num="67" name="P4_GPIO40" type="bidirectional" />
+        <pin num="68" name="P4_GPIO41" type="bidirectional" />
+        <pin num="69" name="P4_GPIO42" type="bidirectional" />
+        <pin num="70" name="P4_GPIO43" type="bidirectional" />
+        <pin num="71" name="P4_GPIO44" type="bidirectional" />
+        <pin num="72" name="P4_GPIO45" type="bidirectional" />
+        <pin num="73" name="P4_GPIO46" type="bidirectional" />
+        <pin num="74" name="P4_GPIO47" type="bidirectional" />
+        <pin num="75" name="P4_GPIO48" type="bidirectional" />
+        <pin num="76" name="P4_GPIO49" type="bidirectional" />
+        <pin num="77" name="P4_GPIO50" type="bidirectional" />
+        <pin num="78" name="P4_GPIO51" type="bidirectional" />
+        <pin num="79" name="P4_GPIO52" type="bidirectional" />
+        <pin num="80" name="P4_GPIO53" type="bidirectional" />
+        <pin num="81" name="P4_GPIO54" type="bidirectional" />
+        <pin num="82" name="GND" type="power_in" />
+        <pin num="83" name="GND" type="power_in" />
+        <pin num="84" name="VBAT" type="power_in" />
+        <pin num="85" name="ESP_3V3" type="power_in" />
+        <pin num="86" name="ESP_3V3" type="power_in" />
+        <pin num="87" name="P4_EN" type="input" />
+        <pin num="88" name="P4_GPIO0" type="bidirectional" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="U10">
+      <fields>
+        <field name="Reference">U10</field>
+        <field name="Value">MCP73871-2CAI/ML</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="OUT" type="power_out" />
+        <pin num="2" name="VPCC" type="power_in" />
+        <pin num="3" name="SEL" type="input" />
+        <pin num="4" name="PROG2" type="input" />
+        <pin num="5" name="THERM" type="bidirectional" />
+        <pin num="6" name="PG" type="open_collector" />
+        <pin num="7" name="STAT2" type="open_collector" />
+        <pin num="8" name="STAT1/LBO" type="open_collector" />
+        <pin num="9" name="TE" type="input" />
+        <pin num="10" name="VSS" type="power_in" />
+        <pin num="11" name="VSS" type="power_in" />
+        <pin num="12" name="PROG3" type="passive" />
+        <pin num="13" name="PROG1" type="passive" />
+        <pin num="14" name="VBAT" type="power_in" />
+        <pin num="15" name="VBAT" type="power_in" />
+        <pin num="16" name="VBAT_SENSE" type="power_in" />
+        <pin num="17" name="CE" type="input" />
+        <pin num="18" name="IN" type="power_in" />
+        <pin num="19" name="IN" type="power_in" />
+        <pin num="20" name="OUT" type="passive" />
+        <pin num="21" name="EP" type="power_in" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="U12">
+      <fields>
+        <field name="Reference">U12</field>
+        <field name="Value">MAX17048G+T10</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="CTG" type="power_in" />
+        <pin num="2" name="NC_MAX17048_CELL_MAX17049" type="no_connect" />
+        <pin num="3" name="VDD" type="power_in" />
+        <pin num="4" name="GND" type="power_in" />
+        <pin num="5" name="ALRT" type="open_collector" />
+        <pin num="6" name="QSTRT" type="input" />
+        <pin num="7" name="SCL" type="input" />
+        <pin num="8" name="SDA" type="bidirectional" />
+        <pin num="9" name="EP" type="power_in" />
+      </pins>
+    </libpart>
+    <libpart lib="V1" part="U40">
+      <fields>
+        <field name="Reference">U40</field>
+        <field name="Value">MAX98357A</field>
+        <field name="Footprint" />
+        <field name="Datasheet" />
+        <field name="Description" />
+      </fields>
+      <pins>
+        <pin num="1" name="DIN" type="passive" />
+        <pin num="2" name="GAIN_SLOT_strap" type="passive" />
+        <pin num="3" name="GND" type="passive" />
+        <pin num="4" name="SD_MODE" type="passive" />
+        <pin num="5" name="NC" type="passive" />
+        <pin num="6" name="NC" type="passive" />
+        <pin num="7" name="VDD" type="passive" />
+        <pin num="8" name="VDD" type="passive" />
+        <pin num="9" name="OUTP" type="passive" />
+        <pin num="10" name="OUTN" type="passive" />
+        <pin num="11" name="GND" type="passive" />
+        <pin num="12" name="NC" type="passive" />
+        <pin num="13" name="NC" type="passive" />
+        <pin num="14" name="LRCLK" type="passive" />
+        <pin num="15" name="GND" type="passive" />
+        <pin num="16" name="BCLK" type="passive" />
+        <pin num="17" name="EP" type="passive" />
+      </pins>
+    </libpart>
+  </libparts>
+  <nets>
+    <net code="1" name="AMP_BCLK" class="Default">
+      <node ref="U1" pin="18" pinfunction="P4_GPIO3_18" pintype="bidirectional" />
+      <node ref="U40" pin="16" pinfunction="BCLK_16" pintype="passive" />
+    </net>
+    <net code="2" name="AMP_DIN" class="Default">
+      <node ref="U1" pin="20" pinfunction="P4_GPIO5_20" pintype="bidirectional" />
+      <node ref="U40" pin="1" pinfunction="DIN_1" pintype="passive" />
+    </net>
+    <net code="3" name="AMP_LRCLK" class="Default">
+      <node ref="U1" pin="19" pinfunction="P4_GPIO4_19" pintype="bidirectional" />
+      <node ref="U40" pin="14" pinfunction="LRCLK_14" pintype="passive" />
+    </net>
+    <net code="4" name="AMP_OUT_N" class="Default">
+      <node ref="U40" pin="10" pinfunction="OUTN_10" pintype="passive" />
+    </net>
+    <net code="5" name="AMP_OUT_P" class="Default">
+      <node ref="U40" pin="9" pinfunction="OUTP_9" pintype="passive" />
+    </net>
+    <net code="6" name="AMP_SD_MODE" class="Default">
+      <node ref="U1" pin="21" pinfunction="P4_GPIO6_21" pintype="bidirectional" />
+      <node ref="U40" pin="4" pinfunction="SD_MODE_4" pintype="passive" />
+    </net>
+    <net code="7" name="ANT_2G4" class="Default">
+      <node ref="U1" pin="2" pinfunction="ANT_2G4_2" pintype="bidirectional" />
+    </net>
+    <net code="8" name="BAT_FUSED" class="Default">
+      <node ref="U10" pin="14" pinfunction="VBAT_14" pintype="power_in" />
+      <node ref="U10" pin="15" pinfunction="VBAT_15" pintype="power_in" />
+      <node ref="U10" pin="16" pinfunction="VBAT_SENSE_16" pintype="power_in" />
+    </net>
+    <net code="9" name="BAT_PACK" class="Default">
+      <node ref="C106" pin="1" pinfunction="1_1" pintype="passive" />
+      <node ref="U12" pin="3" pinfunction="VDD_3" pintype="power_in" />
+    </net>
+    <net code="10" name="BOOT_N" class="Default">
+      <node ref="U1" pin="60" pinfunction="P4_GPIO35_BOOT_STRAP_60" pintype="input" />
+    </net>
+    <net code="11" name="C61_BOOT_N" class="Default">
+      <node ref="U1" pin="14" pinfunction="C61_GPIO9_STRAP_14" pintype="input" />
+    </net>
+    <net code="12" name="C61_EN" class="Default">
+      <node ref="U1" pin="6" pinfunction="C61_EN_6" pintype="input" />
+    </net>
+    <net code="13" name="C61_U0RXD" class="Default">
+      <node ref="U1" pin="4" pinfunction="C61_U0RXD_GPIO10_4" pintype="input" />
+    </net>
+    <net code="14" name="C61_U0TXD" class="Default">
+      <node ref="U1" pin="5" pinfunction="C61_U0TXD_GPIO11_5" pintype="output" />
+    </net>
+    <net code="22" name="CAM_I2C_OE" class="Default">
+      <node ref="U1" pin="55" pinfunction="P4_GPIO30_55" pintype="bidirectional" />
+    </net>
+    <net code="26" name="CAM_PWDN_HOLD" class="Default">
+      <node ref="U1" pin="17" pinfunction="P4_GPIO2_17" pintype="bidirectional" />
+    </net>
+    <net code="27" name="CAM_PWR_EN" class="Default">
+      <node ref="U1" pin="88" pinfunction="P4_GPIO0_88" pintype="bidirectional" />
+    </net>
+    <net code="33" name="CHG_EN" class="Default">
+      <node ref="U10" pin="17" pinfunction="CE_17" pintype="input" />
+    </net>
+    <net code="34" name="CHG_INHIBIT" class="Default">
+      <node ref="U1" pin="58" pinfunction="P4_GPIO33_58" pintype="bidirectional" />
+    </net>
+    <net code="35" name="CHG_ISET" class="Default">
+      <node ref="R102" pin="1" pinfunction="1_1" pintype="passive" />
+      <node ref="U10" pin="13" pinfunction="PROG1_13" pintype="passive" />
+    </net>
+    <net code="36" name="CHG_ITERM" class="Default">
+      <node ref="U10" pin="12" pinfunction="PROG3_12" pintype="passive" />
+    </net>
+    <net code="37" name="CHG_PG" class="Default">
+      <node ref="R108" pin="2" pinfunction="2_2" pintype="passive" />
+      <node ref="U1" pin="75" pinfunction="P4_GPIO48_75" pintype="bidirectional" />
+      <node ref="U10" pin="6" pinfunction="PG_6" pintype="open_collector" />
+    </net>
+    <net code="38" name="CHG_STAT1" class="Default">
+      <node ref="U1" pin="76" pinfunction="P4_GPIO49_76" pintype="bidirectional" />
+      <node ref="U10" pin="8" pinfunction="STAT1/LBO_8" pintype="open_collector" />
+    </net>
+    <net code="39" name="CHG_STAT2" class="Default">
+      <node ref="U1" pin="77" pinfunction="P4_GPIO50_77" pintype="bidirectional" />
+      <node ref="U10" pin="7" pinfunction="STAT2_7" pintype="open_collector" />
+    </net>
+    <net code="40" name="CHG_USB_500" class="Default">
+      <node ref="U1" pin="57" pinfunction="P4_GPIO32_57" pintype="bidirectional" />
+      <node ref="U10" pin="4" pinfunction="PROG2_4" pintype="input" />
+    </net>
+    <net code="41" name="CSI_CLK_N" class="Default">
+      <node ref="U1" pin="42" pinfunction="CSI_CLKN_42" pintype="input" />
+    </net>
+    <net code="42" name="CSI_CLK_P" class="Default">
+      <node ref="U1" pin="41" pinfunction="CSI_CLKP_41" pintype="input" />
+    </net>
+    <net code="43" name="CSI_D0_N" class="Default">
+      <node ref="U1" pin="39" pinfunction="CSI_DATAN0_39" pintype="input" />
+    </net>
+    <net code="44" name="CSI_D0_P" class="Default">
+      <node ref="U1" pin="40" pinfunction="CSI_DATAP0_40" pintype="input" />
+    </net>
+    <net code="45" name="CSI_D1_N" class="Default">
+      <node ref="U1" pin="43" pinfunction="CSI_DATAN1_43" pintype="input" />
+    </net>
+    <net code="46" name="CSI_D1_P" class="Default">
+      <node ref="U1" pin="44" pinfunction="CSI_DATAP1_44" pintype="input" />
+    </net>
+    <net code="47" name="DISPLAY_RESET_HOLD" class="Default">
+      <node ref="U1" pin="49" pinfunction="P4_GPIO25_USB1_P0_49" pintype="bidirectional" />
+    </net>
+    <net code="49" name="DSI_CLK_N" class="Default">
+      <node ref="U1" pin="34" pinfunction="DSI_CLKN_34" pintype="output" />
+    </net>
+    <net code="50" name="DSI_CLK_P" class="Default">
+      <node ref="U1" pin="35" pinfunction="DSI_CLKP_35" pintype="output" />
+    </net>
+    <net code="51" name="DSI_D0_N" class="Default">
+      <node ref="U1" pin="37" pinfunction="DSI_DATAN0_37" pintype="output" />
+    </net>
+    <net code="52" name="DSI_D0_P" class="Default">
+      <node ref="U1" pin="36" pinfunction="DSI_DATAP0_36" pintype="output" />
+    </net>
+    <net code="53" name="FG_ALERT" class="Default">
+      <node ref="U1" pin="74" pinfunction="P4_GPIO47_74" pintype="bidirectional" />
+      <node ref="U12" pin="5" pinfunction="ALRT_5" pintype="open_collector" />
+    </net>
+    <net code="54" name="GND" class="Default">
+      <node ref="C106" pin="2" pinfunction="2_2" pintype="passive" />
+      <node ref="MK1" pin="2" pinfunction="SELECT_tied_GND_2" pintype="passive" />
+      <node ref="MK1" pin="3" pinfunction="GND_3" pintype="passive" />
+      <node ref="R102" pin="2" pinfunction="2_2" pintype="passive" />
+      <node ref="U1" pin="1" pinfunction="GND_1" pintype="power_in" />
+      <node ref="U1" pin="15" pinfunction="GND_15" pintype="power_in" />
+      <node ref="U1" pin="3" pinfunction="GND_3" pintype="power_in" />
+      <node ref="U1" pin="31" pinfunction="GND_31" pintype="power_in" />
+      <node ref="U1" pin="38" pinfunction="GND_38" pintype="power_in" />
+      <node ref="U1" pin="45" pinfunction="GND_45" pintype="power_in" />
+      <node ref="U1" pin="50" pinfunction="GND_50" pintype="power_in" />
+      <node ref="U1" pin="65" pinfunction="GND_65" pintype="power_in" />
+      <node ref="U1" pin="82" pinfunction="GND_82" pintype="power_in" />
+      <node ref="U1" pin="83" pinfunction="GND_83" pintype="power_in" />
+      <node ref="U10" pin="10" pinfunction="VSS_10" pintype="power_in" />
+      <node ref="U10" pin="11" pinfunction="VSS_11" pintype="power_in" />
+      <node ref="U10" pin="21" pinfunction="EP_21" pintype="power_in" />
+      <node ref="U10" pin="3" pinfunction="SEL_3" pintype="input" />
+      <node ref="U10" pin="9" pinfunction="TE_9" pintype="input" />
+      <node ref="U12" pin="1" pinfunction="CTG_1" pintype="power_in" />
+      <node ref="U12" pin="4" pinfunction="GND_4" pintype="power_in" />
+      <node ref="U12" pin="6" pinfunction="QSTRT_6" pintype="input" />
+      <node ref="U12" pin="9" pinfunction="EP_9" pintype="power_in" />
+      <node ref="U40" pin="11" pinfunction="GND_11" pintype="passive" />
+      <node ref="U40" pin="15" pinfunction="GND_15" pintype="passive" />
+      <node ref="U40" pin="17" pinfunction="EP_17" pintype="passive" />
+      <node ref="U40" pin="2" pinfunction="GAIN_SLOT_strap_2" pintype="passive" />
+      <node ref="U40" pin="3" pinfunction="GND_3" pintype="passive" />
+    </net>
+    <net code="55" name="I2C_SCL" class="Default">
+      <node ref="U1" pin="22" pinfunction="P4_GPIO7_22" pintype="bidirectional" />
+      <node ref="U12" pin="7" pinfunction="SCL_7" pintype="input" />
+    </net>
+    <net code="56" name="I2C_SDA" class="Default">
+      <node ref="U1" pin="23" pinfunction="P4_GPIO8_23" pintype="bidirectional" />
+      <node ref="U12" pin="8" pinfunction="SDA_8" pintype="bidirectional" />
+    </net>
+    <net code="60" name="MAIN_PFM_EN" class="Default">
+      <node ref="U1" pin="26" pinfunction="P4_GPIO11_26" pintype="bidirectional" />
+    </net>
+    <net code="61" name="MIC_1V8" class="Default">
+      <node ref="MK1" pin="7" pinfunction="VDD_7" pintype="passive" />
+    </net>
+    <net code="62" name="MIC_CLK_1V8" class="Default">
+      <node ref="MK1" pin="6" pinfunction="CLK_6" pintype="passive" />
+    </net>
+    <net code="63" name="MIC_CLK_3V3" class="Default">
+      <node ref="U1" pin="24" pinfunction="P4_GPIO9_24" pintype="bidirectional" />
+    </net>
+    <net code="64" name="MIC_DATA_1V8" class="Default">
+      <node ref="MK1" pin="1" pinfunction="DATA_1" pintype="passive" />
+    </net>
+    <net code="65" name="MIC_DATA_3V3" class="Default">
+      <node ref="U1" pin="25" pinfunction="P4_GPIO10_25" pintype="bidirectional" />
+    </net>
+    <net code="66" name="MIC_THSEL_1V8" class="Default">
+      <node ref="MK1" pin="5" pinfunction="THSEL_5" pintype="passive" />
+    </net>
+    <net code="67" name="MIC_THSEL_3V3" class="Default">
+      <node ref="U1" pin="54" pinfunction="P4_GPIO29_54" pintype="bidirectional" />
+    </net>
+    <net code="68" name="MIC_THSEL_DIR" class="Default">
+      <node ref="U1" pin="79" pinfunction="P4_GPIO52_79" pintype="bidirectional" />
+    </net>
+    <net code="69" name="MIC_WAKE_1V8" class="Default">
+      <node ref="MK1" pin="4" pinfunction="WAKE_4" pintype="passive" />
+    </net>
+    <net code="70" name="MIC_WAKE_3V3" class="Default">
+      <node ref="U1" pin="16" pinfunction="P4_GPIO1_16" pintype="bidirectional" />
+    </net>
+    <net code="71" name="P4_BOOT_UART_RX" class="Default">
+      <node ref="U1" pin="63" pinfunction="P4_GPIO38_BOOT_UART_RX_63" pintype="input" />
+    </net>
+    <net code="72" name="P4_BOOT_UART_TX" class="Default">
+      <node ref="U1" pin="62" pinfunction="P4_GPIO37_BOOT_UART_TX_62" pintype="output" />
+    </net>
+    <net code="73" name="P4_EN" class="Default">
+      <node ref="U1" pin="87" pinfunction="P4_EN_87" pintype="input" />
+    </net>
+    <net code="74" name="P4_GPIO36_STRAP" class="Default">
+      <node ref="U1" pin="61" pinfunction="P4_GPIO36_BOOT_STRAP_61" pintype="input" />
+    </net>
+    <net code="75" name="PACK_NTC" class="Default">
+      <node ref="U10" pin="5" pinfunction="THERM_5" pintype="bidirectional" />
+    </net>
+    <net code="77" name="PANEL_IO_EN" class="Default">
+      <node ref="U1" pin="27" pinfunction="P4_GPIO20_27" pintype="bidirectional" />
+    </net>
+    <net code="78" name="SD1_CLK" class="Default">
+      <node ref="U1" pin="70" pinfunction="P4_GPIO43_70" pintype="bidirectional" />
+    </net>
+    <net code="79" name="SD1_CMD" class="Default">
+      <node ref="U1" pin="71" pinfunction="P4_GPIO44_71" pintype="bidirectional" />
+    </net>
+    <net code="80" name="SD1_DATA0" class="Default">
+      <node ref="U1" pin="66" pinfunction="P4_GPIO39_66" pintype="bidirectional" />
+    </net>
+    <net code="81" name="SD1_DATA1" class="Default">
+      <node ref="U1" pin="67" pinfunction="P4_GPIO40_67" pintype="bidirectional" />
+    </net>
+    <net code="82" name="SD1_DATA2" class="Default">
+      <node ref="U1" pin="68" pinfunction="P4_GPIO41_68" pintype="bidirectional" />
+    </net>
+    <net code="83" name="SD1_DATA3" class="Default">
+      <node ref="U1" pin="69" pinfunction="P4_GPIO42_69" pintype="bidirectional" />
+    </net>
+    <net code="85" name="SD_DETECT" class="Default">
+      <node ref="U1" pin="73" pinfunction="P4_GPIO46_73" pintype="bidirectional" />
+    </net>
+    <net code="86" name="SD_PWR_EN" class="Default">
+      <node ref="U1" pin="72" pinfunction="P4_GPIO45_72" pintype="bidirectional" />
+    </net>
+    <net code="88" name="SYS" class="Default">
+      <node ref="U10" pin="1" pinfunction="OUT_1" pintype="power_out" />
+      <node ref="U10" pin="20" pinfunction="OUT_20" pintype="passive" />
+    </net>
+    <net code="89" name="SYS_PG" class="Default">
+      <node ref="U1" pin="78" pinfunction="P4_GPIO51_78" pintype="bidirectional" />
+    </net>
+    <net code="90" name="TOUCH_I2C_OE" class="Default">
+      <node ref="U1" pin="56" pinfunction="P4_GPIO31_56" pintype="bidirectional" />
+    </net>
+    <net code="91" name="TOUCH_INT" class="Default">
+      <node ref="U1" pin="53" pinfunction="P4_GPIO28_53" pintype="bidirectional" />
+    </net>
+    <net code="92" name="TOUCH_IO_EN" class="Default">
+      <node ref="U1" pin="51" pinfunction="P4_GPIO26_USB1_N1_51" pintype="bidirectional" />
+    </net>
+    <net code="94" name="TOUCH_RESET_HOLD" class="Default">
+      <node ref="U1" pin="52" pinfunction="P4_GPIO27_USB1_P1_52" pintype="bidirectional" />
+    </net>
+    <net code="99" name="USB_5V" class="Default">
+      <node ref="U10" pin="18" pinfunction="IN_18" pintype="power_in" />
+      <node ref="U10" pin="19" pinfunction="IN_19" pintype="power_in" />
+      <node ref="U10" pin="2" pinfunction="VPCC_2" pintype="power_in" />
+    </net>
+    <net code="100" name="USB_DM" class="Default">
+      <node ref="U1" pin="46" pinfunction="USB_DM_46" pintype="bidirectional" />
+    </net>
+    <net code="101" name="USB_DP" class="Default">
+      <node ref="U1" pin="47" pinfunction="USB_DP_47" pintype="bidirectional" />
+    </net>
+    <net code="102" name="V3V3" class="Default">
+      <node ref="R108" pin="1" pinfunction="1_1" pintype="passive" />
+      <node ref="U1" pin="84" pinfunction="VBAT_84" pintype="power_in" />
+      <node ref="U1" pin="85" pinfunction="ESP_3V3_85" pintype="power_in" />
+      <node ref="U1" pin="86" pinfunction="ESP_3V3_86" pintype="power_in" />
+      <node ref="U40" pin="7" pinfunction="VDD_7" pintype="passive" />
+      <node ref="U40" pin="8" pinfunction="VDD_8" pintype="passive" />
+    </net>
+    <net code="104" name="VBAT_BOOST_EN" class="Default">
+      <node ref="U1" pin="29" pinfunction="P4_GPIO22_29" pintype="bidirectional" />
+    </net>
+    <net code="108" name="VBAT_PANEL_EN" class="Default">
+      <node ref="U1" pin="30" pinfunction="P4_GPIO23_30" pintype="bidirectional" />
+    </net>
+    <net code="112" name="VCI_PMIC_HOLD" class="Default">
+      <node ref="U1" pin="48" pinfunction="P4_GPIO24_USB1_N0_48" pintype="bidirectional" />
+    </net>
+    <net code="113" name="VCI_PWR_EN" class="Default">
+      <node ref="U1" pin="28" pinfunction="P4_GPIO21_28" pintype="bidirectional" />
+    </net>
+    <net code="128" name="unconnected-(U1-C61_GPIO0-Pad7)" class="Default">
+      <node ref="U1" pin="7" pinfunction="C61_GPIO0_7" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="129" name="unconnected-(U1-C61_GPIO1-Pad8)" class="Default">
+      <node ref="U1" pin="8" pinfunction="C61_GPIO1_8" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="130" name="unconnected-(U1-C61_GPIO4-Pad9)" class="Default">
+      <node ref="U1" pin="9" pinfunction="C61_GPIO4_9" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="131" name="unconnected-(U1-C61_GPIO5-Pad10)" class="Default">
+      <node ref="U1" pin="10" pinfunction="C61_GPIO5_10" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="132" name="unconnected-(U1-C61_GPIO6-Pad11)" class="Default">
+      <node ref="U1" pin="11" pinfunction="C61_GPIO6_11" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="133" name="unconnected-(U1-C61_GPIO7-Pad12)" class="Default">
+      <node ref="U1" pin="12" pinfunction="C61_GPIO7_12" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="134" name="unconnected-(U1-C61_GPIO8_STRAP-Pad13)" class="Default">
+      <node ref="U1" pin="13" pinfunction="C61_GPIO8_STRAP_13" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="135" name="unconnected-(U1-DSI_DATAN1-Pad33)" class="Default">
+      <node ref="U1" pin="33" pinfunction="DSI_DATAN1_33" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="136" name="unconnected-(U1-DSI_DATAP1-Pad32)" class="Default">
+      <node ref="U1" pin="32" pinfunction="DSI_DATAP1_32" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="137" name="unconnected-(U1-ESP_LDO_VO4-Pad64)" class="Default">
+      <node ref="U1" pin="64" pinfunction="ESP_LDO_VO4_64" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="138" name="unconnected-(U1-P4_GPIO34_JTAG_STRAP-Pad59)" class="Default">
+      <node ref="U1" pin="59" pinfunction="P4_GPIO34_JTAG_STRAP_59" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="139" name="unconnected-(U1-P4_GPIO53-Pad80)" class="Default">
+      <node ref="U1" pin="80" pinfunction="P4_GPIO53_80" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="140" name="unconnected-(U1-P4_GPIO54-Pad81)" class="Default">
+      <node ref="U1" pin="81" pinfunction="P4_GPIO54_81" pintype="bidirectional+no_connect" />
+    </net>
+    <net code="142" name="unconnected-(U12-NC_MAX17048_CELL_MAX17049-Pad2)" class="Default">
+      <node ref="U12" pin="2" pinfunction="NC_MAX17048_CELL_MAX17049_2" pintype="no_connect" />
+    </net>
+    <net code="150" name="unconnected-(U40-NC-Pad5)" class="Default">
+      <node ref="U40" pin="5" pinfunction="NC_5" pintype="passive+no_connect" />
+    </net>
+    <net code="151" name="unconnected-(U40-NC-Pad6)" class="Default">
+      <node ref="U40" pin="6" pinfunction="NC_6" pintype="passive+no_connect" />
+    </net>
+    <net code="152" name="unconnected-(U40-NC-Pad12)" class="Default">
+      <node ref="U40" pin="12" pinfunction="NC_12" pintype="passive+no_connect" />
+    </net>
+    <net code="153" name="unconnected-(U40-NC-Pad13)" class="Default">
+      <node ref="U40" pin="13" pinfunction="NC_13" pintype="passive+no_connect" />
+    </net>
+  </nets>
+</export>

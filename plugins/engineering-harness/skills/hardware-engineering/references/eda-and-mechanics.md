@@ -8,6 +8,17 @@ necessary, pin a pcbnew adapter to the applicable version and verify its output.
 A known component rotation correction needs the relevant focused checks, not an
 automatic redesign or independent review.
 
+Assign meaningful electrical pin roles to consequential active components so
+ERC can check their supply, inputs, outputs and unused pins. A zero ERC result
+cannot validate roles encoded as passive or establish component behavior. Inspect
+the final native placement of local bypass, feedback and switching-current return
+paths.
+
+When independent review is required, give the reviewer a concrete mechanism to
+challenge, such as charge-time versus timer, an unpowered input path, or the
+checks' ability to detect a plausible wiring error. Retain the existing review
+scope and do not turn a local correction into an automatic board-wide gate.
+
 Derive connector pin 1, contact face and orientation, staggered lands, bend
 allowance, and footprint details from the actual part and mating-part drawings.
 Record drawing revision and viewpoint; do not infer orientation from an appealing

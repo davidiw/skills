@@ -1,0 +1,152 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-07T06:54:21",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.5",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa",
+            "violations": []
+        },
+        {
+            "path": "/audio/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/5ed0471f-c35d-5ea4-8e1b-74025a287d44",
+            "violations": []
+        },
+        {
+            "path": "/battery_entry/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/3a213421-909d-5999-a44c-40a088c5eea0",
+            "violations": []
+        },
+        {
+            "path": "/camera_connector/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/f3e2def7-bc1f-5288-8629-64c546789890",
+            "violations": []
+        },
+        {
+            "path": "/camera_control/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/1a950bf3-6ed2-51d8-9659-6ca506eaa34b",
+            "violations": []
+        },
+        {
+            "path": "/camera_power/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/0f33e82b-5bf7-5ba1-a7b9-701436c020ab",
+            "violations": []
+        },
+        {
+            "path": "/charger/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/54757a82-85dc-5c66-a6f2-829cdaa4be62",
+            "violations": []
+        },
+        {
+            "path": "/debug/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/155bd8e7-8855-5d3a-a01e-47e5a086934c",
+            "violations": []
+        },
+        {
+            "path": "/display_connector/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/c155910f-d829-5b68-a480-24b8f41d06bf",
+            "violations": []
+        },
+        {
+            "path": "/display_control/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/62105c4d-f00d-5797-8a5f-9792039f8ca2",
+            "violations": []
+        },
+        {
+            "path": "/display_power/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/4cd26cf3-0d9c-509d-b30f-c0442f3deb3f",
+            "violations": []
+        },
+        {
+            "path": "/fuel_gauge/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/aacecc0f-e577-5d9e-b368-602c1cde3895",
+            "violations": []
+        },
+        {
+            "path": "/main_3v3/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/0a70c55f-1a04-599a-9ce4-1eba39b843f3",
+            "violations": []
+        },
+        {
+            "path": "/mechanical/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/2f4f5dd7-d84c-51d9-9b91-47a4d0d539c5",
+            "violations": []
+        },
+        {
+            "path": "/mic_1v8/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/34b43498-08ee-5470-b3e9-804c2c49822d",
+            "violations": []
+        },
+        {
+            "path": "/microphone/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/e5a2f117-c467-5f7f-87db-e1cd57a6a25a",
+            "violations": []
+        },
+        {
+            "path": "/module/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/e6fcc92d-5d88-5882-b88e-e88d0177d1c5",
+            "violations": []
+        },
+        {
+            "path": "/power/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/37e63782-7c55-5c94-964b-2c3a7b578d09",
+            "violations": []
+        },
+        {
+            "path": "/processor/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/863649ce-25e4-5e8a-b426-b737f655d133",
+            "violations": []
+        },
+        {
+            "path": "/storage/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/88f392cf-0a34-5023-9590-536861cc8b25",
+            "violations": []
+        },
+        {
+            "path": "/testpoints/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/f361427a-5e01-575e-b48f-9260b0c010c2",
+            "violations": []
+        },
+        {
+            "path": "/touch_control/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/a25900bd-b185-5d89-be6e-ac1caa406069",
+            "violations": []
+        },
+        {
+            "path": "/touch_power/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/b70ce6a1-0f36-5c2b-a68c-24db6bb42012",
+            "violations": []
+        },
+        {
+            "path": "/usb_entry/",
+            "uuid_path": "/a38ebd60-963b-5ef9-b54e-f8021403fbfa/ae6373bb-043b-59d3-bcf8-1baee18dd1e0",
+            "violations": []
+        }
+    ],
+    "source": "mera-v1.kicad_sch"
+}

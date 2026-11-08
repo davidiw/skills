@@ -26,6 +26,8 @@ parallel policy.
    sources and actual component drawings; assess the complete assembly. Unknown
    performance can be tested, while potentially damaging power or connector
    unknowns need resolution or safe hardware accommodation before exposure.
+   For a new board or substantial reroute, apply
+   [PCB execution](references/pcb-execution.md) before board-wide routing.
 4. When preparing fabrication or assembly deliverables, read
    [manufacturing handoff](references/manufacturing-handoff.md); for a JLCPCB-specific
    handoff, also read [JLCPCB](references/jlcpcb.md). Distinguish design intent,

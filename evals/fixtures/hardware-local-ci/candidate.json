@@ -1,0 +1,9 @@
+{
+  "candidate_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "changed_areas": ["pcb", "firmware"],
+  "prior_results": [
+    {"gate": "make board-ci", "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "status": "PASS"},
+    {"gate": "make firmware-ci", "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "status": "PASS"}
+  ],
+  "results_on_candidate": []
+}

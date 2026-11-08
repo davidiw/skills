@@ -8,7 +8,9 @@ as local-only work, no commits, no PR, or a separately selected integration path
 Read-only investigation or review does not require an invented change or PR.
 
 Once the first coherent commit is reviewable, push it and open the PR before
-expensive verification. Run fast, relevant checks first when practical. Include
+expensive verification when the user and repository permit that sequence. If
+either requires CI or other checks before opening or updating a PR, run those
+applicable gates against the final candidate before publication. Include
 the scope, known limitations, and completed, pending or blocked checks so a
 coordinator can give feedback while further verification runs. Use a draft when
 the implementation itself is incomplete; pending tests alone do not require a
@@ -19,8 +21,10 @@ for retry rather than claiming submission.
 An early PR carries focused evidence and explicitly pending final gates. Follow
 the [focused iteration proof](evidence-contract.md#focused-iteration-proof) for
 full-regression timing; required verification and review still gate final
-acceptance, integration and release. Bind results to the tested revision; never
-call pending, blocked or local-only checks passing. PR submission does not
+acceptance, integration and release. Bind results to the tested revision and
+identify where they ran. Local checks can be passing CI when local execution is
+the repository's CI contract; do not present them as hosted checks. Never call
+pending, blocked or unrun checks passing. PR submission does not
 authorize merge, deployment, artifact publication or release changes.
 
 ## Final history review

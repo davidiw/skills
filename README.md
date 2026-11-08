@@ -13,8 +13,8 @@ The repository includes a Codex marketplace at
 `.agents/plugins/marketplace.json`. Adding this repository as a marketplace
 exposes the `plugins/engineering-harness/` runtime plugin for installation.
 
-Stable **0.10.0** strengthens borrowed/transferred resource lifecycles,
-reusable evidence identity and conditional cross-owner composition checks:
+Stable **0.11.0** adds focused PCB execution, concrete electrical-review
+examples, JLC sourcing checks, and compact-first milestone guidance:
 [changes and migration](CHANGELOG.md).
 It also adds electrical/PCB/mechanical design and manufacturing guidance, plus
 bench qualification that distinguishes prototype experiments from production
@@ -28,10 +28,10 @@ corrections remain minimal.
 
 ## Install
 
-Install the immutable **0.10.0** stable release:
+Install the immutable **0.11.0** stable release:
 
 ```bash
-codex plugin marketplace add davidiw/skills --ref v0.10.0
+codex plugin marketplace add davidiw/skills --ref v0.11.0
 codex plugin add engineering-harness@davidiw-skills
 ```
 
