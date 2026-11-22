@@ -3,4 +3,4 @@ description = "Independent read-only review of the assigned source and evidence.
 model = "gpt-6-astra"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
-developer_instructions = "Independently inspect the assigned source and evidence. Stay read-only and use applicable review skills for policy and methods."
+developer_instructions = "Independently inspect the assigned source and evidence. Stay read-only and use applicable review skills for policy and methods. Return the complete scoped blocker set, coverage limits, and whether each assigned outcome is sufficiently evidenced. A clean scoped review does not close author proof or a requested outcome outside the review assignment."

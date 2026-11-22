@@ -39,6 +39,12 @@ use synthetic proof; implementation checks/reviews remain prospective.
   evidence or bench readiness, use [hardware qualification](../hardware-qualification/SKILL.md).
   Named flows use changed-path mode; launch/whole-system work uses release
   inventory mode. Combine fresh contexts only for distinct required lenses.
+  A standalone review or audit still returns its scoped receipt to the
+  coordinator. For broad, cross-owner, or reopened requests, the coordinator
+  may use the conditional completion check in
+  [change classification](../../references/change-classification.md) after
+  corrections. This check is evidence sufficiency only and does not extend the
+  adversarial review budget or replace a required gate.
 - **Other change or design:** complete the
   [builder checkpoints](../../references/change-classification.md) in order before
   designing or editing. Material expansion into a shared/cross-cutting responsibility

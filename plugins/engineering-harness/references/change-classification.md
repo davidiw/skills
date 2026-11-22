@@ -153,6 +153,40 @@ or review budget. Update the packet only for the changed snapshot or newly
 relevant evidence. This execution assignment is not an independent review:
 required fresh-review separation still uses the [assurance handoff](assurance-handoff.md).
 
+### Coordinator completion loop
+
+The coordinator owns the requested outcome through implementation, correction,
+and proof. A worker or reviewer may return early after producing a useful
+finding, artifact, command result, or concrete blocker. That handback does not
+close the task. For each requested outcome, record `implemented`, `verified`,
+`unresolved`, or `blocked`, with the smallest next action and the evidence that
+would move it forward.
+
+After every correction, run the affected seam and any cooperating seam whose
+assumptions changed. Reuse evidence that still matches the exact revision. If a
+requested outcome remains `unresolved` and an authorized correction or check is
+available, assign it and continue. A reviewer budget limits that reviewer's
+investigation. It does not limit the coordinator's correction and verification
+loop, and it does not turn an unfinished test into passing evidence.
+
+The coordinator may stop with a completion claim only when every requested
+outcome is `verified`, or when the user explicitly narrows the request. An
+explicit narrowing removes only the named obligations; every remaining outcome
+still needs proof. Ordinary small changes may keep this status check in the
+coordinator's normal handback without creating a table. If no
+authorized action can advance an outcome, return a bounded blocker with the
+exact missing evidence, attempted actions, external dependency, and next
+smallest action. Do not summarize an `implemented` handback as `verified`.
+
+For broad delegated work, cross-owner changes, or an audit whose prior
+completion claim was reopened, use a conditional completion check after the
+last correction and before the final handback. Give a fresh read-only context
+the original request, amendments, exact revision, outcome/evidence table, and
+known limits. Ask only which requested outcome lacks sufficient evidence. A
+concrete gap returns to the coordinator loop. A clean result closes the check.
+This is a completion check, not another adversarial campaign, and it does not
+replace required security, privacy, release, or independent review gates.
+
 ## 5. Implement and prove; 6. close gates
 
 Stay within recorded boundaries and use focused tests at the actual failure seam.

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.12.0 - unreleased
+
+Adds a coordinator completion loop for delegated work. Workers and bounded
+reviewers can hand back early findings or blockers, while the coordinator keeps
+each requested outcome in an explicit implemented, verified, unresolved, or
+blocked state and continues authorized correction and proof until every outcome
+is verified or a concrete external blocker remains. Reviewer time and thread
+budgets stay unchanged. Broad, cross-owner, or reopened work may use one fresh,
+read-only completion check focused on evidence sufficiency rather than another
+adversarial campaign.
+
+Migration from 0.11.0: coordinators should add an outcome/evidence table to
+their existing task or review packet, preserve reviewer coverage limits, and
+route concrete gaps back through correction and focused verification. Existing
+review receipts remain valid for their exact revision and scope. No new
+mandatory adversarial pass, release gate, role inventory, or publication
+authority is introduced.
+
 ## 0.11.0 - 2026-11-08
 
 Clarifies compact-first placement, milestone stopping conditions and prepared

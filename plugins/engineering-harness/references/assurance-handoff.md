@@ -77,6 +77,19 @@ Reuse retained launch evidence and the complete child receipt; a separate proven
 file is unnecessary unless requested or repository-required. Challenge gaps or
 contradictions in the handback rather than repeating completed investigation.
 
+The reviewer receipt does not decide whether the originating task is complete.
+The coordinator maps it onto the requested outcome/evidence table. A reviewer
+may report a clean scoped result while author proof, a required correction, or a
+cooperating caller remains unverified. Preserve that distinction and continue
+the coordinator completion loop in the change-classification contract.
+
+When the coordinator uses the conditional completion check, launch a fresh
+read-only context with the original request, all amendments, the exact final
+revision, the outcome/evidence table, and explicit coverage limits. The check
+must answer only whether each requested outcome has sufficient evidence. It may
+identify a gap or confirm closure, but it does not reopen a general audit,
+replace a required independent gate, or extend the adversarial review budget.
+
 Wait for the complete handback before editing its snapshot or acting on partial
 findings. Continue independent work elsewhere; prefer 60-second bounded
 waits, avoiding short polling/progress-only messages. Correct the full blocker set
