@@ -22,8 +22,10 @@ acceptance. A cheap preflight failure prevents the costly matrix from starting.
   or disprove the current hypothesis.
 
 A thread is one failure hypothesis, its plausible path, and direct validation.
-Opening it consumes the budget even if abandoned. Independent evidence
-gathering is not a separate allowance.
+Opening a thread consumes its slot even if abandoned. The third thread may
+be investigated within the original deadline. A fourth thread requires a
+different authorized assignment. At the deadline record any unfinished
+validation as unresolved.
 
 ## Finding threshold
 
@@ -46,8 +48,8 @@ Pin the candidate at the start of discovery. When a blocker is established,
 record it immediately against that revision and notify the coordinator if
 possible. Continue with the next concrete hypothesis on the same frozen
 candidate without waiting for a fix or acknowledgement. End discovery when
-either budget limit is reached, the assigned scope is covered, or no concrete
-hypothesis remains. If further inspection is impossible, hand back early
+the deadline is reached, the last available thread finishes, the assigned
+scope is covered, or no concrete hypothesis remains. If further inspection is impossible, hand back early
 and identify the blocker to review and the unexamined areas.
 
 Return the revision, deadline, threads opened, evidence, all currently
