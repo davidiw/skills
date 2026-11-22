@@ -180,9 +180,9 @@ smallest action. Do not summarize an `implemented` handback as `verified`.
 
 For broad delegated work, cross-owner changes, or an audit whose prior
 completion claim was reopened, use a conditional completion check after the
-last correction and before the final handback. Give a fresh read-only context
-the original request, amendments, exact revision, outcome/evidence table, and
-known limits. Ask only which requested outcome lacks sufficient evidence. A
+last correction and before the final handback. Reuse the existing independent
+reviewer under the [assurance handoff](assurance-handoff.md). Supply the
+original request, amendments, exact revision, outcome evidence and known limits. Ask only which requested outcome lacks sufficient evidence. A
 concrete gap returns to the coordinator loop. A clean result closes the check.
 This is a completion check, not another adversarial campaign, and it does not
 replace required security, privacy, release, or independent review gates.

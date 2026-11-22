@@ -83,9 +83,11 @@ may report a clean scoped result while author proof, a required correction, or a
 cooperating caller remains unverified. Preserve that distinction and continue
 the coordinator completion loop in the change-classification contract.
 
-When the coordinator uses the conditional completion check, launch a fresh
-read-only context with the original request, all amendments, the exact final
-revision, the outcome/evidence table, and explicit coverage limits. The check
+For the conditional completion check, reuse the existing independent read-only
+reviewer if its context remains separate from the builder's private reasoning.
+Launch a fresh read-only reviewer only when no suitable reviewer is available.
+Supply the original request, amendments, exact candidate revision,
+outcome/evidence table and explicit coverage limits. The check
 must answer only whether each requested outcome has sufficient evidence. It may
 identify a gap or confirm closure, but it does not reopen a general audit,
 replace a required independent gate, or extend the adversarial review budget.
