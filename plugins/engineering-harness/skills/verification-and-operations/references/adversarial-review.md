@@ -42,20 +42,18 @@ Report severity and confidence. Mark uninvestigated areas explicitly; do not sil
 
 ## Handback
 
-The reviewer changes no files and performs no fixes. Return the exact revision,
-original deadline, threads opened, evidence, findings and unexamined scope.
-An early handback can end the current investigation turn with time and threads
-remaining. Once the author fixes the known findings, the coordinator sends the
-corrected revision and focused proof back to the same independent reviewer.
-Ask explicitly: “Does the fix close the finding? If so, what is the next
-concrete issue, if any, in the unexamined portion of the assigned scope?”
+Pin the candidate at the start of discovery. When a blocker is established,
+record it immediately against that revision and notify the coordinator if
+possible. Continue with the next concrete hypothesis on the same frozen
+candidate without waiting for a fix or acknowledgement. End discovery when
+either budget limit is reached, the assigned scope is covered, or no concrete
+hypothesis remains. If further inspection is impossible, hand back early
+and identify the blocker to review and the unexamined areas.
 
-Recheck the fix and affected seams. Pursue a next hypothesis only while both
-time and thread allowance remain in the original pass. Time spent awaiting
-corrections counts toward its elapsed deadline. Opening a distinct hypothesis
-consumes another thread. Repeat on a further supported finding. Stop discovery
-when either limit is reached, the scoped review is complete, or no concrete
-hypothesis remains. Return coverage and unresolved results. Required
-correction verification still runs on the corrected candidate after discovery
-closes. Reopen settled scope only for changed assumptions, expanded scope or
+Return the revision, deadline, threads opened, evidence, all currently
+established blockers and explicit unexamined scope. The coordinator collects
+this handback before changing the candidate, batches authorized corrections
+and supplies the new revision and proof to the same reviewer. Verify the
+corrections and their affected seams by delta. The discovery budget stays
+closed. Reopen settled scope only for changed assumptions, expanded scope or
 newly reachable behavior. Freeze the verified candidate for final acceptance.

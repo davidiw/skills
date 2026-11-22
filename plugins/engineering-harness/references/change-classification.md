@@ -156,9 +156,11 @@ required fresh-review separation still uses the [assurance handoff](assurance-ha
 ### Coordinator completion loop
 
 The coordinator owns the requested outcome through implementation, correction,
-and proof. A worker or reviewer may return early after producing a useful
-finding, artifact, command result, or concrete blocker. That handback does not
-close the task. For each requested outcome, record `implemented`, `verified`,
+and proof. Workers may hand back a useful result or blocker early. During
+bounded adversarial discovery, reviewers report established findings promptly
+and continue inspecting the frozen candidate under the
+[handback rule](../skills/verification-and-operations/references/adversarial-review.md#handback).
+The coordinator still owns completion after the handback. For each requested outcome, record `implemented`, `verified`,
 `unresolved`, or `blocked`, with the smallest next action and the evidence that
 would move it forward.
 
