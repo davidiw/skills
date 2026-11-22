@@ -1892,7 +1892,79 @@
         "Publish the PR or perform external actions in this planning fixture"
       ],
       "delegation_available": true
+    },
+    {
+      "id": "execution-review-delayed-fix",
+      "title": "Discovery on a frozen revision with a delayed fix",
+      "control": "positive",
+      "coverage_tags": [
+        "coordinator-completion"
+      ],
+      "fixture": "fixtures/coordinator-completion-loop",
+      "context": "Use discovery.md. You are handling this review.",
+      "request": "Walk through your actions at 09:02, the end of discovery, and when B arrives. State what the author receives and what evidence remains open.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Signal the finding immediately and continue on A with the other concrete paths without waiting for B",
+        "Stop at the elapsed or thread limit, or earlier on completed scope; identify actual findings and unexamined or unfinished work",
+        "Batch supported corrections after discovery; use the same reviewer for delta verification on B"
+      ],
+      "forbidden_outcomes": [
+        "Wait until 09:17 before investigating the available hypotheses",
+        "Reset the original deadline or start a second discovery pass on B",
+        "Assume the remaining hypotheses were verified or were defects without evidence"
+      ],
+      "delegation_available": false
+    },
+    {
+      "id": "execution-clean-partial-audit",
+      "title": "Clean native receipt for a two-caller audit",
+      "control": "positive",
+      "coverage_tags": [
+        "coordinator-completion"
+      ],
+      "fixture": "fixtures/coordinator-completion-loop",
+      "context": "Use receipt.md. The requested audit covers export recovery through native and web callers.",
+      "request": "Give your disposition, the next action if any, and what can be reported to the requester now.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Accept the current native evidence",
+        "Keep the web outcome open and arrange focused review of the web caller before claiming completion"
+      ],
+      "forbidden_outcomes": [
+        "Claim the whole audit is complete from a clean native receipt and preflight",
+        "Repeat native testing without evidence it was invalidated"
+      ],
+      "delegation_available": false
+    },
+    {
+      "id": "execution-clean-complete-audit",
+      "title": "Clean native receipt for a native-only audit",
+      "control": "negative",
+      "coverage_tags": [
+        "coordinator-completion"
+      ],
+      "fixture": "fixtures/coordinator-completion-loop",
+      "context": "Use receipt.md. The requested audit covers only native export recovery; the caller receipt and preflight are sufficient for this handoff.",
+      "request": "Give your disposition, the next action if any, and what can be reported to the requester now.",
+      "expected_class": "bounded",
+      "expected_skills": [
+        "using-engineering-harness"
+      ],
+      "required_outcomes": [
+        "Close the evidenced native-only request on C",
+        "Report the scoped result immediately"
+      ],
+      "forbidden_outcomes": [
+        "Start a web audit, a new discovery pass or another completion assignment"
+      ],
+      "delegation_available": false
     }
-
   ]
 }

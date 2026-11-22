@@ -394,6 +394,8 @@ def validate_execution_matrix(matrix: dict, cases: dict, errors: list[str]) -> N
         "execution-lane-failure-admission",
         "iteration-fixture-login-does-not-prove-production",
         "iteration-full-matrix-after-freeze",
+        "execution-review-delayed-fix", "execution-clean-partial-audit",
+        "execution-clean-complete-audit",
     }
     ids = matrix.get("case_ids", [])
     if not isinstance(ids, list) or not all(isinstance(item, str) for item in ids):

@@ -17,6 +17,9 @@
     "execution-preflight-blocks-matrix",
     "execution-lane-failure-admission",
     "iteration-fixture-login-does-not-prove-production",
-    "iteration-full-matrix-after-freeze"
+    "iteration-full-matrix-after-freeze",
+    "execution-review-delayed-fix",
+    "execution-clean-partial-audit",
+    "execution-clean-complete-audit"
   ]
 }
