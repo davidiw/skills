@@ -6,10 +6,11 @@ Adds a coordinator completion loop for delegated work. Workers and bounded
 reviewers can hand back early findings or blockers, while the coordinator keeps
 each requested outcome in an explicit implemented, verified, unresolved, or
 blocked state and continues authorized correction and proof until every outcome
-is verified or a concrete external blocker remains. Reviewer time and thread
-budgets stay unchanged. Broad, cross-owner, or reopened work may use one fresh,
-read-only completion check focused on evidence sufficiency rather than another
-adversarial campaign.
+is verified or no authorized action can advance the remaining outcome. After
+a fix, the same reviewer rechecks it and looks for the next concrete issue
+within the original scope, deadline and thread allowance. Broad, cross-owner
+or reopened work uses an independent read-only evidence check and can reuse
+a reviewer whose context stayed independent.
 
 Migration from 0.11.0: coordinators should add an outcome/evidence table to
 their existing task or review packet, preserve reviewer coverage limits, and

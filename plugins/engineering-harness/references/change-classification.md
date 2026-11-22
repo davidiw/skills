@@ -174,9 +174,12 @@ outcome is `verified`, or when the user explicitly narrows the request. An
 explicit narrowing removes only the named obligations; every remaining outcome
 still needs proof. Ordinary small changes may keep this status check in the
 coordinator's normal handback without creating a table. If no
-authorized action can advance an outcome, return a bounded blocker with the
-exact missing evidence, attempted actions, external dependency, and next
-smallest action. Do not summarize an `implemented` handback as `verified`.
+authorized action can advance an outcome, finish independent authorized work
+and report partial completion. Identify the blocked outcome, actions attempted,
+and the decision, authority or evidence needed to resume. An architectural
+choice reserved for the owner, a dependency outside the agreed scope or
+unavailable verification can each require this handback. Resume an exhausted
+investigation only with a concrete new basis and the necessary authority. Do not summarize an `implemented` handback as `verified`.
 
 For broad delegated work, cross-owner changes, or an audit whose prior
 completion claim was reopened, use a conditional completion check after the

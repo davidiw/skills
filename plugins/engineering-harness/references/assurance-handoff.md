@@ -95,7 +95,9 @@ replace a required independent gate, or extend the adversarial review budget.
 Wait for the complete handback before editing its snapshot or acting on partial
 findings. Continue independent work elsewhere; prefer 60-second bounded
 waits, avoiding short polling/progress-only messages. Correct the full blocker set
-within authorized scope. Reuse the reviewer for **delta review** of corrections,
+within authorized scope. After an early adversarial handback, prompt the same
+reviewer to [resume the original bounded pass](../skills/verification-and-operations/references/adversarial-review.md#handback)
+when returning the fix. Reuse the reviewer for **delta review** of corrections,
 affected seams and regressions, retaining prior receipts/coverage. Ask what the fix
 removed, replaced or relocated, and which consumers relied on that behavior or
 information. Validate the affected producer-to-consumer boundary; shared serialized

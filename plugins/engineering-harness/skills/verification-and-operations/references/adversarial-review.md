@@ -43,9 +43,19 @@ Report severity and confidence. Mark uninvestigated areas explicitly; do not sil
 ## Handback
 
 The reviewer changes no files and performs no fixes. Return the exact revision,
-threads used, evidence reused, focused commands, and ordered findings. The
-author corrects blockers in one batch. The new exact revision receives a
-delta-scoped review of corrections, directly affected seams and regressions,
-then freezes for one final exact-head acceptance. Reopen unchanged scope only
-for expanded scope, invalidated assumptions or newly reachable surfaces. A final
-acceptance blocker still requires affected checks after its correction.
+original deadline, threads opened, evidence, findings and unexamined scope.
+An early handback can end the current investigation turn with time and threads
+remaining. Once the author fixes the known findings, the coordinator sends the
+corrected revision and focused proof back to the same independent reviewer.
+Ask explicitly: “Does the fix close the finding? If so, what is the next
+concrete issue, if any, in the unexamined portion of the assigned scope?”
+
+Recheck the fix and affected seams. Pursue a next hypothesis only while both
+time and thread allowance remain in the original pass. Time spent awaiting
+corrections counts toward its elapsed deadline. Opening a distinct hypothesis
+consumes another thread. Repeat on a further supported finding. Stop discovery
+when either limit is reached, the scoped review is complete, or no concrete
+hypothesis remains. Return coverage and unresolved results. Required
+correction verification still runs on the corrected candidate after discovery
+closes. Reopen settled scope only for changed assumptions, expanded scope or
+newly reachable behavior. Freeze the verified candidate for final acceptance.
