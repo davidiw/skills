@@ -119,12 +119,12 @@ specialist reads, and verify the evidence-identity implementation against its
 canonical-encoding/verified-digest contract before claiming that gate closed.
 
 The fixture-backed [`execution-matrix.json`](execution-matrix.json) is a bounded
-five-case natural cohort for generic execution coordination: decomposable worker
-assignment, scope resolution before writing, adversarial ordering, cheap failure
-admission, and lane admission after an observed failure. It uses the same runner,
-fresh paired arms, and evidence rules as the other matrices. A case that only
-plans records actual delegation availability and handoff evidence; it does not
-turn an unavailable runtime capability into a claimed worker launch.
+cohort for generic execution coordination. Its cases cover delegation, scope,
+review ordering, failure and lane admission, and completion evidence. The
+completion cases use the existing runner and fixtures. To replay the focused
+Harness arm, select `--case execution-review-delayed-fix --case execution-clean-partial-audit --case execution-clean-complete-audit --arm harness --trials 1`.
+See the [frozen run and observed decisions](results/coordinator-completion/checks.md).
+Planning cases record actual delegation availability and handoff evidence.
 
 The scope-approval regression `temporary-account-oauth-scope` models temporary
 accounts tempting a replacement of shipped mobile provider OAuth. Its paired
