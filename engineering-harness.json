@@ -19,7 +19,7 @@
     "skill_authoring_policy": "docs/agents/skill-authoring.md"
   },
   "capabilities": {
-    "durable_work": false,
+    "durable_work": true,
     "offline_operation": false,
     "replicated_state": false,
     "multiple_clients": false,
@@ -61,6 +61,18 @@
         "docs/agents/skill-authoring.md",
         "tests/test_method_reconciliation.py"
       ]
+    },
+    "durable-admission": {
+      "rung": "fault_test",
+      "owner": "tests/test_durable_invariant.py"
+    },
+    "normal-failure-semantics": {
+      "rung": "fault_test",
+      "owner": "tests/test_durable_invariant.py"
+    },
+    "coalesced-bounded-work": {
+      "rung": "fault_test",
+      "owner": "tests/test_durable_invariant.py"
     }
   },
   "exceptions": [],
